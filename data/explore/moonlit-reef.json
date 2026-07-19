@@ -11,7 +11,7 @@
       "min": 30,
       "max": 120
     },
-    "message": "explored the Moonlit Reef and recovered {reward} Star Candies from an ancient elf shrine."
+    "message": "explored the Moonlit Reef and recovered {reward} Star Candies from an ancient elf shrine~"
   },
   {
     "id": 2,
@@ -25,7 +25,7 @@
       "min": 20,
       "max": 75
     },
-    "message": "Shizuki emerged from the Moonlit Reef, gifting you {reward} Star Candies before fading into the tide."
+    "message": "Shizuki emerged from the Moonlit Reef, gifting you {reward} Star Candies before fading into the tide~"
   },
   {
     "id": 3,
@@ -39,7 +39,7 @@
       "min": 30,
       "max": 100
     },
-    "message": "caught Shizuki hiding behind a large glowing coral in the Moonlit Reef. She bribed you with {reward} Star Candies to keep quiet."
+    "message": "caught Shizuki hiding behind a large glowing coral in the Moonlit Reef. She bribed you with {reward} Star Candies to keep quiet~"
   },
   {
   "id": 4,
@@ -53,7 +53,7 @@
     "min": 25,
     "max": 85
   },
-  "message": "Shizuki accidentally tripped on an elf relic, launching {reward} Star Candies into your backpack."
+  "message": "Shizuki accidentally tripped on an elf relic, launching {reward} Star Candies into your backpack~"
 },
 {
   "id": 5,
@@ -67,7 +67,7 @@
     "min": 40,
     "max": 105
   },
-  "message": "explored the Moonlit Reef and was guided by a pod of lunar dolphins to a hidden cache containing {reward} Star Candies."
+  "message": "explored the Moonlit Reef and was guided by a pod of lunar dolphins to a hidden cache containing {reward} Star Candies~"
 },
 {
   "id": 6,
@@ -81,7 +81,7 @@
     "min": 55,
     "max": 100
   },
-  "message": "explored the Moonlit Reef and found Shizuki pointing excitedly at a school of glowing jellyfish, leading you to {reward} Star Candies hidden below."
+  "message": "explored the Moonlit Reef and found Shizuki pointing excitedly at a school of glowing jellyfish, leading you to {reward} Star Candies hidden below~"
 },
 {
   "id": 7,
@@ -95,7 +95,7 @@
     "min": 50,
     "max": 115
   },
-  "message": "explored the Moonlit Reef and discovered Shizuki floating in the Starlight Lagoon, who happily shared {reward} Star Candies she had just found."
+  "message": "explored the Moonlit Reef and discovered Shizuki floating in the Starlight Lagoon, who happily shared {reward} Star Candies she had just found~"
 },
 {
   "id": 8,
@@ -109,7 +109,7 @@
     "min": 45,
     "max": 90
   },
-  "message": "explored the Moonlit Reef and found Shizuki chatting with curious Silverfin before discovering {reward} Star Candies beneath the coral."
+  "message": "explored the Moonlit Reef and found Shizuki chatting with curious Silverfin before discovering {reward} Star Candies beneath the coral~"
 },
 {
   "id": 9,
@@ -123,7 +123,7 @@
     "min": 75,
     "max": 110
   },
-  "message": "Explored the Moonlit Reef when Shizuki accidentally summoned a Lunar current, sweeping {reward} Star Candies right to your feet."
+  "message": "Explored the Moonlit Reef when Shizuki accidentally summoned a Lunar current, sweeping {reward} Star Candies right to your feet~"
 },
 {
   "id": 10,
@@ -137,7 +137,7 @@
     "min": 100,
     "max": 180
   },
-  "message": "explored the Moonlit Reef and encountered the rare mysterious Fae Moonkeeper, who bestowed a blessing worth {reward} Star Candies before vanishing into the glowing tide."
+  "message": "explored the Moonlit Reef and encountered the rare mysterious Fae Moonkeeper, who bestowed a blessing worth {reward} Star Candies before vanishing into the glowing tide~"
 },
 {
   "id": 11,
@@ -151,7 +151,7 @@
     "min": 35,
     "max": 100
   },
-  "message": "explored the Moonlit Reef and wandered through glowing Fae Sea Blossoms, gathering {reward} Star Candies nestled among their radiant petals."
+  "message": "explored the Moonlit Reef and wandered through glowing Fae Sea Blossoms, gathering {reward} Star Candies nestled among their radiant petals~"
 },
 {
   "id": 12,
@@ -165,7 +165,7 @@
     "min": 40,
     "max": 110
   },
-  "message": "explored the Moonlit Reef and ventured into the Moonglass Cavern, discovering {reward} Star Candies glittering within the Fae crystal lined walls."
+  "message": "explored the Moonlit Reef and ventured into the Moonglass Cavern, discovering {reward} Star Candies glittering within the Fae crystal lined walls~"
 },
 {
   "id": 13,
@@ -179,7 +179,7 @@
     "min": 45,
     "max": 120
   },
-  "message": "explored the Moonlit Reef and met an Elder Moon Turtle, who revealed a forgotten Fae cache holding {reward} Star Candies before vanishing into the shimmering sea."
+  "message": "explored the Moonlit Reef and met an Elder Moon Turtle, who revealed a forgotten Fae cache holding {reward} Star Candies before vanishing into the shimmering sea~"
 },
 {
   "id": 14,
@@ -193,7 +193,7 @@
     "min": 45,
     "max": 115
   },
-  "message": "explored the Moonlit Reef and drifted through Moonbeam Cascade, where ancient Fae light revealed {reward} Star Candies upon the ocean floor."
+  "message": "explored the Moonlit Reef and drifted through Moonbeam Cascade, where ancient Fae light revealed {reward} Star Candies upon the ocean floor~"
 },
 {
   "id": 15,
@@ -207,7 +207,7 @@
     "min": 100,
     "max": 175
   },
-  "message": "explored the Moonlit Reef during the Celestial Starfall, when ancient Fae magic reveals {reward} Star Candies beneath the waves."
+  "message": "explored the Moonlit Reef during the Celestial Starfall, when ancient Fae magic reveals {reward} Star Candies beneath the waves~"
 },
 {
   "id": 16,
@@ -221,7 +221,7 @@
     "min": 25,
     "max": 120
   },
-  "message": "explored the Moonlit Reef and found Shizuki collecting treasures along the Astral Tide. She happily shared {reward} Star Candies with you."
+  "message": "explored the Moonlit Reef and found Shizuki collecting treasures along the Astral Tide. She happily shared {reward} Star Candies with you~"
 },
 {
   "id": 17,
@@ -235,7 +235,7 @@
     "min": 100,
     "max": 190
   },
-  "message": "explored the Moonlit Reef and was guided by a majestic Astral Manta Ray to a forgotten Fae cache, earning {reward} Star Candies."
+  "message": "explored the Moonlit Reef and was guided by a majestic Astral Manta Ray to a forgotten Fae cache, earning {reward} Star Candies~"
 },
 {
   "id": 18,
@@ -249,7 +249,7 @@
     "min": 50,
     "max": 125
   },
-  "message": "explored the Moonlit Reef and discovered Shizuki drawing little stars in the sand, uncovering {reward} Star Candies hidden below."
+  "message": "explored the Moonlit Reef and discovered Shizuki drawing little stars in the sand, uncovering {reward} Star Candies hidden below~"
 },
 {
   "id": 19,
@@ -263,7 +263,7 @@
     "min": 55,
     "max": 130
   },
-  "message": "explored the Moonlit Reef and wandered beneath the Moonstone Arch, where ancient Fae stonework concealed {reward} Star Candies."
+  "message": "explored the Moonlit Reef and wandered beneath the Moonstone Arch, where ancient Fae stonework concealed {reward} Star Candies~"
 },
 {
   "id": 20,
@@ -277,7 +277,7 @@
     "min": 110,
     "max": 200
   },
-  "message": "explored the Moonlit Reef and discovered Shizuki's enchanted lantern, its gentle glow revealing {reward} Star Candies beneath the moonlit waves."
+  "message": "explored the Moonlit Reef and discovered Shizuki's enchanted lantern, its gentle glow revealing {reward} Star Candies beneath the moonlit waves~"
 },
 {
   "id": 21,
@@ -291,7 +291,7 @@
     "min": 120,
     "max": 210
   },
-  "message": "ventured the Moonlit Reef and found Shizuki bargaining with a Starshell Hermit, who happily included {reward} Star Candies in the trade."
+  "message": "ventured the Moonlit Reef and found Shizuki bargaining with a Starshell Hermit, who happily included {reward} Star Candies in the trade~"
 },
 {
   "id": 22,
@@ -305,7 +305,7 @@
     "min": 60,
     "max": 140
   },
-  "message": "explored the Moonlit Reef and uncovered a rare Star Pearl Oyster, its radiant shell revealing {reward} Star Candies hidden away."
+  "message": "explored the Moonlit Reef and uncovered a rare Star Pearl Oyster, its radiant shell revealing {reward} Star Candies hidden away~"
 },
 {
   "id": 23,
@@ -319,7 +319,7 @@
     "min": 55,
     "max": 135
   },
-  "message": "explored the Moonlit Reef and wandered through the Celestial Coral Garden, discovering {reward} Star Candies nestled among glowing Fae coral blossoms."
+  "message": "explored the Moonlit Reef and wandered through the Celestial Coral Garden, discovering {reward} Star Candies nestled among glowing Fae coral blossoms~"
 },
 {
   "id": 24,
@@ -333,7 +333,7 @@
     "min": 130,
     "max": 220
   },
-  "message": "explored the Moonlit Reef and uncovered a legendary Elvish Star Compass, leading you to a forgotten cache of {reward} Star Candies hidden beneath the coral."
+  "message": "explored the Moonlit Reef and uncovered a legendary Elvish Star Compass, leading you to a forgotten cache of {reward} Star Candies hidden beneath the coral~"
 },
 {
   "id": 25,
@@ -347,7 +347,7 @@
     "min": 60,
     "max": 145
   },
-  "message": "wandered through the Moonlit Reef and found Shizuki admiring a grove of glowing Moonveil Anemones, where {reward} Star Candies shimmered beneath their gentle light."
+  "message": "wandered through the Moonlit Reef and found Shizuki admiring a grove of glowing Moonveil Anemones, where {reward} Star Candies shimmered beneath their gentle light~"
 },
 {
   "id": 26,
@@ -361,7 +361,7 @@
     "min": 65,
     "max": 150
   },
-  "message": "drifted through the Moonlit Reef and arrived at the Whispering Tidepool, where ancient Fae whispers guided you to {reward} Star Candies hidden beneath the shimmering water."
+  "message": "drifted through the Moonlit Reef and arrived at the Whispering Tidepool, where ancient Fae whispers guided you to {reward} Star Candies hidden beneath the shimmering water~"
 },
 {
   "id": 27,
@@ -375,7 +375,7 @@
     "min": 250,
     "max": 350
   },
-  "message": "roamed the Moonlit Reef and found Shizuki trying to count the stars in a fallen constellation. She lost count but still found {reward} Star Candies."
+  "message": "roamed the Moonlit Reef and found Shizuki trying to count the stars in a fallen constellation. She lost count but still found {reward} Star Candies~"
 },
 {
   "id": 28,
@@ -389,7 +389,7 @@
     "min": 70,
     "max": 155
   },
-  "message": "drifted through the Moonlit Reef and discovered a meadow of Dreaming Sea Lilies, where glowing petals revealed {reward} Star Candies beneath the swaying blooms."
+  "message": "drifted through the Moonlit Reef and discovered a meadow of Dreaming Sea Lilies, where glowing petals revealed {reward} Star Candies beneath the swaying blooms~"
 },
 {
   "id": 29,
@@ -403,7 +403,7 @@
     "min": 275,
     "max": 375
   },
-  "message": "wandered through the Moonlit Reef and found Shizuki waiting beside a forgotten Fae Vault. With a smile, she opened it to reveal {reward} Star Candies."
+  "message": "wandered through the Moonlit Reef and found Shizuki waiting beside a forgotten Fae Vault. With a smile, she opened it to reveal {reward} Star Candies~"
 },
 {
   "id": 30,
@@ -417,7 +417,7 @@
     "min": 401,
     "max": 500
   },
-  "message": "wandered into the Moonlit Reef and found Shizuki standing before the Astral Heart. As the relic awakened, it bathed the reef in light and gifted {reward} Star Candies before fading into stardust. / LEGENDARY EXPEDITION!"
+  "message": "wandered into the Moonlit Reef and found Shizuki standing before the Astral Heart. As the relic awakened, it bathed the reef in light and gifted {reward} Star Candies before fading into stardust~ / LEGENDARY EXPEDITION!"
 }
 ]
   
