@@ -1,0 +1,423 @@
+[
+  {
+    "id": 1,
+    "code": "MR-001",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 100,
+    "title": "Ancient Coral Shrine",
+    "reward": {
+      "min": 30,
+      "max": 120
+    },
+    "message": "{user} explored the Moonlit Reef and recovered {reward} Star Candies from an ancient coral shrine."
+  },
+  {
+    "id": 2,
+    "code": "MR-002",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 100,
+    "title": "Glowing Moon Coral",
+    "reward": {
+      "min": 20,
+      "max": 75
+    },
+    "message": "{user} ventured into the Moonlit Reef and gathered {reward} Star Candies from glowing moon coral."
+  },
+  {
+    "id": 3,
+    "code": "MR-003",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 100,
+    "title": "Pearlescent Tide Pool",
+    "reward": {
+      "min": 35,
+      "max": 95
+    },
+    "message": "{user} explored the Moonlit Reef and uncovered a pearlescent tide pool, collecting {reward} Star Candies sparkling beneath the moonlit water."
+  },
+  {
+  "id": 4,
+  "code": "MR-004",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 95,
+  "title": "Moonshell Grotto",
+  "reward": {
+    "min": 25,
+    "max": 85
+  },
+  "message": "{user} explored the Moonlit Reef and discovered the Moonshell Grotto, uncovering {reward} Star Candies hidden beneath shimmering shells."
+},
+{
+  "id": 5,
+  "code": "MR-005",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 90,
+  "title": "Celestial Dolphin Pod",
+  "reward": {
+    "min": 40,
+    "max": 105
+  },
+  "message": "{user} explored the Moonlit Reef and was guided by a pod of celestial dolphins to a hidden cache containing {reward} Star Candies."
+},
+{
+  "id": 6,
+  "code": "MR-006",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 90,
+  "title": "Moon Jelly Bloom",
+  "reward": {
+    "min": 35,
+    "max": 100
+  },
+  "message": "{user} explored the Moonlit Reef and drifted through a bloom of glowing moon jellyfish, discovering {reward} Star Candies shimmering beneath their gentle light."
+},
+{
+  "id": 7,
+  "code": "MR-007",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 85,
+  "title": "Starlight Lagoon",
+  "reward": {
+    "min": 45,
+    "max": 115
+  },
+  "message": "{user} explored the Moonlit Reef and arrived at the tranquil Starlight Lagoon, where drifting star fragments revealed {reward} Star Candies beneath the glowing surface."
+},
+{
+  "id": 8,
+  "code": "MR-008",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 85,
+  "title": "Silverfin Shoals",
+  "reward": {
+    "min": 30,
+    "max": 90
+  },
+  "message": "{user} explored the Moonlit Reef and followed a shimmering school of Silverfin fish to a hidden reef, uncovering {reward} Star Candies scattered among the moonlit coral."
+},
+{
+  "id": 9,
+  "code": "MR-009",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 85,
+  "title": "Lunar Current",
+  "reward": {
+    "min": 40,
+    "max": 110
+  },
+  "message": "{user} explored the Moonlit Reef and was carried by a gentle Lunar Current to a secluded coral alcove, discovering {reward} Star Candies hidden among the glowing reefs."
+},
+{
+  "id": 10,
+  "code": "MR-010",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "uncommon",
+  "weight": 40,
+  "title": "Moonkeeper's Blessing",
+  "reward": {
+    "min": 90,
+    "max": 180
+  },
+  "message": "{user} explored the Moonlit Reef and encountered the mysterious Moonkeeper, who bestowed a blessing worth {reward} Star Candies before vanishing into the glowing tide."
+},
+{
+  "id": 11,
+  "code": "MR-011",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 85,
+  "title": "Lunar Sea Blossoms",
+  "reward": {
+    "min": 35,
+    "max": 100
+  },
+  "message": "{user} explored the Moonlit Reef and wandered through a field of glowing Lunar Sea Blossoms, gathering {reward} Star Candies nestled among their radiant petals."
+},
+{
+  "id": 12,
+  "code": "MR-012",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 85,
+  "title": "Moonglass Cavern",
+  "reward": {
+    "min": 40,
+    "max": 110
+  },
+  "message": "{user} explored the Moonlit Reef and ventured into the Moonglass Cavern, discovering {reward} Star Candies glittering within the crystal lined walls."
+},
+{
+  "id": 13,
+  "code": "MR-013",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 80,
+  "title": "Elder Moon Turtle",
+  "reward": {
+    "min": 45,
+    "max": 120
+  },
+  "message": "{user} explored the Moonlit Reef and met an Elder Moon Turtle, who revealed an ancient Star Candy cache containing {reward} Star Candies before slowly disappearing into the shimmering sea."
+},
+{
+  "id": 14,
+  "code": "MR-014",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 80,
+  "title": "Moonbeam Cascade",
+  "reward": {
+    "min": 45,
+    "max": 115
+  },
+  "message": "{user} explored the Moonlit Reef and drifted through the Moonbeam Cascade, where shimmering rays illuminated {reward} Star Candies resting on the ocean floor."
+},
+{
+  "id": 15,
+  "code": "MR-015",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 80,
+  "title": "Falling Star Rain",
+  "reward": {
+    "min": 50,
+    "max": 125
+  },
+  "message": "{user} explored the Moonlit Reef just as a shower of falling stars drifted into the sea, collecting {reward} Star Candies left sparkling across the reef."
+},
+{
+  "id": 16,
+  "code": "MR-016",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 80,
+  "title": "Astral Tide",
+  "reward": {
+    "min": 45,
+    "max": 120
+  },
+  "message": "{user} explored the Moonlit Reef as the Astral Tide rolled in, washing {reward} Star Candies onto the glowing shoreline of the reef."
+},
+{
+  "id": 17,
+  "code": "MR-017",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "uncommon",
+  "weight": 40,
+  "title": "Astral Manta Ray",
+  "reward": {
+    "min": 100,
+    "max": 190
+  },
+  "message": "{user} explored the Moonlit Reef and was guided by a majestic Astral Manta Ray to a forgotten celestial cache, earning {reward} Star Candies."
+},
+{
+  "id": 18,
+  "code": "MR-018",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 80,
+  "title": "Echoing Star Reef",
+  "reward": {
+    "min": 50,
+    "max": 125
+  },
+  "message": "{user} explored the Moonlit Reef and wandered across the Echoing Star Reef, where ancient coral concealed {reward} Star Candies beneath a blanket of shimmering stardust."
+},
+{
+  "id": 19,
+  "code": "MR-019",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 75,
+  "title": "Moonstone Arch",
+  "reward": {
+    "min": 55,
+    "max": 130
+  },
+  "message": "{user} explored the Moonlit Reef and passed beneath the ancient Moonstone Arch, uncovering {reward} Star Candies tucked within its weathered coral pillars."
+},
+{
+  "id": 20,
+  "code": "MR-020",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "uncommon",
+  "weight": 40,
+  "title": "Moonkeeper's Lantern",
+  "reward": {
+    "min": 110,
+    "max": 200
+  },
+  "message": "{user} explored the Moonlit Reef and discovered the Moonkeeper's enchanted lantern, its gentle glow revealing {reward} Star Candies hidden beneath the moonlit waves."
+},
+{
+  "id": 21,
+  "code": "MR-021",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "uncommon",
+  "weight": 35,
+  "title": "Starshell Hermit",
+  "reward": {
+    "min": 120,
+    "max": 210
+  },
+  "message": "{user} explored the Moonlit Reef and befriended a curious Starshell Hermit, who traded a collection of gleaming shells for {reward} Star Candies before scuttling back into the coral."
+},
+{
+  "id": 22,
+  "code": "MR-022",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 75,
+  "title": "Star Pearl Oyster",
+  "reward": {
+    "min": 60,
+    "max": 140
+  },
+  "message": "{user} explored the Moonlit Reef and discovered a rare Star Pearl Oyster, whose shimmering shell concealed {reward} Star Candies gathered over countless tides."
+},
+{
+  "id": 23,
+  "code": "MR-023",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 75,
+  "title": "Celestial Coral Garden",
+  "reward": {
+    "min": 55,
+    "max": 135
+  },
+  "message": "{user} explored the Moonlit Reef and wandered through the breathtaking Celestial Coral Garden, discovering {reward} Star Candies nestled among the glowing coral blossoms."
+},
+{
+  "id": 24,
+  "code": "MR-024",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "uncommon",
+  "weight": 35,
+  "title": "Navigator's Star Compass",
+  "reward": {
+    "min": 130,
+    "max": 220
+  },
+  "message": "{user} explored the Moonlit Reef and uncovered the legendary Navigator's Star Compass, leading to a forgotten stash of {reward} Star Candies hidden beneath the coral."
+},
+{
+  "id": 25,
+  "code": "MR-025",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 70,
+  "title": "Moonveil Anemones",
+  "reward": {
+    "min": 60,
+    "max": 145
+  },
+  "message": "{user} explored the Moonlit Reef and discovered a grove of glowing Moonveil Anemones, where {reward} Star Candies shimmered gently between their radiant fronds."
+},
+{
+  "id": 26,
+  "code": "MR-026",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 70,
+  "title": "Whispering Tidepool",
+  "reward": {
+    "min": 65,
+    "max": 150
+  },
+  "message": "{user} explored the Moonlit Reef and discovered the tranquil Whispering Tidepool, where glowing seashells concealed {reward} Star Candies beneath crystal-clear waters."
+},
+{
+  "id": 27,
+  "code": "MR-027",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "rare",
+  "weight": 12,
+  "title": "The Fallen Constellation",
+  "reward": {
+    "min": 250,
+    "max": 350
+  },
+  "message": "{user} explored the Moonlit Reef and discovered a fallen constellation resting beneath the waves, collecting {reward} Star Candies from the scattered starlight before it returned to the night sky."
+},
+{
+  "id": 28,
+  "code": "MR-028",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 70,
+  "title": "Dreaming Sea Lilies",
+  "reward": {
+    "min": 70,
+    "max": 155
+  },
+  "message": "{user} explored the Moonlit Reef and drifted through a meadow of Dreaming Sea Lilies, where glowing petals gently revealed {reward} Star Candies hidden beneath the swaying blooms."
+},
+{
+  "id": 29,
+  "code": "MR-029",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "rare",
+  "weight": 10,
+  "title": "The Moonkeeper's Vault",
+  "reward": {
+    "min": 275,
+    "max": 375
+  },
+  "message": "{user} explored the Moonlit Reef and uncovered the long-lost Moonkeeper's Vault, recovering {reward} Star Candies from a celestial treasure hidden since the First Tide."
+},
+{
+  "id": 30,
+  "code": "MR-030",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "legendary",
+  "weight": 1,
+  "title": "The Astral Heart",
+  "reward": {
+    "min": 401,
+    "max": 500
+  },
+  "message": "LEGENDARY EXPEDITION! {user} explored the Moonlit Reef and discovered the Astral Heart, a celestial relic said to have been born from the very first fallen star. As its radiant light awakened, you were gifted {reward} Star Candies before the relic dissolved into a cascade of stardust."
+}
+]
+  
