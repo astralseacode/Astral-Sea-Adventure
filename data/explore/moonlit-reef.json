@@ -11,7 +11,14 @@
       "min": 30,
       "max": 120
     },
-    "message": "explored the Moonlit Reef and recovered {reward} Star Candies from an ancient elf shrine~"
+    "xp": 9,
+    "message": "explored the Moonlit Reef and recovered {reward} Star Candies from an ancient elf shrine~",
+    "itemDrops": [
+      {
+        "id": "coral_shrine_fragment",
+        "chance": 0.35
+      }
+    ]
   },
   {
     "id": 2,
@@ -25,7 +32,14 @@
       "min": 20,
       "max": 75
     },
-    "message": "Shizuki emerged from the Moonlit Reef, gifting you {reward} Star Candies before fading into the tide~"
+    "xp": 8,
+    "message": "Shizuki emerged from the Moonlit Reef, gifting you {reward} Star Candies before fading into the tide~",
+    "itemDrops": [
+      {
+        "id": "moon_coral_sprig",
+        "chance": 0.35
+      }
+    ]
   },
   {
     "id": 3,
@@ -33,391 +47,586 @@
     "category": "explore",
     "region": "Moonlit Reef",
     "rarity": "common",
-    "weight": 100,
+    "weight": 95,
     "title": "Pearlescent Tide Pool",
     "reward": {
       "min": 30,
       "max": 100
     },
-    "message": "caught Shizuki hiding behind a large glowing coral in the Moonlit Reef. She bribed you with {reward} Star Candies to keep quiet~"
+    "xp": 9,
+    "message": "caught Shizuki hiding behind a large glowing coral in the Moonlit Reef. She bribed you with {reward} Star Candies to keep quiet~",
+    "itemDrops": [
+      {
+        "id": "shizukis_hushed_pearl",
+        "chance": 0.4
+      }
+    ]
   },
   {
-  "id": 4,
-  "code": "MR-004",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 95,
-  "title": "Moonshell Grotto",
-  "reward": {
-    "min": 25,
-    "max": 85
+    "id": 4,
+    "code": "MR-004",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 95,
+    "title": "Moonshell Grotto",
+    "reward": {
+      "min": 25,
+      "max": 85
+    },
+    "xp": 8,
+    "message": "Shizuki accidentally tripped on an elf relic, launching {reward} Star Candies into your backpack~",
+    "itemDrops": [
+      {
+        "id": "tumbled_elf_relic",
+        "chance": 0.35
+      }
+    ]
   },
-  "message": "Shizuki accidentally tripped on an elf relic, launching {reward} Star Candies into your backpack~"
-},
-{
-  "id": 5,
-  "code": "MR-005",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 90,
-  "title": "Celestial Dolphin Pod",
-  "reward": {
-    "min": 40,
-    "max": 105
+  {
+    "id": 5,
+    "code": "MR-005",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 90,
+    "title": "Celestial Dolphin Pod",
+    "reward": {
+      "min": 40,
+      "max": 105
+    },
+    "xp": 10,
+    "message": "explored the Moonlit Reef and was guided by a pod of lunar dolphins to a hidden cache containing {reward} Star Candies~",
+    "itemDrops": [
+      {
+        "id": "lunar_dolphin_charm",
+        "chance": 0.4
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and was guided by a pod of lunar dolphins to a hidden cache containing {reward} Star Candies~"
-},
-{
-  "id": 6,
-  "code": "MR-006",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 90,
-  "title": "Moon Jelly Bloom",
-  "reward": {
-    "min": 55,
-    "max": 100
+  {
+    "id": 6,
+    "code": "MR-006",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 90,
+    "title": "Moon Jelly Bloom",
+    "reward": {
+      "min": 55,
+      "max": 100
+    },
+    "xp": 10,
+    "message": "explored the Moonlit Reef and found Shizuki pointing excitedly at a school of glowing jellyfish, leading you to {reward} Star Candies hidden below~",
+    "itemDrops": [
+      {
+        "id": "moon_jelly_lantern",
+        "chance": 0.4
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and found Shizuki pointing excitedly at a school of glowing jellyfish, leading you to {reward} Star Candies hidden below~"
-},
-{
-  "id": 7,
-  "code": "MR-007",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 85,
-  "title": "Starlight Lagoon",
-  "reward": {
-    "min": 50,
-    "max": 115
+  {
+    "id": 7,
+    "code": "MR-007",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 85,
+    "title": "Starlight Lagoon",
+    "reward": {
+      "min": 50,
+      "max": 115
+    },
+    "xp": 11,
+    "message": "explored the Moonlit Reef and discovered Shizuki floating in the Starlight Lagoon, who happily shared {reward} Star Candies she had just found~",
+    "itemDrops": [
+      {
+        "id": "starlight_lagoon_droplet",
+        "chance": 0.45
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and discovered Shizuki floating in the Starlight Lagoon, who happily shared {reward} Star Candies she had just found~"
-},
-{
-  "id": 8,
-  "code": "MR-008",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 85,
-  "title": "Silverfin Shoals",
-  "reward": {
-    "min": 45,
-    "max": 90
+  {
+    "id": 8,
+    "code": "MR-008",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 85,
+    "title": "Silverfin Shoals",
+    "reward": {
+      "min": 45,
+      "max": 90
+    },
+    "xp": 9,
+    "message": "explored the Moonlit Reef and found Shizuki chatting with curious Silverfin before discovering {reward} Star Candies beneath the coral~",
+    "itemDrops": [
+      {
+        "id": "silverfin_scale",
+        "chance": 0.4
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and found Shizuki chatting with curious Silverfin before discovering {reward} Star Candies beneath the coral~"
-},
-{
-  "id": 9,
-  "code": "MR-009",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 85,
-  "title": "Lunar Current",
-  "reward": {
-    "min": 75,
-    "max": 110
+  {
+    "id": 9,
+    "code": "MR-009",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 80,
+    "title": "Lunar Current",
+    "reward": {
+      "min": 75,
+      "max": 110
+    },
+    "xp": 12,
+    "message": "explored the Moonlit Reef when Shizuki accidentally summoned a Lunar Current, sweeping {reward} Star Candies right to your feet~",
+    "itemDrops": [
+      {
+        "id": "bottled_lunar_current",
+        "chance": 0.45
+      }
+    ]
   },
-  "message": "Explored the Moonlit Reef when Shizuki accidentally summoned a Lunar current, sweeping {reward} Star Candies right to your feet~"
-},
-{
-  "id": 10,
-  "code": "MR-010",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "uncommon",
-  "weight": 40,
-  "title": "Moonkeeper's Blessing",
-  "reward": {
-    "min": 100,
-    "max": 180
+  {
+    "id": 10,
+    "code": "MR-010",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "uncommon",
+    "weight": 40,
+    "title": "Moonkeeper's Blessing",
+    "reward": {
+      "min": 100,
+      "max": 180
+    },
+    "xp": 20,
+    "message": "explored the Moonlit Reef and encountered the rare, mysterious Fae Moonkeeper, who bestowed a blessing worth {reward} Star Candies before vanishing into the glowing tide~",
+    "itemDrops": [
+      {
+        "id": "moonkeepers_blessing",
+        "chance": 0.75
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and encountered the rare mysterious Fae Moonkeeper, who bestowed a blessing worth {reward} Star Candies before vanishing into the glowing tide~"
-},
-{
-  "id": 11,
-  "code": "MR-011",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 85,
-  "title": "Lunar Sea Blossoms",
-  "reward": {
-    "min": 35,
-    "max": 100
+  {
+    "id": 11,
+    "code": "MR-011",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 85,
+    "title": "Lunar Sea Blossoms",
+    "reward": {
+      "min": 35,
+      "max": 100
+    },
+    "xp": 9,
+    "message": "explored the Moonlit Reef and wandered through glowing Fae Sea Blossoms, gathering {reward} Star Candies nestled among their radiant petals~",
+    "itemDrops": [
+      {
+        "id": "fae_sea_blossom",
+        "chance": 0.4
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and wandered through glowing Fae Sea Blossoms, gathering {reward} Star Candies nestled among their radiant petals~"
-},
-{
-  "id": 12,
-  "code": "MR-012",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 85,
-  "title": "Moonglass Cavern",
-  "reward": {
-    "min": 40,
-    "max": 110
+  {
+    "id": 12,
+    "code": "MR-012",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 80,
+    "title": "Moonglass Cavern",
+    "reward": {
+      "min": 40,
+      "max": 110
+    },
+    "xp": 11,
+    "message": "explored the Moonlit Reef and ventured into the Moonglass Cavern, discovering {reward} Star Candies glittering within the Fae crystal-lined walls~",
+    "itemDrops": [
+      {
+        "id": "moonglass_shard",
+        "chance": 0.45
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and ventured into the Moonglass Cavern, discovering {reward} Star Candies glittering within the Fae crystal lined walls~"
-},
-{
-  "id": 13,
-  "code": "MR-013",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 80,
-  "title": "Elder Moon Turtle",
-  "reward": {
-    "min": 45,
-    "max": 120
+  {
+    "id": 13,
+    "code": "MR-013",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "uncommon",
+    "weight": 55,
+    "title": "Elder Moon Turtle",
+    "reward": {
+      "min": 45,
+      "max": 120
+    },
+    "xp": 16,
+    "message": "explored the Moonlit Reef and met an Elder Moon Turtle, who revealed a forgotten Fae cache holding {reward} Star Candies before vanishing into the shimmering sea~",
+    "itemDrops": [
+      {
+        "id": "elder_moon_turtle_scale",
+        "chance": 0.6
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and met an Elder Moon Turtle, who revealed a forgotten Fae cache holding {reward} Star Candies before vanishing into the shimmering sea~"
-},
-{
-  "id": 14,
-  "code": "MR-014",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 80,
-  "title": "Moonbeam Cascade",
-  "reward": {
-    "min": 45,
-    "max": 115
+  {
+    "id": 14,
+    "code": "MR-014",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 80,
+    "title": "Moonbeam Cascade",
+    "reward": {
+      "min": 45,
+      "max": 115
+    },
+    "xp": 11,
+    "message": "explored the Moonlit Reef and drifted through Moonbeam Cascade, where ancient Fae light revealed {reward} Star Candies upon the ocean floor~",
+    "itemDrops": [
+      {
+        "id": "moonbeam_crystal",
+        "chance": 0.45
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and drifted through Moonbeam Cascade, where ancient Fae light revealed {reward} Star Candies upon the ocean floor~"
-},
-{
-  "id": 15,
-  "code": "MR-015",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 80,
-  "title": "Falling Star Rain",
-  "reward": {
-    "min": 100,
-    "max": 175
+  {
+    "id": 15,
+    "code": "MR-015",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "uncommon",
+    "weight": 45,
+    "title": "Falling Star Rain",
+    "reward": {
+      "min": 100,
+      "max": 175
+    },
+    "xp": 19,
+    "message": "explored the Moonlit Reef during the Celestial Starfall, when ancient Fae magic revealed {reward} Star Candies beneath the waves~",
+    "itemDrops": [
+      {
+        "id": "fallen_star_fragment",
+        "chance": 0.65
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef during the Celestial Starfall, when ancient Fae magic reveals {reward} Star Candies beneath the waves~"
-},
-{
-  "id": 16,
-  "code": "MR-016",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 80,
-  "title": "Astral Tide",
-  "reward": {
-    "min": 25,
-    "max": 120
+  {
+    "id": 16,
+    "code": "MR-016",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 80,
+    "title": "Astral Tide",
+    "reward": {
+      "min": 25,
+      "max": 120
+    },
+    "xp": 10,
+    "message": "explored the Moonlit Reef and found Shizuki collecting treasures along the Astral Tide. She happily shared {reward} Star Candies with you~",
+    "itemDrops": [
+      {
+        "id": "astral_tide_shell",
+        "chance": 0.4
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and found Shizuki collecting treasures along the Astral Tide. She happily shared {reward} Star Candies with you~"
-},
-{
-  "id": 17,
-  "code": "MR-017",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "uncommon",
-  "weight": 40,
-  "title": "Astral Manta Ray",
-  "reward": {
-    "min": 100,
-    "max": 190
+  {
+    "id": 17,
+    "code": "MR-017",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "uncommon",
+    "weight": 35,
+    "title": "Astral Manta Ray",
+    "reward": {
+      "min": 100,
+      "max": 190
+    },
+    "xp": 23,
+    "message": "explored the Moonlit Reef and was guided by a majestic Astral Manta Ray to a forgotten Fae cache, earning {reward} Star Candies~",
+    "itemDrops": [
+      {
+        "id": "astral_manta_token",
+        "chance": 0.8
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and was guided by a majestic Astral Manta Ray to a forgotten Fae cache, earning {reward} Star Candies~"
-},
-{
-  "id": 18,
-  "code": "MR-018",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 80,
-  "title": "Echoing Star Reef",
-  "reward": {
-    "min": 50,
-    "max": 125
+  {
+    "id": 18,
+    "code": "MR-018",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 75,
+    "title": "Echoing Star Reef",
+    "reward": {
+      "min": 50,
+      "max": 125
+    },
+    "xp": 11,
+    "message": "explored the Moonlit Reef and discovered Shizuki drawing little stars in the sand, uncovering {reward} Star Candies hidden below~",
+    "itemDrops": [
+      {
+        "id": "echoing_star_stone",
+        "chance": 0.45
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and discovered Shizuki drawing little stars in the sand, uncovering {reward} Star Candies hidden below~"
-},
-{
-  "id": 19,
-  "code": "MR-019",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 75,
-  "title": "Moonstone Arch",
-  "reward": {
-    "min": 55,
-    "max": 130
+  {
+    "id": 19,
+    "code": "MR-019",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 75,
+    "title": "Moonstone Arch",
+    "reward": {
+      "min": 55,
+      "max": 130
+    },
+    "xp": 12,
+    "message": "explored the Moonlit Reef and wandered beneath the Moonstone Arch, where ancient Fae stonework concealed {reward} Star Candies~",
+    "itemDrops": [
+      {
+        "id": "moonstone_arch_rune",
+        "chance": 0.45
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and wandered beneath the Moonstone Arch, where ancient Fae stonework concealed {reward} Star Candies~"
-},
-{
-  "id": 20,
-  "code": "MR-020",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "uncommon",
-  "weight": 40,
-  "title": "Moonkeeper's Lantern",
-  "reward": {
-    "min": 110,
-    "max": 200
+  {
+    "id": 20,
+    "code": "MR-020",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "uncommon",
+    "weight": 35,
+    "title": "Moonkeeper's Lantern",
+    "reward": {
+      "min": 110,
+      "max": 200
+    },
+    "xp": 23,
+    "message": "explored the Moonlit Reef and discovered Shizuki's enchanted lantern, its gentle glow revealing {reward} Star Candies beneath the moonlit waves~",
+    "itemDrops": [
+      {
+        "id": "moonkeepers_lantern",
+        "chance": 0.8
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and discovered Shizuki's enchanted lantern, its gentle glow revealing {reward} Star Candies beneath the moonlit waves~"
-},
-{
-  "id": 21,
-  "code": "MR-021",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "uncommon",
-  "weight": 35,
-  "title": "Starshell Hermit",
-  "reward": {
-    "min": 120,
-    "max": 210
+  {
+    "id": 21,
+    "code": "MR-021",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "uncommon",
+    "weight": 30,
+    "title": "Starshell Hermit",
+    "reward": {
+      "min": 120,
+      "max": 210
+    },
+    "xp": 25,
+    "message": "ventured through the Moonlit Reef and found Shizuki bargaining with a Starshell Hermit, who happily included {reward} Star Candies in the trade~",
+    "itemDrops": [
+      {
+        "id": "starshell_hermit_shell",
+        "chance": 0.85
+      }
+    ]
   },
-  "message": "ventured the Moonlit Reef and found Shizuki bargaining with a Starshell Hermit, who happily included {reward} Star Candies in the trade~"
-},
-{
-  "id": 22,
-  "code": "MR-022",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 75,
-  "title": "Star Pearl Oyster",
-  "reward": {
-    "min": 60,
-    "max": 140
+  {
+    "id": 22,
+    "code": "MR-022",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "uncommon",
+    "weight": 35,
+    "title": "Star Pearl Oyster",
+    "reward": {
+      "min": 60,
+      "max": 140
+    },
+    "xp": 23,
+    "message": "explored the Moonlit Reef and uncovered a rare Star Pearl Oyster, its radiant shell revealing {reward} Star Candies hidden away~",
+    "itemDrops": [
+      {
+        "id": "star_pearl",
+        "chance": 0.8
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and uncovered a rare Star Pearl Oyster, its radiant shell revealing {reward} Star Candies hidden away~"
-},
-{
-  "id": 23,
-  "code": "MR-023",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 75,
-  "title": "Celestial Coral Garden",
-  "reward": {
-    "min": 55,
-    "max": 135
+  {
+    "id": 23,
+    "code": "MR-023",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 70,
+    "title": "Celestial Coral Garden",
+    "reward": {
+      "min": 55,
+      "max": 135
+    },
+    "xp": 12,
+    "message": "explored the Moonlit Reef and wandered through the Celestial Coral Garden, discovering {reward} Star Candies nestled among glowing Fae coral blossoms~",
+    "itemDrops": [
+      {
+        "id": "celestial_coral_bloom",
+        "chance": 0.5
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and wandered through the Celestial Coral Garden, discovering {reward} Star Candies nestled among glowing Fae coral blossoms~"
-},
-{
-  "id": 24,
-  "code": "MR-024",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "uncommon",
-  "weight": 35,
-  "title": "Navigator's Star Compass",
-  "reward": {
-    "min": 130,
-    "max": 220
+  {
+    "id": 24,
+    "code": "MR-024",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "epic",
+    "weight": 8,
+    "title": "Navigator's Star Compass",
+    "reward": {
+      "min": 130,
+      "max": 220
+    },
+    "xp": 45,
+    "message": "explored the Moonlit Reef and uncovered a legendary Elvish Star Compass, leading you to a forgotten cache of {reward} Star Candies hidden beneath the coral~",
+    "itemDrops": [
+      {
+        "id": "navigators_star_compass",
+        "chance": 1
+      }
+    ]
   },
-  "message": "explored the Moonlit Reef and uncovered a legendary Elvish Star Compass, leading you to a forgotten cache of {reward} Star Candies hidden beneath the coral~"
-},
-{
-  "id": 25,
-  "code": "MR-025",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 70,
-  "title": "Moonveil Anemones",
-  "reward": {
-    "min": 60,
-    "max": 145
+  {
+    "id": 25,
+    "code": "MR-025",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 70,
+    "title": "Moonveil Anemones",
+    "reward": {
+      "min": 60,
+      "max": 145
+    },
+    "xp": 12,
+    "message": "wandered through the Moonlit Reef and found Shizuki admiring a grove of glowing Moonveil Anemones, where {reward} Star Candies shimmered beneath their gentle light~",
+    "itemDrops": [
+      {
+        "id": "moonveil_anemone_petal",
+        "chance": 0.5
+      }
+    ]
   },
-  "message": "wandered through the Moonlit Reef and found Shizuki admiring a grove of glowing Moonveil Anemones, where {reward} Star Candies shimmered beneath their gentle light~"
-},
-{
-  "id": 26,
-  "code": "MR-026",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 70,
-  "title": "Whispering Tidepool",
-  "reward": {
-    "min": 65,
-    "max": 150
+  {
+    "id": 26,
+    "code": "MR-026",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 65,
+    "title": "Whispering Tidepool",
+    "reward": {
+      "min": 65,
+      "max": 150
+    },
+    "xp": 14,
+    "message": "drifted through the Moonlit Reef and arrived at the Whispering Tidepool, where ancient Fae whispers guided you to {reward} Star Candies hidden beneath the shimmering water~",
+    "itemDrops": [
+      {
+        "id": "whispering_tidepool_vial",
+        "chance": 0.55
+      }
+    ]
   },
-  "message": "drifted through the Moonlit Reef and arrived at the Whispering Tidepool, where ancient Fae whispers guided you to {reward} Star Candies hidden beneath the shimmering water~"
-},
-{
-  "id": 27,
-  "code": "MR-027",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "rare",
-  "weight": 12,
-  "title": "The Fallen Constellation",
-  "reward": {
-    "min": 250,
-    "max": 350
+  {
+    "id": 27,
+    "code": "MR-027",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "rare",
+    "weight": 12,
+    "title": "The Fallen Constellation",
+    "reward": {
+      "min": 250,
+      "max": 350
+    },
+    "xp": 36,
+    "message": "roamed the Moonlit Reef and found Shizuki trying to count the stars in a fallen constellation. She lost count but still found {reward} Star Candies~",
+    "itemDrops": [
+      {
+        "id": "fallen_constellation_shard",
+        "chance": 0.9
+      }
+    ]
   },
-  "message": "roamed the Moonlit Reef and found Shizuki trying to count the stars in a fallen constellation. She lost count but still found {reward} Star Candies~"
-},
-{
-  "id": 28,
-  "code": "MR-028",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "common",
-  "weight": 70,
-  "title": "Dreaming Sea Lilies",
-  "reward": {
-    "min": 70,
-    "max": 155
+  {
+    "id": 28,
+    "code": "MR-028",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "common",
+    "weight": 65,
+    "title": "Dreaming Sea Lilies",
+    "reward": {
+      "min": 70,
+      "max": 155
+    },
+    "xp": 14,
+    "message": "drifted through the Moonlit Reef and discovered a meadow of Dreaming Sea Lilies, where glowing petals revealed {reward} Star Candies beneath the swaying blooms~",
+    "itemDrops": [
+      {
+        "id": "dreaming_sea_lily",
+        "chance": 0.55
+      }
+    ]
   },
-  "message": "drifted through the Moonlit Reef and discovered a meadow of Dreaming Sea Lilies, where glowing petals revealed {reward} Star Candies beneath the swaying blooms~"
-},
-{
-  "id": 29,
-  "code": "MR-029",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "rare",
-  "weight": 10,
-  "title": "The Moonkeeper's Vault",
-  "reward": {
-    "min": 275,
-    "max": 375
+  {
+    "id": 29,
+    "code": "MR-029",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "rare",
+    "weight": 10,
+    "title": "The Moonkeeper's Vault",
+    "reward": {
+      "min": 275,
+      "max": 375
+    },
+    "xp": 42,
+    "message": "wandered through the Moonlit Reef and found Shizuki waiting beside a forgotten Fae Vault. With a smile, she opened it to reveal {reward} Star Candies~",
+    "itemDrops": [
+      {
+        "id": "moonkeepers_vault_key",
+        "chance": 0.95
+      }
+    ]
   },
-  "message": "wandered through the Moonlit Reef and found Shizuki waiting beside a forgotten Fae Vault. With a smile, she opened it to reveal {reward} Star Candies~"
-},
-{
-  "id": 30,
-  "code": "MR-030",
-  "category": "explore",
-  "region": "Moonlit Reef",
-  "rarity": "legendary",
-  "weight": 1,
-  "title": "The Astral Heart",
-  "reward": {
-    "min": 401,
-    "max": 500
-  },
-  "message": "wandered into the Moonlit Reef and found Shizuki standing before the Astral Heart. As the relic awakened, it bathed the reef in light and gifted {reward} Star Candies before fading into stardust~ / LEGENDARY EXPEDITION!"
-}
+  {
+    "id": 30,
+    "code": "MR-030",
+    "category": "explore",
+    "region": "Moonlit Reef",
+    "rarity": "legendary",
+    "weight": 1,
+    "title": "The Astral Heart",
+    "reward": {
+      "min": 401,
+      "max": 500
+    },
+    "xp": 75,
+    "message": "wandered into the Moonlit Reef and found Shizuki standing before the Astral Heart. As the relic awakened, it bathed the reef in light and gifted {reward} Star Candies before fading into stardust~ / LEGENDARY EXPEDITION!",
+    "itemDrops": [
+      {
+        "id": "astral_heart_fragment",
+        "chance": 1
+      }
+    ]
+  }
 ]
-  
