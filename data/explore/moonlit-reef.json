@@ -1,25 +1,25 @@
-[
-  {
-    "id": 1,
-    "code": "MR-001",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 100,
-    "title": "Ancient Coral Shrine",
-    "reward": {
-      "min": 30,
-      "max": 120
-    },
-    "xp": 9,
-    "message": "explored the Moonlit Reef and recovered {reward} Star Candies from an ancient elf shrine~",
-    "itemDrops": [
-      {
-        "id": "coral_shrine_fragment",
-        "chance": 0.35
-      }
-    ]
+{
+  "id": 1,
+  "code": "MR-001",
+  "category": "explore",
+  "region": "Moonlit Reef",
+  "rarity": "common",
+  "weight": 100,
+  "title": "The First Page",
+  "reward": {
+    "min": 30,
+    "max": 120
   },
+  "xp": 20,
+  "message": "wandered beneath the glowing corals of Moonlit Reef and recovered {reward} Star Candies from an ancient Elven shrine. A folded page rested beneath the moonstone altar~",
+  "itemDrops": [
+    {
+      "id": "moonlit-reef-note-01",
+      "type": "travel-note",
+      "chance": 1
+    }
+  ]
+},
   {
     "id": 2,
     "code": "MR-002",
