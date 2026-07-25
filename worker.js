@@ -4,6 +4,16 @@ const GITHUB_DATA_BASE =
   "https://raw.githubusercontent.com/astralseacode/Astral-Sea-Adventure/main/data";
 const DATA_CACHE_TTL_MS = 5 * 60 * 1000;
 const DUPLICATE_NOTE_CANDY_BONUS = 40;
+const COMBAT_STATE_TTL_SECONDS = 24 * 60 * 60;
+const PLAYER_COMBAT_MAX_HP = 100;
+const COMBAT_DAMAGE = {
+  criticalMiss: 0,
+  weak: 5,
+  normal: 10,
+  strong: 15,
+  heavy: 20,
+  critical: 30,
+};
 const DATA_CACHE = new Map();
 
 const REGIONS = [
@@ -248,6 +258,16 @@ const DAILY_BLESSINGS = [
 
 const DISCORD_COMMANDS = [
   {
+    name: "combat",
+    description: "Begin a battle in your current Astral Sea region.",
+    type: 1,
+  },
+  {
+    name: "attack",
+    description: "Attack the enemy in your current battle.",
+    type: 1,
+  },
+  {
     name: "explore",
     description: "Venture into the Astral Sea and find Star Candies.",
     type: 1,
@@ -422,6 +442,16 @@ async function handleTwitchRequest(url, env) {
       : "");
 
   switch (action) {
+    case "combat":
+      return textResponse(
+        (await performCombat(env, backpackKey, "twitch")).message,
+      );
+
+    case "attack":
+      return textResponse(
+        (await performAttack(env, backpackKey, "twitch")).message,
+      );
+
     case "explore":
       return textResponse(
         (await performExplore(env, backpackKey, "twitch")).message,
@@ -513,7 +543,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Unknown Astral Sea action. Try !explore, !daily, !risk, !backpack, !travel, !journal, !notes, or !note.",
+        "Unknown Astral Sea action. Try !combat, !attack, !explore, !daily, !risk, !backpack, !travel, !journal, !notes, or !note.",
         400,
       );
   }
@@ -588,6 +618,16 @@ async function handleDiscordInteraction(request, env) {
 
   try {
     switch (commandName) {
+      case "combat":
+        return discordMessage(
+          (await performCombat(env, backpackKey, "discord")).message,
+        );
+
+      case "attack":
+        return discordMessage(
+          (await performAttack(env, backpackKey, "discord")).message,
+        );
+
       case "explore":
         return discordMessage(
           (await performExplore(env, backpackKey, "discord")).message,
@@ -684,7 +724,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Unknown Astral Sea command. Try /explore, /daily, /risk, /backpack, /travel, /journal, /notes, or /note.",
+          "Unknown Astral Sea command. Try /combat, /attack, /explore, /daily, /risk, /backpack, /travel, /journal, /notes, or /note.",
           true,
         );
     }
@@ -782,7 +822,251 @@ async function handleDiscordRegistration(request, env) {
    SHARED GAME ACTIONS
    ============================================================ */
 
+async function performCombat(
+  env,
+  backpackKey,
+  platform = "twitch",
+) {
+  const existingCombat = await getCombatState(env, backpackKey);
+
+  if (existingCombat) {
+    return {
+      message:
+        `You are already fighting ${existingCombat.enemy.name}. ` +
+        `Player HP: ${existingCombat.playerHp}/${existingCombat.playerMaxHp} | ` +
+        `Enemy HP: ${existingCombat.enemy.hp}/${existingCombat.enemy.maxHp} | ` +
+        `Use ${platform === "discord" ? "/attack" : "!attack"} to continue.`,
+    };
+  }
+
+  const progress = await getPlayerProgress(env, backpackKey);
+  const region =
+    getRegionById(progress.currentRegion) ||
+    REGIONS[0];
+
+  if (region.id !== "moonlit-reef") {
+    return {
+      message:
+        `Combat encounters are not available in ${region.name} yet. ` +
+        "The creatures there are still gathering their courage.",
+    };
+  }
+
+  const combatEntries = await getRegionCombatEntries(region.id);
+  const selectedEntry = selectWeightedCombatEntry(combatEntries);
+  const enemy = await getEnemyDefinition(selectedEntry.enemy);
+  const now = Math.floor(Date.now() / 1000);
+  const combatState = {
+    version: 1,
+    regionId: region.id,
+    playerHp: PLAYER_COMBAT_MAX_HP,
+    playerMaxHp: PLAYER_COMBAT_MAX_HP,
+    enemy: {
+      ...enemy,
+      hp: enemy.hp,
+      maxHp: enemy.hp,
+    },
+    round: 1,
+    startedAt: now,
+    updatedAt: now,
+  };
+
+  await saveCombatState(env, backpackKey, combatState);
+
+  return {
+    message:
+      `A Level ${enemy.level} ${enemy.name} challenges you in ${region.name}! ` +
+      `Player HP: ${PLAYER_COMBAT_MAX_HP}/${PLAYER_COMBAT_MAX_HP} | ` +
+      `Enemy HP: ${enemy.hp}/${enemy.hp} | ` +
+      `Use ${platform === "discord" ? "/attack" : "!attack"} to strike first.`,
+  };
+}
+
+async function performAttack(
+  env,
+  backpackKey,
+  platform = "twitch",
+) {
+  const combatState = await getCombatState(env, backpackKey);
+
+  if (!combatState) {
+    return {
+      message:
+        "You are not currently in a battle. " +
+        `Use ${platform === "discord" ? "/combat" : "!combat"} to find an opponent.`,
+    };
+  }
+
+  const playerRoll = randomInteger(1, 20);
+  const playerAttack = getCombatRollResult(playerRoll);
+  combatState.enemy.hp = Math.max(
+    0,
+    combatState.enemy.hp - playerAttack.damage,
+  );
+
+  const messageParts = [
+    `Round ${combatState.round}`,
+    `You rolled ${playerRoll}: ${playerAttack.category} — ${playerAttack.damage} damage.`,
+  ];
+
+  if (combatState.enemy.hp === 0) {
+    const victory = await resolveCombatVictory(
+      env,
+      backpackKey,
+      combatState,
+    );
+
+    messageParts.push(
+      `${combatState.enemy.name} was defeated before it could retaliate!`,
+      victory.message,
+    );
+
+    return {
+      ...victory,
+      message: messageParts.join(" | "),
+    };
+  }
+
+  const enemyRoll = randomInteger(1, 20);
+  const enemyAttack = getCombatRollResult(enemyRoll);
+  combatState.playerHp = Math.max(
+    0,
+    combatState.playerHp - enemyAttack.damage,
+  );
+
+  messageParts.push(
+    `${combatState.enemy.name} rolled ${enemyRoll}: ${enemyAttack.category} — ${enemyAttack.damage} damage.`,
+  );
+
+  if (combatState.playerHp === 0) {
+    const defeat = await resolveCombatDefeat(
+      env,
+      backpackKey,
+      combatState,
+    );
+
+    messageParts.push(defeat.message);
+
+    return {
+      ...defeat,
+      message: messageParts.join(" | "),
+    };
+  }
+
+  combatState.round += 1;
+  combatState.updatedAt = Math.floor(Date.now() / 1000);
+  await saveCombatState(env, backpackKey, combatState);
+
+  messageParts.push(
+    `Player HP: ${combatState.playerHp}/${combatState.playerMaxHp}`,
+    `Enemy HP: ${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
+    `Use ${platform === "discord" ? "/attack" : "!attack"} to continue.`,
+  );
+
+  return {
+    message: messageParts.join(" | "),
+  };
+}
+
+async function resolveCombatVictory(
+  env,
+  backpackKey,
+  combatState,
+) {
+  const [currentTotal, progress] = await Promise.all([
+    getBackpackTotal(env, backpackKey),
+    getPlayerProgress(env, backpackKey),
+  ]);
+  const candyReward = randomInteger(
+    combatState.enemy.reward.candies.min,
+    combatState.enemy.reward.candies.max,
+  );
+  const xpReward = randomInteger(
+    combatState.enemy.reward.xp.min,
+    combatState.enemy.reward.xp.max,
+  );
+  const startingLevel = levelFromXp(progress.xp);
+  const startingTitle = getTitleForLevel(startingLevel);
+  const startingRegion = getRegionForLevel(startingLevel);
+  const newTotal = currentTotal + candyReward;
+  const newXp = progress.xp + xpReward;
+  const endingLevel = levelFromXp(newXp);
+  const endingTitle = getTitleForLevel(endingLevel);
+  const endingRegion = getRegionForLevel(endingLevel);
+
+  await Promise.all([
+    saveBackpackTotal(env, backpackKey, newTotal),
+    savePlayerProgress(env, backpackKey, {
+      ...progress,
+      xp: newXp,
+    }),
+  ]);
+  await deleteCombatState(env, backpackKey);
+
+  const levelProgress = getLevelProgress(newXp, endingLevel);
+  const messageParts = [
+    `Victory! +${candyReward} Star Candies and +${xpReward} XP.`,
+    `Level ${endingLevel} | ${levelProgress.current}/${levelProgress.required} XP`,
+    `Backpack: ${newTotal} Star Candies`,
+  ];
+
+  if (endingLevel > startingLevel) {
+    messageParts.push(`LEVEL UP! You reached Level ${endingLevel}!`);
+  }
+
+  if (endingTitle !== startingTitle) {
+    messageParts.push(`Title Earned: ${endingTitle}`);
+  }
+
+  if (endingRegion.id !== startingRegion.id) {
+    messageParts.push(`Region Unlocked: ${endingRegion.name}`);
+  }
+
+  return {
+    won: true,
+    candyReward,
+    xpReward,
+    total: newTotal,
+    xp: newXp,
+    message: messageParts.join(" | "),
+  };
+}
+
+async function resolveCombatDefeat(
+  env,
+  backpackKey,
+  combatState,
+) {
+  const currentTotal = await getBackpackTotal(env, backpackKey);
+  const candyLoss = Math.min(
+    currentTotal,
+    combatState.enemy.defeatCandyLoss,
+  );
+  const newTotal = currentTotal - candyLoss;
+
+  await saveBackpackTotal(env, backpackKey, newTotal);
+  await deleteCombatState(env, backpackKey);
+
+  return {
+    won: false,
+    candyLoss,
+    total: newTotal,
+    message:
+      `${combatState.enemy.name} defeated you. ` +
+      `You lost ${candyLoss} Star Candies. ` +
+      `Backpack: ${newTotal} Star Candies`,
+  };
+}
+
 async function performExplore(env, backpackKey, platform = "twitch") {
+  if (await getCombatState(env, backpackKey)) {
+    return {
+      message:
+        "You cannot explore during an active battle. " +
+        `Use ${platform === "discord" ? "/attack" : "!attack"} to continue fighting.`,
+    };
+  }
+
   const progress = await getPlayerProgress(
     env,
     backpackKey,
@@ -1146,6 +1430,14 @@ async function performTravel(
   backpackKey,
   regionInput,
 ) {
+  if (await getCombatState(env, backpackKey)) {
+    return {
+      message:
+        "You cannot travel during an active battle. " +
+        "Defeat your enemy first.",
+    };
+  }
+
   const region = normalizeRegionInput(regionInput);
 
   if (!region) {
@@ -1444,6 +1736,49 @@ async function saveBackpackTotal(
   );
 }
 
+function getCombatKey(backpackKey) {
+  return `combat:${backpackKey}`;
+}
+
+async function getCombatState(env, backpackKey) {
+  const storedValue = await env.Backpack.get(
+    getCombatKey(backpackKey),
+  );
+
+  if (!storedValue) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(storedValue);
+    return isValidCombatState(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+async function saveCombatState(
+  env,
+  backpackKey,
+  combatState,
+) {
+  if (!isValidCombatState(combatState)) {
+    throw new Error("Combat state has an invalid format.");
+  }
+
+  await env.Backpack.put(
+    getCombatKey(backpackKey),
+    JSON.stringify(combatState),
+    {
+      expirationTtl: COMBAT_STATE_TTL_SECONDS,
+    },
+  );
+}
+
+async function deleteCombatState(env, backpackKey) {
+  await env.Backpack.delete(getCombatKey(backpackKey));
+}
+
 /* ============================================================
    DISCORD HELPERS
    ============================================================ */
@@ -1696,6 +2031,195 @@ function resolvePlayerRegion(progress, regionInput) {
 
 function unknownRegionMessage() {
   return `Unknown region. Available regions: ${REGIONS.map((region) => region.name).join(", ")}.`;
+}
+
+function getCombatRollResult(roll) {
+  if (roll === 1) {
+    return {
+      category: "Critical Miss",
+      damage: COMBAT_DAMAGE.criticalMiss,
+    };
+  }
+
+  if (roll <= 5) {
+    return {
+      category: "Weak",
+      damage: COMBAT_DAMAGE.weak,
+    };
+  }
+
+  if (roll <= 10) {
+    return {
+      category: "Normal",
+      damage: COMBAT_DAMAGE.normal,
+    };
+  }
+
+  if (roll <= 15) {
+    return {
+      category: "Strong",
+      damage: COMBAT_DAMAGE.strong,
+    };
+  }
+
+  if (roll <= 19) {
+    return {
+      category: "Heavy",
+      damage: COMBAT_DAMAGE.heavy,
+    };
+  }
+
+  return {
+    category: "Critical",
+    damage: COMBAT_DAMAGE.critical,
+  };
+}
+
+function isValidIntegerRange(range, minimumAllowed = 0) {
+  return Boolean(
+    range &&
+    Number.isSafeInteger(range.min) &&
+    Number.isSafeInteger(range.max) &&
+    range.min >= minimumAllowed &&
+    range.max >= range.min,
+  );
+}
+
+function validateEnemyDefinition(enemy, expectedEnemyId) {
+  if (
+    !enemy ||
+    enemy.id !== expectedEnemyId ||
+    !/^[a-z0-9-]+$/.test(enemy.id) ||
+    typeof enemy.name !== "string" ||
+    !enemy.name.trim() ||
+    !Number.isSafeInteger(enemy.level) ||
+    enemy.level < 1 ||
+    !Number.isSafeInteger(enemy.hp) ||
+    enemy.hp < 1 ||
+    !isValidIntegerRange(enemy.reward?.candies) ||
+    !isValidIntegerRange(enemy.reward?.xp, 1) ||
+    !Number.isSafeInteger(enemy.defeatCandyLoss) ||
+    enemy.defeatCandyLoss < 0
+  ) {
+    throw new Error(`Invalid enemy data for ${expectedEnemyId}.`);
+  }
+
+  return {
+    id: enemy.id,
+    name: enemy.name.trim(),
+    level: enemy.level,
+    hp: enemy.hp,
+    reward: {
+      candies: {
+        min: enemy.reward.candies.min,
+        max: enemy.reward.candies.max,
+      },
+      xp: {
+        min: enemy.reward.xp.min,
+        max: enemy.reward.xp.max,
+      },
+    },
+    defeatCandyLoss: enemy.defeatCandyLoss,
+  };
+}
+
+function isValidCombatState(combatState) {
+  const enemy = combatState?.enemy;
+
+  return Boolean(
+    combatState &&
+    combatState.version === 1 &&
+    getRegionById(combatState.regionId) &&
+    Number.isSafeInteger(combatState.playerHp) &&
+    Number.isSafeInteger(combatState.playerMaxHp) &&
+    combatState.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
+    combatState.playerHp > 0 &&
+    combatState.playerHp <= combatState.playerMaxHp &&
+    enemy &&
+    typeof enemy.id === "string" &&
+    /^[a-z0-9-]+$/.test(enemy.id) &&
+    typeof enemy.name === "string" &&
+    enemy.name.trim() &&
+    Number.isSafeInteger(enemy.level) &&
+    enemy.level >= 1 &&
+    Number.isSafeInteger(enemy.hp) &&
+    Number.isSafeInteger(enemy.maxHp) &&
+    enemy.hp > 0 &&
+    enemy.hp <= enemy.maxHp &&
+    enemy.maxHp > 0 &&
+    isValidIntegerRange(enemy.reward?.candies) &&
+    isValidIntegerRange(enemy.reward?.xp, 1) &&
+    Number.isSafeInteger(enemy.defeatCandyLoss) &&
+    enemy.defeatCandyLoss >= 0 &&
+    Number.isSafeInteger(combatState.round) &&
+    combatState.round >= 1 &&
+    Number.isSafeInteger(combatState.startedAt) &&
+    combatState.startedAt > 0 &&
+    Number.isSafeInteger(combatState.updatedAt) &&
+    combatState.updatedAt >= combatState.startedAt
+  );
+}
+
+async function getRegionCombatEntries(regionId) {
+  const entries = await fetchCachedJson(
+    `combat:${regionId}`,
+    `${GITHUB_DATA_BASE}/combat/${regionId}.json`,
+  );
+
+  if (!Array.isArray(entries) || entries.length === 0) {
+    throw new Error(`Invalid combat data for ${regionId}.`);
+  }
+
+  const validatedEntries = entries.map((entry) => {
+    const enemy = String(entry?.enemy || "").trim();
+    const weight = Number(entry?.weight);
+
+    if (
+      !/^[a-z0-9-]+$/.test(enemy) ||
+      !Number.isFinite(weight) ||
+      weight <= 0
+    ) {
+      throw new Error(`Invalid combat entry for ${regionId}.`);
+    }
+
+    return {
+      enemy,
+      weight,
+    };
+  });
+
+  return validatedEntries;
+}
+
+async function getEnemyDefinition(enemyId) {
+  if (!/^[a-z0-9-]+$/.test(enemyId)) {
+    throw new Error("Invalid enemy ID.");
+  }
+
+  const enemy = await fetchCachedJson(
+    `enemy:${enemyId}`,
+    `${GITHUB_DATA_BASE}/enemies/${enemyId}.json`,
+  );
+
+  return validateEnemyDefinition(enemy, enemyId);
+}
+
+function selectWeightedCombatEntry(entries) {
+  const totalWeight = entries.reduce(
+    (total, entry) => total + entry.weight,
+    0,
+  );
+  let roll = Math.random() * totalWeight;
+
+  for (const entry of entries) {
+    roll -= entry.weight;
+
+    if (roll <= 0) {
+      return entry;
+    }
+  }
+
+  return entries[entries.length - 1];
 }
 
 async function fetchCachedJson(cacheKey, url) {
