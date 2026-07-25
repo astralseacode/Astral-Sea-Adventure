@@ -1,1 +1,7 @@
-
+{
+  "id": "astral-nexus",
+  "name": "Astral Nexus",
+  "levelRequirement": 50,
+  "noteCount": 30,
+  "nextRegion": null
+}
