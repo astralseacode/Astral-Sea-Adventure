@@ -1,0 +1,17 @@
+{
+  "id": "moon-puff",
+  "name": "Moon Puff",
+  "level": 1,
+  "hp": 75,
+  "reward": {
+    "candies": {
+      "min": 60,
+      "max": 100
+    },
+    "xp": {
+      "min": 20,
+      "max": 35
+    }
+  },
+  "defeatCandyLoss": 150
+}
