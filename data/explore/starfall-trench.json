@@ -1,1 +1,21 @@
-
+{
+  "id": 1,
+  "code": "ST-001",
+  "category": "explore",
+  "region": "Starfall Trench",
+  "rarity": "common",
+  "weight": 100,
+  "title": "Edge of the Trench",
+  "reward": {
+    "min": 50,
+    "max": 140
+  },
+  "xp": 14,
+  "message": "crossed beyond the Moonlit Reef and descended into the Starfall Trench, where Shizuki quietly watched glowing stars drift through the depths before uncovering {reward} Star Candies hidden among ancient Fae stonework~",
+  "itemDrops": [
+    {
+      "id": "weathered_fae_tablet",
+      "chance": 0.35
+    }
+  ]
+}
