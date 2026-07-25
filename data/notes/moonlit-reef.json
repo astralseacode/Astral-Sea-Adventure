@@ -4,5 +4,179 @@
     "number": 1,
     "title": "The First Page",
     "text": "Today's the day! Everyone says Moonlit Reef is the safest place to begin exploring... which probably means I'll get lost immediately. I packed plenty of berries, though. It'll be fine!~"
+  },
+  {
+    "id": "moonlit-reef-note-02",
+    "number": 2,
+    "title": "A Much Shorter Route",
+    "text": "I found a shortcut! Follow the silver shells past the coral arch, turn left at the glowing anemones, then keep going until the same coral arch appears again. That means it's working. Probably. I did find a lovely tidepool full of Star Candies, so I'm counting this as a success!~"
+  },
+  {
+    "id": "moonlit-reef-note-03",
+    "number": 3,
+    "title": "Unexpected Company",
+    "text": "A tiny Moon Sprite has been following me for nearly an hour. I tried asking its name, but it only chimed and hid inside my hood. I suppose I have a traveling companion now. I named it Glimmer until it tells me otherwise~"
+  },
+  {
+    "id": "moonlit-reef-note-04",
+    "number": 4,
+    "title": "Too Pretty to Pass By",
+    "text": "Moonlit Reef is much prettier than the maps suggested. I stopped to sketch the coral arch, but Glimmer kept sitting on the page. The drawing now includes one very smug blob of light~"
+  },
+  {
+    "id": "moonlit-reef-note-05",
+    "number": 5,
+    "title": "A Serious Crime",
+    "text": "A crab stole my berry pouch! I pursued it with the dignity expected of a legendary explorer. Glimmer says I tripped three times. Glimmer is not a reliable witness~"
+  },
+  {
+    "id": "moonlit-reef-note-06",
+    "number": 6,
+    "title": "Living Lanterns",
+    "text": "The moon jellies floated above me like tiny lanterns. I followed them because they seemed confident, which is more than I can say for my compass. Somehow they led me exactly where I needed to go~"
+  },
+  {
+    "id": "moonlit-reef-note-07",
+    "number": 7,
+    "title": "Probably East",
+    "text": "I wrote 'probably east' on the last sign because the lagoon was definitely in that direction at the time. Directions should be allowed to change when the scenery is distracting~"
+  },
+  {
+    "id": "moonlit-reef-note-08",
+    "number": 8,
+    "title": "Official Reef Business",
+    "text": "The Silverfin held a meeting around my map today. I think they were criticizing it. One of them kept tapping the part where I drew three different north arrows. That was a stylistic choice~"
+  },
+  {
+    "id": "moonlit-reef-note-09",
+    "number": 9,
+    "title": "Completely Intentional Magic",
+    "text": "I tried a small water rune and accidentally summoned a current strong enough to carry me across half the reef. I arrived safely, so I am recording this as advanced transportation magic~"
+  },
+  {
+    "id": "moonlit-reef-note-10",
+    "number": 10,
+    "title": "A Very Quiet Review",
+    "text": "I finally met the Moonkeeper. They studied my map for a long time, looked at me, then turned it upside down. I pretended that was how it was meant to be read. Glimmer betrayed me by laughing~"
+  },
+  {
+    "id": "moonlit-reef-note-11",
+    "number": 11,
+    "title": "Flowers That Remember",
+    "text": "The Sea Blossoms lean toward travelers they recognize. They all turned toward Glimmer first, then toward me after a suspicious delay. I am choosing not to take that personally~"
+  },
+  {
+    "id": "moonlit-reef-note-12",
+    "number": 12,
+    "title": "Too Many Arrows",
+    "text": "Moonglass Cavern reflects everything, including direction arrows. I followed my own sign six times before realizing there was only one sign. This cave is clearly designed to embarrass explorers~"
+  },
+  {
+    "id": "moonlit-reef-note-13",
+    "number": 13,
+    "title": "Slow and Certain",
+    "text": "The Elder Moon Turtle moves very slowly, but never seems lost. I asked for navigation advice. It stared at me for several minutes and continued walking. Honestly, that may have been the lesson~"
+  },
+  {
+    "id": "moonlit-reef-note-14",
+    "number": 14,
+    "title": "A Map Made of Light",
+    "text": "The cascade turned every drop of water into silver light. For once, the path was impossible to miss. I still managed to take the scenic route, but I maintain that was intentional~"
+  },
+  {
+    "id": "moonlit-reef-note-15",
+    "number": 15,
+    "title": "Starfall Wishes",
+    "text": "Falling stars landed all across the reef tonight. Glimmer made a wish. I made three, just in case quantity improves the odds. One may have involved an unlimited berry supply~"
+  },
+  {
+    "id": "moonlit-reef-note-16",
+    "number": 16,
+    "title": "The Sea Returns Everything",
+    "text": "The Astral Tide returned my compass, two pencils, one boot, and a berry I lost yesterday. I am beginning to suspect the sea is organizing my belongings better than I am~"
+  },
+  {
+    "id": "moonlit-reef-note-17",
+    "number": 17,
+    "title": "Recognized by the Reef",
+    "text": "An Astral Manta bowed when it saw me. I bowed back, then nearly floated into a coral pillar. It guided us onward anyway. The creatures here seem strangely familiar with me~"
+  },
+  {
+    "id": "moonlit-reef-note-18",
+    "number": 18,
+    "title": "The Reef Sings Back",
+    "text": "I hummed while drawing stars in the sand, and the reef answered with the same melody. It even copied the wrong note. I feel both honored and mildly insulted~"
+  },
+  {
+    "id": "moonlit-reef-note-19",
+    "number": 19,
+    "title": "Two Perfectly Good Choices",
+    "text": "I reached the Moonstone Arch and marked both paths as shortcuts. Technically, either one eventually reaches the destination. One simply takes most of the afternoon~"
+  },
+  {
+    "id": "moonlit-reef-note-20",
+    "number": 20,
+    "title": "I Knew I Forgot Something",
+    "text": "I spent an hour searching for my lantern while using its light to read my map. Glimmer watched the entire time without helping. This partnership needs clearer responsibilities~"
+  },
+  {
+    "id": "moonlit-reef-note-21",
+    "number": 21,
+    "title": "A Fair Trade",
+    "text": "The Starshell Hermit wanted something rare, so I offered my map. It accepted immediately. I am choosing to believe this means my cartography is priceless~"
+  },
+  {
+    "id": "moonlit-reef-note-22",
+    "number": 22,
+    "title": "A Pearl Full of Moonlight",
+    "text": "The Star Pearl glowed like a tiny moon. I wanted to sketch it, but Glimmer kept admiring its reflection. I drew both. The sprite demanded a larger portrait~"
+  },
+  {
+    "id": "moonlit-reef-note-23",
+    "number": 23,
+    "title": "The Garden Knows My Name",
+    "text": "The coral blossoms opened as I passed, as if they remembered me. I have never been here before... at least, I do not think I have. The reef feels oddly familiar sometimes~"
+  },
+  {
+    "id": "moonlit-reef-note-24",
+    "number": 24,
+    "title": "A Professional Disagreement",
+    "text": "The Star Compass disagrees with my map. I explained that north is more of a suggestion. It continued spinning. Glimmer sided with the compass, which feels deeply disloyal~"
+  },
+  {
+    "id": "moonlit-reef-note-25",
+    "number": 25,
+    "title": "A Necessary Break",
+    "text": "We stopped among the Moonveil Anemones for berries. Glimmer ate none but somehow ended up with purple light around its mouth. I have decided not to investigate~"
+  },
+  {
+    "id": "moonlit-reef-note-26",
+    "number": 26,
+    "title": "Whispers from Ahead",
+    "text": "The tidepool repeated words I have not written yet. It mentioned a vault, a key, and something called the Astral Heart. I should probably be worried. Instead, I am extremely curious~"
+  },
+  {
+    "id": "moonlit-reef-note-27",
+    "number": 27,
+    "title": "Putting the Sky Back Together",
+    "text": "A constellation fell into the reef, so we spent the night rebuilding it. I placed one star backward, but the sky accepted it. That makes it a new constellation now~"
+  },
+  {
+    "id": "moonlit-reef-note-28",
+    "number": 28,
+    "title": "A Dream of Deeper Waters",
+    "text": "The Sea Lilies showed me a dream of a silent trench filled with resting stars. A path descended beyond Moonlit Reef. Glimmer seemed excited. I pretended I was not nervous~"
+  },
+  {
+    "id": "moonlit-reef-note-29",
+    "number": 29,
+    "title": "What the Moonkeeper Guarded",
+    "text": "The vault held records of explorers who traveled before me. Several pages mentioned the same strange pull toward the deeper sea. The Moonkeeper told me the reef was only the beginning~"
+  },
+  {
+    "id": "moonlit-reef-note-30",
+    "number": 30,
+    "title": "The First Chapter Ends",
+    "text": "The Astral Heart opened a path toward Starfall Trench—the place where stars go to rest. I may be lost, underprepared, and nearly out of berries... but I am going. Every great journey needs a questionable next step~"
   }
 ]
