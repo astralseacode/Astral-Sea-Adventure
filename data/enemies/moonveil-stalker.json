@@ -1,0 +1,17 @@
+{
+  "id": "moonveil-stalker",
+  "name": "Moonveil Stalker",
+  "level": 3,
+  "hp": 86,
+  "reward": {
+    "candies": {
+      "min": 130,
+      "max": 160
+    },
+    "xp": {
+      "min": 50,
+      "max": 61
+    }
+  },
+  "defeatCandyLoss": 20
+}

@@ -833,7 +833,7 @@ async function performCombat(
     return {
       message:
         `You are already fighting ${existingCombat.enemy.name}. ` +
-        `Player HP: ${existingCombat.playerHp}/${existingCombat.playerMaxHp} | ` +
+        `HP: ${existingCombat.playerHp}/${existingCombat.playerMaxHp} | ` +
         `Enemy HP: ${existingCombat.enemy.hp}/${existingCombat.enemy.maxHp} | ` +
         `Use ${platform === "discord" ? "/attack" : "!attack"} to continue.`,
     };
@@ -876,7 +876,7 @@ async function performCombat(
   return {
     message:
       `A Level ${enemy.level} ${enemy.name} challenges you in ${region.name}! ` +
-      `Player HP: ${PLAYER_COMBAT_MAX_HP}/${PLAYER_COMBAT_MAX_HP} | ` +
+      `HP: ${PLAYER_COMBAT_MAX_HP}/${PLAYER_COMBAT_MAX_HP} | ` +
       `Enemy HP: ${enemy.hp}/${enemy.hp} | ` +
       `Use ${platform === "discord" ? "/attack" : "!attack"} to strike first.`,
   };
@@ -905,8 +905,7 @@ async function performAttack(
   );
 
   const messageParts = [
-    `Round ${combatState.round}`,
-    `You rolled ${playerRoll}: ${playerAttack.category} — ${playerAttack.damage} damage.`,
+    formatCombatRollMessage("You", playerRoll, playerAttack),
   ];
 
   if (combatState.enemy.hp === 0) {
@@ -914,16 +913,13 @@ async function performAttack(
       env,
       backpackKey,
       combatState,
-    );
-
-    messageParts.push(
-      `${combatState.enemy.name} was defeated before it could retaliate!`,
-      victory.message,
+      playerRoll,
+      playerAttack.damage,
     );
 
     return {
       ...victory,
-      message: messageParts.join(" | "),
+      message: victory.message,
     };
   }
 
@@ -935,7 +931,7 @@ async function performAttack(
   );
 
   messageParts.push(
-    `${combatState.enemy.name} rolled ${enemyRoll}: ${enemyAttack.category} — ${enemyAttack.damage} damage.`,
+    formatCombatRollMessage("Enemy", enemyRoll, enemyAttack),
   );
 
   if (combatState.playerHp === 0) {
@@ -958,9 +954,8 @@ async function performAttack(
   await saveCombatState(env, backpackKey, combatState);
 
   messageParts.push(
-    `Player HP: ${combatState.playerHp}/${combatState.playerMaxHp}`,
+    `HP: ${combatState.playerHp}/${combatState.playerMaxHp}`,
     `Enemy HP: ${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
-    `Use ${platform === "discord" ? "/attack" : "!attack"} to continue.`,
   );
 
   return {
@@ -972,6 +967,8 @@ async function resolveCombatVictory(
   env,
   backpackKey,
   combatState,
+  playerRoll,
+  playerDamage,
 ) {
   const [currentTotal, progress] = await Promise.all([
     getBackpackTotal(env, backpackKey),
@@ -1003,19 +1000,22 @@ async function resolveCombatVictory(
   ]);
   await deleteCombatState(env, backpackKey);
 
-  const levelProgress = getLevelProgress(newXp, endingLevel);
   const messageParts = [
-    `Victory! +${candyReward} Star Candies and +${xpReward} XP.`,
-    `Level ${endingLevel} | ${levelProgress.current}/${levelProgress.required} XP`,
-    `Backpack: ${newTotal} Star Candies`,
+    `${combatState.enemy.name} defeated!`,
+    playerRoll === 20
+      ? `You rolled 20 → Critical! ${playerDamage} dmg`
+      : `You rolled ${playerRoll} → ${playerDamage} dmg`,
+    `+${xpReward} XP`,
+    `+${candyReward} Star Candies`,
+    `Backpack: ${newTotal}`,
   ];
 
   if (endingLevel > startingLevel) {
-    messageParts.push(`LEVEL UP! You reached Level ${endingLevel}!`);
+    messageParts.push(`Level Up: Level ${endingLevel}`);
   }
 
   if (endingTitle !== startingTitle) {
-    messageParts.push(`Title Earned: ${endingTitle}`);
+    messageParts.push(`New Title: ${endingTitle}`);
   }
 
   if (endingRegion.id !== startingRegion.id) {
@@ -2031,6 +2031,17 @@ function resolvePlayerRegion(progress, regionInput) {
 
 function unknownRegionMessage() {
   return `Unknown region. Available regions: ${REGIONS.map((region) => region.name).join(", ")}.`;
+}
+
+function formatCombatRollMessage(attacker, roll, result) {
+  const specialText =
+    roll === 20
+      ? " — Critical!"
+      : roll === 1
+        ? " — Critical Miss!"
+        : "";
+
+  return `${attacker} rolled ${roll} → ${result.damage} dmg${specialText}`;
 }
 
 function getCombatRollResult(roll) {

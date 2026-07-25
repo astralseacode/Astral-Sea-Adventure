@@ -1,0 +1,17 @@
+{
+  "id": "star-pearl-guardian",
+  "name": "Star Pearl Guardian",
+  "level": 3,
+  "hp": 93,
+  "reward": {
+    "candies": {
+      "min": 148,
+      "max": 180
+    },
+    "xp": {
+      "min": 58,
+      "max": 69
+    }
+  },
+  "defeatCandyLoss": 22
+}

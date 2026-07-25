@@ -1,0 +1,17 @@
+{
+  "id": "moonlit-prism-serpent",
+  "name": "Moonlit Prism Serpent",
+  "level": 4,
+  "hp": 115,
+  "reward": {
+    "candies": {
+      "min": 235,
+      "max": 270
+    },
+    "xp": {
+      "min": 92,
+      "max": 105
+    }
+  },
+  "defeatCandyLoss": 35
+}

@@ -1,0 +1,17 @@
+{
+  "id": "moonreef-sovereign",
+  "name": "Moonreef Sovereign",
+  "level": 5,
+  "hp": 140,
+  "reward": {
+    "candies": {
+      "min": 400,
+      "max": 500
+    },
+    "xp": {
+      "min": 150,
+      "max": 200
+    }
+  },
+  "defeatCandyLoss": 50
+}

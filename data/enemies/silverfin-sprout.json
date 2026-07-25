@@ -1,0 +1,17 @@
+{
+  "id": "silverfin-sprout",
+  "name": "Silverfin Sprout",
+  "level": 1,
+  "hp": 35,
+  "reward": {
+    "candies": {
+      "min": 40,
+      "max": 65
+    },
+    "xp": {
+      "min": 14,
+      "max": 22
+    }
+  },
+  "defeatCandyLoss": 7
+}

@@ -1,0 +1,17 @@
+{
+  "id": "lunar-current-eel",
+  "name": "Lunar Current Eel",
+  "level": 2,
+  "hp": 72,
+  "reward": {
+    "candies": {
+      "min": 90,
+      "max": 118
+    },
+    "xp": {
+      "min": 35,
+      "max": 44
+    }
+  },
+  "defeatCandyLoss": 15
+}

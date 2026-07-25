@@ -1,0 +1,17 @@
+{
+  "id": "moonstone-archon",
+  "name": "Moonstone Archon",
+  "level": 4,
+  "hp": 102,
+  "reward": {
+    "candies": {
+      "min": 180,
+      "max": 215
+    },
+    "xp": {
+      "min": 70,
+      "max": 84
+    }
+  },
+  "defeatCandyLoss": 25
+}

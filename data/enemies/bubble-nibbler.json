@@ -1,0 +1,17 @@
+{
+  "id": "bubble-nibbler",
+  "name": "Bubble Nibbler",
+  "level": 1,
+  "hp": 20,
+  "reward": {
+    "candies": {
+      "min": 35,
+      "max": 55
+    },
+    "xp": {
+      "min": 12,
+      "max": 18
+    }
+  },
+  "defeatCandyLoss": 5
+}

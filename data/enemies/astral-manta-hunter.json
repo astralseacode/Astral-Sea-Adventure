@@ -1,0 +1,17 @@
+{
+  "id": "astral-manta-hunter",
+  "name": "Astral Manta Hunter",
+  "level": 3,
+  "hp": 88,
+  "reward": {
+    "candies": {
+      "min": 136,
+      "max": 167
+    },
+    "xp": {
+      "min": 53,
+      "max": 64
+    }
+  },
+  "defeatCandyLoss": 21
+}

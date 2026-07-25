@@ -1,6 +1,118 @@
 [
   {
+    "enemy": "bubble-nibbler",
+    "weight": 120
+  },
+  {
+    "enemy": "silverfin-sprout",
+    "weight": 105
+  },
+  {
+    "enemy": "tidepool-tumbler",
+    "weight": 98
+  },
+  {
+    "enemy": "moon-jelly-wisp",
+    "weight": 92
+  },
+  {
+    "enemy": "coral-button-crab",
+    "weight": 86
+  },
+  {
+    "enemy": "starshell-skipper",
+    "weight": 80
+  },
+  {
     "enemy": "moon-puff",
-    "weight": 100
+    "weight": 75
+  },
+  {
+    "enemy": "lunar-current-eel",
+    "weight": 70
+  },
+  {
+    "enemy": "fae-petal-ray",
+    "weight": 67
+  },
+  {
+    "enemy": "moonglass-hermit",
+    "weight": 64
+  },
+  {
+    "enemy": "silver-shell-sentry",
+    "weight": 61
+  },
+  {
+    "enemy": "starlight-anemone",
+    "weight": 58
+  },
+  {
+    "enemy": "reef-rune-otter",
+    "weight": 54
+  },
+  {
+    "enemy": "crescent-claw-crab",
+    "weight": 50
+  },
+  {
+    "enemy": "moonveil-stalker",
+    "weight": 45
+  },
+  {
+    "enemy": "astral-manta-hunter",
+    "weight": 42
+  },
+  {
+    "enemy": "echo-reef-siren",
+    "weight": 39
+  },
+  {
+    "enemy": "star-pearl-guardian",
+    "weight": 35
+  },
+  {
+    "enemy": "moonglass-moray",
+    "weight": 32
+  },
+  {
+    "enemy": "constellation-crawler",
+    "weight": 28
+  },
+  {
+    "enemy": "fae-tide-prowler",
+    "weight": 25
+  },
+  {
+    "enemy": "moonstone-archon",
+    "weight": 22
+  },
+  {
+    "enemy": "astral-reef-shark",
+    "weight": 20
+  },
+  {
+    "enemy": "moonkeeper-sentinel",
+    "weight": 18
+  },
+  {
+    "enemy": "celestial-coral-wyrm",
+    "weight": 16
+  },
+  {
+    "enemy": "starfall-razorfin",
+    "weight": 14
+  },
+  {
+    "enemy": "lunar-abyss-manta",
+    "weight": 12
+  },
+  {
+    "enemy": "moonlit-prism-serpent",
+    "weight": 10
+  },
+  {
+    "enemy": "moonreef-sovereign",
+    "weight": 1
   }
 ]

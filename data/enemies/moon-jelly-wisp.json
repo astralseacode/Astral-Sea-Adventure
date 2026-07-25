@@ -1,0 +1,17 @@
+{
+  "id": "moon-jelly-wisp",
+  "name": "Moon Jelly Wisp",
+  "level": 1,
+  "hp": 50,
+  "reward": {
+    "candies": {
+      "min": 50,
+      "max": 80
+    },
+    "xp": {
+      "min": 18,
+      "max": 28
+    }
+  },
+  "defeatCandyLoss": 10
+}

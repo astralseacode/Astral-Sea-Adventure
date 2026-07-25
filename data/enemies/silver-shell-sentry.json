@@ -1,0 +1,17 @@
+{
+  "id": "silver-shell-sentry",
+  "name": "Silver Shell Sentry",
+  "level": 2,
+  "hp": 78,
+  "reward": {
+    "candies": {
+      "min": 102,
+      "max": 133
+    },
+    "xp": {
+      "min": 40,
+      "max": 50
+    }
+  },
+  "defeatCandyLoss": 17
+}

@@ -1,0 +1,17 @@
+{
+  "id": "coral-button-crab",
+  "name": "Coral Button Crab",
+  "level": 1,
+  "hp": 58,
+  "reward": {
+    "candies": {
+      "min": 55,
+      "max": 88
+    },
+    "xp": {
+      "min": 20,
+      "max": 31
+    }
+  },
+  "defeatCandyLoss": 12
+}

@@ -1,0 +1,17 @@
+{
+  "id": "echo-reef-siren",
+  "name": "Echo Reef Siren",
+  "level": 3,
+  "hp": 90,
+  "reward": {
+    "candies": {
+      "min": 142,
+      "max": 174
+    },
+    "xp": {
+      "min": 55,
+      "max": 66
+    }
+  },
+  "defeatCandyLoss": 21
+}

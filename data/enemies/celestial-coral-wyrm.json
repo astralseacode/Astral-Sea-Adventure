@@ -1,0 +1,17 @@
+{
+  "id": "celestial-coral-wyrm",
+  "name": "Celestial Coral Wyrm",
+  "level": 4,
+  "hp": 108,
+  "reward": {
+    "candies": {
+      "min": 208,
+      "max": 245
+    },
+    "xp": {
+      "min": 82,
+      "max": 96
+    }
+  },
+  "defeatCandyLoss": 30
+}
