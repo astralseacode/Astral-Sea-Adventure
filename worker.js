@@ -5,6 +5,7 @@ const GITHUB_DATA_BASE =
 const DATA_CACHE_TTL_MS = 5 * 60 * 1000;
 const DUPLICATE_NOTE_CANDY_BONUS = 40;
 const COMBAT_STATE_TTL_SECONDS = 24 * 60 * 60;
+const PENDING_COMBAT_TTL_MS = 5 * 60 * 1000;
 const PLAYER_COMBAT_MAX_HP = 100;
 const BERRY_HEAL_AMOUNT = 20;
 const BERRY_DROP_CHANCE_BY_REGION = {
@@ -269,7 +270,26 @@ const DAILY_BLESSINGS = [
 const DISCORD_COMMANDS = [
   {
     name: "combat",
-    description: "Begin a battle in your current Astral Sea region.",
+    description: "View or select an unlocked combat expedition.",
+    type: 1,
+    options: [
+      {
+        type: 4,
+        name: "encounter",
+        description: "Expedition number to challenge",
+        required: false,
+        min_value: 1,
+      },
+    ],
+  },
+  {
+    name: "yes",
+    description: "Begin your selected combat expedition",
+    type: 1,
+  },
+  {
+    name: "no",
+    description: "Cancel your selected combat expedition",
     type: 1,
   },
   {
@@ -461,7 +481,26 @@ async function handleTwitchRequest(url, env) {
   switch (action) {
     case "combat":
       return textResponse(
-        (await performCombat(env, backpackKey, "twitch")).message,
+        (
+          await performCombat(
+            env,
+            backpackKey,
+            url.searchParams.get("encounter") ||
+              argumentParts[0] ||
+              "",
+            "twitch",
+          )
+        ).message,
+      );
+
+    case "yes":
+      return textResponse(
+        (await confirmPendingCombat(env, backpackKey, "twitch")).message,
+      );
+
+    case "no":
+      return textResponse(
+        (await cancelPendingCombat(env, backpackKey)).message,
       );
 
     case "attack":
@@ -574,7 +613,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Unknown Astral Sea action. Try !combat, !attack, !eat, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, or !note.",
+        "Commands: !combat [number] — view/select expeditions, !yes — begin, !no — cancel, !attack, !eat, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -652,7 +691,24 @@ async function handleDiscordInteraction(request, env) {
     switch (commandName) {
       case "combat":
         return discordMessage(
-          (await performCombat(env, backpackKey, "discord")).message,
+          (
+            await performCombat(
+              env,
+              backpackKey,
+              getDiscordOption(interaction, "encounter"),
+              "discord",
+            )
+          ).message,
+        );
+
+      case "yes":
+        return discordMessage(
+          (await confirmPendingCombat(env, backpackKey, "discord")).message,
+        );
+
+      case "no":
+        return discordMessage(
+          (await cancelPendingCombat(env, backpackKey)).message,
         );
 
       case "attack":
@@ -770,7 +826,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Unknown Astral Sea command. Try /combat, /attack, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, or /note.",
+          "Commands: /combat [number] — view/select expeditions, /yes — begin, /no — cancel, /attack, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -871,7 +927,25 @@ async function handleDiscordRegistration(request, env) {
 async function performCombat(
   env,
   backpackKey,
+  encounterInput,
   platform = "twitch",
+) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => requestCombatConfirmation(
+      env,
+      backpackKey,
+      encounterInput,
+      platform,
+    ),
+  );
+}
+
+async function requestCombatConfirmation(
+  env,
+  backpackKey,
+  encounterInput,
+  platform,
 ) {
   const existingCombat = await getCombatState(env, backpackKey);
 
@@ -890,21 +964,290 @@ async function performCombat(
     getRegionById(progress.currentRegion) ||
     REGIONS[0];
 
-  if (region.id !== "moonlit-reef") {
+  let combatEntries;
+
+  try {
+    combatEntries = await getRegionCombatEntries(region.id);
+  } catch (error) {
+    console.error(`Combat list unavailable for ${region.id}:`, error);
+
     return {
       message:
-        `Combat encounters are not available in ${region.name} yet. ` +
-        "The creatures there are still gathering their courage.",
+        `Combat expeditions are not available in ${region.name} right now.`,
     };
   }
 
-  const combatEntries = await getRegionCombatEntries(region.id);
-  const selectedEntry = selectWeightedCombatEntry(combatEntries);
-  const enemy = await getEnemyDefinition(selectedEntry.enemy);
+  if (combatEntries.length === 0) {
+    return {
+      message:
+        `${region.name} does not have any combat expeditions yet.`,
+    };
+  }
+
+  const normalizedInput = String(encounterInput ?? "").trim().toLowerCase();
+  const playerLevel = levelFromXp(progress.xp);
+  const highestUnlocked = getRegionCombatProgress(
+    progress,
+    region.id,
+    combatEntries.length,
+  );
+  const savedHighestUnlocked =
+    progress.combatProgress?.[region.id]?.highestUnlocked;
+
+  if (
+    Number.isSafeInteger(savedHighestUnlocked) &&
+    savedHighestUnlocked !== highestUnlocked
+  ) {
+    progress.combatProgress = {
+      ...(progress.combatProgress || {}),
+      [region.id]: {
+        highestUnlocked,
+      },
+    };
+    await savePlayerProgress(env, backpackKey, progress);
+  }
+
+  if (!normalizedInput || normalizedInput === "list") {
+    return await formatCombatProgress(
+      region,
+      combatEntries,
+      highestUnlocked,
+      playerLevel,
+      platform,
+    );
+  }
+
+  if (!/^\d+$/.test(normalizedInput)) {
+    return {
+      message:
+        platform === "discord"
+          ? "Usage: /combat <expedition number>\n" +
+            "Use /combat to view your unlocked expeditions."
+          : "Usage: !combat <expedition number> | " +
+            "Use !combat to view your unlocked expeditions.",
+    };
+  }
+
+  const encounterNumber = Number(normalizedInput);
+
+  if (
+    !Number.isSafeInteger(encounterNumber) ||
+    encounterNumber < 1 ||
+    encounterNumber > combatEntries.length
+  ) {
+    return {
+      message:
+        `That expedition does not exist. Choose a number from ` +
+        `1 to ${combatEntries.length}.`,
+    };
+  }
+
+  if (encounterNumber > highestUnlocked) {
+    return {
+      message:
+        `Expedition ${encounterNumber} is locked. ` +
+        `Defeat Expedition ${encounterNumber - 1} first.`,
+    };
+  }
+
+  const encounter = getEncounterByNumber(
+    combatEntries,
+    encounterNumber,
+  );
+  const enemy = await getEnemyDefinition(encounter.enemy);
+  const isChallenging =
+    encounter.recommendedLevel > playerLevel;
+  await setPendingCombat(env, backpackKey, {
+    regionId: region.id,
+    encounterNumber,
+    enemyId: enemy.id,
+    createdAt: Date.now(),
+  });
+
+  return {
+    pending: true,
+    encounterNumber,
+    message:
+      platform === "discord"
+        ? `Expedition ${encounterNumber}: Are you sure you want to fight ` +
+          `${enemy.name}?!\n` +
+          (isChallenging
+            ? `Your Level: ${playerLevel} | Recommended Level: ` +
+              `${encounter.recommendedLevel} — Challenging\n`
+            : `Recommended Level: ${encounter.recommendedLevel}\n`) +
+          "Use /yes to begin or /no to cancel."
+        : `Expedition ${encounterNumber}: Fight ${enemy.name}? ` +
+          (isChallenging
+            ? `Your Level: ${playerLevel} | Recommended: ` +
+              `${encounter.recommendedLevel} [Challenging]. `
+            : `Recommended Level: ${encounter.recommendedLevel}. `) +
+          "Use !yes or !no.",
+  };
+}
+
+async function confirmPendingCombat(
+  env,
+  backpackKey,
+  platform = "twitch",
+) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => confirmPendingCombatUnlocked(env, backpackKey, platform),
+  );
+}
+
+async function confirmPendingCombatUnlocked(
+  env,
+  backpackKey,
+  platform,
+) {
+  const existingCombat = await getCombatState(env, backpackKey);
+
+  if (existingCombat) {
+    return {
+      message:
+        `You are already fighting ${existingCombat.enemy.name}. ` +
+        `Use ${platform === "discord" ? "/attack" : "!attack"} to continue.`,
+    };
+  }
+
+  const pendingResult = await getPendingCombat(env, backpackKey);
+
+  if (pendingResult.expired) {
+    await clearPendingCombat(env, backpackKey);
+
+    return {
+      message:
+        `That expedition selection expired. Use ` +
+        `${platform === "discord" ? "/combat <number>" : "!combat <number>"} again.`,
+    };
+  }
+
+  const pending = pendingResult.pending;
+
+  if (!pending) {
+    return {
+      message:
+        "You do not have an expedition waiting for confirmation.",
+    };
+  }
+
+  const progress = await getPlayerProgress(env, backpackKey);
+  const region =
+    getRegionById(progress.currentRegion) ||
+    REGIONS[0];
+
+  if (region.id !== pending.regionId) {
+    await clearPendingCombat(env, backpackKey);
+
+    return {
+      message:
+        `Your region changed. Use ` +
+        `${platform === "discord" ? "/combat <number>" : "!combat <number>"} again.`,
+    };
+  }
+
+  let combatEntries;
+
+  try {
+    combatEntries = await getRegionCombatEntries(region.id);
+  } catch (error) {
+    console.error(`Combat confirmation failed for ${region.id}:`, error);
+
+    return {
+      message:
+        `Combat expeditions are not available in ${region.name} right now.`,
+    };
+  }
+
+  const encounter = getEncounterByNumber(
+    combatEntries,
+    pending.encounterNumber,
+  );
+  const highestUnlocked = getRegionCombatProgress(
+    progress,
+    region.id,
+    combatEntries.length,
+  );
+
+  if (
+    !encounter ||
+    encounter.enemy !== pending.enemyId ||
+    pending.encounterNumber > highestUnlocked
+  ) {
+    await clearPendingCombat(env, backpackKey);
+
+    return {
+      message:
+        `That expedition is no longer available. Use ` +
+        `${platform === "discord" ? "/combat" : "!combat"} again.`,
+    };
+  }
+
+  const enemy = await getEnemyDefinition(encounter.enemy);
+  const result = await startCombatEncounter(
+    env,
+    backpackKey,
+    region,
+    pending.encounterNumber,
+    enemy,
+    platform,
+  );
+
+  await clearPendingCombat(env, backpackKey);
+  return result;
+}
+
+async function cancelPendingCombat(env, backpackKey) {
+  return withPlayerMutationLock(
+    backpackKey,
+    async () => {
+      const pendingResult = await getPendingCombat(env, backpackKey);
+
+      if (!pendingResult.pending) {
+        if (pendingResult.expired) {
+          await clearPendingCombat(env, backpackKey);
+        }
+
+        return {
+          message:
+            "You do not have an expedition waiting for confirmation.",
+        };
+      }
+
+      let enemyName = "enemy";
+
+      try {
+        enemyName = (
+          await getEnemyDefinition(pendingResult.pending.enemyId)
+        ).name;
+      } catch (error) {
+        console.error("Pending combat enemy lookup failed:", error);
+      }
+
+      await clearPendingCombat(env, backpackKey);
+
+      return {
+        message:
+          `Combat cancelled. The ${enemyName} has been left alone... for now.`,
+      };
+    },
+  );
+}
+
+async function startCombatEncounter(
+  env,
+  backpackKey,
+  region,
+  encounterNumber,
+  enemy,
+  platform,
+) {
   const now = Math.floor(Date.now() / 1000);
   const combatState = {
     version: 1,
     regionId: region.id,
+    encounterNumber,
     playerHp: PLAYER_COMBAT_MAX_HP,
     playerMaxHp: PLAYER_COMBAT_MAX_HP,
     enemy: {
@@ -921,10 +1264,15 @@ async function performCombat(
 
   return {
     message:
-      `A Level ${enemy.level} ${enemy.name} challenges you in ${region.name}! ` +
-      `HP: ${PLAYER_COMBAT_MAX_HP}/${PLAYER_COMBAT_MAX_HP} | ` +
-      `Enemy HP: ${enemy.hp}/${enemy.hp} | ` +
-      `Use ${platform === "discord" ? "/attack" : "!attack"} to strike first.`,
+      platform === "discord"
+        ? `Expedition ${encounterNumber} begins!\n\n` +
+          `${enemy.name} appears in ${region.name}.\n` +
+          `Enemy HP: ${enemy.hp}\n` +
+          `Your HP: ${PLAYER_COMBAT_MAX_HP}\n\n` +
+          "Use /attack to strike."
+        : `Expedition ${encounterNumber} begins! ${enemy.name} appears. ` +
+          `Enemy HP: ${enemy.hp} | Your HP: ${PLAYER_COMBAT_MAX_HP} | ` +
+          "Use !attack to strike.",
   };
 }
 
@@ -972,6 +1320,7 @@ async function performAttackUnlocked(
       combatState,
       playerRoll,
       playerAttack.damage,
+      platform,
     );
 
     return {
@@ -1130,6 +1479,7 @@ async function resolveCombatVictory(
   combatState,
   playerRoll,
   playerDamage,
+  platform = "twitch",
 ) {
   const [currentTotal, progress] = await Promise.all([
     getBackpackTotal(env, backpackKey),
@@ -1151,13 +1501,21 @@ async function resolveCombatVictory(
   const endingLevel = levelFromXp(newXp);
   const endingTitle = getTitleForLevel(endingLevel);
   const endingRegion = getRegionForLevel(endingLevel);
+  const unlockResult = await unlockNextEncounterAfterVictory(
+    combatState,
+    progress,
+  );
+  const updatedProgress = {
+    ...progress,
+    xp: newXp,
+    ...(unlockResult
+      ? { combatProgress: unlockResult.combatProgress }
+      : {}),
+  };
 
   await Promise.all([
     saveBackpackTotal(env, backpackKey, newTotal),
-    savePlayerProgress(env, backpackKey, {
-      ...progress,
-      xp: newXp,
-    }),
+    savePlayerProgress(env, backpackKey, updatedProgress),
   ]);
   await deleteCombatState(env, backpackKey);
 
@@ -1181,6 +1539,16 @@ async function resolveCombatVictory(
 
   if (endingRegion.id !== startingRegion.id) {
     messageParts.push(`Region Unlocked: ${endingRegion.name}`);
+  }
+
+  if (unlockResult?.unlockedEncounter) {
+    messageParts.push(
+      `Expedition ${unlockResult.unlockedEncounter.number} — ` +
+      `${unlockResult.unlockedEncounter.name} is now unlocked. ` +
+      `Recommended Level: ${unlockResult.unlockedEncounter.recommendedLevel}. ` +
+      `Use ${platform === "discord" ? "/combat" : "!combat"} ` +
+      `${unlockResult.unlockedEncounter.number} to select it.`,
+    );
   }
 
   return {
@@ -1945,6 +2313,10 @@ function getCombatKey(backpackKey) {
   return `combat:${backpackKey}`;
 }
 
+function getPendingCombatKey(backpackKey) {
+  return `pending-combat:${backpackKey}`;
+}
+
 async function withPlayerMutationLock(backpackKey, operation) {
   const previous = PLAYER_MUTATION_CHAINS.get(backpackKey) ||
     Promise.resolve();
@@ -2009,6 +2381,54 @@ async function saveCombatState(
 
 async function deleteCombatState(env, backpackKey) {
   await env.Backpack.delete(getCombatKey(backpackKey));
+}
+
+async function getPendingCombat(env, backpackKey) {
+  const storedValue = await env.Backpack.get(
+    getPendingCombatKey(backpackKey),
+  );
+
+  if (!storedValue) {
+    return { pending: null, expired: false };
+  }
+
+  try {
+    const pending = JSON.parse(storedValue);
+    const valid =
+      getRegionById(pending?.regionId) &&
+      Number.isSafeInteger(pending?.encounterNumber) &&
+      pending.encounterNumber >= 1 &&
+      typeof pending.enemyId === "string" &&
+      /^[a-z0-9-]+$/.test(pending.enemyId) &&
+      Number.isSafeInteger(pending.createdAt) &&
+      pending.createdAt > 0;
+
+    if (!valid) {
+      return { pending: null, expired: false };
+    }
+
+    if (Date.now() - pending.createdAt > PENDING_COMBAT_TTL_MS) {
+      return { pending: null, expired: true };
+    }
+
+    return { pending, expired: false };
+  } catch {
+    return { pending: null, expired: false };
+  }
+}
+
+async function setPendingCombat(env, backpackKey, pending) {
+  await env.Backpack.put(
+    getPendingCombatKey(backpackKey),
+    JSON.stringify(pending),
+    {
+      expirationTtl: Math.ceil(PENDING_COMBAT_TTL_MS / 1000),
+    },
+  );
+}
+
+async function clearPendingCombat(env, backpackKey) {
+  await env.Backpack.delete(getPendingCombatKey(backpackKey));
 }
 
 /* ============================================================
@@ -2407,6 +2827,13 @@ function isValidCombatState(combatState) {
     combatState &&
     combatState.version === 1 &&
     getRegionById(combatState.regionId) &&
+    (
+      combatState.encounterNumber === undefined ||
+      (
+        Number.isSafeInteger(combatState.encounterNumber) &&
+        combatState.encounterNumber >= 1
+      )
+    ) &&
     Number.isSafeInteger(combatState.playerHp) &&
     Number.isSafeInteger(combatState.playerMaxHp) &&
     combatState.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
@@ -2440,28 +2867,35 @@ function isValidCombatState(combatState) {
 async function getRegionCombatEntries(regionId) {
   const entries = await fetchCachedJson(
     `combat:${regionId}`,
-    `${GITHUB_DATA_BASE}/combat/${regionId}.json`,
+    `${GITHUB_DATA_BASE}/enemies/${regionId}.json`,
   );
 
   if (!Array.isArray(entries) || entries.length === 0) {
     throw new Error(`Invalid combat data for ${regionId}.`);
   }
 
-  const validatedEntries = entries.map((entry) => {
+  const validatedEntries = entries.map((entry, index) => {
+    const encounter = Number(entry?.encounter);
     const enemy = String(entry?.enemy || "").trim();
-    const weight = Number(entry?.weight);
+    const savedRecommendedLevel = Number(entry?.recommendedLevel);
+    const recommendedLevel =
+      Number.isSafeInteger(savedRecommendedLevel) &&
+      savedRecommendedLevel > 0
+        ? savedRecommendedLevel
+        : encounter;
 
     if (
-      !/^[a-z0-9-]+$/.test(enemy) ||
-      !Number.isFinite(weight) ||
-      weight <= 0
+      encounter !== index + 1 ||
+      !Number.isSafeInteger(encounter) ||
+      !/^[a-z0-9-]+$/.test(enemy)
     ) {
       throw new Error(`Invalid combat entry for ${regionId}.`);
     }
 
     return {
+      encounter,
       enemy,
-      weight,
+      recommendedLevel,
     };
   });
 
@@ -2481,22 +2915,178 @@ async function getEnemyDefinition(enemyId) {
   return validateEnemyDefinition(enemy, enemyId);
 }
 
-function selectWeightedCombatEntry(entries) {
-  const totalWeight = entries.reduce(
-    (total, entry) => total + entry.weight,
-    0,
-  );
-  let roll = Math.random() * totalWeight;
-
-  for (const entry of entries) {
-    roll -= entry.weight;
-
-    if (roll <= 0) {
-      return entry;
-    }
+function getEncounterByNumber(entries, encounterNumber) {
+  if (
+    !Number.isSafeInteger(encounterNumber) ||
+    encounterNumber < 1
+  ) {
+    return null;
   }
 
-  return entries[entries.length - 1];
+  return entries[encounterNumber - 1] || null;
+}
+
+function getRegionCombatProgress(
+  progress,
+  regionId,
+  encounterCount,
+) {
+  const savedValue =
+    progress.combatProgress?.[regionId]?.highestUnlocked;
+  const highestUnlocked = Number.isSafeInteger(savedValue)
+    ? savedValue
+    : 1;
+
+  return Math.min(
+    encounterCount,
+    Math.max(1, highestUnlocked),
+  );
+}
+
+async function formatCombatProgress(
+  region,
+  entries,
+  highestUnlocked,
+  playerLevel,
+  platform,
+) {
+  const visibleEntries = entries.slice(
+    0,
+    Math.min(entries.length, highestUnlocked + 1),
+  );
+  const enemyDetails = await Promise.all(
+    visibleEntries.map(async (entry) => {
+      try {
+        return {
+          name: (await getEnemyDefinition(entry.enemy)).name,
+          recommendedLevel: entry.recommendedLevel,
+        };
+      } catch {
+        return {
+          name: entry.enemy,
+          recommendedLevel: entry.recommendedLevel,
+        };
+      }
+    }),
+  );
+  const lines = platform === "discord"
+    ? [
+        `${region.name} Combat Progress`,
+        `Your Level: ${playerLevel}`,
+        `Expeditions Unlocked: ${highestUnlocked} of ${entries.length}`,
+      ]
+    : [
+        `${region.name} | Level ${playerLevel} | ` +
+        `Expeditions: ${highestUnlocked}/${entries.length}`,
+      ];
+
+  for (let index = 0; index < highestUnlocked; index += 1) {
+    const enemy = enemyDetails[index];
+    const challenging =
+      enemy.recommendedLevel > playerLevel;
+
+    lines.push(
+      platform === "discord"
+        ? `${index + 1}. ${enemy.name} — ` +
+          `Recommended Level ${enemy.recommendedLevel}` +
+          (challenging ? " — Challenging" : "")
+        : `${index + 1} ${enemy.name} Lv.${enemy.recommendedLevel}` +
+          (challenging ? " [Challenging]" : ""),
+    );
+  }
+
+  if (highestUnlocked < entries.length) {
+    lines.push(
+      platform === "discord"
+        ? `${highestUnlocked + 1}. Locked`
+        : `${highestUnlocked + 1} Locked`,
+    );
+  }
+
+  const command = platform === "discord" ? "/combat" : "!combat";
+  lines.push(
+    platform === "discord"
+      ? highestUnlocked === 1
+        ? `Use ${command} 1 to select an expedition.`
+        : `Use ${command} 1 through ${command} ${highestUnlocked} ` +
+          "to select an expedition."
+      : highestUnlocked === 1
+        ? "Use !combat 1"
+        : `Use !combat 1-${highestUnlocked}`,
+  );
+
+  return {
+    playerLevel,
+    highestUnlocked,
+    totalEncounters: entries.length,
+    message: lines.join(platform === "discord" ? "\n" : " | "),
+  };
+}
+
+async function unlockNextEncounterAfterVictory(
+  combatState,
+  progress,
+) {
+  let entries;
+
+  try {
+    entries = await getRegionCombatEntries(combatState.regionId);
+  } catch (error) {
+    console.error("Combat progression lookup failed:", error);
+    return null;
+  }
+
+  let encounterNumber = combatState.encounterNumber;
+
+  if (!Number.isSafeInteger(encounterNumber)) {
+    const matchingEncounters = entries.filter(
+      (entry) => entry.enemy === combatState.enemy.id,
+    );
+
+    if (matchingEncounters.length !== 1) {
+      return null;
+    }
+
+    encounterNumber = matchingEncounters[0].encounter;
+  }
+
+  const currentHighest = getRegionCombatProgress(
+    progress,
+    combatState.regionId,
+    entries.length,
+  );
+
+  if (
+    encounterNumber !== currentHighest ||
+    currentHighest >= entries.length
+  ) {
+    return null;
+  }
+
+  const nextNumber = currentHighest + 1;
+  const nextEncounter = getEncounterByNumber(entries, nextNumber);
+  let nextEnemy;
+
+  try {
+    nextEnemy = await getEnemyDefinition(nextEncounter.enemy);
+  } catch (error) {
+    console.error("Unlocked enemy lookup failed:", error);
+    return null;
+  }
+
+  return {
+    combatProgress: {
+      ...(progress.combatProgress || {}),
+      [combatState.regionId]: {
+        highestUnlocked: nextNumber,
+      },
+    },
+    unlockedEncounter: {
+      number: nextNumber,
+      name: nextEnemy.name,
+      recommendedLevel: nextEncounter.recommendedLevel,
+    },
+  };
 }
 
 async function fetchCachedJson(cacheKey, url) {
@@ -2925,6 +3515,7 @@ function createEmptyProgress() {
     relics: [],
     discoveries: {},
     notes: {},
+    combatProgress: {},
     currentRegion: "moonlit-reef",
   };
 }
@@ -2983,6 +3574,7 @@ async function getPlayerProgress(
 
     const discoveries = {};
     const notes = {};
+    const combatProgress = {};
 
     if (
       parsed.discoveries &&
@@ -3021,12 +3613,33 @@ async function getPlayerProgress(
       }
     }
 
+    if (
+      parsed.combatProgress &&
+      typeof parsed.combatProgress === "object" &&
+      !Array.isArray(parsed.combatProgress)
+    ) {
+      for (const region of REGIONS) {
+        const highestUnlocked = Math.floor(
+          Number(
+            parsed.combatProgress[region.id]?.highestUnlocked,
+          ) || 0,
+        );
+
+        if (highestUnlocked >= 1) {
+          combatProgress[region.id] = {
+            highestUnlocked,
+          };
+        }
+      }
+    }
+
     return {
       xp,
       berries,
       relics,
       discoveries,
       notes,
+      combatProgress,
       currentRegion,
     };
   } catch {
@@ -3053,6 +3666,7 @@ async function savePlayerProgress(
 
   const safeDiscoveries = {};
   const safeNotes = {};
+  const safeCombatProgress = {};
 
   if (
     progress.discoveries &&
@@ -3091,6 +3705,26 @@ async function savePlayerProgress(
     }
   }
 
+  if (
+    progress.combatProgress &&
+    typeof progress.combatProgress === "object" &&
+    !Array.isArray(progress.combatProgress)
+  ) {
+    for (const region of REGIONS) {
+      const highestUnlocked = Math.floor(
+        Number(
+          progress.combatProgress[region.id]?.highestUnlocked,
+        ) || 0,
+      );
+
+      if (highestUnlocked >= 1) {
+        safeCombatProgress[region.id] = {
+          highestUnlocked,
+        };
+      }
+    }
+  }
+
   const safeProgress = {
     xp: Math.max(
       0,
@@ -3107,6 +3741,7 @@ async function savePlayerProgress(
     relics: safeRelics,
     discoveries: safeDiscoveries,
     notes: safeNotes,
+    combatProgress: safeCombatProgress,
     currentRegion:
       getRegionById(progress.currentRegion)?.id ||
       "moonlit-reef",
