@@ -1,1 +1,7 @@
-
+{
+  "id": "sunken-kings-throne",
+  "name": "Sunken King's Throne",
+  "levelRequirement": 35,
+  "noteCount": 30,
+  "nextRegion": "astral-nexus"
+}
