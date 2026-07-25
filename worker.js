@@ -10,6 +10,7 @@ const BERRY_HEAL_AMOUNT = 20;
 const BERRY_DROP_CHANCE_BY_REGION = {
   "moonlit-reef": 0.77,
   "starfall-trench": 0.60,
+  "whispering-kelp-forest": 0.80,
   "leviathans-wake": 0.45,
   "sunken-kings-throne": 0.35,
   "astral-nexus": 0.25,
