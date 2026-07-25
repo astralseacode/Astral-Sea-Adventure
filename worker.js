@@ -6,6 +6,14 @@ const DATA_CACHE_TTL_MS = 5 * 60 * 1000;
 const DUPLICATE_NOTE_CANDY_BONUS = 40;
 const COMBAT_STATE_TTL_SECONDS = 24 * 60 * 60;
 const PLAYER_COMBAT_MAX_HP = 100;
+const BERRY_HEAL_AMOUNT = 20;
+const BERRY_DROP_CHANCE_BY_REGION = {
+  "moonlit-reef": 0.77,
+  "starfall-trench": 0.60,
+  "leviathans-wake": 0.45,
+  "sunken-kings-throne": 0.35,
+  "astral-nexus": 0.25,
+};
 const COMBAT_DAMAGE = {
   criticalMiss: 0,
   weak: 5,
@@ -15,6 +23,7 @@ const COMBAT_DAMAGE = {
   critical: 30,
 };
 const DATA_CACHE = new Map();
+const PLAYER_MUTATION_CHAINS = new Map();
 
 const REGIONS = [
   {
@@ -268,6 +277,11 @@ const DISCORD_COMMANDS = [
     type: 1,
   },
   {
+    name: "eat",
+    description: "Eat a Berry during combat to restore 20 HP without using a turn.",
+    type: 1,
+  },
+  {
     name: "explore",
     description: "Venture into the Astral Sea and find Star Candies.",
     type: 1,
@@ -278,14 +292,14 @@ const DISCORD_COMMANDS = [
     type: 1,
   },
   {
-    name: "risk",
-    description: "Risk some of your Star Candies against the Astral Tide.",
+    name: "gamble",
+    description: "Gamble some of your Star Candies in roulette.",
     type: 1,
     options: [
       {
         type: 4,
         name: "amount",
-        description: "The whole number of Star Candies you want to risk.",
+        description: "The whole number of Star Candies you want to gamble.",
         required: true,
         min_value: 1,
       },
@@ -416,7 +430,9 @@ export default {
    ============================================================ */
 
 async function handleTwitchRequest(url, env) {
-  const username = normalizeUsername(url.searchParams.get("user"));
+  const suppliedUsername = url.searchParams.get("user");
+  const username = normalizeUsername(suppliedUsername);
+  const displayName = getTwitchDisplayName(suppliedUsername);
   const action = (url.searchParams.get("action") || "explore")
     .trim()
     .toLowerCase();
@@ -452,6 +468,18 @@ async function handleTwitchRequest(url, env) {
         (await performAttack(env, backpackKey, "twitch")).message,
       );
 
+    case "eat":
+      return textResponse(
+        (
+          await performEat(
+            env,
+            backpackKey,
+            displayName,
+            argumentParts.length > 0,
+          )
+        ).message,
+      );
+
     case "explore":
       return textResponse(
         (await performExplore(env, backpackKey, "twitch")).message,
@@ -463,13 +491,15 @@ async function handleTwitchRequest(url, env) {
         (await performDaily(env, backpackKey)).message,
       );
 
-    case "risk":
+    case "gamble":
       return textResponse(
         (
-          await performRisk(
+          await performGamble(
             env,
             backpackKey,
-            url.searchParams.get("amount"),
+            url.searchParams.get("amount") ||
+              argumentParts[0],
+            displayName,
           )
         ).message,
       );
@@ -543,7 +573,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Unknown Astral Sea action. Try !combat, !attack, !explore, !daily, !risk, !backpack, !travel, !journal, !notes, or !note.",
+        "Unknown Astral Sea action. Try !combat, !attack, !eat, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, or !note.",
         400,
       );
   }
@@ -615,6 +645,7 @@ async function handleDiscordInteraction(request, env) {
   }
 
   const backpackKey = `backpack:discord:${userId}`;
+  const displayName = getDiscordDisplayName(interaction);
 
   try {
     switch (commandName) {
@@ -626,6 +657,19 @@ async function handleDiscordInteraction(request, env) {
       case "attack":
         return discordMessage(
           (await performAttack(env, backpackKey, "discord")).message,
+        );
+
+      case "eat":
+        return discordMessage(
+          (
+            await performEat(
+              env,
+              backpackKey,
+              displayName,
+              Array.isArray(interaction.data?.options) &&
+                interaction.data.options.length > 0,
+            )
+          ).message,
         );
 
       case "explore":
@@ -646,15 +690,16 @@ async function handleDiscordInteraction(request, env) {
         );
       }
 
-      case "risk": {
+      case "gamble": {
         const amount = getDiscordOption(interaction, "amount");
 
         return discordMessage(
           (
-            await performRisk(
+            await performGamble(
               env,
               backpackKey,
               amount,
+              displayName,
             )
           ).message,
         );
@@ -724,7 +769,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Unknown Astral Sea command. Try /combat, /attack, /explore, /daily, /risk, /backpack, /travel, /journal, /notes, or /note.",
+          "Unknown Astral Sea command. Try /combat, /attack, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, or /note.",
           true,
         );
     }
@@ -887,6 +932,17 @@ async function performAttack(
   backpackKey,
   platform = "twitch",
 ) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performAttackUnlocked(env, backpackKey, platform),
+  );
+}
+
+async function performAttackUnlocked(
+  env,
+  backpackKey,
+  platform = "twitch",
+) {
   const combatState = await getCombatState(env, backpackKey);
 
   if (!combatState) {
@@ -960,6 +1016,110 @@ async function performAttack(
 
   return {
     message: messageParts.join(" | "),
+  };
+}
+
+async function performEat(
+  env,
+  backpackKey,
+  displayName,
+  hasArguments = false,
+) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performEatUnlocked(
+      env,
+      backpackKey,
+      displayName,
+      hasArguments,
+    ),
+  );
+}
+
+async function performEatUnlocked(
+  env,
+  backpackKey,
+  displayName,
+  hasArguments,
+) {
+  const combatState = await getCombatState(env, backpackKey);
+
+  if (!combatState) {
+    return {
+      message:
+        `${displayName}, you can only eat Berries while fighting an enemy.`,
+    };
+  }
+
+  if (hasArguments) {
+    return {
+      message:
+        `${displayName}, use this command without an amount.`,
+    };
+  }
+
+  const progress = await getPlayerProgress(env, backpackKey);
+
+  if (progress.berries < 1) {
+    return {
+      message:
+        `${displayName}, you do not have any Berries to eat.`,
+    };
+  }
+
+  if (combatState.playerHp >= combatState.playerMaxHp) {
+    return {
+      message:
+        `${displayName}, your HP is already full. No Berry was consumed.`,
+    };
+  }
+
+  const latestProgress = await getPlayerProgress(env, backpackKey);
+
+  if (latestProgress.berries < 1) {
+    return {
+      message:
+        `${displayName}, you do not have any Berries to eat.`,
+    };
+  }
+
+  const originalCombatState = structuredClone(combatState);
+  const healedAmount = Math.min(
+    BERRY_HEAL_AMOUNT,
+    combatState.playerMaxHp - combatState.playerHp,
+  );
+  combatState.playerHp += healedAmount;
+  const remainingBerries = Math.max(
+    0,
+    latestProgress.berries - 1,
+  );
+
+  await saveCombatState(env, backpackKey, combatState);
+
+  try {
+    await savePlayerProgress(env, backpackKey, {
+      ...latestProgress,
+      berries: remainingBerries,
+    });
+  } catch (error) {
+    try {
+      await saveCombatState(env, backpackKey, originalCombatState);
+    } catch (rollbackError) {
+      console.error("Berry heal rollback failed:", rollbackError);
+    }
+
+    throw error;
+  }
+
+  return {
+    healedAmount,
+    berries: remainingBerries,
+    playerHp: combatState.playerHp,
+    playerMaxHp: combatState.playerMaxHp,
+    message:
+      `${displayName} ate 1 Berry and restored ${healedAmount} HP! ` +
+      `HP: ${combatState.playerHp}/${combatState.playerMaxHp} | ` +
+      `Berries: ${remainingBerries.toLocaleString("en-US")}`,
   };
 }
 
@@ -1059,6 +1219,17 @@ async function resolveCombatDefeat(
 }
 
 async function performExplore(env, backpackKey, platform = "twitch") {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performExploreUnlocked(env, backpackKey, platform),
+  );
+}
+
+async function performExploreUnlocked(
+  env,
+  backpackKey,
+  platform = "twitch",
+) {
   if (await getCombatState(env, backpackKey)) {
     return {
       message:
@@ -1175,25 +1346,39 @@ async function performExplore(env, backpackKey, platform = "twitch") {
     foundNewRelic = relicResult.isNew;
   }
 
-  await Promise.all([
-    saveBackpackTotal(
-      env,
-      backpackKey,
-      newTotal,
-    ),
+  const berryDropChance =
+    BERRY_DROP_CHANCE_BY_REGION[startingRegion.id] ?? 0;
 
-    savePlayerProgress(
-      env,
-      backpackKey,
-      {
-        xp: newXp,
-        relics: updatedRelics,
-        discoveries: updatedDiscoveries,
-        notes: updatedNotes,
-        currentRegion: startingRegion.id,
-      },
-    ),
-  ]);
+  if (!(startingRegion.id in BERRY_DROP_CHANCE_BY_REGION)) {
+    console.warn(
+      `No Berry drop chance configured for region: ${startingRegion.id}`,
+    );
+  }
+
+  const foundBerry =
+    berryDropChance > 0 &&
+    Math.random() < berryDropChance;
+  const updatedBerryCount = progress.berries + (foundBerry ? 1 : 0);
+
+  await saveBackpackTotal(
+    env,
+    backpackKey,
+    newTotal,
+  );
+
+  await savePlayerProgress(
+    env,
+    backpackKey,
+    {
+      ...progress,
+      xp: newXp,
+      relics: updatedRelics,
+      discoveries: updatedDiscoveries,
+      notes: updatedNotes,
+      currentRegion: startingRegion.id,
+      berries: updatedBerryCount,
+    },
+  );
 
   const adventure = log.message.replaceAll(
     "{reward}",
@@ -1257,6 +1442,12 @@ async function performExplore(env, backpackKey, platform = "twitch") {
     );
   }
 
+  if (foundBerry) {
+    messageLines.push(
+      `Found 1 Berry! Berries: ${updatedBerryCount.toLocaleString("en-US")}`,
+    );
+  }
+
   return {
     reward,
     earnedXp,
@@ -1266,6 +1457,8 @@ async function performExplore(env, backpackKey, platform = "twitch") {
     region: startingRegion.name,
     relic: foundNewRelic ? relicDrop : null,
     note: noteDrop,
+    berry: foundBerry,
+    berries: updatedBerryCount,
     total: newTotal,
     message: messageLines.join(" | "),
   };
@@ -1300,10 +1493,11 @@ async function performDaily(env, backpackKey) {
   };
 }
 
-async function performRisk(
+async function performGamble(
   env,
   backpackKey,
   amountValue,
+  displayName,
 ) {
   const currentTotal = await getBackpackTotal(
     env,
@@ -1314,7 +1508,7 @@ async function performRisk(
     return {
       total: 0,
       message:
-        "You do not have any Star Candies to risk. " +
+        "You do not have any Star Candies to gamble. " +
         "Backpack: 0 Star Candies",
     };
   }
@@ -1325,8 +1519,8 @@ async function performRisk(
     return {
       total: currentTotal,
       message:
-        "Choose a valid whole number. " +
-        "Example: /risk amount:100",
+        "Enter a valid whole-number amount. " +
+        "Use !gamble <amount> on Twitch or /gamble amount:<amount> on Discord.",
     };
   }
 
@@ -1334,9 +1528,9 @@ async function performRisk(
     return {
       total: currentTotal,
       message:
-        `You only have ${currentTotal} Star Candies. ` +
-        "Choose a smaller risk. " +
-        `Backpack: ${currentTotal} Star Candies`,
+        `You only have ${formatCandyAmount(currentTotal)}. ` +
+        "Choose a smaller gamble. " +
+        `Backpack: ${formatCandyAmount(currentTotal)}`,
     };
   }
 
@@ -1357,9 +1551,8 @@ async function performRisk(
       wager,
       total: newTotal,
       message:
-        "The Astral Tide rewarded your daring risk! " +
-        `You won ${wager} Star Candies. ` +
-        `Backpack: ${newTotal} Star Candies`,
+        `${displayName} won ${formatCandyAmount(wager)} in roulette ` +
+        `and now has ${formatCandyAmount(newTotal)}! FeelsGoodMan`,
     };
   }
 
@@ -1368,9 +1561,8 @@ async function performRisk(
     wager,
     total: newTotal,
     message:
-      "The Astral Tide claimed your wager! " +
-      `You lost ${wager} Star Candies. ` +
-      `Backpack: ${newTotal} Star Candies`,
+      `${displayName} lost ${formatCandyAmount(wager)} in roulette ` +
+      `and now has ${formatCandyAmount(newTotal)}! FeelsBadMan`,
   };
 }
 
@@ -1421,11 +1613,23 @@ async function performBackpack(
       `Level ${level} | ` +
       `${levelProgress.current}/${levelProgress.required} XP | ` +
       `Region: ${region.name} | ` +
-      `Backpack: ${currentTotal} Star Candies`,
+      `Backpack: ${currentTotal.toLocaleString("en-US")} Star Candies | ` +
+      `Berries: ${progress.berries.toLocaleString("en-US")}`,
   };
 }
 
 async function performTravel(
+  env,
+  backpackKey,
+  regionInput,
+) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performTravelUnlocked(env, backpackKey, regionInput),
+  );
+}
+
+async function performTravelUnlocked(
   env,
   backpackKey,
   regionInput,
@@ -1740,6 +1944,33 @@ function getCombatKey(backpackKey) {
   return `combat:${backpackKey}`;
 }
 
+async function withPlayerMutationLock(backpackKey, operation) {
+  const previous = PLAYER_MUTATION_CHAINS.get(backpackKey) ||
+    Promise.resolve();
+  let release;
+  const current = new Promise((resolve) => {
+    release = resolve;
+  });
+  const chain = previous.then(() => current);
+
+  PLAYER_MUTATION_CHAINS.set(
+    backpackKey,
+    chain,
+  );
+
+  await previous;
+
+  try {
+    return await operation();
+  } finally {
+    release();
+
+    if (PLAYER_MUTATION_CHAINS.get(backpackKey) === chain) {
+      PLAYER_MUTATION_CHAINS.delete(backpackKey);
+    }
+  }
+}
+
 async function getCombatState(env, backpackKey) {
   const storedValue = await env.Backpack.get(
     getCombatKey(backpackKey),
@@ -1814,6 +2045,25 @@ function getDiscordOption(
   )?.value;
 }
 
+function getDiscordDisplayName(interaction) {
+  const displayName =
+    interaction.member?.nick ||
+    interaction.member?.user?.global_name ||
+    interaction.user?.global_name ||
+    interaction.member?.user?.username ||
+    interaction.user?.username ||
+    "Explorer";
+
+  return escapeDiscordText(String(displayName));
+}
+
+function escapeDiscordText(value) {
+  return value
+    .replace(/[\u0000-\u001f\u007f]/g, "")
+    .replace(/([\\`*_{}[\]()<>#+\-.!|~])/g, "\\$1")
+    .trim() || "Explorer";
+}
+
 async function verifyDiscordRequest(
   body,
   signatureHex,
@@ -1871,6 +2121,21 @@ function normalizeUsername(value) {
   }
 
   return username;
+}
+
+function getTwitchDisplayName(value) {
+  return normalizeUsername(value)
+    ? value.trim()
+    : "Explorer";
+}
+
+function formatCandyAmount(value) {
+  const formattedValue = value.toLocaleString("en-US");
+  const currencyName = value === 1
+    ? "Star Candy"
+    : "Star Candies";
+
+  return `${formattedValue} ${currencyName}`;
 }
 
 function randomInteger(minimum, maximum) {
@@ -2655,6 +2920,7 @@ function getProgressKey(backpackKey) {
 function createEmptyProgress() {
   return {
     xp: 0,
+    berries: 0,
     relics: [],
     discoveries: {},
     notes: {},
@@ -2681,6 +2947,12 @@ async function getPlayerProgress(
       0,
       Math.floor(
         Number(parsed.xp) || 0,
+      ),
+    );
+    const berries = Math.max(
+      0,
+      Math.floor(
+        Number(parsed.berries) || 0,
       ),
     );
     const hasSavedRegion = Object.prototype.hasOwnProperty.call(
@@ -2750,6 +3022,7 @@ async function getPlayerProgress(
 
     return {
       xp,
+      berries,
       relics,
       discoveries,
       notes,
@@ -2822,6 +3095,12 @@ async function savePlayerProgress(
       0,
       Math.floor(
         Number(progress.xp) || 0,
+      ),
+    ),
+    berries: Math.max(
+      0,
+      Math.floor(
+        Number(progress.berries) || 0,
       ),
     ),
     relics: safeRelics,
