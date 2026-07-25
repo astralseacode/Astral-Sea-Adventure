@@ -1055,8 +1055,12 @@ async function requestCombatConfirmation(
     encounterNumber,
   );
   const enemy = await getEnemyDefinition(encounter.enemy);
+  const recommendedLevel = getRecommendedEnemyLevel(
+    encounter,
+    enemy,
+  );
   const isChallenging =
-    encounter.recommendedLevel > playerLevel;
+    recommendedLevel > playerLevel;
   await setPendingCombat(env, backpackKey, {
     regionId: region.id,
     encounterNumber,
@@ -1073,14 +1077,14 @@ async function requestCombatConfirmation(
           `${enemy.name}?!\n` +
           (isChallenging
             ? `Your Level: ${playerLevel} | Recommended Level: ` +
-              `${encounter.recommendedLevel} — Challenging\n`
-            : `Recommended Level: ${encounter.recommendedLevel}\n`) +
+              `${recommendedLevel} — Challenging\n`
+            : `Recommended Level: ${recommendedLevel}\n`) +
           "Use /yes to begin or /no to cancel."
         : `Expedition ${encounterNumber}: Fight ${enemy.name}? ` +
           (isChallenging
             ? `Your Level: ${playerLevel} | Recommended: ` +
-              `${encounter.recommendedLevel} [Challenging]. `
-            : `Recommended Level: ${encounter.recommendedLevel}. `) +
+              `${recommendedLevel} [Challenging]. `
+            : `Recommended Level: ${recommendedLevel}. `) +
           "Use !yes or !no.",
   };
 }
@@ -2882,7 +2886,7 @@ async function getRegionCombatEntries(regionId) {
       Number.isSafeInteger(savedRecommendedLevel) &&
       savedRecommendedLevel > 0
         ? savedRecommendedLevel
-        : encounter;
+        : null;
 
     if (
       encounter !== index + 1 ||
@@ -2926,6 +2930,24 @@ function getEncounterByNumber(entries, encounterNumber) {
   return entries[encounterNumber - 1] || null;
 }
 
+function getRecommendedEnemyLevel(encounter, enemy) {
+  if (
+    Number.isSafeInteger(encounter?.recommendedLevel) &&
+    encounter.recommendedLevel > 0
+  ) {
+    return encounter.recommendedLevel;
+  }
+
+  if (
+    Number.isSafeInteger(enemy?.level) &&
+    enemy.level > 0
+  ) {
+    return enemy.level;
+  }
+
+  return 1;
+}
+
 function getRegionCombatProgress(
   progress,
   regionId,
@@ -2957,14 +2979,19 @@ async function formatCombatProgress(
   const enemyDetails = await Promise.all(
     visibleEntries.map(async (entry) => {
       try {
+        const enemy = await getEnemyDefinition(entry.enemy);
+
         return {
-          name: (await getEnemyDefinition(entry.enemy)).name,
-          recommendedLevel: entry.recommendedLevel,
+          name: enemy.name,
+          recommendedLevel: getRecommendedEnemyLevel(
+            entry,
+            enemy,
+          ),
         };
       } catch {
         return {
           name: entry.enemy,
-          recommendedLevel: entry.recommendedLevel,
+          recommendedLevel: getRecommendedEnemyLevel(entry, null),
         };
       }
     }),
@@ -3084,7 +3111,10 @@ async function unlockNextEncounterAfterVictory(
     unlockedEncounter: {
       number: nextNumber,
       name: nextEnemy.name,
-      recommendedLevel: nextEncounter.recommendedLevel,
+      recommendedLevel: getRecommendedEnemyLevel(
+        nextEncounter,
+        nextEnemy,
+      ),
     },
   };
 }
