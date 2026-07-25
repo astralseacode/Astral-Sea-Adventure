@@ -1,1 +1,7 @@
-
+{
+  "id": "leviathans-wake",
+  "name": "Leviathan's Wake",
+  "levelRequirement": 20,
+  "noteCount": 30,
+  "nextRegion": "sunken-kings-throne"
+}
