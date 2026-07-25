@@ -1,0 +1,17 @@
+{
+  "id": "moonglass-moray",
+  "name": "Moonglass Moray",
+  "level": 3,
+  "hp": 95,
+  "reward": {
+    "candies": {
+      "min": 154,
+      "max": 185
+    },
+    "xp": {
+      "min": 61,
+      "max": 71
+    }
+  },
+  "defeatCandyLoss": 23
+}

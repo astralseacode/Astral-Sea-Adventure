@@ -1,0 +1,17 @@
+{
+  "id": "starfall-razorfin",
+  "name": "Starfall Razorfin",
+  "level": 4,
+  "hp": 110,
+  "reward": {
+    "candies": {
+      "min": 218,
+      "max": 255
+    },
+    "xp": {
+      "min": 86,
+      "max": 100
+    }
+  },
+  "defeatCandyLoss": 32
+}

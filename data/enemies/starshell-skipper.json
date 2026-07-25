@@ -1,0 +1,17 @@
+{
+  "id": "starshell-skipper",
+  "name": "Starshell Skipper",
+  "level": 1,
+  "hp": 66,
+  "reward": {
+    "candies": {
+      "min": 58,
+      "max": 95
+    },
+    "xp": {
+      "min": 21,
+      "max": 34
+    }
+  },
+  "defeatCandyLoss": 13
+}

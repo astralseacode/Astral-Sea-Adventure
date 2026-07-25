@@ -1,0 +1,17 @@
+{
+  "id": "moonglass-hermit",
+  "name": "Moonglass Hermit",
+  "level": 2,
+  "hp": 76,
+  "reward": {
+    "candies": {
+      "min": 98,
+      "max": 128
+    },
+    "xp": {
+      "min": 38,
+      "max": 48
+    }
+  },
+  "defeatCandyLoss": 16
+}

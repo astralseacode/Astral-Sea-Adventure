@@ -1,0 +1,17 @@
+{
+  "id": "fae-petal-ray",
+  "name": "Fae Petal Ray",
+  "level": 2,
+  "hp": 74,
+  "reward": {
+    "candies": {
+      "min": 94,
+      "max": 122
+    },
+    "xp": {
+      "min": 36,
+      "max": 46
+    }
+  },
+  "defeatCandyLoss": 16
+}

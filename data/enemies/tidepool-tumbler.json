@@ -1,0 +1,17 @@
+{
+  "id": "tidepool-tumbler",
+  "name": "Tidepool Tumbler",
+  "level": 1,
+  "hp": 42,
+  "reward": {
+    "candies": {
+      "min": 45,
+      "max": 72
+    },
+    "xp": {
+      "min": 16,
+      "max": 25
+    }
+  },
+  "defeatCandyLoss": 8
+}

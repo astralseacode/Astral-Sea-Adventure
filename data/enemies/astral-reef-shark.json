@@ -1,0 +1,17 @@
+{
+  "id": "astral-reef-shark",
+  "name": "Astral Reef Shark",
+  "level": 4,
+  "hp": 104,
+  "reward": {
+    "candies": {
+      "min": 188,
+      "max": 225
+    },
+    "xp": {
+      "min": 74,
+      "max": 88
+    }
+  },
+  "defeatCandyLoss": 27
+}

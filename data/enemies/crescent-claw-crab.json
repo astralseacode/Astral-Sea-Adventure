@@ -1,0 +1,17 @@
+{
+  "id": "crescent-claw-crab",
+  "name": "Crescent Claw Crab",
+  "level": 2,
+  "hp": 85,
+  "reward": {
+    "candies": {
+      "min": 115,
+      "max": 145
+    },
+    "xp": {
+      "min": 45,
+      "max": 55
+    }
+  },
+  "defeatCandyLoss": 20
+}

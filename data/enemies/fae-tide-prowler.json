@@ -1,0 +1,17 @@
+{
+  "id": "fae-tide-prowler",
+  "name": "Fae Tide Prowler",
+  "level": 3,
+  "hp": 100,
+  "reward": {
+    "candies": {
+      "min": 165,
+      "max": 195
+    },
+    "xp": {
+      "min": 66,
+      "max": 75
+    }
+  },
+  "defeatCandyLoss": 25
+}

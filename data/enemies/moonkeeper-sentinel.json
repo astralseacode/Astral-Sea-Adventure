@@ -1,0 +1,17 @@
+{
+  "id": "moonkeeper-sentinel",
+  "name": "Moonkeeper Sentinel",
+  "level": 4,
+  "hp": 106,
+  "reward": {
+    "candies": {
+      "min": 198,
+      "max": 235
+    },
+    "xp": {
+      "min": 78,
+      "max": 92
+    }
+  },
+  "defeatCandyLoss": 28
+}

@@ -1,0 +1,17 @@
+{
+  "id": "starlight-anemone",
+  "name": "Starlight Anemone",
+  "level": 2,
+  "hp": 80,
+  "reward": {
+    "candies": {
+      "min": 106,
+      "max": 138
+    },
+    "xp": {
+      "min": 42,
+      "max": 52
+    }
+  },
+  "defeatCandyLoss": 18
+}

@@ -1,0 +1,17 @@
+{
+  "id": "lunar-abyss-manta",
+  "name": "Lunar Abyss Manta",
+  "level": 4,
+  "hp": 112,
+  "reward": {
+    "candies": {
+      "min": 228,
+      "max": 263
+    },
+    "xp": {
+      "min": 90,
+      "max": 103
+    }
+  },
+  "defeatCandyLoss": 34
+}

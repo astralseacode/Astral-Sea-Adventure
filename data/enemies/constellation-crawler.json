@@ -1,0 +1,17 @@
+{
+  "id": "constellation-crawler",
+  "name": "Constellation Crawler",
+  "level": 3,
+  "hp": 98,
+  "reward": {
+    "candies": {
+      "min": 160,
+      "max": 190
+    },
+    "xp": {
+      "min": 64,
+      "max": 73
+    }
+  },
+  "defeatCandyLoss": 24
+}

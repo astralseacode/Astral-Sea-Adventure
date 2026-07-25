@@ -1,0 +1,17 @@
+{
+  "id": "reef-rune-otter",
+  "name": "Reef Rune Otter",
+  "level": 2,
+  "hp": 83,
+  "reward": {
+    "candies": {
+      "min": 110,
+      "max": 142
+    },
+    "xp": {
+      "min": 43,
+      "max": 54
+    }
+  },
+  "defeatCandyLoss": 19
+}
