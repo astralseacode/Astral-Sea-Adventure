@@ -1,1 +1,7 @@
-
+{
+  "id": "moonlit-reef",
+  "name": "Moonlit Reef",
+  "levelRequirement": 1,
+  "noteCount": 30,
+  "nextRegion": "starfall-trench"
+}
