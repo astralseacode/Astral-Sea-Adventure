@@ -1,1 +1,7 @@
-
+{
+  "id": "starfall-trench",
+  "name": "Starfall Trench",
+  "levelRequirement": 5,
+  "noteCount": 30,
+  "nextRegion": "whispering-kelp-forest"
+}
