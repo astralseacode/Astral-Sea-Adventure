@@ -1,1 +1,7 @@
-
+{
+  "id": "whispering-kelp-forest",
+  "name": "Whispering Kelp Forest",
+  "levelRequirement": 10,
+  "noteCount": 30,
+  "nextRegion": "leviathans-wake"
+}
