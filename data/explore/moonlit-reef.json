@@ -59,10 +59,6 @@
     "message": "followed a flicker of moonlight between the corals and met a tiny Moon Sprite guarding {reward} Star Candies. It darted away, leaving one of Shizuki's folded pages behind~",
     "itemDrops": [
       {
-        "id": "shizukis_hushed_pearl",
-        "chance": 0.4
-      },
-      {
         "id": "moonlit-reef-note-03",
         "type": "travel-note",
         "chance": 0.75
@@ -84,10 +80,6 @@
     "xp": 16,
     "message": "paused beneath a sweeping arch of luminous coral where Shizuki had left a half-finished sketch beside {reward} Star Candies and another journal page~",
     "itemDrops": [
-      {
-        "id": "tumbled_elf_relic",
-        "chance": 0.35
-      },
       {
         "id": "moonlit-reef-note-04",
         "type": "travel-note",
@@ -111,10 +103,6 @@
     "message": "chased a bold little crab through the reef after it stole Shizuki's berry pouch. The thief surrendered beside a cache of {reward} Star Candies and a folded page~",
     "itemDrops": [
       {
-        "id": "lunar_dolphin_charm",
-        "chance": 0.4
-      },
-      {
         "id": "moonlit-reef-note-05",
         "type": "travel-note",
         "chance": 0.75
@@ -136,10 +124,6 @@
     "xp": 20,
     "message": "drifted beneath a bloom of glowing moon jellies that gathered around Shizuki's trail marks. Their light revealed {reward} Star Candies and another page caught beneath a shell~",
     "itemDrops": [
-      {
-        "id": "moon_jelly_lantern",
-        "chance": 0.4
-      },
       {
         "id": "moonlit-reef-note-06",
         "type": "travel-note",
@@ -163,10 +147,6 @@
     "message": "reached Starlight Lagoon by following Shizuki's directions marked 'probably east.' Glimmer uncovered {reward} Star Candies beneath the silver water along with another folded page~",
     "itemDrops": [
       {
-        "id": "starlight_lagoon_droplet",
-        "chance": 0.45
-      },
-      {
         "id": "moonlit-reef-note-07",
         "type": "travel-note",
         "chance": 0.75
@@ -188,10 +168,6 @@
     "xp": 18,
     "message": "found a school of Silverfin gathered around one of Shizuki's sketches as though holding a serious meeting. Beneath them rested {reward} Star Candies and a damp journal page~",
     "itemDrops": [
-      {
-        "id": "silverfin_scale",
-        "chance": 0.4
-      },
       {
         "id": "moonlit-reef-note-08",
         "type": "travel-note",
@@ -215,10 +191,6 @@
     "message": "was swept through the reef when one of Shizuki's experimental runes awakened a Lunar Current. It deposited you safely beside {reward} Star Candies and another folded page~",
     "itemDrops": [
       {
-        "id": "bottled_lunar_current",
-        "chance": 0.45
-      },
-      {
         "id": "moonlit-reef-note-09",
         "type": "travel-note",
         "chance": 0.75
@@ -240,10 +212,6 @@
     "xp": 40,
     "message": "encountered the mysterious Fae Moonkeeper beside a silver shrine. After reading one of Shizuki's abandoned direction signs, the Moonkeeper silently granted {reward} Star Candies and left behind another page~",
     "itemDrops": [
-      {
-        "id": "moonkeepers_blessing",
-        "chance": 0.75
-      },
       {
         "id": "moonlit-reef-note-10",
         "type": "travel-note",
@@ -267,10 +235,6 @@
     "message": "wandered through a garden of glowing Fae Sea Blossoms planted along Shizuki's route. Their petals opened to reveal {reward} Star Candies and a carefully folded page~",
     "itemDrops": [
       {
-        "id": "fae_sea_blossom",
-        "chance": 0.4
-      },
-      {
         "id": "moonlit-reef-note-11",
         "type": "travel-note",
         "chance": 0.75
@@ -292,10 +256,6 @@
     "xp": 22,
     "message": "entered Moonglass Cavern and found Shizuki's arrows reflected across every crystal wall. After following several wrong copies, you discovered {reward} Star Candies and another page~",
     "itemDrops": [
-      {
-        "id": "moonglass_shard",
-        "chance": 0.45
-      },
       {
         "id": "moonlit-reef-note-12",
         "type": "travel-note",
@@ -319,10 +279,6 @@
     "message": "met an Elder Moon Turtle resting across Shizuki's marked path. It allowed passage only after Glimmer uncovered {reward} Star Candies and a weathered journal page beneath its shell~",
     "itemDrops": [
       {
-        "id": "elder_moon_turtle_scale",
-        "chance": 0.6
-      },
-      {
         "id": "moonlit-reef-note-13",
         "type": "travel-note",
         "chance": 0.85
@@ -344,10 +300,6 @@
     "xp": 22,
     "message": "followed drifting pages through Moonbeam Cascade, where silver light traced Shizuki's winding route toward {reward} Star Candies and another entry from her journal~",
     "itemDrops": [
-      {
-        "id": "moonbeam_crystal",
-        "chance": 0.45
-      },
       {
         "id": "moonlit-reef-note-14",
         "type": "travel-note",
@@ -371,10 +323,6 @@
     "message": "crossed Moonlit Reef during a gentle celestial starfall. Shizuki and Glimmer had gathered fallen sparks around {reward} Star Candies and tucked another page beneath them~",
     "itemDrops": [
       {
-        "id": "fallen_star_fragment",
-        "chance": 0.65
-      },
-      {
         "id": "moonlit-reef-note-15",
         "type": "travel-note",
         "chance": 0.85
@@ -396,10 +344,6 @@
     "xp": 20,
     "message": "reached a quiet shore where the Astral Tide had arranged Shizuki's lost supplies beside {reward} Star Candies and another folded journal page~",
     "itemDrops": [
-      {
-        "id": "astral_tide_shell",
-        "chance": 0.4
-      },
       {
         "id": "moonlit-reef-note-16",
         "type": "travel-note",
@@ -423,10 +367,6 @@
     "message": "was guided by a majestic Astral Manta Ray along a route marked in Shizuki's handwriting. It carried you to {reward} Star Candies and another page hidden in a Fae cache~",
     "itemDrops": [
       {
-        "id": "astral_manta_token",
-        "chance": 0.8
-      },
-      {
         "id": "moonlit-reef-note-17",
         "type": "travel-note",
         "chance": 0.85
@@ -448,10 +388,6 @@
     "xp": 22,
     "message": "heard the Echoing Star Reef repeat one of Shizuki's cheerful humming tunes. Following the sound uncovered {reward} Star Candies and another journal page beneath the sand~",
     "itemDrops": [
-      {
-        "id": "echoing_star_stone",
-        "chance": 0.45
-      },
       {
         "id": "moonlit-reef-note-18",
         "type": "travel-note",
@@ -475,10 +411,6 @@
     "message": "passed beneath the ancient Moonstone Arch, where Shizuki's newest shortcut pointed in two directions at once. The correct path held {reward} Star Candies and another page~",
     "itemDrops": [
       {
-        "id": "moonstone_arch_rune",
-        "chance": 0.45
-      },
-      {
         "id": "moonlit-reef-note-19",
         "type": "travel-note",
         "chance": 0.75
@@ -500,10 +432,6 @@
     "xp": 46,
     "message": "discovered Shizuki's enchanted lantern glowing beside a set of hurried footprints. Its light revealed {reward} Star Candies and another folded page beneath the waves~",
     "itemDrops": [
-      {
-        "id": "moonkeepers_lantern",
-        "chance": 0.8
-      },
       {
         "id": "moonlit-reef-note-20",
         "type": "travel-note",
@@ -527,10 +455,6 @@
     "message": "found Shizuki negotiating with a Starshell Hermit using three berries and an extremely questionable map. The hermit accepted and revealed {reward} Star Candies with another page~",
     "itemDrops": [
       {
-        "id": "starshell_hermit_shell",
-        "chance": 0.85
-      },
-      {
         "id": "moonlit-reef-note-21",
         "type": "travel-note",
         "chance": 0.85
@@ -552,10 +476,6 @@
     "xp": 46,
     "message": "opened a radiant Star Pearl Oyster after following a clue in Shizuki's journal. Inside rested {reward} Star Candies and another page protected by pearlescent magic~",
     "itemDrops": [
-      {
-        "id": "star_pearl",
-        "chance": 0.8
-      },
       {
         "id": "moonlit-reef-note-22",
         "type": "travel-note",
@@ -579,10 +499,6 @@
     "message": "wandered into a Celestial Coral Garden where every bloom leaned toward Shizuki's passing trail. At its center waited {reward} Star Candies and another folded page~",
     "itemDrops": [
       {
-        "id": "celestial_coral_bloom",
-        "chance": 0.5
-      },
-      {
         "id": "moonlit-reef-note-23",
         "type": "travel-note",
         "chance": 0.75
@@ -604,10 +520,6 @@
     "xp": 90,
     "message": "uncovered an ancient Elvish Star Compass that spun wildly near Shizuki's map. When both finally pointed the same way, they led to {reward} Star Candies and another page~",
     "itemDrops": [
-      {
-        "id": "navigators_star_compass",
-        "chance": 1
-      },
       {
         "id": "moonlit-reef-note-24",
         "type": "travel-note",
@@ -631,10 +543,6 @@
     "message": "rested among glowing Moonveil Anemones where Shizuki had hidden a berry snack. Beneath the grove you found {reward} Star Candies and another journal page~",
     "itemDrops": [
       {
-        "id": "moonveil_anemone_petal",
-        "chance": 0.5
-      },
-      {
         "id": "moonlit-reef-note-25",
         "type": "travel-note",
         "chance": 0.75
@@ -656,10 +564,6 @@
     "xp": 28,
     "message": "arrived at a tidepool that whispered fragments of Shizuki's earlier notes. The voices guided you toward {reward} Star Candies and one more folded page~",
     "itemDrops": [
-      {
-        "id": "whispering_tidepool_vial",
-        "chance": 0.55
-      },
       {
         "id": "moonlit-reef-note-26",
         "type": "travel-note",
@@ -683,10 +587,6 @@
     "message": "found Shizuki and Glimmer rearranging fragments of a fallen constellation. When the final star clicked into place, it revealed {reward} Star Candies and another page~",
     "itemDrops": [
       {
-        "id": "fallen_constellation_shard",
-        "chance": 0.9
-      },
-      {
         "id": "moonlit-reef-note-27",
         "type": "travel-note",
         "chance": 0.9
@@ -708,10 +608,6 @@
     "xp": 28,
     "message": "crossed a meadow of Dreaming Sea Lilies that showed glimpses of Shizuki's journey. One bloom opened to reveal {reward} Star Candies and another folded page~",
     "itemDrops": [
-      {
-        "id": "dreaming_sea_lily",
-        "chance": 0.55
-      },
       {
         "id": "moonlit-reef-note-28",
         "type": "travel-note",
@@ -735,10 +631,6 @@
     "message": "found Shizuki waiting beside a forgotten Fae vault while the Moonkeeper watched from afar. The recovered key opened a chamber containing {reward} Star Candies and another page~",
     "itemDrops": [
       {
-        "id": "moonkeepers_vault_key",
-        "chance": 0.95
-      },
-      {
         "id": "moonlit-reef-note-29",
         "type": "travel-note",
         "chance": 0.9
@@ -760,10 +652,6 @@
     "xp": 150,
     "message": "reached the heart of Moonlit Reef where Shizuki and Glimmer stood before an ancient relic. It awakened in silver light, granting {reward} Star Candies and the final page of the chapter~ / LEGENDARY EXPEDITION!",
     "itemDrops": [
-      {
-        "id": "astral_heart_fragment",
-        "chance": 1
-      },
       {
         "id": "moonlit-reef-note-30",
         "type": "travel-note",
