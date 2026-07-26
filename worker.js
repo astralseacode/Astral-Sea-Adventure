@@ -10,9 +10,13 @@ const DUPLICATE_DIRECTION_WINDOW_MS = 2 * 1000;
 const PLAYER_COMBAT_MAX_HP = 100;
 const PLAYER_MAX_MANA = 100;
 const REST_BONUS_AMOUNT = 25;
-const REST_RESOURCE_LIMIT =
+const SHORT_REST_RESOURCE_CAP =
   PLAYER_COMBAT_MAX_HP + REST_BONUS_AMOUNT;
-const REST_COOLDOWN_MS = 20 * 60 * 1000;
+const LONG_REST_RESOURCE_CAP = 150;
+const MAX_TEMPORARY_RESOURCE_CAP = LONG_REST_RESOURCE_CAP;
+const SHORT_REST_COOLDOWN_MS = 20 * 60 * 1000;
+const LONG_REST_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+const LONG_REST_ENCOUNTER_CHANCE = 0.5;
 const BERRY_HEAL_AMOUNT = 25;
 const BERRY_MANA_AMOUNT = 25;
 const BERRY_OUTSIDE_COMBAT_MESSAGES = [
@@ -124,6 +128,34 @@ const SHOP_LARGE_PURCHASE_REACTIONS = [
       "The hooded merchant raises an eyebrow as she finishes counting the " +
       "pile.\n\n\"...Planning to survive the apocalypse?\"",
   },
+];
+const LONG_REST_SCENES = [
+  "You find a sheltered hollow beneath the silver branches of an ancient moonlit tree. The distant Astral Sea hums softly as you settle beneath its leaves.\n\nFor once, there are no monsters, mysterious ruins, suspicious merchants, or urgent decisions waiting for you.\n\nYou sleep deeply, and by the time pale starlight filters through the branches, your strength and magic have returned with more energy than either of them reasonably needed.",
+  "A quiet Fae sanctuary reveals itself between two weathered stone arches. Moonveil flowers fold around the entrance as though agreeing not to tell anyone where you went.\n\nYou curl up beside a warm lantern and sleep through an entire turning of the Astral tides.\n\nWhen you finally wake, someone has tucked a blanket around you and left a note nearby:\n\n\"Try not to nearly die again immediately. —Definitely Not Shizuki\"",
+  "You make camp beside a still lagoon where silver fish drift beneath the surface like tiny wandering stars.\n\nThe night passes without ambushes, cursed artifacts, or anything attempting to steal your Backpack. This is suspicious, but you decide not to question it.\n\nBy morning, both body and magic feel completely restored—and perhaps a little overprepared.",
+];
+const LONG_REST_COOLDOWN_SCENES = [
+  (remaining) =>
+    "You arrange your bedding, close your eyes, and attempt to begin another full night's sleep.\n\nUnfortunately, your body has determined that you have rested quite enough for one day.\n\n" +
+    `**Long Rest Available In:** ${remaining}`,
+  (remaining) =>
+    "The Fae sanctuary refuses to reveal itself again. A tiny glowing sign appears between the trees:\n\n\"ONE MIRACULOUSLY RESTFUL NIGHT PER CUSTOMER.\"\n\n" +
+    `**Long Rest Available In:** ${remaining}`,
+  (remaining) =>
+    "You lie down and attempt to sleep, but you are far too rested. After several uncomfortable minutes, you admit defeat.\n\nSomewhere nearby, someone quietly says, \"That's what the cooldown is for.\"\n\n" +
+    `**Long Rest Available In:** ${remaining}`,
+];
+const LONG_REST_ENCOUNTER_TRANSITIONS = [
+  (enemyName) =>
+    `A branch snaps beyond the edge of your resting place.\n\nYou open your eyes to find a **${enemyName}** watching you from the shadows. It appears your camp was less hidden than you thought.`,
+  (enemyName) =>
+    `The peaceful morning ends with a sound that definitely does not belong to the wind.\n\nA **${enemyName}** emerges nearby, apparently offended that you slept through its arrival.`,
+  (enemyName) =>
+    `You awaken feeling completely restored—and immediately realize you are not alone.\n\nA **${enemyName}** circles the campsite, waiting for you to notice it.`,
+  (enemyName) =>
+    `The sanctuary grows strangely quiet. Even the distant Astral Sea seems to hold its breath.\n\nThen a **${enemyName}** steps into view.\n\nSo much for a peaceful morning.`,
+  (enemyName) =>
+    `You finish gathering your belongings when something lunges from behind a nearby ruin.\n\nA **${enemyName}** has discovered your resting place and seems unwilling to discuss boundaries.`,
 ];
 const BERRY_DROP_CHANCE_BY_REGION = {
   "moonlit-reef": 0.77,
@@ -514,8 +546,20 @@ const DISCORD_COMMANDS = [
   },
   {
     name: "rest",
-    description: "Rest to restore Health and Mana with temporary bonuses.",
+    description: "Take a Short Rest or Long Rest.",
     type: 1,
+    options: [
+      {
+        type: 1,
+        name: "short",
+        description: "Take a brief rest and temporarily raise HP and Mana to 125.",
+      },
+      {
+        type: 1,
+        name: "long",
+        description: "Take a full day's rest and temporarily raise HP and Mana to 150.",
+      },
+    ],
   },
   {
     name: "explore",
@@ -814,6 +858,8 @@ async function handleTwitchRequest(url, env) {
             env,
             backpackKey,
             username,
+            rawArgs,
+            "twitch",
           )
         ).message,
       );
@@ -941,7 +987,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. Other commands: !eat berry, !rest, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. !rest - Take a Short Rest. Cooldown: 20 minutes. !rest long - Take a Long Rest. Cooldown: 24 hours. Other commands: !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1136,7 +1182,9 @@ async function handleDiscordInteraction(request, env) {
             await performRest(
               env,
               backpackKey,
-              getDiscordRestIdentity(interaction),
+              sharedIdentity,
+              getDiscordSubcommand(interaction),
+              "discord",
             )
           ).message,
         );
@@ -1270,7 +1318,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. Other commands: /eat berry, /rest, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. /rest short - Gain up to 125 HP and Mana. Cooldown: 20 minutes. /rest long - Gain up to 150 HP and Mana. Cooldown: 24 hours. Other commands: /eat berry, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -2165,6 +2213,7 @@ async function startCombatEncounter(
   encounterNumber,
   enemy,
   platform,
+  source = "adventure",
 ) {
   const now = Math.floor(Date.now() / 1000);
   const progress = await getPlayerProgress(env, backpackKey);
@@ -2187,8 +2236,18 @@ async function startCombatEncounter(
   await saveCombatState(env, backpackKey, combatState);
 
   return {
-    message:
-      platform === "discord"
+    message: source === "long-rest"
+      ? platform === "discord"
+        ? `**An enemy has appeared!**\n\n${enemy.name}\n` +
+          `Enemy HP: ${enemy.hp}\n` +
+          `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP}\n` +
+          `Mana: ${progress.mana}/${progress.maxMana}\n\n` +
+          "Use /attack or /cast spell:Jelly to strike."
+        : `${enemy.name} appears! Enemy HP: ${enemy.hp} | ` +
+          `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP} | ` +
+          `Mana: ${progress.mana}/${progress.maxMana} | ` +
+          "Use !attack or !cast jelly to strike."
+      : platform === "discord"
         ? `Adventure ${encounterNumber} begins!\n\n` +
           `${enemy.name} appears in ${region.name}.\n` +
           `Enemy HP: ${enemy.hp}\n` +
@@ -2200,6 +2259,78 @@ async function startCombatEncounter(
           `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP} | ` +
           `Mana: ${progress.mana}/${progress.maxMana} | ` +
           "Use !attack or !cast jelly to strike.",
+  };
+}
+
+async function startLongRestEncounter(
+  env,
+  backpackKey,
+  progress,
+  platform,
+) {
+  const region = getRegionById(progress.currentRegion);
+
+  if (!region) {
+    console.warn("Long Rest encounter skipped: invalid current region.");
+    return null;
+  }
+
+  let entries;
+
+  try {
+    entries = await getRegionCombatEntries(region.id);
+  } catch (error) {
+    console.warn(
+      `Long Rest encounter skipped: could not load ${region.id}.`,
+      error,
+    );
+    return null;
+  }
+
+  const candidates = (
+    await Promise.all(
+      entries.map(async (entry) => {
+        try {
+          const enemy = await getEnemyDefinition(entry.enemy);
+
+          return enemy.isBoss === true
+            ? null
+            : {
+                encounterNumber: entry.encounter,
+                enemy,
+              };
+        } catch (error) {
+          console.warn(
+            `Long Rest enemy skipped: ${entry.enemy}.`,
+            error,
+          );
+          return null;
+        }
+      }),
+    )
+  ).filter(Boolean);
+
+  if (candidates.length === 0) {
+    console.warn(
+      `Long Rest encounter skipped: no eligible enemies in ${region.id}.`,
+    );
+    return null;
+  }
+
+  const selected = randomChoice(candidates);
+  const battle = await startCombatEncounter(
+    env,
+    backpackKey,
+    region,
+    selected.encounterNumber,
+    selected.enemy,
+    platform,
+    "long-rest",
+  );
+
+  return {
+    enemy: selected.enemy,
+    message: battle.message,
   };
 }
 
@@ -2562,12 +2693,14 @@ async function performEatUnlocked(
     };
   }
 
-  const hpLimit = currentHp > PLAYER_COMBAT_MAX_HP
-    ? REST_RESOURCE_LIMIT
-    : PLAYER_COMBAT_MAX_HP;
-  const manaLimit = latestProgress.mana > PLAYER_MAX_MANA
-    ? REST_RESOURCE_LIMIT
-    : PLAYER_MAX_MANA;
+  const hpLimit = Math.max(
+    PLAYER_COMBAT_MAX_HP,
+    latestProgress.temporaryResourceCap,
+  );
+  const manaLimit = Math.max(
+    PLAYER_MAX_MANA,
+    latestProgress.temporaryResourceCap,
+  );
   const healedAmount = Math.max(
     0,
     Math.min(
@@ -3447,13 +3580,34 @@ async function performRest(
   env,
   backpackKey,
   sharedIdentity,
+  restInput = "",
+  platform = "twitch",
 ) {
+  const normalizedInput = String(restInput || "").trim().toLowerCase();
+  const restType =
+    normalizedInput === "long"
+      ? "long"
+      : normalizedInput === "short" ||
+          (platform === "twitch" && normalizedInput === "")
+        ? "short"
+        : "";
+
+  if (!restType) {
+    return {
+      message: platform === "discord"
+        ? "Choose /rest short or /rest long."
+        : "Choose how you want to rest: !rest for a Short Rest or !rest long for a Long Rest.",
+    };
+  }
+
   return withPlayerMutationLock(
     backpackKey,
     () => performRestUnlocked(
       env,
       backpackKey,
       sharedIdentity,
+      restType,
+      platform,
     ),
   );
 }
@@ -3462,43 +3616,83 @@ async function performRestUnlocked(
   env,
   backpackKey,
   sharedIdentity,
+  restType,
+  platform,
 ) {
   const progress = await getPlayerProgress(env, backpackKey);
   const sharedCooldownAt = await getSharedRestCooldown(
     env,
     sharedIdentity,
+    restType,
   );
+  const savedCooldownAt = restType === "long"
+    ? progress.lastLongRestAt
+    : progress.lastRestAt;
+  const cooldownMs = restType === "long"
+    ? LONG_REST_COOLDOWN_MS
+    : SHORT_REST_COOLDOWN_MS;
   const lastRestAt = Math.max(
-    progress.lastRestAt,
+    savedCooldownAt,
     sharedCooldownAt,
   );
-  const remainingMs = REST_COOLDOWN_MS - (Date.now() - lastRestAt);
+  const remainingMs = cooldownMs - (Date.now() - lastRestAt);
 
   if (remainingMs > 0) {
+    const remaining = formatDetailedDuration(remainingMs);
+
+    return {
+      message: restType === "long"
+        ? platform === "discord"
+          ? randomChoice(LONG_REST_COOLDOWN_SCENES)(remaining)
+          : `You are still far too rested for another Long Rest. Available in: ${remaining}`
+        : `You're still feeling refreshed. You can Rest again in ` +
+          `${formatRemainingDuration(remainingMs)}.`,
+    };
+  }
+
+  const combatState = await getCombatState(env, backpackKey);
+  const activeAdventure = await getActiveAdventure(env, backpackKey);
+
+  if (restType === "long" && (combatState || activeAdventure)) {
     return {
       message:
-        `You're still feeling refreshed. You can Rest again in ` +
-        `${formatRemainingDuration(remainingMs)}.`,
+        "You cannot begin a Long Rest during an active Adventure or fight. " +
+        `Finish it before using ${platform === "discord"
+          ? "/rest long"
+          : "!rest long"}.`,
     };
   }
 
   const now = Date.now();
+  const currentHp =
+    combatState?.playerHp ??
+    activeAdventure?.playerHp ??
+    progress.hp;
+  const restTarget = restType === "long"
+    ? LONG_REST_RESOURCE_CAP
+    : SHORT_REST_RESOURCE_CAP;
+  const resourceCap = Math.max(
+    restTarget,
+    progress.temporaryResourceCap,
+  );
+  const updatedHp = Math.max(currentHp, restTarget);
+  const updatedMana = Math.max(progress.mana, restTarget);
   const updatedProgress = {
     ...progress,
-    hp: REST_RESOURCE_LIMIT,
-    mana: REST_RESOURCE_LIMIT,
+    hp: updatedHp,
+    mana: updatedMana,
+    temporaryResourceCap: resourceCap,
     lastRestAt: now,
+    ...(restType === "long" ? { lastLongRestAt: now } : {}),
   };
-  const combatState = await getCombatState(env, backpackKey);
-  const activeAdventure = await getActiveAdventure(env, backpackKey);
 
   if (combatState) {
-    combatState.playerHp = REST_RESOURCE_LIMIT;
+    combatState.playerHp = updatedHp;
     combatState.updatedAt = Math.floor(now / 1000);
   }
 
   if (activeAdventure) {
-    activeAdventure.playerHp = REST_RESOURCE_LIMIT;
+    activeAdventure.playerHp = updatedHp;
     activeAdventure.updatedAt = now;
   }
 
@@ -3510,17 +3704,79 @@ async function performRestUnlocked(
     activeAdventure
       ? saveActiveAdventure(env, backpackKey, activeAdventure)
       : Promise.resolve(),
-    saveSharedRestCooldown(env, sharedIdentity, now),
+    saveSharedRestCooldown(env, sharedIdentity, now, "short"),
+    restType === "long"
+      ? saveSharedRestCooldown(env, sharedIdentity, now, "long")
+      : Promise.resolve(),
   ]);
 
+  if (restType === "short") {
+    return {
+      hp: updatedHp,
+      mana: updatedMana,
+      message:
+        "You take a peaceful rest beneath the moonlight. Your Health and Mana " +
+        "have been restored, and you feel refreshed! | " +
+        `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
+        `Mana: ${updatedMana}/${PLAYER_MAX_MANA}`,
+    };
+  }
+
+  const encounterTriggered = Math.random() < LONG_REST_ENCOUNTER_CHANCE;
+  const longRestScene = randomChoice(LONG_REST_SCENES);
+  const peacefulMessage = platform === "discord"
+    ? `${longRestScene}\n\n**Long Rest Complete**\n\n` +
+      `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP}\n` +
+      `Mana: ${updatedMana}/${PLAYER_MAX_MANA}\n\n` +
+      "You may take another Long Rest in 24 hours."
+    : "Long Rest complete! You awaken thoroughly rested—and perhaps " +
+      `slightly overprepared. HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
+      `Mana: ${updatedMana}/${PLAYER_MAX_MANA} | Long Rest cooldown: 24h`;
+
+  if (!encounterTriggered) {
+    return {
+      hp: updatedHp,
+      mana: updatedMana,
+      encounter: null,
+      message: peacefulMessage,
+    };
+  }
+
+  try {
+    const encounter = await startLongRestEncounter(
+      env,
+      backpackKey,
+      updatedProgress,
+      platform,
+    );
+
+    if (encounter) {
+      const transition = platform === "discord"
+        ? randomChoice(LONG_REST_ENCOUNTER_TRANSITIONS)(
+            encounter.enemy.name,
+          )
+        : `Your peaceful morning is interrupted by a ` +
+          `${encounter.enemy.name}. Combat begins!`;
+
+      return {
+        hp: updatedHp,
+        mana: updatedMana,
+        encounter: encounter.enemy.id,
+        message:
+          `${peacefulMessage}${platform === "discord" ? "\n\n" : " | "}` +
+          `${transition}${platform === "discord" ? "\n\n" : " | "}` +
+          encounter.message,
+      };
+    }
+  } catch (error) {
+    console.error("Long Rest encounter initialization failed:", error);
+  }
+
   return {
-    hp: REST_RESOURCE_LIMIT,
-    mana: REST_RESOURCE_LIMIT,
-    message:
-      "You take a peaceful rest beneath the moonlight. Your Health and Mana " +
-      "have been restored, and you feel refreshed! | " +
-      `HP: ${REST_RESOURCE_LIMIT}/${PLAYER_COMBAT_MAX_HP} | ` +
-      `Mana: ${REST_RESOURCE_LIMIT}/${PLAYER_MAX_MANA}`,
+    hp: updatedHp,
+    mana: updatedMana,
+    encounter: null,
+    message: peacefulMessage,
   };
 }
 
@@ -3552,14 +3808,16 @@ async function performBackpack(
     combatState?.playerHp ??
     activeAdventure?.playerHp ??
     progress.hp;
-  const sharedCooldownAt = await getSharedRestCooldown(
-    env,
-    sharedIdentity,
-  );
+  const [sharedShortCooldownAt, sharedLongCooldownAt] =
+    await Promise.all([
+      getSharedRestCooldown(env, sharedIdentity, "short"),
+      getSharedRestCooldown(env, sharedIdentity, "long"),
+    ]);
   const restStatus = getRestStatus(
     currentHp,
-    progress.mana,
-    Math.max(progress.lastRestAt, sharedCooldownAt),
+    progress,
+    Math.max(progress.lastRestAt, sharedShortCooldownAt),
+    Math.max(progress.lastLongRestAt, sharedLongCooldownAt),
   );
   const level =
     levelFromXp(progress.xp);
@@ -4099,7 +4357,7 @@ function isValidAdventureState(state) {
     Number.isSafeInteger(state.playerHp) &&
     Number.isSafeInteger(state.playerMaxHp) &&
     state.playerHp > 0 &&
-    state.playerHp <= REST_RESOURCE_LIMIT &&
+    state.playerHp <= MAX_TEMPORARY_RESOURCE_CAP &&
     state.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
     Number.isSafeInteger(state.startedAt) &&
     state.startedAt > 0 &&
@@ -4283,19 +4541,66 @@ function formatRemainingDuration(milliseconds) {
   return `${minutes}m ${seconds}s`;
 }
 
-function getRestStatus(hp, mana, lastRestAt, now = Date.now()) {
-  if (
-    hp > PLAYER_COMBAT_MAX_HP ||
-    mana > PLAYER_MAX_MANA
-  ) {
-    return "Rested";
+function formatDetailedDuration(milliseconds) {
+  const totalSeconds = Math.max(
+    0,
+    Math.ceil(milliseconds / 1000),
+  );
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  const parts = [];
+
+  if (hours > 0) {
+    parts.push(`${hours}h`);
   }
 
-  const remainingMs = REST_COOLDOWN_MS - (now - lastRestAt);
+  if (minutes > 0 || hours > 0) {
+    parts.push(`${minutes}m`);
+  }
 
-  return remainingMs > 0
-    ? `Rest: ${formatRemainingDuration(remainingMs)}`
-    : "Ready to Rest";
+  if (seconds > 0 || parts.length === 0) {
+    parts.push(`${seconds}s`);
+  }
+
+  return parts.join(" ");
+}
+
+function getRestStatus(
+  hp,
+  progress,
+  shortRestAt,
+  longRestAt,
+  now = Date.now(),
+) {
+  const parts = [];
+  const hasBonus =
+    hp > PLAYER_COMBAT_MAX_HP ||
+    progress.mana > PLAYER_MAX_MANA;
+
+  if (hasBonus) {
+    parts.push(
+      progress.temporaryResourceCap === LONG_REST_RESOURCE_CAP
+        ? "Rest Status: Long Rested"
+        : "Rest Status: Rested",
+    );
+  }
+
+  const shortRemaining =
+    SHORT_REST_COOLDOWN_MS - (now - shortRestAt);
+  const longRemaining =
+    LONG_REST_COOLDOWN_MS - (now - longRestAt);
+
+  parts.push(
+    shortRemaining > 0
+      ? `Short Rest: ${formatDetailedDuration(shortRemaining)}`
+      : "Short Rest: Ready",
+    longRemaining > 0
+      ? `Long Rest: ${formatDetailedDuration(longRemaining)}`
+      : "Long Rest: Ready",
+  );
+
+  return parts.join(" | ");
 }
 
 function randomInteger(minimum, maximum) {
@@ -4583,7 +4888,7 @@ function isValidCombatState(combatState) {
     Number.isSafeInteger(combatState.playerMaxHp) &&
     combatState.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
     combatState.playerHp > 0 &&
-    combatState.playerHp <= REST_RESOURCE_LIMIT &&
+    combatState.playerHp <= MAX_TEMPORARY_RESOURCE_CAP &&
     enemy &&
     typeof enemy.id === "string" &&
     /^[a-z0-9-]+$/.test(enemy.id) &&
@@ -5485,9 +5790,11 @@ function getProgressKey(backpackKey) {
   return `progress:${backpackKey}`;
 }
 
-function getSharedRestCooldownKey(sharedIdentity) {
+function getSharedRestCooldownKey(sharedIdentity, restType = "short") {
   return sharedIdentity
-    ? `cooldown:rest:${sharedIdentity}`
+    ? restType === "long"
+      ? `cooldown:long-rest:${sharedIdentity}`
+      : `cooldown:rest:${sharedIdentity}`
     : "";
 }
 
@@ -5542,8 +5849,12 @@ async function closeShopSession(env, sharedIdentity) {
   }
 }
 
-async function getSharedRestCooldown(env, sharedIdentity) {
-  const key = getSharedRestCooldownKey(sharedIdentity);
+async function getSharedRestCooldown(
+  env,
+  sharedIdentity,
+  restType = "short",
+) {
+  const key = getSharedRestCooldownKey(sharedIdentity, restType);
 
   if (!key) {
     return 0;
@@ -5561,8 +5872,9 @@ async function saveSharedRestCooldown(
   env,
   sharedIdentity,
   timestamp,
+  restType = "short",
 ) {
-  const key = getSharedRestCooldownKey(sharedIdentity);
+  const key = getSharedRestCooldownKey(sharedIdentity, restType);
 
   if (!key) {
     return;
@@ -5572,7 +5884,11 @@ async function saveSharedRestCooldown(
     key,
     String(timestamp),
     {
-      expirationTtl: Math.ceil(REST_COOLDOWN_MS / 1000),
+      expirationTtl: Math.ceil(
+        (restType === "long"
+          ? LONG_REST_COOLDOWN_MS
+          : SHORT_REST_COOLDOWN_MS) / 1000,
+      ),
     },
   );
 }
@@ -5586,6 +5902,8 @@ function createEmptyProgress() {
     mana: PLAYER_MAX_MANA,
     maxMana: PLAYER_MAX_MANA,
     lastRestAt: 0,
+    lastLongRestAt: 0,
+    temporaryResourceCap: PLAYER_COMBAT_MAX_HP,
     relics: [],
     discoveries: {},
     notes: {},
@@ -5623,9 +5941,9 @@ async function getPlayerProgress(
       ),
     );
     const maxHp = PLAYER_COMBAT_MAX_HP;
-    const hp = Object.prototype.hasOwnProperty.call(parsed, "hp")
+    let hp = Object.prototype.hasOwnProperty.call(parsed, "hp")
       ? Math.min(
-          REST_RESOURCE_LIMIT,
+          MAX_TEMPORARY_RESOURCE_CAP,
           Math.max(
             0,
             Math.floor(Number(parsed.hp) || 0),
@@ -5633,9 +5951,9 @@ async function getPlayerProgress(
         )
       : maxHp;
     const maxMana = PLAYER_MAX_MANA;
-    const mana = Object.prototype.hasOwnProperty.call(parsed, "mana")
+    let mana = Object.prototype.hasOwnProperty.call(parsed, "mana")
       ? Math.min(
-          REST_RESOURCE_LIMIT,
+          MAX_TEMPORARY_RESOURCE_CAP,
           Math.max(
             0,
             Math.floor(Number(parsed.mana) || 0),
@@ -5646,6 +5964,31 @@ async function getPlayerProgress(
       0,
       Math.floor(Number(parsed.lastRestAt) || 0),
     );
+    const lastLongRestAt = Math.max(
+      0,
+      Math.floor(Number(parsed.lastLongRestAt) || 0),
+    );
+    const savedTemporaryCap = Number(parsed.temporaryResourceCap);
+    let temporaryResourceCap = [
+      PLAYER_COMBAT_MAX_HP,
+      SHORT_REST_RESOURCE_CAP,
+      LONG_REST_RESOURCE_CAP,
+    ].includes(savedTemporaryCap)
+      ? savedTemporaryCap
+      : hp > SHORT_REST_RESOURCE_CAP ||
+          mana > SHORT_REST_RESOURCE_CAP
+        ? LONG_REST_RESOURCE_CAP
+        : hp > PLAYER_COMBAT_MAX_HP ||
+            mana > PLAYER_MAX_MANA
+          ? SHORT_REST_RESOURCE_CAP
+          : PLAYER_COMBAT_MAX_HP;
+
+    if (hp <= PLAYER_COMBAT_MAX_HP && mana <= PLAYER_MAX_MANA) {
+      temporaryResourceCap = PLAYER_COMBAT_MAX_HP;
+    }
+
+    hp = Math.min(hp, temporaryResourceCap);
+    mana = Math.min(mana, temporaryResourceCap);
     const hasSavedRegion = Object.prototype.hasOwnProperty.call(
       parsed,
       "currentRegion",
@@ -5764,6 +6107,8 @@ async function getPlayerProgress(
       mana,
       maxMana,
       lastRestAt,
+      lastLongRestAt,
+      temporaryResourceCap,
       relics,
       discoveries,
       notes,
@@ -5778,11 +6123,15 @@ async function getPlayerProgress(
       !Object.prototype.hasOwnProperty.call(parsed, "hp") ||
       !Object.prototype.hasOwnProperty.call(parsed, "maxHp") ||
       !Object.prototype.hasOwnProperty.call(parsed, "lastRestAt") ||
+      !Object.prototype.hasOwnProperty.call(parsed, "lastLongRestAt") ||
+      !Object.prototype.hasOwnProperty.call(parsed, "temporaryResourceCap") ||
       Number(parsed.hp) !== hp ||
       Number(parsed.maxHp) !== maxHp ||
       Number(parsed.mana) !== mana ||
       Number(parsed.maxMana) !== maxMana ||
-      Number(parsed.lastRestAt) !== lastRestAt
+      Number(parsed.lastRestAt) !== lastRestAt ||
+      Number(parsed.lastLongRestAt) !== lastLongRestAt ||
+      Number(parsed.temporaryResourceCap) !== temporaryResourceCap
     ) {
       await savePlayerProgress(env, backpackKey, normalizedProgress);
     }
@@ -5895,6 +6244,30 @@ async function savePlayerProgress(
     }
   }
 
+  const requestedTemporaryCap = Number(progress.temporaryResourceCap);
+  let temporaryResourceCap = [
+    PLAYER_COMBAT_MAX_HP,
+    SHORT_REST_RESOURCE_CAP,
+    LONG_REST_RESOURCE_CAP,
+  ].includes(requestedTemporaryCap)
+    ? requestedTemporaryCap
+    : PLAYER_COMBAT_MAX_HP;
+  const requestedHp = Math.max(
+    0,
+    Math.floor(Number(progress.hp) || 0),
+  );
+  const requestedMana = Math.max(
+    0,
+    Math.floor(Number(progress.mana) || 0),
+  );
+
+  if (
+    requestedHp <= PLAYER_COMBAT_MAX_HP &&
+    requestedMana <= PLAYER_MAX_MANA
+  ) {
+    temporaryResourceCap = PLAYER_COMBAT_MAX_HP;
+  }
+
   const safeProgress = {
     xp: Math.max(
       0,
@@ -5914,6 +6287,11 @@ async function savePlayerProgress(
       0,
       Math.floor(Number(progress.lastRestAt) || 0),
     ),
+    lastLongRestAt: Math.max(
+      0,
+      Math.floor(Number(progress.lastLongRestAt) || 0),
+    ),
+    temporaryResourceCap,
     relics: safeRelics,
     discoveries: safeDiscoveries,
     notes: safeNotes,
@@ -5924,22 +6302,12 @@ async function savePlayerProgress(
       "moonlit-reef",
   };
   safeProgress.hp = Math.min(
-    REST_RESOURCE_LIMIT,
-    Math.max(
-      0,
-      Math.floor(
-        Number(progress.hp) || 0,
-      ),
-    ),
+    temporaryResourceCap,
+    requestedHp,
   );
   safeProgress.mana = Math.min(
-    REST_RESOURCE_LIMIT,
-    Math.max(
-      0,
-      Math.floor(
-        Number(progress.mana) || 0,
-      ),
-    ),
+    temporaryResourceCap,
+    requestedMana,
   );
 
   await env.Backpack.put(
