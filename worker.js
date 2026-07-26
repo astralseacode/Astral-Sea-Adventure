@@ -15,7 +15,7 @@ const SHORT_REST_RESOURCE_CAP =
 const LONG_REST_RESOURCE_CAP = 150;
 const MAX_TEMPORARY_RESOURCE_CAP = LONG_REST_RESOURCE_CAP;
 const SHORT_REST_COOLDOWN_MS = 20 * 60 * 1000;
-const LONG_REST_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+const LONG_REST_COOLDOWN_MS = 60 * 60 * 1000;
 const LONG_REST_ENCOUNTER_CHANCE = 0.5;
 const BERRY_HEAL_AMOUNT = 25;
 const BERRY_MANA_AMOUNT = 25;
@@ -987,7 +987,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. !rest - Take a Short Rest. Cooldown: 20 minutes. !rest long - Take a Long Rest. Cooldown: 24 hours. Other commands: !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. !rest - Take a Short Rest. Cooldown: 20 minutes. !rest long - Take a Long Rest. Cooldown: 1 hour. Other commands: !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1318,7 +1318,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. /rest short - Gain up to 125 HP and Mana. Cooldown: 20 minutes. /rest long - Gain up to 150 HP and Mana. Cooldown: 24 hours. Other commands: /eat berry, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. /rest short - Gain up to 125 HP and Mana. Cooldown: 20 minutes. /rest long - Gain up to 150 HP and Mana. Cooldown: 1 hour. Other commands: /eat berry, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -3728,10 +3728,10 @@ async function performRestUnlocked(
     ? `${longRestScene}\n\n**Long Rest Complete**\n\n` +
       `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP}\n` +
       `Mana: ${updatedMana}/${PLAYER_MAX_MANA}\n\n` +
-      "You may take another Long Rest in 24 hours."
+      "You may take another Long Rest in 1 hour."
     : "Long Rest complete! You awaken thoroughly rested—and perhaps " +
       `slightly overprepared. HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
-      `Mana: ${updatedMana}/${PLAYER_MAX_MANA} | Long Rest cooldown: 24h`;
+      `Mana: ${updatedMana}/${PLAYER_MAX_MANA} | Long Rest cooldown: 1h`;
 
   if (!encounterTriggered) {
     return {
