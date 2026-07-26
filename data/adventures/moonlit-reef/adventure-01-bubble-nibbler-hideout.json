@@ -1,0 +1,88 @@
+{
+  "id": "bubble-nibbler-hideout",
+  "number": 1,
+  "name": "Bubble Nibbler Hideout",
+  "regionId": "moonlit-reef",
+  "enemyId": "bubble-nibbler",
+  "recommendedLevel": 1,
+  "intro": "A coral burrow waits beneath the moonlit reef.",
+  "startRoomId": "entrance",
+  "rooms": {
+    "entrance": {
+      "name": "Shell-Lined Entrance",
+      "prompt": "Three passages wind deeper into the hideout.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "message": "You follow shimmering bubbles into a forgotten cache.",
+          "reward": { "min": 20, "max": 40 },
+          "nextRoomId": "inner-crossing"
+        },
+        "right": {
+          "type": "combat",
+          "enemyId": "bubble-nibbler",
+          "nextRoomId": "inner-crossing"
+        },
+        "forward": {
+          "type": "empty",
+          "message": "The round coral chamber holds only a few fading bubbles.",
+          "nextRoomId": "inner-crossing"
+        }
+      }
+    },
+    "inner-crossing": {
+      "name": "Inner Crossing",
+      "prompt": "Three shell-lined tunnels split beneath the reef: tiny teeth echo left, a warm moonstone glows right, and treasure-light flickers forward.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "enemyId": "bubble-nibbler",
+          "nextRoomId": "coral-maze"
+        },
+        "right": {
+          "type": "healing",
+          "healAmount": 25,
+          "nextRoomId": "coral-maze"
+        },
+        "forward": {
+          "type": "treasure",
+          "message": "A shell cache opens beneath the current.",
+          "reward": { "min": 25, "max": 45 },
+          "nextRoomId": "coral-maze"
+        }
+      }
+    },
+    "coral-maze": {
+      "name": "Flooded Coral Maze",
+      "prompt": "Fresh Bubble Nibbler tracks vanish into three final passages.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "message": "A pearl-lined hollow conceals the hideout's last cache.",
+          "reward": { "min": 30, "max": 50 },
+          "nextRoomId": "boss-antechamber"
+        },
+        "right": {
+          "type": "healing",
+          "healAmount": 25,
+          "nextRoomId": "boss-antechamber"
+        },
+        "forward": {
+          "type": "combat",
+          "enemyId": "bubble-nibbler",
+          "nextRoomId": "boss-antechamber"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Boss Antechamber",
+      "type": "boss-prompt",
+      "prompt": "The Bubble Nibbler Boss waits beyond the final coral bend."
+    }
+  },
+  "boss": {
+    "enemyId": "bubble-nibbler-boss",
+    "roomId": "boss"
+  },
+  "completionText": "The Bubble Nibbler Boss bursts into a harmless cloud of silver bubbles. The hideout falls quiet, and the Moonlit Reef opens a new path."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "bubble-nibbler-boss",
+  "name": "Bubble Nibbler Boss",
+  "region": "moonlit-reef",
+  "level": 1,
+  "hp": 23,
+  "damageBonus": 2,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 50,
+      "max": 75
+    },
+    "xp": {
+      "min": 18,
+      "max": 27
+    }
+  },
+  "defeatCandyLoss": 8
+}

@@ -6,6 +6,7 @@ const DATA_CACHE_TTL_MS = 5 * 60 * 1000;
 const DUPLICATE_NOTE_CANDY_BONUS = 40;
 const COMBAT_STATE_TTL_SECONDS = 24 * 60 * 60;
 const PENDING_COMBAT_TTL_MS = 5 * 60 * 1000;
+const DUPLICATE_DIRECTION_WINDOW_MS = 2 * 1000;
 const PLAYER_COMBAT_MAX_HP = 100;
 const BERRY_HEAL_AMOUNT = 20;
 const BERRY_DROP_CHANCE_BY_REGION = {
@@ -270,26 +271,46 @@ const DAILY_BLESSINGS = [
 const DISCORD_COMMANDS = [
   {
     name: "combat",
-    description: "View or select an unlocked combat expedition.",
+    description: "Learn how combat moved to Adventures.",
+    type: 1,
+  },
+  {
+    name: "adventure",
+    description: "View, begin, or resume an Astral Sea Adventure",
     type: 1,
     options: [
       {
         type: 4,
-        name: "encounter",
-        description: "Expedition number to challenge",
+        name: "adventure",
+        description: "The unlocked Adventure number to begin",
         required: false,
         min_value: 1,
       },
     ],
   },
   {
+    name: "left",
+    description: "Take the left path in your current Adventure",
+    type: 1,
+  },
+  {
+    name: "right",
+    description: "Take the right path in your current Adventure",
+    type: 1,
+  },
+  {
+    name: "forward",
+    description: "Move forward in your current Adventure",
+    type: 1,
+  },
+  {
     name: "yes",
-    description: "Begin your selected combat expedition",
+    description: "Confirm a pending challenge or Adventure boss",
     type: 1,
   },
   {
     name: "no",
-    description: "Cancel your selected combat expedition",
+    description: "Cancel a pending challenge or step away",
     type: 1,
   },
   {
@@ -481,13 +502,32 @@ async function handleTwitchRequest(url, env) {
   switch (action) {
     case "combat":
       return textResponse(
+        "Combat has become Adventures! Use !adventure or !adventure <number>.",
+      );
+
+    case "adventure":
+      return textResponse(
         (
-          await performCombat(
+          await performAdventure(
             env,
             backpackKey,
-            url.searchParams.get("encounter") ||
+            url.searchParams.get("adventure") ||
               argumentParts[0] ||
               "",
+            "twitch",
+          )
+        ).message,
+      );
+
+    case "left":
+    case "right":
+    case "forward":
+      return textResponse(
+        (
+          await performAdventureDirection(
+            env,
+            backpackKey,
+            action,
             "twitch",
           )
         ).message,
@@ -500,7 +540,7 @@ async function handleTwitchRequest(url, env) {
 
     case "no":
       return textResponse(
-        (await cancelPendingCombat(env, backpackKey)).message,
+        (await cancelPendingCombat(env, backpackKey, "twitch")).message,
       );
 
     case "attack":
@@ -613,7 +653,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !combat [number] — view/select expeditions, !yes — begin, !no — cancel, !attack, !eat, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !eat, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -691,11 +731,30 @@ async function handleDiscordInteraction(request, env) {
     switch (commandName) {
       case "combat":
         return discordMessage(
+          "Combat has become Adventures!\nUse /adventure to view your Adventures or /adventure <number> to begin one.",
+        );
+
+      case "adventure":
+        return discordMessage(
           (
-            await performCombat(
+            await performAdventure(
               env,
               backpackKey,
-              getDiscordOption(interaction, "encounter"),
+              getDiscordOption(interaction, "adventure"),
+              "discord",
+            )
+          ).message,
+        );
+
+      case "left":
+      case "right":
+      case "forward":
+        return discordMessage(
+          (
+            await performAdventureDirection(
+              env,
+              backpackKey,
+              commandName,
               "discord",
             )
           ).message,
@@ -708,7 +767,7 @@ async function handleDiscordInteraction(request, env) {
 
       case "no":
         return discordMessage(
-          (await cancelPendingCombat(env, backpackKey)).message,
+          (await cancelPendingCombat(env, backpackKey, "discord")).message,
         );
 
       case "attack":
@@ -826,7 +885,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /combat [number] — view/select expeditions, /yes — begin, /no — cancel, /attack, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure [number], /left, /right, /forward, /yes, /no, /attack, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -923,6 +982,364 @@ async function handleDiscordRegistration(request, env) {
 /* ============================================================
    SHARED GAME ACTIONS
    ============================================================ */
+
+async function performAdventure(
+  env,
+  backpackKey,
+  adventureInput,
+  platform = "twitch",
+) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performAdventureUnlocked(
+      env,
+      backpackKey,
+      adventureInput,
+      platform,
+    ),
+  );
+}
+
+async function performAdventureUnlocked(
+  env,
+  backpackKey,
+  adventureInput,
+  platform,
+) {
+  const progress = await getPlayerProgress(env, backpackKey);
+  const region = getRegionById(progress.currentRegion) || REGIONS[0];
+  let entries;
+
+  try {
+    entries = await getRegionCombatEntries(region.id);
+  } catch {
+    return {
+      message: `Adventures are not available in ${region.name} right now.`,
+    };
+  }
+
+  const playerLevel = levelFromXp(progress.xp);
+  const highestUnlocked = getRegionCombatProgress(
+    progress,
+    region.id,
+    entries.length,
+  );
+  const activeAdventure = await getActiveAdventure(env, backpackKey);
+  const normalizedInput = String(adventureInput ?? "").trim();
+
+  if (!normalizedInput) {
+    return await formatAdventureProgress(
+      region,
+      entries,
+      highestUnlocked,
+      playerLevel,
+      activeAdventure,
+      platform,
+    );
+  }
+
+  if (!/^\d+$/.test(normalizedInput)) {
+    return {
+      message:
+        `Use ${platform === "discord" ? "/adventure" : "!adventure"} ` +
+        "to view Adventures, or add an unlocked Adventure number.",
+    };
+  }
+
+  const adventureNumber = Number(normalizedInput);
+
+  if (
+    !Number.isSafeInteger(adventureNumber) ||
+    adventureNumber < 1 ||
+    adventureNumber > entries.length
+  ) {
+    return {
+      message:
+        `That Adventure does not exist. Choose 1 through ${entries.length}.`,
+    };
+  }
+
+  if (adventureNumber > highestUnlocked) {
+    return {
+      message:
+        `Adventure ${adventureNumber} is locked. ` +
+        `Complete Adventure ${adventureNumber - 1} first.`,
+    };
+  }
+
+  if (activeAdventure) {
+    if (activeAdventure.adventureNumber === adventureNumber) {
+      const definition = await getAdventureDefinition(
+        activeAdventure.regionId,
+        activeAdventure.adventureNumber,
+      );
+
+      return {
+        message: formatAdventureObjective(
+          definition,
+          activeAdventure,
+          platform,
+        ),
+      };
+    }
+
+    return {
+      message:
+        `You already have an Adventure in progress: ` +
+        `${activeAdventure.name}. Use ` +
+        `${platform === "discord" ? "/adventure" : "!adventure"} ` +
+        "to view your current objective.",
+    };
+  }
+
+  if (adventureNumber !== 1 || region.id !== "moonlit-reef") {
+    return {
+      message: "That Adventure is not ready to explore yet.",
+    };
+  }
+
+  const definition = await getAdventureDefinition(
+    region.id,
+    adventureNumber,
+  );
+  const now = Date.now();
+  const state = {
+    version: 1,
+    regionId: region.id,
+    adventureNumber,
+    adventureId: definition.id,
+    name: definition.name,
+    currentRoomId: definition.startRoomId,
+    status: "awaiting-direction",
+    visitedRooms: [definition.startRoomId],
+    completedRooms: [],
+    collectedRewards: [],
+    playerHp: PLAYER_COMBAT_MAX_HP,
+    playerMaxHp: PLAYER_COMBAT_MAX_HP,
+    startedAt: now,
+    updatedAt: now,
+  };
+
+  await saveActiveAdventure(env, backpackKey, state);
+
+  return {
+    message:
+      platform === "discord"
+        ? `Adventure 1 — ${definition.name}\n\n` +
+          "You drift beneath a curtain of moonlit bubbles and discover " +
+          "a coral burrow hidden inside the reef.\n\n" +
+          `${formatAdventureRoomPrompt(definition, state, platform)}`
+        : `Adventure 1 — ${definition.name} | ${definition.intro} | ` +
+          `${formatAdventureRoomPrompt(definition, state, platform)}`,
+  };
+}
+
+async function performAdventureDirection(
+  env,
+  backpackKey,
+  direction,
+  platform = "twitch",
+) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performAdventureDirectionUnlocked(
+      env,
+      backpackKey,
+      direction,
+      platform,
+    ),
+  );
+}
+
+async function performAdventureDirectionUnlocked(
+  env,
+  backpackKey,
+  direction,
+  platform,
+) {
+  const state = await getActiveAdventure(env, backpackKey);
+
+  if (!state) {
+    return {
+      message:
+        `You do not have an active Adventure. Use ` +
+        `${platform === "discord" ? "/adventure" : "!adventure"} to choose one.`,
+    };
+  }
+
+  if (
+    state.status === "in-combat" ||
+    state.status === "boss-combat" ||
+    await getCombatState(env, backpackKey)
+  ) {
+    return {
+      message:
+        `You cannot choose a path while fighting. Use ` +
+        `${platform === "discord" ? "/attack" : "!attack"}.`,
+    };
+  }
+
+  if (state.status === "awaiting-boss-confirmation") {
+    return {
+      message:
+        `The boss waits ahead. Use ` +
+        `${platform === "discord" ? "/yes or /no" : "!yes or !no"}.`,
+    };
+  }
+
+  const definition = await getAdventureDefinition(
+    state.regionId,
+    state.adventureNumber,
+  );
+  const room = definition.rooms[state.currentRoomId];
+  const choice = room?.choices?.[direction];
+
+  if (!choice) {
+    return {
+      message:
+        "That path is unavailable here. Choose " +
+        Object.keys(room?.choices || {}).join(", ") + ".",
+    };
+  }
+
+  const now = Date.now();
+
+  if (
+    state.lastDirection === direction &&
+    now - Number(state.lastDirectionAt || 0) <
+      DUPLICATE_DIRECTION_WINDOW_MS
+  ) {
+    return {
+      message: "That path is already being resolved.",
+    };
+  }
+
+  state.lastDirection = direction;
+  state.lastDirectionAt = now;
+  state.updatedAt = now;
+  await saveActiveAdventure(env, backpackKey, state);
+
+  if (choice.type === "combat") {
+    const enemy = await getEnemyDefinition(choice.enemyId);
+    state.status = "in-combat";
+    await saveActiveAdventure(env, backpackKey, state);
+
+    return startAdventureBattle(
+      env,
+      backpackKey,
+      state,
+      enemy,
+      {
+        roomId: state.currentRoomId,
+        nextRoomId: choice.nextRoomId,
+        isBoss: false,
+      },
+      platform,
+    );
+  }
+
+  const messageParts = [];
+  const rewardToken = `${state.currentRoomId}:${direction}`;
+
+  if (choice.type === "treasure") {
+    if (state.collectedRewards.includes(rewardToken)) {
+      return { message: "That treasure has already been collected." };
+    }
+
+    const reward = randomInteger(choice.reward.min, choice.reward.max);
+    const currentTotal = await getBackpackTotal(env, backpackKey);
+    await saveBackpackTotal(env, backpackKey, currentTotal + reward);
+    state.collectedRewards.push(rewardToken);
+    messageParts.push(
+      `${choice.message} You recover ${reward} Star Candies.`,
+    );
+  } else if (choice.type === "healing") {
+    const healed = Math.min(
+      choice.healAmount,
+      state.playerMaxHp - state.playerHp,
+    );
+    state.playerHp += healed;
+    messageParts.push(
+      healed > 0
+        ? `You rest beside a warm moonstone vent and recover ${healed} HP.`
+        : "The moonstone chamber is peaceful, but you are already at full HP.",
+    );
+  } else if (choice.type === "empty") {
+    messageParts.push(choice.message);
+  } else {
+    return { message: "That Adventure outcome is not supported." };
+  }
+
+  advanceAdventureState(
+    definition,
+    state,
+    choice.nextRoomId,
+  );
+  await saveActiveAdventure(env, backpackKey, state);
+  messageParts.push(formatAdventureObjective(definition, state, platform));
+
+  return { message: messageParts.join(" | ") };
+}
+
+function advanceAdventureState(definition, state, nextRoomId) {
+  if (!state.completedRooms.includes(state.currentRoomId)) {
+    state.completedRooms.push(state.currentRoomId);
+  }
+
+  state.currentRoomId = nextRoomId;
+
+  if (!state.visitedRooms.includes(nextRoomId)) {
+    state.visitedRooms.push(nextRoomId);
+  }
+
+  state.status = definition.rooms[nextRoomId]?.type === "boss-prompt"
+    ? "awaiting-boss-confirmation"
+    : "awaiting-direction";
+  state.updatedAt = Date.now();
+}
+
+async function startAdventureBattle(
+  env,
+  backpackKey,
+  state,
+  enemy,
+  context,
+  platform,
+) {
+  const now = Math.floor(Date.now() / 1000);
+  const combatState = {
+    version: 1,
+    regionId: state.regionId,
+    encounterNumber: state.adventureNumber,
+    playerHp: state.playerHp,
+    playerMaxHp: state.playerMaxHp,
+    enemy: {
+      ...enemy,
+      hp: enemy.hp,
+      maxHp: enemy.hp,
+    },
+    adventureContext: {
+      adventureId: state.adventureId,
+      adventureNumber: state.adventureNumber,
+      roomId: context.roomId,
+      nextRoomId: context.nextRoomId || null,
+      isBoss: context.isBoss === true,
+    },
+    round: 1,
+    startedAt: now,
+    updatedAt: now,
+  };
+
+  await saveCombatState(env, backpackKey, combatState);
+
+  return {
+    message:
+      `${context.isBoss ? "Boss battle" : "Room battle"} begins! ` +
+      `${enemy.name} appears. Enemy HP: ${enemy.hp} | ` +
+      `Your HP: ${state.playerHp} | Use ` +
+      `${platform === "discord" ? "/attack" : "!attack"} to strike.`,
+  };
+}
 
 async function performCombat(
   env,
@@ -1115,6 +1532,32 @@ async function confirmPendingCombatUnlocked(
     };
   }
 
+  const activeAdventure = await getActiveAdventure(env, backpackKey);
+
+  if (activeAdventure?.status === "awaiting-boss-confirmation") {
+    const definition = await getAdventureDefinition(
+      activeAdventure.regionId,
+      activeAdventure.adventureNumber,
+    );
+    const enemy = await getEnemyDefinition(definition.boss.enemyId);
+    activeAdventure.status = "boss-combat";
+    activeAdventure.updatedAt = Date.now();
+    await saveActiveAdventure(env, backpackKey, activeAdventure);
+
+    return startAdventureBattle(
+      env,
+      backpackKey,
+      activeAdventure,
+      enemy,
+      {
+        roomId: definition.boss.roomId,
+        nextRoomId: null,
+        isBoss: true,
+      },
+      platform,
+    );
+  }
+
   const pendingResult = await getPendingCombat(env, backpackKey);
 
   if (pendingResult.expired) {
@@ -1202,10 +1645,26 @@ async function confirmPendingCombatUnlocked(
   return result;
 }
 
-async function cancelPendingCombat(env, backpackKey) {
+async function cancelPendingCombat(
+  env,
+  backpackKey,
+  platform = "twitch",
+) {
   return withPlayerMutationLock(
     backpackKey,
     async () => {
+      const activeAdventure = await getActiveAdventure(env, backpackKey);
+
+      if (activeAdventure?.status === "awaiting-boss-confirmation") {
+        return {
+          message:
+            "You step back from the coral bend. The Bubble Nibbler Boss " +
+            "remains ahead. Use " +
+            `${platform === "discord" ? "/adventure 1" : "!adventure 1"} ` +
+            "when you are ready to return.",
+        };
+      }
+
       const pendingResult = await getPendingCombat(env, backpackKey);
 
       if (!pendingResult.pending) {
@@ -1335,13 +1794,23 @@ async function performAttackUnlocked(
 
   const enemyRoll = randomInteger(1, 20);
   const enemyAttack = getCombatRollResult(enemyRoll);
+  const enemyDamage =
+    enemyAttack.damage +
+    (combatState.enemy.damageBonus || 0);
   combatState.playerHp = Math.max(
     0,
-    combatState.playerHp - enemyAttack.damage,
+    combatState.playerHp - enemyDamage,
   );
 
   messageParts.push(
-    formatCombatRollMessage("Enemy", enemyRoll, enemyAttack),
+    formatCombatRollMessage(
+      "Enemy",
+      enemyRoll,
+      {
+        ...enemyAttack,
+        damage: enemyDamage,
+      },
+    ),
   );
 
   if (combatState.playerHp === 0) {
@@ -1505,10 +1974,14 @@ async function resolveCombatVictory(
   const endingLevel = levelFromXp(newXp);
   const endingTitle = getTitleForLevel(endingLevel);
   const endingRegion = getRegionForLevel(endingLevel);
-  const unlockResult = await unlockNextEncounterAfterVictory(
-    combatState,
-    progress,
-  );
+  const adventureContext = combatState.adventureContext;
+  const unlockResult =
+    !adventureContext || adventureContext.isBoss
+      ? await unlockNextEncounterAfterVictory(
+          combatState,
+          progress,
+        )
+      : null;
   const updatedProgress = {
     ...progress,
     xp: newXp,
@@ -1547,12 +2020,42 @@ async function resolveCombatVictory(
 
   if (unlockResult?.unlockedEncounter) {
     messageParts.push(
-      `Expedition ${unlockResult.unlockedEncounter.number} — ` +
-      `${unlockResult.unlockedEncounter.name} is now unlocked. ` +
+      `Adventure ${unlockResult.unlockedEncounter.number} — ` +
+      `${getAdventureName(
+        unlockResult.unlockedEncounter.number,
+        unlockResult.unlockedEncounter.name,
+      )} is now unlocked. ` +
       `Recommended Level: ${unlockResult.unlockedEncounter.recommendedLevel}. ` +
-      `Use ${platform === "discord" ? "/combat" : "!combat"} ` +
+      `Use ${platform === "discord" ? "/adventure" : "!adventure"} ` +
       `${unlockResult.unlockedEncounter.number} to select it.`,
     );
+  }
+
+  if (adventureContext) {
+    const adventure = await getActiveAdventure(env, backpackKey);
+    const definition = await getAdventureDefinition(
+      combatState.regionId,
+      adventureContext.adventureNumber,
+    );
+
+    if (adventureContext.isBoss) {
+      await clearActiveAdventure(env, backpackKey);
+      messageParts.push(
+        `Adventure Complete — ${definition.name}`,
+        definition.completionText,
+      );
+    } else if (adventure) {
+      adventure.playerHp = combatState.playerHp;
+      advanceAdventureState(
+        definition,
+        adventure,
+        adventureContext.nextRoomId,
+      );
+      await saveActiveAdventure(env, backpackKey, adventure);
+      messageParts.push(
+        formatAdventureObjective(definition, adventure, platform),
+      );
+    }
   }
 
   return {
@@ -1579,6 +2082,23 @@ async function resolveCombatDefeat(
 
   await saveBackpackTotal(env, backpackKey, newTotal);
   await deleteCombatState(env, backpackKey);
+
+  if (combatState.adventureContext) {
+    const adventure = await getActiveAdventure(env, backpackKey);
+
+    if (adventure) {
+      adventure.playerHp = PLAYER_COMBAT_MAX_HP;
+      adventure.status = combatState.adventureContext.isBoss
+        ? "awaiting-boss-confirmation"
+        : "awaiting-direction";
+      adventure.currentRoomId =
+        combatState.adventureContext.isBoss
+          ? "boss-antechamber"
+          : combatState.adventureContext.roomId;
+      adventure.updatedAt = Date.now();
+      await saveActiveAdventure(env, backpackKey, adventure);
+    }
+  }
 
   return {
     won: false,
@@ -2321,6 +2841,10 @@ function getPendingCombatKey(backpackKey) {
   return `pending-combat:${backpackKey}`;
 }
 
+function getAdventureKey(backpackKey) {
+  return `adventure:${backpackKey}`;
+}
+
 async function withPlayerMutationLock(backpackKey, operation) {
   const previous = PLAYER_MUTATION_CHAINS.get(backpackKey) ||
     Promise.resolve();
@@ -2433,6 +2957,69 @@ async function setPendingCombat(env, backpackKey, pending) {
 
 async function clearPendingCombat(env, backpackKey) {
   await env.Backpack.delete(getPendingCombatKey(backpackKey));
+}
+
+async function getActiveAdventure(env, backpackKey) {
+  const storedValue = await env.Backpack.get(
+    getAdventureKey(backpackKey),
+  );
+
+  if (!storedValue) {
+    return null;
+  }
+
+  try {
+    const state = JSON.parse(storedValue);
+    return isValidAdventureState(state) ? state : null;
+  } catch {
+    return null;
+  }
+}
+
+async function saveActiveAdventure(env, backpackKey, state) {
+  if (!isValidAdventureState(state)) {
+    throw new Error("Adventure state has an invalid format.");
+  }
+
+  await env.Backpack.put(
+    getAdventureKey(backpackKey),
+    JSON.stringify(state),
+  );
+}
+
+async function clearActiveAdventure(env, backpackKey) {
+  await env.Backpack.delete(getAdventureKey(backpackKey));
+}
+
+function isValidAdventureState(state) {
+  return Boolean(
+    state &&
+    state.version === 1 &&
+    getRegionById(state.regionId) &&
+    Number.isSafeInteger(state.adventureNumber) &&
+    state.adventureNumber >= 1 &&
+    typeof state.adventureId === "string" &&
+    typeof state.name === "string" &&
+    typeof state.currentRoomId === "string" &&
+    [
+      "awaiting-direction",
+      "in-combat",
+      "awaiting-boss-confirmation",
+      "boss-combat",
+    ].includes(state.status) &&
+    Array.isArray(state.visitedRooms) &&
+    Array.isArray(state.completedRooms) &&
+    Array.isArray(state.collectedRewards) &&
+    Number.isSafeInteger(state.playerHp) &&
+    Number.isSafeInteger(state.playerMaxHp) &&
+    state.playerHp > 0 &&
+    state.playerHp <= state.playerMaxHp &&
+    state.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
+    Number.isSafeInteger(state.startedAt) &&
+    state.startedAt > 0 &&
+    Number.isSafeInteger(state.updatedAt) &&
+    state.updatedAt >= state.startedAt
+  );
 }
 
 /* ============================================================
@@ -2810,6 +3397,12 @@ function validateEnemyDefinition(enemy, expectedEnemyId) {
     name: enemy.name.trim(),
     level: enemy.level,
     hp: enemy.hp,
+    damageBonus:
+      Number.isSafeInteger(enemy.damageBonus) &&
+      enemy.damageBonus >= 0
+        ? enemy.damageBonus
+        : 0,
+    isBoss: enemy.isBoss === true,
     reward: {
       candies: {
         min: enemy.reward.candies.min,
@@ -2913,7 +3506,10 @@ async function getEnemyDefinition(enemyId) {
 
   const enemy = await fetchCachedJson(
     `enemy:${enemyId}`,
-    `${GITHUB_DATA_BASE}/enemies/${enemyId}.json`,
+    enemyId === "bubble-nibbler-boss"
+      ? `${GITHUB_DATA_BASE}/enemies/bosses/moonlit-reef/` +
+        "bubble-nibbler-boss.json"
+      : `${GITHUB_DATA_BASE}/enemies/${enemyId}.json`,
   );
 
   return validateEnemyDefinition(enemy, enemyId);
@@ -2946,6 +3542,135 @@ function getRecommendedEnemyLevel(encounter, enemy) {
   }
 
   return 1;
+}
+
+async function getAdventureDefinition(regionId, adventureNumber) {
+  if (regionId !== "moonlit-reef" || adventureNumber !== 1) {
+    return null;
+  }
+
+  const definition = await fetchCachedJson(
+    `adventure:${regionId}:${adventureNumber}`,
+    `${GITHUB_DATA_BASE}/adventures/${regionId}/` +
+      "adventure-01-bubble-nibbler-hideout.json",
+  );
+
+  if (
+    !definition ||
+    definition.id !== "bubble-nibbler-hideout" ||
+    definition.number !== 1 ||
+    definition.regionId !== regionId ||
+    typeof definition.name !== "string" ||
+    typeof definition.startRoomId !== "string" ||
+    !definition.rooms?.[definition.startRoomId] ||
+    typeof definition.boss?.enemyId !== "string"
+  ) {
+    throw new Error("Adventure data has an invalid format.");
+  }
+
+  return definition;
+}
+
+function getAdventureName(number, enemyName) {
+  if (number === 1) return "Bubble Nibbler Hideout";
+  if (number === 2) return "Silverfin Sprout Grove";
+  return `${enemyName} Domain`;
+}
+
+async function formatAdventureProgress(
+  region,
+  entries,
+  highestUnlocked,
+  playerLevel,
+  activeAdventure,
+  platform,
+) {
+  const visibleEntries = entries.slice(
+    0,
+    Math.min(entries.length, highestUnlocked + 1),
+  );
+  const details = await Promise.all(
+    visibleEntries.map(async (entry, index) => {
+      const enemy = await getEnemyDefinition(entry.enemy);
+      return {
+        number: index + 1,
+        name: getAdventureName(index + 1, enemy.name),
+        recommendedLevel: getRecommendedEnemyLevel(entry, enemy),
+      };
+    }),
+  );
+  const parts = platform === "discord"
+    ? [
+        `${region.name} Adventures`,
+        `Your Level: ${playerLevel}`,
+        `Adventures Unlocked: ${highestUnlocked} of ${entries.length}`,
+      ]
+    : [
+        `${region.name} Adventures`,
+        `Level ${playerLevel}`,
+        `Unlocked ${highestUnlocked}/${entries.length}`,
+      ];
+
+  if (activeAdventure) {
+    parts.push(
+      `Current: ${activeAdventure.name} — ${activeAdventure.currentRoomId}`,
+    );
+  }
+
+  for (let index = 0; index < highestUnlocked; index += 1) {
+    const detail = details[index];
+    parts.push(
+      platform === "discord"
+        ? `${detail.number}. ${detail.name} — ` +
+          `Recommended Level ${detail.recommendedLevel}`
+        : `${detail.number} ${detail.name} Lv.${detail.recommendedLevel}`,
+    );
+  }
+
+  if (highestUnlocked < entries.length) {
+    parts.push(
+      `${highestUnlocked + 1}${platform === "discord" ? "." : ""} Locked`,
+    );
+  }
+
+  parts.push(
+    platform === "discord"
+      ? highestUnlocked === 1
+        ? "Use /adventure 1 to begin or resume an Adventure."
+        : `Use /adventure 1 through /adventure ${highestUnlocked} ` +
+          "to begin or resume an Adventure."
+      : highestUnlocked === 1
+        ? "Use !adventure 1"
+        : `Use !adventure 1-${highestUnlocked}`,
+  );
+
+  return {
+    message: parts.join(platform === "discord" ? "\n" : " | "),
+  };
+}
+
+function formatAdventureRoomPrompt(definition, state, platform) {
+  const room = definition.rooms[state.currentRoomId];
+
+  if (state.status === "awaiting-boss-confirmation") {
+    return platform === "discord"
+      ? "The Bubble Nibbler Boss waits beyond the final coral bend.\n" +
+        "Use /yes to challenge the boss or /no to retreat for now."
+      : "The Bubble Nibbler Boss waits beyond the coral bend. " +
+        "Use !yes to continue or !no to retreat for now.";
+  }
+
+  const commands = Object.keys(room?.choices || {}).map(
+    (direction) =>
+      `${platform === "discord" ? "/" : "!"}${direction}`,
+  );
+
+  return `${room?.name || state.currentRoomId}: ${room?.prompt || ""} ` +
+    `Choose ${commands.join(", ")}.`;
+}
+
+function formatAdventureObjective(definition, state, platform) {
+  return formatAdventureRoomPrompt(definition, state, platform);
 }
 
 function getRegionCombatProgress(
