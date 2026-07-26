@@ -327,6 +327,7 @@ const DISCORD_COMMANDS = [
         description: "The unlocked Adventure number to begin",
         required: false,
         min_value: 1,
+        max_value: 29,
       },
       {
         type: 4,
@@ -812,22 +813,28 @@ async function handleDiscordInteraction(request, env) {
           "Combat has become Adventures!\nUse /adventure to view your Adventures or /adventure <number> to begin one.",
         );
 
-      case "adventure":
+      case "adventure": {
+        const adventureNumber = getDiscordIntegerOption(
+          interaction,
+          ["adventure", "number", "expedition"],
+        );
+        const pageNumber = getDiscordIntegerOption(
+          interaction,
+          ["page"],
+        );
+
         return discordMessage(
           (
             await performAdventure(
               env,
               backpackKey,
-              getDiscordOption(interaction, "adventure") ??
-                (
-                  getDiscordOption(interaction, "page")
-                    ? `list ${getDiscordOption(interaction, "page")}`
-                    : ""
-                ),
+              adventureNumber ??
+                (pageNumber ? `list ${pageNumber}` : ""),
               "discord",
             )
           ).message,
         );
+      }
 
       case "left":
       case "right":
@@ -3447,6 +3454,51 @@ function getDiscordOption(
   return options.find(
     (option) => option.name === optionName,
   )?.value;
+}
+
+function getDiscordIntegerOption(
+  interaction,
+  optionNames,
+) {
+  const acceptedNames = new Set(
+    optionNames.map((name) => String(name).toLowerCase()),
+  );
+  const topLevelOptions = Array.isArray(interaction.data?.options)
+    ? interaction.data.options
+    : [];
+  const options = [];
+  const collectOptions = (entries) => {
+    for (const option of entries) {
+      options.push(option);
+
+      if (Array.isArray(option.options)) {
+        collectOptions(option.options);
+      }
+    }
+  };
+
+  collectOptions(topLevelOptions);
+
+  const namedOption = options.find(
+    (option) =>
+      acceptedNames.has(String(option.name || "").toLowerCase()),
+  );
+  const fallbackOption =
+    namedOption ||
+    (
+      acceptedNames.has("adventure")
+        ? options.find(
+            (option) =>
+              option.type === 4 &&
+              String(option.name || "").toLowerCase() !== "page",
+          )
+        : null
+    );
+  const numericValue = Number(fallbackOption?.value);
+
+  return Number.isSafeInteger(numericValue)
+    ? numericValue
+    : null;
 }
 
 function getDiscordDisplayName(interaction) {
