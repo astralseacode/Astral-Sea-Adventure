@@ -23,8 +23,8 @@
           "type": "healing",
           "nextRoomId": "vigil-corridor",
           "healAmount": 40,
-          "message": "Beyond Keeper Seal, a restorative current shaped by Moonkeeper Sentinel Vault gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonkeeper Sentinel Vault finds no wounds to mend. You are already at full HP."
+          "message": "Beneath an improvised shelter in Keeper Seal, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Keeper-root medicine. Hidden from sentinels and anyone fond of inventories.\"",
+          "fullHpMessage": "You leave the medicinal flask at Keeper Seal untouched for the next injured wanderer."
         },
         "forward": {
           "type": "treasure",
@@ -59,7 +59,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "oathbound-gallery",
-          "message": "A quiet recess beyond Vigil Corridor preserves a dormant Fae shrine, but offers no material reward."
+          "message": "Shizuki hid one Berry inside the broken insignia of her creators in Vigil Corridor, turning their mark into an emergency cache.",
+          "berries": 1
         }
       }
     },
@@ -71,8 +72,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Beyond Oathbound Gallery, a restorative current shaped by Moonkeeper Sentinel Vault gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonkeeper Sentinel Vault finds no wounds to mend. You are already at full HP."
+          "message": "Moonlight reveals an old sleeping spot at Oathbound Gallery. Beside it, Shizuki's restorative bottle says: \"Old guardians watch doors. Clever wanderers watch reflections.\"",
+          "fullHpMessage": "The restorative at Oathbound Gallery remains beside Shizuki's old sleeping spot; today you are already well."
         },
         "right": {
           "type": "treasure",

@@ -32,8 +32,8 @@
           "type": "healing",
           "nextRoomId": "blooming-arcade",
           "healAmount": 30,
-          "message": "Beyond Petalwake Arch, a restorative current shaped by Fae Petal Gardens gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Fae Petal Gardens finds no wounds to mend. You are already at full HP."
+          "message": "Beneath an improvised shelter in Petalwake Arch, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Petalwater remedy. The Fae insisted on proper steeping.\"",
+          "fullHpMessage": "You leave the medicinal flask at Petalwake Arch untouched for the next injured wanderer."
         }
       }
     },
@@ -53,7 +53,8 @@
         "right": {
           "type": "empty",
           "nextRoomId": "fae-pollen-court",
-          "message": "A quiet recess beyond Blooming Arcade preserves a dormant Fae shrine, but offers no material reward."
+          "message": "Shizuki pressed one Berry among Fae petals at Blooming Arcade, payment for anyone patient enough to decode which bargains were jokes.",
+          "berries": 1
         },
         "forward": {
           "type": "combat",
@@ -71,8 +72,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 30,
-          "message": "Beyond Fae Pollen Court, a restorative current shaped by Fae Petal Gardens gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Fae Petal Gardens finds no wounds to mend. You are already at full HP."
+          "message": "Moonlight reveals an old sleeping spot at Fae Pollen Court. Beside it, Shizuki's restorative bottle says: \"Smells like flowers, tastes like rebellion.\"",
+          "fullHpMessage": "The restorative at Fae Pollen Court remains beside Shizuki's old sleeping spot; today you are already well."
         },
         "right": {
           "type": "combat",

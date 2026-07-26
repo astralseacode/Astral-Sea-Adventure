@@ -32,8 +32,8 @@
           "type": "healing",
           "nextRoomId": "hunter-current",
           "healAmount": 35,
-          "message": "Beyond Skywater Shelf, a restorative current shaped by Astral Manta Hunting Grounds gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Astral Manta Hunting Grounds finds no wounds to mend. You are already at full HP."
+          "message": "Someone converted a broken supply case in Skywater Shelf into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Skywater restorative. A manta hunter lost track of me while I brewed it.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Skywater Shelf is needed, which feels like its own victory."
         }
       }
     },
@@ -44,7 +44,8 @@
         "left": {
           "type": "empty",
           "nextRoomId": "widewing-pass",
-          "message": "A quiet recess beyond Hunter Current preserves a broken celestial instrument, but offers no material reward."
+          "message": "Shizuki fastened one Berry to a compass made from broken arrows in Hunter Current. Every arrow points away from an unnamed laboratory.",
+          "berries": 1
         },
         "right": {
           "type": "treasure",
@@ -77,8 +78,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Beyond Widewing Pass, a restorative current shaped by Astral Manta Hunting Grounds gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Astral Manta Hunting Grounds finds no wounds to mend. You are already at full HP."
+          "message": "Near Widewing Pass, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"For long flights, longer falls, and refusing to land where ordered.\"",
+          "fullHpMessage": "The bottle at Widewing Pass is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",

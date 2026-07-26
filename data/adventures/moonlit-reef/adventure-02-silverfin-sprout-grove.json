@@ -16,7 +16,10 @@
         "left": {
           "type": "treasure",
           "message": "You discover a moon-shell offering bowl hidden beneath the roots.",
-          "reward": { "min": 25, "max": 45 },
+          "reward": {
+            "min": 25,
+            "max": 45
+          },
           "nextRoomId": "whispering-fronds"
         },
         "right": {
@@ -26,8 +29,9 @@
         },
         "forward": {
           "type": "empty",
-          "message": "The path opens into a silent clearing of drifting silver pollen, but the grove has left nothing behind.",
-          "nextRoomId": "whispering-fronds"
+          "message": "At Moonleaf Threshold, Shizuki wrapped one Berry in a silver leaf beside her journal: \"Followed the prettiest path. Tactical error. Excellent view.\"",
+          "nextRoomId": "whispering-fronds",
+          "berries": 1
         }
       }
     },
@@ -38,14 +42,17 @@
         "left": {
           "type": "healing",
           "healAmount": 25,
-          "message": "You discover a basin of starlit dew resting inside a curled moonleaf.",
-          "fullHpMessage": "You discover a basin of starlit dew, but its magic finds no wounds to mend. You are already at full HP.",
+          "message": "A careful survival cache waits beyond Whispering Fronds, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Emergency leaf tonic. Side effects may include confidence.\"",
+          "fullHpMessage": "The remedy in Whispering Fronds stays in its cache. For once, preparation is all you need.",
           "nextRoomId": "heartroot-crossing"
         },
         "right": {
           "type": "treasure",
           "message": "Behind pale vines, you find an old Fae wayfinder's pouch.",
-          "reward": { "min": 30, "max": 50 },
+          "reward": {
+            "min": 30,
+            "max": 50
+          },
           "nextRoomId": "heartroot-crossing"
         },
         "forward": {
@@ -66,13 +73,17 @@
         },
         "right": {
           "type": "empty",
-          "message": "You find a peaceful hollow where tiny moonflowers sleep, but nothing useful remains.",
-          "nextRoomId": "boss-antechamber"
+          "message": "A tiny map at Heartroot Crossing has one Berry wedged into its last fold. Shizuki wrote: \"Grove still moving. Rude.\"",
+          "nextRoomId": "boss-antechamber",
+          "berries": 1
         },
         "forward": {
           "type": "treasure",
           "message": "You uncover a sealed coral seedpod marked with a faded Moonkeeper sigil.",
-          "reward": { "min": 35, "max": 55 },
+          "reward": {
+            "min": 35,
+            "max": 55
+          },
           "nextRoomId": "boss-antechamber"
         }
       }

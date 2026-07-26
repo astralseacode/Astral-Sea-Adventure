@@ -15,7 +15,10 @@
         "left": {
           "type": "treasure",
           "message": "You follow shimmering bubbles into a forgotten cache.",
-          "reward": { "min": 20, "max": 40 },
+          "reward": {
+            "min": 20,
+            "max": 40
+          },
           "nextRoomId": "inner-crossing"
         },
         "right": {
@@ -25,8 +28,9 @@
         },
         "forward": {
           "type": "empty",
-          "message": "The round coral chamber holds only a few fading bubbles.",
-          "nextRoomId": "inner-crossing"
+          "message": "A bubble-shaped shell cup holds one Berry and a note in Shizuki's handwriting: \"Prize for surviving the bubbles. If they ate the map, improvise.\"",
+          "nextRoomId": "inner-crossing",
+          "berries": 1
         }
       }
     },
@@ -42,12 +46,17 @@
         "right": {
           "type": "healing",
           "healAmount": 25,
-          "nextRoomId": "coral-maze"
+          "nextRoomId": "coral-maze",
+          "message": "Near Inner Crossing, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Tastes terrible. Works anyway. Try not to ask what the green part is.\"",
+          "fullHpMessage": "The bottle at Inner Crossing is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",
           "message": "A shell cache opens beneath the current.",
-          "reward": { "min": 25, "max": 45 },
+          "reward": {
+            "min": 25,
+            "max": 45
+          },
           "nextRoomId": "coral-maze"
         }
       }
@@ -59,13 +68,18 @@
         "left": {
           "type": "treasure",
           "message": "A pearl-lined hollow conceals the hideout's last cache.",
-          "reward": { "min": 30, "max": 50 },
+          "reward": {
+            "min": 30,
+            "max": 50
+          },
           "nextRoomId": "boss-antechamber"
         },
         "right": {
           "type": "healing",
           "healAmount": 25,
-          "nextRoomId": "boss-antechamber"
+          "nextRoomId": "boss-antechamber",
+          "message": "Shizuki wedged a weathered field kit into the coral at Flooded Coral Maze. Its surviving bottle is labeled: \"Second bottle. Less terrible. That is called progress.\"",
+          "fullHpMessage": "Shizuki's field kit at Flooded Coral Maze can remain closed; you have no wounds for it to mend."
         },
         "forward": {
           "type": "combat",

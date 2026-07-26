@@ -26,8 +26,8 @@
           "type": "healing",
           "nextRoomId": "wyrmcoil-terrace",
           "healAmount": 40,
-          "message": "Beyond Spiral Reefrise, a restorative current shaped by Celestial Coral Wyrm Spire gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Celestial Coral Wyrm Spire finds no wounds to mend. You are already at full HP."
+          "message": "Someone converted a broken supply case in Spiral Reefrise into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Wyrmfire cordial. Warm enough to remind your bones they have duties.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Spiral Reefrise is needed, which feels like its own victory."
         },
         "forward": {
           "type": "combat",
@@ -60,8 +60,8 @@
           "type": "healing",
           "nextRoomId": "comet-coral-crown",
           "healAmount": 40,
-          "message": "Beyond Wyrmcoil Terrace, a restorative current shaped by Celestial Coral Wyrm Spire gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Celestial Coral Wyrm Spire finds no wounds to mend. You are already at full HP."
+          "message": "Near Wyrmcoil Terrace, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Do not confuse surviving fire with permission to stop.\"",
+          "fullHpMessage": "The bottle at Wyrmcoil Terrace is still there, but thankfully you do not need Shizuki's remedy today."
         }
       }
     },
@@ -72,7 +72,8 @@
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Comet Coral Crown preserves faded Moonkeeper markings, but offers no material reward."
+          "message": "An improvised shelter at Comet Coral Crown holds one Berry beside names Shizuki preserved for other experiments who might escape after her.",
+          "berries": 1
         },
         "right": {
           "type": "combat",

@@ -23,8 +23,8 @@
           "type": "healing",
           "nextRoomId": "reliquary-nave",
           "healAmount": 35,
-          "message": "Beyond Luster Gate, a restorative current shaped by Star Pearl Reliquary gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Star Pearl Reliquary finds no wounds to mend. You are already at full HP."
+          "message": "Beneath an improvised shelter in Luster Gate, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Pearlward syrup. Saved for injuries and inconvenient revelations.\"",
+          "fullHpMessage": "You leave the medicinal flask at Luster Gate untouched for the next injured wanderer."
         },
         "forward": {
           "type": "treasure",
@@ -59,7 +59,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "pearlshadow-aisle",
-          "message": "A quiet recess beyond Reliquary Nave preserves a dormant Fae shrine, but offers no material reward."
+          "message": "Inside a sealed journal cover at Reliquary Nave, Shizuki saved one Berry beside a note thanking the humans who called her a person.",
+          "berries": 1
         }
       }
     },
@@ -71,8 +72,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Beyond Pearlshadow Aisle, a restorative current shaped by Star Pearl Reliquary gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Star Pearl Reliquary finds no wounds to mend. You are already at full HP."
+          "message": "Moonlight reveals an old sleeping spot at Pearlshadow Aisle. Beside it, Shizuki's restorative bottle says: \"Keep one dose hidden where creators never think to look: somewhere joyful.\"",
+          "fullHpMessage": "The restorative at Pearlshadow Aisle remains beside Shizuki's old sleeping spot; today you are already well."
         },
         "right": {
           "type": "treasure",

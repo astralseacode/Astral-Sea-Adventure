@@ -32,8 +32,8 @@
           "type": "healing",
           "nextRoomId": "abyssal-gallery",
           "healAmount": 40,
-          "message": "Beyond Duskfall Shelf, a restorative current shaped by Lunar Abyss Manta Deep gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Lunar Abyss Manta Deep finds no wounds to mend. You are already at full HP."
+          "message": "Beneath an improvised shelter in Duskfall Shelf, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Abyssmint tonic. Even darkness needs emergency supplies.\"",
+          "fullHpMessage": "You leave the medicinal flask at Duskfall Shelf untouched for the next injured wanderer."
         }
       }
     },
@@ -53,7 +53,8 @@
         "right": {
           "type": "empty",
           "nextRoomId": "moonless-span",
-          "message": "A quiet recess beyond Abyssal Gallery preserves a dormant Fae shrine, but offers no material reward."
+          "message": "One Berry is bound to Shizuki's journal promise in Abyssal Gallery, reserved for the journey back to those still trapped by her creators.",
+          "berries": 1
         },
         "forward": {
           "type": "combat",
@@ -71,8 +72,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Beyond Moonless Span, a restorative current shaped by Lunar Abyss Manta Deep gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Lunar Abyss Manta Deep finds no wounds to mend. You are already at full HP."
+          "message": "Moonlight reveals an old sleeping spot at Moonless Span. Beside it, Shizuki's restorative bottle says: \"Drink slowly. The deep notices sudden confidence.\"",
+          "fullHpMessage": "The restorative at Moonless Span remains beside Shizuki's old sleeping spot; today you are already well."
         },
         "right": {
           "type": "combat",

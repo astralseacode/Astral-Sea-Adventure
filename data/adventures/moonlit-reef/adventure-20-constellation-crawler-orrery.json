@@ -17,8 +17,8 @@
           "type": "healing",
           "nextRoomId": "starwheel-chamber",
           "healAmount": 35,
-          "message": "Beyond Orbit Gate, a restorative current shaped by Constellation Crawler Orrery gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Constellation Crawler Orrery finds no wounds to mend. You are already at full HP."
+          "message": "Shizuki wedged a weathered field kit into the coral at Orbit Gate. Its surviving bottle is labeled: \"Zodiac tonic. The stars suggested patience; I chose a shortcut.\"",
+          "fullHpMessage": "Shizuki's field kit at Orbit Gate can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "combat",
@@ -54,8 +54,8 @@
           "type": "healing",
           "nextRoomId": "celestial-track",
           "healAmount": 35,
-          "message": "Beyond Starwheel Chamber, a restorative current shaped by Constellation Crawler Orrery gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Constellation Crawler Orrery finds no wounds to mend. You are already at full HP."
+          "message": "A careful survival cache waits beyond Starwheel Chamber, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Drink when destiny becomes overly specific.\"",
+          "fullHpMessage": "The remedy in Starwheel Chamber stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "combat",
@@ -87,7 +87,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Celestial Track preserves a dormant Fae shrine, but offers no material reward."
+          "message": "Shizuki placed one Berry on the point labeled \"Possible Exit\" in her corrected constellation chart. \"Fate\" has been crossed out.",
+          "berries": 1
         }
       }
     },

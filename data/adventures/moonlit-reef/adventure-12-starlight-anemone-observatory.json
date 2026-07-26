@@ -23,8 +23,8 @@
           "type": "healing",
           "nextRoomId": "starstem-gallery",
           "healAmount": 30,
-          "message": "Beyond Astral Lens, a restorative current shaped by Starlight Anemone Observatory gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Starlight Anemone Observatory finds no wounds to mend. You are already at full HP."
+          "message": "Beneath an improvised shelter in Astral Lens, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Starlight infusion. Made under observation by several judgmental anemones.\"",
+          "fullHpMessage": "You leave the medicinal flask at Astral Lens untouched for the next injured wanderer."
         },
         "forward": {
           "type": "treasure",
@@ -59,7 +59,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "nightbloom-deck",
-          "message": "A quiet recess beyond Starstem Gallery preserves a dormant Fae shrine, but offers no material reward."
+          "message": "One Berry is tied to Shizuki's star chart in Starstem Gallery, exactly where her \"astronomy lesson\" becomes an escape route.",
+          "berries": 1
         }
       }
     },
@@ -71,8 +72,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 30,
-          "message": "Beyond Nightbloom Deck, a restorative current shaped by Starlight Anemone Observatory gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Starlight Anemone Observatory finds no wounds to mend. You are already at full HP."
+          "message": "Moonlight reveals an old sleeping spot at Nightbloom Deck. Beside it, Shizuki's restorative bottle says: \"For anyone climbing higher than common sense recommends.\"",
+          "fullHpMessage": "The restorative at Nightbloom Deck remains beside Shizuki's old sleeping spot; today you are already well."
         },
         "right": {
           "type": "treasure",

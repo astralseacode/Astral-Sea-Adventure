@@ -26,8 +26,8 @@
           "type": "healing",
           "nextRoomId": "glassfang-trench",
           "healAmount": 35,
-          "message": "Beyond Fracture Rim, a restorative current shaped by Moonglass Moray Chasm gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonglass Moray Chasm finds no wounds to mend. You are already at full HP."
+          "message": "Someone converted a broken supply case in Fracture Rim into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Shardkelp remedy. Sharp place, soft lesson: survive first.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Fracture Rim is needed, which feels like its own victory."
         },
         "forward": {
           "type": "combat",
@@ -60,8 +60,8 @@
           "type": "healing",
           "nextRoomId": "mirrorcrack-gorge",
           "healAmount": 35,
-          "message": "Beyond Glassfang Trench, a restorative current shaped by Moonglass Moray Chasm gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonglass Moray Chasm finds no wounds to mend. You are already at full HP."
+          "message": "Near Glassfang Trench, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Morays dislike sarcasm. Fortunately, I brought medicine.\"",
+          "fullHpMessage": "The bottle at Glassfang Trench is still there, but thankfully you do not need Shizuki's remedy today."
         }
       }
     },
@@ -72,7 +72,8 @@
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Mirrorcrack Gorge preserves faded Moonkeeper markings, but offers no material reward."
+          "message": "A snapped tracking charm in Mirrorcrack Gorge conceals one Berry. Shizuki marked the hiding place: \"One more leash that failed.\"",
+          "berries": 1
         },
         "right": {
           "type": "combat",

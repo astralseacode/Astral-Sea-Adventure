@@ -17,8 +17,8 @@
           "type": "healing",
           "nextRoomId": "talon-arcade",
           "healAmount": 30,
-          "message": "Beyond Crescent Gate, a restorative current shaped by Crescent Claw Citadel gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Crescent Claw Citadel finds no wounds to mend. You are already at full HP."
+          "message": "Shizuki wedged a weathered field kit into the coral at Crescent Gate. Its surviving bottle is labeled: \"Crescent balm. Useful after walls attempt diplomacy.\"",
+          "fullHpMessage": "Shizuki's field kit at Crescent Gate can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "combat",
@@ -54,8 +54,8 @@
           "type": "healing",
           "nextRoomId": "moonclaw-court",
           "healAmount": 30,
-          "message": "Beyond Talon Arcade, a restorative current shaped by Crescent Claw Citadel gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Crescent Claw Citadel finds no wounds to mend. You are already at full HP."
+          "message": "A careful survival cache waits beyond Talon Arcade, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"If guards designed the gate, there is always another hinge.\"",
+          "fullHpMessage": "The remedy in Talon Arcade stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "combat",
@@ -87,7 +87,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Moonclaw Court preserves a dormant Fae shrine, but offers no material reward."
+          "message": "Shizuki fixed one Berry to a filed shackle pin in Moonclaw Court. Beneath it she carved: \"Their first mistake was teaching me mechanisms.\"",
+          "berries": 1
         }
       }
     },

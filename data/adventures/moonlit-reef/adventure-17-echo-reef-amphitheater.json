@@ -17,8 +17,8 @@
           "type": "healing",
           "nextRoomId": "chorus-arcade",
           "healAmount": 35,
-          "message": "Beyond Resonant Steps, a restorative current shaped by Echo Reef Amphitheater gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Echo Reef Amphitheater finds no wounds to mend. You are already at full HP."
+          "message": "Shizuki wedged a weathered field kit into the coral at Resonant Steps. Its surviving bottle is labeled: \"Echo-thyme tonic. It quiets pain, if not memories.\"",
+          "fullHpMessage": "Shizuki's field kit at Resonant Steps can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "treasure",
@@ -51,8 +51,8 @@
           "type": "healing",
           "nextRoomId": "hushed-stage",
           "healAmount": 35,
-          "message": "Beyond Chorus Arcade, a restorative current shaped by Echo Reef Amphitheater gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Echo Reef Amphitheater finds no wounds to mend. You are already at full HP."
+          "message": "A careful survival cache waits beyond Chorus Arcade, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"The reef repeats everything except the truth my makers wanted.\"",
+          "fullHpMessage": "The remedy in Chorus Arcade stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "treasure",
@@ -87,7 +87,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Hushed Stage preserves a dormant Fae shrine, but offers no material reward."
+          "message": "One Berry waits beneath Shizuki's words carved into Hushed Stage: \"I was built as an answer. I escaped as a question.\"",
+          "berries": 1
         }
       }
     },

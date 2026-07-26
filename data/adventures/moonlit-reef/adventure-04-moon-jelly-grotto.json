@@ -32,8 +32,8 @@
           "type": "healing",
           "nextRoomId": "drifting-bell-gallery",
           "healAmount": 25,
-          "message": "Beyond Luminous Threshold, a restorative current shaped by Moon Jelly Grotto gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moon Jelly Grotto finds no wounds to mend. You are already at full HP."
+          "message": "Someone converted a broken supply case in Luminous Threshold into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Jellylight cordial. Do not shake unless you enjoy glowing.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Luminous Threshold is needed, which feels like its own victory."
         }
       }
     },
@@ -44,7 +44,8 @@
         "left": {
           "type": "empty",
           "nextRoomId": "veiled-grotto",
-          "message": "A quiet recess beyond Drifting Bell Gallery preserves a broken celestial instrument, but offers no material reward."
+          "message": "Inside an overturned jelly bell, you find one Berry beside Shizuki's sketchbook. Every jelly is labeled except \"Pencil Thief.\"",
+          "berries": 1
         },
         "right": {
           "type": "treasure",
@@ -77,8 +78,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 25,
-          "message": "Beyond Veiled Grotto, a restorative current shaped by Moon Jelly Grotto gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moon Jelly Grotto finds no wounds to mend. You are already at full HP."
+          "message": "Near Veiled Grotto, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"For bruises, bad plans, and encounters with floating furniture.\"",
+          "fullHpMessage": "The bottle at Veiled Grotto is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",

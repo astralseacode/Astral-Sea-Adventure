@@ -17,8 +17,8 @@
           "type": "healing",
           "nextRoomId": "spiral-channel",
           "healAmount": 30,
-          "message": "Beyond Moonflow Intake, a restorative current shaped by Lunar Current Labyrinth gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Lunar Current Labyrinth finds no wounds to mend. You are already at full HP."
+          "message": "Shizuki wedged a weathered field kit into the coral at Moonflow Intake. Its surviving bottle is labeled: \"Current-root tonic. Hold the rail before drinking.\"",
+          "fullHpMessage": "Shizuki's field kit at Moonflow Intake can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "combat",
@@ -54,8 +54,8 @@
           "type": "healing",
           "nextRoomId": "tideglass-junction",
           "healAmount": 30,
-          "message": "Beyond Spiral Channel, a restorative current shaped by Lunar Current Labyrinth gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Lunar Current Labyrinth finds no wounds to mend. You are already at full HP."
+          "message": "A careful survival cache waits beyond Spiral Channel, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"The labyrinth cheats. This bottle cheats back.\"",
+          "fullHpMessage": "The remedy in Spiral Channel stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "combat",
@@ -87,7 +87,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Tideglass Junction preserves a dormant Fae shrine, but offers no material reward."
+          "message": "One Berry pins down the seventeenth correction on Shizuki's Tideglass Junction map. The compass rose has been replaced with an accusation against north.",
+          "berries": 1
         }
       }
     },

@@ -32,8 +32,8 @@
           "type": "healing",
           "nextRoomId": "shrouded-mere",
           "healAmount": 35,
-          "message": "Beyond Mistroot Verge, a restorative current shaped by Moonveil Stalker Fen gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonveil Stalker Fen finds no wounds to mend. You are already at full HP."
+          "message": "Beneath an improvised shelter in Mistroot Verge, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Veilmoss cordial. For cuts acquired while becoming untraceable.\"",
+          "fullHpMessage": "You leave the medicinal flask at Mistroot Verge untouched for the next injured wanderer."
         }
       }
     },
@@ -53,7 +53,8 @@
         "right": {
           "type": "empty",
           "nextRoomId": "veilwater-crossing",
-          "message": "A quiet recess beyond Shrouded Mere preserves a dormant Fae shrine, but offers no material reward."
+          "message": "One Berry lies wrapped beneath Shizuki's execution-yard journal fragment in Shrouded Mere, packed carefully during an escape measured in heartbeats.",
+          "berries": 1
         },
         "forward": {
           "type": "combat",
@@ -71,8 +72,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Beyond Veilwater Crossing, a restorative current shaped by Moonveil Stalker Fen gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonveil Stalker Fen finds no wounds to mend. You are already at full HP."
+          "message": "Moonlight reveals an old sleeping spot at Veilwater Crossing. Beside it, Shizuki's restorative bottle says: \"Drink in shadow. Smile when the hunters pass.\"",
+          "fullHpMessage": "The restorative at Veilwater Crossing remains beside Shizuki's old sleeping spot; today you are already well."
         },
         "right": {
           "type": "combat",

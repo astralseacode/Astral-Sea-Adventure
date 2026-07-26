@@ -32,8 +32,8 @@
           "type": "healing",
           "nextRoomId": "archon-nave",
           "healAmount": 40,
-          "message": "Beyond Votive Stair, a restorative current shaped by Moonstone Archon Temple gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonstone Archon Temple finds no wounds to mend. You are already at full HP."
+          "message": "Someone converted a broken supply case in Votive Stair into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Moonstone restorative. Borrowed from an altar that looked underused.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Votive Stair is needed, which feels like its own victory."
         }
       }
     },
@@ -44,7 +44,8 @@
         "left": {
           "type": "empty",
           "nextRoomId": "lunar-apse",
-          "message": "A quiet recess beyond Archon Nave preserves a broken celestial instrument, but offers no material reward."
+          "message": "Shizuki tucked one Berry behind a quiet journal page in Archon Nave: \"Freedom gets lonely. Still worth every step.\"",
+          "berries": 1
         },
         "right": {
           "type": "treasure",
@@ -77,8 +78,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Beyond Lunar Apse, a restorative current shaped by Moonstone Archon Temple gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonstone Archon Temple finds no wounds to mend. You are already at full HP."
+          "message": "Near Lunar Apse, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"I left an apology. It was almost sincere.\"",
+          "fullHpMessage": "The bottle at Lunar Apse is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",

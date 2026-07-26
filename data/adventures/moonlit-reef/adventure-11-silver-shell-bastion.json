@@ -17,8 +17,8 @@
           "type": "healing",
           "nextRoomId": "sentry-rampart",
           "healAmount": 30,
-          "message": "Beyond Argent Causeway, a restorative current shaped by Silver Shell Bastion gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Silver Shell Bastion finds no wounds to mend. You are already at full HP."
+          "message": "Shizuki wedged a weathered field kit into the coral at Argent Causeway. Its surviving bottle is labeled: \"Sentry-salve. Quiet feet are healthier feet.\"",
+          "fullHpMessage": "Shizuki's field kit at Argent Causeway can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "treasure",
@@ -51,8 +51,8 @@
           "type": "healing",
           "nextRoomId": "moonplate-keep",
           "healAmount": 30,
-          "message": "Beyond Sentry Rampart, a restorative current shaped by Silver Shell Bastion gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Silver Shell Bastion finds no wounds to mend. You are already at full HP."
+          "message": "A careful survival cache waits beyond Sentry Rampart, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Drink now. The silver shells count footsteps.\"",
+          "fullHpMessage": "The remedy in Sentry Rampart stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "treasure",
@@ -87,7 +87,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Moonplate Keep preserves a dormant Fae shrine, but offers no material reward."
+          "message": "Shizuki sealed one Berry inside a spare lockpick pouch at Moonplate Keep: \"Reward for opening the wrong door correctly.\"",
+          "berries": 1
         }
       }
     },

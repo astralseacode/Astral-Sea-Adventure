@@ -17,8 +17,8 @@
           "type": "healing",
           "nextRoomId": "razor-current",
           "healAmount": 40,
-          "message": "Beyond Meteor Shoal, a restorative current shaped by Starfall Razorfin Reach gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Starfall Razorfin Reach finds no wounds to mend. You are already at full HP."
+          "message": "Shizuki wedged a weathered field kit into the coral at Meteor Shoal. Its surviving bottle is labeled: \"Starfall remedy. Catch the bottle, not the falling blade.\"",
+          "fullHpMessage": "Shizuki's field kit at Meteor Shoal can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "combat",
@@ -54,8 +54,8 @@
           "type": "healing",
           "nextRoomId": "falling-star-cut",
           "healAmount": 40,
-          "message": "Beyond Razor Current, a restorative current shaped by Starfall Razorfin Reach gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Starfall Razorfin Reach finds no wounds to mend. You are already at full HP."
+          "message": "A careful survival cache waits beyond Razor Current, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"For the wound you expected and the three you absolutely did not.\"",
+          "fullHpMessage": "The remedy in Razor Current stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "combat",
@@ -87,7 +87,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Falling-Star Cut preserves a dormant Fae shrine, but offers no material reward."
+          "message": "Shizuki wedged one Berry behind a weathered note in Falling-Star Cut: \"Chaos is not destruction. Sometimes it is the door nobody planned.\"",
+          "berries": 1
         }
       }
     },

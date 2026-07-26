@@ -26,8 +26,8 @@
           "type": "healing",
           "nextRoomId": "riddlepool-ring",
           "healAmount": 30,
-          "message": "Beyond Glyphskip Landing, a restorative current shaped by Reef Rune Playgrounds gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Reef Rune Playgrounds finds no wounds to mend. You are already at full HP."
+          "message": "Someone converted a broken supply case in Glyphskip Landing into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Runeberry tonic. I translated the warning after drinking it.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Glyphskip Landing is needed, which feels like its own victory."
         },
         "forward": {
           "type": "combat",
@@ -60,8 +60,8 @@
           "type": "healing",
           "nextRoomId": "carved-current",
           "healAmount": 30,
-          "message": "Beyond Riddlepool Ring, a restorative current shaped by Reef Rune Playgrounds gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Reef Rune Playgrounds finds no wounds to mend. You are already at full HP."
+          "message": "Near Riddlepool Ring, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"The otters call this cheating. I call it preparation.\"",
+          "fullHpMessage": "The bottle at Riddlepool Ring is still there, but thankfully you do not need Shizuki's remedy today."
         }
       }
     },
@@ -72,7 +72,8 @@
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Carved Current preserves faded Moonkeeper markings, but offers no material reward."
+          "message": "A carved rune circle holds one Berry, the final token from a game Shizuki won by changing rules her creators had written.",
+          "berries": 1
         },
         "right": {
           "type": "combat",

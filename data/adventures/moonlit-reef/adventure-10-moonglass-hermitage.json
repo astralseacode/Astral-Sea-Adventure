@@ -32,8 +32,8 @@
           "type": "healing",
           "nextRoomId": "silent-cloister",
           "healAmount": 30,
-          "message": "Beyond Pilgrim Mirror, a restorative current shaped by Moonglass Hermitage gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonglass Hermitage finds no wounds to mend. You are already at full HP."
+          "message": "Someone converted a broken supply case in Pilgrim Mirror into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Moonglass elixir. Sip carefully; the cup has opinions.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Pilgrim Mirror is needed, which feels like its own victory."
         }
       }
     },
@@ -44,7 +44,8 @@
         "left": {
           "type": "empty",
           "nextRoomId": "shardlight-walk",
-          "message": "A quiet recess beyond Silent Cloister preserves a broken celestial instrument, but offers no material reward."
+          "message": "A polished shard in Silent Cloister reflects one Berry hidden behind it. Shizuki scratched: \"Still free. Still difficult to catch.\"",
+          "berries": 1
         },
         "right": {
           "type": "treasure",
@@ -77,8 +78,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 30,
-          "message": "Beyond Shardlight Walk, a restorative current shaped by Moonglass Hermitage gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonglass Hermitage finds no wounds to mend. You are already at full HP."
+          "message": "Near Shardlight Walk, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"A hermit taught me this. I taught him how to pick a lock.\"",
+          "fullHpMessage": "The bottle at Shardlight Walk is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",

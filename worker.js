@@ -1264,6 +1264,29 @@ async function performAdventureDirectionUnlocked(
 
   const messageParts = [];
   const rewardToken = `${state.currentRoomId}:${direction}`;
+  const isDiscovery =
+    choice.type === "healing" || choice.type === "empty";
+  let discoveryXp = 0;
+  const discoveryBerries =
+    choice.type === "empty" &&
+      Number.isSafeInteger(choice.berries) &&
+      choice.berries > 0
+      ? choice.berries
+      : 0;
+
+  if (
+    isDiscovery &&
+    state.collectedRewards.includes(rewardToken)
+  ) {
+    return {
+      message: "That Shizuki discovery has already been explored.",
+    };
+  }
+
+  if (isDiscovery) {
+    const normalEnemy = await getEnemyDefinition(definition.enemyId);
+    discoveryXp = Math.floor(normalEnemy.reward.xp.max / 2);
+  }
 
   if (choice.type === "treasure") {
     if (state.collectedRewards.includes(rewardToken)) {
@@ -1285,16 +1308,31 @@ async function performAdventureDirectionUnlocked(
     state.playerHp += healed;
     messageParts.push(
       healed > 0
-        ? `${choice.message ||
-          "You rest beside a warm moonstone vent"} ` +
-          `Its magic restores ${healed} HP.`
-        : choice.fullHpMessage ||
-          "The moonstone chamber is peaceful, but you are already at full HP.",
+        ? `${choice.message} You recover ${healed} HP and gain ` +
+          `${discoveryXp} XP.`
+        : `${choice.fullHpMessage} You recover 0 HP and gain ` +
+          `${discoveryXp} XP.`,
     );
   } else if (choice.type === "empty") {
-    messageParts.push(choice.message);
+    messageParts.push(
+      `${choice.message} You gain ${discoveryXp} XP` +
+      (discoveryBerries > 0
+        ? ` and find ${discoveryBerries} ` +
+          `${discoveryBerries === 1 ? "Berry" : "Berries"}.`
+        : "."),
+    );
   } else {
     return { message: "That Adventure outcome is not supported." };
+  }
+
+  if (isDiscovery) {
+    const progress = await getPlayerProgress(env, backpackKey);
+    await savePlayerProgress(env, backpackKey, {
+      ...progress,
+      xp: progress.xp + discoveryXp,
+      berries: progress.berries + discoveryBerries,
+    });
+    state.collectedRewards.push(rewardToken);
   }
 
   advanceAdventureState(

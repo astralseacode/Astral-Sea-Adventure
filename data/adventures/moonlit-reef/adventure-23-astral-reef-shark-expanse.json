@@ -17,8 +17,8 @@
           "type": "healing",
           "nextRoomId": "predator-meridian",
           "healAmount": 40,
-          "message": "Beyond Bluewater Margin, a restorative current shaped by Astral Reef Shark Expanse gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Astral Reef Shark Expanse finds no wounds to mend. You are already at full HP."
+          "message": "Shizuki wedged a weathered field kit into the coral at Bluewater Margin. Its surviving bottle is labeled: \"Bluewater tonic. Shark tested, elf approved, bottle mildly bitten.\"",
+          "fullHpMessage": "Shizuki's field kit at Bluewater Margin can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "treasure",
@@ -51,8 +51,8 @@
           "type": "healing",
           "nextRoomId": "open-reef-run",
           "healAmount": 40,
-          "message": "Beyond Predator Meridian, a restorative current shaped by Astral Reef Shark Expanse gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Astral Reef Shark Expanse finds no wounds to mend. You are already at full HP."
+          "message": "A careful survival cache waits beyond Predator Meridian, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Take a breath. Fear is useful; panic has poor navigation.\"",
+          "fullHpMessage": "The remedy in Predator Meridian stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "treasure",
@@ -87,7 +87,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Open Reef Run preserves a dormant Fae shrine, but offers no material reward."
+          "message": "A shark-crossing diagram in Open Reef Run has one Berry knotted at its safest breathing point. Shizuki's route follows the predator everyone else avoided.",
+          "berries": 1
         }
       }
     },

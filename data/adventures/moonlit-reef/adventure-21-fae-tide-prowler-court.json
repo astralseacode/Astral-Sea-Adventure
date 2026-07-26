@@ -32,8 +32,8 @@
           "type": "healing",
           "nextRoomId": "prowler-gallery",
           "healAmount": 35,
-          "message": "Beyond Twilight Portico, a restorative current shaped by Fae Tide Prowler Court gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Fae Tide Prowler Court finds no wounds to mend. You are already at full HP."
+          "message": "Beneath an improvised shelter in Twilight Portico, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Fae-tide cordial. Payment was one secret and a terrible song.\"",
+          "fullHpMessage": "You leave the medicinal flask at Twilight Portico untouched for the next injured wanderer."
         }
       }
     },
@@ -53,7 +53,8 @@
         "right": {
           "type": "empty",
           "nextRoomId": "fae-mooncourt",
-          "message": "A quiet recess beyond Prowler Gallery preserves a dormant Fae shrine, but offers no material reward."
+          "message": "One Berry weighs down Shizuki's court invitation, folded into a paper boat in Prowler Gallery and labeled: \"Authority sinks beautifully.\"",
+          "berries": 1
         },
         "forward": {
           "type": "combat",
@@ -71,8 +72,8 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Beyond Fae Mooncourt, a restorative current shaped by Fae Tide Prowler Court gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Fae Tide Prowler Court finds no wounds to mend. You are already at full HP."
+          "message": "Moonlight reveals an old sleeping spot at Fae Mooncourt. Beside it, Shizuki's restorative bottle says: \"For prowler scratches and courtly conversations.\"",
+          "fullHpMessage": "The restorative at Fae Mooncourt remains beside Shizuki's old sleeping spot; today you are already well."
         },
         "right": {
           "type": "combat",

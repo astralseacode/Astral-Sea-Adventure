@@ -26,8 +26,8 @@
           "type": "healing",
           "nextRoomId": "drowsing-terrace",
           "healAmount": 25,
-          "message": "Beyond Cloudcoral Rise, a restorative current shaped by Moon Puff Aerie gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moon Puff Aerie finds no wounds to mend. You are already at full HP."
+          "message": "Someone converted a broken supply case in Cloudcoral Rise into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Cloudmint draught. May cause naps, so run first.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Cloudcoral Rise is needed, which feels like its own victory."
         },
         "forward": {
           "type": "combat",
@@ -60,8 +60,8 @@
           "type": "healing",
           "nextRoomId": "whisperdown-loft",
           "healAmount": 25,
-          "message": "Beyond Drowsing Terrace, a restorative current shaped by Moon Puff Aerie gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moon Puff Aerie finds no wounds to mend. You are already at full HP."
+          "message": "Near Drowsing Terrace, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"I traded a Moon Puff three buttons for this recipe. Worth it.\"",
+          "fullHpMessage": "The bottle at Drowsing Terrace is still there, but thankfully you do not need Shizuki's remedy today."
         }
       }
     },
@@ -72,7 +72,8 @@
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Whisperdown Loft preserves faded Moonkeeper markings, but offers no material reward."
+          "message": "An old blanket nest in Whisperdown Loft contains one Berry for the next tired traveler. Shizuki rated the ceiling \"excellent after midnight.\"",
+          "berries": 1
         },
         "right": {
           "type": "combat",

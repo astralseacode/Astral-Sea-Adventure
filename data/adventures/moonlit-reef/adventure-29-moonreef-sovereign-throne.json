@@ -17,8 +17,8 @@
           "type": "healing",
           "nextRoomId": "crownreef-processional",
           "healAmount": 50,
-          "message": "Beyond Sovereign Approach, a restorative current shaped by Moonreef Sovereign Throne gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonreef Sovereign Throne finds no wounds to mend. You are already at full HP."
+          "message": "Shizuki wedged a weathered field kit into the coral at Sovereign Approach. Its surviving bottle is labeled: \"Sovereign restorative. I saved the best bottle for whoever made it this far.\"",
+          "fullHpMessage": "Shizuki's field kit at Sovereign Approach can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "treasure",
@@ -51,8 +51,8 @@
           "type": "healing",
           "nextRoomId": "last-moonkeeper-way",
           "healAmount": 50,
-          "message": "Beyond Crownreef Processional, a restorative current shaped by Moonreef Sovereign Throne gathers in a quiet basin.",
-          "fullHpMessage": "The restorative magic of Moonreef Sovereign Throne finds no wounds to mend. You are already at full HP."
+          "message": "A careful survival cache waits beyond Crownreef Processional, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"No throne grants freedom. Walking away does. Drink up.\"",
+          "fullHpMessage": "The remedy in Crownreef Processional stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "treasure",
@@ -87,7 +87,8 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A quiet recess beyond Last Moonkeeper Way preserves a dormant Fae shrine, but offers no material reward."
+          "message": "At Last Moonkeeper Way, one final Berry rests below Shizuki's carving: \"I survived, I wandered, and I chose what came next.\"",
+          "berries": 1
         }
       }
     },
