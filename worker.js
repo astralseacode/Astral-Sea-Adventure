@@ -323,12 +323,12 @@ const DISCORD_COMMANDS = [
   },
   {
     name: "attack",
-    description: "Attack the enemy in your current battle.",
+    description: "Attack the enemy in your current Adventure.",
     type: 1,
   },
   {
     name: "eat",
-    description: "Eat a Berry during combat to restore 20 HP without using a turn.",
+    description: "Eat a Berry during an Adventure fight to restore 20 HP without using a turn.",
     type: 1,
   },
   {
@@ -1361,7 +1361,7 @@ async function startAdventureBattle(
 
   return {
     message:
-      `${context.isBoss ? "Boss battle" : "Room battle"} begins! ` +
+      `${context.isBoss ? "Boss fight" : "Enemy fight"} begins! ` +
       `${enemy.name} appears. Enemy HP: ${enemy.hp} | ` +
       `Your HP: ${state.playerHp} | Use ` +
       `${platform === "discord" ? "/attack" : "!attack"} to strike.`,
@@ -1417,14 +1417,14 @@ async function requestCombatConfirmation(
 
     return {
       message:
-        `Combat expeditions are not available in ${region.name} right now.`,
+        `Adventures are not available in ${region.name} right now.`,
     };
   }
 
   if (combatEntries.length === 0) {
     return {
       message:
-        `${region.name} does not have any combat expeditions yet.`,
+        `${region.name} does not have any Adventures yet.`,
     };
   }
 
@@ -1465,10 +1465,10 @@ async function requestCombatConfirmation(
     return {
       message:
         platform === "discord"
-          ? "Usage: /combat <expedition number>\n" +
-            "Use /combat to view your unlocked expeditions."
-          : "Usage: !combat <expedition number> | " +
-            "Use !combat to view your unlocked expeditions.",
+          ? "Usage: /adventure <Adventure number>\n" +
+            "Use /adventure to view your unlocked Adventures."
+          : "Usage: !adventure <Adventure number> | " +
+            "Use !adventure to view your unlocked Adventures.",
     };
   }
 
@@ -1481,7 +1481,7 @@ async function requestCombatConfirmation(
   ) {
     return {
       message:
-        `That expedition does not exist. Choose a number from ` +
+        `That Adventure does not exist. Choose a number from ` +
         `1 to ${combatEntries.length}.`,
     };
   }
@@ -1489,8 +1489,8 @@ async function requestCombatConfirmation(
   if (encounterNumber > highestUnlocked) {
     return {
       message:
-        `Expedition ${encounterNumber} is locked. ` +
-        `Defeat Expedition ${encounterNumber - 1} first.`,
+        `Adventure ${encounterNumber} is locked. ` +
+        `Complete Adventure ${encounterNumber - 1} first.`,
     };
   }
 
@@ -1517,14 +1517,14 @@ async function requestCombatConfirmation(
     encounterNumber,
     message:
       platform === "discord"
-        ? `Expedition ${encounterNumber}: Are you sure you want to fight ` +
+        ? `Adventure ${encounterNumber}: Are you sure you want to fight ` +
           `${enemy.name}?!\n` +
           (isChallenging
             ? `Your Level: ${playerLevel} | Recommended Level: ` +
               `${recommendedLevel} — Challenging\n`
             : `Recommended Level: ${recommendedLevel}\n`) +
           "Use /yes to begin or /no to cancel."
-        : `Expedition ${encounterNumber}: Fight ${enemy.name}? ` +
+        : `Adventure ${encounterNumber}: Fight ${enemy.name}? ` +
           (isChallenging
             ? `Your Level: ${playerLevel} | Recommended: ` +
               `${recommendedLevel} [Challenging]. `
@@ -1600,8 +1600,8 @@ async function confirmPendingCombatUnlocked(
 
     return {
       message:
-        `That expedition selection expired. Use ` +
-        `${platform === "discord" ? "/combat <number>" : "!combat <number>"} again.`,
+        `That Adventure selection expired. Use ` +
+        `${platform === "discord" ? "/adventure <number>" : "!adventure <number>"} again.`,
     };
   }
 
@@ -1610,7 +1610,7 @@ async function confirmPendingCombatUnlocked(
   if (!pending) {
     return {
       message:
-        "You do not have an expedition waiting for confirmation.",
+        "You do not have an Adventure waiting for confirmation.",
     };
   }
 
@@ -1625,7 +1625,7 @@ async function confirmPendingCombatUnlocked(
     return {
       message:
         `Your region changed. Use ` +
-        `${platform === "discord" ? "/combat <number>" : "!combat <number>"} again.`,
+        `${platform === "discord" ? "/adventure <number>" : "!adventure <number>"} again.`,
     };
   }
 
@@ -1638,7 +1638,7 @@ async function confirmPendingCombatUnlocked(
 
     return {
       message:
-        `Combat expeditions are not available in ${region.name} right now.`,
+        `Adventures are not available in ${region.name} right now.`,
     };
   }
 
@@ -1661,8 +1661,8 @@ async function confirmPendingCombatUnlocked(
 
     return {
       message:
-        `That expedition is no longer available. Use ` +
-        `${platform === "discord" ? "/combat" : "!combat"} again.`,
+        `That Adventure is no longer available. Use ` +
+        `${platform === "discord" ? "/adventure" : "!adventure"} again.`,
     };
   }
 
@@ -1715,7 +1715,7 @@ async function cancelPendingCombat(
 
         return {
           message:
-            "You do not have an expedition waiting for confirmation.",
+            "You do not have an Adventure waiting for confirmation.",
         };
       }
 
@@ -1733,7 +1733,7 @@ async function cancelPendingCombat(
 
       return {
         message:
-          `Combat cancelled. The ${enemyName} has been left alone... for now.`,
+          `Adventure challenge cancelled. The ${enemyName} has been left alone... for now.`,
       };
     },
   );
@@ -1769,12 +1769,12 @@ async function startCombatEncounter(
   return {
     message:
       platform === "discord"
-        ? `Expedition ${encounterNumber} begins!\n\n` +
+        ? `Adventure ${encounterNumber} begins!\n\n` +
           `${enemy.name} appears in ${region.name}.\n` +
           `Enemy HP: ${enemy.hp}\n` +
           `Your HP: ${PLAYER_COMBAT_MAX_HP}\n\n` +
           "Use /attack to strike."
-        : `Expedition ${encounterNumber} begins! ${enemy.name} appears. ` +
+        : `Adventure ${encounterNumber} begins! ${enemy.name} appears. ` +
           `Enemy HP: ${enemy.hp} | Your HP: ${PLAYER_COMBAT_MAX_HP} | ` +
           "Use !attack to strike.",
   };
@@ -1799,10 +1799,32 @@ async function performAttackUnlocked(
   const combatState = await getCombatState(env, backpackKey);
 
   if (!combatState) {
+    const activeAdventure = await getActiveAdventure(env, backpackKey);
+
+    if (activeAdventure) {
+      if (activeAdventure.status === "awaiting-boss-confirmation") {
+        return {
+          message:
+            "There isn't an enemy to attack right now. " +
+            `Use ${platform === "discord" ? "/yes or /no" : "!yes or !no"} ` +
+            "to answer the Adventure challenge.",
+        };
+      }
+
+      return {
+        message:
+          "There isn't an enemy to attack right now. " +
+          "Continue your Adventure by choosing " +
+          `${platform === "discord"
+            ? "/left, /right, or /forward"
+            : "!left, !right, or !forward"}.`,
+      };
+    }
+
     return {
       message:
-        "You are not currently in a battle. " +
-        `Use ${platform === "discord" ? "/combat" : "!combat"} to find an opponent.`,
+        "You are not currently in an Adventure. " +
+        `Start one with ${platform === "discord" ? "/adventure" : "!adventure"}.`,
     };
   }
 
@@ -2191,7 +2213,7 @@ async function performExploreUnlocked(
   if (await getCombatState(env, backpackKey)) {
     return {
       message:
-        "You cannot explore during an active battle. " +
+        "You cannot explore while fighting an enemy in an Adventure. " +
         `Use ${platform === "discord" ? "/attack" : "!attack"} to continue fighting.`,
     };
   }
@@ -2595,7 +2617,7 @@ async function performTravelUnlocked(
   if (await getCombatState(env, backpackKey)) {
     return {
       message:
-        "You cannot travel during an active battle. " +
+        "You cannot travel while fighting an enemy in an Adventure. " +
         "Defeat your enemy first.",
     };
   }
@@ -3850,13 +3872,13 @@ async function formatCombatProgress(
   );
   const lines = platform === "discord"
     ? [
-        `${region.name} Combat Progress`,
+        `${region.name} Adventure Progress`,
         `Your Level: ${playerLevel}`,
-        `Expeditions Unlocked: ${highestUnlocked} of ${entries.length}`,
+        `Adventures Unlocked: ${highestUnlocked} of ${entries.length}`,
       ]
     : [
         `${region.name} | Level ${playerLevel} | ` +
-        `Expeditions: ${highestUnlocked}/${entries.length}`,
+        `Adventures: ${highestUnlocked}/${entries.length}`,
       ];
 
   for (let index = 0; index < highestUnlocked; index += 1) {
@@ -3882,16 +3904,16 @@ async function formatCombatProgress(
     );
   }
 
-  const command = platform === "discord" ? "/combat" : "!combat";
+  const command = platform === "discord" ? "/adventure" : "!adventure";
   lines.push(
     platform === "discord"
       ? highestUnlocked === 1
-        ? `Use ${command} 1 to select an expedition.`
+        ? `Use ${command} 1 to select an Adventure.`
         : `Use ${command} 1 through ${command} ${highestUnlocked} ` +
-          "to select an expedition."
+          "to select an Adventure."
       : highestUnlocked === 1
-        ? "Use !combat 1"
-        : `Use !combat 1-${highestUnlocked}`,
+        ? "Use !adventure 1"
+        : `Use !adventure 1-${highestUnlocked}`,
   );
 
   return {
