@@ -1,0 +1,109 @@
+{
+  "id": "reef-rune-playgrounds",
+  "number": 13,
+  "name": "Reef Rune Playgrounds",
+  "regionId": "moonlit-reef",
+  "enemyId": "reef-rune-otter",
+  "recommendedLevel": 2,
+  "introDiscord": "Playful reef runes rearrange themselves across ruins once tended by Fae wayfinders.",
+  "introTwitch": "Playful reef runes rearrange themselves across ruins once tended by Fae wayfinders.",
+  "startRoomId": "glyphskip-landing",
+  "rooms": {
+    "glyphskip-landing": {
+      "name": "Glyphskip Landing",
+      "prompt": "Glyphs hop between stones at a landing where three paths refuse to keep their shapes.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "riddlepool-ring",
+          "message": "Within Reef Rune Playgrounds, the left path from Glyphskip Landing reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "riddlepool-ring",
+          "healAmount": 30,
+          "message": "Beyond Glyphskip Landing, a restorative current shaped by Reef Rune Playgrounds gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Reef Rune Playgrounds finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "riddlepool-ring",
+          "enemyId": "reef-rune-otter",
+          "message": "The water folds around Reef Rune Otter, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "riddlepool-ring": {
+      "name": "Riddlepool Ring",
+      "prompt": "A circular pool reflects changing riddles while three routes curve beyond its rim.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "carved-current",
+          "enemyId": "reef-rune-otter",
+          "message": "The water folds around Reef Rune Otter, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "carved-current",
+          "message": "Within Reef Rune Playgrounds, the right path from Riddlepool Ring reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 40,
+            "max": 70
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "carved-current",
+          "healAmount": 30,
+          "message": "Beyond Riddlepool Ring, a restorative current shaped by Reef Rune Playgrounds gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Reef Rune Playgrounds finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "carved-current": {
+      "name": "Carved Current",
+      "prompt": "Carved currents animate old symbols around three equally mysterious passages.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "boss-antechamber",
+          "message": "A quiet recess beyond Carved Current preserves faded Moonkeeper markings, but offers no material reward."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "reef-rune-otter",
+          "message": "The water folds around Reef Rune Otter, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Reef Rune Playgrounds, the forward path from Carved Current reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 45,
+            "max": 80
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Trickster Tableau",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Trickster Tableau. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Trickster Tableau: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Trickster Tableau. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "reef-rune-trickster-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Reef-Rune Trickster reveals itself!"
+  },
+  "completionText": "Reef-Rune Trickster yields to the returning current. Reef Rune Playgrounds settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

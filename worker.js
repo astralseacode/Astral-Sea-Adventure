@@ -286,6 +286,14 @@ const DISCORD_COMMANDS = [
         required: false,
         min_value: 1,
       },
+      {
+        type: 4,
+        name: "page",
+        description: "Adventure list page to view",
+        required: false,
+        min_value: 1,
+        max_value: 5,
+      },
     ],
   },
   {
@@ -512,7 +520,7 @@ async function handleTwitchRequest(url, env) {
             env,
             backpackKey,
             url.searchParams.get("adventure") ||
-              argumentParts[0] ||
+              rawArgs ||
               "",
             "twitch",
           )
@@ -740,7 +748,12 @@ async function handleDiscordInteraction(request, env) {
             await performAdventure(
               env,
               backpackKey,
-              getDiscordOption(interaction, "adventure"),
+              getDiscordOption(interaction, "adventure") ??
+                (
+                  getDiscordOption(interaction, "page")
+                    ? `list ${getDiscordOption(interaction, "page")}`
+                    : ""
+                ),
               "discord",
             )
           ).message,
@@ -1025,9 +1038,13 @@ async function performAdventureUnlocked(
     entries.length,
   );
   const activeAdventure = await getActiveAdventure(env, backpackKey);
-  const normalizedInput = String(adventureInput ?? "").trim();
+  const normalizedInput = String(adventureInput ?? "").trim().toLowerCase();
 
-  if (!normalizedInput) {
+  if (!normalizedInput || normalizedInput.startsWith("list")) {
+    const requestedPage = normalizedInput
+      ? Number(normalizedInput.split(/\s+/)[1] || 1)
+      : 1;
+
     return await formatAdventureProgress(
       region,
       entries,
@@ -1035,6 +1052,7 @@ async function performAdventureUnlocked(
       playerLevel,
       activeAdventure,
       platform,
+      requestedPage,
     );
   }
 
@@ -2005,9 +2023,32 @@ async function resolveCombatVictory(
           progress,
         )
       : null;
+  const completedAdventureNumbers =
+    adventureContext?.isBoss
+      ? adventureContext.adventureNumber === 29
+        ? Array.from({ length: 29 }, (_, index) => index + 1)
+        : [adventureContext.adventureNumber]
+      : [];
   const updatedProgress = {
     ...progress,
     xp: newXp,
+    ...(adventureContext?.isBoss
+      ? {
+          completedAdventures: {
+            ...(progress.completedAdventures || {}),
+            [combatState.regionId]: [
+              ...new Set([
+                ...(
+                  progress.completedAdventures?.[
+                    combatState.regionId
+                  ] || []
+                ),
+                ...completedAdventureNumbers,
+              ]),
+            ].sort((left, right) => left - right),
+          },
+        }
+      : {}),
     ...(unlockResult
       ? { combatProgress: unlockResult.combatProgress }
       : {}),
@@ -2044,10 +2085,11 @@ async function resolveCombatVictory(
   if (unlockResult?.unlockedEncounter) {
     messageParts.push(
       `Adventure ${unlockResult.unlockedEncounter.number} — ` +
-      `${getAdventureName(
-        unlockResult.unlockedEncounter.number,
-        unlockResult.unlockedEncounter.name,
-      )} is now unlocked. ` +
+      `${unlockResult.unlockedEncounter.adventureName ||
+        getAdventureName(
+          unlockResult.unlockedEncounter.number,
+          unlockResult.unlockedEncounter.name,
+        )} is now unlocked. ` +
       `Recommended Level: ${unlockResult.unlockedEncounter.recommendedLevel}. ` +
       `Use ${platform === "discord" ? "/adventure" : "!adventure"} ` +
       `${unlockResult.unlockedEncounter.number} to select it.`,
@@ -3527,9 +3569,13 @@ async function getEnemyDefinition(enemyId) {
     throw new Error("Invalid enemy ID.");
   }
 
+  const manifest = await getAdventureManifest("moonlit-reef");
+  const isAdventureBoss = manifest.some(
+    (entry) => entry.bossEnemyId === enemyId,
+  );
   const enemy = await fetchCachedJson(
     `enemy:${enemyId}`,
-    ["bubble-nibbler-boss", "groveheart-sprout"].includes(enemyId)
+    isAdventureBoss
       ? `${GITHUB_DATA_BASE}/enemies/bosses/moonlit-reef/` +
         `${enemyId}.json`
       : `${GITHUB_DATA_BASE}/enemies/${enemyId}.json`,
@@ -3568,14 +3614,11 @@ function getRecommendedEnemyLevel(encounter, enemy) {
 }
 
 async function getAdventureDefinition(regionId, adventureNumber) {
-  const filenames = {
-    1: "adventure-01-bubble-nibbler-hideout.json",
-    2: "adventure-02-silverfin-sprout-grove.json",
-  };
-  const filename =
-    regionId === "moonlit-reef"
-      ? filenames[adventureNumber]
-      : null;
+  const manifest = await getAdventureManifest(regionId);
+  const manifestEntry = manifest.find(
+    (entry) => entry.number === adventureNumber,
+  );
+  const filename = manifestEntry?.file;
 
   if (!filename) {
     return null;
@@ -3601,6 +3644,35 @@ async function getAdventureDefinition(regionId, adventureNumber) {
   return definition;
 }
 
+async function getAdventureManifest(regionId) {
+  if (regionId !== "moonlit-reef") {
+    return [];
+  }
+
+  const manifest = await fetchCachedJson(
+    `adventure-manifest:${regionId}`,
+    `${GITHUB_DATA_BASE}/adventures/${regionId}/manifest.json`,
+  );
+
+  if (
+    !Array.isArray(manifest) ||
+    manifest.length !== 29 ||
+    manifest.some(
+      (entry, index) =>
+        entry?.number !== index + 1 ||
+        typeof entry.id !== "string" ||
+        typeof entry.name !== "string" ||
+        typeof entry.enemyId !== "string" ||
+        typeof entry.bossEnemyId !== "string" ||
+        typeof entry.file !== "string",
+    )
+  ) {
+    throw new Error("Adventure manifest has an invalid format.");
+  }
+
+  return manifest;
+}
+
 function getAdventureName(number, enemyName) {
   if (number === 1) return "Bubble Nibbler Hideout";
   if (number === 2) return "Silverfin Sprout Grove";
@@ -3615,17 +3687,38 @@ async function formatAdventureProgress(
   playerLevel,
   activeAdventure,
   platform,
+  requestedPage = 1,
 ) {
+  const manifest = await getAdventureManifest(region.id);
+  const pageSize = 7;
+  const listedCount = Math.min(
+    entries.length,
+    highestUnlocked + (highestUnlocked < entries.length ? 1 : 0),
+  );
+  const totalPages = Math.max(1, Math.ceil(listedCount / pageSize));
+  const page = Number.isSafeInteger(requestedPage)
+    ? Math.min(totalPages, Math.max(1, requestedPage))
+    : 1;
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = Math.min(listedCount, startIndex + pageSize);
   const visibleEntries = entries.slice(
-    0,
-    Math.min(entries.length, highestUnlocked + 1),
+    startIndex,
+    endIndex,
   );
   const details = await Promise.all(
     visibleEntries.map(async (entry, index) => {
+      const number = startIndex + index + 1;
+
+      if (number > highestUnlocked) {
+        return { number, locked: true };
+      }
+
       const enemy = await getEnemyDefinition(entry.enemy);
       return {
-        number: index + 1,
-        name: getAdventureName(index + 1, enemy.name),
+        number,
+        name:
+          manifest[number - 1]?.name ||
+          getAdventureName(number, enemy.name),
         recommendedLevel: getRecommendedEnemyLevel(entry, enemy),
       };
     }),
@@ -3635,11 +3728,13 @@ async function formatAdventureProgress(
         `${region.name} Adventures`,
         `Your Level: ${playerLevel}`,
         `Adventures Unlocked: ${highestUnlocked} of ${entries.length}`,
+        `Page ${page} of ${totalPages}`,
       ]
     : [
         `${region.name} Adventures`,
         `Level ${playerLevel}`,
         `Unlocked ${highestUnlocked}/${entries.length}`,
+        `Page ${page}/${totalPages}`,
       ];
 
   if (activeAdventure) {
@@ -3648,32 +3743,31 @@ async function formatAdventureProgress(
     );
   }
 
-  for (let index = 0; index < highestUnlocked; index += 1) {
-    const detail = details[index];
+  for (const detail of details) {
     parts.push(
-      platform === "discord"
+      detail.locked
+        ? `${detail.number}${platform === "discord" ? "." : ""} Locked`
+        : platform === "discord"
         ? `${detail.number}. ${detail.name} — ` +
           `Recommended Level ${detail.recommendedLevel}`
         : `${detail.number} ${detail.name} Lv.${detail.recommendedLevel}`,
     );
   }
 
-  if (highestUnlocked < entries.length) {
-    parts.push(
-      `${highestUnlocked + 1}${platform === "discord" ? "." : ""} Locked`,
-    );
-  }
-
   parts.push(
     platform === "discord"
-      ? highestUnlocked === 1
-        ? "Use /adventure 1 to begin or resume an Adventure."
-        : `Use /adventure 1 through /adventure ${highestUnlocked} ` +
-          "to begin or resume an Adventure."
-      : highestUnlocked === 1
-        ? "Use !adventure 1"
-        : `Use !adventure 1-${highestUnlocked}`,
+      ? "Use /adventure <number> to begin or resume an Adventure."
+      : "Use !adventure <number>",
   );
+
+  if (totalPages > 1) {
+    parts.push(
+      platform === "discord"
+        ? `Use /adventure page:${page === totalPages ? 1 : page + 1} ` +
+          "for the next page."
+        : `Use !adventure list ${page === totalPages ? 1 : page + 1}`,
+    );
+  }
 
   return {
     message: parts.join(platform === "discord" ? "\n" : " | "),
@@ -3851,9 +3945,12 @@ async function unlockNextEncounterAfterVictory(
   const nextNumber = currentHighest + 1;
   const nextEncounter = getEncounterByNumber(entries, nextNumber);
   let nextEnemy;
+  let nextAdventureName;
 
   try {
     nextEnemy = await getEnemyDefinition(nextEncounter.enemy);
+    const manifest = await getAdventureManifest(combatState.regionId);
+    nextAdventureName = manifest[nextNumber - 1]?.name;
   } catch (error) {
     console.error("Unlocked enemy lookup failed:", error);
     return null;
@@ -3869,6 +3966,7 @@ async function unlockNextEncounterAfterVictory(
     unlockedEncounter: {
       number: nextNumber,
       name: nextEnemy.name,
+      adventureName: nextAdventureName,
       recommendedLevel: getRecommendedEnemyLevel(
         nextEncounter,
         nextEnemy,
@@ -4304,6 +4402,7 @@ function createEmptyProgress() {
     discoveries: {},
     notes: {},
     combatProgress: {},
+    completedAdventures: {},
     currentRegion: "moonlit-reef",
   };
 }
@@ -4363,6 +4462,7 @@ async function getPlayerProgress(
     const discoveries = {};
     const notes = {};
     const combatProgress = {};
+    const completedAdventures = {};
 
     if (
       parsed.discoveries &&
@@ -4421,6 +4521,29 @@ async function getPlayerProgress(
       }
     }
 
+    if (
+      parsed.completedAdventures &&
+      typeof parsed.completedAdventures === "object" &&
+      !Array.isArray(parsed.completedAdventures)
+    ) {
+      for (const region of REGIONS) {
+        const completed = parsed.completedAdventures[region.id];
+
+        if (Array.isArray(completed)) {
+          completedAdventures[region.id] = [
+            ...new Set(
+              completed.filter(
+                (number) =>
+                  Number.isSafeInteger(number) &&
+                  number >= 1 &&
+                  number <= 29,
+              ),
+            ),
+          ].sort((left, right) => left - right);
+        }
+      }
+    }
+
     return {
       xp,
       berries,
@@ -4428,6 +4551,7 @@ async function getPlayerProgress(
       discoveries,
       notes,
       combatProgress,
+      completedAdventures,
       currentRegion,
     };
   } catch {
@@ -4455,6 +4579,7 @@ async function savePlayerProgress(
   const safeDiscoveries = {};
   const safeNotes = {};
   const safeCombatProgress = {};
+  const safeCompletedAdventures = {};
 
   if (
     progress.discoveries &&
@@ -4513,6 +4638,29 @@ async function savePlayerProgress(
     }
   }
 
+  if (
+    progress.completedAdventures &&
+    typeof progress.completedAdventures === "object" &&
+    !Array.isArray(progress.completedAdventures)
+  ) {
+    for (const region of REGIONS) {
+      const completed = progress.completedAdventures[region.id];
+
+      if (Array.isArray(completed)) {
+        safeCompletedAdventures[region.id] = [
+          ...new Set(
+            completed.filter(
+              (number) =>
+                Number.isSafeInteger(number) &&
+                number >= 1 &&
+                number <= 29,
+            ),
+          ),
+        ].sort((left, right) => left - right);
+      }
+    }
+  }
+
   const safeProgress = {
     xp: Math.max(
       0,
@@ -4530,6 +4678,7 @@ async function savePlayerProgress(
     discoveries: safeDiscoveries,
     notes: safeNotes,
     combatProgress: safeCombatProgress,
+    completedAdventures: safeCompletedAdventures,
     currentRegion:
       getRegionById(progress.currentRegion)?.id ||
       "moonlit-reef",

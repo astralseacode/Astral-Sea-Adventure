@@ -1,0 +1,20 @@
+{
+  "id": "starshell-wayfinder-boss",
+  "name": "Starshell Wayfinder",
+  "region": "moonlit-reef",
+  "level": 1,
+  "hp": 86,
+  "damageBonus": 2,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 82,
+      "max": 133
+    },
+    "xp": {
+      "min": 32,
+      "max": 51
+    }
+  },
+  "defeatCandyLoss": 17
+}

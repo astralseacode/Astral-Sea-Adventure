@@ -1,0 +1,109 @@
+{
+  "id": "moonveil-stalker-fen",
+  "number": 15,
+  "name": "Moonveil Stalker Fen",
+  "regionId": "moonlit-reef",
+  "enemyId": "moonveil-stalker",
+  "recommendedLevel": 3,
+  "introDiscord": "Moonlit mist clings to a submerged fen where roots hide beneath dark, glassy water.",
+  "introTwitch": "Moonlit mist clings to a submerged fen where roots hide beneath dark, glassy water.",
+  "startRoomId": "mistroot-verge",
+  "rooms": {
+    "mistroot-verge": {
+      "name": "Mistroot Verge",
+      "prompt": "Mistroot tangles border a verge whose three trails sink into silver haze.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "shrouded-mere",
+          "enemyId": "moonveil-stalker",
+          "message": "The water folds around Moonveil Stalker, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "shrouded-mere",
+          "message": "Within Moonveil Stalker Fen, the right path from Mistroot Verge reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 45,
+            "max": 75
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "shrouded-mere",
+          "healAmount": 35,
+          "message": "Beyond Mistroot Verge, a restorative current shaped by Moonveil Stalker Fen gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moonveil Stalker Fen finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "shrouded-mere": {
+      "name": "Shrouded Mere",
+      "prompt": "A shrouded mere reflects no stars, and three channels pass beneath leaning reeds.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "veilwater-crossing",
+          "message": "Within Moonveil Stalker Fen, the left path from Shrouded Mere reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 55,
+            "max": 85
+          }
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "veilwater-crossing",
+          "message": "A quiet recess beyond Shrouded Mere preserves a dormant Fae shrine, but offers no material reward."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "veilwater-crossing",
+          "enemyId": "moonveil-stalker",
+          "message": "The water folds around Moonveil Stalker, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "veilwater-crossing": {
+      "name": "Veilwater Crossing",
+      "prompt": "Veilwater drifts over old warning stones at a crossing with three obscured routes.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 35,
+          "message": "Beyond Veilwater Crossing, a restorative current shaped by Moonveil Stalker Fen gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moonveil Stalker Fen finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "moonveil-stalker",
+          "message": "The water folds around Moonveil Stalker, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Moonveil Stalker Fen, the forward path from Veilwater Crossing reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 60,
+            "max": 95
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Primeval Fenheart",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Primeval Fenheart. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Primeval Fenheart: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Primeval Fenheart. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "veilclaw-prime-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Veilclaw Prime reveals itself!"
+  },
+  "completionText": "Veilclaw Prime yields to the returning current. Moonveil Stalker Fen settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

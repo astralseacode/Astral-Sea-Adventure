@@ -1,0 +1,20 @@
+{
+  "id": "fae-tide-nightlord-boss",
+  "name": "Fae Tide Nightlord",
+  "region": "moonlit-reef",
+  "level": 3,
+  "hp": 145,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 248,
+      "max": 293
+    },
+    "xp": {
+      "min": 106,
+      "max": 120
+    }
+  },
+  "defeatCandyLoss": 32
+}

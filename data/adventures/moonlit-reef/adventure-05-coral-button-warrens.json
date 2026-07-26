@@ -1,0 +1,109 @@
+{
+  "id": "coral-button-warrens",
+  "number": 5,
+  "name": "Coral Button Warrens",
+  "regionId": "moonlit-reef",
+  "enemyId": "coral-button-crab",
+  "recommendedLevel": 1,
+  "introDiscord": "Round coral doors cover a warren carved beneath the Moonlit Reef.",
+  "introTwitch": "Round coral doors cover a warren carved beneath the Moonlit Reef.",
+  "startRoomId": "buttonshell-gate",
+  "rooms": {
+    "buttonshell-gate": {
+      "name": "Buttonshell Gate",
+      "prompt": "Tiny shell mosaics turn in the current beside three low passages beneath the coral.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "crimson-burrows",
+          "healAmount": 25,
+          "message": "Beyond Buttonshell Gate, a restorative current shaped by Coral Button Warrens gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Coral Button Warrens finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "crimson-burrows",
+          "message": "Within Coral Button Warrens, the right path from Buttonshell Gate reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 25,
+            "max": 50
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "crimson-burrows",
+          "enemyId": "coral-button-crab",
+          "message": "The water folds around Coral Button Crab, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "crimson-burrows": {
+      "name": "Crimson Burrows",
+      "prompt": "Red reef walls knot together around a junction whose three routes vanish under carved ledges.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "clasped-reef",
+          "enemyId": "coral-button-crab",
+          "message": "The water folds around Coral Button Crab, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "clasped-reef",
+          "healAmount": 25,
+          "message": "Beyond Crimson Burrows, a restorative current shaped by Coral Button Warrens gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Coral Button Warrens finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "clasped-reef",
+          "message": "Within Coral Button Warrens, the forward path from Crimson Burrows reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 30,
+            "max": 55
+          }
+        }
+      }
+    },
+    "clasped-reef": {
+      "name": "Clasped Reef",
+      "prompt": "Moonkeeper clasps line a vaulted pocket where three tunnels thread through dense coral.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Coral Button Warrens, the left path from Clasped Reef reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "coral-button-crab",
+          "message": "The water folds around Coral Button Crab, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "boss-antechamber",
+          "message": "A quiet recess beyond Clasped Reef preserves a dormant Fae shrine, but offers no material reward."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Crownclasp Chamber",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Crownclasp Chamber. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Crownclasp Chamber: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Crownclasp Chamber. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "coral-crown-regent-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Coral Crown Regent reveals itself!"
+  },
+  "completionText": "Coral Crown Regent yields to the returning current. Coral Button Warrens settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "echo-crowned-siren-boss",
+  "name": "Echo-Crowned Siren",
+  "region": "moonlit-reef",
+  "level": 3,
+  "hp": 131,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 213,
+      "max": 261
+    },
+    "xp": {
+      "min": 88,
+      "max": 106
+    }
+  },
+  "defeatCandyLoss": 27
+}

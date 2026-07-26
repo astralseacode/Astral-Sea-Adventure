@@ -1,0 +1,109 @@
+{
+  "id": "crescent-claw-citadel",
+  "number": 14,
+  "name": "Crescent Claw Citadel",
+  "regionId": "moonlit-reef",
+  "enemyId": "crescent-claw-crab",
+  "recommendedLevel": 2,
+  "introDiscord": "A crescent-shaped citadel rises from the reef, its shellwork sharpened by centuries of tide.",
+  "introTwitch": "A crescent-shaped citadel rises from the reef, its shellwork sharpened by centuries of tide.",
+  "startRoomId": "crescent-gate",
+  "rooms": {
+    "crescent-gate": {
+      "name": "Crescent Gate",
+      "prompt": "A moon-carved gate opens upon three approaches beneath curving coral battlements.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "talon-arcade",
+          "healAmount": 30,
+          "message": "Beyond Crescent Gate, a restorative current shaped by Crescent Claw Citadel gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Crescent Claw Citadel finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "talon-arcade",
+          "enemyId": "crescent-claw-crab",
+          "message": "The water folds around Crescent Claw Crab, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "talon-arcade",
+          "message": "Within Crescent Claw Citadel, the forward path from Crescent Gate reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        }
+      }
+    },
+    "talon-arcade": {
+      "name": "Talon Arcade",
+      "prompt": "Talon motifs cross an arcade whose three corridors vanish around separate bends.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "moonclaw-court",
+          "message": "Within Crescent Claw Citadel, the left path from Talon Arcade reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 40,
+            "max": 70
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "moonclaw-court",
+          "healAmount": 30,
+          "message": "Beyond Talon Arcade, a restorative current shaped by Crescent Claw Citadel gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Crescent Claw Citadel finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "moonclaw-court",
+          "enemyId": "crescent-claw-crab",
+          "message": "The water folds around Crescent Claw Crab, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "moonclaw-court": {
+      "name": "Moonclaw Court",
+      "prompt": "A pale court lies beneath the citadel crown, offering three silent ways onward.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "crescent-claw-crab",
+          "message": "The water folds around Crescent Claw Crab, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Crescent Claw Citadel, the right path from Moonclaw Court reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 45,
+            "max": 80
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "boss-antechamber",
+          "message": "A quiet recess beyond Moonclaw Court preserves a dormant Fae shrine, but offers no material reward."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Regent Thronepool",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Regent Thronepool. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Regent Thronepool: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Regent Thronepool. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "crescent-claw-regent-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Crescent Claw Regent reveals itself!"
+  },
+  "completionText": "Crescent Claw Regent yields to the returning current. Crescent Claw Citadel settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

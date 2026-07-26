@@ -1,0 +1,20 @@
+{
+  "id": "moonveil-jelly-matriarch-boss",
+  "name": "Moonveil Jelly Matriarch",
+  "region": "moonlit-reef",
+  "level": 1,
+  "hp": 65,
+  "damageBonus": 2,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 70,
+      "max": 112
+    },
+    "xp": {
+      "min": 27,
+      "max": 42
+    }
+  },
+  "defeatCandyLoss": 13
+}

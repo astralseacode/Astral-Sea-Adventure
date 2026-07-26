@@ -1,0 +1,20 @@
+{
+  "id": "pearlward-luminary-boss",
+  "name": "Pearlward Luminary",
+  "region": "moonlit-reef",
+  "level": 3,
+  "hp": 135,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 222,
+      "max": 270
+    },
+    "xp": {
+      "min": 93,
+      "max": 111
+    }
+  },
+  "defeatCandyLoss": 28
+}

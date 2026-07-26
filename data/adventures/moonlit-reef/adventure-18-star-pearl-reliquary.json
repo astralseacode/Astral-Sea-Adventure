@@ -1,0 +1,109 @@
+{
+  "id": "star-pearl-reliquary",
+  "number": 18,
+  "name": "Star Pearl Reliquary",
+  "regionId": "moonlit-reef",
+  "enemyId": "star-pearl-guardian",
+  "recommendedLevel": 3,
+  "introDiscord": "A reliquary of star pearls preserves Moonkeeper vows beneath celestial coral.",
+  "introTwitch": "A reliquary of star pearls preserves Moonkeeper vows beneath celestial coral.",
+  "startRoomId": "luster-gate",
+  "rooms": {
+    "luster-gate": {
+      "name": "Luster Gate",
+      "prompt": "Soft luster washes across a gate where three aisles enter the submerged shrine.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "reliquary-nave",
+          "enemyId": "star-pearl-guardian",
+          "message": "The water folds around Star Pearl Guardian, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "reliquary-nave",
+          "healAmount": 35,
+          "message": "Beyond Luster Gate, a restorative current shaped by Star Pearl Reliquary gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Star Pearl Reliquary finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "reliquary-nave",
+          "message": "Within Star Pearl Reliquary, the forward path from Luster Gate reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 45,
+            "max": 75
+          }
+        }
+      }
+    },
+    "reliquary-nave": {
+      "name": "Reliquary Nave",
+      "prompt": "Pearl mosaics cover a long nave whose three branches bear faded symbols.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "pearlshadow-aisle",
+          "message": "Within Star Pearl Reliquary, the left path from Reliquary Nave reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 55,
+            "max": 85
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "pearlshadow-aisle",
+          "enemyId": "star-pearl-guardian",
+          "message": "The water folds around Star Pearl Guardian, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "pearlshadow-aisle",
+          "message": "A quiet recess beyond Reliquary Nave preserves a dormant Fae shrine, but offers no material reward."
+        }
+      }
+    },
+    "pearlshadow-aisle": {
+      "name": "Pearlshadow Aisle",
+      "prompt": "Reflected starlight follows a quiet aisle to three sealed-looking passages.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 35,
+          "message": "Beyond Pearlshadow Aisle, a restorative current shaped by Star Pearl Reliquary gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Star Pearl Reliquary finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Star Pearl Reliquary, the right path from Pearlshadow Aisle reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 60,
+            "max": 95
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "star-pearl-guardian",
+          "message": "The water folds around Star Pearl Guardian, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Luminary Vault",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Luminary Vault. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Luminary Vault: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Luminary Vault. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "pearlward-luminary-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Pearlward Luminary reveals itself!"
+  },
+  "completionText": "Pearlward Luminary yields to the returning current. Star Pearl Reliquary settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

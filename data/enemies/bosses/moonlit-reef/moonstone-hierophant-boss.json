@@ -1,0 +1,20 @@
+{
+  "id": "moonstone-hierophant-boss",
+  "name": "Moonstone Hierophant",
+  "region": "moonlit-reef",
+  "level": 4,
+  "hp": 155,
+  "damageBonus": 4,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 279,
+      "max": 334
+    },
+    "xp": {
+      "min": 116,
+      "max": 139
+    }
+  },
+  "defeatCandyLoss": 32
+}

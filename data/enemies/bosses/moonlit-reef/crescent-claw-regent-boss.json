@@ -1,0 +1,20 @@
+{
+  "id": "crescent-claw-regent-boss",
+  "name": "Crescent Claw Regent",
+  "region": "moonlit-reef",
+  "level": 2,
+  "hp": 117,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 167,
+      "max": 211
+    },
+    "xp": {
+      "min": 70,
+      "max": 86
+    }
+  },
+  "defeatCandyLoss": 25
+}

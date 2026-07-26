@@ -1,0 +1,109 @@
+{
+  "id": "moon-puff-aerie",
+  "number": 7,
+  "name": "Moon Puff Aerie",
+  "regionId": "moonlit-reef",
+  "enemyId": "moon-puff",
+  "recommendedLevel": 1,
+  "introDiscord": "Soft clouds of enchanted sea-foam gather around a coral aerie high above the reef floor.",
+  "introTwitch": "Soft clouds of enchanted sea-foam gather around a coral aerie high above the reef floor.",
+  "startRoomId": "cloudcoral-rise",
+  "rooms": {
+    "cloudcoral-rise": {
+      "name": "Cloudcoral Rise",
+      "prompt": "Foam drifts past a rising shelf where three paths wind through weightless coral branches.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "drowsing-terrace",
+          "message": "Within Moon Puff Aerie, the left path from Cloudcoral Rise reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 25,
+            "max": 50
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "drowsing-terrace",
+          "healAmount": 25,
+          "message": "Beyond Cloudcoral Rise, a restorative current shaped by Moon Puff Aerie gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moon Puff Aerie finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "drowsing-terrace",
+          "enemyId": "moon-puff",
+          "message": "The water folds around Moon Puff, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "drowsing-terrace": {
+      "name": "Drowsing Terrace",
+      "prompt": "The current grows hushed across a drowsing terrace, with three openings beyond pale mist.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "whisperdown-loft",
+          "enemyId": "moon-puff",
+          "message": "The water folds around Moon Puff, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "whisperdown-loft",
+          "message": "Within Moon Puff Aerie, the right path from Drowsing Terrace reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 30,
+            "max": 55
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "whisperdown-loft",
+          "healAmount": 25,
+          "message": "Beyond Drowsing Terrace, a restorative current shaped by Moon Puff Aerie gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moon Puff Aerie finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "whisperdown-loft": {
+      "name": "Whisperdown Loft",
+      "prompt": "Fae feathers and bubbles turn through a lofty chamber where three routes descend unseen.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "boss-antechamber",
+          "message": "A quiet recess beyond Whisperdown Loft preserves faded Moonkeeper markings, but offers no material reward."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "moon-puff",
+          "message": "The water folds around Moon Puff, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Moon Puff Aerie, the forward path from Whisperdown Loft reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Quietstorm Nest",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Quietstorm Nest. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Quietstorm Nest: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Quietstorm Nest. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "dreamcloud-moon-puff-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Dreamcloud Moon Puff reveals itself!"
+  },
+  "completionText": "Dreamcloud Moon Puff yields to the returning current. Moon Puff Aerie settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

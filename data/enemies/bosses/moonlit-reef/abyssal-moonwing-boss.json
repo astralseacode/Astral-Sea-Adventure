@@ -1,0 +1,20 @@
+{
+  "id": "abyssal-moonwing-boss",
+  "name": "Abyssal Moonwing",
+  "region": "moonlit-reef",
+  "level": 4,
+  "hp": 170,
+  "damageBonus": 4,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 354,
+      "max": 408
+    },
+    "xp": {
+      "min": 149,
+      "max": 170
+    }
+  },
+  "defeatCandyLoss": 43
+}

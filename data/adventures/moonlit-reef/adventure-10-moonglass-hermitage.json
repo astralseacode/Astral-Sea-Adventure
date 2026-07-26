@@ -1,0 +1,109 @@
+{
+  "id": "moonglass-hermitage",
+  "number": 10,
+  "name": "Moonglass Hermitage",
+  "regionId": "moonlit-reef",
+  "enemyId": "moonglass-hermit",
+  "recommendedLevel": 2,
+  "introDiscord": "A solitary hermitage of moonglass rests where reef pilgrims once listened to the Astral Tide.",
+  "introTwitch": "A solitary hermitage of moonglass rests where reef pilgrims once listened to the Astral Tide.",
+  "startRoomId": "pilgrim-mirror",
+  "rooms": {
+    "pilgrim-mirror": {
+      "name": "Pilgrim Mirror",
+      "prompt": "A mirrorlike landing reflects three corridors beneath an unbroken ceiling of dark water.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "silent-cloister",
+          "message": "Within Moonglass Hermitage, the left path from Pilgrim Mirror reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "silent-cloister",
+          "enemyId": "moonglass-hermit",
+          "message": "The water folds around Moonglass Hermit, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "silent-cloister",
+          "healAmount": 30,
+          "message": "Beyond Pilgrim Mirror, a restorative current shaped by Moonglass Hermitage gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moonglass Hermitage finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "silent-cloister": {
+      "name": "Silent Cloister",
+      "prompt": "Silent cells surround a cloister where three walks continue through dim glass arches.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "shardlight-walk",
+          "message": "A quiet recess beyond Silent Cloister preserves a broken celestial instrument, but offers no material reward."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "shardlight-walk",
+          "message": "Within Moonglass Hermitage, the right path from Silent Cloister reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 40,
+            "max": 70
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "shardlight-walk",
+          "enemyId": "moonglass-hermit",
+          "message": "The water folds around Moonglass Hermit, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "shardlight-walk": {
+      "name": "Shardlight Walk",
+      "prompt": "Broken reflections travel along a shardlit hall as three doorways wait without markings.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "moonglass-hermit",
+          "message": "The water folds around Moonglass Hermit, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 30,
+          "message": "Beyond Shardlight Walk, a restorative current shaped by Moonglass Hermitage gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moonglass Hermitage finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Moonglass Hermitage, the forward path from Shardlight Walk reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 45,
+            "max": 80
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Elder Reflection Hall",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Elder Reflection Hall. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Elder Reflection Hall: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Elder Reflection Hall. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "moonglass-elder-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Moonglass Elder reveals itself!"
+  },
+  "completionText": "Moonglass Elder yields to the returning current. Moonglass Hermitage settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

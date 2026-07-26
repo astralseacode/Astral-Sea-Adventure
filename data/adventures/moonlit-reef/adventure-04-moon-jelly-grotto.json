@@ -1,0 +1,109 @@
+{
+  "id": "moon-jelly-grotto",
+  "number": 4,
+  "name": "Moon Jelly Grotto",
+  "regionId": "moonlit-reef",
+  "enemyId": "moon-jelly-wisp",
+  "recommendedLevel": 1,
+  "introDiscord": "Translucent arches pulse softly within a grotto suspended between moonlight and deep water.",
+  "introTwitch": "Translucent arches pulse softly within a grotto suspended between moonlight and deep water.",
+  "startRoomId": "luminous-threshold",
+  "rooms": {
+    "luminous-threshold": {
+      "name": "Luminous Threshold",
+      "prompt": "Slow bells of light float overhead while three passages shimmer behind curtains of clear water.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "drifting-bell-gallery",
+          "message": "Within Moon Jelly Grotto, the left path from Luminous Threshold reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 25,
+            "max": 50
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "drifting-bell-gallery",
+          "enemyId": "moon-jelly-wisp",
+          "message": "The water folds around Moon Jelly Wisp, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "drifting-bell-gallery",
+          "healAmount": 25,
+          "message": "Beyond Luminous Threshold, a restorative current shaped by Moon Jelly Grotto gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moon Jelly Grotto finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "drifting-bell-gallery": {
+      "name": "Drifting Bell Gallery",
+      "prompt": "The grotto widens beneath hanging crystal fronds, and three routes waver like reflections.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "veiled-grotto",
+          "message": "A quiet recess beyond Drifting Bell Gallery preserves a broken celestial instrument, but offers no material reward."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "veiled-grotto",
+          "message": "Within Moon Jelly Grotto, the right path from Drifting Bell Gallery reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 30,
+            "max": 55
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "veiled-grotto",
+          "enemyId": "moon-jelly-wisp",
+          "message": "The water folds around Moon Jelly Wisp, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "veiled-grotto": {
+      "name": "Veiled Grotto",
+      "prompt": "Silver mist coils around quiet stone as three openings fade in and out of view.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "moon-jelly-wisp",
+          "message": "The water folds around Moon Jelly Wisp, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 25,
+          "message": "Beyond Veiled Grotto, a restorative current shaped by Moon Jelly Grotto gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moon Jelly Grotto finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Moon Jelly Grotto, the forward path from Veiled Grotto reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Moonbell Cradle",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Moonbell Cradle. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Moonbell Cradle: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Moonbell Cradle. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "moonveil-jelly-matriarch-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Moonveil Jelly Matriarch reveals itself!"
+  },
+  "completionText": "Moonveil Jelly Matriarch yields to the returning current. Moon Jelly Grotto settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

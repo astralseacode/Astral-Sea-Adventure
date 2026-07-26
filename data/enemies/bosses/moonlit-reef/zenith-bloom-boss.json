@@ -1,0 +1,20 @@
+{
+  "id": "zenith-bloom-boss",
+  "name": "Zenith Bloom",
+  "region": "moonlit-reef",
+  "level": 2,
+  "hp": 110,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 154,
+      "max": 201
+    },
+    "xp": {
+      "min": 66,
+      "max": 81
+    }
+  },
+  "defeatCandyLoss": 23
+}

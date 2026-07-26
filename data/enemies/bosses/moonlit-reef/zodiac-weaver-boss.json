@@ -1,0 +1,20 @@
+{
+  "id": "zodiac-weaver-boss",
+  "name": "Zodiac Weaver",
+  "region": "moonlit-reef",
+  "level": 3,
+  "hp": 142,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 240,
+      "max": 285
+    },
+    "xp": {
+      "min": 103,
+      "max": 117
+    }
+  },
+  "defeatCandyLoss": 30
+}

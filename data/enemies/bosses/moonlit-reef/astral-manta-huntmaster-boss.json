@@ -1,0 +1,20 @@
+{
+  "id": "astral-manta-huntmaster-boss",
+  "name": "Astral Manta Huntmaster",
+  "region": "moonlit-reef",
+  "level": 3,
+  "hp": 128,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 204,
+      "max": 251
+    },
+    "xp": {
+      "min": 85,
+      "max": 103
+    }
+  },
+  "defeatCandyLoss": 27
+}

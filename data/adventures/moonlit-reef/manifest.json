@@ -1,0 +1,234 @@
+[
+  {
+    "number": 1,
+    "id": "bubble-nibbler-hideout",
+    "name": "Bubble Nibbler Hideout",
+    "enemyId": "bubble-nibbler",
+    "bossEnemyId": "bubble-nibbler-boss",
+    "file": "adventure-01-bubble-nibbler-hideout.json"
+  },
+  {
+    "number": 2,
+    "id": "silverfin-sprout-grove",
+    "name": "Silverfin Sprout Grove",
+    "enemyId": "silverfin-sprout",
+    "bossEnemyId": "groveheart-sprout",
+    "file": "adventure-02-silverfin-sprout-grove.json"
+  },
+  {
+    "number": 3,
+    "id": "tidepool-tumbler-hollows",
+    "name": "Tidepool Tumbler Hollows",
+    "enemyId": "tidepool-tumbler",
+    "bossEnemyId": "tidepool-tumbler-ancient-boss",
+    "file": "adventure-03-tidepool-tumbler-hollows.json"
+  },
+  {
+    "number": 4,
+    "id": "moon-jelly-grotto",
+    "name": "Moon Jelly Grotto",
+    "enemyId": "moon-jelly-wisp",
+    "bossEnemyId": "moonveil-jelly-matriarch-boss",
+    "file": "adventure-04-moon-jelly-grotto.json"
+  },
+  {
+    "number": 5,
+    "id": "coral-button-warrens",
+    "name": "Coral Button Warrens",
+    "enemyId": "coral-button-crab",
+    "bossEnemyId": "coral-crown-regent-boss",
+    "file": "adventure-05-coral-button-warrens.json"
+  },
+  {
+    "number": 6,
+    "id": "starshell-skipper-shoals",
+    "name": "Starshell Skipper Shoals",
+    "enemyId": "starshell-skipper",
+    "bossEnemyId": "starshell-wayfinder-boss",
+    "file": "adventure-06-starshell-skipper-shoals.json"
+  },
+  {
+    "number": 7,
+    "id": "moon-puff-aerie",
+    "name": "Moon Puff Aerie",
+    "enemyId": "moon-puff",
+    "bossEnemyId": "dreamcloud-moon-puff-boss",
+    "file": "adventure-07-moon-puff-aerie.json"
+  },
+  {
+    "number": 8,
+    "id": "lunar-current-labyrinth",
+    "name": "Lunar Current Labyrinth",
+    "enemyId": "lunar-current-eel",
+    "bossEnemyId": "lunar-current-coil-boss",
+    "file": "adventure-08-lunar-current-labyrinth.json"
+  },
+  {
+    "number": 9,
+    "id": "fae-petal-gardens",
+    "name": "Fae Petal Gardens",
+    "enemyId": "fae-petal-ray",
+    "bossEnemyId": "petalwing-grandmother-boss",
+    "file": "adventure-09-fae-petal-gardens.json"
+  },
+  {
+    "number": 10,
+    "id": "moonglass-hermitage",
+    "name": "Moonglass Hermitage",
+    "enemyId": "moonglass-hermit",
+    "bossEnemyId": "moonglass-elder-boss",
+    "file": "adventure-10-moonglass-hermitage.json"
+  },
+  {
+    "number": 11,
+    "id": "silver-shell-bastion",
+    "name": "Silver Shell Bastion",
+    "enemyId": "silver-shell-sentry",
+    "bossEnemyId": "argent-shell-castellan-boss",
+    "file": "adventure-11-silver-shell-bastion.json"
+  },
+  {
+    "number": 12,
+    "id": "starlight-anemone-observatory",
+    "name": "Starlight Anemone Observatory",
+    "enemyId": "starlight-anemone",
+    "bossEnemyId": "zenith-bloom-boss",
+    "file": "adventure-12-starlight-anemone-observatory.json"
+  },
+  {
+    "number": 13,
+    "id": "reef-rune-playgrounds",
+    "name": "Reef Rune Playgrounds",
+    "enemyId": "reef-rune-otter",
+    "bossEnemyId": "reef-rune-trickster-boss",
+    "file": "adventure-13-reef-rune-playgrounds.json"
+  },
+  {
+    "number": 14,
+    "id": "crescent-claw-citadel",
+    "name": "Crescent Claw Citadel",
+    "enemyId": "crescent-claw-crab",
+    "bossEnemyId": "crescent-claw-regent-boss",
+    "file": "adventure-14-crescent-claw-citadel.json"
+  },
+  {
+    "number": 15,
+    "id": "moonveil-stalker-fen",
+    "name": "Moonveil Stalker Fen",
+    "enemyId": "moonveil-stalker",
+    "bossEnemyId": "veilclaw-prime-boss",
+    "file": "adventure-15-moonveil-stalker-fen.json"
+  },
+  {
+    "number": 16,
+    "id": "astral-manta-hunting-grounds",
+    "name": "Astral Manta Hunting Grounds",
+    "enemyId": "astral-manta-hunter",
+    "bossEnemyId": "astral-manta-huntmaster-boss",
+    "file": "adventure-16-astral-manta-hunting-grounds.json"
+  },
+  {
+    "number": 17,
+    "id": "echo-reef-amphitheater",
+    "name": "Echo Reef Amphitheater",
+    "enemyId": "echo-reef-siren",
+    "bossEnemyId": "echo-crowned-siren-boss",
+    "file": "adventure-17-echo-reef-amphitheater.json"
+  },
+  {
+    "number": 18,
+    "id": "star-pearl-reliquary",
+    "name": "Star Pearl Reliquary",
+    "enemyId": "star-pearl-guardian",
+    "bossEnemyId": "pearlward-luminary-boss",
+    "file": "adventure-18-star-pearl-reliquary.json"
+  },
+  {
+    "number": 19,
+    "id": "moonglass-moray-chasm",
+    "name": "Moonglass Moray Chasm",
+    "enemyId": "moonglass-moray",
+    "bossEnemyId": "shardjaw-moray-boss",
+    "file": "adventure-19-moonglass-moray-chasm.json"
+  },
+  {
+    "number": 20,
+    "id": "constellation-crawler-orrery",
+    "name": "Constellation Crawler Orrery",
+    "enemyId": "constellation-crawler",
+    "bossEnemyId": "zodiac-weaver-boss",
+    "file": "adventure-20-constellation-crawler-orrery.json"
+  },
+  {
+    "number": 21,
+    "id": "fae-tide-prowler-court",
+    "name": "Fae Tide Prowler Court",
+    "enemyId": "fae-tide-prowler",
+    "bossEnemyId": "fae-tide-nightlord-boss",
+    "file": "adventure-21-fae-tide-prowler-court.json"
+  },
+  {
+    "number": 22,
+    "id": "moonstone-archon-temple",
+    "name": "Moonstone Archon Temple",
+    "enemyId": "moonstone-archon",
+    "bossEnemyId": "moonstone-hierophant-boss",
+    "file": "adventure-22-moonstone-archon-temple.json"
+  },
+  {
+    "number": 23,
+    "id": "astral-reef-shark-expanse",
+    "name": "Astral Reef Shark Expanse",
+    "enemyId": "astral-reef-shark",
+    "bossEnemyId": "astral-reef-apex-boss",
+    "file": "adventure-23-astral-reef-shark-expanse.json"
+  },
+  {
+    "number": 24,
+    "id": "moonkeeper-sentinel-vault",
+    "name": "Moonkeeper Sentinel Vault",
+    "enemyId": "moonkeeper-sentinel",
+    "bossEnemyId": "moonkeeper-eternal-boss",
+    "file": "adventure-24-moonkeeper-sentinel-vault.json"
+  },
+  {
+    "number": 25,
+    "id": "celestial-coral-wyrm-spire",
+    "name": "Celestial Coral Wyrm Spire",
+    "enemyId": "celestial-coral-wyrm",
+    "bossEnemyId": "celestial-wyrm-ascendant-boss",
+    "file": "adventure-25-celestial-coral-wyrm-spire.json"
+  },
+  {
+    "number": 26,
+    "id": "starfall-razorfin-reach",
+    "name": "Starfall Razorfin Reach",
+    "enemyId": "starfall-razorfin",
+    "bossEnemyId": "starfall-bladefin-boss",
+    "file": "adventure-26-starfall-razorfin-reach.json"
+  },
+  {
+    "number": 27,
+    "id": "lunar-abyss-manta-deep",
+    "name": "Lunar Abyss Manta Deep",
+    "enemyId": "lunar-abyss-manta",
+    "bossEnemyId": "abyssal-moonwing-boss",
+    "file": "adventure-27-lunar-abyss-manta-deep.json"
+  },
+  {
+    "number": 28,
+    "id": "moonlit-prism-serpent-palace",
+    "name": "Moonlit Prism Serpent Palace",
+    "enemyId": "moonlit-prism-serpent",
+    "bossEnemyId": "prismatic-coil-empress-boss",
+    "file": "adventure-28-moonlit-prism-serpent-palace.json"
+  },
+  {
+    "number": 29,
+    "id": "moonreef-sovereign-throne",
+    "name": "Moonreef Sovereign Throne",
+    "enemyId": "moonreef-sovereign",
+    "bossEnemyId": "crown-of-the-moonreef-boss",
+    "file": "adventure-29-moonreef-sovereign-throne.json"
+  }
+]

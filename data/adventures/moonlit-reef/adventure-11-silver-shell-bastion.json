@@ -1,0 +1,109 @@
+{
+  "id": "silver-shell-bastion",
+  "number": 11,
+  "name": "Silver Shell Bastion",
+  "regionId": "moonlit-reef",
+  "enemyId": "silver-shell-sentry",
+  "recommendedLevel": 2,
+  "introDiscord": "Interlocked silver shells form a bastion guarding a forgotten Moonkeeper route.",
+  "introTwitch": "Interlocked silver shells form a bastion guarding a forgotten Moonkeeper route.",
+  "startRoomId": "argent-causeway",
+  "rooms": {
+    "argent-causeway": {
+      "name": "Argent Causeway",
+      "prompt": "An argent causeway reaches a fortified junction with three unmarked approaches.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "sentry-rampart",
+          "healAmount": 30,
+          "message": "Beyond Argent Causeway, a restorative current shaped by Silver Shell Bastion gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Silver Shell Bastion finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "sentry-rampart",
+          "message": "Within Silver Shell Bastion, the right path from Argent Causeway reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "sentry-rampart",
+          "enemyId": "silver-shell-sentry",
+          "message": "The water folds around Silver Shell Sentry, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "sentry-rampart": {
+      "name": "Sentry Rampart",
+      "prompt": "Shell ramparts rise through the water while three passages continue beneath watchful carvings.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "moonplate-keep",
+          "enemyId": "silver-shell-sentry",
+          "message": "The water folds around Silver Shell Sentry, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "moonplate-keep",
+          "healAmount": 30,
+          "message": "Beyond Sentry Rampart, a restorative current shaped by Silver Shell Bastion gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Silver Shell Bastion finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "moonplate-keep",
+          "message": "Within Silver Shell Bastion, the forward path from Sentry Rampart reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 40,
+            "max": 70
+          }
+        }
+      }
+    },
+    "moonplate-keep": {
+      "name": "Moonplate Keep",
+      "prompt": "Moonplate walls enclose a keep where three gates stand equally still.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Silver Shell Bastion, the left path from Moonplate Keep reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 45,
+            "max": 80
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "silver-shell-sentry",
+          "message": "The water folds around Silver Shell Sentry, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "boss-antechamber",
+          "message": "A quiet recess beyond Moonplate Keep preserves a dormant Fae shrine, but offers no material reward."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Castellan Watch",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Castellan Watch. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Castellan Watch: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Castellan Watch. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "argent-shell-castellan-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Argent Shell Castellan reveals itself!"
+  },
+  "completionText": "Argent Shell Castellan yields to the returning current. Silver Shell Bastion settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

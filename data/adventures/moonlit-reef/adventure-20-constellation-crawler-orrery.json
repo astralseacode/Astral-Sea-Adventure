@@ -1,0 +1,109 @@
+{
+  "id": "constellation-crawler-orrery",
+  "number": 20,
+  "name": "Constellation Crawler Orrery",
+  "regionId": "moonlit-reef",
+  "enemyId": "constellation-crawler",
+  "recommendedLevel": 3,
+  "introDiscord": "A drowned orrery turns under its own magic, mapping constellations across the reef floor.",
+  "introTwitch": "A drowned orrery turns under its own magic, mapping constellations across the reef floor.",
+  "startRoomId": "orbit-gate",
+  "rooms": {
+    "orbit-gate": {
+      "name": "Orbit Gate",
+      "prompt": "Orbiting stones frame a gate where three tracks rotate into the mechanism.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "starwheel-chamber",
+          "healAmount": 35,
+          "message": "Beyond Orbit Gate, a restorative current shaped by Constellation Crawler Orrery gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Constellation Crawler Orrery finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "starwheel-chamber",
+          "enemyId": "constellation-crawler",
+          "message": "The water folds around Constellation Crawler, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "starwheel-chamber",
+          "message": "Within Constellation Crawler Orrery, the forward path from Orbit Gate reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 45,
+            "max": 75
+          }
+        }
+      }
+    },
+    "starwheel-chamber": {
+      "name": "Starwheel Chamber",
+      "prompt": "A starwheel turns above a chamber whose three exits align and separate with the tide.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "celestial-track",
+          "message": "Within Constellation Crawler Orrery, the left path from Starwheel Chamber reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 55,
+            "max": 85
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "celestial-track",
+          "healAmount": 35,
+          "message": "Beyond Starwheel Chamber, a restorative current shaped by Constellation Crawler Orrery gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Constellation Crawler Orrery finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "celestial-track",
+          "enemyId": "constellation-crawler",
+          "message": "The water folds around Constellation Crawler, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "celestial-track": {
+      "name": "Celestial Track",
+      "prompt": "Celestial marks travel along a track that divides into three moving routes.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "constellation-crawler",
+          "message": "The water folds around Constellation Crawler, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Constellation Crawler Orrery, the right path from Celestial Track reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 60,
+            "max": 95
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "boss-antechamber",
+          "message": "A quiet recess beyond Celestial Track preserves a dormant Fae shrine, but offers no material reward."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Weaver Meridian",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Weaver Meridian. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Weaver Meridian: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Weaver Meridian. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "zodiac-weaver-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Zodiac Weaver reveals itself!"
+  },
+  "completionText": "Zodiac Weaver yields to the returning current. Constellation Crawler Orrery settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

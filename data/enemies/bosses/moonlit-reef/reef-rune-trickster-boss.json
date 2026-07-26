@@ -1,0 +1,20 @@
+{
+  "id": "reef-rune-trickster-boss",
+  "name": "Reef-Rune Trickster",
+  "region": "moonlit-reef",
+  "level": 2,
+  "hp": 115,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 160,
+      "max": 206
+    },
+    "xp": {
+      "min": 67,
+      "max": 84
+    }
+  },
+  "defeatCandyLoss": 24
+}

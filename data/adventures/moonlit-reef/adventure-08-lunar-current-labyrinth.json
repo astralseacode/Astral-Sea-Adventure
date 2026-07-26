@@ -1,0 +1,109 @@
+{
+  "id": "lunar-current-labyrinth",
+  "number": 8,
+  "name": "Lunar Current Labyrinth",
+  "regionId": "moonlit-reef",
+  "enemyId": "lunar-current-eel",
+  "recommendedLevel": 2,
+  "introDiscord": "The Lunar Current enters a moonglass labyrinth whose walls redirect every pulse of water.",
+  "introTwitch": "The Lunar Current enters a moonglass labyrinth whose walls redirect every pulse of water.",
+  "startRoomId": "moonflow-intake",
+  "rooms": {
+    "moonflow-intake": {
+      "name": "Moonflow Intake",
+      "prompt": "Blue currents cross an engraved intake before splitting through three glass-lined corridors.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "spiral-channel",
+          "healAmount": 30,
+          "message": "Beyond Moonflow Intake, a restorative current shaped by Lunar Current Labyrinth gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Lunar Current Labyrinth finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "spiral-channel",
+          "enemyId": "lunar-current-eel",
+          "message": "The water folds around Lunar Current Eel, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "spiral-channel",
+          "message": "Within Lunar Current Labyrinth, the forward path from Moonflow Intake reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        }
+      }
+    },
+    "spiral-channel": {
+      "name": "Spiral Channel",
+      "prompt": "A spiral channel bends around itself, leaving three exits beneath shifting lunar reflections.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "tideglass-junction",
+          "message": "Within Lunar Current Labyrinth, the left path from Spiral Channel reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 40,
+            "max": 70
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "tideglass-junction",
+          "healAmount": 30,
+          "message": "Beyond Spiral Channel, a restorative current shaped by Lunar Current Labyrinth gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Lunar Current Labyrinth finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "tideglass-junction",
+          "enemyId": "lunar-current-eel",
+          "message": "The water folds around Lunar Current Eel, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "tideglass-junction": {
+      "name": "Tideglass Junction",
+      "prompt": "Moonglass fins resonate at a junction where three currents pull with equal force.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "lunar-current-eel",
+          "message": "The water folds around Lunar Current Eel, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Lunar Current Labyrinth, the right path from Tideglass Junction reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 45,
+            "max": 80
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "boss-antechamber",
+          "message": "A quiet recess beyond Tideglass Junction preserves a dormant Fae shrine, but offers no material reward."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Coilheart Conduit",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Coilheart Conduit. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Coilheart Conduit: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Coilheart Conduit. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "lunar-current-coil-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Lunar Current Coil reveals itself!"
+  },
+  "completionText": "Lunar Current Coil yields to the returning current. Lunar Current Labyrinth settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

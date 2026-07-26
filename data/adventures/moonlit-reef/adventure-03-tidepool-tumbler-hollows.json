@@ -1,0 +1,109 @@
+{
+  "id": "tidepool-tumbler-hollows",
+  "number": 3,
+  "name": "Tidepool Tumbler Hollows",
+  "regionId": "moonlit-reef",
+  "enemyId": "tidepool-tumbler",
+  "recommendedLevel": 1,
+  "introDiscord": "Tidal pools fold through coral hollows where the Lunar Current circles back upon itself.",
+  "introTwitch": "Tidal pools fold through coral hollows where the Lunar Current circles back upon itself.",
+  "startRoomId": "ripplegate-shelf",
+  "rooms": {
+    "ripplegate-shelf": {
+      "name": "Ripplegate Shelf",
+      "prompt": "Water rings drift across a chamber of smooth reefstone while three submerged ways curve beyond sight.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "turning-pool",
+          "enemyId": "tidepool-tumbler",
+          "message": "The water folds around Tidepool Tumbler, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "turning-pool",
+          "message": "Within Tidepool Tumbler Hollows, the right path from Ripplegate Shelf reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 25,
+            "max": 50
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "turning-pool",
+          "healAmount": 25,
+          "message": "Beyond Ripplegate Shelf, a restorative current shaped by Tidepool Tumbler Hollows gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Tidepool Tumbler Hollows finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "turning-pool": {
+      "name": "Turning Pool",
+      "prompt": "Shell spirals mark a pool where the current turns without wind, dividing around three shadowed openings.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "hollowwater-bend",
+          "message": "Within Tidepool Tumbler Hollows, the left path from Turning Pool reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 30,
+            "max": 55
+          }
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "hollowwater-bend",
+          "message": "A quiet recess beyond Turning Pool preserves a dormant Fae shrine, but offers no material reward."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "hollowwater-bend",
+          "enemyId": "tidepool-tumbler",
+          "message": "The water folds around Tidepool Tumbler, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "hollowwater-bend": {
+      "name": "Hollowwater Bend",
+      "prompt": "Pale foam gathers beneath a low coral ceiling as three channels disappear into blue distance.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 25,
+          "message": "Beyond Hollowwater Bend, a restorative current shaped by Tidepool Tumbler Hollows gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Tidepool Tumbler Hollows finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "tidepool-tumbler",
+          "message": "The water folds around Tidepool Tumbler, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Tidepool Tumbler Hollows, the forward path from Hollowwater Bend reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Primeval Tidewell",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Primeval Tidewell. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Primeval Tidewell: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Primeval Tidewell. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "tidepool-tumbler-ancient-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Tidepool Tumbler Ancient reveals itself!"
+  },
+  "completionText": "Tidepool Tumbler Ancient yields to the returning current. Tidepool Tumbler Hollows settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "lunar-current-coil-boss",
+  "name": "Lunar Current Coil",
+  "region": "moonlit-reef",
+  "level": 2,
+  "hp": 99,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 131,
+      "max": 172
+    },
+    "xp": {
+      "min": 55,
+      "max": 69
+    }
+  },
+  "defeatCandyLoss": 19
+}

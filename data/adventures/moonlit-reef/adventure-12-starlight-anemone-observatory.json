@@ -1,0 +1,109 @@
+{
+  "id": "starlight-anemone-observatory",
+  "number": 12,
+  "name": "Starlight Anemone Observatory",
+  "regionId": "moonlit-reef",
+  "enemyId": "starlight-anemone",
+  "recommendedLevel": 2,
+  "introDiscord": "An observatory of living anemones tracks constellations through the moving sea.",
+  "introTwitch": "An observatory of living anemones tracks constellations through the moving sea.",
+  "startRoomId": "astral-lens",
+  "rooms": {
+    "astral-lens": {
+      "name": "Astral Lens",
+      "prompt": "A living lens opens beneath the stars, casting three paths in slow-turning light.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "starstem-gallery",
+          "enemyId": "starlight-anemone",
+          "message": "The water folds around Starlight Anemone, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "starstem-gallery",
+          "healAmount": 30,
+          "message": "Beyond Astral Lens, a restorative current shaped by Starlight Anemone Observatory gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Starlight Anemone Observatory finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "starstem-gallery",
+          "message": "Within Starlight Anemone Observatory, the forward path from Astral Lens reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 35,
+            "max": 60
+          }
+        }
+      }
+    },
+    "starstem-gallery": {
+      "name": "Starstem Gallery",
+      "prompt": "Starstem columns frame a gallery whose three exits shift beneath luminous shadows.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "nightbloom-deck",
+          "message": "Within Starlight Anemone Observatory, the left path from Starstem Gallery reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 40,
+            "max": 70
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "nightbloom-deck",
+          "enemyId": "starlight-anemone",
+          "message": "The water folds around Starlight Anemone, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "nightbloom-deck",
+          "message": "A quiet recess beyond Starstem Gallery preserves a dormant Fae shrine, but offers no material reward."
+        }
+      }
+    },
+    "nightbloom-deck": {
+      "name": "Nightbloom Deck",
+      "prompt": "A nightbloom deck faces the dark above while three corridors descend through the observatory.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 30,
+          "message": "Beyond Nightbloom Deck, a restorative current shaped by Starlight Anemone Observatory gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Starlight Anemone Observatory finds no wounds to mend. You are already at full HP."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Starlight Anemone Observatory, the right path from Nightbloom Deck reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 45,
+            "max": 80
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "starlight-anemone",
+          "message": "The water folds around Starlight Anemone, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Zenith Orrery",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Zenith Orrery. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Zenith Orrery: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Zenith Orrery. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "zenith-bloom-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Zenith Bloom reveals itself!"
+  },
+  "completionText": "Zenith Bloom yields to the returning current. Starlight Anemone Observatory settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

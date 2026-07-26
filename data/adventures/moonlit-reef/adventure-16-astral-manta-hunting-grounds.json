@@ -1,0 +1,109 @@
+{
+  "id": "astral-manta-hunting-grounds",
+  "number": 16,
+  "name": "Astral Manta Hunting Grounds",
+  "regionId": "moonlit-reef",
+  "enemyId": "astral-manta-hunter",
+  "recommendedLevel": 3,
+  "introDiscord": "Vast currents sweep a hunting ground suspended above the deepest coral valleys.",
+  "introTwitch": "Vast currents sweep a hunting ground suspended above the deepest coral valleys.",
+  "startRoomId": "skywater-shelf",
+  "rooms": {
+    "skywater-shelf": {
+      "name": "Skywater Shelf",
+      "prompt": "Open skywater surrounds a shelf where three courses cross the blue emptiness.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "hunter-current",
+          "message": "Within Astral Manta Hunting Grounds, the left path from Skywater Shelf reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 45,
+            "max": 75
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "hunter-current",
+          "enemyId": "astral-manta-hunter",
+          "message": "The water folds around Astral Manta Hunter, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "hunter-current",
+          "healAmount": 35,
+          "message": "Beyond Skywater Shelf, a restorative current shaped by Astral Manta Hunting Grounds gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Astral Manta Hunting Grounds finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "hunter-current": {
+      "name": "Hunter Current",
+      "prompt": "A hunter current traces broad circles around three routes through towering coral fins.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "widewing-pass",
+          "message": "A quiet recess beyond Hunter Current preserves a broken celestial instrument, but offers no material reward."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "widewing-pass",
+          "message": "Within Astral Manta Hunting Grounds, the right path from Hunter Current reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 55,
+            "max": 85
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "widewing-pass",
+          "enemyId": "astral-manta-hunter",
+          "message": "The water folds around Astral Manta Hunter, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "widewing-pass": {
+      "name": "Widewing Pass",
+      "prompt": "Widewing shadows pass over a high channel whose three exits descend at different angles.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "astral-manta-hunter",
+          "message": "The water folds around Astral Manta Hunter, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 35,
+          "message": "Beyond Widewing Pass, a restorative current shaped by Astral Manta Hunting Grounds gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Astral Manta Hunting Grounds finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Astral Manta Hunting Grounds, the forward path from Widewing Pass reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 60,
+            "max": 95
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Huntmaster Eyrie",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Huntmaster Eyrie. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Huntmaster Eyrie: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Huntmaster Eyrie. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "astral-manta-huntmaster-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Astral Manta Huntmaster reveals itself!"
+  },
+  "completionText": "Astral Manta Huntmaster yields to the returning current. Astral Manta Hunting Grounds settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

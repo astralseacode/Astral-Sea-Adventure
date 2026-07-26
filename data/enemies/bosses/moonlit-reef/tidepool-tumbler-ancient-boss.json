@@ -1,0 +1,20 @@
+{
+  "id": "tidepool-tumbler-ancient-boss",
+  "name": "Tidepool Tumbler Ancient",
+  "region": "moonlit-reef",
+  "level": 1,
+  "hp": 55,
+  "damageBonus": 2,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 63,
+      "max": 101
+    },
+    "xp": {
+      "min": 24,
+      "max": 38
+    }
+  },
+  "defeatCandyLoss": 10
+}

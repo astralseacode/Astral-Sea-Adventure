@@ -1,0 +1,109 @@
+{
+  "id": "moonlit-prism-serpent-palace",
+  "number": 28,
+  "name": "Moonlit Prism Serpent Palace",
+  "regionId": "moonlit-reef",
+  "enemyId": "moonlit-prism-serpent",
+  "recommendedLevel": 4,
+  "introDiscord": "A palace of prism coral divides moonlight into colors unknown above the sea.",
+  "introTwitch": "A palace of prism coral divides moonlight into colors unknown above the sea.",
+  "startRoomId": "spectrum-gate",
+  "rooms": {
+    "spectrum-gate": {
+      "name": "Spectrum Gate",
+      "prompt": "The spectrum gate scatters shifting bands across three equally radiant halls.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "refraction-hall",
+          "message": "Within Moonlit Prism Serpent Palace, the left path from Spectrum Gate reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 60,
+            "max": 90
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "refraction-hall",
+          "enemyId": "moonlit-prism-serpent",
+          "message": "The water folds around Moonlit Prism Serpent, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "refraction-hall",
+          "healAmount": 40,
+          "message": "Beyond Spectrum Gate, a restorative current shaped by Moonlit Prism Serpent Palace gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moonlit Prism Serpent Palace finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "refraction-hall": {
+      "name": "Refraction Hall",
+      "prompt": "Refraction pillars multiply every movement around three mirrored passages.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "prismcoil-arcade",
+          "message": "A quiet recess beyond Refraction Hall preserves a broken celestial instrument, but offers no material reward."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "prismcoil-arcade",
+          "message": "Within Moonlit Prism Serpent Palace, the right path from Refraction Hall reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 70,
+            "max": 105
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "prismcoil-arcade",
+          "enemyId": "moonlit-prism-serpent",
+          "message": "The water folds around Moonlit Prism Serpent, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "prismcoil-arcade": {
+      "name": "Prismcoil Arcade",
+      "prompt": "A prismcoil arcade curves through color as three exits trade places in the light.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "moonlit-prism-serpent",
+          "message": "The water folds around Moonlit Prism Serpent, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 40,
+          "message": "Beyond Prismcoil Arcade, a restorative current shaped by Moonlit Prism Serpent Palace gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moonlit Prism Serpent Palace finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Moonlit Prism Serpent Palace, the forward path from Prismcoil Arcade reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 80,
+            "max": 120
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Empress Kaleidoscope",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Empress Kaleidoscope. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Empress Kaleidoscope: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Empress Kaleidoscope. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "prismatic-coil-empress-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Prismatic Coil Empress reveals itself!"
+  },
+  "completionText": "Prismatic Coil Empress yields to the returning current. Moonlit Prism Serpent Palace settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

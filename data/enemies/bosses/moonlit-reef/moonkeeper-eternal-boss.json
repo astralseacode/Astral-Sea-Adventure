@@ -1,0 +1,20 @@
+{
+  "id": "moonkeeper-eternal-boss",
+  "name": "Moonkeeper Eternal",
+  "region": "moonlit-reef",
+  "level": 4,
+  "hp": 161,
+  "damageBonus": 4,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 307,
+      "max": 365
+    },
+    "xp": {
+      "min": 129,
+      "max": 152
+    }
+  },
+  "defeatCandyLoss": 35
+}

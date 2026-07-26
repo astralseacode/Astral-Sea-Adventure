@@ -77,12 +77,16 @@
     "boss-antechamber": {
       "name": "Boss Antechamber",
       "type": "boss-prompt",
-      "prompt": "The Bubble Nibbler Boss waits beyond the final coral bend."
+      "prompt": "A storm of shimmering bubbles gathers beyond the final coral bend while an unseen ruler stirs."
     }
   },
+  "bossPromptDiscord": "A storm of shimmering bubbles gathers beyond the final coral bend. Something powerful rules the hideout.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "A storm of bubbles gathers beyond the coral bend. The hideout's unseen ruler waits ahead. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You step back from the coral bend. The hideout's unseen ruler remains ahead.",
   "boss": {
     "enemyId": "bubble-nibbler-boss",
-    "roomId": "boss"
+    "roomId": "boss",
+    "revealText": "The bubble storm bursts outward. The Bubble Nibbler Boss lunges from the coral!"
   },
   "completionText": "The Bubble Nibbler Boss bursts into a harmless cloud of silver bubbles. The hideout falls quiet, and the Moonlit Reef opens a new path."
 }

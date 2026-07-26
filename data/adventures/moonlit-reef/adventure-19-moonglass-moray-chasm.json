@@ -1,0 +1,109 @@
+{
+  "id": "moonglass-moray-chasm",
+  "number": 19,
+  "name": "Moonglass Moray Chasm",
+  "regionId": "moonlit-reef",
+  "enemyId": "moonglass-moray",
+  "recommendedLevel": 3,
+  "introDiscord": "A moonglass chasm cuts through the reef, scattering the Lunar Current into fractured light.",
+  "introTwitch": "A moonglass chasm cuts through the reef, scattering the Lunar Current into fractured light.",
+  "startRoomId": "fracture-rim",
+  "rooms": {
+    "fracture-rim": {
+      "name": "Fracture Rim",
+      "prompt": "The fracture rim overlooks three narrow descents between translucent stone.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "glassfang-trench",
+          "message": "Within Moonglass Moray Chasm, the left path from Fracture Rim reveals a hidden Fae offering vessel.",
+          "reward": {
+            "min": 45,
+            "max": 75
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "glassfang-trench",
+          "healAmount": 35,
+          "message": "Beyond Fracture Rim, a restorative current shaped by Moonglass Moray Chasm gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moonglass Moray Chasm finds no wounds to mend. You are already at full HP."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "glassfang-trench",
+          "enemyId": "moonglass-moray",
+          "message": "The water folds around Moonglass Moray, revealing the creature as it claims the passage."
+        }
+      }
+    },
+    "glassfang-trench": {
+      "name": "Glassfang Trench",
+      "prompt": "Glasslike ridges line a trench where three channels twist beyond the visible depths.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "mirrorcrack-gorge",
+          "enemyId": "moonglass-moray",
+          "message": "The water folds around Moonglass Moray, revealing the creature as it claims the passage."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "mirrorcrack-gorge",
+          "message": "Within Moonglass Moray Chasm, the right path from Glassfang Trench reveals a hidden Moonkeeper cache.",
+          "reward": {
+            "min": 55,
+            "max": 85
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "mirrorcrack-gorge",
+          "healAmount": 35,
+          "message": "Beyond Glassfang Trench, a restorative current shaped by Moonglass Moray Chasm gathers in a quiet basin.",
+          "fullHpMessage": "The restorative magic of Moonglass Moray Chasm finds no wounds to mend. You are already at full HP."
+        }
+      }
+    },
+    "mirrorcrack-gorge": {
+      "name": "Mirrorcrack Gorge",
+      "prompt": "Mirror cracks illuminate a gorge whose three mouths reflect one another.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "boss-antechamber",
+          "message": "A quiet recess beyond Mirrorcrack Gorge preserves faded Moonkeeper markings, but offers no material reward."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "moonglass-moray",
+          "message": "The water folds around Moonglass Moray, revealing the creature as it claims the passage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Within Moonglass Moray Chasm, the forward path from Mirrorcrack Gorge reveals a hidden moon-shell coffer.",
+          "reward": {
+            "min": 60,
+            "max": 95
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Shardjaw Depths",
+      "type": "boss-prompt",
+      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+    }
+  },
+  "bossPromptDiscord": "You reach Shardjaw Depths. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Shardjaw Depths: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Shardjaw Depths. The hidden guardian remains beyond the threshold.",
+  "boss": {
+    "enemyId": "shardjaw-moray-boss",
+    "roomId": "boss",
+    "revealText": "The chamber answers with a surge of reef magic. Shardjaw Moray reveals itself!"
+  },
+  "completionText": "Shardjaw Moray yields to the returning current. Moonglass Moray Chasm settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+}

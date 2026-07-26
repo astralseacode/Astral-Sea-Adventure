@@ -1,0 +1,20 @@
+{
+  "id": "celestial-wyrm-ascendant-boss",
+  "name": "Celestial Wyrm Ascendant",
+  "region": "moonlit-reef",
+  "level": 4,
+  "hp": 164,
+  "damageBonus": 4,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 323,
+      "max": 380
+    },
+    "xp": {
+      "min": 136,
+      "max": 159
+    }
+  },
+  "defeatCandyLoss": 38
+}

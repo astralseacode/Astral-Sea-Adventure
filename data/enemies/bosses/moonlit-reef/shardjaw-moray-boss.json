@@ -1,0 +1,20 @@
+{
+  "id": "shardjaw-moray-boss",
+  "name": "Shardjaw Moray",
+  "region": "moonlit-reef",
+  "level": 3,
+  "hp": 138,
+  "damageBonus": 3,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 231,
+      "max": 278
+    },
+    "xp": {
+      "min": 98,
+      "max": 114
+    }
+  },
+  "defeatCandyLoss": 29
+}

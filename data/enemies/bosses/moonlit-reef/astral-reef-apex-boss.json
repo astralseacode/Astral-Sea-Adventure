@@ -1,0 +1,20 @@
+{
+  "id": "astral-reef-apex-boss",
+  "name": "Astral Reef Apex",
+  "region": "moonlit-reef",
+  "level": 4,
+  "hp": 158,
+  "damageBonus": 4,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 292,
+      "max": 349
+    },
+    "xp": {
+      "min": 123,
+      "max": 146
+    }
+  },
+  "defeatCandyLoss": 34
+}
