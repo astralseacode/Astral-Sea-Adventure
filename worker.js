@@ -22,6 +22,60 @@ const BERRY_OUTSIDE_COMBAT_MESSAGES = [
   "You eat a Berry while taking a short break. +25 HP and +25 Mana. Your stomach approves.",
   "You happily devour a Berry. +25 HP and +25 Mana. You feel fuller and ready for whatever lies ahead.",
 ];
+const SHOP_ITEMS = {
+  berry: {
+    id: "berry",
+    displayName: "Berry",
+    description: "Restores 25 HP and 25 Mana.",
+    price: 200,
+    currency: "Star Candies",
+    inventoryField: "berries",
+    inventoryLabel: "Berries",
+    purchaseQuantity: 1,
+  },
+};
+const SHOP_INTRODUCTIONS = [
+  {
+    scene:
+      "A hooded merchant crouches behind several rocks arranged vaguely like a shop counter. She looks suspiciously like Shizuki, but the poorly attached fake mustache makes identification impossible.",
+    quote:
+      "\"Choices, choices! What'll it be? And no, I will not explain where any of this came from.\"",
+  },
+  {
+    scene:
+      "You find a hooded merchant beside a rock pretending to be a counter. When you mention that she resembles Shizuki, she gently bonks you with a price list.",
+    quote:
+      "\"Wrong elf. Now... choices, choices! What'll it be?\"",
+  },
+  {
+    scene:
+      "You approach a highly legitimate shop made from stacked rocks and one crooked plank. The hooded merchant looks exactly like Shizuki, though she insists this is merely a coincidence.",
+    quote:
+      "\"Welcome, valued customer! Everything is legally acquired... until proven otherwise.\"",
+  },
+];
+const SHOP_PURCHASE_MESSAGES = [
+  "\"Excellent choice! I definitely picked that Berry myself... please ignore the bite marks.\"",
+  "\"A fine investment! If anyone asks, you absolutely didn't buy this from me.\"",
+  "\"One Berry, coming right up! Fresh enough that it only rolled away twice.\"",
+  "\"Pleasure doing business! Come back before I spend all these Star Candies.\"",
+  "\"Wonderful choice! My accountant is going to be very confused.\"",
+  "\"Enjoy! And remember... if it starts glowing, that's probably normal.\"",
+  "\"Perfect! I was getting attached to that Berry anyway.\"",
+  "\"Another satisfied customer! See? This is a completely legitimate business.\"",
+];
+const SHOP_INSUFFICIENT_MESSAGES = [
+  (shortfall) =>
+    `"You're short by ${shortfall} Star Candies. Tragic. Financially devastating, even."`,
+  (shortfall) =>
+    `"I admire your confidence, but confidence is not accepted as currency. You still need ${shortfall} Star Candies."`,
+  (shortfall) =>
+    `"So close! Except for the missing ${shortfall} Star Candies. Those are somewhat important."`,
+  (shortfall) =>
+    `"The Berry says no. It has very strict financial standards. You need ${shortfall} more Star Candies."`,
+  (shortfall) =>
+    `"I could lower the price, but then this suspicious rock-based business would collapse. You need ${shortfall} more."`,
+];
 const BERRY_DROP_CHANCE_BY_REGION = {
   "moonlit-reef": 0.77,
   "starfall-trench": 0.60,
@@ -444,6 +498,27 @@ const DISCORD_COMMANDS = [
     type: 1,
   },
   {
+    name: "shop",
+    description: "Visit a highly legitimate merchant and view items for sale.",
+    type: 1,
+  },
+  {
+    name: "buy",
+    description: "Purchase an item using Star Candies.",
+    type: 1,
+    options: [
+      {
+        type: 3,
+        name: "item",
+        description: "The item to purchase.",
+        required: true,
+        choices: [
+          { name: "Berry", value: "berry" },
+        ],
+      },
+    ],
+  },
+  {
     name: "travel",
     description: "Travel to an unlocked Astral Sea region.",
     type: 1,
@@ -711,6 +786,23 @@ async function handleTwitchRequest(url, env) {
         (await performBackpack(env, backpackKey, username)).message,
       );
 
+    case "shop":
+      return textResponse(
+        (await performShop(env, backpackKey, "twitch")).message,
+      );
+
+    case "buy":
+      return textResponse(
+        (
+          await performBuy(
+            env,
+            backpackKey,
+            rawArgs,
+            "twitch",
+          )
+        ).message,
+      );
+
     case "travel":
       return textResponse(
         (
@@ -775,7 +867,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. Other commands: !eat berry, !rest, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit a highly legitimate merchant and view items for sale. !buy berry - Purchase a Berry using Star Candies. Other commands: !eat berry, !rest, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1015,6 +1107,23 @@ async function handleDiscordInteraction(request, env) {
           true,
         );
 
+      case "shop":
+        return discordMessage(
+          (await performShop(env, backpackKey, "discord")).message,
+        );
+
+      case "buy":
+        return discordMessage(
+          (
+            await performBuy(
+              env,
+              backpackKey,
+              getDiscordOption(interaction, "item"),
+              "discord",
+            )
+          ).message,
+        );
+
       case "travel":
         return discordMessage(
           (
@@ -1073,7 +1182,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. Other commands: /eat berry, /rest, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and view items for sale. /buy item:Berry - Purchase a Berry using Star Candies. Other commands: /eat berry, /rest, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -3011,6 +3120,156 @@ async function performGamble(
     message:
       `${displayName} lost ${formatCandyAmount(wager)} in roulette ` +
       `and now has ${formatCandyAmount(newTotal)}! FeelsBadMan`,
+  };
+}
+
+async function performShop(
+  env,
+  backpackKey,
+  platform = "twitch",
+) {
+  const currentTotal = await getBackpackTotal(env, backpackKey);
+  const introduction = randomChoice(SHOP_INTRODUCTIONS);
+  const itemLines = Object.values(SHOP_ITEMS).map(
+    (item) =>
+      `${item.displayName} — ` +
+      `${item.price.toLocaleString("en-US")} ${item.currency}`,
+  );
+
+  return {
+    total: currentTotal,
+    message: platform === "discord"
+      ? `${introduction.scene}\n\n${introduction.quote}\n\n` +
+        `Items for Sale\n\n${itemLines.join("\n")}\n\n` +
+        `Your Star Candies: ${currentTotal.toLocaleString("en-US")}\n\n` +
+        "Purchase with:\n/buy item:Berry"
+      : `${introduction.scene} ${introduction.quote} | ` +
+        `${itemLines.join(" | ")} | ` +
+        `Your Star Candies: ${currentTotal.toLocaleString("en-US")} | ` +
+        "Buy with: !buy berry",
+  };
+}
+
+async function performBuy(
+  env,
+  backpackKey,
+  itemInput,
+  platform = "twitch",
+) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performBuyUnlocked(
+      env,
+      backpackKey,
+      itemInput,
+      platform,
+    ),
+  );
+}
+
+async function performBuyUnlocked(
+  env,
+  backpackKey,
+  itemInput,
+  platform,
+) {
+  const itemId = String(itemInput || "").trim().toLowerCase();
+  const availableItems = Object.values(SHOP_ITEMS);
+  const availableSummary = availableItems.map(
+    (item) =>
+      `${item.displayName} — ` +
+      `${item.price.toLocaleString("en-US")} ${item.currency}`,
+  ).join(" | ");
+
+  if (!itemId) {
+    return {
+      message:
+        "What are you buying? Currently available: " +
+        "!buy berry — 200 Star Candies.",
+    };
+  }
+
+  const item = SHOP_ITEMS[itemId];
+
+  if (!item) {
+    return {
+      message:
+        "The hooded merchant searches beneath the counter, inside her " +
+        "sleeves, and behind a suspiciously shaped rock. " +
+        "\"I don't sell that. Yet.\" | " +
+        `Currently available: ${availableSummary}`,
+    };
+  }
+
+  const [currentTotal, progress] = await Promise.all([
+    getBackpackTotal(env, backpackKey),
+    getPlayerProgress(env, backpackKey),
+  ]);
+
+  if (currentTotal < item.price) {
+    const shortfall = item.price - currentTotal;
+    const insufficientMessage = randomChoice(
+      SHOP_INSUFFICIENT_MESSAGES,
+    )(shortfall.toLocaleString("en-US"));
+
+    return {
+      total: currentTotal,
+      shortfall,
+      message:
+        "The hooded merchant counts your Star Candies twice, then slowly " +
+        `pushes the ${item.displayName} farther away. ` +
+        `${insufficientMessage} | ` +
+        `${item.displayName} price: ` +
+        `${item.price.toLocaleString("en-US")} | ` +
+        `Your Star Candies: ${currentTotal.toLocaleString("en-US")}`,
+    };
+  }
+
+  const currentItemTotal = Math.max(
+    0,
+    Math.floor(Number(progress[item.inventoryField]) || 0),
+  );
+  const newTotal = currentTotal - item.price;
+  const newItemTotal = currentItemTotal + item.purchaseQuantity;
+  const updatedProgress = {
+    ...progress,
+    [item.inventoryField]: newItemTotal,
+  };
+
+  await saveBackpackTotal(env, backpackKey, newTotal);
+
+  try {
+    await savePlayerProgress(env, backpackKey, updatedProgress);
+  } catch (error) {
+    try {
+      await saveBackpackTotal(env, backpackKey, currentTotal);
+    } catch (rollbackError) {
+      console.error("Shop purchase rollback failed:", rollbackError);
+    }
+
+    throw error;
+  }
+
+  const purchaseMessage = randomChoice(SHOP_PURCHASE_MESSAGES);
+
+  return {
+    itemId: item.id,
+    quantity: item.purchaseQuantity,
+    total: newTotal,
+    itemTotal: newItemTotal,
+    message: platform === "discord"
+      ? `The hooded merchant accepts your Star Candies and hands you a ` +
+        `${item.displayName}.\n\n${purchaseMessage}\n\n` +
+        `Purchased: ${item.displayName}\n` +
+        `Star Candies: ${newTotal.toLocaleString("en-US")}\n` +
+        `${item.inventoryLabel}: ` +
+        `${newItemTotal.toLocaleString("en-US")}`
+      : `Purchased ${item.purchaseQuantity} ${item.displayName} for ` +
+        `${item.price.toLocaleString("en-US")} ${item.currency}. ` +
+        `${purchaseMessage} Star Candies: ` +
+        `${newTotal.toLocaleString("en-US")} | ` +
+        `${item.inventoryLabel}: ` +
+        `${newItemTotal.toLocaleString("en-US")}`,
   };
 }
 
