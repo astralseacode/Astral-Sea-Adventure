@@ -792,6 +792,33 @@ async function handleDiscordInteraction(request, env) {
   }
 
   const commandName = String(interaction.data?.name || "").toLowerCase();
+
+  if (commandName === "adventure") {
+    const adventureOptions = Array.isArray(interaction.data?.options)
+      ? interaction.data.options
+      : [];
+
+    console.log(
+      "Discord /adventure interaction.data:",
+      JSON.stringify(interaction.data, null, 2),
+    );
+    console.log(
+      "Discord /adventure interaction.data.options:",
+      JSON.stringify(adventureOptions, null, 2),
+    );
+
+    for (const option of adventureOptions) {
+      console.log(
+        "Discord /adventure option:",
+        JSON.stringify({
+          name: option?.name,
+          type: option?.type,
+          value: option?.value,
+        }),
+      );
+    }
+  }
+
   const userId =
     interaction.member?.user?.id ||
     interaction.user?.id;
@@ -816,11 +843,11 @@ async function handleDiscordInteraction(request, env) {
       case "adventure": {
         const adventureNumber = getDiscordIntegerOption(
           interaction,
-          ["adventure", "number", "expedition"],
+          "adventure",
         );
         const pageNumber = getDiscordIntegerOption(
           interaction,
-          ["page"],
+          "page",
         );
 
         return discordMessage(
@@ -3458,43 +3485,17 @@ function getDiscordOption(
 
 function getDiscordIntegerOption(
   interaction,
-  optionNames,
+  optionName,
 ) {
-  const acceptedNames = new Set(
-    optionNames.map((name) => String(name).toLowerCase()),
-  );
-  const topLevelOptions = Array.isArray(interaction.data?.options)
+  const options = Array.isArray(interaction.data?.options)
     ? interaction.data.options
     : [];
-  const options = [];
-  const collectOptions = (entries) => {
-    for (const option of entries) {
-      options.push(option);
-
-      if (Array.isArray(option.options)) {
-        collectOptions(option.options);
-      }
-    }
-  };
-
-  collectOptions(topLevelOptions);
-
-  const namedOption = options.find(
-    (option) =>
-      acceptedNames.has(String(option.name || "").toLowerCase()),
+  const option = options.find(
+    (candidate) =>
+      candidate.name === optionName &&
+      candidate.type === 4,
   );
-  const fallbackOption =
-    namedOption ||
-    (
-      acceptedNames.has("adventure")
-        ? options.find(
-            (option) =>
-              option.type === 4 &&
-              String(option.name || "").toLowerCase() !== "page",
-          )
-        : null
-    );
-  const numericValue = Number(fallbackOption?.value);
+  const numericValue = Number(option?.value);
 
   return Number.isSafeInteger(numericValue)
     ? numericValue
