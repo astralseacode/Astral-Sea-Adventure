@@ -511,6 +511,14 @@ export default {
         return await handleDiscordRegistration(request, env);
       }
 
+      if (url.pathname === "/discord/schema") {
+        if (request.method !== "GET") {
+          return textResponse("Method not allowed.", 405);
+        }
+
+        return jsonResponse(DISCORD_COMMANDS);
+      }
+
       if (
         url.pathname === "/health" ||
         (url.pathname === "/" && !url.searchParams.has("user"))
