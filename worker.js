@@ -2276,23 +2276,23 @@ async function startCombatEncounter(
           `Enemy HP: ${enemy.hp}\n` +
           `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP}\n` +
           `Mana: ${progress.mana}/${progress.maxMana}\n\n` +
-          "Use /attack or /cast spell:Jelly to strike."
+          "Use /attack or /cast spell to strike."
         : `${enemy.name} appears! Enemy HP: ${enemy.hp} | ` +
           `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP} | ` +
           `Mana: ${progress.mana}/${progress.maxMana} | ` +
-          "Use !attack or !cast jelly to strike."
+          "Use !attack or !cast to strike."
       : platform === "discord"
         ? `Adventure ${encounterNumber} begins!\n\n` +
           `${enemy.name} appears in ${region.name}.\n` +
           `Enemy HP: ${enemy.hp}\n` +
           `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP}\n` +
           `Mana: ${progress.mana}/${progress.maxMana}\n\n` +
-          "Use /attack or /cast spell:Jelly to strike."
+          "Use /attack or /cast spell to strike."
         : `Adventure ${encounterNumber} begins! ${enemy.name} appears. ` +
           `Enemy HP: ${enemy.hp} | ` +
           `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP} | ` +
           `Mana: ${progress.mana}/${progress.maxMana} | ` +
-          "Use !attack or !cast jelly to strike.",
+          "Use !attack or !cast to strike.",
   };
 }
 
@@ -2417,17 +2417,21 @@ async function performAttackUnlocked(
   }
 
   const playerRoll = randomInteger(1, 20);
-  const playerAttack = getCombatRollResult(playerRoll);
   const progress = await getPlayerProgress(env, backpackKey);
   const triggeredRoll = consumeTriggeredStatusEffects(
     progress,
     OFFENSIVE_ROLL_TRIGGER,
     playerRoll,
   );
-  const effectMessage = formatTriggeredRoll(triggeredRoll);
-  const actionMessage =
-    formatCombatRollMessage("You", playerRoll, playerAttack) +
-    `${effectMessage ? ` | ${effectMessage}` : ""}`;
+  const playerAttack = playerRoll === 1
+    ? getCombatRollResult(playerRoll)
+    : getCombatRollResult(triggeredRoll.finalTotal);
+  const actionMessage = formatPlayerAttackResolution(
+    playerRoll,
+    playerAttack,
+    triggeredRoll,
+    platform,
+  );
   const updatedProgress = {
     ...progress,
     statusEffects: triggeredRoll.statusEffects,
@@ -2704,10 +2708,17 @@ async function performCastUnlocked(
     OFFENSIVE_ROLL_TRIGGER,
     spellRoll.total,
   );
-  const effectMessage = formatTriggeredRoll(triggeredRoll);
-  const castMessage =
-    `${formatSpellCastMessage(spell, spellRoll)}` +
-    `${effectMessage ? ` | ${effectMessage}` : ""}`;
+  const resolvedSpellRoll = resolveSpellRoll(
+    spell,
+    spellRoll,
+    triggeredRoll.finalTotal,
+  );
+  const castMessage = formatSpellCastMessage(
+    spell,
+    resolvedSpellRoll,
+    triggeredRoll,
+    platform,
+  );
   const updatedProgress = {
     ...progress,
     mana: progress.mana - spell.manaCost,
@@ -2723,7 +2734,7 @@ async function performCastUnlocked(
       combatState,
       {
         roll: triggeredRoll.finalTotal,
-        damage: spellRoll.damage,
+        damage: resolvedSpellRoll.damage,
         message: castMessage,
         victoryMessage: castMessage,
       },
@@ -2758,7 +2769,24 @@ function rollSpellDamage(spell) {
   };
 }
 
-function formatSpellCastMessage(spell, spellRoll) {
+function resolveSpellRoll(spell, spellRoll, finalTotal) {
+  const maximumRoll = spell.damage.dice * spell.damage.sides;
+  const isCritical = finalTotal >= maximumRoll;
+
+  return {
+    ...spellRoll,
+    finalTotal,
+    isCritical,
+    damage: isCritical ? spell.criticalDamage : spellRoll.total,
+  };
+}
+
+function formatSpellCastMessage(
+  spell,
+  spellRoll,
+  effectResult,
+  platform = "twitch",
+) {
   const personality =
     spell.personalities.find(
       (entry) => spellRoll.total <= entry.maximumRoll,
@@ -2767,9 +2795,21 @@ function formatSpellCastMessage(spell, spellRoll) {
   const followUp = spellRoll.isCritical
     ? spell.criticalText
     : personality.followUp;
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  const modifierText = formatOffensiveModifier(effectResult);
+  const resultText = spellRoll.isCritical
+    ? `${separator}Result: Critical Hit!`
+    : "";
+  const fadeText = effectResult.consumed.length > 0
+    ? `${separator}${effectResult.consumed.join(" and ")} fades after ` +
+      "guiding your spell."
+    : "";
 
-  return `You throw a ${personality.adjective} ${spell.name}. ` +
-    `${followUp} ${spellRoll.damage} dmg`;
+  return `You throw a ${personality.adjective} ${spell.name}. ${followUp}` +
+    `${separator}Spell Roll: ${effectResult.naturalRoll}${modifierText}` +
+    resultText +
+    `${separator}Damage: ${spellRoll.damage}` +
+    fadeText;
 }
 
 async function performEat(
@@ -4911,6 +4951,47 @@ function formatCombatRollMessage(attacker, roll, result) {
   return `${attacker} rolled ${roll} → ${result.damage} dmg${specialText}`;
 }
 
+function formatPlayerAttackResolution(
+  naturalRoll,
+  result,
+  effectResult,
+  platform = "twitch",
+) {
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  const modifierText = formatOffensiveModifier(effectResult);
+  const fadeText = effectResult.consumed.length > 0
+    ? `${separator}${effectResult.consumed.join(" and ")} fades after ` +
+      "guiding your strike."
+    : "";
+  const resultName =
+    result.category === "Critical"
+      ? "Critical Hit!"
+      : result.category === "Critical Miss"
+        ? "Critical Miss"
+        : `${result.category} Hit`;
+  const rollLabel = effectResult.modifier !== 0
+    ? `Roll: ${naturalRoll}${modifierText}`
+    : `You rolled ${naturalRoll}`;
+
+  return `You attack!${separator}${rollLabel}` +
+    `${separator}Result: ${resultName}` +
+    `${separator}Damage: ${result.damage}` +
+    fadeText;
+}
+
+function formatOffensiveModifier(effectResult) {
+  if (effectResult.modifier === 0) {
+    return "";
+  }
+
+  const modifier = effectResult.modifier > 0
+    ? `+ ${effectResult.modifier}`
+    : `- ${Math.abs(effectResult.modifier)}`;
+
+  return ` ${modifier} ${effectResult.consumed.join(" + ")} = ` +
+    effectResult.finalTotal;
+}
+
 function getCombatRollResult(roll) {
   if (roll === 1) {
     return {
@@ -5503,18 +5584,6 @@ function formatActiveEffects(progress, platform = "twitch") {
           .replace("+2 to your next offensive d20 roll", "+2 next offensive d20")})`
       : effect.displayName,
   ).join(", ");
-}
-
-function formatTriggeredRoll(effectResult) {
-  if (effectResult.modifier === 0) {
-    return "";
-  }
-
-  return `Attack Roll: ${effectResult.naturalRoll} | ` +
-    `${effectResult.consumed.join(" + ")}: ` +
-    `${effectResult.modifier > 0 ? "+" : ""}${effectResult.modifier} | ` +
-    `Final Total: ${effectResult.finalTotal} | ` +
-    `${effectResult.consumed.join(" and ")} fades after guiding your strike.`;
 }
 
 async function formatCombatProgress(
