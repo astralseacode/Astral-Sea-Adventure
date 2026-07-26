@@ -30,13 +30,14 @@ const COMBAT_DAMAGE = {
 const SPELLS = {
   jelly: {
     id: "jelly",
-    name: "Jellyfish",
+    name: "Jelly",
     requiredLevel: 3,
     manaCost: 25,
     damage: {
-      dice: 2,
-      sides: 10,
+      dice: 3,
+      sides: 8,
     },
+    criticalDamage: 35,
     personalities: [
       {
         maximumRoll: 4,
@@ -59,7 +60,7 @@ const SPELLS = {
         followUp: "It glides gracefully through the current...",
       },
       {
-        maximumRoll: 20,
+        maximumRoll: 24,
         adjective: "dedicated",
         followUp: "It surges forward with surprising determination...",
       },
@@ -323,7 +324,7 @@ const DISCORD_COMMANDS = [
     options: [
       {
         type: 4,
-        name: "adventure",
+        name: "number",
         description: "The unlocked Adventure number to begin",
         required: false,
         min_value: 1,
@@ -380,7 +381,7 @@ const DISCORD_COMMANDS = [
         description: "The spell to cast.",
         required: true,
         choices: [
-          { name: "Jellyfish", value: "jelly" },
+          { name: "Jelly", value: "jelly" },
         ],
       },
     ],
@@ -845,13 +846,13 @@ async function handleDiscordInteraction(request, env) {
     switch (commandName) {
       case "combat":
         return discordMessage(
-          "Combat has become Adventures!\nUse /adventure to view your Adventures or /adventure <number> to begin one.",
+          "Combat has become Adventures!\nUse /adventure to view your Adventures, then choose the number option to begin one.",
         );
 
       case "adventure": {
         const adventureNumber = getDiscordIntegerOption(
           interaction,
-          "adventure",
+          "number",
         );
         const pageNumber = getDiscordIntegerOption(
           interaction,
@@ -1022,7 +1023,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure [number], /left, /right, /forward, /yes, /no, /attack, /cast jelly, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -1182,9 +1183,9 @@ async function performAdventureUnlocked(
 
   if (!/^\d+$/.test(normalizedInput)) {
     return {
-      message:
-        `Use ${platform === "discord" ? "/adventure" : "!adventure"} ` +
-        "to view Adventures, or add an unlocked Adventure number.",
+      message: platform === "discord"
+        ? "Use /adventure to view Adventures, or choose the number option to begin an unlocked Adventure."
+        : "Use !adventure to view Adventures, or add an unlocked Adventure number.",
     };
   }
 
@@ -1529,7 +1530,7 @@ async function startAdventureBattle(
       `HP: ${state.playerHp}/${state.playerMaxHp} | ` +
       `Mana: ${progress.mana}/${progress.maxMana} | Use ` +
       `${platform === "discord"
-        ? "/attack or /cast jelly"
+        ? "/attack or /cast spell:Jelly"
         : "!attack or !cast jelly"} to strike.`,
   };
 }
@@ -1631,8 +1632,8 @@ async function requestCombatConfirmation(
     return {
       message:
         platform === "discord"
-          ? "Usage: /adventure <Adventure number>\n" +
-            "Use /adventure to view your unlocked Adventures."
+          ? "Use /adventure and choose an Adventure number to begin or resume.\n" +
+            "Use /adventure without the number option to view your unlocked Adventures."
           : "Usage: !adventure <Adventure number> | " +
             "Use !adventure to view your unlocked Adventures.",
     };
@@ -1767,7 +1768,7 @@ async function confirmPendingCombatUnlocked(
     return {
       message:
         `That Adventure selection expired. Use ` +
-        `${platform === "discord" ? "/adventure <number>" : "!adventure <number>"} again.`,
+        `${platform === "discord" ? "/adventure and choose the number option" : "!adventure <number>"} again.`,
     };
   }
 
@@ -1791,7 +1792,7 @@ async function confirmPendingCombatUnlocked(
     return {
       message:
         `Your region changed. Use ` +
-        `${platform === "discord" ? "/adventure <number>" : "!adventure <number>"} again.`,
+        `${platform === "discord" ? "/adventure and choose the number option" : "!adventure <number>"} again.`,
     };
   }
 
@@ -1866,8 +1867,9 @@ async function cancelPendingCombat(
           message:
             `${definition.bossRetreatText ||
               "You step back. The guardian remains ahead."} Use ` +
-            `${platform === "discord" ? "/adventure" : "!adventure"} ` +
-            `${activeAdventure.adventureNumber} ` +
+            `${platform === "discord"
+              ? `/adventure number:${activeAdventure.adventureNumber}`
+              : `!adventure ${activeAdventure.adventureNumber}`} ` +
             "when you are ready to return.",
         };
       }
@@ -1941,7 +1943,7 @@ async function startCombatEncounter(
           `Enemy HP: ${enemy.hp}\n` +
           `HP: ${PLAYER_COMBAT_MAX_HP}/${PLAYER_COMBAT_MAX_HP}\n` +
           `Mana: ${progress.mana}/${progress.maxMana}\n\n` +
-          "Use /attack or /cast jelly to strike."
+          "Use /attack or /cast spell:Jelly to strike."
         : `Adventure ${encounterNumber} begins! ${enemy.name} appears. ` +
           `Enemy HP: ${enemy.hp} | ` +
           `HP: ${PLAYER_COMBAT_MAX_HP}/${PLAYER_COMBAT_MAX_HP} | ` +
@@ -2134,11 +2136,11 @@ async function performCastUnlocked(
   platform,
 ) {
   const spellId = String(spellInput || "").trim().toLowerCase();
-  const command = platform === "discord" ? "/cast" : "!cast";
+  const command = platform === "discord" ? "/cast spell:Jelly" : "!cast jelly";
 
   if (!spellId) {
     return {
-      message: `Use ${command} jelly to cast Jellyfish.`,
+      message: `Use ${command} to cast Jelly.`,
     };
   }
 
@@ -2147,8 +2149,7 @@ async function performCastUnlocked(
   if (!spell) {
     return {
       message:
-        `You haven't learned that spell. Use ${command} jelly ` +
-        "to cast Jellyfish.",
+        `You haven't learned that spell. Use ${command} to cast Jelly.`,
     };
   }
 
@@ -2204,7 +2205,7 @@ async function performCastUnlocked(
       combatState,
       {
         roll: spellRoll.total,
-        damage: spellRoll.total,
+        damage: spellRoll.damage,
         message: castMessage,
         victoryMessage: castMessage,
       },
@@ -2227,9 +2228,15 @@ function rollSpellDamage(spell) {
     () => randomInteger(1, spell.damage.sides),
   );
 
+  const total = rolls.reduce((sum, roll) => sum + roll, 0);
+  const maximumRoll = spell.damage.dice * spell.damage.sides;
+  const isCritical = total === maximumRoll;
+
   return {
     rolls,
-    total: rolls.reduce((sum, roll) => sum + roll, 0),
+    total,
+    isCritical,
+    damage: isCritical ? spell.criticalDamage : total,
   };
 }
 
@@ -2239,13 +2246,12 @@ function formatSpellCastMessage(spell, spellRoll) {
       (entry) => spellRoll.total <= entry.maximumRoll,
     ) ||
     spell.personalities.at(-1);
-  const maximumRoll = spell.damage.dice * spell.damage.sides;
-  const followUp = spellRoll.total === maximumRoll
+  const followUp = spellRoll.isCritical
     ? spell.criticalText
     : personality.followUp;
 
   return `You throw a ${personality.adjective} ${spell.name}. ` +
-    `${followUp} ${spellRoll.total} dmg`;
+    `${followUp} ${spellRoll.damage} dmg`;
 }
 
 async function performEat(
@@ -4115,7 +4121,7 @@ async function formatAdventureProgress(
     ? [
         `${region.name} Adventures`,
         `Your Level: ${playerLevel}`,
-        `Adventures Unlocked: ${highestUnlocked} of ${entries.length}`,
+        `Unlocked Adventures: ${highestUnlocked} of ${entries.length}`,
         `Page ${page} of ${totalPages}`,
       ]
     : [
@@ -4144,7 +4150,7 @@ async function formatAdventureProgress(
 
   parts.push(
     platform === "discord"
-      ? "Use /adventure <number> to begin or resume an Adventure."
+      ? "Use /adventure and choose an Adventure number to begin or resume."
       : "Use !adventure <number>",
   );
 
@@ -4244,7 +4250,7 @@ async function formatCombatProgress(
     ? [
         `${region.name} Adventure Progress`,
         `Your Level: ${playerLevel}`,
-        `Adventures Unlocked: ${highestUnlocked} of ${entries.length}`,
+        `Unlocked Adventures: ${highestUnlocked} of ${entries.length}`,
       ]
     : [
         `${region.name} | Level ${playerLevel} | ` +
