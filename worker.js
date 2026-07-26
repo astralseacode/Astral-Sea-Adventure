@@ -9,8 +9,19 @@ const PENDING_COMBAT_TTL_MS = 5 * 60 * 1000;
 const DUPLICATE_DIRECTION_WINDOW_MS = 2 * 1000;
 const PLAYER_COMBAT_MAX_HP = 100;
 const PLAYER_MAX_MANA = 100;
+const REST_BONUS_AMOUNT = 25;
+const REST_RESOURCE_LIMIT =
+  PLAYER_COMBAT_MAX_HP + REST_BONUS_AMOUNT;
+const REST_COOLDOWN_MS = 20 * 60 * 1000;
 const BERRY_HEAL_AMOUNT = 25;
 const BERRY_MANA_AMOUNT = 25;
+const BERRY_OUTSIDE_COMBAT_MESSAGES = [
+  "You enjoy a delicious Berry, restoring +25 HP and +25 Mana. Somehow it tastes even better than you remembered.",
+  "You snack on a juicy Berry. +25 HP and +25 Mana. Tiny sparkles dance around you before fading away.",
+  "You munch on a Berry and feel wonderfully refreshed. +25 HP and +25 Mana. That definitely hit the spot.",
+  "You eat a Berry while taking a short break. +25 HP and +25 Mana. Your stomach approves.",
+  "You happily devour a Berry. +25 HP and +25 Mana. You feel fuller and ready for whatever lies ahead.",
+];
 const BERRY_DROP_CHANCE_BY_REGION = {
   "moonlit-reef": 0.77,
   "starfall-trench": 0.60,
@@ -388,7 +399,19 @@ const DISCORD_COMMANDS = [
   },
   {
     name: "eat",
-    description: "Eat a Berry during a fight to restore 25 HP and 25 Mana.",
+    description: "Eat an item to restore Health and Mana.",
+    type: 1,
+    options: [
+      {
+        type: 1,
+        name: "berry",
+        description: "Eat a Berry to restore 25 HP and 25 Mana.",
+      },
+    ],
+  },
+  {
+    name: "rest",
+    description: "Rest to restore Health and Mana with temporary bonuses.",
     type: 1,
   },
   {
@@ -643,7 +666,18 @@ async function handleTwitchRequest(url, env) {
             env,
             backpackKey,
             displayName,
-            argumentParts.length > 0,
+            rawArgs,
+          )
+        ).message,
+      );
+
+    case "rest":
+      return textResponse(
+        (
+          await performRest(
+            env,
+            backpackKey,
+            username,
           )
         ).message,
       );
@@ -674,7 +708,7 @@ async function handleTwitchRequest(url, env) {
 
     case "backpack":
       return textResponse(
-        (await performBackpack(env, backpackKey)).message,
+        (await performBackpack(env, backpackKey, username)).message,
       );
 
     case "travel":
@@ -741,7 +775,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. Other commands: !eat, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. Other commands: !eat berry, !rest, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -920,8 +954,18 @@ async function handleDiscordInteraction(request, env) {
               env,
               backpackKey,
               displayName,
-              Array.isArray(interaction.data?.options) &&
-                interaction.data.options.length > 0,
+              getDiscordSubcommand(interaction),
+            )
+          ).message,
+        );
+
+      case "rest":
+        return discordMessage(
+          (
+            await performRest(
+              env,
+              backpackKey,
+              getDiscordRestIdentity(interaction),
             )
           ).message,
         );
@@ -961,7 +1005,13 @@ async function handleDiscordInteraction(request, env) {
 
       case "backpack":
         return discordMessage(
-          (await performBackpack(env, backpackKey)).message,
+          (
+            await performBackpack(
+              env,
+              backpackKey,
+              getDiscordRestIdentity(interaction),
+            )
+          ).message,
           true,
         );
 
@@ -1023,7 +1073,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. Other commands: /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. Other commands: /eat berry, /rest, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -1263,7 +1313,7 @@ async function performAdventureUnlocked(
     visitedRooms: [definition.startRoomId],
     completedRooms: [],
     collectedRewards: [],
-    playerHp: PLAYER_COMBAT_MAX_HP,
+    playerHp: progress.hp,
     playerMaxHp: PLAYER_COMBAT_MAX_HP,
     startedAt: now,
     updatedAt: now,
@@ -1426,9 +1476,12 @@ async function performAdventureDirectionUnlocked(
       `${choice.message} You recover ${reward} Star Candies.`,
     );
   } else if (choice.type === "healing") {
-    const healed = Math.min(
-      choice.healAmount,
-      state.playerMaxHp - state.playerHp,
+    const healed = Math.max(
+      0,
+      Math.min(
+        choice.healAmount,
+        state.playerMaxHp - state.playerHp,
+      ),
     );
     state.playerHp += healed;
     messageParts.push(
@@ -1454,6 +1507,7 @@ async function performAdventureDirectionUnlocked(
     const progress = await getPlayerProgress(env, backpackKey);
     await savePlayerProgress(env, backpackKey, {
       ...progress,
+      hp: state.playerHp,
       xp: progress.xp + discoveryXp,
       berries: progress.berries + discoveryBerries,
     });
@@ -1916,11 +1970,12 @@ async function startCombatEncounter(
   platform,
 ) {
   const now = Math.floor(Date.now() / 1000);
+  const progress = await getPlayerProgress(env, backpackKey);
   const combatState = {
     version: 1,
     regionId: region.id,
     encounterNumber,
-    playerHp: PLAYER_COMBAT_MAX_HP,
+    playerHp: progress.hp,
     playerMaxHp: PLAYER_COMBAT_MAX_HP,
     enemy: {
       ...enemy,
@@ -1932,7 +1987,6 @@ async function startCombatEncounter(
     updatedAt: now,
   };
 
-  const progress = await getPlayerProgress(env, backpackKey);
   await saveCombatState(env, backpackKey, combatState);
 
   return {
@@ -1941,12 +1995,12 @@ async function startCombatEncounter(
         ? `Adventure ${encounterNumber} begins!\n\n` +
           `${enemy.name} appears in ${region.name}.\n` +
           `Enemy HP: ${enemy.hp}\n` +
-          `HP: ${PLAYER_COMBAT_MAX_HP}/${PLAYER_COMBAT_MAX_HP}\n` +
+          `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP}\n` +
           `Mana: ${progress.mana}/${progress.maxMana}\n\n` +
           "Use /attack or /cast spell:Jelly to strike."
         : `Adventure ${encounterNumber} begins! ${enemy.name} appears. ` +
           `Enemy HP: ${enemy.hp} | ` +
-          `HP: ${PLAYER_COMBAT_MAX_HP}/${PLAYER_COMBAT_MAX_HP} | ` +
+          `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP} | ` +
           `Mana: ${progress.mana}/${progress.maxMana} | ` +
           "Use !attack or !cast jelly to strike.",
   };
@@ -2092,8 +2146,14 @@ async function resolvePlayerCombatAction(
 
   combatState.round += 1;
   combatState.updatedAt = Math.floor(Date.now() / 1000);
-  await saveCombatState(env, backpackKey, combatState);
   const progress = await getPlayerProgress(env, backpackKey);
+  await Promise.all([
+    saveCombatState(env, backpackKey, combatState),
+    savePlayerProgress(env, backpackKey, {
+      ...progress,
+      hp: combatState.playerHp,
+    }),
+  ]);
 
   messageParts.push(
     ...formatCombatStatus(combatState, progress),
@@ -2258,7 +2318,7 @@ async function performEat(
   env,
   backpackKey,
   displayName,
-  hasArguments = false,
+  itemInput = "",
 ) {
   return withPlayerMutationLock(
     backpackKey,
@@ -2266,7 +2326,7 @@ async function performEat(
       env,
       backpackKey,
       displayName,
-      hasArguments,
+      itemInput,
     ),
   );
 }
@@ -2275,34 +2335,28 @@ async function performEatUnlocked(
   env,
   backpackKey,
   displayName,
-  hasArguments,
+  itemInput,
 ) {
+  const normalizedItem = String(itemInput || "").trim().toLowerCase();
+
+  if (normalizedItem && normalizedItem !== "berry") {
+    return {
+      message:
+        `${displayName}, use ${normalizedItem.startsWith("/")
+          ? "/eat berry"
+          : "the Berry option"} to eat a Berry.`,
+    };
+  }
+
   const combatState = await getCombatState(env, backpackKey);
-
-  if (!combatState) {
-    return {
-      message:
-        `${displayName}, you can only eat Berries while fighting an enemy.`,
-    };
-  }
-
-  if (hasArguments) {
-    return {
-      message:
-        `${displayName}, use this command without an amount.`,
-    };
-  }
-
-  const progress = await getPlayerProgress(env, backpackKey);
-
-  if (progress.berries < 1) {
-    return {
-      message:
-        `${displayName}, you do not have any Berries to eat.`,
-    };
-  }
-
   const latestProgress = await getPlayerProgress(env, backpackKey);
+  const activeAdventure = combatState
+    ? null
+    : await getActiveAdventure(env, backpackKey);
+  const currentHp =
+    combatState?.playerHp ??
+    activeAdventure?.playerHp ??
+    latestProgress.hp;
 
   if (latestProgress.berries < 1) {
     return {
@@ -2311,32 +2365,81 @@ async function performEatUnlocked(
     };
   }
 
-  const originalCombatState = structuredClone(combatState);
-  const healedAmount = Math.min(
-    BERRY_HEAL_AMOUNT,
-    combatState.playerMaxHp - combatState.playerHp,
+  const hpLimit = currentHp > PLAYER_COMBAT_MAX_HP
+    ? REST_RESOURCE_LIMIT
+    : PLAYER_COMBAT_MAX_HP;
+  const manaLimit = latestProgress.mana > PLAYER_MAX_MANA
+    ? REST_RESOURCE_LIMIT
+    : PLAYER_MAX_MANA;
+  const healedAmount = Math.max(
+    0,
+    Math.min(
+      BERRY_HEAL_AMOUNT,
+      hpLimit - currentHp,
+    ),
   );
-  const restoredMana = Math.min(
-    BERRY_MANA_AMOUNT,
-    latestProgress.maxMana - latestProgress.mana,
+  const restoredMana = Math.max(
+    0,
+    Math.min(
+      BERRY_MANA_AMOUNT,
+      manaLimit - latestProgress.mana,
+    ),
   );
-  combatState.playerHp += healedAmount;
+
+  if (healedAmount === 0 && restoredMana === 0) {
+    return {
+      message:
+        "You're already feeling great. Better save that Berry for later!",
+    };
+  }
+
+  const updatedHp = currentHp + healedAmount;
+  const updatedMana = latestProgress.mana + restoredMana;
   const remainingBerries = Math.max(
     0,
     latestProgress.berries - 1,
   );
+  const originalCombatState = combatState
+    ? structuredClone(combatState)
+    : null;
+  const originalAdventure = activeAdventure
+    ? structuredClone(activeAdventure)
+    : null;
 
-  await saveCombatState(env, backpackKey, combatState);
+  if (combatState) {
+    combatState.playerHp = updatedHp;
+  }
+
+  if (activeAdventure) {
+    activeAdventure.playerHp = updatedHp;
+    activeAdventure.updatedAt = Date.now();
+  }
 
   try {
+    if (combatState) {
+      await saveCombatState(env, backpackKey, combatState);
+    }
+
+    if (activeAdventure) {
+      await saveActiveAdventure(env, backpackKey, activeAdventure);
+    }
+
     await savePlayerProgress(env, backpackKey, {
       ...latestProgress,
       berries: remainingBerries,
-      mana: latestProgress.mana + restoredMana,
+      hp: updatedHp,
+      mana: updatedMana,
     });
   } catch (error) {
     try {
-      await saveCombatState(env, backpackKey, originalCombatState);
+      await Promise.all([
+        originalCombatState
+          ? saveCombatState(env, backpackKey, originalCombatState)
+          : Promise.resolve(),
+        originalAdventure
+          ? saveActiveAdventure(env, backpackKey, originalAdventure)
+          : Promise.resolve(),
+      ]);
     } catch (rollbackError) {
       console.error("Berry heal rollback failed:", rollbackError);
     }
@@ -2348,15 +2451,18 @@ async function performEatUnlocked(
     healedAmount,
     restoredMana,
     berries: remainingBerries,
-    playerHp: combatState.playerHp,
-    playerMaxHp: combatState.playerMaxHp,
-    message:
-      `${displayName} ate 1 Berry and restored ${healedAmount} HP and ` +
-      `${restoredMana} Mana! ` +
-      `HP: ${combatState.playerHp}/${combatState.playerMaxHp} | ` +
-      `Mana: ${latestProgress.mana + restoredMana}/` +
-      `${latestProgress.maxMana} | ` +
-      `Berries: ${remainingBerries.toLocaleString("en-US")}`,
+    playerHp: updatedHp,
+    playerMaxHp: PLAYER_COMBAT_MAX_HP,
+    message: combatState
+      ? `${displayName} ate 1 Berry and restored ${healedAmount} HP and ` +
+        `${restoredMana} Mana! ` +
+        `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
+        `Mana: ${updatedMana}/${PLAYER_MAX_MANA} | ` +
+        `Berries: ${remainingBerries.toLocaleString("en-US")}`
+      : `${randomChoice(BERRY_OUTSIDE_COMBAT_MESSAGES)} | ` +
+        `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
+        `Mana: ${updatedMana}/${PLAYER_MAX_MANA} | ` +
+        `Berries: ${remainingBerries.toLocaleString("en-US")}`,
   };
 }
 
@@ -2405,6 +2511,7 @@ async function resolveCombatVictory(
       : [];
   const updatedProgress = {
     ...progress,
+    hp: combatState.playerHp,
     xp: newXp,
     ...(adventureContext?.isBoss
       ? {
@@ -2512,14 +2619,23 @@ async function resolveCombatDefeat(
   backpackKey,
   combatState,
 ) {
-  const currentTotal = await getBackpackTotal(env, backpackKey);
+  const [currentTotal, progress] = await Promise.all([
+    getBackpackTotal(env, backpackKey),
+    getPlayerProgress(env, backpackKey),
+  ]);
   const candyLoss = Math.min(
     currentTotal,
     combatState.enemy.defeatCandyLoss,
   );
   const newTotal = currentTotal - candyLoss;
 
-  await saveBackpackTotal(env, backpackKey, newTotal);
+  await Promise.all([
+    saveBackpackTotal(env, backpackKey, newTotal),
+    savePlayerProgress(env, backpackKey, {
+      ...progress,
+      hp: PLAYER_COMBAT_MAX_HP,
+    }),
+  ]);
   await deleteCombatState(env, backpackKey);
 
   if (combatState.adventureContext) {
@@ -2898,9 +3014,91 @@ async function performGamble(
   };
 }
 
+async function performRest(
+  env,
+  backpackKey,
+  sharedIdentity,
+) {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performRestUnlocked(
+      env,
+      backpackKey,
+      sharedIdentity,
+    ),
+  );
+}
+
+async function performRestUnlocked(
+  env,
+  backpackKey,
+  sharedIdentity,
+) {
+  const progress = await getPlayerProgress(env, backpackKey);
+  const sharedCooldownAt = await getSharedRestCooldown(
+    env,
+    sharedIdentity,
+  );
+  const lastRestAt = Math.max(
+    progress.lastRestAt,
+    sharedCooldownAt,
+  );
+  const remainingMs = REST_COOLDOWN_MS - (Date.now() - lastRestAt);
+
+  if (remainingMs > 0) {
+    return {
+      message:
+        `You're still feeling refreshed. You can Rest again in ` +
+        `${formatRemainingDuration(remainingMs)}.`,
+    };
+  }
+
+  const now = Date.now();
+  const updatedProgress = {
+    ...progress,
+    hp: REST_RESOURCE_LIMIT,
+    mana: REST_RESOURCE_LIMIT,
+    lastRestAt: now,
+  };
+  const combatState = await getCombatState(env, backpackKey);
+  const activeAdventure = await getActiveAdventure(env, backpackKey);
+
+  if (combatState) {
+    combatState.playerHp = REST_RESOURCE_LIMIT;
+    combatState.updatedAt = Math.floor(now / 1000);
+  }
+
+  if (activeAdventure) {
+    activeAdventure.playerHp = REST_RESOURCE_LIMIT;
+    activeAdventure.updatedAt = now;
+  }
+
+  await Promise.all([
+    savePlayerProgress(env, backpackKey, updatedProgress),
+    combatState
+      ? saveCombatState(env, backpackKey, combatState)
+      : Promise.resolve(),
+    activeAdventure
+      ? saveActiveAdventure(env, backpackKey, activeAdventure)
+      : Promise.resolve(),
+    saveSharedRestCooldown(env, sharedIdentity, now),
+  ]);
+
+  return {
+    hp: REST_RESOURCE_LIMIT,
+    mana: REST_RESOURCE_LIMIT,
+    message:
+      "You take a peaceful rest beneath the moonlight. Your Health and Mana " +
+      "have been restored, and you feel refreshed! | " +
+      `HP: ${REST_RESOURCE_LIMIT}/${PLAYER_COMBAT_MAX_HP} | ` +
+      `Mana: ${REST_RESOURCE_LIMIT}/${PLAYER_MAX_MANA}`,
+  };
+}
+
 async function performBackpack(
   env,
   backpackKey,
+  sharedIdentity = "",
 ) {
   const [
     currentTotal,
@@ -2917,6 +3115,23 @@ async function performBackpack(
     ),
   ]);
 
+  const combatState = await getCombatState(env, backpackKey);
+  const activeAdventure = combatState
+    ? null
+    : await getActiveAdventure(env, backpackKey);
+  const currentHp =
+    combatState?.playerHp ??
+    activeAdventure?.playerHp ??
+    progress.hp;
+  const sharedCooldownAt = await getSharedRestCooldown(
+    env,
+    sharedIdentity,
+  );
+  const restStatus = getRestStatus(
+    currentHp,
+    progress.mana,
+    Math.max(progress.lastRestAt, sharedCooldownAt),
+  );
   const level =
     levelFromXp(progress.xp);
 
@@ -2947,7 +3162,9 @@ async function performBackpack(
       `Region: ${region.name} | ` +
       `Backpack: ${currentTotal.toLocaleString("en-US")} Star Candies | ` +
       `Berries: ${progress.berries.toLocaleString("en-US")} | ` +
-      `Mana: ${progress.mana}/${progress.maxMana}`,
+      `HP: ${currentHp}/${progress.maxHp} | ` +
+      `Mana: ${progress.mana}/${progress.maxMana} | ` +
+      restStatus,
   };
 }
 
@@ -3453,7 +3670,7 @@ function isValidAdventureState(state) {
     Number.isSafeInteger(state.playerHp) &&
     Number.isSafeInteger(state.playerMaxHp) &&
     state.playerHp > 0 &&
-    state.playerHp <= state.playerMaxHp &&
+    state.playerHp <= REST_RESOURCE_LIMIT &&
     state.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
     Number.isSafeInteger(state.startedAt) &&
     state.startedAt > 0 &&
@@ -3497,6 +3714,14 @@ function getDiscordOption(
   )?.value;
 }
 
+function getDiscordSubcommand(interaction) {
+  const options = Array.isArray(interaction.data?.options)
+    ? interaction.data.options
+    : [];
+
+  return options.find((option) => option.type === 1)?.name || "";
+}
+
 function getDiscordIntegerOption(
   interaction,
   optionName,
@@ -3526,6 +3751,15 @@ function getDiscordDisplayName(interaction) {
     "Explorer";
 
   return escapeDiscordText(String(displayName));
+}
+
+function getDiscordRestIdentity(interaction) {
+  const username =
+    interaction.member?.user?.username ||
+    interaction.user?.username ||
+    "";
+
+  return normalizeUsername(username);
 }
 
 function escapeDiscordText(value) {
@@ -3607,6 +3841,32 @@ function formatCandyAmount(value) {
     : "Star Candies";
 
   return `${formattedValue} ${currencyName}`;
+}
+
+function formatRemainingDuration(milliseconds) {
+  const totalSeconds = Math.max(
+    0,
+    Math.ceil(milliseconds / 1000),
+  );
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${minutes}m ${seconds}s`;
+}
+
+function getRestStatus(hp, mana, lastRestAt, now = Date.now()) {
+  if (
+    hp > PLAYER_COMBAT_MAX_HP ||
+    mana > PLAYER_MAX_MANA
+  ) {
+    return "Rested";
+  }
+
+  const remainingMs = REST_COOLDOWN_MS - (now - lastRestAt);
+
+  return remainingMs > 0
+    ? `Rest: ${formatRemainingDuration(remainingMs)}`
+    : "Ready to Rest";
 }
 
 function randomInteger(minimum, maximum) {
@@ -3894,7 +4154,7 @@ function isValidCombatState(combatState) {
     Number.isSafeInteger(combatState.playerMaxHp) &&
     combatState.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
     combatState.playerHp > 0 &&
-    combatState.playerHp <= combatState.playerMaxHp &&
+    combatState.playerHp <= REST_RESOURCE_LIMIT &&
     enemy &&
     typeof enemy.id === "string" &&
     /^[a-z0-9-]+$/.test(enemy.id) &&
@@ -4213,6 +4473,10 @@ function getRegionCombatProgress(
     encounterCount,
     Math.max(1, highestUnlocked),
   );
+}
+
+function randomChoice(values) {
+  return values[randomInteger(0, values.length - 1)];
 }
 
 async function formatCombatProgress(
@@ -4792,12 +5056,56 @@ function getProgressKey(backpackKey) {
   return `progress:${backpackKey}`;
 }
 
+function getSharedRestCooldownKey(sharedIdentity) {
+  return sharedIdentity
+    ? `cooldown:rest:${sharedIdentity}`
+    : "";
+}
+
+async function getSharedRestCooldown(env, sharedIdentity) {
+  const key = getSharedRestCooldownKey(sharedIdentity);
+
+  if (!key) {
+    return 0;
+  }
+
+  const storedValue = await env.Backpack.get(key);
+  const timestamp = Number(storedValue);
+
+  return Number.isSafeInteger(timestamp) && timestamp > 0
+    ? timestamp
+    : 0;
+}
+
+async function saveSharedRestCooldown(
+  env,
+  sharedIdentity,
+  timestamp,
+) {
+  const key = getSharedRestCooldownKey(sharedIdentity);
+
+  if (!key) {
+    return;
+  }
+
+  await env.Backpack.put(
+    key,
+    String(timestamp),
+    {
+      expirationTtl: Math.ceil(REST_COOLDOWN_MS / 1000),
+    },
+  );
+}
+
 function createEmptyProgress() {
   return {
     xp: 0,
     berries: 0,
+    hp: PLAYER_COMBAT_MAX_HP,
+    maxHp: PLAYER_COMBAT_MAX_HP,
     mana: PLAYER_MAX_MANA,
     maxMana: PLAYER_MAX_MANA,
+    lastRestAt: 0,
     relics: [],
     discoveries: {},
     notes: {},
@@ -4834,16 +5142,30 @@ async function getPlayerProgress(
         Number(parsed.berries) || 0,
       ),
     );
+    const maxHp = PLAYER_COMBAT_MAX_HP;
+    const hp = Object.prototype.hasOwnProperty.call(parsed, "hp")
+      ? Math.min(
+          REST_RESOURCE_LIMIT,
+          Math.max(
+            0,
+            Math.floor(Number(parsed.hp) || 0),
+          ),
+        )
+      : maxHp;
     const maxMana = PLAYER_MAX_MANA;
     const mana = Object.prototype.hasOwnProperty.call(parsed, "mana")
       ? Math.min(
-          maxMana,
+          REST_RESOURCE_LIMIT,
           Math.max(
             0,
             Math.floor(Number(parsed.mana) || 0),
           ),
         )
       : maxMana;
+    const lastRestAt = Math.max(
+      0,
+      Math.floor(Number(parsed.lastRestAt) || 0),
+    );
     const hasSavedRegion = Object.prototype.hasOwnProperty.call(
       parsed,
       "currentRegion",
@@ -4957,8 +5279,11 @@ async function getPlayerProgress(
     const normalizedProgress = {
       xp,
       berries,
+      hp,
+      maxHp,
       mana,
       maxMana,
+      lastRestAt,
       relics,
       discoveries,
       notes,
@@ -4970,8 +5295,14 @@ async function getPlayerProgress(
     if (
       !Object.prototype.hasOwnProperty.call(parsed, "mana") ||
       !Object.prototype.hasOwnProperty.call(parsed, "maxMana") ||
+      !Object.prototype.hasOwnProperty.call(parsed, "hp") ||
+      !Object.prototype.hasOwnProperty.call(parsed, "maxHp") ||
+      !Object.prototype.hasOwnProperty.call(parsed, "lastRestAt") ||
+      Number(parsed.hp) !== hp ||
+      Number(parsed.maxHp) !== maxHp ||
       Number(parsed.mana) !== mana ||
-      Number(parsed.maxMana) !== maxMana
+      Number(parsed.maxMana) !== maxMana ||
+      Number(parsed.lastRestAt) !== lastRestAt
     ) {
       await savePlayerProgress(env, backpackKey, normalizedProgress);
     }
@@ -5097,7 +5428,12 @@ async function savePlayerProgress(
         Number(progress.berries) || 0,
       ),
     ),
+    maxHp: PLAYER_COMBAT_MAX_HP,
     maxMana: PLAYER_MAX_MANA,
+    lastRestAt: Math.max(
+      0,
+      Math.floor(Number(progress.lastRestAt) || 0),
+    ),
     relics: safeRelics,
     discoveries: safeDiscoveries,
     notes: safeNotes,
@@ -5107,8 +5443,17 @@ async function savePlayerProgress(
       getRegionById(progress.currentRegion)?.id ||
       "moonlit-reef",
   };
+  safeProgress.hp = Math.min(
+    REST_RESOURCE_LIMIT,
+    Math.max(
+      0,
+      Math.floor(
+        Number(progress.hp) || 0,
+      ),
+    ),
+  );
   safeProgress.mana = Math.min(
-    safeProgress.maxMana,
+    REST_RESOURCE_LIMIT,
     Math.max(
       0,
       Math.floor(
