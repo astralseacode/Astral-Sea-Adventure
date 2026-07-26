@@ -30,7 +30,7 @@ const COMBAT_DAMAGE = {
 const SPELLS = {
   jelly: {
     id: "jelly",
-    name: "Jelly",
+    name: "Jellyfish",
     requiredLevel: 3,
     manaCost: 25,
     damage: {
@@ -741,7 +741,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly, !eat, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. Other commands: !eat, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1023,7 +1023,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. Other commands: /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -2140,7 +2140,7 @@ async function performCastUnlocked(
 
   if (!spellId) {
     return {
-      message: `Use ${command} to cast Jelly.`,
+      message: `Use ${command} to cast the Jellyfish spell.`,
     };
   }
 
@@ -2149,7 +2149,7 @@ async function performCastUnlocked(
   if (!spell) {
     return {
       message:
-        `You haven't learned that spell. Use ${command} to cast Jelly.`,
+        `You haven't learned that spell. Use ${command} to cast the Jellyfish spell.`,
     };
   }
 
@@ -2185,7 +2185,7 @@ async function performCastUnlocked(
 
   if (progress.mana < spell.manaCost) {
     return {
-      message: "You don't have enough Mana.",
+      message: `You don't have enough Mana to cast ${spell.name}.`,
     };
   }
 
