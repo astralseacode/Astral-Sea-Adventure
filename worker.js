@@ -17,6 +17,7 @@ const MAX_TEMPORARY_RESOURCE_CAP = LONG_REST_RESOURCE_CAP;
 const SHORT_REST_COOLDOWN_MS = 20 * 60 * 1000;
 const LONG_REST_COOLDOWN_MS = 60 * 60 * 1000;
 const LONG_REST_ENCOUNTER_CHANCE = 0.5;
+const OFFENSIVE_ROLL_TRIGGER = "next_offensive_d20";
 const BERRY_HEAL_AMOUNT = 25;
 const BERRY_MANA_AMOUNT = 25;
 const BERRY_OUTSIDE_COMBAT_MESSAGES = [
@@ -157,6 +158,18 @@ const LONG_REST_ENCOUNTER_TRANSITIONS = [
   (enemyName) =>
     `You finish gathering your belongings when something lunges from behind a nearby ruin.\n\nA **${enemyName}** has discovered your resting place and seems unwilling to discuss boundaries.`,
 ];
+const ELF_BLESSING_SUCCESS_SCENES = [
+  "A nearby bush rustles suspiciously.\n\nYou spot Shizuki peeking through the leaves and giving you an enthusiastic thumbs-up. The instant she realizes you noticed her, she vanishes deeper into the shrubbery.\n\nWarm Fae magic gathers around you.",
+  "A tiny paper note flutters down from somewhere above.\n\nIt reads:\n\n\"You're doing great.\"\n\nThere is no signature, but the handwriting is unmistakably Shizuki's.\n\nSilver light settles around your weapon.",
+  "A gentle breeze carries glowing moon petals around you.\n\nFrom somewhere in the distance, a voice calls:\n\n\"YOU GOT THIS!\"\n\nAfter a startled pause, the same voice loudly whispers:\n\n\"...Nobody heard that.\"",
+  "You spot Shizuki hiding behind a nearby tree.\n\nWhen she realizes you can see her, she freezes, raises both arms like branches, and attempts to pass herself off as an ordinary forest shrub.\n\nSomehow, this fills you with determination.",
+  "A fake mustache tumbles from behind a nearby rock.\n\nA hand immediately reaches out, snatches it, and disappears.\n\nA warm magical blessing settles around you moments later.\n\nThese events are completely unrelated.",
+];
+const ELF_BLESSING_RECAST_SCENES = [
+  "A familiar voice whispers from somewhere nearby:\n\n\"I already blessed you. I'm good—but not that good.\"",
+  "A note lands at your feet:\n\n\"ONE blessing at a time. Please use responsibly.\"\n\nThe handwriting is unmistakably Shizuki's.",
+  "A nearby bush shakes its leaves disapprovingly.\n\nYou are already under the effects of Elf Blessing.",
+];
 const BERRY_DROP_CHANCE_BY_REGION = {
   "moonlit-reef": 0.77,
   "starfall-trench": 0.60,
@@ -174,11 +187,23 @@ const COMBAT_DAMAGE = {
   critical: 30,
 };
 const SPELLS = {
+  elf_blessing: {
+    id: "elf_blessing",
+    name: "Elf Blessing",
+    aliases: ["elf blessing", "elf_blessing", "blessing"],
+    requiredLevel: 1,
+    manaCost: 10,
+    type: "support",
+    description: "+2 to your next offensive d20 roll",
+    effectId: "elf_blessing",
+  },
   jelly: {
     id: "jelly",
     name: "Jellyfish",
+    aliases: ["jelly"],
     requiredLevel: 3,
     manaCost: 25,
+    type: "offensive",
     damage: {
       dice: 3,
       sides: 8,
@@ -527,6 +552,7 @@ const DISCORD_COMMANDS = [
         description: "The spell to cast.",
         required: true,
         choices: [
+          { name: "Elf Blessing", value: "elf_blessing" },
           { name: "Jelly", value: "jelly" },
         ],
       },
@@ -890,7 +916,14 @@ async function handleTwitchRequest(url, env) {
 
     case "backpack":
       return textResponse(
-        (await performBackpack(env, backpackKey, username)).message,
+        (
+          await performBackpack(
+            env,
+            backpackKey,
+            username,
+            "twitch",
+          )
+        ).message,
       );
 
     case "shop":
@@ -987,7 +1020,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack, !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. !rest - Take a Short Rest. Cooldown: 20 minutes. !rest long - Take a Long Rest. Cooldown: 1 hour. Other commands: !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 10 Mana to gain +2 on your next offensive d20 roll. !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. !rest - Take a Short Rest. Cooldown: 20 minutes. !rest long - Take a Long Rest. Cooldown: 1 hour. Other commands: !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1229,6 +1262,7 @@ async function handleDiscordInteraction(request, env) {
               env,
               backpackKey,
               getDiscordRestIdentity(interaction),
+              "discord",
             )
           ).message,
           true,
@@ -1318,7 +1352,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack, /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. /rest short - Gain up to 125 HP and Mana. Cooldown: 20 minutes. /rest long - Gain up to 150 HP and Mana. Cooldown: 1 hour. Other commands: /eat berry, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack. /cast spell:Elf Blessing - Spend 10 Mana to gain +2 on your next offensive d20 roll. Known from Level 1. /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. /rest short - Gain up to 125 HP and Mana. Cooldown: 20 minutes. /rest long - Gain up to 150 HP and Mana. Cooldown: 1 hour. Other commands: /eat berry, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -2384,21 +2418,52 @@ async function performAttackUnlocked(
 
   const playerRoll = randomInteger(1, 20);
   const playerAttack = getCombatRollResult(playerRoll);
-  return resolvePlayerCombatAction(
-    env,
-    backpackKey,
-    combatState,
-    {
-      roll: playerRoll,
-      damage: playerAttack.damage,
-      message: formatCombatRollMessage(
-        "You",
-        playerRoll,
-        playerAttack,
-      ),
-    },
-    platform,
+  const progress = await getPlayerProgress(env, backpackKey);
+  const triggeredRoll = consumeTriggeredStatusEffects(
+    progress,
+    OFFENSIVE_ROLL_TRIGGER,
+    playerRoll,
   );
+  const effectMessage = formatTriggeredRoll(triggeredRoll);
+  const actionMessage =
+    formatCombatRollMessage("You", playerRoll, playerAttack) +
+    `${effectMessage ? ` | ${effectMessage}` : ""}`;
+  const updatedProgress = {
+    ...progress,
+    statusEffects: triggeredRoll.statusEffects,
+  };
+
+  if (triggeredRoll.consumed.length > 0) {
+    await savePlayerProgress(env, backpackKey, updatedProgress);
+  }
+
+  try {
+    return await resolvePlayerCombatAction(
+      env,
+      backpackKey,
+      combatState,
+      {
+        roll: triggeredRoll.finalTotal,
+        damage: playerAttack.damage,
+        message: actionMessage,
+        victoryMessage: actionMessage,
+      },
+      platform,
+    );
+  } catch (error) {
+    if (triggeredRoll.consumed.length > 0) {
+      try {
+        await savePlayerProgress(env, backpackKey, progress);
+      } catch (rollbackError) {
+        console.error(
+          "Attack status-effect rollback failed:",
+          rollbackError,
+        );
+      }
+    }
+
+    throw error;
+  }
 }
 
 async function resolvePlayerCombatAction(
@@ -2456,7 +2521,7 @@ async function resolvePlayerCombatAction(
   if (combatState.playerHp === 0) {
     const progress = await getPlayerProgress(env, backpackKey);
     messageParts.push(
-      ...formatCombatStatus(combatState, progress),
+      ...formatCombatStatus(combatState, progress, platform),
     );
     const defeat = await resolveCombatDefeat(
       env,
@@ -2475,16 +2540,14 @@ async function resolvePlayerCombatAction(
   combatState.round += 1;
   combatState.updatedAt = Math.floor(Date.now() / 1000);
   const progress = await getPlayerProgress(env, backpackKey);
-  await Promise.all([
-    saveCombatState(env, backpackKey, combatState),
-    savePlayerProgress(env, backpackKey, {
-      ...progress,
-      hp: combatState.playerHp,
-    }),
-  ]);
+  await savePlayerProgress(env, backpackKey, {
+    ...progress,
+    hp: combatState.playerHp,
+  });
+  await saveCombatState(env, backpackKey, combatState);
 
   messageParts.push(
-    ...formatCombatStatus(combatState, progress),
+    ...formatCombatStatus(combatState, progress, platform),
   );
 
   return {
@@ -2492,12 +2555,23 @@ async function resolvePlayerCombatAction(
   };
 }
 
-function formatCombatStatus(combatState, progress) {
-  return [
+function formatCombatStatus(
+  combatState,
+  progress,
+  platform = "twitch",
+) {
+  const status = [
     `HP: ${combatState.playerHp}/${combatState.playerMaxHp}`,
     `Mana: ${progress.mana}/${progress.maxMana}`,
     `Enemy HP: ${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
   ];
+  const activeEffects = formatActiveEffects(progress, platform);
+
+  if (activeEffects) {
+    status.push(activeEffects);
+  }
+
+  return status;
 }
 
 async function performCast(
@@ -2523,21 +2597,32 @@ async function performCastUnlocked(
   spellInput,
   platform,
 ) {
-  const spellId = String(spellInput || "").trim().toLowerCase();
-  const command = platform === "discord" ? "/cast spell:Jelly" : "!cast jelly";
+  const spellInputValue = String(spellInput || "").trim().toLowerCase();
+  const jellyCommand =
+    platform === "discord" ? "/cast spell:Jelly" : "!cast jelly";
+  const blessingCommand = platform === "discord"
+    ? "/cast spell:Elf Blessing"
+    : "!cast elf blessing";
 
-  if (!spellId) {
+  if (!spellInputValue) {
     return {
-      message: `Use ${command} to cast the Jellyfish spell.`,
+      message:
+        `Use ${blessingCommand} for Elf Blessing or ${jellyCommand} ` +
+        "for Jellyfish.",
     };
   }
 
-  const spell = SPELLS[spellId];
+  const spell = Object.values(SPELLS).find(
+    (candidate) =>
+      candidate.id === spellInputValue ||
+      candidate.aliases.includes(spellInputValue),
+  );
 
   if (!spell) {
     return {
       message:
-        `You haven't learned that spell. Use ${command} to cast the Jellyfish spell.`,
+        `You haven't learned that spell. Use ${blessingCommand} or ` +
+        `${jellyCommand}.`,
     };
   }
 
@@ -2549,6 +2634,42 @@ async function performCastUnlocked(
       message:
         `You haven't learned ${spell.name} yet. Reach Level ` +
         `${spell.requiredLevel} to unlock your first spell.`,
+    };
+  }
+
+  if (spell.type === "support" && spell.effectId === "elf_blessing") {
+    if (hasStatusEffect(progress, spell.effectId)) {
+      return {
+        message: randomChoice(ELF_BLESSING_RECAST_SCENES),
+      };
+    }
+
+    if (progress.mana < spell.manaCost) {
+      return {
+        message: `You don't have enough Mana to cast ${spell.name}.`,
+      };
+    }
+
+    const updatedProgress = {
+      ...progress,
+      mana: progress.mana - spell.manaCost,
+      statusEffects: addStatusEffect(
+        progress,
+        createElfBlessingEffect(),
+      ),
+    };
+
+    await savePlayerProgress(env, backpackKey, updatedProgress);
+    const scene = randomChoice(ELF_BLESSING_SUCCESS_SCENES);
+    const activeEffects = formatActiveEffects(
+      updatedProgress,
+      platform,
+    );
+
+    return {
+      message: platform === "discord"
+        ? `${scene}\n\n${activeEffects}`
+        : `${scene.split("\n")[0]} ${activeEffects}`,
     };
   }
 
@@ -2578,10 +2699,19 @@ async function performCastUnlocked(
   }
 
   const spellRoll = rollSpellDamage(spell);
-  const castMessage = formatSpellCastMessage(spell, spellRoll);
+  const triggeredRoll = consumeTriggeredStatusEffects(
+    progress,
+    OFFENSIVE_ROLL_TRIGGER,
+    spellRoll.total,
+  );
+  const effectMessage = formatTriggeredRoll(triggeredRoll);
+  const castMessage =
+    `${formatSpellCastMessage(spell, spellRoll)}` +
+    `${effectMessage ? ` | ${effectMessage}` : ""}`;
   const updatedProgress = {
     ...progress,
     mana: progress.mana - spell.manaCost,
+    statusEffects: triggeredRoll.statusEffects,
   };
 
   await savePlayerProgress(env, backpackKey, updatedProgress);
@@ -2592,7 +2722,7 @@ async function performCastUnlocked(
       backpackKey,
       combatState,
       {
-        roll: spellRoll.total,
+        roll: triggeredRoll.finalTotal,
         damage: spellRoll.damage,
         message: castMessage,
         victoryMessage: castMessage,
@@ -3784,6 +3914,7 @@ async function performBackpack(
   env,
   backpackKey,
   sharedIdentity = "",
+  platform = "twitch",
 ) {
   const [
     currentTotal,
@@ -3834,6 +3965,7 @@ async function performBackpack(
   const region =
     getRegionById(progress.currentRegion) ||
     REGIONS[0];
+  const activeEffects = formatActiveEffects(progress, platform);
 
   return {
     total: currentTotal,
@@ -3851,7 +3983,12 @@ async function performBackpack(
       `Berries: ${progress.berries.toLocaleString("en-US")} | ` +
       `HP: ${currentHp}/${progress.maxHp} | ` +
       `Mana: ${progress.mana}/${progress.maxMana} | ` +
-      restStatus,
+      restStatus +
+      (activeEffects
+        ? platform === "discord"
+          ? `\n\n${activeEffects}`
+          : ` | ${activeEffects}`
+        : ""),
   };
 }
 
@@ -5213,6 +5350,173 @@ function randomChoice(values) {
   return values[randomInteger(0, values.length - 1)];
 }
 
+function normalizeStatusEffects(statusEffects) {
+  if (
+    !statusEffects ||
+    typeof statusEffects !== "object" ||
+    Array.isArray(statusEffects)
+  ) {
+    return {};
+  }
+
+  const normalized = {};
+
+  for (const [effectId, effect] of Object.entries(statusEffects)) {
+    if (
+      !/^[a-z0-9_]+$/.test(effectId) ||
+      !effect ||
+      typeof effect !== "object" ||
+      Array.isArray(effect)
+    ) {
+      continue;
+    }
+
+    const remainingCharges = Math.max(
+      0,
+      Math.floor(Number(effect.remainingCharges) || 0),
+    );
+
+    if (remainingCharges < 1) {
+      continue;
+    }
+
+    normalized[effectId] = {
+      id: effectId,
+      displayName:
+        String(effect.displayName || effectId).trim() || effectId,
+      description: String(effect.description || "").trim(),
+      category: String(effect.category || "neutral").trim(),
+      source: String(effect.source || "unknown").trim(),
+      visibility: effect.visibility === "hidden" ? "hidden" : "public",
+      durationType: String(effect.durationType || "charges").trim(),
+      remainingCharges,
+      trigger: String(effect.trigger || "").trim(),
+      modifiers: {
+        attackRoll: Number.isSafeInteger(
+          Number(effect.modifiers?.attackRoll),
+        )
+          ? Number(effect.modifiers.attackRoll)
+          : 0,
+      },
+      createdAt: Math.max(
+        0,
+        Math.floor(Number(effect.createdAt) || 0),
+      ),
+    };
+  }
+
+  return normalized;
+}
+
+function getStatusEffect(progress, effectId) {
+  return normalizeStatusEffects(progress.statusEffects)[effectId] || null;
+}
+
+function hasStatusEffect(progress, effectId) {
+  return Boolean(getStatusEffect(progress, effectId));
+}
+
+function addStatusEffect(progress, effect) {
+  return {
+    ...normalizeStatusEffects(progress.statusEffects),
+    [effect.id]: normalizeStatusEffects({
+      [effect.id]: effect,
+    })[effect.id],
+  };
+}
+
+function removeStatusEffect(progress, effectId) {
+  const statusEffects = normalizeStatusEffects(progress.statusEffects);
+  delete statusEffects[effectId];
+  return statusEffects;
+}
+
+function createElfBlessingEffect() {
+  return {
+    id: "elf_blessing",
+    displayName: "Elf Blessing",
+    description: "+2 to your next offensive d20 roll",
+    category: "buff",
+    source: "spell",
+    visibility: "public",
+    durationType: "charges",
+    remainingCharges: 1,
+    trigger: OFFENSIVE_ROLL_TRIGGER,
+    modifiers: {
+      attackRoll: 2,
+    },
+    createdAt: Date.now(),
+  };
+}
+
+function consumeTriggeredStatusEffects(
+  progress,
+  trigger,
+  naturalRoll,
+) {
+  const statusEffects = normalizeStatusEffects(progress.statusEffects);
+  const consumed = [];
+  let modifier = 0;
+
+  for (const [effectId, effect] of Object.entries(statusEffects)) {
+    if (effect.trigger !== trigger || effect.remainingCharges < 1) {
+      continue;
+    }
+
+    modifier += effect.modifiers.attackRoll;
+    consumed.push(effect.displayName);
+    effect.remainingCharges -= 1;
+
+    if (effect.remainingCharges < 1) {
+      delete statusEffects[effectId];
+    }
+  }
+
+  return {
+    naturalRoll,
+    modifier,
+    finalTotal: naturalRoll + modifier,
+    consumed,
+    statusEffects,
+  };
+}
+
+function formatActiveEffects(progress, platform = "twitch") {
+  const visibleEffects = Object.values(
+    normalizeStatusEffects(progress.statusEffects),
+  ).filter((effect) => effect.visibility === "public");
+
+  if (visibleEffects.length === 0) {
+    return "";
+  }
+
+  if (platform === "discord") {
+    return "**Active Effects**\n\n" +
+      visibleEffects.map(
+        (effect) => `- ${effect.displayName} — ${effect.description}`,
+      ).join("\n");
+  }
+
+  return "Effects: " + visibleEffects.map(
+    (effect) => effect.description
+      ? `${effect.displayName} (${effect.description
+          .replace("+2 to your next offensive d20 roll", "+2 next offensive d20")})`
+      : effect.displayName,
+  ).join(", ");
+}
+
+function formatTriggeredRoll(effectResult) {
+  if (effectResult.modifier === 0) {
+    return "";
+  }
+
+  return `Attack Roll: ${effectResult.naturalRoll} | ` +
+    `${effectResult.consumed.join(" + ")}: ` +
+    `${effectResult.modifier > 0 ? "+" : ""}${effectResult.modifier} | ` +
+    `Final Total: ${effectResult.finalTotal} | ` +
+    `${effectResult.consumed.join(" and ")} fades after guiding your strike.`;
+}
+
 async function formatCombatProgress(
   region,
   entries,
@@ -5904,6 +6208,7 @@ function createEmptyProgress() {
     lastRestAt: 0,
     lastLongRestAt: 0,
     temporaryResourceCap: PLAYER_COMBAT_MAX_HP,
+    statusEffects: {},
     relics: [],
     discoveries: {},
     notes: {},
@@ -5989,6 +6294,7 @@ async function getPlayerProgress(
 
     hp = Math.min(hp, temporaryResourceCap);
     mana = Math.min(mana, temporaryResourceCap);
+    const statusEffects = normalizeStatusEffects(parsed.statusEffects);
     const hasSavedRegion = Object.prototype.hasOwnProperty.call(
       parsed,
       "currentRegion",
@@ -6109,6 +6415,7 @@ async function getPlayerProgress(
       lastRestAt,
       lastLongRestAt,
       temporaryResourceCap,
+      statusEffects,
       relics,
       discoveries,
       notes,
@@ -6125,13 +6432,15 @@ async function getPlayerProgress(
       !Object.prototype.hasOwnProperty.call(parsed, "lastRestAt") ||
       !Object.prototype.hasOwnProperty.call(parsed, "lastLongRestAt") ||
       !Object.prototype.hasOwnProperty.call(parsed, "temporaryResourceCap") ||
+      !Object.prototype.hasOwnProperty.call(parsed, "statusEffects") ||
       Number(parsed.hp) !== hp ||
       Number(parsed.maxHp) !== maxHp ||
       Number(parsed.mana) !== mana ||
       Number(parsed.maxMana) !== maxMana ||
       Number(parsed.lastRestAt) !== lastRestAt ||
       Number(parsed.lastLongRestAt) !== lastLongRestAt ||
-      Number(parsed.temporaryResourceCap) !== temporaryResourceCap
+      Number(parsed.temporaryResourceCap) !== temporaryResourceCap ||
+      JSON.stringify(parsed.statusEffects) !== JSON.stringify(statusEffects)
     ) {
       await savePlayerProgress(env, backpackKey, normalizedProgress);
     }
@@ -6292,6 +6601,7 @@ async function savePlayerProgress(
       Math.floor(Number(progress.lastLongRestAt) || 0),
     ),
     temporaryResourceCap,
+    statusEffects: normalizeStatusEffects(progress.statusEffects),
     relics: safeRelics,
     discoveries: safeDiscoveries,
     notes: safeNotes,
