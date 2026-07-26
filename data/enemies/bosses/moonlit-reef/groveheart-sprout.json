@@ -1,0 +1,20 @@
+{
+  "id": "groveheart-sprout",
+  "name": "Groveheart Sprout",
+  "region": "moonlit-reef",
+  "level": 1,
+  "hp": 46,
+  "damageBonus": 2,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 60,
+      "max": 90
+    },
+    "xp": {
+      "min": 21,
+      "max": 33
+    }
+  },
+  "defeatCandyLoss": 10
+}

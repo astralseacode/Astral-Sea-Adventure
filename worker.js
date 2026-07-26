@@ -1092,7 +1092,7 @@ async function performAdventureUnlocked(
     };
   }
 
-  if (adventureNumber !== 1 || region.id !== "moonlit-reef") {
+  if (region.id !== "moonlit-reef") {
     return {
       message: "That Adventure is not ready to explore yet.",
     };
@@ -1102,6 +1102,12 @@ async function performAdventureUnlocked(
     region.id,
     adventureNumber,
   );
+
+  if (!definition) {
+    return {
+      message: "That Adventure is not ready to explore yet.",
+    };
+  }
   const now = Date.now();
   const state = {
     version: 1,
@@ -1125,11 +1131,11 @@ async function performAdventureUnlocked(
   return {
     message:
       platform === "discord"
-        ? `Adventure 1 — ${definition.name}\n\n` +
-          "You drift beneath a curtain of moonlit bubbles and discover " +
-          "a coral burrow hidden inside the reef.\n\n" +
+        ? `Adventure ${adventureNumber} — ${definition.name}\n\n` +
+          `${definition.introDiscord || definition.intro}\n\n` +
           `${formatAdventureRoomPrompt(definition, state, platform)}`
-        : `Adventure 1 — ${definition.name} | ${definition.intro} | ` +
+        : `Adventure ${adventureNumber} — ${definition.name} | ` +
+          `${definition.introTwitch || definition.intro} | ` +
           `${formatAdventureRoomPrompt(definition, state, platform)}`,
   };
 }
@@ -1261,8 +1267,11 @@ async function performAdventureDirectionUnlocked(
     state.playerHp += healed;
     messageParts.push(
       healed > 0
-        ? `You rest beside a warm moonstone vent and recover ${healed} HP.`
-        : "The moonstone chamber is peaceful, but you are already at full HP.",
+        ? `${choice.message ||
+          "You rest beside a warm moonstone vent"} ` +
+          `Its magic restores ${healed} HP.`
+        : choice.fullHpMessage ||
+          "The moonstone chamber is peaceful, but you are already at full HP.",
     );
   } else if (choice.type === "empty") {
     messageParts.push(choice.message);
@@ -1544,7 +1553,7 @@ async function confirmPendingCombatUnlocked(
     activeAdventure.updatedAt = Date.now();
     await saveActiveAdventure(env, backpackKey, activeAdventure);
 
-    return startAdventureBattle(
+    const battle = await startAdventureBattle(
       env,
       backpackKey,
       activeAdventure,
@@ -1556,6 +1565,14 @@ async function confirmPendingCombatUnlocked(
       },
       platform,
     );
+
+    return {
+      ...battle,
+      message:
+        `${definition.boss.revealText
+          ? `${definition.boss.revealText} | `
+          : ""}${battle.message}`,
+    };
   }
 
   const pendingResult = await getPendingCombat(env, backpackKey);
@@ -1656,11 +1673,17 @@ async function cancelPendingCombat(
       const activeAdventure = await getActiveAdventure(env, backpackKey);
 
       if (activeAdventure?.status === "awaiting-boss-confirmation") {
+        const definition = await getAdventureDefinition(
+          activeAdventure.regionId,
+          activeAdventure.adventureNumber,
+        );
+
         return {
           message:
-            "You step back from the coral bend. The Bubble Nibbler Boss " +
-            "remains ahead. Use " +
-            `${platform === "discord" ? "/adventure 1" : "!adventure 1"} ` +
+            `${definition.bossRetreatText ||
+              "You step back. The guardian remains ahead."} Use ` +
+            `${platform === "discord" ? "/adventure" : "!adventure"} ` +
+            `${activeAdventure.adventureNumber} ` +
             "when you are ready to return.",
         };
       }
@@ -3506,9 +3529,9 @@ async function getEnemyDefinition(enemyId) {
 
   const enemy = await fetchCachedJson(
     `enemy:${enemyId}`,
-    enemyId === "bubble-nibbler-boss"
+    ["bubble-nibbler-boss", "groveheart-sprout"].includes(enemyId)
       ? `${GITHUB_DATA_BASE}/enemies/bosses/moonlit-reef/` +
-        "bubble-nibbler-boss.json"
+        `${enemyId}.json`
       : `${GITHUB_DATA_BASE}/enemies/${enemyId}.json`,
   );
 
@@ -3545,20 +3568,27 @@ function getRecommendedEnemyLevel(encounter, enemy) {
 }
 
 async function getAdventureDefinition(regionId, adventureNumber) {
-  if (regionId !== "moonlit-reef" || adventureNumber !== 1) {
+  const filenames = {
+    1: "adventure-01-bubble-nibbler-hideout.json",
+    2: "adventure-02-silverfin-sprout-grove.json",
+  };
+  const filename =
+    regionId === "moonlit-reef"
+      ? filenames[adventureNumber]
+      : null;
+
+  if (!filename) {
     return null;
   }
 
   const definition = await fetchCachedJson(
     `adventure:${regionId}:${adventureNumber}`,
-    `${GITHUB_DATA_BASE}/adventures/${regionId}/` +
-      "adventure-01-bubble-nibbler-hideout.json",
+    `${GITHUB_DATA_BASE}/adventures/${regionId}/${filename}`,
   );
 
   if (
     !definition ||
-    definition.id !== "bubble-nibbler-hideout" ||
-    definition.number !== 1 ||
+    definition.number !== adventureNumber ||
     definition.regionId !== regionId ||
     typeof definition.name !== "string" ||
     typeof definition.startRoomId !== "string" ||
@@ -3574,6 +3604,7 @@ async function getAdventureDefinition(regionId, adventureNumber) {
 function getAdventureName(number, enemyName) {
   if (number === 1) return "Bubble Nibbler Hideout";
   if (number === 2) return "Silverfin Sprout Grove";
+  if (number === 3) return "Tidepool Tumbler Tunnels";
   return `${enemyName} Domain`;
 }
 
@@ -3654,9 +3685,11 @@ function formatAdventureRoomPrompt(definition, state, platform) {
 
   if (state.status === "awaiting-boss-confirmation") {
     return platform === "discord"
-      ? "The Bubble Nibbler Boss waits beyond the final coral bend.\n" +
-        "Use /yes to challenge the boss or /no to retreat for now."
-      : "The Bubble Nibbler Boss waits beyond the coral bend. " +
+      ? definition.bossPromptDiscord ||
+        `${room?.prompt || "Something powerful waits ahead."}\n` +
+        "Use /yes to continue or /no to retreat for now."
+      : definition.bossPromptTwitch ||
+        `${room?.prompt || "Something powerful waits ahead."} ` +
         "Use !yes to continue or !no to retreat for now.";
   }
 

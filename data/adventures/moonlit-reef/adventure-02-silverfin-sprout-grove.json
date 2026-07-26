@@ -1,0 +1,95 @@
+{
+  "id": "silverfin-sprout-grove",
+  "number": 2,
+  "name": "Silverfin Sprout Grove",
+  "regionId": "moonlit-reef",
+  "enemyId": "silverfin-sprout",
+  "recommendedLevel": 1,
+  "introDiscord": "The Lunar Current carries you into an ancient grove where silver kelp rises like an underwater forest. Pale leaves drift through the water as three overgrown paths wind between the towering fronds.",
+  "introTwitch": "The Lunar Current carries you into an ancient forest of silver kelp. Three hidden paths wind deeper into the grove.",
+  "startRoomId": "moonleaf-threshold",
+  "rooms": {
+    "moonleaf-threshold": {
+      "name": "Moonleaf Threshold",
+      "prompt": "Silver leaves turn slowly in the current while distant moonlight scatters across three paths through the shifting forest.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "message": "You discover a moon-shell offering bowl hidden beneath the roots.",
+          "reward": { "min": 25, "max": 45 },
+          "nextRoomId": "whispering-fronds"
+        },
+        "right": {
+          "type": "combat",
+          "enemyId": "silverfin-sprout",
+          "nextRoomId": "whispering-fronds"
+        },
+        "forward": {
+          "type": "empty",
+          "message": "The path opens into a silent clearing of drifting silver pollen, but the grove has left nothing behind.",
+          "nextRoomId": "whispering-fronds"
+        }
+      }
+    },
+    "whispering-fronds": {
+      "name": "Whispering Fronds",
+      "prompt": "Towering kelp hides the moonlit surface, and faint Fae runes shimmer across the roots surrounding three narrow passages.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "healAmount": 25,
+          "message": "You discover a basin of starlit dew resting inside a curled moonleaf.",
+          "fullHpMessage": "You discover a basin of starlit dew, but its magic finds no wounds to mend. You are already at full HP.",
+          "nextRoomId": "heartroot-crossing"
+        },
+        "right": {
+          "type": "treasure",
+          "message": "Behind pale vines, you find an old Fae wayfinder's pouch.",
+          "reward": { "min": 30, "max": 50 },
+          "nextRoomId": "heartroot-crossing"
+        },
+        "forward": {
+          "type": "combat",
+          "enemyId": "silverfin-sprout",
+          "nextRoomId": "heartroot-crossing"
+        }
+      }
+    },
+    "heartroot-crossing": {
+      "name": "Heartroot Crossing",
+      "prompt": "Ancient roots form a natural crossing at the grove's heart, where three final paths wait beyond the silver kelp.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "enemyId": "silverfin-sprout",
+          "nextRoomId": "boss-antechamber"
+        },
+        "right": {
+          "type": "empty",
+          "message": "You find a peaceful hollow where tiny moonflowers sleep, but nothing useful remains.",
+          "nextRoomId": "boss-antechamber"
+        },
+        "forward": {
+          "type": "treasure",
+          "message": "You uncover a sealed coral seedpod marked with a faded Moonkeeper sigil.",
+          "reward": { "min": 35, "max": 55 },
+          "nextRoomId": "boss-antechamber"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Groveheart Sanctuary",
+      "type": "boss-prompt",
+      "prompt": "An enormous moonlit blossom stirs while smaller sprouts gather silently among its roots."
+    }
+  },
+  "bossPromptDiscord": "You enter the Groveheart Sanctuary. An enormous moonlit blossom stirs while smaller sprouts gather silently along the grove floor. Something powerful guards the heart of this grove.\nUse /yes to approach or /no to retreat for now.",
+  "bossPromptTwitch": "You enter the Groveheart Sanctuary. An enormous moonlit blossom stirs while sprouts gather among its roots. Something powerful guards the grove. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You step back into the silver kelp. The guardian remains within the Groveheart Sanctuary.",
+  "boss": {
+    "enemyId": "groveheart-sprout",
+    "roomId": "boss",
+    "revealText": "The ancient blossom tears open as silver roots lash through the water. The Groveheart Sprout awakens!"
+  },
+  "completionText": "The Groveheart Sprout sinks back into the ancient roots. The silver kelp slowly begins to sway again, and moonlight returns to the grove."
+}
