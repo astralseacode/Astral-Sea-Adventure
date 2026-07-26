@@ -10,13 +10,12 @@
   "startRoomId": "votive-stair",
   "rooms": {
     "votive-stair": {
-      "name": "Votive Stair",
       "prompt": "Votive stairs meet a landing where three halls continue beneath silver inscriptions.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "archon-nave",
-          "message": "Within Moonstone Archon Temple, the left path from Votive Stair reveals a hidden Fae offering vessel.",
+          "message": "Within Moonstone Archon Temple, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 60,
             "max": 90
@@ -32,25 +31,24 @@
           "type": "healing",
           "nextRoomId": "archon-nave",
           "healAmount": 40,
-          "message": "Someone converted a broken supply case in Votive Stair into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Moonstone restorative. Borrowed from an altar that looked underused.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Votive Stair is needed, which feels like its own victory."
+          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Moonstone restorative. Borrowed from an altar that looked underused.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
         }
       }
     },
     "archon-nave": {
-      "name": "Archon Nave",
-      "prompt": "Tall pillars divide an Archon nave into three routes of equal solemnity.",
+      "prompt": "The route winds deeper through Moonstone Archon Temple until tall pillars divide an Archon nave into three routes of equal solemnity.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "lunar-apse",
-          "message": "Shizuki tucked one Berry behind a quiet journal page in Archon Nave: \"Freedom gets lonely. Still worth every step.\"",
+          "message": "Shizuki tucked one Berry behind a quiet journal page in the surrounding passage: \"Freedom gets lonely. Still worth every step.\"",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "lunar-apse",
-          "message": "Within Moonstone Archon Temple, the right path from Archon Nave reveals a hidden Moonkeeper cache.",
+          "message": "Within Moonstone Archon Temple, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 70,
             "max": 105
@@ -65,8 +63,7 @@
       }
     },
     "lunar-apse": {
-      "name": "Lunar Apse",
-      "prompt": "The Lunar apse bends around a quiet altar and opens toward three shadowed doors.",
+      "prompt": "As Moonstone Archon Temple grows strangely still, the Lunar apse bends around a quiet altar and opens toward three shadowed doors.",
       "choices": {
         "left": {
           "type": "combat",
@@ -78,13 +75,13 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Near Lunar Apse, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"I left an apology. It was almost sincere.\"",
-          "fullHpMessage": "The bottle at Lunar Apse is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Deeper inside Moonstone Archon Temple, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"I left an apology. It was almost sincere.\"",
+          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonstone Archon Temple, the forward path from Lunar Apse reveals a hidden moon-shell coffer.",
+          "message": "Within Moonstone Archon Temple, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 80,
             "max": 120

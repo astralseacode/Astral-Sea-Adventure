@@ -10,13 +10,12 @@
   "startRoomId": "fracture-rim",
   "rooms": {
     "fracture-rim": {
-      "name": "Fracture Rim",
       "prompt": "The fracture rim overlooks three narrow descents between translucent stone.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "glassfang-trench",
-          "message": "Within Moonglass Moray Chasm, the left path from Fracture Rim reveals a hidden Fae offering vessel.",
+          "message": "Within Moonglass Moray Chasm, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 45,
             "max": 75
@@ -26,8 +25,8 @@
           "type": "healing",
           "nextRoomId": "glassfang-trench",
           "healAmount": 35,
-          "message": "Someone converted a broken supply case in Fracture Rim into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Shardkelp remedy. Sharp place, soft lesson: survive first.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Fracture Rim is needed, which feels like its own victory."
+          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Shardkelp remedy. Sharp place, soft lesson: survive first.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
         },
         "forward": {
           "type": "combat",
@@ -38,8 +37,7 @@
       }
     },
     "glassfang-trench": {
-      "name": "Glassfang Trench",
-      "prompt": "Glasslike ridges line a trench where three channels twist beyond the visible depths.",
+      "prompt": "The passages carry you deeper into Moonglass Moray Chasm, where glasslike ridges line a trench where three channels twist beyond the visible depths.",
       "choices": {
         "left": {
           "type": "combat",
@@ -50,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "mirrorcrack-gorge",
-          "message": "Within Moonglass Moray Chasm, the right path from Glassfang Trench reveals a hidden Moonkeeper cache.",
+          "message": "Within Moonglass Moray Chasm, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 55,
             "max": 85
@@ -60,19 +58,18 @@
           "type": "healing",
           "nextRoomId": "mirrorcrack-gorge",
           "healAmount": 35,
-          "message": "Near Glassfang Trench, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Morays dislike sarcasm. Fortunately, I brought medicine.\"",
-          "fullHpMessage": "The bottle at Glassfang Trench is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Deeper inside Moonglass Moray Chasm, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Morays dislike sarcasm. Fortunately, I brought medicine.\"",
+          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
         }
       }
     },
     "mirrorcrack-gorge": {
-      "name": "Mirrorcrack Gorge",
-      "prompt": "Mirror cracks illuminate a gorge whose three mouths reflect one another.",
+      "prompt": "Close to the heart of Moonglass Moray Chasm, mirror cracks illuminate a gorge whose three mouths reflect one another.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A snapped tracking charm in Mirrorcrack Gorge conceals one Berry. Shizuki marked the hiding place: \"One more leash that failed.\"",
+          "message": "A snapped tracking charm in the surrounding passage conceals one Berry. Shizuki marked the hiding place: \"One more leash that failed.\"",
           "berries": 1
         },
         "right": {
@@ -84,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonglass Moray Chasm, the forward path from Mirrorcrack Gorge reveals a hidden moon-shell coffer.",
+          "message": "Within Moonglass Moray Chasm, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 60,
             "max": 95

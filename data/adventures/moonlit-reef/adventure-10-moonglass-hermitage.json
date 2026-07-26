@@ -10,13 +10,12 @@
   "startRoomId": "pilgrim-mirror",
   "rooms": {
     "pilgrim-mirror": {
-      "name": "Pilgrim Mirror",
       "prompt": "A mirrorlike landing reflects three corridors beneath an unbroken ceiling of dark water.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "silent-cloister",
-          "message": "Within Moonglass Hermitage, the left path from Pilgrim Mirror reveals a hidden Fae offering vessel.",
+          "message": "Within Moonglass Hermitage, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 35,
             "max": 60
@@ -32,25 +31,24 @@
           "type": "healing",
           "nextRoomId": "silent-cloister",
           "healAmount": 30,
-          "message": "Someone converted a broken supply case in Pilgrim Mirror into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Moonglass elixir. Sip carefully; the cup has opinions.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Pilgrim Mirror is needed, which feels like its own victory."
+          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Moonglass elixir. Sip carefully; the cup has opinions.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
         }
       }
     },
     "silent-cloister": {
-      "name": "Silent Cloister",
-      "prompt": "Silent cells surround a cloister where three walks continue through dim glass arches.",
+      "prompt": "The route winds deeper through Moonglass Hermitage until silent cells surround a cloister where three walks continue through dim glass arches.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "shardlight-walk",
-          "message": "A polished shard in Silent Cloister reflects one Berry hidden behind it. Shizuki scratched: \"Still free. Still difficult to catch.\"",
+          "message": "A polished shard in the surrounding passage reflects one Berry hidden behind it. Shizuki scratched: \"Still free. Still difficult to catch.\"",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "shardlight-walk",
-          "message": "Within Moonglass Hermitage, the right path from Silent Cloister reveals a hidden Moonkeeper cache.",
+          "message": "Within Moonglass Hermitage, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 40,
             "max": 70
@@ -65,8 +63,7 @@
       }
     },
     "shardlight-walk": {
-      "name": "Shardlight Walk",
-      "prompt": "Broken reflections travel along a shardlit hall as three doorways wait without markings.",
+      "prompt": "As Moonglass Hermitage grows strangely still, broken reflections travel along a shardlit hall as three doorways wait without markings.",
       "choices": {
         "left": {
           "type": "combat",
@@ -78,13 +75,13 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 30,
-          "message": "Near Shardlight Walk, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"A hermit taught me this. I taught him how to pick a lock.\"",
-          "fullHpMessage": "The bottle at Shardlight Walk is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Deeper inside Moonglass Hermitage, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"A hermit taught me this. I taught him how to pick a lock.\"",
+          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonglass Hermitage, the forward path from Shardlight Walk reveals a hidden moon-shell coffer.",
+          "message": "Within Moonglass Hermitage, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 45,
             "max": 80

@@ -3851,8 +3851,12 @@ function formatAdventureRoomPrompt(definition, state, platform) {
     (direction) =>
       `${platform === "discord" ? "/" : "!"}${direction}`,
   );
+  const roomHeading =
+    typeof room?.name === "string" && room.name.trim()
+      ? `${room.name.trim()}: `
+      : "";
 
-  return `${room?.name || state.currentRoomId}: ${room?.prompt || ""} ` +
+  return `${roomHeading}${room?.prompt || ""} ` +
     `Choose ${commands.join(", ")}.`;
 }
 

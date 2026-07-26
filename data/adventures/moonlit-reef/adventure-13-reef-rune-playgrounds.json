@@ -10,13 +10,12 @@
   "startRoomId": "glyphskip-landing",
   "rooms": {
     "glyphskip-landing": {
-      "name": "Glyphskip Landing",
       "prompt": "Glyphs hop between stones at a landing where three paths refuse to keep their shapes.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "riddlepool-ring",
-          "message": "Within Reef Rune Playgrounds, the left path from Glyphskip Landing reveals a hidden Fae offering vessel.",
+          "message": "Within Reef Rune Playgrounds, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 35,
             "max": 60
@@ -26,8 +25,8 @@
           "type": "healing",
           "nextRoomId": "riddlepool-ring",
           "healAmount": 30,
-          "message": "Someone converted a broken supply case in Glyphskip Landing into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Runeberry tonic. I translated the warning after drinking it.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Glyphskip Landing is needed, which feels like its own victory."
+          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Runeberry tonic. I translated the warning after drinking it.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
         },
         "forward": {
           "type": "combat",
@@ -38,8 +37,7 @@
       }
     },
     "riddlepool-ring": {
-      "name": "Riddlepool Ring",
-      "prompt": "A circular pool reflects changing riddles while three routes curve beyond its rim.",
+      "prompt": "The passages carry you deeper into Reef Rune Playgrounds, where a circular pool reflects changing riddles while three routes curve beyond its rim.",
       "choices": {
         "left": {
           "type": "combat",
@@ -50,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "carved-current",
-          "message": "Within Reef Rune Playgrounds, the right path from Riddlepool Ring reveals a hidden Moonkeeper cache.",
+          "message": "Within Reef Rune Playgrounds, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 40,
             "max": 70
@@ -60,14 +58,13 @@
           "type": "healing",
           "nextRoomId": "carved-current",
           "healAmount": 30,
-          "message": "Near Riddlepool Ring, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"The otters call this cheating. I call it preparation.\"",
-          "fullHpMessage": "The bottle at Riddlepool Ring is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Deeper inside Reef Rune Playgrounds, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"The otters call this cheating. I call it preparation.\"",
+          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
         }
       }
     },
     "carved-current": {
-      "name": "Carved Current",
-      "prompt": "Carved currents animate old symbols around three equally mysterious passages.",
+      "prompt": "Close to the heart of Reef Rune Playgrounds, carved currents animate old symbols around three equally mysterious passages.",
       "choices": {
         "left": {
           "type": "empty",
@@ -84,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Reef Rune Playgrounds, the forward path from Carved Current reveals a hidden moon-shell coffer.",
+          "message": "Within Reef Rune Playgrounds, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 45,
             "max": 80

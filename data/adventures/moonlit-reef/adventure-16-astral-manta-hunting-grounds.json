@@ -10,13 +10,12 @@
   "startRoomId": "skywater-shelf",
   "rooms": {
     "skywater-shelf": {
-      "name": "Skywater Shelf",
       "prompt": "Open skywater surrounds a shelf where three courses cross the blue emptiness.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "hunter-current",
-          "message": "Within Astral Manta Hunting Grounds, the left path from Skywater Shelf reveals a hidden Fae offering vessel.",
+          "message": "Within Astral Manta Hunting Grounds, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 45,
             "max": 75
@@ -32,25 +31,24 @@
           "type": "healing",
           "nextRoomId": "hunter-current",
           "healAmount": 35,
-          "message": "Someone converted a broken supply case in Skywater Shelf into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Skywater restorative. A manta hunter lost track of me while I brewed it.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Skywater Shelf is needed, which feels like its own victory."
+          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Skywater restorative. A manta hunter lost track of me while I brewed it.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
         }
       }
     },
     "hunter-current": {
-      "name": "Hunter Current",
-      "prompt": "A hunter current traces broad circles around three routes through towering coral fins.",
+      "prompt": "The route winds deeper through Astral Manta Hunting Grounds until a hunter current traces broad circles around three routes through towering coral fins.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "widewing-pass",
-          "message": "Shizuki fastened one Berry to a compass made from broken arrows in Hunter Current. Every arrow points away from an unnamed laboratory.",
+          "message": "Shizuki fastened one Berry to a compass made from broken arrows in the surrounding passage. Every arrow points away from an unnamed laboratory.",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "widewing-pass",
-          "message": "Within Astral Manta Hunting Grounds, the right path from Hunter Current reveals a hidden Moonkeeper cache.",
+          "message": "Within Astral Manta Hunting Grounds, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 55,
             "max": 85
@@ -65,8 +63,7 @@
       }
     },
     "widewing-pass": {
-      "name": "Widewing Pass",
-      "prompt": "Widewing shadows pass over a high channel whose three exits descend at different angles.",
+      "prompt": "As Astral Manta Hunting Grounds grows strangely still, widewing shadows pass over a high channel whose three exits descend at different angles.",
       "choices": {
         "left": {
           "type": "combat",
@@ -78,13 +75,13 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Near Widewing Pass, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"For long flights, longer falls, and refusing to land where ordered.\"",
-          "fullHpMessage": "The bottle at Widewing Pass is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Deeper inside Astral Manta Hunting Grounds, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"For long flights, longer falls, and refusing to land where ordered.\"",
+          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Astral Manta Hunting Grounds, the forward path from Widewing Pass reveals a hidden moon-shell coffer.",
+          "message": "Within Astral Manta Hunting Grounds, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 60,
             "max": 95

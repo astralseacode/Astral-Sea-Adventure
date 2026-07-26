@@ -10,13 +10,12 @@
   "startRoomId": "spiral-reefrise",
   "rooms": {
     "spiral-reefrise": {
-      "name": "Spiral Reefrise",
       "prompt": "Spiral reefstone rises around three paths carved into the living tower.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "wyrmcoil-terrace",
-          "message": "Within Celestial Coral Wyrm Spire, the left path from Spiral Reefrise reveals a hidden Fae offering vessel.",
+          "message": "Within Celestial Coral Wyrm Spire, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 60,
             "max": 90
@@ -26,8 +25,8 @@
           "type": "healing",
           "nextRoomId": "wyrmcoil-terrace",
           "healAmount": 40,
-          "message": "Someone converted a broken supply case in Spiral Reefrise into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Wyrmfire cordial. Warm enough to remind your bones they have duties.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Spiral Reefrise is needed, which feels like its own victory."
+          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Wyrmfire cordial. Warm enough to remind your bones they have duties.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
         },
         "forward": {
           "type": "combat",
@@ -38,8 +37,7 @@
       }
     },
     "wyrmcoil-terrace": {
-      "name": "Wyrmcoil Terrace",
-      "prompt": "A coiled terrace overlooks the Moonlit Reef while three arches lead inward.",
+      "prompt": "The passages carry you deeper into Celestial Coral Wyrm Spire, where a coiled terrace overlooks the Moonlit Reef while three arches lead inward.",
       "choices": {
         "left": {
           "type": "combat",
@@ -50,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "comet-coral-crown",
-          "message": "Within Celestial Coral Wyrm Spire, the right path from Wyrmcoil Terrace reveals a hidden Moonkeeper cache.",
+          "message": "Within Celestial Coral Wyrm Spire, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 70,
             "max": 105
@@ -60,19 +58,18 @@
           "type": "healing",
           "nextRoomId": "comet-coral-crown",
           "healAmount": 40,
-          "message": "Near Wyrmcoil Terrace, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Do not confuse surviving fire with permission to stop.\"",
-          "fullHpMessage": "The bottle at Wyrmcoil Terrace is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Deeper inside Celestial Coral Wyrm Spire, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Do not confuse surviving fire with permission to stop.\"",
+          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
         }
       }
     },
     "comet-coral-crown": {
-      "name": "Comet Coral Crown",
-      "prompt": "Comet coral crowns a high chamber where three passages circle the spire.",
+      "prompt": "Close to the heart of Celestial Coral Wyrm Spire, comet coral crowns a high chamber where three passages circle the spire.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "An improvised shelter at Comet Coral Crown holds one Berry beside names Shizuki preserved for other experiments who might escape after her.",
+          "message": "An improvised shelter along the route holds one Berry beside names Shizuki preserved for other experiments who might escape after her.",
           "berries": 1
         },
         "right": {
@@ -84,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Celestial Coral Wyrm Spire, the forward path from Comet Coral Crown reveals a hidden moon-shell coffer.",
+          "message": "Within Celestial Coral Wyrm Spire, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 80,
             "max": 120

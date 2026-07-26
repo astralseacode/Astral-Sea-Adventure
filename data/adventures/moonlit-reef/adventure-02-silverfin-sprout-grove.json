@@ -10,7 +10,6 @@
   "startRoomId": "moonleaf-threshold",
   "rooms": {
     "moonleaf-threshold": {
-      "name": "Moonleaf Threshold",
       "prompt": "Silver leaves turn slowly in the current while distant moonlight scatters across three paths through the shifting forest.",
       "choices": {
         "left": {
@@ -29,21 +28,20 @@
         },
         "forward": {
           "type": "empty",
-          "message": "At Moonleaf Threshold, Shizuki wrapped one Berry in a silver leaf beside her journal: \"Followed the prettiest path. Tactical error. Excellent view.\"",
+          "message": "Deeper inside Silverfin Sprout Grove, Shizuki wrapped one Berry in a silver leaf beside her journal: \"Followed the prettiest path. Tactical error. Excellent view.\"",
           "nextRoomId": "whispering-fronds",
           "berries": 1
         }
       }
     },
     "whispering-fronds": {
-      "name": "Whispering Fronds",
-      "prompt": "Towering kelp hides the moonlit surface, and faint Fae runes shimmer across the roots surrounding three narrow passages.",
+      "prompt": "Farther within Silverfin Sprout Grove, towering kelp hides the moonlit surface, and faint Fae runes shimmer across the roots surrounding three narrow passages.",
       "choices": {
         "left": {
           "type": "healing",
           "healAmount": 25,
-          "message": "A careful survival cache waits beyond Whispering Fronds, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Emergency leaf tonic. Side effects may include confidence.\"",
-          "fullHpMessage": "The remedy in Whispering Fronds stays in its cache. For once, preparation is all you need.",
+          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Emergency leaf tonic. Side effects may include confidence.\"",
+          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need.",
           "nextRoomId": "heartroot-crossing"
         },
         "right": {
@@ -63,8 +61,7 @@
       }
     },
     "heartroot-crossing": {
-      "name": "Heartroot Crossing",
-      "prompt": "Ancient roots form a natural crossing at the grove's heart, where three final paths wait beyond the silver kelp.",
+      "prompt": "With the outer passages behind you, Silverfin Sprout Grove narrows until ancient roots form a natural crossing at the grove's heart, where three final paths wait beyond the silver kelp.",
       "choices": {
         "left": {
           "type": "combat",
@@ -73,7 +70,7 @@
         },
         "right": {
           "type": "empty",
-          "message": "A tiny map at Heartroot Crossing has one Berry wedged into its last fold. Shizuki wrote: \"Grove still moving. Rude.\"",
+          "message": "A tiny map along the route has one Berry wedged into its last fold. Shizuki wrote: \"Grove still moving. Rude.\"",
           "nextRoomId": "boss-antechamber",
           "berries": 1
         },

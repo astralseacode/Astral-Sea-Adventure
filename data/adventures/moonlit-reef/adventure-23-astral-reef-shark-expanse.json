@@ -10,20 +10,19 @@
   "startRoomId": "bluewater-margin",
   "rooms": {
     "bluewater-margin": {
-      "name": "Bluewater Margin",
       "prompt": "Bluewater surrounds a narrow margin where three courses leave the sheltering coral.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "predator-meridian",
           "healAmount": 40,
-          "message": "Shizuki wedged a weathered field kit into the coral at Bluewater Margin. Its surviving bottle is labeled: \"Bluewater tonic. Shark tested, elf approved, bottle mildly bitten.\"",
-          "fullHpMessage": "Shizuki's field kit at Bluewater Margin can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Bluewater tonic. Shark tested, elf approved, bottle mildly bitten.\"",
+          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "predator-meridian",
-          "message": "Within Astral Reef Shark Expanse, the right path from Bluewater Margin reveals a hidden Moonkeeper cache.",
+          "message": "Within Astral Reef Shark Expanse, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 60,
             "max": 90
@@ -38,8 +37,7 @@
       }
     },
     "predator-meridian": {
-      "name": "Predator Meridian",
-      "prompt": "A meridian of pale stones points toward three routes across the exposed sea.",
+      "prompt": "Beyond the outer passages of Astral Reef Shark Expanse, a meridian of pale stones points toward three routes across the exposed sea.",
       "choices": {
         "left": {
           "type": "combat",
@@ -51,13 +49,13 @@
           "type": "healing",
           "nextRoomId": "open-reef-run",
           "healAmount": 40,
-          "message": "A careful survival cache waits beyond Predator Meridian, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Take a breath. Fear is useful; panic has poor navigation.\"",
-          "fullHpMessage": "The remedy in Predator Meridian stays in its cache. For once, preparation is all you need."
+          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Take a breath. Fear is useful; panic has poor navigation.\"",
+          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "open-reef-run",
-          "message": "Within Astral Reef Shark Expanse, the forward path from Predator Meridian reveals a hidden moon-shell coffer.",
+          "message": "Within Astral Reef Shark Expanse, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 70,
             "max": 105
@@ -66,13 +64,12 @@
       }
     },
     "open-reef-run": {
-      "name": "Open Reef Run",
-      "prompt": "The open reef run widens around three channels beneath a restless surface.",
+      "prompt": "Near the innermost reaches of Astral Reef Shark Expanse, the open reef run widens around three channels beneath a restless surface.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Astral Reef Shark Expanse, the left path from Open Reef Run reveals a hidden Fae offering vessel.",
+          "message": "Within Astral Reef Shark Expanse, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 80,
             "max": 120
@@ -87,7 +84,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A shark-crossing diagram in Open Reef Run has one Berry knotted at its safest breathing point. Shizuki's route follows the predator everyone else avoided.",
+          "message": "A shark-crossing diagram in the surrounding passage has one Berry knotted at its safest breathing point. Shizuki's route follows the predator everyone else avoided.",
           "berries": 1
         }
       }

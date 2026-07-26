@@ -10,13 +10,12 @@
   "startRoomId": "cloudcoral-rise",
   "rooms": {
     "cloudcoral-rise": {
-      "name": "Cloudcoral Rise",
       "prompt": "Foam drifts past a rising shelf where three paths wind through weightless coral branches.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "drowsing-terrace",
-          "message": "Within Moon Puff Aerie, the left path from Cloudcoral Rise reveals a hidden Fae offering vessel.",
+          "message": "Within Moon Puff Aerie, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 25,
             "max": 50
@@ -26,8 +25,8 @@
           "type": "healing",
           "nextRoomId": "drowsing-terrace",
           "healAmount": 25,
-          "message": "Someone converted a broken supply case in Cloudcoral Rise into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Cloudmint draught. May cause naps, so run first.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary at Cloudcoral Rise is needed, which feels like its own victory."
+          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Cloudmint draught. May cause naps, so run first.\"",
+          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
         },
         "forward": {
           "type": "combat",
@@ -38,8 +37,7 @@
       }
     },
     "drowsing-terrace": {
-      "name": "Drowsing Terrace",
-      "prompt": "The current grows hushed across a drowsing terrace, with three openings beyond pale mist.",
+      "prompt": "The passages carry you deeper into Moon Puff Aerie, where the current grows hushed across a drowsing terrace, with three openings beyond pale mist.",
       "choices": {
         "left": {
           "type": "combat",
@@ -50,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "whisperdown-loft",
-          "message": "Within Moon Puff Aerie, the right path from Drowsing Terrace reveals a hidden Moonkeeper cache.",
+          "message": "Within Moon Puff Aerie, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 30,
             "max": 55
@@ -60,19 +58,18 @@
           "type": "healing",
           "nextRoomId": "whisperdown-loft",
           "healAmount": 25,
-          "message": "Near Drowsing Terrace, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"I traded a Moon Puff three buttons for this recipe. Worth it.\"",
-          "fullHpMessage": "The bottle at Drowsing Terrace is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Deeper inside Moon Puff Aerie, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"I traded a Moon Puff three buttons for this recipe. Worth it.\"",
+          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
         }
       }
     },
     "whisperdown-loft": {
-      "name": "Whisperdown Loft",
-      "prompt": "Fae feathers and bubbles turn through a lofty chamber where three routes descend unseen.",
+      "prompt": "Close to the heart of Moon Puff Aerie, fae feathers and bubbles turn through a lofty chamber where three routes descend unseen.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "An old blanket nest in Whisperdown Loft contains one Berry for the next tired traveler. Shizuki rated the ceiling \"excellent after midnight.\"",
+          "message": "An old blanket nest in the surrounding passage contains one Berry for the next tired traveler. Shizuki rated the ceiling \"excellent after midnight.\"",
           "berries": 1
         },
         "right": {
@@ -84,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moon Puff Aerie, the forward path from Whisperdown Loft reveals a hidden moon-shell coffer.",
+          "message": "Within Moon Puff Aerie, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 35,
             "max": 60

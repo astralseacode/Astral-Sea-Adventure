@@ -10,20 +10,19 @@
   "startRoomId": "argent-causeway",
   "rooms": {
     "argent-causeway": {
-      "name": "Argent Causeway",
       "prompt": "An argent causeway reaches a fortified junction with three unmarked approaches.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "sentry-rampart",
           "healAmount": 30,
-          "message": "Shizuki wedged a weathered field kit into the coral at Argent Causeway. Its surviving bottle is labeled: \"Sentry-salve. Quiet feet are healthier feet.\"",
-          "fullHpMessage": "Shizuki's field kit at Argent Causeway can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Sentry-salve. Quiet feet are healthier feet.\"",
+          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "sentry-rampart",
-          "message": "Within Silver Shell Bastion, the right path from Argent Causeway reveals a hidden Moonkeeper cache.",
+          "message": "Within Silver Shell Bastion, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 35,
             "max": 60
@@ -38,8 +37,7 @@
       }
     },
     "sentry-rampart": {
-      "name": "Sentry Rampart",
-      "prompt": "Shell ramparts rise through the water while three passages continue beneath watchful carvings.",
+      "prompt": "Beyond the outer passages of Silver Shell Bastion, shell ramparts rise through the water while three passages continue beneath watchful carvings.",
       "choices": {
         "left": {
           "type": "combat",
@@ -51,13 +49,13 @@
           "type": "healing",
           "nextRoomId": "moonplate-keep",
           "healAmount": 30,
-          "message": "A careful survival cache waits beyond Sentry Rampart, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Drink now. The silver shells count footsteps.\"",
-          "fullHpMessage": "The remedy in Sentry Rampart stays in its cache. For once, preparation is all you need."
+          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Drink now. The silver shells count footsteps.\"",
+          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "moonplate-keep",
-          "message": "Within Silver Shell Bastion, the forward path from Sentry Rampart reveals a hidden moon-shell coffer.",
+          "message": "Within Silver Shell Bastion, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 40,
             "max": 70
@@ -66,13 +64,12 @@
       }
     },
     "moonplate-keep": {
-      "name": "Moonplate Keep",
-      "prompt": "Moonplate walls enclose a keep where three gates stand equally still.",
+      "prompt": "Near the innermost reaches of Silver Shell Bastion, moonplate walls enclose a keep where three gates stand equally still.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Silver Shell Bastion, the left path from Moonplate Keep reveals a hidden Fae offering vessel.",
+          "message": "Within Silver Shell Bastion, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 45,
             "max": 80
@@ -87,7 +84,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "Shizuki sealed one Berry inside a spare lockpick pouch at Moonplate Keep: \"Reward for opening the wrong door correctly.\"",
+          "message": "Shizuki sealed one Berry inside a spare lockpick pouch along the route: \"Reward for opening the wrong door correctly.\"",
           "berries": 1
         }
       }

@@ -9,7 +9,6 @@
   "startRoomId": "entrance",
   "rooms": {
     "entrance": {
-      "name": "Shell-Lined Entrance",
       "prompt": "Three passages wind deeper into the hideout.",
       "choices": {
         "left": {
@@ -35,8 +34,7 @@
       }
     },
     "inner-crossing": {
-      "name": "Inner Crossing",
-      "prompt": "Three shell-lined tunnels split beneath the reef. Moonlit currents drift through the coral while distant bubbles rise from somewhere deeper inside.",
+      "prompt": "The passages carry you deeper into Bubble Nibbler Hideout, where three shell-lined tunnels split beneath the reef. Moonlit currents drift through the coral while distant bubbles rise from somewhere deeper inside.",
       "choices": {
         "left": {
           "type": "combat",
@@ -47,8 +45,8 @@
           "type": "healing",
           "healAmount": 25,
           "nextRoomId": "coral-maze",
-          "message": "Near Inner Crossing, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Tastes terrible. Works anyway. Try not to ask what the green part is.\"",
-          "fullHpMessage": "The bottle at Inner Crossing is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Deeper inside Bubble Nibbler Hideout, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Tastes terrible. Works anyway. Try not to ask what the green part is.\"",
+          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
         },
         "forward": {
           "type": "treasure",
@@ -62,8 +60,7 @@
       }
     },
     "coral-maze": {
-      "name": "Flooded Coral Maze",
-      "prompt": "The hideout narrows into a maze of coral arches and pale shell fragments. Three passages disappear beyond the moonlit stone.",
+      "prompt": "Close to the heart of Bubble Nibbler Hideout, the hideout narrows into a maze of coral arches and pale shell fragments. Three passages disappear beyond the moonlit stone.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -78,8 +75,8 @@
           "type": "healing",
           "healAmount": 25,
           "nextRoomId": "boss-antechamber",
-          "message": "Shizuki wedged a weathered field kit into the coral at Flooded Coral Maze. Its surviving bottle is labeled: \"Second bottle. Less terrible. That is called progress.\"",
-          "fullHpMessage": "Shizuki's field kit at Flooded Coral Maze can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Second bottle. Less terrible. That is called progress.\"",
+          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
         },
         "forward": {
           "type": "combat",

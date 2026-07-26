@@ -10,7 +10,6 @@
   "startRoomId": "keeper-seal",
   "rooms": {
     "keeper-seal": {
-      "name": "Keeper Seal",
       "prompt": "A keeper seal retracts before three corridors lined with dormant runes.",
       "choices": {
         "left": {
@@ -23,13 +22,13 @@
           "type": "healing",
           "nextRoomId": "vigil-corridor",
           "healAmount": 40,
-          "message": "Beneath an improvised shelter in Keeper Seal, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Keeper-root medicine. Hidden from sentinels and anyone fond of inventories.\"",
-          "fullHpMessage": "You leave the medicinal flask at Keeper Seal untouched for the next injured wanderer."
+          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Keeper-root medicine. Hidden from sentinels and anyone fond of inventories.\"",
+          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "vigil-corridor",
-          "message": "Within Moonkeeper Sentinel Vault, the forward path from Keeper Seal reveals a hidden moon-shell coffer.",
+          "message": "Within Moonkeeper Sentinel Vault, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 60,
             "max": 90
@@ -38,13 +37,12 @@
       }
     },
     "vigil-corridor": {
-      "name": "Vigil Corridor",
-      "prompt": "Silent armor niches border a vigil corridor where three routes continue into the vault.",
+      "prompt": "As Moonkeeper Sentinel Vault closes around you, silent armor niches border a vigil corridor where three routes continue into the vault.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "oathbound-gallery",
-          "message": "Within Moonkeeper Sentinel Vault, the left path from Vigil Corridor reveals a hidden Fae offering vessel.",
+          "message": "Within Moonkeeper Sentinel Vault, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 70,
             "max": 105
@@ -59,26 +57,25 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "oathbound-gallery",
-          "message": "Shizuki hid one Berry inside the broken insignia of her creators in Vigil Corridor, turning their mark into an emergency cache.",
+          "message": "Shizuki hid one Berry inside the broken insignia of her creators in the surrounding passage, turning their mark into an emergency cache.",
           "berries": 1
         }
       }
     },
     "oathbound-gallery": {
-      "name": "Oathbound Gallery",
-      "prompt": "Oathbound reliefs cover a gallery whose three doors remain without labels.",
+      "prompt": "The final stretch through Moonkeeper Sentinel Vault reveals oathbound reliefs cover a gallery whose three doors remain without labels.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Moonlight reveals an old sleeping spot at Oathbound Gallery. Beside it, Shizuki's restorative bottle says: \"Old guardians watch doors. Clever wanderers watch reflections.\"",
-          "fullHpMessage": "The restorative at Oathbound Gallery remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"Old guardians watch doors. Clever wanderers watch reflections.\"",
+          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonkeeper Sentinel Vault, the right path from Oathbound Gallery reveals a hidden Moonkeeper cache.",
+          "message": "Within Moonkeeper Sentinel Vault, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 80,
             "max": 120

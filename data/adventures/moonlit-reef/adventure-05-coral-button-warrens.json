@@ -10,20 +10,19 @@
   "startRoomId": "buttonshell-gate",
   "rooms": {
     "buttonshell-gate": {
-      "name": "Buttonshell Gate",
       "prompt": "Tiny shell mosaics turn in the current beside three low passages beneath the coral.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "crimson-burrows",
           "healAmount": 25,
-          "message": "Shizuki wedged a weathered field kit into the coral at Buttonshell Gate. Its surviving bottle is labeled: \"Crabgrass salve. The crab objected to the name.\"",
-          "fullHpMessage": "Shizuki's field kit at Buttonshell Gate can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Crabgrass salve. The crab objected to the name.\"",
+          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "crimson-burrows",
-          "message": "Within Coral Button Warrens, the right path from Buttonshell Gate reveals a hidden Moonkeeper cache.",
+          "message": "Within Coral Button Warrens, the right path from the current passage reveals a hidden Moonkeeper cache.",
           "reward": {
             "min": 25,
             "max": 50
@@ -38,8 +37,7 @@
       }
     },
     "crimson-burrows": {
-      "name": "Crimson Burrows",
-      "prompt": "Red reef walls knot together around a junction whose three routes vanish under carved ledges.",
+      "prompt": "Beyond the outer passages of Coral Button Warrens, red reef walls knot together around a junction whose three routes vanish under carved ledges.",
       "choices": {
         "left": {
           "type": "combat",
@@ -51,13 +49,13 @@
           "type": "healing",
           "nextRoomId": "clasped-reef",
           "healAmount": 25,
-          "message": "A careful survival cache waits beyond Crimson Burrows, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Apply generously. Apologize to any buttonshells afterward.\"",
-          "fullHpMessage": "The remedy in Crimson Burrows stays in its cache. For once, preparation is all you need."
+          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Apply generously. Apologize to any buttonshells afterward.\"",
+          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "clasped-reef",
-          "message": "Within Coral Button Warrens, the forward path from Crimson Burrows reveals a hidden moon-shell coffer.",
+          "message": "Within Coral Button Warrens, the forward path from the current passage reveals a hidden moon-shell coffer.",
           "reward": {
             "min": 30,
             "max": 55
@@ -66,13 +64,12 @@
       }
     },
     "clasped-reef": {
-      "name": "Clasped Reef",
-      "prompt": "Moonkeeper clasps line a vaulted pocket where three tunnels thread through dense coral.",
+      "prompt": "Near the innermost reaches of Coral Button Warrens, moonkeeper clasps line a vaulted pocket where three tunnels thread through dense coral.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Coral Button Warrens, the left path from Clasped Reef reveals a hidden Fae offering vessel.",
+          "message": "Within Coral Button Warrens, the left path from the current passage reveals a hidden Fae offering vessel.",
           "reward": {
             "min": 35,
             "max": 60
@@ -87,7 +84,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "One Berry is the only ingredient left in Shizuki's broken cooking pan at Clasped Reef. A note declares: \"Stew cancelled by democracy.\"",
+          "message": "One Berry is the only ingredient left in Shizuki's broken cooking pan along the route. A note declares: \"Stew cancelled by democracy.\"",
           "berries": 1
         }
       }
