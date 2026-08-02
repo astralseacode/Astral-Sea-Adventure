@@ -185,6 +185,13 @@ const COMBAT_DAMAGE = {
   heavy: 20,
   critical: 30,
 };
+const ADVENTURE_CHOICE_XP_BY_LEVEL = {
+  1: { min: 15, max: 25 },
+  2: { min: 18, max: 28 },
+  3: { min: 22, max: 32 },
+  4: { min: 27, max: 37 },
+  5: { min: 33, max: 43 },
+};
 const PLAYER_STATS = {
   vitality: { id: "vitality", displayName: "Vitality", maximumRank: 10, description: "+10 permanent maximum HP per rank" },
   focus: { id: "focus", displayName: "Focus", maximumRank: 10, description: "+10 permanent maximum Mana per rank" },
@@ -1865,9 +1872,7 @@ async function performAdventureDirectionUnlocked(
 
   const messageParts = [];
   const rewardToken = `${state.currentRoomId}:${direction}`;
-  const isDiscovery =
-    choice.type === "healing" || choice.type === "empty";
-  let discoveryXp = 0;
+  const isTreasure = choice.type === "treasure";
   const discoveryBerries =
     choice.type === "empty" &&
       Number.isSafeInteger(choice.berries) &&
@@ -1875,34 +1880,38 @@ async function performAdventureDirectionUnlocked(
       ? choice.berries
       : 0;
 
-  if (
-    isDiscovery &&
-    state.collectedRewards.includes(rewardToken)
-  ) {
+  if (state.collectedRewards.includes(rewardToken)) {
     return {
-      message: "That Shizuki discovery has already been explored.",
+      message: isTreasure
+        ? "That treasure has already been collected."
+        : "That Shizuki discovery has already been explored.",
     };
   }
 
-  if (isDiscovery) {
-    const normalEnemy = await getEnemyDefinition(definition.enemyId);
-    discoveryXp = Math.floor(normalEnemy.reward.xp.max / 2);
-  }
+  const normalEnemy = await getEnemyDefinition(definition.enemyId);
+  const choiceXpRange = getAdventureChoiceXpRange(normalEnemy.level);
+  const choiceXp = randomInteger(choiceXpRange.min, choiceXpRange.max);
+  const [progress, currentTotal] = await Promise.all([
+    getPlayerProgress(env, backpackKey),
+    getBackpackTotal(env, backpackKey),
+  ]);
+  const originalState = structuredClone(state);
+  const startingLevel = levelFromXp(progress.xp);
+  const startingTitle = getTitleForLevel(startingLevel);
+  const startingRegion = getRegionForLevel(startingLevel);
+  const xpProgression = applyXpAndStatPointProgression(progress, choiceXp);
+  const endingLevel = xpProgression.endingLevel;
+  const endingTitle = getTitleForLevel(endingLevel);
+  const endingRegion = getRegionForLevel(endingLevel);
+  let updatedTotal = currentTotal;
 
-  if (choice.type === "treasure") {
-    if (state.collectedRewards.includes(rewardToken)) {
-      return { message: "That treasure has already been collected." };
-    }
-
+  if (isTreasure) {
     const baseReward = randomInteger(choice.reward.min, choice.reward.max);
-    const progress = await getPlayerProgress(env, backpackKey);
     const luckReward = applyLuckToCandyReward(baseReward, progress);
     const reward = luckReward.total;
-    const currentTotal = await getBackpackTotal(env, backpackKey);
-    await saveBackpackTotal(env, backpackKey, currentTotal + reward);
-    state.collectedRewards.push(rewardToken);
+    updatedTotal += reward;
     messageParts.push(
-      `${choice.message} You recover ${reward} Star Candies.` +
+      `${choice.message} You gain ${choiceXp} XP and recover ${reward} Star Candies.` +
         (luckReward.bonus > 0 ? ` Luck added ${luckReward.bonus}.` : ""),
     );
   } else if (choice.type === "healing") {
@@ -1917,13 +1926,13 @@ async function performAdventureDirectionUnlocked(
     messageParts.push(
       healed > 0
         ? `${choice.message} You recover ${healed} HP and gain ` +
-          `${discoveryXp} XP.`
+          `${choiceXp} XP.`
         : `${choice.fullHpMessage} You recover 0 HP and gain ` +
-          `${discoveryXp} XP.`,
+          `${choiceXp} XP.`,
     );
   } else if (choice.type === "empty") {
     messageParts.push(
-      `${choice.message} You gain ${discoveryXp} XP` +
+      `${choice.message} You gain ${choiceXp} XP` +
       (discoveryBerries > 0
         ? ` and find ${discoveryBerries} ` +
           `${discoveryBerries === 1 ? "Berry" : "Berries"}.`
@@ -1933,30 +1942,59 @@ async function performAdventureDirectionUnlocked(
     return { message: "That Adventure outcome is not supported." };
   }
 
-  if (isDiscovery) {
-    const progress = await getPlayerProgress(env, backpackKey);
-    const xpProgression = applyXpAndStatPointProgression(progress, discoveryXp);
-    await savePlayerProgress(env, backpackKey, {
-      ...xpProgression.progress,
-      hp: state.playerHp,
-      berries: progress.berries + discoveryBerries,
-    });
-    const pointMessage = formatStatPointAward(
-      xpProgression.pointsEarned,
-      xpProgression.progress.unspentStatPoints,
-      platform,
-    );
-    if (pointMessage) messageParts.push(pointMessage);
-    state.collectedRewards.push(rewardToken);
-  }
-
+  const updatedProgress = {
+    ...xpProgression.progress,
+    hp: state.playerHp,
+    berries: progress.berries + discoveryBerries,
+  };
+  state.collectedRewards.push(rewardToken);
   advanceAdventureState(
     definition,
     state,
     choice.nextRoomId,
   );
-  await saveActiveAdventure(env, backpackKey, state);
-  messageParts.push(formatAdventureObjective(definition, state, platform));
+
+  try {
+    await savePlayerProgress(env, backpackKey, {
+      ...updatedProgress,
+    });
+    if (isTreasure) {
+      await saveBackpackTotal(env, backpackKey, updatedTotal);
+    }
+    await saveActiveAdventure(env, backpackKey, state);
+  } catch (error) {
+    try {
+      await Promise.all([
+        savePlayerProgress(env, backpackKey, progress),
+        isTreasure
+          ? saveBackpackTotal(env, backpackKey, currentTotal)
+          : Promise.resolve(),
+        saveActiveAdventure(env, backpackKey, originalState),
+      ]);
+    } catch (rollbackError) {
+      console.error("Adventure choice reward rollback failed:", rollbackError);
+    }
+    throw error;
+  }
+
+  if (endingLevel > startingLevel) {
+    messageParts.push(`LEVEL UP! You reached Level ${endingLevel}!`);
+    messageParts.push(formatStatPointAward(
+      xpProgression.pointsEarned,
+      xpProgression.progress.unspentStatPoints,
+      platform,
+    ));
+  }
+  if (endingTitle !== startingTitle) {
+    messageParts.push(`Title Earned: ${endingTitle}`);
+  }
+  if (endingRegion.id !== startingRegion.id) {
+    messageParts.push(`Region Unlocked: ${endingRegion.name}`);
+  }
+
+  messageParts.push(
+    formatAdventureObjective(definition, state, platform),
+  );
 
   return { message: messageParts.join(" | ") };
 }
@@ -6029,6 +6067,19 @@ function getRegionCombatProgress(
 
 function randomChoice(values) {
   return values[randomInteger(0, values.length - 1)];
+}
+
+function getAdventureChoiceXpRange(enemyLevel) {
+  const level = Math.floor(Number(enemyLevel));
+  const range = ADVENTURE_CHOICE_XP_BY_LEVEL[level];
+
+  if (!range) {
+    throw new Error(
+      `No Adventure choice XP range is configured for enemy Level ${enemyLevel}.`,
+    );
+  }
+
+  return range;
 }
 
 function normalizePlayerStats(stats) {
