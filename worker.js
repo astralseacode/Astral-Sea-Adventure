@@ -987,6 +987,7 @@ async function handleTwitchRequest(url, env) {
             backpackKey,
             displayName,
             rawArgs,
+            "twitch",
           )
         ).message,
       );
@@ -1334,6 +1335,7 @@ async function handleDiscordInteraction(request, env) {
               backpackKey,
               displayName,
               getDiscordSubcommand(interaction),
+              "discord",
             )
           ).message,
         );
@@ -2013,14 +2015,18 @@ async function startAdventureBattle(
   await saveCombatState(env, backpackKey, combatState);
 
   return {
-    message:
-      `${context.isBoss ? "Boss fight" : "Enemy fight"} begins! ` +
-      `${enemy.name} appears. Enemy HP: ${enemy.hp} | ` +
-      `HP: ${state.playerHp}/${state.playerMaxHp} | ` +
-      `Mana: ${progress.mana}/${resourceCaps.mana} | Use ` +
-      `${platform === "discord"
-        ? "/attack or /cast"
-        : "!attack or !cast"} to strike.`,
+    message: platform === "discord"
+      ? appendDiscordCombatHud(
+          `${context.isBoss ? "Boss fight" : "Enemy fight"} begins! ` +
+          `${enemy.name} appears. Use /attack or /cast to strike.`,
+          combatState,
+          progress,
+        )
+      : `${context.isBoss ? "Boss fight" : "Enemy fight"} begins! ` +
+        `${enemy.name} appears. Enemy HP: ${enemy.hp} | ` +
+        `HP: ${state.playerHp}/${state.playerMaxHp} | ` +
+        `Mana: ${progress.mana}/${resourceCaps.mana} | Use ` +
+        "!attack or !cast to strike.",
   };
 }
 
@@ -2050,12 +2056,19 @@ async function requestCombatConfirmation(
   const existingCombat = await getCombatState(env, backpackKey);
 
   if (existingCombat) {
+    const progress = await getPlayerProgress(env, backpackKey);
     return {
-      message:
-        `You are already fighting ${existingCombat.enemy.name}. ` +
-        `HP: ${existingCombat.playerHp}/${existingCombat.playerMaxHp} | ` +
-        `Enemy HP: ${existingCombat.enemy.hp}/${existingCombat.enemy.maxHp} | ` +
-        `Use ${platform === "discord" ? "/attack" : "!attack"} to continue.`,
+      message: platform === "discord"
+        ? appendDiscordCombatHud(
+            `You are already fighting ${existingCombat.enemy.name}. ` +
+            "Use /attack to continue.",
+            existingCombat,
+            progress,
+          )
+        : `You are already fighting ${existingCombat.enemy.name}. ` +
+          `HP: ${existingCombat.playerHp}/${existingCombat.playerMaxHp} | ` +
+          `Enemy HP: ${existingCombat.enemy.hp}/${existingCombat.enemy.maxHp} | ` +
+          "Use !attack to continue.",
     };
   }
 
@@ -2426,30 +2439,30 @@ async function startCombatEncounter(
 
   await saveCombatState(env, backpackKey, combatState);
 
+  const message = source === "long-rest"
+    ? `${enemy.name} appears! Enemy HP: ${enemy.hp} | ` +
+      `HP: ${progress.hp}/${resourceCaps.hp} | ` +
+      `Mana: ${progress.mana}/${resourceCaps.mana} | ` +
+      "Use !attack or !cast to strike."
+    : `Adventure ${encounterNumber} begins! ${enemy.name} appears. ` +
+      `Enemy HP: ${enemy.hp} | ` +
+      `HP: ${progress.hp}/${resourceCaps.hp} | ` +
+      `Mana: ${progress.mana}/${resourceCaps.mana} | ` +
+      "Use !attack or !cast to strike.";
+
   return {
-    message: source === "long-rest"
-      ? platform === "discord"
-        ? `**An enemy has appeared!**\n\n${enemy.name}\n` +
-          `Enemy HP: ${enemy.hp}\n` +
-          `HP: ${progress.hp}/${resourceCaps.hp}\n` +
-          `Mana: ${progress.mana}/${resourceCaps.mana}\n\n` +
-          "Use /attack or /cast spell to strike."
-        : `${enemy.name} appears! Enemy HP: ${enemy.hp} | ` +
-          `HP: ${progress.hp}/${resourceCaps.hp} | ` +
-          `Mana: ${progress.mana}/${resourceCaps.mana} | ` +
-          "Use !attack or !cast to strike."
-      : platform === "discord"
-        ? `Adventure ${encounterNumber} begins!\n\n` +
-          `${enemy.name} appears in ${region.name}.\n` +
-          `Enemy HP: ${enemy.hp}\n` +
-          `HP: ${progress.hp}/${resourceCaps.hp}\n` +
-          `Mana: ${progress.mana}/${resourceCaps.mana}\n\n` +
-          "Use /attack or /cast spell to strike."
-        : `Adventure ${encounterNumber} begins! ${enemy.name} appears. ` +
-          `Enemy HP: ${enemy.hp} | ` +
-          `HP: ${progress.hp}/${resourceCaps.hp} | ` +
-          `Mana: ${progress.mana}/${resourceCaps.mana} | ` +
-          "Use !attack or !cast to strike.",
+    message: platform === "discord"
+      ? appendDiscordCombatHud(
+          source === "long-rest"
+            ? `**An enemy has appeared!**\n\n${enemy.name}\n\n` +
+              "Use /attack or /cast spell to strike."
+            : `Adventure ${encounterNumber} begins!\n\n` +
+              `${enemy.name} appears in ${region.name}.\n\n` +
+              "Use /attack or /cast spell to strike.",
+          combatState,
+          progress,
+        )
+      : message,
   };
 }
 
@@ -2702,20 +2715,21 @@ async function resolvePlayerCombatAction(
   }
 
   if (combatState.playerHp === 0) {
-    messageParts.push(
-      ...formatCombatStatus(combatState, progress, platform),
-    );
     const defeat = await resolveCombatDefeat(
       env,
       backpackKey,
       combatState,
+      platform,
     );
 
     messageParts.push(defeat.message);
+    messageParts.push(
+      ...formatCombatStatus(combatState, progress, platform),
+    );
 
     return {
       ...defeat,
-      message: messageParts.join(" | "),
+      message: formatCombatMessageParts(messageParts, platform),
     };
   }
 
@@ -2732,7 +2746,7 @@ async function resolvePlayerCombatAction(
   );
 
   return {
-    message: messageParts.join(" | "),
+    message: formatCombatMessageParts(messageParts, platform),
   };
 }
 
@@ -2742,18 +2756,64 @@ function formatCombatStatus(
   platform = "twitch",
 ) {
   const resourceCaps = getPlayerResourceCaps(progress);
-  const status = [
-    `HP: ${combatState.playerHp}/${combatState.playerMaxHp}`,
-    `Mana: ${progress.mana}/${resourceCaps.mana}`,
-    `Enemy HP: ${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
-  ];
   const activeEffects = formatActiveEffects(progress, platform);
+
+  if (platform === "discord") {
+    return [
+      ...(activeEffects ? [activeEffects] : []),
+      formatDiscordCombatHud(combatState, progress),
+    ];
+  }
+
+  const status = [
+    formatCombatResource(
+      "HP",
+      `${combatState.playerHp}/${combatState.playerMaxHp}`,
+      platform,
+    ),
+    formatCombatResource(
+      "Mana",
+      `${progress.mana}/${resourceCaps.mana}`,
+      platform,
+    ),
+    formatCombatResource(
+      "Enemy HP",
+      `${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
+      platform,
+    ),
+  ];
 
   if (activeEffects) {
     status.push(activeEffects);
   }
 
   return status;
+}
+
+function formatCombatResource(label, value, platform = "twitch") {
+  return platform === "discord"
+    ? `**${label}:** **${value}**`
+    : `${label}: ${value}`;
+}
+
+function formatDiscordCombatHud(combatState, progress) {
+  const resourceCaps = getPlayerResourceCaps(progress);
+
+  return "━━━━━━━━━━━━━━━━━━━━\n\n" +
+    `❤️ **HP:** **${combatState.playerHp}/${combatState.playerMaxHp}**\n` +
+    `🔷 **Mana:** **${progress.mana}/${resourceCaps.mana}**\n` +
+    `👾 **Enemy HP:** **${combatState.enemy.hp}/${combatState.enemy.maxHp}**`;
+}
+
+function appendDiscordCombatHud(message, combatState, progress) {
+  return `${message}\n\n${formatDiscordCombatHud(combatState, progress)}`;
+}
+
+function formatCombatMessageParts(parts, platform) {
+  if (platform !== "discord") return parts.join(" | ");
+
+  const hud = parts.at(-1);
+  return `${parts.slice(0, -1).join(" | ")}\n\n${hud}`;
 }
 
 async function performCast(
@@ -2813,12 +2873,16 @@ async function performCastUnlocked(
 
   const progress = await getPlayerProgress(env, backpackKey);
   const playerLevel = levelFromXp(progress.xp);
+  const currentCombatState = await getCombatState(env, backpackKey);
 
   if (playerLevel < spell.requiredLevel) {
+    const message =
+      `You haven't learned ${spell.name} yet. Reach Level ` +
+      `${spell.requiredLevel} to unlock it.`;
     return {
-      message:
-        `You haven't learned ${spell.name} yet. Reach Level ` +
-        `${spell.requiredLevel} to unlock it.`,
+      message: currentCombatState && platform === "discord"
+        ? appendDiscordCombatHud(message, currentCombatState, progress)
+        : message,
     };
   }
 
@@ -2826,15 +2890,21 @@ async function performCastUnlocked(
     const activeEffect = getStatusEffect(progress, spell.effectId);
 
     if (activeEffect) {
+      const message = `${randomChoice(ELF_BLESSING_RECAST_SCENES)}\n\n` +
+        `Elf Blessing Remaining: ${formatEffectRemaining(activeEffect)}`;
       return {
-        message: `${randomChoice(ELF_BLESSING_RECAST_SCENES)}\n\n` +
-          `Elf Blessing Remaining: ${formatEffectRemaining(activeEffect)}`,
+        message: currentCombatState && platform === "discord"
+          ? appendDiscordCombatHud(message, currentCombatState, progress)
+          : message,
       };
     }
 
     if (progress.mana < spell.manaCost) {
+      const message = `You don't have enough Mana to cast ${spell.name}.`;
       return {
-        message: `You don't have enough Mana to cast ${spell.name}.`,
+        message: currentCombatState && platform === "discord"
+          ? appendDiscordCombatHud(message, currentCombatState, progress)
+          : message,
       };
     }
 
@@ -2864,14 +2934,17 @@ async function performCastUnlocked(
       platform,
     );
 
-    return {
-      message: platform === "discord"
+    const message = platform === "discord"
         ? `${scene}\n\n${activeEffects}`
-        : `${scene.split("\n")[0]} ${activeEffects}`,
+        : `${scene.split("\n")[0]} ${activeEffects}`;
+    return {
+      message: currentCombatState && platform === "discord"
+        ? appendDiscordCombatHud(message, currentCombatState, updatedProgress)
+        : message,
     };
   }
 
-  const combatState = await getCombatState(env, backpackKey);
+  const combatState = currentCombatState;
 
   if (!combatState) {
     const activeAdventure = await getActiveAdventure(env, backpackKey);
@@ -2891,8 +2964,11 @@ async function performCastUnlocked(
   }
 
   if (progress.mana < spell.manaCost) {
+    const message = `You don't have enough Mana to cast ${spell.name}.`;
     return {
-      message: `You don't have enough Mana to cast ${spell.name}.`,
+      message: platform === "discord"
+        ? appendDiscordCombatHud(message, combatState, progress)
+        : message,
     };
   }
 
@@ -3131,6 +3207,7 @@ async function performEat(
   backpackKey,
   displayName,
   itemInput = "",
+  platform = "twitch",
 ) {
   return withPlayerMutationLock(
     backpackKey,
@@ -3139,6 +3216,7 @@ async function performEat(
       backpackKey,
       displayName,
       itemInput,
+      platform,
     ),
   );
 }
@@ -3148,6 +3226,7 @@ async function performEatUnlocked(
   backpackKey,
   displayName,
   itemInput,
+  platform,
 ) {
   const normalizedItem = String(itemInput || "").trim().toLowerCase();
 
@@ -3171,9 +3250,11 @@ async function performEatUnlocked(
     latestProgress.hp;
 
   if (latestProgress.berries < 1) {
+    const message = `${displayName}, you do not have any Berries to eat.`;
     return {
-      message:
-        `${displayName}, you do not have any Berries to eat.`,
+      message: combatState && platform === "discord"
+        ? appendDiscordCombatHud(message, combatState, latestProgress)
+        : message,
     };
   }
 
@@ -3196,9 +3277,11 @@ async function performEatUnlocked(
   );
 
   if (healedAmount === 0 && restoredMana === 0) {
+    const message = "You're already feeling great. Better save that Berry for later!";
     return {
-      message:
-        "You're already feeling great. Better save that Berry for later!",
+      message: combatState && platform === "discord"
+        ? appendDiscordCombatHud(message, combatState, latestProgress)
+        : message,
     };
   }
 
@@ -3265,11 +3348,18 @@ async function performEatUnlocked(
     playerHp: updatedHp,
     playerMaxHp: hpLimit,
     message: combatState
-      ? `${displayName} ate 1 Berry and restored ${healedAmount} HP and ` +
-        `${restoredMana} Mana! ` +
-        `HP: ${updatedHp}/${hpLimit} | ` +
-        `Mana: ${updatedMana}/${manaLimit} | ` +
-        `Berries: ${remainingBerries.toLocaleString("en-US")}`
+      ? platform === "discord"
+        ? appendDiscordCombatHud(
+            `${displayName} ate 1 Berry and restored ${healedAmount} HP and ` +
+            `${restoredMana} Mana! Berries: ${remainingBerries.toLocaleString("en-US")}`,
+            combatState,
+            { ...latestProgress, mana: updatedMana },
+          )
+        : `${displayName} ate 1 Berry and restored ${healedAmount} HP and ` +
+          `${restoredMana} Mana! ` +
+          `HP: ${updatedHp}/${hpLimit} | ` +
+          `Mana: ${updatedMana}/${manaLimit} | ` +
+          `Berries: ${remainingBerries.toLocaleString("en-US")}`
       : `${randomChoice(BERRY_OUTSIDE_COMBAT_MESSAGES)} | ` +
         `HP: ${updatedHp}/${hpLimit} | ` +
         `Mana: ${updatedMana}/${manaLimit} | ` +
@@ -3365,7 +3455,9 @@ async function resolveCombatVictory(
     `${combatState.enemy.name} defeated!`,
     playerActionMessage ||
       `You rolled ${playerRoll} for ${playerDamage} dmg`,
-    `Mana: ${progress.mana}/${getPlayerResourceCaps(progress).mana}`,
+    ...(platform === "discord"
+      ? []
+      : [`Mana: ${progress.mana}/${getPlayerResourceCaps(progress).mana}`]),
     `+${xpReward} XP`,
     `+${candyReward} Star Candies`,
     ...(luckReward.bonus > 0
@@ -3441,7 +3533,13 @@ async function resolveCombatVictory(
     xpReward,
     total: newTotal,
     xp: newXp,
-    message: messageParts.join(" | "),
+    message: platform === "discord"
+      ? appendDiscordCombatHud(
+          messageParts.join(" | "),
+          combatState,
+          progress,
+        )
+      : messageParts.join(" | "),
   };
 }
 
@@ -4165,12 +4263,15 @@ async function performRestUnlocked(
   const activeAdventure = await getActiveAdventure(env, backpackKey);
 
   if (restType === "long" && (combatState || activeAdventure)) {
+    const message =
+      "You cannot begin a Long Rest during an active Adventure or fight. " +
+      `Finish it before using ${platform === "discord"
+        ? "/rest long"
+        : "!rest long"}.`;
     return {
-      message:
-        "You cannot begin a Long Rest during an active Adventure or fight. " +
-        `Finish it before using ${platform === "discord"
-          ? "/rest long"
-          : "!rest long"}.`,
+      message: combatState && platform === "discord"
+        ? appendDiscordCombatHud(message, combatState, progress)
+        : message,
     };
   }
 
@@ -4221,14 +4322,23 @@ async function performRestUnlocked(
   ]);
 
   if (restType === "short") {
+    const message =
+      "You take a peaceful rest beneath the moonlight. Your Health and Mana " +
+      "have been restored, and you feel refreshed!" +
+      (combatState && platform === "discord"
+        ? ""
+        : ` | HP: ${updatedHp}/${resourceCaps.hp} | ` +
+          `Mana: ${updatedMana}/${resourceCaps.mana}`);
     return {
       hp: updatedHp,
       mana: updatedMana,
-      message:
-        "You take a peaceful rest beneath the moonlight. Your Health and Mana " +
-        "have been restored, and you feel refreshed! | " +
-        `HP: ${updatedHp}/${resourceCaps.hp} | ` +
-        `Mana: ${updatedMana}/${resourceCaps.mana}`,
+      message: combatState && platform === "discord"
+        ? appendDiscordCombatHud(
+            message,
+            combatState,
+            updatedProgress,
+          )
+        : message,
     };
   }
 
