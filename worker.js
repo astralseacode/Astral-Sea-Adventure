@@ -10,10 +10,8 @@ const DUPLICATE_DIRECTION_WINDOW_MS = 2 * 1000;
 const PLAYER_COMBAT_MAX_HP = 100;
 const PLAYER_MAX_MANA = 100;
 const REST_BONUS_AMOUNT = 25;
-const SHORT_REST_RESOURCE_CAP =
-  PLAYER_COMBAT_MAX_HP + REST_BONUS_AMOUNT;
-const LONG_REST_RESOURCE_CAP = 150;
-const MAX_TEMPORARY_RESOURCE_CAP = LONG_REST_RESOURCE_CAP;
+const LONG_REST_BONUS_AMOUNT = 50;
+const MAX_PLAYER_RESOURCE_CAP = 250;
 const SHORT_REST_COOLDOWN_MS = 20 * 60 * 1000;
 const LONG_REST_COOLDOWN_MS = 60 * 60 * 1000;
 const LONG_REST_ENCOUNTER_CHANCE = 0.5;
@@ -187,6 +185,37 @@ const COMBAT_DAMAGE = {
   heavy: 20,
   critical: 30,
 };
+const PLAYER_STATS = {
+  vitality: { id: "vitality", displayName: "Vitality", maximumRank: 10, description: "+10 permanent maximum HP per rank" },
+  focus: { id: "focus", displayName: "Focus", maximumRank: 10, description: "+10 permanent maximum Mana per rank" },
+  strength: { id: "strength", displayName: "Strength", maximumRank: 10, description: "+1 player damage per rank" },
+  luck: { id: "luck", displayName: "Luck", maximumRank: 10, description: "+2% Star Candies and +1 percentage point combat Berry chance per rank" },
+  armor: { id: "armor", displayName: "Armor", maximumRank: 10, description: "-1 incoming enemy damage per rank" },
+  fae: { id: "fae", displayName: "Fae Affinity", maximumRank: 5, description: "+1 offensive spell roll per rank" },
+};
+const STAT_SHIZUKI_RESPONSES = Object.fromEntries(
+  Object.keys(PLAYER_STATS).map((statId) => [
+    statId,
+    Array.from({ length: 20 }, (_, index) => {
+      const signs = [
+        "A folded note drifts into view.",
+        "A suspicious bush rustles nearby.",
+        "A tiny magical chime rings out.",
+        "A doodle appears on a loose scrap of paper.",
+        "A fake mustache peeks around the nearest corner.",
+      ];
+      const remarks = {
+        vitality: "Shizuki's handwriting reads: “Ten points less squishy. Good choice.”",
+        focus: "Shizuki calls from afar: “More Mana. More Jellyfish. This will end well.”",
+        strength: "A distant voice advises: “Hit it harder. That's the entire lesson.”",
+        luck: "Shizuki whispers: “You are now statistically shinier.”",
+        armor: "A note reads: “Less ouch. Very technical.”",
+        fae: "Shizuki whispers: “The Astral Sea is listening now.”",
+      };
+      return `${signs[index % signs.length]} ${remarks[statId]} (${index + 1})`;
+    }),
+  ]),
+);
 const SPELLS = {
   elf_blessing: {
     id: "elf_blessing",
@@ -579,12 +608,12 @@ const DISCORD_COMMANDS = [
       {
         type: 1,
         name: "short",
-        description: "Take a brief rest and temporarily raise HP and Mana to 125.",
+        description: "Take a brief rest and add a temporary +25 HP and Mana buffer.",
       },
       {
         type: 1,
         name: "long",
-        description: "Take a full day's rest and temporarily raise HP and Mana to 150.",
+        description: "Take a full day's rest and add a temporary +50 HP and Mana buffer.",
       },
     ],
   },
@@ -615,6 +644,41 @@ const DISCORD_COMMANDS = [
   {
     name: "backpack",
     description: "Check how many Star Candies are in your Backpack.",
+    type: 1,
+  },
+  {
+    name: "stats",
+    description: "View your permanent stats, resources, available points, and active effects.",
+    type: 1,
+  },
+  {
+    name: "vitality",
+    description: "Spend one Stat Point to gain +10 permanent Maximum HP.",
+    type: 1,
+  },
+  {
+    name: "focus",
+    description: "Spend one Stat Point to gain +10 permanent Maximum Mana.",
+    type: 1,
+  },
+  {
+    name: "strength",
+    description: "Spend one Stat Point to gain +1 player damage.",
+    type: 1,
+  },
+  {
+    name: "luck",
+    description: "Spend one Stat Point to improve Star Candy rewards and Berry drops.",
+    type: 1,
+  },
+  {
+    name: "armor",
+    description: "Spend one Stat Point to reduce incoming enemy damage.",
+    type: 1,
+  },
+  {
+    name: "fae",
+    description: "Spend one Stat Point to gain +1 on offensive spell rolls.",
     type: 1,
   },
   {
@@ -927,6 +991,21 @@ async function handleTwitchRequest(url, env) {
         ).message,
       );
 
+    case "stats":
+      return textResponse(
+        (await performStats(env, backpackKey, username, "twitch")).message,
+      );
+
+    case "vitality":
+    case "focus":
+    case "strength":
+    case "luck":
+    case "armor":
+    case "fae":
+      return textResponse(
+        (await performStatAllocation(env, backpackKey, action, "twitch")).message,
+      );
+
     case "shop":
       return textResponse(
         (
@@ -1021,7 +1100,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. !rest - Take a Short Rest. Cooldown: 20 minutes. !rest long - Take a Long Rest. Cooldown: 1 hour. Other commands: !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. !cast jelly - Cast Jellyfish. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1269,6 +1348,22 @@ async function handleDiscordInteraction(request, env) {
           true,
         );
 
+      case "stats":
+        return discordMessage(
+          (await performStats(env, backpackKey, sharedIdentity, "discord")).message,
+          true,
+        );
+
+      case "vitality":
+      case "focus":
+      case "strength":
+      case "luck":
+      case "armor":
+      case "fae":
+        return discordMessage(
+          (await performStatAllocation(env, backpackKey, commandName, "discord")).message,
+        );
+
       case "shop":
         return discordMessage(
           (
@@ -1353,7 +1448,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack. /cast spell:Elf Blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Known from Level 1. /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. /rest short - Gain up to 125 HP and Mana. Cooldown: 20 minutes. /rest long - Gain up to 150 HP and Mana. Cooldown: 1 hour. Other commands: /eat berry, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -1594,7 +1689,7 @@ async function performAdventureUnlocked(
     completedRooms: [],
     collectedRewards: [],
     playerHp: progress.hp,
-    playerMaxHp: PLAYER_COMBAT_MAX_HP,
+    playerMaxHp: getPlayerResourceCaps(progress).hp,
     startedAt: now,
     updatedAt: now,
   };
@@ -1748,12 +1843,16 @@ async function performAdventureDirectionUnlocked(
       return { message: "That treasure has already been collected." };
     }
 
-    const reward = randomInteger(choice.reward.min, choice.reward.max);
+    const baseReward = randomInteger(choice.reward.min, choice.reward.max);
+    const progress = await getPlayerProgress(env, backpackKey);
+    const luckReward = applyLuckToCandyReward(baseReward, progress);
+    const reward = luckReward.total;
     const currentTotal = await getBackpackTotal(env, backpackKey);
     await saveBackpackTotal(env, backpackKey, currentTotal + reward);
     state.collectedRewards.push(rewardToken);
     messageParts.push(
-      `${choice.message} You recover ${reward} Star Candies.`,
+      `${choice.message} You recover ${reward} Star Candies.` +
+        (luckReward.bonus > 0 ? ` Luck added ${luckReward.bonus}.` : ""),
     );
   } else if (choice.type === "healing") {
     const healed = Math.max(
@@ -1785,12 +1884,18 @@ async function performAdventureDirectionUnlocked(
 
   if (isDiscovery) {
     const progress = await getPlayerProgress(env, backpackKey);
+    const xpProgression = applyXpAndStatPointProgression(progress, discoveryXp);
     await savePlayerProgress(env, backpackKey, {
-      ...progress,
+      ...xpProgression.progress,
       hp: state.playerHp,
-      xp: progress.xp + discoveryXp,
       berries: progress.berries + discoveryBerries,
     });
+    const pointMessage = formatStatPointAward(
+      xpProgression.pointsEarned,
+      xpProgression.progress.unspentStatPoints,
+      platform,
+    );
+    if (pointMessage) messageParts.push(pointMessage);
     state.collectedRewards.push(rewardToken);
   }
 
@@ -1855,6 +1960,7 @@ async function startAdventureBattle(
   };
 
   const progress = await getPlayerProgress(env, backpackKey);
+  const resourceCaps = getPlayerResourceCaps(progress);
   await saveCombatState(env, backpackKey, combatState);
 
   return {
@@ -1862,7 +1968,7 @@ async function startAdventureBattle(
       `${context.isBoss ? "Boss fight" : "Enemy fight"} begins! ` +
       `${enemy.name} appears. Enemy HP: ${enemy.hp} | ` +
       `HP: ${state.playerHp}/${state.playerMaxHp} | ` +
-      `Mana: ${progress.mana}/${progress.maxMana} | Use ` +
+      `Mana: ${progress.mana}/${resourceCaps.mana} | Use ` +
       `${platform === "discord"
         ? "/attack or /cast spell:Jelly"
         : "!attack or !cast jelly"} to strike.`,
@@ -2252,12 +2358,13 @@ async function startCombatEncounter(
 ) {
   const now = Math.floor(Date.now() / 1000);
   const progress = await getPlayerProgress(env, backpackKey);
+  const resourceCaps = getPlayerResourceCaps(progress);
   const combatState = {
     version: 1,
     regionId: region.id,
     encounterNumber,
     playerHp: progress.hp,
-    playerMaxHp: PLAYER_COMBAT_MAX_HP,
+    playerMaxHp: resourceCaps.hp,
     enemy: {
       ...enemy,
       hp: enemy.hp,
@@ -2275,24 +2382,24 @@ async function startCombatEncounter(
       ? platform === "discord"
         ? `**An enemy has appeared!**\n\n${enemy.name}\n` +
           `Enemy HP: ${enemy.hp}\n` +
-          `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP}\n` +
-          `Mana: ${progress.mana}/${progress.maxMana}\n\n` +
+          `HP: ${progress.hp}/${resourceCaps.hp}\n` +
+          `Mana: ${progress.mana}/${resourceCaps.mana}\n\n` +
           "Use /attack or /cast spell to strike."
         : `${enemy.name} appears! Enemy HP: ${enemy.hp} | ` +
-          `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP} | ` +
-          `Mana: ${progress.mana}/${progress.maxMana} | ` +
+          `HP: ${progress.hp}/${resourceCaps.hp} | ` +
+          `Mana: ${progress.mana}/${resourceCaps.mana} | ` +
           "Use !attack or !cast to strike."
       : platform === "discord"
         ? `Adventure ${encounterNumber} begins!\n\n` +
           `${enemy.name} appears in ${region.name}.\n` +
           `Enemy HP: ${enemy.hp}\n` +
-          `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP}\n` +
-          `Mana: ${progress.mana}/${progress.maxMana}\n\n` +
+          `HP: ${progress.hp}/${resourceCaps.hp}\n` +
+          `Mana: ${progress.mana}/${resourceCaps.mana}\n\n` +
           "Use /attack or /cast spell to strike."
         : `Adventure ${encounterNumber} begins! ${enemy.name} appears. ` +
           `Enemy HP: ${enemy.hp} | ` +
-          `HP: ${progress.hp}/${PLAYER_COMBAT_MAX_HP} | ` +
-          `Mana: ${progress.mana}/${progress.maxMana} | ` +
+          `HP: ${progress.hp}/${resourceCaps.hp} | ` +
+          `Mana: ${progress.mana}/${resourceCaps.mana} | ` +
           "Use !attack or !cast to strike.",
   };
 }
@@ -2424,9 +2531,18 @@ async function performAttackUnlocked(
     OFFENSIVE_ROLL_TRIGGER,
     playerRoll,
   );
-  const playerAttack = playerRoll === 1
+  const basePlayerAttack = playerRoll === 1
     ? getCombatRollResult(playerRoll)
     : getCombatRollResult(triggeredRoll.finalTotal);
+  const strengthBonus = basePlayerAttack.damage > 0
+    ? getStrengthDamageBonus(progress)
+    : 0;
+  const playerAttack = {
+    ...basePlayerAttack,
+    baseDamage: basePlayerAttack.damage,
+    strengthBonus,
+    damage: basePlayerAttack.damage + strengthBonus,
+  };
   const actionMessage = formatPlayerAttackResolution(
     playerRoll,
     playerAttack,
@@ -2505,11 +2621,18 @@ async function resolvePlayerCombatAction(
     };
   }
 
+  const progress = await getPlayerProgress(env, backpackKey);
   const enemyRoll = randomInteger(1, 20);
   const enemyAttack = getCombatRollResult(enemyRoll);
-  const enemyDamage =
-    enemyAttack.damage +
-    (combatState.enemy.damageBonus || 0);
+  const rawEnemyDamage = enemyAttack.damage === 0
+    ? 0
+    : enemyAttack.damage + (combatState.enemy.damageBonus || 0);
+  const armorReduction = rawEnemyDamage > 0
+    ? Math.min(getArmorReduction(progress), Math.max(0, rawEnemyDamage - 1))
+    : 0;
+  const enemyDamage = rawEnemyDamage === 0
+    ? 0
+    : Math.max(1, rawEnemyDamage - armorReduction);
   combatState.playerHp = Math.max(
     0,
     combatState.playerHp - enemyDamage,
@@ -2521,13 +2644,15 @@ async function resolvePlayerCombatAction(
       enemyRoll,
       {
         ...enemyAttack,
-        damage: enemyDamage,
+        damage: rawEnemyDamage,
       },
     ),
   );
+  if (armorReduction > 0) {
+    messageParts.push(`Armor -${armorReduction} | You take ${enemyDamage} dmg`);
+  }
 
   if (combatState.playerHp === 0) {
-    const progress = await getPlayerProgress(env, backpackKey);
     messageParts.push(
       ...formatCombatStatus(combatState, progress, platform),
     );
@@ -2547,7 +2672,6 @@ async function resolvePlayerCombatAction(
 
   combatState.round += 1;
   combatState.updatedAt = Math.floor(Date.now() / 1000);
-  const progress = await getPlayerProgress(env, backpackKey);
   await savePlayerProgress(env, backpackKey, {
     ...progress,
     hp: combatState.playerHp,
@@ -2568,9 +2692,10 @@ function formatCombatStatus(
   progress,
   platform = "twitch",
 ) {
+  const resourceCaps = getPlayerResourceCaps(progress);
   const status = [
     `HP: ${combatState.playerHp}/${combatState.playerMaxHp}`,
-    `Mana: ${progress.mana}/${progress.maxMana}`,
+    `Mana: ${progress.mana}/${resourceCaps.mana}`,
     `Enemy HP: ${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
   ];
   const activeEffects = formatActiveEffects(progress, platform);
@@ -2725,11 +2850,22 @@ async function performCastUnlocked(
     OFFENSIVE_ROLL_TRIGGER,
     spellRoll.total,
   );
+  const faeBonus = getFaeSpellRollBonus(progress);
+  if (faeBonus > 0) {
+    triggeredRoll.modifier += faeBonus;
+    triggeredRoll.finalTotal += faeBonus;
+    triggeredRoll.applied.unshift("Fae Affinity");
+    triggeredRoll.modifierDetails.unshift({ name: "Fae Affinity", value: faeBonus });
+  }
   const resolvedSpellRoll = resolveSpellRoll(
     spell,
     spellRoll,
     triggeredRoll.finalTotal,
   );
+  const strengthBonus = getStrengthDamageBonus(progress);
+  resolvedSpellRoll.baseDamage = resolvedSpellRoll.damage;
+  resolvedSpellRoll.strengthBonus = strengthBonus;
+  resolvedSpellRoll.damage += strengthBonus;
   const castMessage = formatSpellCastMessage(
     spell,
     resolvedSpellRoll,
@@ -2822,10 +2958,13 @@ function formatSpellCastMessage(
       "guiding your spell."
     : "";
 
+  const damageText = spellRoll.strengthBonus > 0
+    ? `${spellRoll.baseDamage} base + ${spellRoll.strengthBonus} Strength = ${spellRoll.damage}`
+    : spellRoll.damage;
   return `You throw a ${personality.adjective} ${spell.name}. ${followUp}` +
     `${separator}Spell Roll: ${effectResult.naturalRoll}${modifierText}` +
     resultText +
-    `${separator}Damage: ${spellRoll.damage}` +
+    `${separator}Damage: ${damageText}` +
     fadeText;
 }
 
@@ -2880,14 +3019,9 @@ async function performEatUnlocked(
     };
   }
 
-  const hpLimit = Math.max(
-    PLAYER_COMBAT_MAX_HP,
-    latestProgress.temporaryResourceCap,
-  );
-  const manaLimit = Math.max(
-    PLAYER_MAX_MANA,
-    latestProgress.temporaryResourceCap,
-  );
+  const resourceCaps = getPlayerResourceCaps(latestProgress);
+  const hpLimit = resourceCaps.hp;
+  const manaLimit = resourceCaps.mana;
   const healedAmount = Math.max(
     0,
     Math.min(
@@ -2925,10 +3059,12 @@ async function performEatUnlocked(
 
   if (combatState) {
     combatState.playerHp = updatedHp;
+    combatState.playerMaxHp = resourceCaps.hp;
   }
 
   if (activeAdventure) {
     activeAdventure.playerHp = updatedHp;
+    activeAdventure.playerMaxHp = resourceCaps.hp;
     activeAdventure.updatedAt = Date.now();
   }
 
@@ -2969,16 +3105,16 @@ async function performEatUnlocked(
     restoredMana,
     berries: remainingBerries,
     playerHp: updatedHp,
-    playerMaxHp: PLAYER_COMBAT_MAX_HP,
+    playerMaxHp: hpLimit,
     message: combatState
       ? `${displayName} ate 1 Berry and restored ${healedAmount} HP and ` +
         `${restoredMana} Mana! ` +
-        `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
-        `Mana: ${updatedMana}/${PLAYER_MAX_MANA} | ` +
+        `HP: ${updatedHp}/${hpLimit} | ` +
+        `Mana: ${updatedMana}/${manaLimit} | ` +
         `Berries: ${remainingBerries.toLocaleString("en-US")}`
       : `${randomChoice(BERRY_OUTSIDE_COMBAT_MESSAGES)} | ` +
-        `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
-        `Mana: ${updatedMana}/${PLAYER_MAX_MANA} | ` +
+        `HP: ${updatedHp}/${hpLimit} | ` +
+        `Mana: ${updatedMana}/${manaLimit} | ` +
         `Berries: ${remainingBerries.toLocaleString("en-US")}`,
   };
 }
@@ -2996,20 +3132,23 @@ async function resolveCombatVictory(
     getBackpackTotal(env, backpackKey),
     getPlayerProgress(env, backpackKey),
   ]);
-  const candyReward = randomInteger(
+  const baseCandyReward = randomInteger(
     combatState.enemy.reward.candies.min,
     combatState.enemy.reward.candies.max,
   );
+  const luckReward = applyLuckToCandyReward(baseCandyReward, progress);
+  const candyReward = luckReward.total;
   const xpReward = randomInteger(
     combatState.enemy.reward.xp.min,
     combatState.enemy.reward.xp.max,
   );
-  const startingLevel = levelFromXp(progress.xp);
+  const xpProgression = applyXpAndStatPointProgression(progress, xpReward);
+  const startingLevel = xpProgression.startingLevel;
   const startingTitle = getTitleForLevel(startingLevel);
   const startingRegion = getRegionForLevel(startingLevel);
   const newTotal = currentTotal + candyReward;
-  const newXp = progress.xp + xpReward;
-  const endingLevel = levelFromXp(newXp);
+  const newXp = xpProgression.progress.xp;
+  const endingLevel = xpProgression.endingLevel;
   const endingTitle = getTitleForLevel(endingLevel);
   const endingRegion = getRegionForLevel(endingLevel);
   const adventureContext = combatState.adventureContext;
@@ -3026,10 +3165,16 @@ async function resolveCombatVictory(
         ? Array.from({ length: 30 }, (_, index) => index + 1)
         : [adventureContext.adventureNumber]
       : [];
+  const baseBerryChance = BERRY_DROP_CHANCE_BY_REGION[combatState.regionId] ?? 0;
+  const combatBerryChance = Math.min(
+    1,
+    baseBerryChance + getLuckBerryChanceBonus(progress),
+  );
+  const foundCombatBerry = combatBerryChance > 0 && Math.random() < combatBerryChance;
   const updatedProgress = {
-    ...progress,
+    ...xpProgression.progress,
     hp: combatState.playerHp,
-    xp: newXp,
+    berries: progress.berries + (foundCombatBerry ? 1 : 0),
     ...(adventureContext?.isBoss
       ? {
           completedAdventures: {
@@ -3062,14 +3207,25 @@ async function resolveCombatVictory(
     `${combatState.enemy.name} defeated!`,
     playerActionMessage ||
       `You rolled ${playerRoll} for ${playerDamage} dmg`,
-    `Mana: ${progress.mana}/${progress.maxMana}`,
+    `Mana: ${progress.mana}/${getPlayerResourceCaps(progress).mana}`,
     `+${xpReward} XP`,
     `+${candyReward} Star Candies`,
+    ...(luckReward.bonus > 0
+      ? [`Luck Bonus: +${luckReward.bonus} Star Candies`]
+      : []),
+    ...(foundCombatBerry
+      ? [`Found 1 Berry! Berries: ${updatedProgress.berries}`]
+      : []),
     `Backpack: ${newTotal}`,
   ];
 
   if (endingLevel > startingLevel) {
     messageParts.push(`Level Up: Level ${endingLevel}`);
+    messageParts.push(formatStatPointAward(
+      xpProgression.pointsEarned,
+      xpProgression.progress.unspentStatPoints,
+      platform,
+    ));
   }
 
   if (endingTitle !== startingTitle) {
@@ -3150,7 +3306,7 @@ async function resolveCombatDefeat(
     saveBackpackTotal(env, backpackKey, newTotal),
     savePlayerProgress(env, backpackKey, {
       ...progress,
-      hp: PLAYER_COMBAT_MAX_HP,
+      hp: getPlayerMaxHp(progress),
     }),
   ]);
   await deleteCombatState(env, backpackKey);
@@ -3159,7 +3315,8 @@ async function resolveCombatDefeat(
     const adventure = await getActiveAdventure(env, backpackKey);
 
     if (adventure) {
-      adventure.playerHp = PLAYER_COMBAT_MAX_HP;
+      adventure.playerHp = getPlayerMaxHp(progress);
+      adventure.playerMaxHp = getPlayerResourceCaps(progress).hp;
       adventure.status = combatState.adventureContext.isBoss
         ? "awaiting-boss-confirmation"
         : "awaiting-direction";
@@ -3236,10 +3393,12 @@ async function performExploreUnlocked(
     );
   }
 
-  const reward = randomInteger(
+  const baseReward = randomInteger(
     minimumReward,
     maximumReward,
   );
+  const luckReward = applyLuckToCandyReward(baseReward, progress);
+  const reward = luckReward.total;
 
   const earnedXp = getExploreXp(
     log,
@@ -3253,8 +3412,9 @@ async function performExploreUnlocked(
   );
 
   let newTotal = currentTotal + reward;
-  const newXp = startingXp + earnedXp;
-  const endingLevel = levelFromXp(newXp);
+  const xpProgression = applyXpAndStatPointProgression(progress, earnedXp);
+  const newXp = xpProgression.progress.xp;
+  const endingLevel = xpProgression.endingLevel;
   const endingTitle = getTitleForLevel(endingLevel);
   const endingUnlockedRegion = getRegionForLevel(endingLevel);
 
@@ -3311,8 +3471,7 @@ async function performExploreUnlocked(
     foundNewRelic = relicResult.isNew;
   }
 
-  const berryDropChance =
-    BERRY_DROP_CHANCE_BY_REGION[startingRegion.id] ?? 0;
+  const berryDropChance = BERRY_DROP_CHANCE_BY_REGION[startingRegion.id] ?? 0;
 
   if (!(startingRegion.id in BERRY_DROP_CHANCE_BY_REGION)) {
     console.warn(
@@ -3335,8 +3494,7 @@ async function performExploreUnlocked(
     env,
     backpackKey,
     {
-      ...progress,
-      xp: newXp,
+      ...xpProgression.progress,
       relics: updatedRelics,
       discoveries: updatedDiscoveries,
       notes: updatedNotes,
@@ -3362,11 +3520,19 @@ async function performExploreUnlocked(
       `${levelProgress.current}/${levelProgress.required} XP`,
     `Backpack: ${newTotal} Star Candies`,
   ];
+  if (luckReward.bonus > 0) {
+    messageLines.push(`Luck Bonus: +${luckReward.bonus} Star Candies`);
+  }
 
   if (endingLevel > startingLevel) {
     messageLines.push(
       `LEVEL UP! You reached Level ${endingLevel}!`,
     );
+    messageLines.push(formatStatPointAward(
+      xpProgression.pointsEarned,
+      xpProgression.progress.unspentStatPoints,
+      platform,
+    ));
   }
 
   if (endingTitle !== startingTitle) {
@@ -3855,31 +4021,30 @@ async function performRestUnlocked(
     combatState?.playerHp ??
     activeAdventure?.playerHp ??
     progress.hp;
-  const restTarget = restType === "long"
-    ? LONG_REST_RESOURCE_CAP
-    : SHORT_REST_RESOURCE_CAP;
-  const resourceCap = Math.max(
-    restTarget,
-    progress.temporaryResourceCap,
-  );
-  const updatedHp = Math.max(currentHp, restTarget);
-  const updatedMana = Math.max(progress.mana, restTarget);
+  const restBufferType = restType === "long" ? "long" : "short";
+  const restProgress = { ...progress, restBufferType };
+  const resourceCaps = getPlayerResourceCaps(restProgress);
+  const updatedHp = Math.max(currentHp, resourceCaps.hp);
+  const updatedMana = Math.max(progress.mana, resourceCaps.mana);
   const updatedProgress = {
     ...progress,
     hp: updatedHp,
     mana: updatedMana,
-    temporaryResourceCap: resourceCap,
+    restBufferType,
+    temporaryResourceCap: Math.max(resourceCaps.hp, resourceCaps.mana),
     lastRestAt: now,
     ...(restType === "long" ? { lastLongRestAt: now } : {}),
   };
 
   if (combatState) {
     combatState.playerHp = updatedHp;
+    combatState.playerMaxHp = resourceCaps.hp;
     combatState.updatedAt = Math.floor(now / 1000);
   }
 
   if (activeAdventure) {
     activeAdventure.playerHp = updatedHp;
+    activeAdventure.playerMaxHp = resourceCaps.hp;
     activeAdventure.updatedAt = now;
   }
 
@@ -3904,8 +4069,8 @@ async function performRestUnlocked(
       message:
         "You take a peaceful rest beneath the moonlight. Your Health and Mana " +
         "have been restored, and you feel refreshed! | " +
-        `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
-        `Mana: ${updatedMana}/${PLAYER_MAX_MANA}`,
+        `HP: ${updatedHp}/${resourceCaps.hp} | ` +
+        `Mana: ${updatedMana}/${resourceCaps.mana}`,
     };
   }
 
@@ -3913,12 +4078,12 @@ async function performRestUnlocked(
   const longRestScene = randomChoice(LONG_REST_SCENES);
   const peacefulMessage = platform === "discord"
     ? `${longRestScene}\n\n**Long Rest Complete**\n\n` +
-      `HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP}\n` +
-      `Mana: ${updatedMana}/${PLAYER_MAX_MANA}\n\n` +
+      `HP: ${updatedHp}/${resourceCaps.hp}\n` +
+      `Mana: ${updatedMana}/${resourceCaps.mana}\n\n` +
       "You may take another Long Rest in 1 hour."
     : "Long Rest complete! You awaken thoroughly rested—and perhaps " +
-      `slightly overprepared. HP: ${updatedHp}/${PLAYER_COMBAT_MAX_HP} | ` +
-      `Mana: ${updatedMana}/${PLAYER_MAX_MANA} | Long Rest cooldown: 1h`;
+      `slightly overprepared. HP: ${updatedHp}/${resourceCaps.hp} | ` +
+      `Mana: ${updatedMana}/${resourceCaps.mana} | Long Rest cooldown: 1h`;
 
   if (!encounterTriggered) {
     return {
@@ -3965,6 +4130,153 @@ async function performRestUnlocked(
     encounter: null,
     message: peacefulMessage,
   };
+}
+
+async function performStats(
+  env,
+  backpackKey,
+  sharedIdentity = "",
+  platform = "twitch",
+) {
+  return withPlayerMutationLock(backpackKey, async () => {
+    const progress = await getPlayerProgress(env, backpackKey);
+    const [combatState, activeAdventure, shortAt, longAt] = await Promise.all([
+      getCombatState(env, backpackKey),
+      getActiveAdventure(env, backpackKey),
+      getSharedRestCooldown(env, sharedIdentity, "short"),
+      getSharedRestCooldown(env, sharedIdentity, "long"),
+    ]);
+    const currentHp = combatState?.playerHp ?? activeAdventure?.playerHp ?? progress.hp;
+    const level = levelFromXp(progress.xp);
+    const nextLevelXp = totalXpForLevel(level + 1);
+    const stats = normalizePlayerStats(progress.stats);
+    const caps = getPlayerResourceCaps(progress);
+    const activeEffects = formatActiveEffects(progress, platform);
+    const now = Date.now();
+    const shortRemaining = SHORT_REST_COOLDOWN_MS - (now - Math.max(progress.lastRestAt, shortAt));
+    const longRemaining = LONG_REST_COOLDOWN_MS - (now - Math.max(progress.lastLongRestAt, longAt));
+    const shortStatus = shortRemaining > 0 ? formatDetailedDuration(shortRemaining) : "Ready";
+    const longStatus = longRemaining > 0 ? formatDetailedDuration(longRemaining) : "Ready";
+    const buffer = progress.restBufferType === "long"
+      ? "Long Rested"
+      : progress.restBufferType === "short"
+        ? "Rested"
+        : "Not Rested";
+
+    if (platform !== "discord") {
+      return {
+        message: `Level ${level} | XP ${progress.xp} | Title: ${getTitleForLevel(level)} | ` +
+          `Next: ${nextLevelXp - progress.xp} XP | Points: ${progress.unspentStatPoints} | ` +
+          `HP ${currentHp}/${getPlayerMaxHp(progress)} | Mana ${progress.mana}/${getPlayerMaxMana(progress)} | ` +
+          `Vitality ${stats.vitality} | Focus ${stats.focus} | Strength ${stats.strength} | ` +
+          `Luck ${stats.luck} | Armor ${stats.armor} | Fae ${stats.fae} | ` +
+          `Buffer: ${buffer} | Caps HP ${caps.hp}, Mana ${caps.mana} | ` +
+          `Short Rest: ${shortStatus} | Long Rest: ${longStatus}` +
+          (activeEffects ? ` | ${activeEffects}` : ""),
+      };
+    }
+
+    return {
+      message: `**Astral Sea Stats**\n\n` +
+        `Level: ${level}\nTitle: ${getTitleForLevel(level)}\nXP: ${progress.xp}\n` +
+        `Next Level: ${nextLevelXp - progress.xp} XP\nUnspent Stat Points: ${progress.unspentStatPoints}\n\n` +
+        `**Resources**\n\nHP: ${currentHp}/${getPlayerMaxHp(progress)}\n` +
+        `Mana: ${progress.mana}/${getPlayerMaxMana(progress)}\n\n` +
+        `**Permanent Stats**\n\n` +
+        `Vitality: ${stats.vitality}/10 — +${stats.vitality * 10} Maximum HP\n` +
+        `Focus: ${stats.focus}/10 — +${stats.focus * 10} Maximum Mana\n` +
+        `Strength: ${stats.strength}/10 — +${stats.strength} Damage\n` +
+        `Luck: ${stats.luck}/10 — +${stats.luck * 2}% Star Candies, +${stats.luck} percentage points Combat Berry Chance\n` +
+        `Armor: ${stats.armor}/10 — -${stats.armor} Enemy Damage\n` +
+        `Fae Affinity: ${stats.fae}/5 — +${stats.fae} Offensive Spell Roll\n\n` +
+        `**Rest Status**\n\nBuffer: ${buffer}\nHP Cap: ${caps.hp}\nMana Cap: ${caps.mana}\n` +
+        `Short Rest: ${shortStatus}\nLong Rest: ${longStatus}` +
+        (activeEffects ? `\n\n${activeEffects}` : ""),
+    };
+  });
+}
+
+async function performStatAllocation(env, backpackKey, statId, platform = "twitch") {
+  return withPlayerMutationLock(backpackKey, async () => {
+    const definition = PLAYER_STATS[String(statId || "").toLowerCase()];
+    const progress = await getPlayerProgress(env, backpackKey);
+    if (!definition) return { message: "That permanent stat does not exist." };
+    if (progress.unspentStatPoints < 1) {
+      return { message: platform === "discord"
+        ? "You do not have an unspent Stat Point. Earn XP and reach another Level, then use /stats."
+        : "No Stat Points available. Level up to earn another, then check !stats." };
+    }
+    const stats = normalizePlayerStats(progress.stats);
+    if (stats[definition.id] >= definition.maximumRank) {
+      return { message: `${definition.displayName} has reached its current maximum rank of ${definition.maximumRank}. Your Stat Point was not spent.` };
+    }
+
+    const combatState = await getCombatState(env, backpackKey);
+    const adventure = await getActiveAdventure(env, backpackKey);
+    const originalProgress = structuredClone(progress);
+    const originalCombat = combatState ? structuredClone(combatState) : null;
+    const originalAdventure = adventure ? structuredClone(adventure) : null;
+    const oldMaxHp = getPlayerMaxHp(progress);
+    const oldMaxMana = getPlayerMaxMana(progress);
+    const oldHp = combatState?.playerHp ?? adventure?.playerHp ?? progress.hp;
+    const oldMana = progress.mana;
+    stats[definition.id] += 1;
+    const updatedProgress = {
+      ...progress,
+      stats,
+      unspentStatPoints: progress.unspentStatPoints - 1,
+    };
+    if (definition.id === "vitality") {
+      updatedProgress.hp = Math.min(getPlayerResourceCaps(updatedProgress).hp, progress.hp + 10);
+      if (adventure) {
+        adventure.playerHp = Math.min(getPlayerResourceCaps(updatedProgress).hp, adventure.playerHp + 10);
+        adventure.playerMaxHp = getPlayerResourceCaps(updatedProgress).hp;
+      }
+      if (combatState) {
+        combatState.playerHp = Math.min(getPlayerResourceCaps(updatedProgress).hp, combatState.playerHp + 10);
+        combatState.playerMaxHp = getPlayerResourceCaps(updatedProgress).hp;
+      }
+    }
+    if (definition.id === "focus") {
+      updatedProgress.mana = Math.min(getPlayerResourceCaps(updatedProgress).mana, progress.mana + 10);
+    }
+
+    try {
+      await savePlayerProgress(env, backpackKey, updatedProgress);
+      if (adventure) await saveActiveAdventure(env, backpackKey, adventure);
+      if (combatState) await saveCombatState(env, backpackKey, combatState);
+    } catch (error) {
+      try {
+        await savePlayerProgress(env, backpackKey, originalProgress);
+        if (originalAdventure) await saveActiveAdventure(env, backpackKey, originalAdventure);
+        if (originalCombat) await saveCombatState(env, backpackKey, originalCombat);
+      } catch (rollbackError) {
+        console.error("Stat allocation rollback failed:", rollbackError);
+      }
+      throw error;
+    }
+
+    const newMaxHp = getPlayerMaxHp(updatedProgress);
+    const newMaxMana = getPlayerMaxMana(updatedProgress);
+    const newHp = combatState?.playerHp ?? adventure?.playerHp ?? updatedProgress.hp;
+    let mechanical = definition.description;
+    if (definition.id === "vitality") mechanical = `Permanent Maximum HP: ${oldMaxHp} → ${newMaxHp} | Current HP: ${oldHp} → ${newHp}`;
+    if (definition.id === "focus") mechanical = `Permanent Maximum Mana: ${oldMaxMana} → ${newMaxMana} | Current Mana: ${oldMana} → ${updatedProgress.mana}`;
+    if (definition.id === "strength") mechanical = `Player Damage Bonus: +${stats.strength}`;
+    if (definition.id === "luck") mechanical = `Eligible Star Candy Bonus: +${stats.luck * 2}% | Combat Berry Chance Bonus: +${stats.luck} percentage points`;
+    if (definition.id === "armor") mechanical = `Incoming Enemy Damage Reduction: ${stats.armor}`;
+    if (definition.id === "fae") mechanical = `Offensive Spell Roll Bonus: +${stats.fae}`;
+    const response = randomChoice(STAT_SHIZUKI_RESPONSES[definition.id]);
+    return {
+      message: platform === "discord"
+        ? `**${definition.displayName} Increased**\n\n` +
+          `Rank: ${stats[definition.id]}/${definition.maximumRank}\n` +
+          `${mechanical.replaceAll(" | ", "\n")}\n` +
+          `Unspent Stat Points: ${updatedProgress.unspentStatPoints}\n\n${response}`
+        : `${definition.displayName} Increased | Rank: ${stats[definition.id]}/${definition.maximumRank} | ` +
+          `${mechanical} | Unspent Stat Points: ${updatedProgress.unspentStatPoints} | ${response}`,
+    };
+  });
 }
 
 async function performBackpack(
@@ -4040,6 +4352,7 @@ async function performBackpack(
       `Berries: ${progress.berries.toLocaleString("en-US")} | ` +
       `HP: ${currentHp}/${progress.maxHp} | ` +
       `Mana: ${progress.mana}/${progress.maxMana} | ` +
+      `Stat Points: ${progress.unspentStatPoints} available | ` +
       restStatus +
       (activeEffects
         ? platform === "discord"
@@ -4551,8 +4864,8 @@ function isValidAdventureState(state) {
     Number.isSafeInteger(state.playerHp) &&
     Number.isSafeInteger(state.playerMaxHp) &&
     state.playerHp > 0 &&
-    state.playerHp <= MAX_TEMPORARY_RESOURCE_CAP &&
-    state.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
+    state.playerHp <= MAX_PLAYER_RESOURCE_CAP &&
+    state.playerMaxHp >= PLAYER_COMBAT_MAX_HP &&
     Number.isSafeInteger(state.startedAt) &&
     state.startedAt > 0 &&
     Number.isSafeInteger(state.updatedAt) &&
@@ -4768,13 +5081,12 @@ function getRestStatus(
   now = Date.now(),
 ) {
   const parts = [];
-  const hasBonus =
-    hp > PLAYER_COMBAT_MAX_HP ||
-    progress.mana > PLAYER_MAX_MANA;
+  const hasBonus = progress.restBufferType === "short" ||
+    progress.restBufferType === "long";
 
   if (hasBonus) {
     parts.push(
-      progress.temporaryResourceCap === LONG_REST_RESOURCE_CAP
+      progress.restBufferType === "long"
         ? "Rest Status: Long Rested"
         : "Rest Status: Rested",
     );
@@ -4990,9 +5302,12 @@ function formatPlayerAttackResolution(
     ? `Roll: ${naturalRoll}${modifierText}`
     : `You rolled ${naturalRoll}`;
 
+  const damageText = result.strengthBonus > 0
+    ? `${result.baseDamage} base + ${result.strengthBonus} Strength = ${result.damage}`
+    : result.damage;
   return `You attack!${separator}${rollLabel}` +
     `${separator}Result: ${resultName}` +
-    `${separator}Damage: ${result.damage}` +
+    `${separator}Damage: ${damageText}` +
     fadeText;
 }
 
@@ -5001,11 +5316,11 @@ function formatOffensiveModifier(effectResult) {
     return "";
   }
 
-  const modifier = effectResult.modifier > 0
-    ? `+ ${effectResult.modifier}`
-    : `- ${Math.abs(effectResult.modifier)}`;
+  const details = effectResult.modifierDetails.map((detail) =>
+    `${detail.value >= 0 ? "+" : "-"}${Math.abs(detail.value)} ${detail.name}`,
+  ).join(" ");
 
-  return ` ${modifier} ${effectResult.applied.join(" + ")} = ` +
+  return ` ${details} = ` +
     effectResult.finalTotal;
 }
 
@@ -5121,9 +5436,9 @@ function isValidCombatState(combatState) {
     ) &&
     Number.isSafeInteger(combatState.playerHp) &&
     Number.isSafeInteger(combatState.playerMaxHp) &&
-    combatState.playerMaxHp === PLAYER_COMBAT_MAX_HP &&
+    combatState.playerMaxHp >= PLAYER_COMBAT_MAX_HP &&
     combatState.playerHp > 0 &&
-    combatState.playerHp <= MAX_TEMPORARY_RESOURCE_CAP &&
+    combatState.playerHp <= MAX_PLAYER_RESOURCE_CAP &&
     enemy &&
     typeof enemy.id === "string" &&
     /^[a-z0-9-]+$/.test(enemy.id) &&
@@ -5448,6 +5763,97 @@ function randomChoice(values) {
   return values[randomInteger(0, values.length - 1)];
 }
 
+function normalizePlayerStats(stats) {
+  const source = stats && typeof stats === "object" && !Array.isArray(stats)
+    ? stats
+    : {};
+
+  return Object.fromEntries(
+    Object.values(PLAYER_STATS).map((definition) => [
+      definition.id,
+      Math.min(
+        definition.maximumRank,
+        Math.max(0, Math.floor(Number(source[definition.id]) || 0)),
+      ),
+    ]),
+  );
+}
+
+function getPlayerMaxHp(progress) {
+  return PLAYER_COMBAT_MAX_HP + normalizePlayerStats(progress?.stats).vitality * 10;
+}
+
+function getPlayerMaxMana(progress) {
+  return PLAYER_MAX_MANA + normalizePlayerStats(progress?.stats).focus * 10;
+}
+
+function getPlayerResourceCaps(progress) {
+  const buffer = progress?.restBufferType === "long"
+    ? LONG_REST_BONUS_AMOUNT
+    : progress?.restBufferType === "short"
+      ? REST_BONUS_AMOUNT
+      : 0;
+
+  return {
+    hp: getPlayerMaxHp(progress) + buffer,
+    mana: getPlayerMaxMana(progress) + buffer,
+  };
+}
+
+function getStrengthDamageBonus(progress) {
+  return normalizePlayerStats(progress?.stats).strength;
+}
+
+function getArmorReduction(progress) {
+  return normalizePlayerStats(progress?.stats).armor;
+}
+
+function getFaeSpellRollBonus(progress) {
+  return normalizePlayerStats(progress?.stats).fae;
+}
+
+function applyLuckToCandyReward(baseReward, progress) {
+  const rank = normalizePlayerStats(progress?.stats).luck;
+  const total = Math.max(baseReward, Math.floor(baseReward * (1 + rank * 0.02)));
+  return { base: baseReward, bonus: total - baseReward, total };
+}
+
+function getLuckBerryChanceBonus(progress) {
+  return normalizePlayerStats(progress?.stats).luck * 0.01;
+}
+
+function applyXpAndStatPointProgression(progress, xpGained) {
+  const startingLevel = levelFromXp(progress.xp);
+  const xp = progress.xp + Math.max(0, Math.floor(Number(xpGained) || 0));
+  const endingLevel = levelFromXp(xp);
+  const grantedThrough = Math.max(
+    1,
+    Math.floor(Number(progress.statPointsGrantedThroughLevel) || startingLevel),
+  );
+  const pointsEarned = Math.max(0, endingLevel - grantedThrough);
+
+  return {
+    progress: {
+      ...progress,
+      xp,
+      unspentStatPoints: progress.unspentStatPoints + pointsEarned,
+      statPointsGrantedThroughLevel: Math.max(grantedThrough, endingLevel),
+    },
+    startingLevel,
+    endingLevel,
+    pointsEarned,
+  };
+}
+
+function formatStatPointAward(pointsEarned, unspent, platform) {
+  if (pointsEarned < 1) return "";
+  const commands = platform === "discord"
+    ? "/vitality, /focus, /strength, /luck, /armor, or /fae"
+    : "!vitality, !focus, !strength, !luck, !armor, or !fae";
+  return `You earned ${pointsEarned} Stat Point${pointsEarned === 1 ? "" : "s"}. ` +
+    `Choose ${commands}. Unspent Stat Points: ${unspent}`;
+}
+
 function normalizeStatusEffects(statusEffects, now = Date.now()) {
   if (
     !statusEffects ||
@@ -5592,6 +5998,7 @@ function consumeTriggeredStatusEffects(
 ) {
   const statusEffects = normalizeStatusEffects(progress.statusEffects);
   const applied = [];
+  const modifierDetails = [];
   const consumed = [];
   let modifier = 0;
 
@@ -5602,6 +6009,10 @@ function consumeTriggeredStatusEffects(
 
     modifier += effect.modifiers.attackRoll;
     applied.push(effect.displayName);
+    modifierDetails.push({
+      name: effect.displayName,
+      value: effect.modifiers.attackRoll,
+    });
 
     if (effect.durationType === "charges") {
       effect.remainingCharges -= 1;
@@ -5618,6 +6029,7 @@ function consumeTriggeredStatusEffects(
     modifier,
     finalTotal: naturalRoll + modifier,
     applied,
+    modifierDetails,
     consumed,
     statusEffects,
   };
@@ -6350,7 +6762,7 @@ async function saveSharedRestCooldown(
 }
 
 function createEmptyProgress() {
-  return {
+  const progress = {
     xp: 0,
     berries: 0,
     hp: PLAYER_COMBAT_MAX_HP,
@@ -6359,7 +6771,11 @@ function createEmptyProgress() {
     maxMana: PLAYER_MAX_MANA,
     lastRestAt: 0,
     lastLongRestAt: 0,
+    restBufferType: null,
     temporaryResourceCap: PLAYER_COMBAT_MAX_HP,
+    stats: normalizePlayerStats({}),
+    unspentStatPoints: 0,
+    statPointsGrantedThroughLevel: 1,
     statusEffects: {},
     relics: [],
     discoveries: {},
@@ -6368,6 +6784,7 @@ function createEmptyProgress() {
     completedAdventures: {},
     currentRegion: "moonlit-reef",
   };
+  return progress;
 }
 
 async function getPlayerProgress(
@@ -6397,26 +6814,61 @@ async function getPlayerProgress(
         Number(parsed.berries) || 0,
       ),
     );
-    const maxHp = PLAYER_COMBAT_MAX_HP;
+    const currentLevel = levelFromXp(xp);
+    const hadStats = Boolean(
+      parsed.stats && typeof parsed.stats === "object" && !Array.isArray(parsed.stats),
+    );
+    const stats = normalizePlayerStats(parsed.stats);
+    const allocatedPoints = Object.values(stats).reduce((sum, rank) => sum + rank, 0);
+    let statPointsGrantedThroughLevel = hadStats
+      ? Math.max(1, Math.floor(Number(parsed.statPointsGrantedThroughLevel) || currentLevel))
+      : currentLevel;
+    let unspentStatPoints = hadStats
+      ? Math.max(
+          0,
+          Math.floor(
+            Number(parsed.unspentStatPoints) ||
+            Math.max(0, statPointsGrantedThroughLevel - 1 - allocatedPoints),
+          ),
+        )
+      : Math.max(0, currentLevel - 1);
+    if (currentLevel > statPointsGrantedThroughLevel) {
+      unspentStatPoints += currentLevel - statPointsGrantedThroughLevel;
+      statPointsGrantedThroughLevel = currentLevel;
+    }
+    const legacyCap = Number(parsed.temporaryResourceCap);
+    let restBufferType = parsed.restBufferType === "long" || legacyCap === 150
+      ? "long"
+      : parsed.restBufferType === "short" || legacyCap === 125
+        ? "short"
+        : null;
+    let resourceContext = { stats, restBufferType };
+    const maxHp = getPlayerMaxHp(resourceContext);
+    const maxMana = getPlayerMaxMana(resourceContext);
+    let resourceCaps = getPlayerResourceCaps(resourceContext);
     let hp = Object.prototype.hasOwnProperty.call(parsed, "hp")
       ? Math.min(
-          MAX_TEMPORARY_RESOURCE_CAP,
+          resourceCaps.hp,
           Math.max(
             0,
             Math.floor(Number(parsed.hp) || 0),
           ),
         )
       : maxHp;
-    const maxMana = PLAYER_MAX_MANA;
     let mana = Object.prototype.hasOwnProperty.call(parsed, "mana")
       ? Math.min(
-          MAX_TEMPORARY_RESOURCE_CAP,
+          resourceCaps.mana,
           Math.max(
             0,
             Math.floor(Number(parsed.mana) || 0),
           ),
         )
       : maxMana;
+    if (hp <= maxHp && mana <= maxMana) {
+      restBufferType = null;
+      resourceContext = { stats, restBufferType };
+      resourceCaps = getPlayerResourceCaps(resourceContext);
+    }
     const lastRestAt = Math.max(
       0,
       Math.floor(Number(parsed.lastRestAt) || 0),
@@ -6425,27 +6877,7 @@ async function getPlayerProgress(
       0,
       Math.floor(Number(parsed.lastLongRestAt) || 0),
     );
-    const savedTemporaryCap = Number(parsed.temporaryResourceCap);
-    let temporaryResourceCap = [
-      PLAYER_COMBAT_MAX_HP,
-      SHORT_REST_RESOURCE_CAP,
-      LONG_REST_RESOURCE_CAP,
-    ].includes(savedTemporaryCap)
-      ? savedTemporaryCap
-      : hp > SHORT_REST_RESOURCE_CAP ||
-          mana > SHORT_REST_RESOURCE_CAP
-        ? LONG_REST_RESOURCE_CAP
-        : hp > PLAYER_COMBAT_MAX_HP ||
-            mana > PLAYER_MAX_MANA
-          ? SHORT_REST_RESOURCE_CAP
-          : PLAYER_COMBAT_MAX_HP;
-
-    if (hp <= PLAYER_COMBAT_MAX_HP && mana <= PLAYER_MAX_MANA) {
-      temporaryResourceCap = PLAYER_COMBAT_MAX_HP;
-    }
-
-    hp = Math.min(hp, temporaryResourceCap);
-    mana = Math.min(mana, temporaryResourceCap);
+    const temporaryResourceCap = Math.max(resourceCaps.hp, resourceCaps.mana);
     const statusEffects = normalizeStatusEffects(parsed.statusEffects);
     const hasSavedRegion = Object.prototype.hasOwnProperty.call(
       parsed,
@@ -6567,6 +6999,10 @@ async function getPlayerProgress(
       lastRestAt,
       lastLongRestAt,
       temporaryResourceCap,
+      restBufferType,
+      stats,
+      unspentStatPoints,
+      statPointsGrantedThroughLevel,
       statusEffects,
       relics,
       discoveries,
@@ -6585,6 +7021,11 @@ async function getPlayerProgress(
       !Object.prototype.hasOwnProperty.call(parsed, "lastLongRestAt") ||
       !Object.prototype.hasOwnProperty.call(parsed, "temporaryResourceCap") ||
       !Object.prototype.hasOwnProperty.call(parsed, "statusEffects") ||
+      !Object.prototype.hasOwnProperty.call(parsed, "stats") ||
+      parsed.restBufferType !== restBufferType ||
+      Number(parsed.unspentStatPoints) !== unspentStatPoints ||
+      Number(parsed.statPointsGrantedThroughLevel) !== statPointsGrantedThroughLevel ||
+      JSON.stringify(parsed.stats) !== JSON.stringify(stats) ||
       Number(parsed.hp) !== hp ||
       Number(parsed.maxHp) !== maxHp ||
       Number(parsed.mana) !== mana ||
@@ -6705,14 +7146,15 @@ async function savePlayerProgress(
     }
   }
 
-  const requestedTemporaryCap = Number(progress.temporaryResourceCap);
-  let temporaryResourceCap = [
-    PLAYER_COMBAT_MAX_HP,
-    SHORT_REST_RESOURCE_CAP,
-    LONG_REST_RESOURCE_CAP,
-  ].includes(requestedTemporaryCap)
-    ? requestedTemporaryCap
-    : PLAYER_COMBAT_MAX_HP;
+  const stats = normalizePlayerStats(progress.stats);
+  let restBufferType = progress.restBufferType === "long"
+    ? "long"
+    : progress.restBufferType === "short"
+      ? "short"
+      : null;
+  let resourceContext = { stats, restBufferType };
+  const maxHp = getPlayerMaxHp(resourceContext);
+  const maxMana = getPlayerMaxMana(resourceContext);
   const requestedHp = Math.max(
     0,
     Math.floor(Number(progress.hp) || 0),
@@ -6721,13 +7163,12 @@ async function savePlayerProgress(
     0,
     Math.floor(Number(progress.mana) || 0),
   );
-
-  if (
-    requestedHp <= PLAYER_COMBAT_MAX_HP &&
-    requestedMana <= PLAYER_MAX_MANA
-  ) {
-    temporaryResourceCap = PLAYER_COMBAT_MAX_HP;
+  if (requestedHp <= maxHp && requestedMana <= maxMana) {
+    restBufferType = null;
+    resourceContext = { stats, restBufferType };
   }
+  const resourceCaps = getPlayerResourceCaps(resourceContext);
+  const temporaryResourceCap = Math.max(resourceCaps.hp, resourceCaps.mana);
 
   const safeProgress = {
     xp: Math.max(
@@ -6742,8 +7183,8 @@ async function savePlayerProgress(
         Number(progress.berries) || 0,
       ),
     ),
-    maxHp: PLAYER_COMBAT_MAX_HP,
-    maxMana: PLAYER_MAX_MANA,
+    maxHp,
+    maxMana,
     lastRestAt: Math.max(
       0,
       Math.floor(Number(progress.lastRestAt) || 0),
@@ -6753,6 +7194,10 @@ async function savePlayerProgress(
       Math.floor(Number(progress.lastLongRestAt) || 0),
     ),
     temporaryResourceCap,
+    restBufferType,
+    stats,
+    unspentStatPoints: Math.max(0, Math.floor(Number(progress.unspentStatPoints) || 0)),
+    statPointsGrantedThroughLevel: Math.max(1, Math.floor(Number(progress.statPointsGrantedThroughLevel) || levelFromXp(Number(progress.xp) || 0))),
     statusEffects: normalizeStatusEffects(progress.statusEffects),
     relics: safeRelics,
     discoveries: safeDiscoveries,
@@ -6764,11 +7209,11 @@ async function savePlayerProgress(
       "moonlit-reef",
   };
   safeProgress.hp = Math.min(
-    temporaryResourceCap,
+    resourceCaps.hp,
     requestedHp,
   );
   safeProgress.mana = Math.min(
-    temporaryResourceCap,
+    resourceCaps.mana,
     requestedMana,
   );
 
