@@ -1,0 +1,20 @@
+{
+  "id": "moonlit-officer-boss",
+  "name": "Moonlit Officer",
+  "region": "moonlit-reef",
+  "level": 5,
+  "hp": 240,
+  "damageBonus": 5,
+  "isBoss": true,
+  "reward": {
+    "candies": {
+      "min": 1000,
+      "max": 1200
+    },
+    "xp": {
+      "min": 350,
+      "max": 400
+    }
+  },
+  "defeatCandyLoss": 100
+}

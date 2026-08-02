@@ -230,5 +230,13 @@
     "enemyId": "moonreef-sovereign",
     "bossEnemyId": "crown-of-the-moonreef-boss",
     "file": "adventure-29-moonreef-sovereign-throne.json"
+  },
+  {
+    "number": 30,
+    "id": "moonlit-lab",
+    "name": "Moonlit Lab",
+    "enemyId": "moonlit-grunt",
+    "bossEnemyId": "moonlit-officer-boss",
+    "file": "adventure-30-moonlit-lab.json"
   }
 ]

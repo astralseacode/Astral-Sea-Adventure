@@ -1,0 +1,19 @@
+{
+  "id": "moonlit-grunt",
+  "name": "Moonlit Grunt",
+  "level": 5,
+  "hp": 145,
+  "damageBonus": 5,
+  "isBoss": false,
+  "reward": {
+    "candies": {
+      "min": 450,
+      "max": 550
+    },
+    "xp": {
+      "min": 200,
+      "max": 250
+    }
+  },
+  "defeatCandyLoss": 50
+}

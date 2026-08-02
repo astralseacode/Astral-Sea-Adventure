@@ -1,0 +1,107 @@
+{
+  "id": "moonlit-lab",
+  "number": 30,
+  "name": "Moonlit Lab",
+  "regionId": "moonlit-reef",
+  "enemyId": "moonlit-grunt",
+  "recommendedLevel": 5,
+  "introDiscord": "Beneath the Moonreef Sovereign's throne, a breached human annex hums back to life. Artificial moonlight spills across cracked containment glass, drowned research stations, and warning symbols half-hidden by coral.",
+  "introTwitch": "Beneath the Moonreef Sovereign's throne, a breached human annex hums back to life. Artificial moonlight spills across cracked containment glass and drowned research stations.",
+  "startRoomId": "breached-observation-wing",
+  "rooms": {
+    "breached-observation-wing": {
+      "prompt": "Cracked observation chambers glow beneath cold false moonlight. Warning lamps blink through coral as three unmarked routes split around an overturned research desk.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "specimen-transfer-halls",
+          "enemyId": "moonlit-grunt",
+          "message": "A uniformed security operative steps from behind the fractured glass. Whether armor, preserved guard, or something reconstructed by the annex, it moves with disciplined purpose."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "specimen-transfer-halls",
+          "message": "A serious-looking emergency locker wears a paper mustache. Shizuki's note reads: \"Official security disguise. Completely fooled them. Your prize is inside.\"",
+          "reward": {
+            "min": 125,
+            "max": 185
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "specimen-transfer-halls",
+          "message": "Behind the overturned desk, faded escape tallies sit beneath a newer doodle of an elf kicking open a laboratory door. A folded note says: \"If you found this, good. I came back years later and checked—the creepy annex is still creepy. Berry's for you. I already stole the useful secrets. Mostly.\"",
+          "berries": 1
+        }
+      }
+    },
+    "specimen-transfer-halls": {
+      "prompt": "The next corridors are disturbingly clean. Transport rails cross overhead, sealed chambers line the walls, and dormant machinery tracks your movement while three routes open ahead.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "sealed-administration-sector",
+          "healAmount": 50,
+          "message": "A damaged recovery chamber accepts one final cycle. Scratched into its casing is Shizuki's warning: \"Works perfectly. Makes everything taste like metal. Yes, even thoughts. You've got this.\"",
+          "fullHpMessage": "The recovery chamber remains charged. Shizuki's scratched addendum reads: \"Already healthy? Show-off. Save it for somebody leakier.\""
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "sealed-administration-sector",
+          "enemyId": "moonlit-grunt",
+          "message": "Ceiling rails lock into place and an old rank insignia brightens. A Moonlit Grunt advances, its face—or the darkness where one should be—hidden behind a polished visor."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "sealed-administration-sector",
+          "message": "A terminal's only readable file is titled NOT_SHIZUKI_AGAIN.txt. It displays a smiling face and the words: \"Check under the keyboard. You're welcome.\" A cache waits beneath it.",
+          "reward": {
+            "min": 145,
+            "max": 210
+          }
+        }
+      }
+    },
+    "sealed-administration-sector": {
+      "prompt": "Corrupted files whisper of an escaped elf subject and a breached execution order, but every name has been erased. Beyond the abandoned desks, three sealed passages respond to your approach.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A stern researcher portrait has acquired a magnificent fake mustache. Beneath it, Shizuki wrote: \"He designed the locks. I improved his face. Take the emergency fund and please don't push the red button. I pushed it already.\"",
+          "reward": {
+            "min": 165,
+            "max": 235
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 50,
+          "message": "A maintenance compartment holds a carefully renewed field kit beside an old escape route. Shizuki's fresh note reads: \"I used this hiding place the first time. Now I use it to hide snacks from security. Much better memory. Drink up.\"",
+          "fullHpMessage": "The renewed field kit can stay hidden. A tiny arrow beneath Shizuki's note adds: \"No injuries? Excellent. Annoy security responsibly.\""
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "moonlit-grunt",
+          "message": "A facility insignia flares beneath the coral. The final Moonlit Grunt turns from a sealed observation window and raises its weapon without haste."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Moonlit Lab Courtyard",
+      "type": "boss-prompt",
+      "prompt": "Sealed doors open onto an artificial outdoors: silver trees rise from stone planters, cables knot through their roots, and coral crawls over human insignias beneath a false moon. Observation windows surround a courtyard built to imitate freedom inside a prison."
+    }
+  },
+  "bossPromptDiscord": "You enter Moonlit Lab Courtyard. The doors seal as the false moon flickers awake above silver trees. A uniformed figure waits beneath them, one hand resting on an old facility weapon. Its gaze settles on you.\n\n\"This annex's mission remains active. State your authorization—or be processed as an escaped specimen.\"\n\nA powerful facility guardian blocks the courtyard. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+  "bossPromptTwitch": "Moonlit Lab Courtyard: doors seal beneath a false moon. A uniformed figure demands your authorization while a concealed facility guardian blocks the way. Use !yes to continue or !no to retreat.",
+  "bossRetreatText": "You withdraw from Moonlit Lab Courtyard. Behind you, the false moon dims but the annex's warning sirens continue their patient count.",
+  "boss": {
+    "enemyId": "moonlit-officer-boss",
+    "roomId": "boss",
+    "revealText": "The courtyard alarms speak with a voice unused for decades: \"Moonlit Officer authorization restored.\" The figure draws its weapon as the false moon burns white overhead. Moonlit Officer appears."
+  },
+  "completionText": "Moonlit Officer falls silent, but the annex does not. Beneath the false moon, surviving records point toward work that continued long after one escaped elf shattered its plans. Then you find Shizuki's newest note pinned over the facility insignia: \"If you're reading this, you beat the Officer. Nice! I come back sometimes to rearrange the warning signs. It hates that. Whatever these people became, they don't own this place—or us. Keep going.\" The Moonlit Reef's final Adventure is complete, and the mystery reaches beyond the lab."
+}

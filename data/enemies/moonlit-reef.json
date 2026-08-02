@@ -27,5 +27,6 @@
   { "encounter": 26, "enemy": "starfall-razorfin" },
   { "encounter": 27, "enemy": "lunar-abyss-manta" },
   { "encounter": 28, "enemy": "moonlit-prism-serpent" },
-  { "encounter": 29, "enemy": "moonreef-sovereign" }
+  { "encounter": 29, "enemy": "moonreef-sovereign" },
+  { "encounter": 30, "enemy": "moonlit-grunt" }
 ]

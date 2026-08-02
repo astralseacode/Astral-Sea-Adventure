@@ -499,7 +499,7 @@ const DISCORD_COMMANDS = [
         description: "The unlocked Adventure number to begin",
         required: false,
         min_value: 1,
-        max_value: 29,
+        max_value: 30,
       },
       {
         type: 4,
@@ -3005,8 +3005,8 @@ async function resolveCombatVictory(
       : null;
   const completedAdventureNumbers =
     adventureContext?.isBoss
-      ? adventureContext.adventureNumber === 29
-        ? Array.from({ length: 29 }, (_, index) => index + 1)
+      ? adventureContext.adventureNumber === 30
+        ? Array.from({ length: 30 }, (_, index) => index + 1)
         : [adventureContext.adventureNumber]
       : [];
   const updatedProgress = {
@@ -5262,7 +5262,7 @@ async function getAdventureManifest(regionId) {
 
   if (
     !Array.isArray(manifest) ||
-    manifest.length !== 29 ||
+    manifest.length !== 30 ||
     manifest.some(
       (entry, index) =>
         entry?.number !== index + 1 ||
@@ -6466,7 +6466,7 @@ async function getPlayerProgress(
                 (number) =>
                   Number.isSafeInteger(number) &&
                   number >= 1 &&
-                  number <= 29,
+                  number <= 30,
               ),
             ),
           ].sort((left, right) => left - right);
@@ -6614,7 +6614,7 @@ async function savePlayerProgress(
               (number) =>
                 Number.isSafeInteger(number) &&
                 number >= 1 &&
-                number <= 29,
+                number <= 30,
             ),
           ),
         ].sort((left, right) => left - right);
