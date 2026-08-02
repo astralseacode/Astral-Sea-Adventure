@@ -232,7 +232,7 @@ const SPELLS = {
     name: "Jellyfish",
     aliases: ["jelly"],
     requiredLevel: 3,
-    manaCost: 25,
+    manaCost: 10,
     type: "offensive",
     damage: {
       dice: 3,
@@ -268,7 +268,55 @@ const SPELLS = {
     ],
     criticalText: "It erupts in brilliant Astral light! Critical Hit!",
   },
+  moonbeam: {
+    id: "moonbeam",
+    name: "Moonbeam",
+    aliases: ["moonbeam"],
+    requiredLevel: 5,
+    manaCost: 20,
+    type: "offensive",
+    damage: {
+      dice: 2,
+      sides: 20,
+      keepHighest: true,
+      bonusDieSides: 6,
+    },
+    criticalThreshold: 20,
+    criticalDamage: 40,
+  },
 };
+const MOONBEAM_CAST_TIERS = {
+  weak: {
+    id: "weak",
+    displayName: "Weak Cast",
+    narration: "A faint moonbeam slips through the water, but it flickers before reaching its full brilliance. Even so, it grazes your foe with a pale shimmer.",
+  },
+  steady: {
+    id: "steady",
+    displayName: "Steady Cast",
+    narration: "A gentle moonbeam descends from above, washing over your foe before bursting into a shower of shimmering light.",
+  },
+  strong: {
+    id: "strong",
+    displayName: "Strong Cast",
+    narration: "The sea briefly falls silent as a focused moonbeam crashes into your foe, scattering brilliant fragments of light in every direction.",
+  },
+  excellent: {
+    id: "excellent",
+    displayName: "Excellent Cast",
+    narration: "The moon itself seems to answer your call. A brilliant beam tears through the water, exploding against your foe in a dazzling flash that leaves the battlefield glowing.",
+  },
+  critical: {
+    id: "critical",
+    displayName: "Critical Cast",
+    narration: "For a heartbeat, the entire Astral Sea glows as though night itself has awakened. A blinding pillar of moonlight crashes down with impossible force, leaving only drifting stardust in its wake.",
+  },
+};
+const MOONBEAM_CRITICAL_FLAVOR = [
+  "...You could swear you hear Shizuki quietly whisper, “Not bad.”",
+  "Somewhere nearby, a single approving clap echoes through the reef.",
+  "A fake mustache briefly floats through the moonlight... then vanishes.",
+];
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
 
@@ -584,6 +632,7 @@ const DISCORD_COMMANDS = [
         choices: [
           { name: "Elf Blessing", value: "elf_blessing" },
           { name: "Jelly", value: "jelly" },
+          { name: "Moonbeam", value: "moonbeam" },
         ],
       },
     ],
@@ -1100,7 +1149,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. !cast jelly - Cast Jellyfish. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. !cast jelly - Cast Jellyfish for 10 Mana. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1970,8 +2019,8 @@ async function startAdventureBattle(
       `HP: ${state.playerHp}/${state.playerMaxHp} | ` +
       `Mana: ${progress.mana}/${resourceCaps.mana} | Use ` +
       `${platform === "discord"
-        ? "/attack or /cast spell:Jelly"
-        : "!attack or !cast jelly"} to strike.`,
+        ? "/attack or /cast"
+        : "!attack or !cast"} to strike.`,
   };
 }
 
@@ -2736,12 +2785,15 @@ async function performCastUnlocked(
   const blessingCommand = platform === "discord"
     ? "/cast spell:Elf Blessing"
     : "!cast elf blessing";
+  const moonbeamCommand = platform === "discord"
+    ? "/cast spell:Moonbeam"
+    : "!cast moonbeam";
 
   if (!spellInputValue) {
     return {
       message:
-        `Use ${blessingCommand} for Elf Blessing or ${jellyCommand} ` +
-        "for Jellyfish.",
+        `Use ${blessingCommand} for Elf Blessing, ${jellyCommand} ` +
+        `for Jellyfish, or ${moonbeamCommand} for Moonbeam.`,
     };
   }
 
@@ -2754,8 +2806,8 @@ async function performCastUnlocked(
   if (!spell) {
     return {
       message:
-        `You haven't learned that spell. Use ${blessingCommand} or ` +
-        `${jellyCommand}.`,
+        `You haven't learned that spell. Use ${blessingCommand}, ` +
+        `${jellyCommand}, or ${moonbeamCommand}.`,
     };
   }
 
@@ -2766,7 +2818,7 @@ async function performCastUnlocked(
     return {
       message:
         `You haven't learned ${spell.name} yet. Reach Level ` +
-        `${spell.requiredLevel} to unlock your first spell.`,
+        `${spell.requiredLevel} to unlock it.`,
     };
   }
 
@@ -2863,7 +2915,7 @@ async function performCastUnlocked(
     triggeredRoll.finalTotal,
   );
   const strengthBonus = getStrengthDamageBonus(progress);
-  resolvedSpellRoll.baseDamage = resolvedSpellRoll.damage;
+  resolvedSpellRoll.baseDamage ??= resolvedSpellRoll.damage;
   resolvedSpellRoll.strengthBonus = strengthBonus;
   resolvedSpellRoll.damage += strengthBonus;
   const castMessage = formatSpellCastMessage(
@@ -2905,6 +2957,19 @@ async function performCastUnlocked(
 }
 
 function rollSpellDamage(spell) {
+  if (spell.id === "moonbeam") {
+    const rolls = [randomInteger(1, 20), randomInteger(1, 20)];
+    const keptRoll = Math.max(...rolls);
+
+    return {
+      rolls,
+      total: keptRoll,
+      keptRoll,
+      isCritical: false,
+      damage: 0,
+    };
+  }
+
   const rolls = Array.from(
     { length: spell.damage.dice },
     () => randomInteger(1, spell.damage.sides),
@@ -2923,6 +2988,27 @@ function rollSpellDamage(spell) {
 }
 
 function resolveSpellRoll(spell, spellRoll, finalTotal) {
+  if (spell.id === "moonbeam") {
+    const isCritical = finalTotal >= spell.criticalThreshold;
+    const attackResult = getCombatRollResult(finalTotal);
+    const baseDamage = isCritical
+      ? spell.criticalDamage
+      : attackResult.damage;
+    const bonusDamage = randomInteger(1, spell.damage.bonusDieSides);
+
+    return {
+      ...spellRoll,
+      finalTotal,
+      isCritical,
+      category: isCritical ? "Critical" : attackResult.category,
+      damageTier: isCritical ? "Critical Hit" : `${attackResult.category} Hit`,
+      baseDamage,
+      bonusDamage,
+      damage: baseDamage + bonusDamage,
+      criticalFlavor: isCritical ? getMoonbeamCriticalFlavor() : null,
+    };
+  }
+
   const maximumRoll = spell.damage.dice * spell.damage.sides;
   const isCritical = finalTotal >= maximumRoll;
 
@@ -2940,6 +3026,10 @@ function formatSpellCastMessage(
   effectResult,
   platform = "twitch",
 ) {
+  if (spell.id === "moonbeam") {
+    return formatMoonbeamCastMessage(spellRoll, effectResult, platform);
+  }
+
   const personality =
     spell.personalities.find(
       (entry) => spellRoll.total <= entry.maximumRoll,
@@ -2966,6 +3056,74 @@ function formatSpellCastMessage(
     resultText +
     `${separator}Damage: ${damageText}` +
     fadeText;
+}
+
+function getMoonbeamCastTier({ naturalKeptRoll, finalRoll, isCritical }) {
+  if (isCritical || finalRoll >= 20) return MOONBEAM_CAST_TIERS.critical;
+  if (naturalKeptRoll <= 7) return MOONBEAM_CAST_TIERS.weak;
+  if (naturalKeptRoll <= 12) return MOONBEAM_CAST_TIERS.steady;
+  if (naturalKeptRoll <= 17) return MOONBEAM_CAST_TIERS.strong;
+  return MOONBEAM_CAST_TIERS.excellent;
+}
+
+function getMoonbeamCriticalFlavor() {
+  return Math.random() < 0.25
+    ? randomChoice(MOONBEAM_CRITICAL_FLAVOR)
+    : null;
+}
+
+function formatMoonbeamCastMessage(spellRoll, effectResult, platform = "twitch") {
+  const tier = getMoonbeamCastTier({
+    naturalKeptRoll: spellRoll.keptRoll,
+    finalRoll: spellRoll.finalTotal,
+    isCritical: spellRoll.isCritical,
+  });
+  const modifierDetails = effectResult.modifierDetails;
+  const modifierLines = modifierDetails.map(
+    (detail) => `${detail.name}:\n+${detail.value}`,
+  );
+  const strengthLine = spellRoll.strengthBonus > 0
+    ? [`Strength:\n+${spellRoll.strengthBonus}`]
+    : [];
+  const criticalLine = spellRoll.isCritical ? ["**Critical Hit!**"] : [];
+  const baseLabel = spellRoll.isCritical ? "Critical Base Damage" : "Base Damage";
+
+  if (platform === "discord") {
+    return [
+      tier.narration,
+      `**${tier.displayName}**`,
+      `Moonbeam Rolls:\n${spellRoll.rolls[0]} and ${spellRoll.rolls[1]}`,
+      `Kept Roll:\n${spellRoll.keptRoll}`,
+      ...modifierLines,
+      `Final Roll:\n${spellRoll.finalTotal}`,
+      ...criticalLine,
+      ...(!spellRoll.isCritical ? [`Damage Tier:\n${spellRoll.damageTier}`] : []),
+      `${baseLabel}:\n${spellRoll.baseDamage}`,
+      `Moonlight Bonus:\n+${spellRoll.bonusDamage}`,
+      ...strengthLine,
+      `Total Damage:\n${spellRoll.damage}`,
+      ...(spellRoll.criticalFlavor ? [spellRoll.criticalFlavor] : []),
+    ].join("\n\n");
+  }
+
+  const modifiers = modifierDetails.map(
+    (detail) => `+${detail.value} ${detail.name === "Fae Affinity" ? "Fae" : detail.name}`,
+  ).join(" ");
+  const rollCalculation = modifiers
+    ? `${spellRoll.keptRoll} ${modifiers} = ${spellRoll.finalTotal}`
+    : `${spellRoll.keptRoll}`;
+  const criticalText = spellRoll.isCritical ? " — Critical Hit!" : "";
+  const strengthText = spellRoll.strengthBonus > 0
+    ? ` +${spellRoll.strengthBonus} Strength`
+    : "";
+  const flavorText = spellRoll.criticalFlavor
+    ? ` ${spellRoll.criticalFlavor}`
+    : "";
+
+  return `${tier.displayName}! Moonbeam rolls ${spellRoll.rolls[0]}/${spellRoll.rolls[1]}, ` +
+    `keeps ${rollCalculation}${criticalText} — ${spellRoll.baseDamage} base ` +
+    `+${spellRoll.bonusDamage} moonlight${strengthText} = ${spellRoll.damage} dmg.` +
+    flavorText;
 }
 
 async function performEat(
