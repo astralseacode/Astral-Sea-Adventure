@@ -18,6 +18,7 @@ const SHORT_REST_COOLDOWN_MS = 20 * 60 * 1000;
 const LONG_REST_COOLDOWN_MS = 60 * 60 * 1000;
 const LONG_REST_ENCOUNTER_CHANCE = 0.5;
 const OFFENSIVE_ROLL_TRIGGER = "next_offensive_d20";
+const ELF_BLESSING_DURATION_MS = 30 * 60 * 1000;
 const BERRY_HEAL_AMOUNT = 25;
 const BERRY_MANA_AMOUNT = 25;
 const BERRY_OUTSIDE_COMBAT_MESSAGES = [
@@ -192,9 +193,9 @@ const SPELLS = {
     name: "Elf Blessing",
     aliases: ["elf blessing", "elf_blessing", "blessing"],
     requiredLevel: 1,
-    manaCost: 10,
+    manaCost: 30,
     type: "support",
-    description: "+2 to your next offensive d20 roll",
+    description: "+2 to offensive rolls for 30 minutes",
     effectId: "elf_blessing",
   },
   jelly: {
@@ -1020,7 +1021,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 10 Mana to gain +2 on your next offensive d20 roll. !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. !rest - Take a Short Rest. Cooldown: 20 minutes. !rest long - Take a Long Rest. Cooldown: 1 hour. Other commands: !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. !cast jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. !shop - Visit the merchant and open the Shop. !buy berry [quantity] - Purchase Berries while visiting the Shop; quantity defaults to one. !rest - Take a Short Rest. Cooldown: 20 minutes. !rest long - Take a Long Rest. Cooldown: 1 hour. Other commands: !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1352,7 +1353,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack. /cast spell:Elf Blessing - Spend 10 Mana to gain +2 on your next offensive d20 roll. Known from Level 1. /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. /rest short - Gain up to 125 HP and Mana. Cooldown: 20 minutes. /rest long - Gain up to 150 HP and Mana. Cooldown: 1 hour. Other commands: /eat berry, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure number:<number>, /left, /right, /forward, /yes, /no, /attack. /cast spell:Elf Blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Known from Level 1. /cast spell:Jelly - Cast the Jellyfish spell. Requires Level 3 and costs 25 Mana. /shop - Visit a highly legitimate merchant and open the Shop. /buy item:Berry quantity:5 - Purchase one or more items while visiting the Shop; quantity defaults to one. /rest short - Gain up to 125 HP and Mana. Cooldown: 20 minutes. /rest long - Gain up to 150 HP and Mana. Cooldown: 1 hour. Other commands: /eat berry, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -2436,8 +2437,11 @@ async function performAttackUnlocked(
     ...progress,
     statusEffects: triggeredRoll.statusEffects,
   };
+  const statusEffectsChanged =
+    JSON.stringify(progress.statusEffects) !==
+    JSON.stringify(triggeredRoll.statusEffects);
 
-  if (triggeredRoll.consumed.length > 0) {
+  if (statusEffectsChanged) {
     await savePlayerProgress(env, backpackKey, updatedProgress);
   }
 
@@ -2455,7 +2459,7 @@ async function performAttackUnlocked(
       platform,
     );
   } catch (error) {
-    if (triggeredRoll.consumed.length > 0) {
+    if (statusEffectsChanged) {
       try {
         await savePlayerProgress(env, backpackKey, progress);
       } catch (rollbackError) {
@@ -2642,9 +2646,12 @@ async function performCastUnlocked(
   }
 
   if (spell.type === "support" && spell.effectId === "elf_blessing") {
-    if (hasStatusEffect(progress, spell.effectId)) {
+    const activeEffect = getStatusEffect(progress, spell.effectId);
+
+    if (activeEffect) {
       return {
-        message: randomChoice(ELF_BLESSING_RECAST_SCENES),
+        message: `${randomChoice(ELF_BLESSING_RECAST_SCENES)}\n\n` +
+          `Elf Blessing Remaining: ${formatEffectRemaining(activeEffect)}`,
       };
     }
 
@@ -2663,7 +2670,17 @@ async function performCastUnlocked(
       ),
     };
 
-    await savePlayerProgress(env, backpackKey, updatedProgress);
+    try {
+      await savePlayerProgress(env, backpackKey, updatedProgress);
+    } catch (error) {
+      try {
+        await savePlayerProgress(env, backpackKey, progress);
+      } catch (rollbackError) {
+        console.error("Elf Blessing rollback failed:", rollbackError);
+      }
+
+      throw error;
+    }
     const scene = randomChoice(ELF_BLESSING_SUCCESS_SCENES);
     const activeEffects = formatActiveEffects(
       updatedProgress,
@@ -4988,7 +5005,7 @@ function formatOffensiveModifier(effectResult) {
     ? `+ ${effectResult.modifier}`
     : `- ${Math.abs(effectResult.modifier)}`;
 
-  return ` ${modifier} ${effectResult.consumed.join(" + ")} = ` +
+  return ` ${modifier} ${effectResult.applied.join(" + ")} = ` +
     effectResult.finalTotal;
 }
 
@@ -5431,7 +5448,7 @@ function randomChoice(values) {
   return values[randomInteger(0, values.length - 1)];
 }
 
-function normalizeStatusEffects(statusEffects) {
+function normalizeStatusEffects(statusEffects, now = Date.now()) {
   if (
     !statusEffects ||
     typeof statusEffects !== "object" ||
@@ -5452,32 +5469,69 @@ function normalizeStatusEffects(statusEffects) {
       continue;
     }
 
-    const remainingCharges = Math.max(
+    const savedDurationType = String(
+      effect.durationType || "charges",
+    ).trim();
+    let durationType = savedDurationType === "time"
+      ? "time"
+      : "charges";
+    let startedAt = Math.max(
+      0,
+      Math.floor(Number(effect.startedAt || effect.createdAt) || 0),
+    );
+    let expiresAt = Math.max(
+      0,
+      Math.floor(Number(effect.expiresAt) || 0),
+    );
+    let remainingCharges = Math.max(
       0,
       Math.floor(Number(effect.remainingCharges) || 0),
     );
 
-    if (remainingCharges < 1) {
+    const isElfBlessing = effectId === "elf_blessing";
+
+    if (isElfBlessing && durationType === "charges") {
+      durationType = "time";
+      startedAt = now;
+      expiresAt = now + ELF_BLESSING_DURATION_MS;
+      remainingCharges = 0;
+    }
+
+    if (
+      durationType === "time"
+        ? expiresAt <= now
+        : remainingCharges < 1
+    ) {
       continue;
     }
 
     normalized[effectId] = {
       id: effectId,
       displayName:
-        String(effect.displayName || effectId).trim() || effectId,
-      description: String(effect.description || "").trim(),
+        isElfBlessing
+          ? "Elf Blessing"
+          : String(effect.displayName || effectId).trim() || effectId,
+      description: isElfBlessing
+        ? "+2 to offensive rolls"
+        : String(effect.description || "").trim(),
       category: String(effect.category || "neutral").trim(),
       source: String(effect.source || "unknown").trim(),
       visibility: effect.visibility === "hidden" ? "hidden" : "public",
-      durationType: String(effect.durationType || "charges").trim(),
-      remainingCharges,
-      trigger: String(effect.trigger || "").trim(),
+      durationType,
+      ...(durationType === "time"
+        ? { startedAt, expiresAt }
+        : { remainingCharges }),
+      trigger: isElfBlessing
+        ? OFFENSIVE_ROLL_TRIGGER
+        : String(effect.trigger || "").trim(),
       modifiers: {
-        attackRoll: Number.isSafeInteger(
-          Number(effect.modifiers?.attackRoll),
-        )
-          ? Number(effect.modifiers.attackRoll)
-          : 0,
+        attackRoll: isElfBlessing
+          ? 2
+          : Number.isSafeInteger(
+              Number(effect.modifiers?.attackRoll),
+            )
+            ? Number(effect.modifiers.attackRoll)
+            : 0,
       },
       createdAt: Math.max(
         0,
@@ -5512,21 +5566,22 @@ function removeStatusEffect(progress, effectId) {
   return statusEffects;
 }
 
-function createElfBlessingEffect() {
+function createElfBlessingEffect(now = Date.now()) {
   return {
     id: "elf_blessing",
     displayName: "Elf Blessing",
-    description: "+2 to your next offensive d20 roll",
+    description: "+2 to offensive rolls",
     category: "buff",
     source: "spell",
     visibility: "public",
-    durationType: "charges",
-    remainingCharges: 1,
+    durationType: "time",
+    startedAt: now,
+    expiresAt: now + ELF_BLESSING_DURATION_MS,
     trigger: OFFENSIVE_ROLL_TRIGGER,
     modifiers: {
       attackRoll: 2,
     },
-    createdAt: Date.now(),
+    createdAt: now,
   };
 }
 
@@ -5536,20 +5591,25 @@ function consumeTriggeredStatusEffects(
   naturalRoll,
 ) {
   const statusEffects = normalizeStatusEffects(progress.statusEffects);
+  const applied = [];
   const consumed = [];
   let modifier = 0;
 
   for (const [effectId, effect] of Object.entries(statusEffects)) {
-    if (effect.trigger !== trigger || effect.remainingCharges < 1) {
+    if (effect.trigger !== trigger) {
       continue;
     }
 
     modifier += effect.modifiers.attackRoll;
-    consumed.push(effect.displayName);
-    effect.remainingCharges -= 1;
+    applied.push(effect.displayName);
 
-    if (effect.remainingCharges < 1) {
-      delete statusEffects[effectId];
+    if (effect.durationType === "charges") {
+      effect.remainingCharges -= 1;
+      consumed.push(effect.displayName);
+
+      if (effect.remainingCharges < 1) {
+        delete statusEffects[effectId];
+      }
     }
   }
 
@@ -5557,6 +5617,7 @@ function consumeTriggeredStatusEffects(
     naturalRoll,
     modifier,
     finalTotal: naturalRoll + modifier,
+    applied,
     consumed,
     statusEffects,
   };
@@ -5574,16 +5635,38 @@ function formatActiveEffects(progress, platform = "twitch") {
   if (platform === "discord") {
     return "**Active Effects**\n\n" +
       visibleEffects.map(
-        (effect) => `- ${effect.displayName} — ${effect.description}`,
+        (effect) =>
+          `- ${effect.displayName} — ${effect.description}` +
+          (effect.durationType === "time"
+            ? `\n  Remaining: ${formatEffectRemaining(effect)}`
+            : ""),
       ).join("\n");
   }
 
   return "Effects: " + visibleEffects.map(
-    (effect) => effect.description
-      ? `${effect.displayName} (${effect.description
-          .replace("+2 to your next offensive d20 roll", "+2 next offensive d20")})`
-      : effect.displayName,
+    (effect) => {
+      const description = effect.description
+        .replace("+2 to offensive rolls", "+2 rolls");
+      const remaining = effect.durationType === "time"
+        ? `, ${formatEffectRemaining(effect)}`
+        : "";
+
+      return description
+        ? `${effect.displayName} (${description}${remaining})`
+        : `${effect.displayName}${remaining}`;
+    },
   ).join(", ");
+}
+
+function formatEffectRemaining(effect, now = Date.now()) {
+  const remainingSeconds = Math.max(
+    1,
+    Math.ceil((Number(effect?.expiresAt) - now) / 1000),
+  );
+  const minutes = Math.floor(remainingSeconds / 60);
+  const seconds = remainingSeconds % 60;
+
+  return `${minutes}m ${String(seconds).padStart(2, "0")}s`;
 }
 
 async function formatCombatProgress(
