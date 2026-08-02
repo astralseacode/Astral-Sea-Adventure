@@ -219,7 +219,7 @@ const STAT_SHIZUKI_RESPONSES = Object.fromEntries(
         armor: "A note reads: “Less ouch. Very technical.”",
         fae: "Shizuki whispers: “The Astral Sea is listening now.”",
       };
-      return `${signs[index % signs.length]} ${remarks[statId]} (${index + 1})`;
+      return `${signs[index % signs.length]} ${remarks[statId]}`;
     }),
   ]),
 );
