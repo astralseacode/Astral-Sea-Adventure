@@ -1,0 +1,20 @@
+{
+    "id":  "cosmic-vent-crab",
+    "name":  "Cosmic Vent Crab",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  169,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  251,
+                                   "max":  546
+                               },
+                   "xp":  {
+                              "min":  251,
+                              "max":  330
+                          }
+               },
+    "defeatCandyLoss":  67
+}

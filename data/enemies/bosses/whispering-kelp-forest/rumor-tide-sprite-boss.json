@@ -1,0 +1,20 @@
+{
+    "id":  "rumor-tide-sprite-boss",
+    "name":  "Rumor-Tide Sprite",
+    "region":  "whispering-kelp-forest",
+    "level":  14,
+    "hp":  360,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1166,
+                                   "max":  1632
+                               },
+                   "xp":  {
+                              "min":  619,
+                              "max":  851
+                          }
+               },
+    "defeatCandyLoss":  159
+}

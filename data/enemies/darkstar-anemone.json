@@ -1,0 +1,20 @@
+{
+    "id":  "darkstar-anemone",
+    "name":  "Darkstar Anemone",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  208,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  334,
+                                   "max":  679
+                               },
+                   "xp":  {
+                              "min":  334,
+                              "max":  429
+                          }
+               },
+    "defeatCandyLoss":  92
+}

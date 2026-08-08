@@ -1,0 +1,20 @@
+{
+    "id":  "drowned-councilor",
+    "name":  "Drowned Councilor",
+    "region":  "sunken-kings-throne",
+    "level":  49,
+    "hp":  424,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  901,
+                                   "max":  1619
+                               },
+                   "xp":  {
+                              "min":  901,
+                              "max":  999
+                          }
+               },
+    "defeatCandyLoss":  187
+}

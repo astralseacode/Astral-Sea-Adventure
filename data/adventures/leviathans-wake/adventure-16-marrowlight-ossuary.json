@@ -1,0 +1,107 @@
+{
+    "id":  "marrowlight-ossuary",
+    "number":  16,
+    "name":  "Marrowlight Ossuary",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "marrowlight-angler",
+    "recommendedLevel":  25,
+    "introDiscord":  "Marrowlight Ossuary lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Marrowlight Angler.",
+    "introTwitch":  "Marrowlight Ossuary lies ahead amid titanic ribs rising through violent crosscurrents.",
+    "startRoomId":  "marrowlight-ossuary-approach",
+    "rooms":  {
+                  "marrowlight-ossuary-approach":  {
+                                                       "prompt":  "At the edge of Marrowlight Ossuary, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "marrowlight-ossuary-depths",
+                                                                                    "enemyId":  "marrowlight-angler",
+                                                                                    "message":  "A shift in the current exposes Marrowlight Angler, which claims the left route through Marrowlight Ossuary."
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "marrowlight-ossuary-depths",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Marrowlight Ossuary. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "treasure",
+                                                                                       "nextRoomId":  "marrowlight-ossuary-depths",
+                                                                                       "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
+                                                                                       "reward":  {
+                                                                                                      "min":  163,
+                                                                                                      "max":  203
+                                                                                                  }
+                                                                                   }
+                                                                   }
+                                                   },
+                  "marrowlight-ossuary-depths":  {
+                                                     "prompt":  "Deeper within Marrowlight Ossuary, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "marrowlight-ossuary-threshold",
+                                                                                  "healAmount":  42,
+                                                                                  "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "marrowlight-ossuary-threshold",
+                                                                                   "enemyId":  "marrowlight-angler",
+                                                                                   "message":  "A shift in the current exposes Marrowlight Angler, which claims the right route through Marrowlight Ossuary."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "marrowlight-ossuary-threshold",
+                                                                                     "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
+                                                                                     "reward":  {
+                                                                                                    "min":  175,
+                                                                                                    "max":  215
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "marrowlight-ossuary-threshold":  {
+                                                        "prompt":  "Near the heart of Marrowlight Ossuary, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "message":  "Beyond the left route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                     "reward":  {
+                                                                                                    "min":  187,
+                                                                                                    "max":  227
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "healAmount":  47,
+                                                                                      "message":  "The right route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "enemyId":  "marrowlight-angler",
+                                                                                        "message":  "A shift in the current exposes Marrowlight Angler, which claims the forward route through Marrowlight Ossuary."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Lit Skull Chapel",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Lit Skull Chapel."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Lit Skull Chapel. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Lit Skull Chapel: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Lit Skull Chapel. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "bone-lantern-angler-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Bone-Lantern Angler reveals itself!"
+             },
+    "completionText":  "Bone-Lantern Angler yields, and the currents beyond Lit Skull Chapel open the next route through Leviathan\u0027s Wake."
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "riptide-hammerhead",
+    "name":  "Riptide Hammerhead",
+    "region":  "leviathans-wake",
+    "level":  23,
+    "hp":  304,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  549,
+                                   "max":  1021
+                               },
+                   "xp":  {
+                              "min":  549,
+                              "max":  629
+                          }
+               },
+    "defeatCandyLoss":  126
+}

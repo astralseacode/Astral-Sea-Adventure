@@ -1,0 +1,20 @@
+{
+    "id":  "foldspace-nautilus",
+    "name":  "Foldspace Nautilus",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  487,
+    "damageBonus":  17,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1190,
+                                   "max":  2107
+                               },
+                   "xp":  {
+                              "min":  1190,
+                              "max":  1281
+                          }
+               },
+    "defeatCandyLoss":  223
+}

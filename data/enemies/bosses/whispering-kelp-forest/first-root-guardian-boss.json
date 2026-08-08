@@ -1,0 +1,20 @@
+{
+    "id":  "first-root-guardian-boss",
+    "name":  "First-Root Guardian",
+    "region":  "whispering-kelp-forest",
+    "level":  15,
+    "hp":  366,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1193,
+                                   "max":  1670
+                               },
+                   "xp":  {
+                              "min":  636,
+                              "max":  866
+                          }
+               },
+    "defeatCandyLoss":  164
+}

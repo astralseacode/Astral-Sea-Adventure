@@ -1,0 +1,20 @@
+{
+    "id":  "champion-of-the-last-court-boss",
+    "name":  "Champion of the Last Court",
+    "region":  "sunken-kings-throne",
+    "level":  42,
+    "hp":  534,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2122,
+                                   "max":  2971
+                               },
+                   "xp":  {
+                              "min":  1210,
+                              "max":  1487
+                          }
+               },
+    "defeatCandyLoss":  273
+}

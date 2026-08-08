@@ -1,0 +1,107 @@
+{
+    "id":  "moonblossom-garden",
+    "number":  12,
+    "name":  "Moonblossom Garden",
+    "regionId":  "whispering-kelp-forest",
+    "enemyId":  "moonblossom-mantis",
+    "recommendedLevel":  14,
+    "introDiscord":  "Moonblossom Garden lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Moonblossom Mantis.",
+    "introTwitch":  "Moonblossom Garden lies ahead amid moonlit fronds curling around forgotten shrines.",
+    "startRoomId":  "moonblossom-garden-approach",
+    "rooms":  {
+                  "moonblossom-garden-approach":  {
+                                                      "prompt":  "At the edge of Moonblossom Garden, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "empty",
+                                                                                   "nextRoomId":  "moonblossom-garden-depths",
+                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Moonblossom Garden. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                   "berries":  1
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "moonblossom-garden-depths",
+                                                                                    "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
+                                                                                    "reward":  {
+                                                                                                   "min":  145,
+                                                                                                   "max":  183
+                                                                                               }
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "moonblossom-garden-depths",
+                                                                                      "enemyId":  "moonblossom-mantis",
+                                                                                      "message":  "A shift in the current exposes Moonblossom Mantis, which claims the forward route through Moonblossom Garden."
+                                                                                  }
+                                                                  }
+                                                  },
+                  "moonblossom-garden-depths":  {
+                                                    "prompt":  "Deeper within Moonblossom Garden, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "moonblossom-garden-threshold",
+                                                                                 "enemyId":  "moonblossom-mantis",
+                                                                                 "message":  "A shift in the current exposes Moonblossom Mantis, which claims the left route through Moonblossom Garden."
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "moonblossom-garden-threshold",
+                                                                                  "healAmount":  45,
+                                                                                  "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "moonblossom-garden-threshold",
+                                                                                    "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
+                                                                                    "reward":  {
+                                                                                                   "min":  157,
+                                                                                                   "max":  195
+                                                                                               }
+                                                                                }
+                                                                }
+                                                },
+                  "moonblossom-garden-threshold":  {
+                                                       "prompt":  "Near the heart of Moonblossom Garden, living rootways beneath drifting fae lights divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
+                                                                                    "reward":  {
+                                                                                                   "min":  169,
+                                                                                                   "max":  207
+                                                                                               }
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "enemyId":  "moonblossom-mantis",
+                                                                                     "message":  "A shift in the current exposes Moonblossom Mantis, which claims the right route through Moonblossom Garden."
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "healAmount":  50,
+                                                                                       "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "boss-antechamber":  {
+                                           "name":  "Silver Bloom Court",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Silver Bloom Court."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Silver Bloom Court. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Silver Bloom Court: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Silver Bloom Court. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "lunar-petal-mantis-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Lunar Petal Mantis reveals itself!"
+             },
+    "completionText":  "Lunar Petal Mantis yields, and the currents beyond Silver Bloom Court open the next route through Whispering Kelp Forest."
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "ossuary-clawking-boss",
+    "name":  "Ossuary Clawking",
+    "region":  "leviathans-wake",
+    "level":  20,
+    "hp":  403,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1366,
+                                   "max":  1912
+                               },
+                   "xp":  {
+                              "min":  730,
+                              "max":  1008
+                          }
+               },
+    "defeatCandyLoss":  177
+}

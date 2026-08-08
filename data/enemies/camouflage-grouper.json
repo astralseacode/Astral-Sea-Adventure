@@ -1,0 +1,20 @@
+{
+    "id":  "camouflage-grouper",
+    "name":  "Camouflage Grouper",
+    "region":  "whispering-kelp-forest",
+    "level":  14,
+    "hp":  246,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  412,
+                                   "max":  812
+                               },
+                   "xp":  {
+                              "min":  412,
+                              "max":  495
+                          }
+               },
+    "defeatCandyLoss":  100
+}

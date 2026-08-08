@@ -1,0 +1,20 @@
+{
+    "id":  "drowned-banner-guard",
+    "name":  "Drowned Banner Guard",
+    "region":  "sunken-kings-throne",
+    "level":  30,
+    "hp":  345,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  650,
+                                   "max":  1200
+                               },
+                   "xp":  {
+                              "min":  650,
+                              "max":  720
+                          }
+               },
+    "defeatCandyLoss":  145
+}

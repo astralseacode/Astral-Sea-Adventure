@@ -1,0 +1,20 @@
+{
+    "id":  "dead-gate-collector-boss",
+    "name":  "Dead-Gate Collector",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  660,
+    "damageBonus":  21,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  3045,
+                                   "max":  4263
+                               },
+                   "xp":  {
+                              "min":  1764,
+                              "max":  2032
+                          }
+               },
+    "defeatCandyLoss":  358
+}

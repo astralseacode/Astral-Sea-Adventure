@@ -1,0 +1,107 @@
+{
+    "id":  "stars-beneath-the-water",
+    "number":  8,
+    "name":  "Stars Beneath the Water",
+    "regionId":  "astral-nexus",
+    "enemyId":  "starbelow-angler",
+    "recommendedLevel":  50,
+    "introDiscord":  "Stars Beneath the Water lies ahead, where fae arches opening onto incompatible skies conceal the territory of Starbelow Angler.",
+    "introTwitch":  "Stars Beneath the Water lies ahead amid fae arches opening onto incompatible skies.",
+    "startRoomId":  "stars-beneath-the-water-approach",
+    "rooms":  {
+                  "stars-beneath-the-water-approach":  {
+                                                           "prompt":  "At the edge of Stars Beneath the Water, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                           "choices":  {
+                                                                           "left":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "stars-beneath-the-water-depths",
+                                                                                        "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
+                                                                                        "reward":  {
+                                                                                                       "min":  367,
+                                                                                                       "max":  404
+                                                                                                   }
+                                                                                    },
+                                                                           "right":  {
+                                                                                         "type":  "healing",
+                                                                                         "nextRoomId":  "stars-beneath-the-water-depths",
+                                                                                         "healAmount":  102,
+                                                                                         "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                         "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                     },
+                                                                           "forward":  {
+                                                                                           "type":  "combat",
+                                                                                           "nextRoomId":  "stars-beneath-the-water-depths",
+                                                                                           "enemyId":  "starbelow-angler",
+                                                                                           "message":  "A shift in the current exposes Starbelow Angler, which claims the forward route through Stars Beneath the Water."
+                                                                                       }
+                                                                       }
+                                                       },
+                  "stars-beneath-the-water-depths":  {
+                                                         "prompt":  "Deeper within Stars Beneath the Water, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "stars-beneath-the-water-threshold",
+                                                                                      "enemyId":  "starbelow-angler",
+                                                                                      "message":  "A shift in the current exposes Starbelow Angler, which claims the left route through Stars Beneath the Water."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "empty",
+                                                                                       "nextRoomId":  "stars-beneath-the-water-threshold",
+                                                                                       "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Stars Beneath the Water. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                       "berries":  1
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "stars-beneath-the-water-threshold",
+                                                                                         "message":  "Beyond the forward route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                         "reward":  {
+                                                                                                        "min":  379,
+                                                                                                        "max":  416
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "stars-beneath-the-water-threshold":  {
+                                                            "prompt":  "Near the heart of Stars Beneath the Water, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                            "choices":  {
+                                                                            "left":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the left route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                         "reward":  {
+                                                                                                        "min":  391,
+                                                                                                        "max":  428
+                                                                                                    }
+                                                                                     },
+                                                                            "right":  {
+                                                                                          "type":  "combat",
+                                                                                          "nextRoomId":  "boss-antechamber",
+                                                                                          "enemyId":  "starbelow-angler",
+                                                                                          "message":  "A shift in the current exposes Starbelow Angler, which claims the right route through Stars Beneath the Water."
+                                                                                      },
+                                                                            "forward":  {
+                                                                                            "type":  "healing",
+                                                                                            "nextRoomId":  "boss-antechamber",
+                                                                                            "healAmount":  107,
+                                                                                            "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                            "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                        }
+                                                                        }
+                                                        },
+                  "boss-antechamber":  {
+                                           "name":  "Inverted Firmament",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Inverted Firmament."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Inverted Firmament. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Inverted Firmament: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Inverted Firmament. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "under-sun-angler-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Under-Sun Angler reveals itself!"
+             },
+    "completionText":  "Under-Sun Angler yields, and the currents beyond Inverted Firmament open the next route through Astral Nexus."
+}

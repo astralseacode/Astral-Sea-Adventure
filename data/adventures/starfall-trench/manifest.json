@@ -1,0 +1,242 @@
+[
+    {
+        "number":  1,
+        "id":  "lanterns-below-the-falling-sky",
+        "name":  "Lanterns Below the Falling Sky",
+        "enemyId":  "starstone-lanternfish",
+        "bossEnemyId":  "meteor-lure-angler-boss",
+        "file":  "adventure-01-lanterns-below-the-falling-sky.json"
+    },
+    {
+        "number":  2,
+        "id":  "craterback-descent",
+        "name":  "Craterback Descent",
+        "enemyId":  "craterback-isopod",
+        "bossEnemyId":  "craterback-matriarch-boss",
+        "file":  "adventure-02-craterback-descent.json"
+    },
+    {
+        "number":  3,
+        "id":  "cometglass-shardbeds",
+        "name":  "Cometglass Shardbeds",
+        "enemyId":  "cometglass-shrimp",
+        "bossEnemyId":  "shardclaw-colossus-boss",
+        "file":  "adventure-03-cometglass-shardbeds.json"
+    },
+    {
+        "number":  4,
+        "id":  "the-weightless-ravine",
+        "name":  "The Weightless Ravine",
+        "enemyId":  "gravity-skipping-ray",
+        "bossEnemyId":  "orbitbreaker-ray-boss",
+        "file":  "adventure-04-the-weightless-ravine.json"
+    },
+    {
+        "number":  5,
+        "id":  "emberstar-ventfield",
+        "name":  "Emberstar Ventfield",
+        "enemyId":  "emberstar-urchin",
+        "bossEnemyId":  "cinder-crown-urchin-boss",
+        "file":  "adventure-05-emberstar-ventfield.json"
+    },
+    {
+        "number":  6,
+        "id":  "nightshard-fissures",
+        "name":  "Nightshard Fissures",
+        "enemyId":  "nightshard-moray",
+        "bossEnemyId":  "eclipse-jaw-moray-boss",
+        "file":  "adventure-06-nightshard-fissures.json"
+    },
+    {
+        "number":  7,
+        "id":  "the-wandering-craters",
+        "name":  "The Wandering Craters",
+        "enemyId":  "meteor-hermit",
+        "bossEnemyId":  "crater-throne-hermit-boss",
+        "file":  "adventure-07-the-wandering-craters.json"
+    },
+    {
+        "number":  8,
+        "id":  "starlit-hunting-dark",
+        "name":  "Starlit Hunting Dark",
+        "enemyId":  "starlit-viperfish",
+        "bossEnemyId":  "nova-fang-viperfish-boss",
+        "file":  "adventure-08-starlit-hunting-dark.json"
+    },
+    {
+        "number":  9,
+        "id":  "cosmic-ventworks",
+        "name":  "Cosmic Ventworks",
+        "enemyId":  "cosmic-vent-crab",
+        "bossEnemyId":  "superheated-ventlord-boss",
+        "file":  "adventure-09-cosmic-ventworks.json"
+    },
+    {
+        "number":  10,
+        "id":  "shardwake-channels",
+        "name":  "Shardwake Channels",
+        "enemyId":  "shardwake-eel",
+        "bossEnemyId":  "riftcoil-eel-boss",
+        "file":  "adventure-10-shardwake-channels.json"
+    },
+    {
+        "number":  11,
+        "id":  "deep-orbit-spiral",
+        "name":  "Deep-Orbit Spiral",
+        "enemyId":  "deep-orbit-nautilus",
+        "bossEnemyId":  "periapsis-nautilus-boss",
+        "file":  "adventure-11-deep-orbit-spiral.json"
+    },
+    {
+        "number":  12,
+        "id":  "ruins-of-the-starstone-golem",
+        "name":  "Ruins of the Starstone Golem",
+        "enemyId":  "starstone-golem",
+        "bossEnemyId":  "meteorheart-golem-boss",
+        "file":  "adventure-12-ruins-of-the-starstone-golem.json"
+    },
+    {
+        "number":  13,
+        "id":  "voidcurrent-crossing",
+        "name":  "Voidcurrent Crossing",
+        "enemyId":  "voidcurrent-skate",
+        "bossEnemyId":  "eventide-skate-boss",
+        "file":  "adventure-13-voidcurrent-crossing.json"
+    },
+    {
+        "number":  14,
+        "id":  "crystalfang-galleries",
+        "name":  "Crystalfang Galleries",
+        "enemyId":  "crystalfang-snapper",
+        "bossEnemyId":  "diamond-maw-snapper-boss",
+        "file":  "adventure-14-crystalfang-galleries.json"
+    },
+    {
+        "number":  15,
+        "id":  "falling-light-drift",
+        "name":  "Falling-Light Drift",
+        "enemyId":  "falling-light-medusa",
+        "bossEnemyId":  "starshower-medusa-boss",
+        "file":  "adventure-15-falling-light-drift.json"
+    },
+    {
+        "number":  16,
+        "id":  "astral-silt-labyrinth",
+        "name":  "Astral Silt Labyrinth",
+        "enemyId":  "astral-silt-stalker",
+        "bossEnemyId":  "siltveil-ambusher-boss",
+        "file":  "adventure-16-astral-silt-labyrinth.json"
+    },
+    {
+        "number":  17,
+        "id":  "meteor-marked-shelf",
+        "name":  "Meteor-Marked Shelf",
+        "enemyId":  "meteor-marked-lobster",
+        "bossEnemyId":  "impactclaw-tyrant-boss",
+        "file":  "adventure-17-meteor-marked-shelf.json"
+    },
+    {
+        "number":  18,
+        "id":  "aurora-under-the-trench",
+        "name":  "Aurora Under the Trench",
+        "enemyId":  "trench-aurora-wisp",
+        "bossEnemyId":  "polar-flare-wisp-boss",
+        "file":  "adventure-18-aurora-under-the-trench.json"
+    },
+    {
+        "number":  19,
+        "id":  "the-broken-orbit-ruins",
+        "name":  "The Broken-Orbit Ruins",
+        "enemyId":  "broken-orbit-sentinel",
+        "bossEnemyId":  "aphelion-sentinel-boss",
+        "file":  "adventure-19-the-broken-orbit-ruins.json"
+    },
+    {
+        "number":  20,
+        "id":  "star-eater-grooves",
+        "name":  "Star-Eater Grooves",
+        "enemyId":  "star-eater-slug",
+        "bossEnemyId":  "constellation-devourer-boss",
+        "file":  "adventure-20-star-eater-grooves.json"
+    },
+    {
+        "number":  21,
+        "id":  "nebula-ink-reaches",
+        "name":  "Nebula Ink Reaches",
+        "enemyId":  "nebula-ink-squid",
+        "bossEnemyId":  "cloudveil-krakenet-boss",
+        "file":  "adventure-21-nebula-ink-reaches.json"
+    },
+    {
+        "number":  22,
+        "id":  "comet-tail-run",
+        "name":  "Comet-Tail Run",
+        "enemyId":  "comet-tail-barracuda",
+        "bossEnemyId":  "perseid-barracuda-boss",
+        "file":  "adventure-22-comet-tail-run.json"
+    },
+    {
+        "number":  23,
+        "id":  "gravitic-deadfall",
+        "name":  "Gravitic Deadfall",
+        "enemyId":  "gravitic-stonefish",
+        "bossEnemyId":  "masskeeper-stonefish-boss",
+        "file":  "adventure-23-gravitic-deadfall.json"
+    },
+    {
+        "number":  24,
+        "id":  "celestial-ruin-march",
+        "name":  "Celestial Ruin March",
+        "enemyId":  "celestial-ruin-walker",
+        "bossEnemyId":  "firmament-warden-boss",
+        "file":  "adventure-24-celestial-ruin-march.json"
+    },
+    {
+        "number":  25,
+        "id":  "darkstar-bloomfield",
+        "name":  "Darkstar Bloomfield",
+        "enemyId":  "darkstar-anemone",
+        "bossEnemyId":  "umbra-bloom-sovereign-boss",
+        "file":  "adventure-25-darkstar-bloomfield.json"
+    },
+    {
+        "number":  26,
+        "id":  "meteorbone-gravepath",
+        "name":  "Meteorbone Gravepath",
+        "enemyId":  "meteorbone-prowler",
+        "bossEnemyId":  "star-skull-prowler-boss",
+        "file":  "adventure-26-meteorbone-gravepath.json"
+    },
+    {
+        "number":  27,
+        "id":  "riftlight-fault",
+        "name":  "Riftlight Fault",
+        "enemyId":  "riftlight-serpent",
+        "bossEnemyId":  "fault-crowned-serpent-boss",
+        "file":  "adventure-27-riftlight-fault.json"
+    },
+    {
+        "number":  28,
+        "id":  "trenchstar-depths",
+        "name":  "Trenchstar Depths",
+        "enemyId":  "trenchstar-behemoth",
+        "bossEnemyId":  "abyssal-star-behemoth-boss",
+        "file":  "adventure-28-trenchstar-depths.json"
+    },
+    {
+        "number":  29,
+        "id":  "the-buried-celestial-engine",
+        "name":  "The Buried Celestial Engine",
+        "enemyId":  "celestial-core-keeper",
+        "bossEnemyId":  "corewake-custodian-boss",
+        "file":  "adventure-29-the-buried-celestial-engine.json"
+    },
+    {
+        "number":  30,
+        "id":  "the-starfall-annex",
+        "name":  "The Starfall Annex",
+        "enemyId":  "starfall-annex-grunt",
+        "bossEnemyId":  "starfall-annex-officer-boss",
+        "file":  "adventure-30-the-starfall-annex.json"
+    }
+]

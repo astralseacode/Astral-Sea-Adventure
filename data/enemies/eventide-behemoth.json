@@ -1,0 +1,20 @@
+{
+    "id":  "eventide-behemoth",
+    "name":  "Eventide Behemoth",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  492,
+    "damageBonus":  17,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1217,
+                                   "max":  2155
+                               },
+                   "xp":  {
+                              "min":  1217,
+                              "max":  1311
+                          }
+               },
+    "defeatCandyLoss":  226
+}

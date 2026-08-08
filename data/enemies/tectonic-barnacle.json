@@ -1,0 +1,20 @@
+{
+    "id":  "tectonic-barnacle",
+    "name":  "Tectonic Barnacle",
+    "region":  "leviathans-wake",
+    "level":  24,
+    "hp":  309,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  563,
+                                   "max":  1045
+                               },
+                   "xp":  {
+                              "min":  563,
+                              "max":  645
+                          }
+               },
+    "defeatCandyLoss":  129
+}

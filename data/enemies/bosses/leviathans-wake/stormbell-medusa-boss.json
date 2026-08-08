@@ -1,0 +1,20 @@
+{
+    "id":  "stormbell-medusa-boss",
+    "name":  "Stormbell Medusa",
+    "region":  "leviathans-wake",
+    "level":  22,
+    "hp":  421,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1459,
+                                   "max":  2043
+                               },
+                   "xp":  {
+                              "min":  788,
+                              "max":  1053
+                          }
+               },
+    "defeatCandyLoss":  192
+}

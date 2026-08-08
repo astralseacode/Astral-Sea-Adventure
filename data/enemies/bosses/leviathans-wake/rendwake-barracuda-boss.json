@@ -1,0 +1,20 @@
+{
+    "id":  "rendwake-barracuda-boss",
+    "name":  "Rendwake Barracuda",
+    "region":  "leviathans-wake",
+    "level":  27,
+    "hp":  456,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1645,
+                                   "max":  2303
+                               },
+                   "xp":  {
+                              "min":  903,
+                              "max":  1144
+                          }
+               },
+    "defeatCandyLoss":  221
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "weeping-current-nymph-boss",
+    "name":  "Weeping Current Nymph",
+    "region":  "whispering-kelp-forest",
+    "level":  16,
+    "hp":  378,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1248,
+                                   "max":  1747
+                               },
+                   "xp":  {
+                              "min":  669,
+                              "max":  897
+                          }
+               },
+    "defeatCandyLoss":  173
+}

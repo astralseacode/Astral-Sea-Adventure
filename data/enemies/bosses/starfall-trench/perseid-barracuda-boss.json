@@ -1,0 +1,20 @@
+{
+    "id":  "perseid-barracuda-boss",
+    "name":  "Perseid Barracuda",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  318,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  967,
+                                   "max":  1354
+                               },
+                   "xp":  {
+                              "min":  505,
+                              "max":  719
+                          }
+               },
+    "defeatCandyLoss":  146
+}

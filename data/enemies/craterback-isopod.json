@@ -1,0 +1,20 @@
+{
+    "id":  "craterback-isopod",
+    "name":  "Craterback Isopod",
+    "region":  "starfall-trench",
+    "level":  5,
+    "hp":  152,
+    "damageBonus":  6,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  215,
+                                   "max":  488
+                               },
+                   "xp":  {
+                              "min":  215,
+                              "max":  286
+                          }
+               },
+    "defeatCandyLoss":  57
+}

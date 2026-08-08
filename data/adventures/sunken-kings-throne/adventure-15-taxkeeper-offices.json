@@ -1,0 +1,107 @@
+{
+    "id":  "taxkeeper-offices",
+    "number":  15,
+    "name":  "Taxkeeper Offices",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "taxkeeper-octopus",
+    "recommendedLevel":  40,
+    "introDiscord":  "Taxkeeper Offices lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Taxkeeper Octopus.",
+    "introTwitch":  "Taxkeeper Offices lies ahead amid flooded courtyards lined with watchful stone nobility.",
+    "startRoomId":  "taxkeeper-offices-approach",
+    "rooms":  {
+                  "taxkeeper-offices-approach":  {
+                                                     "prompt":  "At the edge of Taxkeeper Offices, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "taxkeeper-offices-depths",
+                                                                                  "healAmount":  57,
+                                                                                  "message":  "The left route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "taxkeeper-offices-depths",
+                                                                                   "enemyId":  "taxkeeper-octopus",
+                                                                                   "message":  "A shift in the current exposes Taxkeeper Octopus, which claims the right route through Taxkeeper Offices."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "taxkeeper-offices-depths",
+                                                                                     "message":  "Beyond the forward route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                     "reward":  {
+                                                                                                    "min":  222,
+                                                                                                    "max":  261
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "taxkeeper-offices-depths":  {
+                                                   "prompt":  "Deeper within Taxkeeper Offices, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "empty",
+                                                                                "nextRoomId":  "taxkeeper-offices-threshold",
+                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Taxkeeper Offices. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                "berries":  1
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "treasure",
+                                                                                 "nextRoomId":  "taxkeeper-offices-threshold",
+                                                                                 "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                                 "reward":  {
+                                                                                                "min":  234,
+                                                                                                "max":  273
+                                                                                            }
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "taxkeeper-offices-threshold",
+                                                                                   "enemyId":  "taxkeeper-octopus",
+                                                                                   "message":  "A shift in the current exposes Taxkeeper Octopus, which claims the forward route through Taxkeeper Offices."
+                                                                               }
+                                                               }
+                                               },
+                  "taxkeeper-offices-threshold":  {
+                                                      "prompt":  "Near the heart of Taxkeeper Offices, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "enemyId":  "taxkeeper-octopus",
+                                                                                   "message":  "A shift in the current exposes Taxkeeper Octopus, which claims the left route through Taxkeeper Offices."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "healAmount":  62,
+                                                                                    "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
+                                                                                      "reward":  {
+                                                                                                     "min":  246,
+                                                                                                     "max":  285
+                                                                                                 }
+                                                                                  }
+                                                                  }
+                                                  },
+                  "boss-antechamber":  {
+                                           "name":  "Treasury Reckoning",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Treasury Reckoning."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Treasury Reckoning. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Treasury Reckoning: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Treasury Reckoning. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "exchequer-krakenet-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Exchequer Krakenet reveals itself!"
+             },
+    "completionText":  "Exchequer Krakenet yields, and the currents beyond Treasury Reckoning open the next route through Sunken King\u0027s Throne."
+}

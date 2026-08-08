@@ -1,0 +1,20 @@
+{
+    "id":  "dreadclaw-hullsplitter-boss",
+    "name":  "Dreadclaw Hullsplitter",
+    "region":  "leviathans-wake",
+    "level":  22,
+    "hp":  418,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1443,
+                                   "max":  2020
+                               },
+                   "xp":  {
+                              "min":  778,
+                              "max":  1046
+                          }
+               },
+    "defeatCandyLoss":  189
+}

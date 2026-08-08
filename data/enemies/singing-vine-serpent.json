@@ -1,0 +1,20 @@
+{
+    "id":  "singing-vine-serpent",
+    "name":  "Singing Vine Serpent",
+    "region":  "whispering-kelp-forest",
+    "level":  13,
+    "hp":  239,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  395,
+                                   "max":  786
+                               },
+                   "xp":  {
+                              "min":  395,
+                              "max":  476
+                          }
+               },
+    "defeatCandyLoss":  96
+}

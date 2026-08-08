@@ -1,0 +1,20 @@
+{
+    "id":  "scarbound-warden-boss",
+    "name":  "Scarbound Warden",
+    "region":  "leviathans-wake",
+    "level":  29,
+    "hp":  479,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1769,
+                                   "max":  2477
+                               },
+                   "xp":  {
+                              "min":  981,
+                              "max":  1205
+                          }
+               },
+    "defeatCandyLoss":  240
+}

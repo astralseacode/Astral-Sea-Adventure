@@ -1,0 +1,20 @@
+{
+    "id":  "last-dance-courtesan-boss",
+    "name":  "Last-Dance Courtesan",
+    "region":  "sunken-kings-throne",
+    "level":  33,
+    "hp":  488,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1833,
+                                   "max":  2566
+                               },
+                   "xp":  {
+                              "min":  1031,
+                              "max":  1380
+                          }
+               },
+    "defeatCandyLoss":  240
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "currentbreaker-shark",
+    "name":  "Currentbreaker Shark",
+    "region":  "leviathans-wake",
+    "level":  21,
+    "hp":  290,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  508,
+                                   "max":  948
+                               },
+                   "xp":  {
+                              "min":  508,
+                              "max":  582
+                          }
+               },
+    "defeatCandyLoss":  116
+}

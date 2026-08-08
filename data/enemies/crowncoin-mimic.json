@@ -1,0 +1,20 @@
+{
+    "id":  "crowncoin-mimic",
+    "name":  "Crowncoin Mimic",
+    "region":  "sunken-kings-throne",
+    "level":  31,
+    "hp":  348,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  659,
+                                   "max":  1216
+                               },
+                   "xp":  {
+                              "min":  659,
+                              "max":  730
+                          }
+               },
+    "defeatCandyLoss":  147
+}

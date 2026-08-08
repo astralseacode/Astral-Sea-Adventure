@@ -1,0 +1,107 @@
+{
+    "id":  "the-forest-remembers",
+    "number":  29,
+    "name":  "The Forest Remembers",
+    "regionId":  "whispering-kelp-forest",
+    "enemyId":  "memory-kelp-oracle",
+    "recommendedLevel":  20,
+    "introDiscord":  "The Forest Remembers lies ahead, where living rootways beneath drifting fae lights conceal the territory of Memory-Kelp Oracle.",
+    "introTwitch":  "The Forest Remembers lies ahead amid living rootways beneath drifting fae lights.",
+    "startRoomId":  "the-forest-remembers-approach",
+    "rooms":  {
+                  "the-forest-remembers-approach":  {
+                                                        "prompt":  "At the edge of The Forest Remembers, living rootways beneath drifting fae lights divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "the-forest-remembers-depths",
+                                                                                     "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
+                                                                                     "reward":  {
+                                                                                                    "min":  60,
+                                                                                                    "max":  104
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "the-forest-remembers-depths",
+                                                                                      "enemyId":  "memory-kelp-oracle",
+                                                                                      "message":  "A shift in the current exposes Memory-Kelp Oracle, which claims the right route through The Forest Remembers."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "the-forest-remembers-depths",
+                                                                                        "healAmount":  2,
+                                                                                        "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "the-forest-remembers-depths":  {
+                                                      "prompt":  "Deeper within The Forest Remembers, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "the-forest-remembers-threshold",
+                                                                                   "enemyId":  "memory-kelp-oracle",
+                                                                                   "message":  "A shift in the current exposes Memory-Kelp Oracle, which claims the left route through The Forest Remembers."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "the-forest-remembers-threshold",
+                                                                                    "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
+                                                                                    "reward":  {
+                                                                                                   "min":  72,
+                                                                                                   "max":  116
+                                                                                               }
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "empty",
+                                                                                      "nextRoomId":  "the-forest-remembers-threshold",
+                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Forest Remembers. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                      "berries":  1
+                                                                                  }
+                                                                  }
+                                                  },
+                  "the-forest-remembers-threshold":  {
+                                                         "prompt":  "Near the heart of The Forest Remembers, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "healAmount":  7,
+                                                                                      "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "enemyId":  "memory-kelp-oracle",
+                                                                                       "message":  "A shift in the current exposes Memory-Kelp Oracle, which claims the right route through The Forest Remembers."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
+                                                                                         "reward":  {
+                                                                                                        "min":  84,
+                                                                                                        "max":  128
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Recollection Grove",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Recollection Grove."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Recollection Grove. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Recollection Grove: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Recollection Grove. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "keeper-of-green-memories-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Keeper of Green Memories reveals itself!"
+             },
+    "completionText":  "Keeper of Green Memories yields, and the currents beyond Recollection Grove open the next route through Whispering Kelp Forest."
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "astral-convergence-warden",
+    "name":  "Astral Convergence Warden",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  507,
+    "damageBonus":  18,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1286,
+                                   "max":  2276
+                               },
+                   "xp":  {
+                              "min":  1286,
+                              "max":  1385
+                          }
+               },
+    "defeatCandyLoss":  233
+}

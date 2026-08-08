@@ -1,0 +1,107 @@
+{
+    "id":  "the-seven-royal-seals",
+    "number":  27,
+    "name":  "The Seven Royal Seals",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "royal-seal-construct",
+    "recommendedLevel":  48,
+    "introDiscord":  "The Seven Royal Seals lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Royal Seal Construct.",
+    "introTwitch":  "The Seven Royal Seals lies ahead amid flooded courtyards lined with watchful stone nobility.",
+    "startRoomId":  "the-seven-royal-seals-approach",
+    "rooms":  {
+                  "the-seven-royal-seals-approach":  {
+                                                         "prompt":  "At the edge of The Seven Royal Seals, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "the-seven-royal-seals-depths",
+                                                                                      "healAmount":  11,
+                                                                                      "message":  "The left route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "the-seven-royal-seals-depths",
+                                                                                       "enemyId":  "royal-seal-construct",
+                                                                                       "message":  "A shift in the current exposes Royal Seal Construct, which claims the right route through The Seven Royal Seals."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "the-seven-royal-seals-depths",
+                                                                                         "message":  "Beyond the forward route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                         "reward":  {
+                                                                                                        "min":  112,
+                                                                                                        "max":  155
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "the-seven-royal-seals-depths":  {
+                                                       "prompt":  "Deeper within The Seven Royal Seals, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "empty",
+                                                                                    "nextRoomId":  "the-seven-royal-seals-threshold",
+                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Seven Royal Seals. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                    "berries":  1
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "the-seven-royal-seals-threshold",
+                                                                                     "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                                     "reward":  {
+                                                                                                    "min":  124,
+                                                                                                    "max":  167
+                                                                                                }
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "the-seven-royal-seals-threshold",
+                                                                                       "enemyId":  "royal-seal-construct",
+                                                                                       "message":  "A shift in the current exposes Royal Seal Construct, which claims the forward route through The Seven Royal Seals."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "the-seven-royal-seals-threshold":  {
+                                                          "prompt":  "Near the heart of The Seven Royal Seals, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                                          "choices":  {
+                                                                          "left":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "enemyId":  "royal-seal-construct",
+                                                                                       "message":  "A shift in the current exposes Royal Seal Construct, which claims the left route through The Seven Royal Seals."
+                                                                                   },
+                                                                          "right":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "healAmount":  16,
+                                                                                        "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    },
+                                                                          "forward":  {
+                                                                                          "type":  "treasure",
+                                                                                          "nextRoomId":  "boss-antechamber",
+                                                                                          "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
+                                                                                          "reward":  {
+                                                                                                         "min":  136,
+                                                                                                         "max":  179
+                                                                                                     }
+                                                                                      }
+                                                                      }
+                                                      },
+                  "boss-antechamber":  {
+                                           "name":  "Sealheart Chamber",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Sealheart Chamber."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Sealheart Chamber. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Sealheart Chamber: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Sealheart Chamber. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "covenant-engine-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Covenant Engine reveals itself!"
+             },
+    "completionText":  "Covenant Engine yields, and the currents beyond Sealheart Chamber open the next route through Sunken King\u0027s Throne."
+}

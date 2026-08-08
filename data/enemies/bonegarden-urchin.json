@@ -1,0 +1,20 @@
+{
+    "id":  "bonegarden-urchin",
+    "name":  "Bonegarden Urchin",
+    "region":  "leviathans-wake",
+    "level":  22,
+    "hp":  292,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  514,
+                                   "max":  960
+                               },
+                   "xp":  {
+                              "min":  514,
+                              "max":  590
+                          }
+               },
+    "defeatCandyLoss":  118
+}

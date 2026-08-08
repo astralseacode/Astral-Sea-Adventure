@@ -1,0 +1,20 @@
+{
+    "id":  "titan-scar-guardian",
+    "name":  "Titan-Scar Guardian",
+    "region":  "leviathans-wake",
+    "level":  29,
+    "hp":  345,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  666,
+                                   "max":  1226
+                               },
+                   "xp":  {
+                              "min":  666,
+                              "max":  764
+                          }
+               },
+    "defeatCandyLoss":  152
+}

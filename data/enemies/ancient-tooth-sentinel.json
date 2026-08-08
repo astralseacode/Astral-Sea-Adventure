@@ -1,0 +1,20 @@
+{
+    "id":  "ancient-tooth-sentinel",
+    "name":  "Ancient Tooth Sentinel",
+    "region":  "leviathans-wake",
+    "level":  28,
+    "hp":  333,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  632,
+                                   "max":  1166
+                               },
+                   "xp":  {
+                              "min":  632,
+                              "max":  724
+                          }
+               },
+    "defeatCandyLoss":  144
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "verdant-pursuit-grunt",
+    "name":  "Verdant Pursuit Grunt",
+    "region":  "whispering-kelp-forest",
+    "level":  20,
+    "hp":  285,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  500,
+                                   "max":  950
+                               },
+                   "xp":  {
+                              "min":  500,
+                              "max":  600
+                          }
+               },
+    "defeatCandyLoss":  125
+}

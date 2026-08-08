@@ -1,0 +1,107 @@
+{
+    "id":  "the-unbuilding-ruins",
+    "number":  23,
+    "name":  "The Unbuilding Ruins",
+    "regionId":  "astral-nexus",
+    "enemyId":  "fae-ruin-architect",
+    "recommendedLevel":  50,
+    "introDiscord":  "The Unbuilding Ruins lies ahead, where fae arches opening onto incompatible skies conceal the territory of Fae Ruin Architect.",
+    "introTwitch":  "The Unbuilding Ruins lies ahead amid fae arches opening onto incompatible skies.",
+    "startRoomId":  "the-unbuilding-ruins-approach",
+    "rooms":  {
+                  "the-unbuilding-ruins-approach":  {
+                                                        "prompt":  "At the edge of The Unbuilding Ruins, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "the-unbuilding-ruins-depths",
+                                                                                     "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
+                                                                                     "reward":  {
+                                                                                                    "min":  188,
+                                                                                                    "max":  230
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "the-unbuilding-ruins-depths",
+                                                                                      "enemyId":  "fae-ruin-architect",
+                                                                                      "message":  "A shift in the current exposes Fae Ruin Architect, which claims the right route through The Unbuilding Ruins."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "the-unbuilding-ruins-depths",
+                                                                                        "healAmount":  33,
+                                                                                        "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "the-unbuilding-ruins-depths":  {
+                                                      "prompt":  "Deeper within The Unbuilding Ruins, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "the-unbuilding-ruins-threshold",
+                                                                                   "enemyId":  "fae-ruin-architect",
+                                                                                   "message":  "A shift in the current exposes Fae Ruin Architect, which claims the left route through The Unbuilding Ruins."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "the-unbuilding-ruins-threshold",
+                                                                                    "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                    "reward":  {
+                                                                                                   "min":  200,
+                                                                                                   "max":  242
+                                                                                               }
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "empty",
+                                                                                      "nextRoomId":  "the-unbuilding-ruins-threshold",
+                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Unbuilding Ruins. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                      "berries":  1
+                                                                                  }
+                                                                  }
+                                                  },
+                  "the-unbuilding-ruins-threshold":  {
+                                                         "prompt":  "Near the heart of The Unbuilding Ruins, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "healAmount":  38,
+                                                                                      "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "enemyId":  "fae-ruin-architect",
+                                                                                       "message":  "A shift in the current exposes Fae Ruin Architect, which claims the right route through The Unbuilding Ruins."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                         "reward":  {
+                                                                                                        "min":  212,
+                                                                                                        "max":  254
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Blueprint of Vanishing Stone",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Blueprint of Vanishing Stone."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Blueprint of Vanishing Stone. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Blueprint of Vanishing Stone: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Blueprint of Vanishing Stone. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "last-architect-construct-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Last Architect Construct reveals itself!"
+             },
+    "completionText":  "Last Architect Construct yields, and the currents beyond Blueprint of Vanishing Stone open the next route through Astral Nexus."
+}

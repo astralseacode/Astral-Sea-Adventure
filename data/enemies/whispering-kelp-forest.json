@@ -1,0 +1,152 @@
+[
+    {
+        "encounter":  1,
+        "enemy":  "murmurleaf-minnow",
+        "recommendedLevel":  10
+    },
+    {
+        "encounter":  2,
+        "enemy":  "lanternvine-crab",
+        "recommendedLevel":  10
+    },
+    {
+        "encounter":  3,
+        "enemy":  "whispercap-snail",
+        "recommendedLevel":  11
+    },
+    {
+        "encounter":  4,
+        "enemy":  "veilpetal-ray",
+        "recommendedLevel":  11
+    },
+    {
+        "encounter":  5,
+        "enemy":  "rootcoil-eel",
+        "recommendedLevel":  11
+    },
+    {
+        "encounter":  6,
+        "enemy":  "dewbell-jelly",
+        "recommendedLevel":  12
+    },
+    {
+        "encounter":  7,
+        "enemy":  "briarfin-prowler",
+        "recommendedLevel":  12
+    },
+    {
+        "encounter":  8,
+        "enemy":  "hushwater-stagfish",
+        "recommendedLevel":  12
+    },
+    {
+        "encounter":  9,
+        "enemy":  "fae-lure-angler",
+        "recommendedLevel":  13
+    },
+    {
+        "encounter":  10,
+        "enemy":  "mosscloak-octopus",
+        "recommendedLevel":  13
+    },
+    {
+        "encounter":  11,
+        "enemy":  "singing-vine-serpent",
+        "recommendedLevel":  13
+    },
+    {
+        "encounter":  12,
+        "enemy":  "moonblossom-mantis",
+        "recommendedLevel":  14
+    },
+    {
+        "encounter":  13,
+        "enemy":  "gossipcurrent-sprite",
+        "recommendedLevel":  14
+    },
+    {
+        "encounter":  14,
+        "enemy":  "camouflage-grouper",
+        "recommendedLevel":  14
+    },
+    {
+        "encounter":  15,
+        "enemy":  "shrinebark-guardian",
+        "recommendedLevel":  15
+    },
+    {
+        "encounter":  16,
+        "enemy":  "predatory-starflower",
+        "recommendedLevel":  15
+    },
+    {
+        "encounter":  17,
+        "enemy":  "dreamsap-leech",
+        "recommendedLevel":  16
+    },
+    {
+        "encounter":  18,
+        "enemy":  "kelpweave-spider",
+        "recommendedLevel":  16
+    },
+    {
+        "encounter":  19,
+        "enemy":  "willowcurrent-nymph",
+        "recommendedLevel":  16
+    },
+    {
+        "encounter":  20,
+        "enemy":  "bramblejaw-turtle",
+        "recommendedLevel":  17
+    },
+    {
+        "encounter":  21,
+        "enemy":  "echo-bark-woodfish",
+        "recommendedLevel":  17
+    },
+    {
+        "encounter":  22,
+        "enemy":  "moonmoth-nudibranch",
+        "recommendedLevel":  17
+    },
+    {
+        "encounter":  23,
+        "enemy":  "rootbound-effigy",
+        "recommendedLevel":  18
+    },
+    {
+        "encounter":  24,
+        "enemy":  "sighing-reed-hunter",
+        "recommendedLevel":  18
+    },
+    {
+        "encounter":  25,
+        "enemy":  "glimmerpod-beetle",
+        "recommendedLevel":  18
+    },
+    {
+        "encounter":  26,
+        "enemy":  "ancient-grove-mimic",
+        "recommendedLevel":  19
+    },
+    {
+        "encounter":  27,
+        "enemy":  "thornsong-siren",
+        "recommendedLevel":  19
+    },
+    {
+        "encounter":  28,
+        "enemy":  "whisperroot-colossus",
+        "recommendedLevel":  19
+    },
+    {
+        "encounter":  29,
+        "enemy":  "memory-kelp-oracle",
+        "recommendedLevel":  20
+    },
+    {
+        "encounter":  30,
+        "enemy":  "verdant-pursuit-grunt",
+        "recommendedLevel":  20
+    }
+]

@@ -1,0 +1,20 @@
+{
+    "id":  "dynasty-coral-golem",
+    "name":  "Dynasty Coral Golem",
+    "region":  "sunken-kings-throne",
+    "level":  38,
+    "hp":  380,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  762,
+                                   "max":  1386
+                               },
+                   "xp":  {
+                              "min":  762,
+                              "max":  844
+                          }
+               },
+    "defeatCandyLoss":  164
+}

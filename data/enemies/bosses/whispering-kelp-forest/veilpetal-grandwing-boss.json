@@ -1,0 +1,20 @@
+{
+    "id":  "veilpetal-grandwing-boss",
+    "name":  "Veilpetal Grandwing",
+    "region":  "whispering-kelp-forest",
+    "level":  11,
+    "hp":  334,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1041,
+                                   "max":  1457
+                               },
+                   "xp":  {
+                              "min":  545,
+                              "max":  783
+                          }
+               },
+    "defeatCandyLoss":  137
+}

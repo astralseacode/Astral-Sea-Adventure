@@ -1,0 +1,107 @@
+{
+    "id":  "the-gnawed-timeline",
+    "number":  26,
+    "name":  "The Gnawed Timeline",
+    "regionId":  "astral-nexus",
+    "enemyId":  "timeline-eater",
+    "recommendedLevel":  50,
+    "introDiscord":  "The Gnawed Timeline lies ahead, where fae arches opening onto incompatible skies conceal the territory of Timeline Eater.",
+    "introTwitch":  "The Gnawed Timeline lies ahead amid fae arches opening onto incompatible skies.",
+    "startRoomId":  "the-gnawed-timeline-approach",
+    "rooms":  {
+                  "the-gnawed-timeline-approach":  {
+                                                       "prompt":  "At the edge of The Gnawed Timeline, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "the-gnawed-timeline-depths",
+                                                                                    "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
+                                                                                    "reward":  {
+                                                                                                   "min":  153,
+                                                                                                   "max":  196
+                                                                                               }
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "the-gnawed-timeline-depths",
+                                                                                     "healAmount":  19,
+                                                                                     "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "the-gnawed-timeline-depths",
+                                                                                       "enemyId":  "timeline-eater",
+                                                                                       "message":  "A shift in the current exposes Timeline Eater, which claims the forward route through The Gnawed Timeline."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "the-gnawed-timeline-depths":  {
+                                                     "prompt":  "Deeper within The Gnawed Timeline, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "the-gnawed-timeline-threshold",
+                                                                                  "enemyId":  "timeline-eater",
+                                                                                  "message":  "A shift in the current exposes Timeline Eater, which claims the left route through The Gnawed Timeline."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "empty",
+                                                                                   "nextRoomId":  "the-gnawed-timeline-threshold",
+                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Gnawed Timeline. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                   "berries":  1
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "the-gnawed-timeline-threshold",
+                                                                                     "message":  "Beyond the forward route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                     "reward":  {
+                                                                                                    "min":  165,
+                                                                                                    "max":  208
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "the-gnawed-timeline-threshold":  {
+                                                        "prompt":  "Near the heart of The Gnawed Timeline, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "message":  "Beyond the left route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                     "reward":  {
+                                                                                                    "min":  177,
+                                                                                                    "max":  220
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "enemyId":  "timeline-eater",
+                                                                                      "message":  "A shift in the current exposes Timeline Eater, which claims the right route through The Gnawed Timeline."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "healAmount":  24,
+                                                                                        "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Missing Century",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Missing Century."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Missing Century. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Missing Century: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Missing Century. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "epoch-devourer-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Epoch Devourer reveals itself!"
+             },
+    "completionText":  "Epoch Devourer yields, and the currents beyond Missing Century open the next route through Astral Nexus."
+}

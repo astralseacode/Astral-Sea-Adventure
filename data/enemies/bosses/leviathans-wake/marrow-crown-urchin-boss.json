@@ -1,0 +1,20 @@
+{
+    "id":  "marrow-crown-urchin-boss",
+    "name":  "Marrow-Crown Urchin",
+    "region":  "leviathans-wake",
+    "level":  22,
+    "hp":  415,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1428,
+                                   "max":  1999
+                               },
+                   "xp":  {
+                              "min":  768,
+                              "max":  1038
+                          }
+               },
+    "defeatCandyLoss":  187
+}

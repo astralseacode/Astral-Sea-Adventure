@@ -1,0 +1,20 @@
+{
+    "id":  "stormscript-squid",
+    "name":  "Stormscript Squid",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  454,
+    "damageBonus":  15,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1038,
+                                   "max":  1841
+                               },
+                   "xp":  {
+                              "min":  1038,
+                              "max":  1118
+                          }
+               },
+    "defeatCandyLoss":  206
+}

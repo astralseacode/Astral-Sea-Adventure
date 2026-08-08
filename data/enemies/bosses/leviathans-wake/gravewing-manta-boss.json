@@ -1,0 +1,20 @@
+{
+    "id":  "gravewing-manta-boss",
+    "name":  "Gravewing Manta",
+    "region":  "leviathans-wake",
+    "level":  25,
+    "hp":  441,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1567,
+                                   "max":  2194
+                               },
+                   "xp":  {
+                              "min":  855,
+                              "max":  1106
+                          }
+               },
+    "defeatCandyLoss":  209
+}

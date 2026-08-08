@@ -1,0 +1,20 @@
+{
+    "id":  "helmless-castellan-boss",
+    "name":  "Helmless Castellan",
+    "region":  "sunken-kings-throne",
+    "level":  34,
+    "hp":  495,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1874,
+                                   "max":  2624
+                               },
+                   "xp":  {
+                              "min":  1057,
+                              "max":  1396
+                          }
+               },
+    "defeatCandyLoss":  244
+}

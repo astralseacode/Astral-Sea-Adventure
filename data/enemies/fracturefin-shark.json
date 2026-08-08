@@ -1,0 +1,20 @@
+{
+    "id":  "fracturefin-shark",
+    "name":  "Fracturefin Shark",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  440,
+    "damageBonus":  15,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  969,
+                                   "max":  1721
+                               },
+                   "xp":  {
+                              "min":  969,
+                              "max":  1044
+                          }
+               },
+    "defeatCandyLoss":  198
+}

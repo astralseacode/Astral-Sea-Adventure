@@ -1,0 +1,107 @@
+{
+    "id":  "gossipcurrent-forks",
+    "number":  13,
+    "name":  "Gossipcurrent Forks",
+    "regionId":  "whispering-kelp-forest",
+    "enemyId":  "gossipcurrent-sprite",
+    "recommendedLevel":  14,
+    "introDiscord":  "Gossipcurrent Forks lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Gossipcurrent Sprite.",
+    "introTwitch":  "Gossipcurrent Forks lies ahead amid towering kelp columns threaded with murmuring currents.",
+    "startRoomId":  "gossipcurrent-forks-approach",
+    "rooms":  {
+                  "gossipcurrent-forks-approach":  {
+                                                       "prompt":  "At the edge of Gossipcurrent Forks, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "gossipcurrent-forks-depths",
+                                                                                    "enemyId":  "gossipcurrent-sprite",
+                                                                                    "message":  "A shift in the current exposes Gossipcurrent Sprite, which claims the left route through Gossipcurrent Forks."
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "gossipcurrent-forks-depths",
+                                                                                     "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
+                                                                                     "reward":  {
+                                                                                                    "min":  140,
+                                                                                                    "max":  179
+                                                                                                }
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "gossipcurrent-forks-depths",
+                                                                                       "healAmount":  42,
+                                                                                       "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "gossipcurrent-forks-depths":  {
+                                                     "prompt":  "Deeper within Gossipcurrent Forks, living rootways beneath drifting fae lights divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "treasure",
+                                                                                  "nextRoomId":  "gossipcurrent-forks-threshold",
+                                                                                  "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
+                                                                                  "reward":  {
+                                                                                                 "min":  152,
+                                                                                                 "max":  191
+                                                                                             }
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "gossipcurrent-forks-threshold",
+                                                                                   "enemyId":  "gossipcurrent-sprite",
+                                                                                   "message":  "A shift in the current exposes Gossipcurrent Sprite, which claims the right route through Gossipcurrent Forks."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "gossipcurrent-forks-threshold",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Gossipcurrent Forks. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 }
+                                                                 }
+                                                 },
+                  "gossipcurrent-forks-threshold":  {
+                                                        "prompt":  "Near the heart of Gossipcurrent Forks, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "healAmount":  47,
+                                                                                     "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
+                                                                                      "reward":  {
+                                                                                                     "min":  164,
+                                                                                                     "max":  203
+                                                                                                 }
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "enemyId":  "gossipcurrent-sprite",
+                                                                                        "message":  "A shift in the current exposes Gossipcurrent Sprite, which claims the forward route through Gossipcurrent Forks."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Whisperwell",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Whisperwell."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Whisperwell. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Whisperwell: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Whisperwell. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "rumor-tide-sprite-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Rumor-Tide Sprite reveals itself!"
+             },
+    "completionText":  "Rumor-Tide Sprite yields, and the currents beyond Whisperwell open the next route through Whispering Kelp Forest."
+}

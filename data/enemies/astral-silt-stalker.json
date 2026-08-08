@@ -1,0 +1,20 @@
+{
+    "id":  "astral-silt-stalker",
+    "name":  "Astral Silt Stalker",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  186,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  288,
+                                   "max":  604
+                               },
+                   "xp":  {
+                              "min":  288,
+                              "max":  373
+                          }
+               },
+    "defeatCandyLoss":  78
+}

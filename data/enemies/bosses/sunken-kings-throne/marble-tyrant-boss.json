@@ -1,0 +1,20 @@
+{
+    "id":  "marble-tyrant-boss",
+    "name":  "Marble Tyrant",
+    "region":  "sunken-kings-throne",
+    "level":  38,
+    "hp":  511,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1978,
+                                   "max":  2769
+                               },
+                   "xp":  {
+                              "min":  1120,
+                              "max":  1433
+                          }
+               },
+    "defeatCandyLoss":  257
+}

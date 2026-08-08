@@ -1,0 +1,20 @@
+{
+    "id":  "crownless-knight",
+    "name":  "Crownless Knight",
+    "region":  "sunken-kings-throne",
+    "level":  34,
+    "hp":  363,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  706,
+                                   "max":  1293
+                               },
+                   "xp":  {
+                              "min":  706,
+                              "max":  782
+                          }
+               },
+    "defeatCandyLoss":  154
+}

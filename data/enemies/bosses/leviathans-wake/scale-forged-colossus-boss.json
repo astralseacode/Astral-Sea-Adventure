@@ -1,0 +1,20 @@
+{
+    "id":  "scale-forged-colossus-boss",
+    "name":  "Scale-Forged Colossus",
+    "region":  "leviathans-wake",
+    "level":  23,
+    "hp":  426,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1490,
+                                   "max":  2086
+                               },
+                   "xp":  {
+                              "min":  807,
+                              "max":  1068
+                          }
+               },
+    "defeatCandyLoss":  197
+}

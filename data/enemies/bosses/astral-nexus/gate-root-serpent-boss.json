@@ -1,0 +1,20 @@
+{
+    "id":  "gate-root-serpent-boss",
+    "name":  "Gate-Root Serpent",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  609,
+    "damageBonus":  20,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2641,
+                                   "max":  3697
+                               },
+                   "xp":  {
+                              "min":  1540,
+                              "max":  1933
+                          }
+               },
+    "defeatCandyLoss":  327
+}

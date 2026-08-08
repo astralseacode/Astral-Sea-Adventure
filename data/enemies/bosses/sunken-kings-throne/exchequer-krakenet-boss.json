@@ -1,0 +1,20 @@
+{
+    "id":  "exchequer-krakenet-boss",
+    "name":  "Exchequer Krakenet",
+    "region":  "sunken-kings-throne",
+    "level":  40,
+    "hp":  521,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2040,
+                                   "max":  2856
+                               },
+                   "xp":  {
+                              "min":  1159,
+                              "max":  1456
+                          }
+               },
+    "defeatCandyLoss":  264
+}

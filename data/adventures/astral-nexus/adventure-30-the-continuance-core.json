@@ -1,0 +1,107 @@
+{
+    "id":  "the-continuance-core",
+    "number":  30,
+    "name":  "The Continuance Core",
+    "regionId":  "astral-nexus",
+    "enemyId":  "nexus-continuance-grunt",
+    "recommendedLevel":  50,
+    "introDiscord":  "The Continuance Core lies ahead, where fractured realities where memories cast physical shadows conceal the territory of Nexus Continuance Grunt.",
+    "introTwitch":  "The Continuance Core lies ahead amid fractured realities where memories cast physical shadows.",
+    "startRoomId":  "the-continuance-core-approach",
+    "rooms":  {
+                  "the-continuance-core-approach":  {
+                                                        "prompt":  "At the edge of The Continuance Core, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "the-continuance-core-depths",
+                                                                                     "message":  "A berry cache sits beneath a terminal Shizuki renamed \"Definitely_Not_Shizuki_astral-nexus.txt.\" Its note reads: \"If you\u0027re reading this, their dramatic security system lost again. You\u0027re welcome.\"",
+                                                                                     "berries":  1
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "the-continuance-core-depths",
+                                                                                      "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                      "reward":  {
+                                                                                                     "min":  105,
+                                                                                                     "max":  149
+                                                                                                 }
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "the-continuance-core-depths",
+                                                                                        "enemyId":  "nexus-continuance-grunt",
+                                                                                        "message":  "A shift in the current exposes Nexus Continuance Grunt, which claims the forward route through The Continuance Core."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "the-continuance-core-depths":  {
+                                                      "prompt":  "Deeper within The Continuance Core, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "the-continuance-core-threshold",
+                                                                                   "enemyId":  "nexus-continuance-grunt",
+                                                                                   "message":  "A shift in the current exposes Nexus Continuance Grunt, which claims the left route through The Continuance Core."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "the-continuance-core-threshold",
+                                                                                    "healAmount":  0,
+                                                                                    "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "the-continuance-core-threshold",
+                                                                                      "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                      "reward":  {
+                                                                                                     "min":  117,
+                                                                                                     "max":  161
+                                                                                                 }
+                                                                                  }
+                                                                  }
+                                                  },
+                  "the-continuance-core-threshold":  {
+                                                         "prompt":  "Near the heart of The Continuance Core, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
+                                                                                      "reward":  {
+                                                                                                     "min":  129,
+                                                                                                     "max":  173
+                                                                                                 }
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "enemyId":  "nexus-continuance-grunt",
+                                                                                       "message":  "A shift in the current exposes Nexus Continuance Grunt, which claims the right route through The Continuance Core."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "healing",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "healAmount":  5,
+                                                                                         "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                         "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Central Continuance Command",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Central Continuance Command."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Central Continuance Command. A uniformed figure bearing an old institutional rank waits beyond a sealed command dais.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Central Continuance Command: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Central Continuance Command. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "nexus-continuance-officer-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Nexus Continuance Officer reveals itself!"
+             },
+    "completionText":  "Nexus Continuance Officer falls, exposing preserved records among later additions defaced with Shizuki\u0027s cheerful graffiti. The Continuance Core links every annex to a century-spanning objective and identifies Subject Seven as uniquely viable, but its missing records still conceal who named Shizuki, why she survived, and what the final objective was. Shizuki\u0027s newest annotation reads: \"Came back on my own. Added mustache. Left whenever I wanted.\" All 30 Adventures in Astral Nexus are complete."
+}

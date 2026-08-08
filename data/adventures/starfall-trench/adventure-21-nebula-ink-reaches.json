@@ -1,0 +1,107 @@
+{
+    "id":  "nebula-ink-reaches",
+    "number":  21,
+    "name":  "Nebula Ink Reaches",
+    "regionId":  "starfall-trench",
+    "enemyId":  "nebula-ink-squid",
+    "recommendedLevel":  8,
+    "introDiscord":  "Nebula Ink Reaches lies ahead, where gravity-bent celestial ruins conceal the territory of Nebula Ink Squid.",
+    "introTwitch":  "Nebula Ink Reaches lies ahead amid gravity-bent celestial ruins.",
+    "startRoomId":  "nebula-ink-reaches-approach",
+    "rooms":  {
+                  "nebula-ink-reaches-approach":  {
+                                                      "prompt":  "At the edge of Nebula Ink Reaches, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "healing",
+                                                                                   "nextRoomId":  "nebula-ink-reaches-depths",
+                                                                                   "healAmount":  19,
+                                                                                   "message":  "The left route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "nebula-ink-reaches-depths",
+                                                                                    "enemyId":  "nebula-ink-squid",
+                                                                                    "message":  "A shift in the current exposes Nebula Ink Squid, which claims the right route through Nebula Ink Reaches."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "nebula-ink-reaches-depths",
+                                                                                      "message":  "Beyond the forward route, you discover a star chart coffer buried in luminous silt.",
+                                                                                      "reward":  {
+                                                                                                     "min":  76,
+                                                                                                     "max":  117
+                                                                                                 }
+                                                                                  }
+                                                                  }
+                                                  },
+                  "nebula-ink-reaches-depths":  {
+                                                    "prompt":  "Deeper within Nebula Ink Reaches, fractured starstone terraces divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "empty",
+                                                                                 "nextRoomId":  "nebula-ink-reaches-threshold",
+                                                                                 "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Nebula Ink Reaches. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                 "berries":  1
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "treasure",
+                                                                                  "nextRoomId":  "nebula-ink-reaches-threshold",
+                                                                                  "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
+                                                                                  "reward":  {
+                                                                                                 "min":  88,
+                                                                                                 "max":  129
+                                                                                             }
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "nebula-ink-reaches-threshold",
+                                                                                    "enemyId":  "nebula-ink-squid",
+                                                                                    "message":  "A shift in the current exposes Nebula Ink Squid, which claims the forward route through Nebula Ink Reaches."
+                                                                                }
+                                                                }
+                                                },
+                  "nebula-ink-reaches-threshold":  {
+                                                       "prompt":  "Near the heart of Nebula Ink Reaches, meteor-lit trenches divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "enemyId":  "nebula-ink-squid",
+                                                                                    "message":  "A shift in the current exposes Nebula Ink Squid, which claims the left route through Nebula Ink Reaches."
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "healAmount":  24,
+                                                                                     "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "treasure",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
+                                                                                       "reward":  {
+                                                                                                      "min":  100,
+                                                                                                      "max":  141
+                                                                                                  }
+                                                                                   }
+                                                                   }
+                                                   },
+                  "boss-antechamber":  {
+                                           "name":  "Violet Stormwell",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Violet Stormwell."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Violet Stormwell. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Violet Stormwell: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Violet Stormwell. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "cloudveil-krakenet-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Cloudveil Krakenet reveals itself!"
+             },
+    "completionText":  "Cloudveil Krakenet yields, and the currents beyond Violet Stormwell open the next route through Starfall Trench."
+}

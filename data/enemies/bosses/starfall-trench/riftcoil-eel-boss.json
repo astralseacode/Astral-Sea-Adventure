@@ -1,0 +1,20 @@
+{
+    "id":  "riftcoil-eel-boss",
+    "name":  "Riftcoil Eel",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  285,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  843,
+                                   "max":  1180
+                               },
+                   "xp":  {
+                              "min":  422,
+                              "max":  628
+                          }
+               },
+    "defeatCandyLoss":  117
+}

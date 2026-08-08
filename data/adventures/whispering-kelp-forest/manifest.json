@@ -1,0 +1,242 @@
+[
+    {
+        "number":  1,
+        "id":  "murmurleaf-paths",
+        "name":  "Murmurleaf Paths",
+        "enemyId":  "murmurleaf-minnow",
+        "bossEnemyId":  "chorus-fin-schoolmother-boss",
+        "file":  "adventure-01-murmurleaf-paths.json"
+    },
+    {
+        "number":  2,
+        "id":  "lanternvine-tangle",
+        "name":  "Lanternvine Tangle",
+        "enemyId":  "lanternvine-crab",
+        "bossEnemyId":  "glowroot-clawlord-boss",
+        "file":  "adventure-02-lanternvine-tangle.json"
+    },
+    {
+        "number":  3,
+        "id":  "whispercap-hollows",
+        "name":  "Whispercap Hollows",
+        "enemyId":  "whispercap-snail",
+        "bossEnemyId":  "oracle-shell-snail-boss",
+        "file":  "adventure-03-whispercap-hollows.json"
+    },
+    {
+        "number":  4,
+        "id":  "veilpetal-glade",
+        "name":  "Veilpetal Glade",
+        "enemyId":  "veilpetal-ray",
+        "bossEnemyId":  "veilpetal-grandwing-boss",
+        "file":  "adventure-04-veilpetal-glade.json"
+    },
+    {
+        "number":  5,
+        "id":  "rootcoil-channels",
+        "name":  "Rootcoil Channels",
+        "enemyId":  "rootcoil-eel",
+        "bossEnemyId":  "elder-rootcoil-boss",
+        "file":  "adventure-05-rootcoil-channels.json"
+    },
+    {
+        "number":  6,
+        "id":  "dewbell-canopy",
+        "name":  "Dewbell Canopy",
+        "enemyId":  "dewbell-jelly",
+        "bossEnemyId":  "midnight-bell-medusa-boss",
+        "file":  "adventure-06-dewbell-canopy.json"
+    },
+    {
+        "number":  7,
+        "id":  "briarfin-thickets",
+        "name":  "Briarfin Thickets",
+        "enemyId":  "briarfin-prowler",
+        "bossEnemyId":  "thornwake-huntress-boss",
+        "file":  "adventure-07-briarfin-thickets.json"
+    },
+    {
+        "number":  8,
+        "id":  "hushwater-trails",
+        "name":  "Hushwater Trails",
+        "enemyId":  "hushwater-stagfish",
+        "bossEnemyId":  "crown-antler-stagfish-boss",
+        "file":  "adventure-08-hushwater-trails.json"
+    },
+    {
+        "number":  9,
+        "id":  "fae-lure-lanterns",
+        "name":  "Fae-Lure Lanterns",
+        "enemyId":  "fae-lure-angler",
+        "bossEnemyId":  "glamourmaw-angler-boss",
+        "file":  "adventure-09-fae-lure-lanterns.json"
+    },
+    {
+        "number":  10,
+        "id":  "mosscloak-maze",
+        "name":  "Mosscloak Maze",
+        "enemyId":  "mosscloak-octopus",
+        "bossEnemyId":  "ancient-mosscloak-boss",
+        "file":  "adventure-10-mosscloak-maze.json"
+    },
+    {
+        "number":  11,
+        "id":  "the-singing-vines",
+        "name":  "The Singing Vines",
+        "enemyId":  "singing-vine-serpent",
+        "bossEnemyId":  "canticle-serpent-boss",
+        "file":  "adventure-11-the-singing-vines.json"
+    },
+    {
+        "number":  12,
+        "id":  "moonblossom-garden",
+        "name":  "Moonblossom Garden",
+        "enemyId":  "moonblossom-mantis",
+        "bossEnemyId":  "lunar-petal-mantis-boss",
+        "file":  "adventure-12-moonblossom-garden.json"
+    },
+    {
+        "number":  13,
+        "id":  "gossipcurrent-forks",
+        "name":  "Gossipcurrent Forks",
+        "enemyId":  "gossipcurrent-sprite",
+        "bossEnemyId":  "rumor-tide-sprite-boss",
+        "file":  "adventure-13-gossipcurrent-forks.json"
+    },
+    {
+        "number":  14,
+        "id":  "the-vanishing-grove",
+        "name":  "The Vanishing Grove",
+        "enemyId":  "camouflage-grouper",
+        "bossEnemyId":  "unseen-grovejaw-boss",
+        "file":  "adventure-14-the-vanishing-grove.json"
+    },
+    {
+        "number":  15,
+        "id":  "shrinebark-pilgrimage",
+        "name":  "Shrinebark Pilgrimage",
+        "enemyId":  "shrinebark-guardian",
+        "bossEnemyId":  "first-root-guardian-boss",
+        "file":  "adventure-15-shrinebark-pilgrimage.json"
+    },
+    {
+        "number":  16,
+        "id":  "starflower-hunting-beds",
+        "name":  "Starflower Hunting Beds",
+        "enemyId":  "predatory-starflower",
+        "bossEnemyId":  "devouring-starflower-boss",
+        "file":  "adventure-16-starflower-hunting-beds.json"
+    },
+    {
+        "number":  17,
+        "id":  "dreamsap-pools",
+        "name":  "Dreamsap Pools",
+        "enemyId":  "dreamsap-leech",
+        "bossEnemyId":  "nightmare-sapmother-boss",
+        "file":  "adventure-17-dreamsap-pools.json"
+    },
+    {
+        "number":  18,
+        "id":  "kelpweave-galleries",
+        "name":  "Kelpweave Galleries",
+        "enemyId":  "kelpweave-spider",
+        "bossEnemyId":  "grand-loom-spider-boss",
+        "file":  "adventure-18-kelpweave-galleries.json"
+    },
+    {
+        "number":  19,
+        "id":  "willowcurrent-bend",
+        "name":  "Willowcurrent Bend",
+        "enemyId":  "willowcurrent-nymph",
+        "bossEnemyId":  "weeping-current-nymph-boss",
+        "file":  "adventure-19-willowcurrent-bend.json"
+    },
+    {
+        "number":  20,
+        "id":  "bramblejaw-understory",
+        "name":  "Bramblejaw Understory",
+        "enemyId":  "bramblejaw-turtle",
+        "bossEnemyId":  "thicket-shell-ancient-boss",
+        "file":  "adventure-20-bramblejaw-understory.json"
+    },
+    {
+        "number":  21,
+        "id":  "echo-bark-trunks",
+        "name":  "Echo-Bark Trunks",
+        "enemyId":  "echo-bark-woodfish",
+        "bossEnemyId":  "resonant-timberfish-boss",
+        "file":  "adventure-21-echo-bark-trunks.json"
+    },
+    {
+        "number":  22,
+        "id":  "moonmoth-drift",
+        "name":  "Moonmoth Drift",
+        "enemyId":  "moonmoth-nudibranch",
+        "bossEnemyId":  "pale-wing-moonmoth-boss",
+        "file":  "adventure-22-moonmoth-drift.json"
+    },
+    {
+        "number":  23,
+        "id":  "rootbound-shrine",
+        "name":  "Rootbound Shrine",
+        "enemyId":  "rootbound-effigy",
+        "bossEnemyId":  "greenwood-idol-boss",
+        "file":  "adventure-23-rootbound-shrine.json"
+    },
+    {
+        "number":  24,
+        "id":  "sighing-reed-marsh",
+        "name":  "Sighing Reed Marsh",
+        "enemyId":  "sighing-reed-hunter",
+        "bossEnemyId":  "reed-crowned-hunter-boss",
+        "file":  "adventure-24-sighing-reed-marsh.json"
+    },
+    {
+        "number":  25,
+        "id":  "glimmerpod-nursery",
+        "name":  "Glimmerpod Nursery",
+        "enemyId":  "glimmerpod-beetle",
+        "bossEnemyId":  "radiant-podqueen-boss",
+        "file":  "adventure-25-glimmerpod-nursery.json"
+    },
+    {
+        "number":  26,
+        "id":  "the-borrowed-grove",
+        "name":  "The Borrowed Grove",
+        "enemyId":  "ancient-grove-mimic",
+        "bossEnemyId":  "many-faced-grove-mimic-boss",
+        "file":  "adventure-26-the-borrowed-grove.json"
+    },
+    {
+        "number":  27,
+        "id":  "thornsong-vale",
+        "name":  "Thornsong Vale",
+        "enemyId":  "thornsong-siren",
+        "bossEnemyId":  "briar-chorus-siren-boss",
+        "file":  "adventure-27-thornsong-vale.json"
+    },
+    {
+        "number":  28,
+        "id":  "whisperroot-deeps",
+        "name":  "Whisperroot Deeps",
+        "enemyId":  "whisperroot-colossus",
+        "bossEnemyId":  "forest-heart-colossus-boss",
+        "file":  "adventure-28-whisperroot-deeps.json"
+    },
+    {
+        "number":  29,
+        "id":  "the-forest-remembers",
+        "name":  "The Forest Remembers",
+        "enemyId":  "memory-kelp-oracle",
+        "bossEnemyId":  "keeper-of-green-memories-boss",
+        "file":  "adventure-29-the-forest-remembers.json"
+    },
+    {
+        "number":  30,
+        "id":  "the-verdant-pursuit-station",
+        "name":  "The Verdant Pursuit Station",
+        "enemyId":  "verdant-pursuit-grunt",
+        "bossEnemyId":  "verdant-pursuit-officer-boss",
+        "file":  "adventure-30-the-verdant-pursuit-station.json"
+    }
+]

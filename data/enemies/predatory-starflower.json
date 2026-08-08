@@ -1,0 +1,20 @@
+{
+    "id":  "predatory-starflower",
+    "name":  "Predatory Starflower",
+    "region":  "whispering-kelp-forest",
+    "level":  15,
+    "hp":  251,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  423,
+                                   "max":  829
+                               },
+                   "xp":  {
+                              "min":  423,
+                              "max":  508
+                          }
+               },
+    "defeatCandyLoss":  103
+}

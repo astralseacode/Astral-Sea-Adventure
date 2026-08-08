@@ -1,0 +1,20 @@
+{
+    "id":  "maelstrom-apex-boss",
+    "name":  "Maelstrom Apex",
+    "region":  "leviathans-wake",
+    "level":  21,
+    "hp":  412,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1412,
+                                   "max":  1977
+                               },
+                   "xp":  {
+                              "min":  759,
+                              "max":  1030
+                          }
+               },
+    "defeatCandyLoss":  185
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "moonmoth-nudibranch",
+    "name":  "Moonmoth Nudibranch",
+    "region":  "whispering-kelp-forest",
+    "level":  17,
+    "hp":  266,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  456,
+                                   "max":  881
+                               },
+                   "xp":  {
+                              "min":  456,
+                              "max":  548
+                          }
+               },
+    "defeatCandyLoss":  113
+}

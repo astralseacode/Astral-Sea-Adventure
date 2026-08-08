@@ -1,0 +1,20 @@
+{
+    "id":  "riftlight-serpent",
+    "name":  "Riftlight Serpent",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  213,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  344,
+                                   "max":  695
+                               },
+                   "xp":  {
+                              "min":  344,
+                              "max":  441
+                          }
+               },
+    "defeatCandyLoss":  95
+}

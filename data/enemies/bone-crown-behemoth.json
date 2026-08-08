@@ -1,0 +1,20 @@
+{
+    "id":  "bone-crown-behemoth",
+    "name":  "Bone-Crown Behemoth",
+    "region":  "leviathans-wake",
+    "level":  29,
+    "hp":  340,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  652,
+                                   "max":  1202
+                               },
+                   "xp":  {
+                              "min":  652,
+                              "max":  748
+                          }
+               },
+    "defeatCandyLoss":  149
+}

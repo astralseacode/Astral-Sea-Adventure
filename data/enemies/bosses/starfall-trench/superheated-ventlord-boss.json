@@ -1,0 +1,20 @@
+{
+    "id":  "superheated-ventlord-boss",
+    "name":  "Superheated Ventlord",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  282,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  833,
+                                   "max":  1166
+                               },
+                   "xp":  {
+                              "min":  415,
+                              "max":  621
+                          }
+               },
+    "defeatCandyLoss":  114
+}

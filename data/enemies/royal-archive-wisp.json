@@ -1,0 +1,20 @@
+{
+    "id":  "royal-archive-wisp",
+    "name":  "Royal Archive Wisp",
+    "region":  "sunken-kings-throne",
+    "level":  35,
+    "hp":  366,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  715,
+                                   "max":  1309
+                               },
+                   "xp":  {
+                              "min":  715,
+                              "max":  792
+                          }
+               },
+    "defeatCandyLoss":  156
+}

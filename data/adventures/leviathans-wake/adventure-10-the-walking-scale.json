@@ -1,0 +1,107 @@
+{
+    "id":  "the-walking-scale",
+    "number":  10,
+    "name":  "The Walking Scale",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "leviathan-scale-golem",
+    "recommendedLevel":  23,
+    "introDiscord":  "The Walking Scale lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Leviathan Scale Golem.",
+    "introTwitch":  "The Walking Scale lies ahead amid titanic ribs rising through violent crosscurrents.",
+    "startRoomId":  "the-walking-scale-approach",
+    "rooms":  {
+                  "the-walking-scale-approach":  {
+                                                     "prompt":  "At the edge of The Walking Scale, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "the-walking-scale-depths",
+                                                                                  "enemyId":  "leviathan-scale-golem",
+                                                                                  "message":  "A shift in the current exposes Leviathan Scale Golem, which claims the left route through The Walking Scale."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "empty",
+                                                                                   "nextRoomId":  "the-walking-scale-depths",
+                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Walking Scale. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                   "berries":  1
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "the-walking-scale-depths",
+                                                                                     "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
+                                                                                     "reward":  {
+                                                                                                    "min":  204,
+                                                                                                    "max":  242
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "the-walking-scale-depths":  {
+                                                   "prompt":  "Deeper within The Walking Scale, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "healing",
+                                                                                "nextRoomId":  "the-walking-scale-threshold",
+                                                                                "healAmount":  61,
+                                                                                "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "the-walking-scale-threshold",
+                                                                                 "enemyId":  "leviathan-scale-golem",
+                                                                                 "message":  "A shift in the current exposes Leviathan Scale Golem, which claims the right route through The Walking Scale."
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "the-walking-scale-threshold",
+                                                                                   "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
+                                                                                   "reward":  {
+                                                                                                  "min":  216,
+                                                                                                  "max":  254
+                                                                                              }
+                                                                               }
+                                                               }
+                                               },
+                  "the-walking-scale-threshold":  {
+                                                      "prompt":  "Near the heart of The Walking Scale, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "message":  "Beyond the left route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                   "reward":  {
+                                                                                                  "min":  228,
+                                                                                                  "max":  266
+                                                                                              }
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "healAmount":  66,
+                                                                                    "message":  "The right route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "enemyId":  "leviathan-scale-golem",
+                                                                                      "message":  "A shift in the current exposes Leviathan Scale Golem, which claims the forward route through The Walking Scale."
+                                                                                  }
+                                                                  }
+                                                  },
+                  "boss-antechamber":  {
+                                           "name":  "Titanplate Foundry",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Titanplate Foundry."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Titanplate Foundry. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Titanplate Foundry: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Titanplate Foundry. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "scale-forged-colossus-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Scale-Forged Colossus reveals itself!"
+             },
+    "completionText":  "Scale-Forged Colossus yields, and the currents beyond Titanplate Foundry open the next route through Leviathan\u0027s Wake."
+}

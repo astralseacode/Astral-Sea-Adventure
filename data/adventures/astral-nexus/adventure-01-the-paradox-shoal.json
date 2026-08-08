@@ -1,0 +1,107 @@
+{
+    "id":  "the-paradox-shoal",
+    "number":  1,
+    "name":  "The Paradox Shoal",
+    "regionId":  "astral-nexus",
+    "enemyId":  "paradox-minnow",
+    "recommendedLevel":  50,
+    "introDiscord":  "The Paradox Shoal lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Paradox Minnow.",
+    "introTwitch":  "The Paradox Shoal lies ahead amid floating ocean fragments joined by impossible currents.",
+    "startRoomId":  "the-paradox-shoal-approach",
+    "rooms":  {
+                  "the-paradox-shoal-approach":  {
+                                                     "prompt":  "At the edge of The Paradox Shoal, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "the-paradox-shoal-depths",
+                                                                                  "enemyId":  "paradox-minnow",
+                                                                                  "message":  "A shift in the current exposes Paradox Minnow, which claims the left route through The Paradox Shoal."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "the-paradox-shoal-depths",
+                                                                                   "message":  "Beyond the right route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                   "reward":  {
+                                                                                                  "min":  450,
+                                                                                                  "max":  485
+                                                                                              }
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "the-paradox-shoal-depths",
+                                                                                     "healAmount":  135,
+                                                                                     "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 }
+                                                                 }
+                                                 },
+                  "the-paradox-shoal-depths":  {
+                                                   "prompt":  "Deeper within The Paradox Shoal, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "treasure",
+                                                                                "nextRoomId":  "the-paradox-shoal-threshold",
+                                                                                "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
+                                                                                "reward":  {
+                                                                                               "min":  462,
+                                                                                               "max":  497
+                                                                                           }
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "the-paradox-shoal-threshold",
+                                                                                 "enemyId":  "paradox-minnow",
+                                                                                 "message":  "A shift in the current exposes Paradox Minnow, which claims the right route through The Paradox Shoal."
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "empty",
+                                                                                   "nextRoomId":  "the-paradox-shoal-threshold",
+                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Paradox Shoal. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                   "berries":  1
+                                                                               }
+                                                               }
+                                               },
+                  "the-paradox-shoal-threshold":  {
+                                                      "prompt":  "Near the heart of The Paradox Shoal, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "healing",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "healAmount":  140,
+                                                                                   "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                    "reward":  {
+                                                                                                   "min":  474,
+                                                                                                   "max":  509
+                                                                                               }
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "enemyId":  "paradox-minnow",
+                                                                                      "message":  "A shift in the current exposes Paradox Minnow, which claims the forward route through The Paradox Shoal."
+                                                                                  }
+                                                                  }
+                                                  },
+                  "boss-antechamber":  {
+                                           "name":  "Pool of Opposite Tides",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Pool of Opposite Tides."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Pool of Opposite Tides. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Pool of Opposite Tides: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Pool of Opposite Tides. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "contradiction-leviathan-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Contradiction Leviathan reveals itself!"
+             },
+    "completionText":  "Contradiction Leviathan yields, and the currents beyond Pool of Opposite Tides open the next route through Astral Nexus."
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "devouring-starflower-boss",
+    "name":  "Devouring Starflower",
+    "region":  "whispering-kelp-forest",
+    "level":  15,
+    "hp":  369,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1207,
+                                   "max":  1690
+                               },
+                   "xp":  {
+                              "min":  644,
+                              "max":  874
+                          }
+               },
+    "defeatCandyLoss":  166
+}

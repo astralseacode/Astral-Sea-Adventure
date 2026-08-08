@@ -1,0 +1,20 @@
+{
+    "id":  "mosscloak-octopus",
+    "name":  "Mosscloak Octopus",
+    "region":  "whispering-kelp-forest",
+    "level":  13,
+    "hp":  237,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  390,
+                                   "max":  778
+                               },
+                   "xp":  {
+                              "min":  390,
+                              "max":  469
+                          }
+               },
+    "defeatCandyLoss":  94
+}

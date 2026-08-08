@@ -1,0 +1,20 @@
+{
+    "id":  "crimson-court-lamprey-boss",
+    "name":  "Crimson Court Lamprey",
+    "region":  "sunken-kings-throne",
+    "level":  31,
+    "hp":  482,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1791,
+                                   "max":  2507
+                               },
+                   "xp":  {
+                              "min":  1006,
+                              "max":  1365
+                          }
+               },
+    "defeatCandyLoss":  235
+}

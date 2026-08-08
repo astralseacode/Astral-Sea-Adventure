@@ -1,0 +1,107 @@
+{
+    "id":  "convergent-currents",
+    "number":  16,
+    "name":  "Convergent Currents",
+    "regionId":  "astral-nexus",
+    "enemyId":  "nexus-current-elemental",
+    "recommendedLevel":  50,
+    "introDiscord":  "Convergent Currents lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Nexus Current Elemental.",
+    "introTwitch":  "Convergent Currents lies ahead amid floating ocean fragments joined by impossible currents.",
+    "startRoomId":  "convergent-currents-approach",
+    "rooms":  {
+                  "convergent-currents-approach":  {
+                                                       "prompt":  "At the edge of Convergent Currents, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "convergent-currents-depths",
+                                                                                    "enemyId":  "nexus-current-elemental",
+                                                                                    "message":  "A shift in the current exposes Nexus Current Elemental, which claims the left route through Convergent Currents."
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "convergent-currents-depths",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Convergent Currents. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "treasure",
+                                                                                       "nextRoomId":  "convergent-currents-depths",
+                                                                                       "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                       "reward":  {
+                                                                                                      "min":  272,
+                                                                                                      "max":  312
+                                                                                                  }
+                                                                                   }
+                                                                   }
+                                                   },
+                  "convergent-currents-depths":  {
+                                                     "prompt":  "Deeper within Convergent Currents, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "convergent-currents-threshold",
+                                                                                  "healAmount":  65,
+                                                                                  "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "convergent-currents-threshold",
+                                                                                   "enemyId":  "nexus-current-elemental",
+                                                                                   "message":  "A shift in the current exposes Nexus Current Elemental, which claims the right route through Convergent Currents."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "convergent-currents-threshold",
+                                                                                     "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
+                                                                                     "reward":  {
+                                                                                                    "min":  284,
+                                                                                                    "max":  324
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "convergent-currents-threshold":  {
+                                                        "prompt":  "Near the heart of Convergent Currents, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "message":  "Beyond the left route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                     "reward":  {
+                                                                                                    "min":  296,
+                                                                                                    "max":  336
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "healAmount":  70,
+                                                                                      "message":  "The right route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "enemyId":  "nexus-current-elemental",
+                                                                                        "message":  "A shift in the current exposes Nexus Current Elemental, which claims the forward route through Convergent Currents."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Confluence Core",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Confluence Core."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Confluence Core. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Confluence Core: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Confluence Core. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "sixfold-tideheart-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Sixfold Tideheart reveals itself!"
+             },
+    "completionText":  "Sixfold Tideheart yields, and the currents beyond Confluence Core open the next route through Astral Nexus."
+}

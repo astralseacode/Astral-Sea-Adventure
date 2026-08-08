@@ -1,0 +1,20 @@
+{
+    "id":  "emberstar-urchin",
+    "name":  "Emberstar Urchin",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  160,
+    "damageBonus":  6,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  231,
+                                   "max":  513
+                               },
+                   "xp":  {
+                              "min":  231,
+                              "max":  305
+                          }
+               },
+    "defeatCandyLoss":  61
+}

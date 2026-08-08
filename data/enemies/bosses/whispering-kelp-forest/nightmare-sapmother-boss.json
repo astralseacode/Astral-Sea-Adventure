@@ -1,0 +1,20 @@
+{
+    "id":  "nightmare-sapmother-boss",
+    "name":  "Nightmare Sapmother",
+    "region":  "whispering-kelp-forest",
+    "level":  16,
+    "hp":  372,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1221,
+                                   "max":  1709
+                               },
+                   "xp":  {
+                              "min":  652,
+                              "max":  881
+                          }
+               },
+    "defeatCandyLoss":  169
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "many-faced-grove-mimic-boss",
+    "name":  "Many-Faced Grove Mimic",
+    "region":  "whispering-kelp-forest",
+    "level":  19,
+    "hp":  398,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1345,
+                                   "max":  1883
+                               },
+                   "xp":  {
+                              "min":  727,
+                              "max":  950
+                          }
+               },
+    "defeatCandyLoss":  190
+}

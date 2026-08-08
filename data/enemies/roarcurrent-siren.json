@@ -1,0 +1,20 @@
+{
+    "id":  "roarcurrent-siren",
+    "name":  "Roarcurrent Siren",
+    "region":  "leviathans-wake",
+    "level":  24,
+    "hp":  311,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  570,
+                                   "max":  1057
+                               },
+                   "xp":  {
+                              "min":  570,
+                              "max":  653
+                          }
+               },
+    "defeatCandyLoss":  130
+}

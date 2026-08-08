@@ -1,0 +1,107 @@
+{
+    "id":  "colossus-trail",
+    "number":  21,
+    "name":  "Colossus Trail",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "colossus-remora",
+    "recommendedLevel":  27,
+    "introDiscord":  "Colossus Trail lies ahead, where immense scales embedded in unstable coral shelves conceal the territory of Colossus Remora.",
+    "introTwitch":  "Colossus Trail lies ahead amid immense scales embedded in unstable coral shelves.",
+    "startRoomId":  "colossus-trail-approach",
+    "rooms":  {
+                  "colossus-trail-approach":  {
+                                                  "prompt":  "At the edge of Colossus Trail, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "healing",
+                                                                               "nextRoomId":  "colossus-trail-depths",
+                                                                               "healAmount":  27,
+                                                                               "message":  "The left route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                               "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "combat",
+                                                                                "nextRoomId":  "colossus-trail-depths",
+                                                                                "enemyId":  "colossus-remora",
+                                                                                "message":  "A shift in the current exposes Colossus Remora, which claims the right route through Colossus Trail."
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "treasure",
+                                                                                  "nextRoomId":  "colossus-trail-depths",
+                                                                                  "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                  "reward":  {
+                                                                                                 "min":  129,
+                                                                                                 "max":  170
+                                                                                             }
+                                                                              }
+                                                              }
+                                              },
+                  "colossus-trail-depths":  {
+                                                "prompt":  "Deeper within Colossus Trail, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                "choices":  {
+                                                                "left":  {
+                                                                             "type":  "empty",
+                                                                             "nextRoomId":  "colossus-trail-threshold",
+                                                                             "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Colossus Trail. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                             "berries":  1
+                                                                         },
+                                                                "right":  {
+                                                                              "type":  "treasure",
+                                                                              "nextRoomId":  "colossus-trail-threshold",
+                                                                              "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
+                                                                              "reward":  {
+                                                                                             "min":  141,
+                                                                                             "max":  182
+                                                                                         }
+                                                                          },
+                                                                "forward":  {
+                                                                                "type":  "combat",
+                                                                                "nextRoomId":  "colossus-trail-threshold",
+                                                                                "enemyId":  "colossus-remora",
+                                                                                "message":  "A shift in the current exposes Colossus Remora, which claims the forward route through Colossus Trail."
+                                                                            }
+                                                            }
+                                            },
+                  "colossus-trail-threshold":  {
+                                                   "prompt":  "Near the heart of Colossus Trail, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "combat",
+                                                                                "nextRoomId":  "boss-antechamber",
+                                                                                "enemyId":  "colossus-remora",
+                                                                                "message":  "A shift in the current exposes Colossus Remora, which claims the left route through Colossus Trail."
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "healing",
+                                                                                 "nextRoomId":  "boss-antechamber",
+                                                                                 "healAmount":  32,
+                                                                                 "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                 "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
+                                                                                   "reward":  {
+                                                                                                  "min":  153,
+                                                                                                  "max":  194
+                                                                                              }
+                                                                               }
+                                                               }
+                                               },
+                  "boss-antechamber":  {
+                                           "name":  "Pilgrim Scale",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Pilgrim Scale."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Pilgrim Scale. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Pilgrim Scale: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Pilgrim Scale. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "titanbound-remora-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Titanbound Remora reveals itself!"
+             },
+    "completionText":  "Titanbound Remora yields, and the currents beyond Pilgrim Scale open the next route through Leviathan\u0027s Wake."
+}

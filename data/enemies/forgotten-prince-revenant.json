@@ -1,0 +1,20 @@
+{
+    "id":  "forgotten-prince-revenant",
+    "name":  "Forgotten Prince Revenant",
+    "region":  "sunken-kings-throne",
+    "level":  47,
+    "hp":  415,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  873,
+                                   "max":  1572
+                               },
+                   "xp":  {
+                              "min":  873,
+                              "max":  968
+                          }
+               },
+    "defeatCandyLoss":  182
+}

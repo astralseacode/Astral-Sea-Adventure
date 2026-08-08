@@ -1,0 +1,20 @@
+{
+    "id":  "mother-of-pearl-warden-boss",
+    "name":  "Mother-of-Pearl Warden",
+    "region":  "sunken-kings-throne",
+    "level":  44,
+    "hp":  544,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2184,
+                                   "max":  3058
+                               },
+                   "xp":  {
+                              "min":  1248,
+                              "max":  1509
+                          }
+               },
+    "defeatCandyLoss":  281
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "memory-reef-warden",
+    "name":  "Memory Reef Warden",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  481,
+    "damageBonus":  17,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1162,
+                                   "max":  2059
+                               },
+                   "xp":  {
+                              "min":  1162,
+                              "max":  1252
+                          }
+               },
+    "defeatCandyLoss":  219
+}

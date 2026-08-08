@@ -1,0 +1,20 @@
+{
+    "id":  "fault-crowned-serpent-boss",
+    "name":  "Fault-Crowned Serpent",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  332,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1019,
+                                   "max":  1427
+                               },
+                   "xp":  {
+                              "min":  539,
+                              "max":  757
+                          }
+               },
+    "defeatCandyLoss":  158
+}

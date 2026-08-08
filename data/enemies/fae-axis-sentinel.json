@@ -1,0 +1,20 @@
+{
+    "id":  "fae-axis-sentinel",
+    "name":  "Fae Axis Sentinel",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  448,
+    "damageBonus":  15,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1010,
+                                   "max":  1793
+                               },
+                   "xp":  {
+                              "min":  1010,
+                              "max":  1089
+                          }
+               },
+    "defeatCandyLoss":  202
+}

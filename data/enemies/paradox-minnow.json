@@ -1,0 +1,20 @@
+{
+    "id":  "paradox-minnow",
+    "name":  "Paradox Minnow",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  425,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  900,
+                                   "max":  1600
+                               },
+                   "xp":  {
+                              "min":  900,
+                              "max":  970
+                          }
+               },
+    "defeatCandyLoss":  190
+}

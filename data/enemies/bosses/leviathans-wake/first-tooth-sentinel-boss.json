@@ -1,0 +1,20 @@
+{
+    "id":  "first-tooth-sentinel-boss",
+    "name":  "First-Tooth Sentinel",
+    "region":  "leviathans-wake",
+    "level":  28,
+    "hp":  464,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1691,
+                                   "max":  2367
+                               },
+                   "xp":  {
+                              "min":  932,
+                              "max":  1167
+                          }
+               },
+    "defeatCandyLoss":  228
+}

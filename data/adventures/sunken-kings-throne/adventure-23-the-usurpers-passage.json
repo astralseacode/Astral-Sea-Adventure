@@ -1,0 +1,107 @@
+{
+    "id":  "the-usurpers-passage",
+    "number":  23,
+    "name":  "The Usurper\u0027s Passage",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "usurpers-bladefish",
+    "recommendedLevel":  45,
+    "introDiscord":  "The Usurper\u0027s Passage lies ahead, where haunted halls beneath drifting banners conceal the territory of Usurper\u0027s Bladefish.",
+    "introTwitch":  "The Usurper\u0027s Passage lies ahead amid haunted halls beneath drifting banners.",
+    "startRoomId":  "the-usurpers-passage-approach",
+    "rooms":  {
+                  "the-usurpers-passage-approach":  {
+                                                        "prompt":  "At the edge of The Usurper\u0027s Passage, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "the-usurpers-passage-depths",
+                                                                                     "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
+                                                                                     "reward":  {
+                                                                                                    "min":  149,
+                                                                                                    "max":  191
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "the-usurpers-passage-depths",
+                                                                                      "enemyId":  "usurpers-bladefish",
+                                                                                      "message":  "A shift in the current exposes Usurper\u0027s Bladefish, which claims the right route through The Usurper\u0027s Passage."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "the-usurpers-passage-depths",
+                                                                                        "healAmount":  27,
+                                                                                        "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "the-usurpers-passage-depths":  {
+                                                      "prompt":  "Deeper within The Usurper\u0027s Passage, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "the-usurpers-passage-threshold",
+                                                                                   "enemyId":  "usurpers-bladefish",
+                                                                                   "message":  "A shift in the current exposes Usurper\u0027s Bladefish, which claims the left route through The Usurper\u0027s Passage."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "the-usurpers-passage-threshold",
+                                                                                    "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                    "reward":  {
+                                                                                                   "min":  161,
+                                                                                                   "max":  203
+                                                                                               }
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "empty",
+                                                                                      "nextRoomId":  "the-usurpers-passage-threshold",
+                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Usurper\u0027s Passage. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                      "berries":  1
+                                                                                  }
+                                                                  }
+                                                  },
+                  "the-usurpers-passage-threshold":  {
+                                                         "prompt":  "Near the heart of The Usurper\u0027s Passage, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "healAmount":  32,
+                                                                                      "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "enemyId":  "usurpers-bladefish",
+                                                                                       "message":  "A shift in the current exposes Usurper\u0027s Bladefish, which claims the right route through The Usurper\u0027s Passage."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                                         "reward":  {
+                                                                                                        "min":  173,
+                                                                                                        "max":  215
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Hall of the Broken Crown",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Hall of the Broken Crown."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Hall of the Broken Crown. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Hall of the Broken Crown: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Hall of the Broken Crown. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "regicide-bladefish-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Regicide Bladefish reveals itself!"
+             },
+    "completionText":  "Regicide Bladefish yields, and the currents beyond Hall of the Broken Crown open the next route through Sunken King\u0027s Throne."
+}

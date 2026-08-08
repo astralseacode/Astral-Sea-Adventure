@@ -1,0 +1,20 @@
+{
+    "id":  "starbelow-angler",
+    "name":  "Starbelow Angler",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  446,
+    "damageBonus":  15,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  997,
+                                   "max":  1769
+                               },
+                   "xp":  {
+                              "min":  997,
+                              "max":  1074
+                          }
+               },
+    "defeatCandyLoss":  201
+}

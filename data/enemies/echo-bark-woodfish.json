@@ -1,0 +1,20 @@
+{
+    "id":  "echo-bark-woodfish",
+    "name":  "Echo-Bark Woodfish",
+    "region":  "whispering-kelp-forest",
+    "level":  17,
+    "hp":  263,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  450,
+                                   "max":  872
+                               },
+                   "xp":  {
+                              "min":  450,
+                              "max":  541
+                          }
+               },
+    "defeatCandyLoss":  111
+}

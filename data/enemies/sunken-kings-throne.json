@@ -1,0 +1,152 @@
+[
+    {
+        "encounter":  1,
+        "enemy":  "drowned-banner-guard",
+        "recommendedLevel":  30
+    },
+    {
+        "encounter":  2,
+        "enemy":  "crowncoin-mimic",
+        "recommendedLevel":  31
+    },
+    {
+        "encounter":  3,
+        "enemy":  "palace-lamprey",
+        "recommendedLevel":  31
+    },
+    {
+        "encounter":  4,
+        "enemy":  "sealbound-squire",
+        "recommendedLevel":  32
+    },
+    {
+        "encounter":  5,
+        "enemy":  "mourning-courtesan",
+        "recommendedLevel":  33
+    },
+    {
+        "encounter":  6,
+        "enemy":  "scepter-crab",
+        "recommendedLevel":  33
+    },
+    {
+        "encounter":  7,
+        "enemy":  "crownless-knight",
+        "recommendedLevel":  34
+    },
+    {
+        "encounter":  8,
+        "enemy":  "royal-archive-wisp",
+        "recommendedLevel":  35
+    },
+    {
+        "encounter":  9,
+        "enemy":  "thronewater-eel",
+        "recommendedLevel":  36
+    },
+    {
+        "encounter":  10,
+        "enemy":  "gilded-armorfish",
+        "recommendedLevel":  36
+    },
+    {
+        "encounter":  11,
+        "enemy":  "sepulcher-manta",
+        "recommendedLevel":  37
+    },
+    {
+        "encounter":  12,
+        "enemy":  "broken-statue-walker",
+        "recommendedLevel":  38
+    },
+    {
+        "encounter":  13,
+        "enemy":  "dynasty-coral-golem",
+        "recommendedLevel":  38
+    },
+    {
+        "encounter":  14,
+        "enemy":  "chalice-jelly",
+        "recommendedLevel":  39
+    },
+    {
+        "encounter":  15,
+        "enemy":  "taxkeeper-octopus",
+        "recommendedLevel":  40
+    },
+    {
+        "encounter":  16,
+        "enemy":  "regal-fang-moray",
+        "recommendedLevel":  40
+    },
+    {
+        "encounter":  17,
+        "enemy":  "haunted-herald",
+        "recommendedLevel":  41
+    },
+    {
+        "encounter":  18,
+        "enemy":  "sealbreaker-lobster",
+        "recommendedLevel":  42
+    },
+    {
+        "encounter":  19,
+        "enemy":  "drowned-duelist",
+        "recommendedLevel":  42
+    },
+    {
+        "encounter":  20,
+        "enemy":  "crownshadow-stalker",
+        "recommendedLevel":  43
+    },
+    {
+        "encounter":  21,
+        "enemy":  "royal-menagerie-beast",
+        "recommendedLevel":  44
+    },
+    {
+        "encounter":  22,
+        "enemy":  "pearl-throne-sentinel",
+        "recommendedLevel":  44
+    },
+    {
+        "encounter":  23,
+        "enemy":  "usurpers-bladefish",
+        "recommendedLevel":  45
+    },
+    {
+        "encounter":  24,
+        "enemy":  "oathchain-serpent",
+        "recommendedLevel":  46
+    },
+    {
+        "encounter":  25,
+        "enemy":  "forgotten-prince-revenant",
+        "recommendedLevel":  47
+    },
+    {
+        "encounter":  26,
+        "enemy":  "queens-tear-elemental",
+        "recommendedLevel":  47
+    },
+    {
+        "encounter":  27,
+        "enemy":  "royal-seal-construct",
+        "recommendedLevel":  48
+    },
+    {
+        "encounter":  28,
+        "enemy":  "drowned-councilor",
+        "recommendedLevel":  49
+    },
+    {
+        "encounter":  29,
+        "enemy":  "thronebound-colossus",
+        "recommendedLevel":  49
+    },
+    {
+        "encounter":  30,
+        "enemy":  "crown-compact-grunt",
+        "recommendedLevel":  50
+    }
+]

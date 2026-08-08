@@ -1,0 +1,20 @@
+{
+    "id":  "firstwake-revenant-boss",
+    "name":  "Firstwake Revenant",
+    "region":  "leviathans-wake",
+    "level":  30,
+    "hp":  482,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1784,
+                                   "max":  2498
+                               },
+                   "xp":  {
+                              "min":  990,
+                              "max":  1212
+                          }
+               },
+    "defeatCandyLoss":  243
+}

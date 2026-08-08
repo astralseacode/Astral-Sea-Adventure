@@ -1,0 +1,20 @@
+{
+    "id":  "crystalfang-snapper",
+    "name":  "Crystalfang Snapper",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  181,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  277,
+                                   "max":  588
+                               },
+                   "xp":  {
+                              "min":  277,
+                              "max":  361
+                          }
+               },
+    "defeatCandyLoss":  75
+}

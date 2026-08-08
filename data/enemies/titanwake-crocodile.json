@@ -1,0 +1,20 @@
+{
+    "id":  "titanwake-crocodile",
+    "name":  "Titanwake Crocodile",
+    "region":  "leviathans-wake",
+    "level":  26,
+    "hp":  319,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  590,
+                                   "max":  1093
+                               },
+                   "xp":  {
+                              "min":  590,
+                              "max":  677
+                          }
+               },
+    "defeatCandyLoss":  135
+}

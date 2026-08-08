@@ -1,0 +1,20 @@
+{
+    "id":  "kings-chimera-boss",
+    "name":  "King\u0027s Chimera",
+    "region":  "sunken-kings-throne",
+    "level":  44,
+    "hp":  541,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2164,
+                                   "max":  3030
+                               },
+                   "xp":  {
+                              "min":  1235,
+                              "max":  1502
+                          }
+               },
+    "defeatCandyLoss":  278
+}

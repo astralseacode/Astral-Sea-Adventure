@@ -1,0 +1,20 @@
+{
+    "id":  "abyssal-star-behemoth-boss",
+    "name":  "Abyssal Star Behemoth",
+    "region":  "starfall-trench",
+    "level":  10,
+    "hp":  334,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1029,
+                                   "max":  1441
+                               },
+                   "xp":  {
+                              "min":  546,
+                              "max":  765
+                          }
+               },
+    "defeatCandyLoss":  160
+}

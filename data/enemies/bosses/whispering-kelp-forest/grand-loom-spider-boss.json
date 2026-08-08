@@ -1,0 +1,20 @@
+{
+    "id":  "grand-loom-spider-boss",
+    "name":  "Grand Loom Spider",
+    "region":  "whispering-kelp-forest",
+    "level":  16,
+    "hp":  375,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1234,
+                                   "max":  1728
+                               },
+                   "xp":  {
+                              "min":  661,
+                              "max":  889
+                          }
+               },
+    "defeatCandyLoss":  171
+}

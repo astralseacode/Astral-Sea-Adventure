@@ -1,0 +1,107 @@
+{
+    "id":  "falling-light-drift",
+    "number":  15,
+    "name":  "Falling-Light Drift",
+    "regionId":  "starfall-trench",
+    "enemyId":  "falling-light-medusa",
+    "recommendedLevel":  7,
+    "introDiscord":  "Falling-Light Drift lies ahead, where gravity-bent celestial ruins conceal the territory of Falling-Light Medusa.",
+    "introTwitch":  "Falling-Light Drift lies ahead amid gravity-bent celestial ruins.",
+    "startRoomId":  "falling-light-drift-approach",
+    "rooms":  {
+                  "falling-light-drift-approach":  {
+                                                       "prompt":  "At the edge of Falling-Light Drift, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "falling-light-drift-depths",
+                                                                                    "healAmount":  31,
+                                                                                    "message":  "The left route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "falling-light-drift-depths",
+                                                                                     "enemyId":  "falling-light-medusa",
+                                                                                     "message":  "A shift in the current exposes Falling-Light Medusa, which claims the right route through Falling-Light Drift."
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "treasure",
+                                                                                       "nextRoomId":  "falling-light-drift-depths",
+                                                                                       "message":  "Beyond the forward route, you discover a star chart coffer buried in luminous silt.",
+                                                                                       "reward":  {
+                                                                                                      "min":  97,
+                                                                                                      "max":  136
+                                                                                                  }
+                                                                                   }
+                                                                   }
+                                                   },
+                  "falling-light-drift-depths":  {
+                                                     "prompt":  "Deeper within Falling-Light Drift, fractured starstone terraces divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "empty",
+                                                                                  "nextRoomId":  "falling-light-drift-threshold",
+                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Falling-Light Drift. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                  "berries":  1
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "falling-light-drift-threshold",
+                                                                                   "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
+                                                                                   "reward":  {
+                                                                                                  "min":  109,
+                                                                                                  "max":  148
+                                                                                              }
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "falling-light-drift-threshold",
+                                                                                     "enemyId":  "falling-light-medusa",
+                                                                                     "message":  "A shift in the current exposes Falling-Light Medusa, which claims the forward route through Falling-Light Drift."
+                                                                                 }
+                                                                 }
+                                                 },
+                  "falling-light-drift-threshold":  {
+                                                        "prompt":  "Near the heart of Falling-Light Drift, meteor-lit trenches divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "enemyId":  "falling-light-medusa",
+                                                                                     "message":  "A shift in the current exposes Falling-Light Medusa, which claims the left route through Falling-Light Drift."
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "healAmount":  36,
+                                                                                      "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
+                                                                                        "reward":  {
+                                                                                                       "min":  121,
+                                                                                                       "max":  160
+                                                                                                   }
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Rain of Silent Suns",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Rain of Silent Suns."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Rain of Silent Suns. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Rain of Silent Suns: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Rain of Silent Suns. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "starshower-medusa-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Starshower Medusa reveals itself!"
+             },
+    "completionText":  "Starshower Medusa yields, and the currents beyond Rain of Silent Suns open the next route through Starfall Trench."
+}

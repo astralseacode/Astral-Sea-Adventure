@@ -1,0 +1,20 @@
+{
+    "id":  "hushwater-stagfish",
+    "name":  "Hushwater Stagfish",
+    "region":  "whispering-kelp-forest",
+    "level":  12,
+    "hp":  232,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  379,
+                                   "max":  760
+                               },
+                   "xp":  {
+                              "min":  379,
+                              "max":  456
+                          }
+               },
+    "defeatCandyLoss":  91
+}

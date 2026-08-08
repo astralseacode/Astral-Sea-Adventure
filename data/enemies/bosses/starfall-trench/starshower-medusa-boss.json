@@ -1,0 +1,20 @@
+{
+    "id":  "starshower-medusa-boss",
+    "name":  "Starshower Medusa",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  299,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  895,
+                                   "max":  1253
+                               },
+                   "xp":  {
+                              "min":  457,
+                              "max":  666
+                          }
+               },
+    "defeatCandyLoss":  129
+}

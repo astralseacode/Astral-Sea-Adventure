@@ -1,0 +1,20 @@
+{
+    "id":  "tempest-voice-siren-boss",
+    "name":  "Tempest-Voice Siren",
+    "region":  "leviathans-wake",
+    "level":  24,
+    "hp":  438,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1552,
+                                   "max":  2173
+                               },
+                   "xp":  {
+                              "min":  846,
+                              "max":  1099
+                          }
+               },
+    "defeatCandyLoss":  206
+}

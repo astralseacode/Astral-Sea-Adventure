@@ -1,0 +1,20 @@
+{
+    "id":  "grand-archivist-wisp-boss",
+    "name":  "Grand Archivist Wisp",
+    "region":  "sunken-kings-throne",
+    "level":  35,
+    "hp":  498,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1895,
+                                   "max":  2653
+                               },
+                   "xp":  {
+                              "min":  1069,
+                              "max":  1403
+                          }
+               },
+    "defeatCandyLoss":  247
+}

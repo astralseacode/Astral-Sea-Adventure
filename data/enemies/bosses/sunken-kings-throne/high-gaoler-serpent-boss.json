@@ -1,0 +1,20 @@
+{
+    "id":  "high-gaoler-serpent-boss",
+    "name":  "High Gaoler Serpent",
+    "region":  "sunken-kings-throne",
+    "level":  46,
+    "hp":  550,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2226,
+                                   "max":  3116
+                               },
+                   "xp":  {
+                              "min":  1273,
+                              "max":  1524
+                          }
+               },
+    "defeatCandyLoss":  286
+}

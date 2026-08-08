@@ -1,0 +1,20 @@
+{
+    "id":  "crushdepth-coil-boss",
+    "name":  "Crushdepth Coil",
+    "region":  "leviathans-wake",
+    "level":  21,
+    "hp":  406,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1381,
+                                   "max":  1933
+                               },
+                   "xp":  {
+                              "min":  739,
+                              "max":  1015
+                          }
+               },
+    "defeatCandyLoss":  180
+}

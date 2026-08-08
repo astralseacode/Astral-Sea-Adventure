@@ -1,0 +1,20 @@
+{
+    "id":  "titanbone-crab",
+    "name":  "Titanbone Crab",
+    "region":  "leviathans-wake",
+    "level":  20,
+    "hp":  282,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  487,
+                                   "max":  912
+                               },
+                   "xp":  {
+                              "min":  487,
+                              "max":  558
+                          }
+               },
+    "defeatCandyLoss":  112
+}

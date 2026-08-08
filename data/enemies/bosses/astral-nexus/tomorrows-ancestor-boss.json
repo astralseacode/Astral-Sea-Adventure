@@ -1,0 +1,20 @@
+{
+    "id":  "tomorrows-ancestor-boss",
+    "name":  "Tomorrow\u0027s Ancestor",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  617,
+    "damageBonus":  20,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2703,
+                                   "max":  3784
+                               },
+                   "xp":  {
+                              "min":  1574,
+                              "max":  1949
+                          }
+               },
+    "defeatCandyLoss":  331
+}

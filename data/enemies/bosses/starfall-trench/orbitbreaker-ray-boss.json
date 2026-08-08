@@ -1,0 +1,20 @@
+{
+    "id":  "orbitbreaker-ray-boss",
+    "name":  "Orbitbreaker Ray",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  268,
+    "damageBonus":  9,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  781,
+                                   "max":  1093
+                               },
+                   "xp":  {
+                              "min":  381,
+                              "max":  583
+                          }
+               },
+    "defeatCandyLoss":  102
+}

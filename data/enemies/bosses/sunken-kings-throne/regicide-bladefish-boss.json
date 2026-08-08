@@ -1,0 +1,20 @@
+{
+    "id":  "regicide-bladefish-boss",
+    "name":  "Regicide Bladefish",
+    "region":  "sunken-kings-throne",
+    "level":  45,
+    "hp":  547,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2205,
+                                   "max":  3087
+                               },
+                   "xp":  {
+                              "min":  1261,
+                              "max":  1517
+                          }
+               },
+    "defeatCandyLoss":  283
+}

@@ -1,0 +1,107 @@
+{
+    "id":  "the-broken-orbit-ruins",
+    "number":  19,
+    "name":  "The Broken-Orbit Ruins",
+    "regionId":  "starfall-trench",
+    "enemyId":  "broken-orbit-sentinel",
+    "recommendedLevel":  8,
+    "introDiscord":  "The Broken-Orbit Ruins lies ahead, where fractured starstone terraces conceal the territory of Broken-Orbit Sentinel.",
+    "introTwitch":  "The Broken-Orbit Ruins lies ahead amid fractured starstone terraces.",
+    "startRoomId":  "the-broken-orbit-ruins-approach",
+    "rooms":  {
+                  "the-broken-orbit-ruins-approach":  {
+                                                          "prompt":  "At the edge of The Broken-Orbit Ruins, fractured starstone terraces divide into three uncertain routes.",
+                                                          "choices":  {
+                                                                          "left":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "the-broken-orbit-ruins-depths",
+                                                                                       "enemyId":  "broken-orbit-sentinel",
+                                                                                       "message":  "A shift in the current exposes Broken-Orbit Sentinel, which claims the left route through The Broken-Orbit Ruins."
+                                                                                   },
+                                                                          "right":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "the-broken-orbit-ruins-depths",
+                                                                                        "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
+                                                                                        "reward":  {
+                                                                                                       "min":  83,
+                                                                                                       "max":  124
+                                                                                                   }
+                                                                                    },
+                                                                          "forward":  {
+                                                                                          "type":  "healing",
+                                                                                          "nextRoomId":  "the-broken-orbit-ruins-depths",
+                                                                                          "healAmount":  23,
+                                                                                          "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                          "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                      }
+                                                                      }
+                                                      },
+                  "the-broken-orbit-ruins-depths":  {
+                                                        "prompt":  "Deeper within The Broken-Orbit Ruins, meteor-lit trenches divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "the-broken-orbit-ruins-threshold",
+                                                                                     "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
+                                                                                     "reward":  {
+                                                                                                    "min":  95,
+                                                                                                    "max":  136
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "the-broken-orbit-ruins-threshold",
+                                                                                      "enemyId":  "broken-orbit-sentinel",
+                                                                                      "message":  "A shift in the current exposes Broken-Orbit Sentinel, which claims the right route through The Broken-Orbit Ruins."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "empty",
+                                                                                        "nextRoomId":  "the-broken-orbit-ruins-threshold",
+                                                                                        "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Broken-Orbit Ruins. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                        "berries":  1
+                                                                                    }
+                                                                    }
+                                                    },
+                  "the-broken-orbit-ruins-threshold":  {
+                                                           "prompt":  "Near the heart of The Broken-Orbit Ruins, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                           "choices":  {
+                                                                           "left":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "healAmount":  28,
+                                                                                        "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    },
+                                                                           "right":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
+                                                                                         "reward":  {
+                                                                                                        "min":  107,
+                                                                                                        "max":  148
+                                                                                                    }
+                                                                                     },
+                                                                           "forward":  {
+                                                                                           "type":  "combat",
+                                                                                           "nextRoomId":  "boss-antechamber",
+                                                                                           "enemyId":  "broken-orbit-sentinel",
+                                                                                           "message":  "A shift in the current exposes Broken-Orbit Sentinel, which claims the forward route through The Broken-Orbit Ruins."
+                                                                                       }
+                                                                       }
+                                                       },
+                  "boss-antechamber":  {
+                                           "name":  "Shattered Orrery",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Shattered Orrery."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Shattered Orrery. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Shattered Orrery: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Shattered Orrery. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "aphelion-sentinel-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Aphelion Sentinel reveals itself!"
+             },
+    "completionText":  "Aphelion Sentinel yields, and the currents beyond Shattered Orrery open the next route through Starfall Trench."
+}

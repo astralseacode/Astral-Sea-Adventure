@@ -1,0 +1,20 @@
+{
+    "id":  "last-architect-construct-boss",
+    "name":  "Last Architect Construct",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  652,
+    "damageBonus":  21,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2983,
+                                   "max":  4176
+                               },
+                   "xp":  {
+                              "min":  1729,
+                              "max":  2017
+                          }
+               },
+    "defeatCandyLoss":  353
+}

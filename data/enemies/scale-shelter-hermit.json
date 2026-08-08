@@ -1,0 +1,20 @@
+{
+    "id":  "scale-shelter-hermit",
+    "name":  "Scale-Shelter Hermit",
+    "region":  "leviathans-wake",
+    "level":  21,
+    "hp":  287,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  501,
+                                   "max":  936
+                               },
+                   "xp":  {
+                              "min":  501,
+                              "max":  574
+                          }
+               },
+    "defeatCandyLoss":  115
+}

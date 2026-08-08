@@ -1,0 +1,20 @@
+{
+    "id":  "eventide-skate-boss",
+    "name":  "Eventide Skate",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  293,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  874,
+                                   "max":  1224
+                               },
+                   "xp":  {
+                              "min":  443,
+                              "max":  651
+                          }
+               },
+    "defeatCandyLoss":  124
+}

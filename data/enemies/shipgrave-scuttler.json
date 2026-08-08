@@ -1,0 +1,20 @@
+{
+    "id":  "shipgrave-scuttler",
+    "name":  "Shipgrave Scuttler",
+    "region":  "leviathans-wake",
+    "level":  26,
+    "hp":  323,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  604,
+                                   "max":  1117
+                               },
+                   "xp":  {
+                              "min":  604,
+                              "max":  693
+                          }
+               },
+    "defeatCandyLoss":  138
+}

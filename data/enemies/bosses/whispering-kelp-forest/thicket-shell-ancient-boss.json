@@ -1,0 +1,20 @@
+{
+    "id":  "thicket-shell-ancient-boss",
+    "name":  "Thicket-Shell Ancient",
+    "region":  "whispering-kelp-forest",
+    "level":  17,
+    "hp":  381,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1262,
+                                   "max":  1767
+                               },
+                   "xp":  {
+                              "min":  677,
+                              "max":  904
+                          }
+               },
+    "defeatCandyLoss":  176
+}

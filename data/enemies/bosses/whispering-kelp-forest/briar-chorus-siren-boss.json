@@ -1,0 +1,20 @@
+{
+    "id":  "briar-chorus-siren-boss",
+    "name":  "Briar-Chorus Siren",
+    "region":  "whispering-kelp-forest",
+    "level":  19,
+    "hp":  401,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1359,
+                                   "max":  1903
+                               },
+                   "xp":  {
+                              "min":  735,
+                              "max":  957
+                          }
+               },
+    "defeatCandyLoss":  193
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "whispercap-snail",
+    "name":  "Whispercap Snail",
+    "region":  "whispering-kelp-forest",
+    "level":  11,
+    "hp":  220,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  351,
+                                   "max":  717
+                               },
+                   "xp":  {
+                              "min":  351,
+                              "max":  423
+                          }
+               },
+    "defeatCandyLoss":  83
+}

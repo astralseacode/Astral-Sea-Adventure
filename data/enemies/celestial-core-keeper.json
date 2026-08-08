@@ -1,0 +1,20 @@
+{
+    "id":  "celestial-core-keeper",
+    "name":  "Celestial Core Keeper",
+    "region":  "starfall-trench",
+    "level":  10,
+    "hp":  218,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  355,
+                                   "max":  712
+                               },
+                   "xp":  {
+                              "min":  355,
+                              "max":  454
+                          }
+               },
+    "defeatCandyLoss":  98
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "star-skull-prowler-boss",
+    "name":  "Star-Skull Prowler",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  329,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1009,
+                                   "max":  1413
+                               },
+                   "xp":  {
+                              "min":  532,
+                              "max":  750
+                          }
+               },
+    "defeatCandyLoss":  155
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "unchosen-reflection-boss",
+    "name":  "Unchosen Reflection",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  601,
+    "damageBonus":  19,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2579,
+                                   "max":  3611
+                               },
+                   "xp":  {
+                              "min":  1505,
+                              "max":  1918
+                          }
+               },
+    "defeatCandyLoss":  322
+}

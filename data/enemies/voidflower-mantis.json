@@ -1,0 +1,20 @@
+{
+    "id":  "voidflower-mantis",
+    "name":  "Voidflower Mantis",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  466,
+    "damageBonus":  16,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1093,
+                                   "max":  1938
+                               },
+                   "xp":  {
+                              "min":  1093,
+                              "max":  1178
+                          }
+               },
+    "defeatCandyLoss":  212
+}

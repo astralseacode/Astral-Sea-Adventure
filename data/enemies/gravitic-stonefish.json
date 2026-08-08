@@ -1,0 +1,20 @@
+{
+    "id":  "gravitic-stonefish",
+    "name":  "Gravitic Stonefish",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  203,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  324,
+                                   "max":  662
+                               },
+                   "xp":  {
+                              "min":  324,
+                              "max":  417
+                          }
+               },
+    "defeatCandyLoss":  89
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "scarfin-barracuda",
+    "name":  "Scarfin Barracuda",
+    "region":  "leviathans-wake",
+    "level":  27,
+    "hp":  326,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  611,
+                                   "max":  1129
+                               },
+                   "xp":  {
+                              "min":  611,
+                              "max":  701
+                          }
+               },
+    "defeatCandyLoss":  139
+}

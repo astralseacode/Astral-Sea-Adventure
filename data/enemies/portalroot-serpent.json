@@ -1,0 +1,20 @@
+{
+    "id":  "portalroot-serpent",
+    "name":  "Portalroot Serpent",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  457,
+    "damageBonus":  16,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1052,
+                                   "max":  1866
+                               },
+                   "xp":  {
+                              "min":  1052,
+                              "max":  1133
+                          }
+               },
+    "defeatCandyLoss":  207
+}

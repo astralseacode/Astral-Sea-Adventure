@@ -1,0 +1,20 @@
+{
+    "id":  "thornwake-huntress-boss",
+    "name":  "Thornwake Huntress",
+    "region":  "whispering-kelp-forest",
+    "level":  12,
+    "hp":  343,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1083,
+                                   "max":  1516
+                               },
+                   "xp":  {
+                              "min":  570,
+                              "max":  806
+                          }
+               },
+    "defeatCandyLoss":  144
+}

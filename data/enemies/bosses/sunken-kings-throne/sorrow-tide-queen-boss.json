@@ -1,0 +1,20 @@
+{
+    "id":  "sorrow-tide-queen-boss",
+    "name":  "Sorrow-Tide Queen",
+    "region":  "sunken-kings-throne",
+    "level":  47,
+    "hp":  557,
+    "damageBonus":  18,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2267,
+                                   "max":  3174
+                               },
+                   "xp":  {
+                              "min":  1299,
+                              "max":  1540
+                          }
+               },
+    "defeatCandyLoss":  290
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "drowned-duelist",
+    "name":  "Drowned Duelist",
+    "region":  "sunken-kings-throne",
+    "level":  42,
+    "hp":  398,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  818,
+                                   "max":  1479
+                               },
+                   "xp":  {
+                              "min":  818,
+                              "max":  906
+                          }
+               },
+    "defeatCandyLoss":  173
+}

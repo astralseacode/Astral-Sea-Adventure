@@ -1,0 +1,20 @@
+{
+    "id":  "thunderwake-squid",
+    "name":  "Thunderwake Squid",
+    "region":  "leviathans-wake",
+    "level":  27,
+    "hp":  331,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  625,
+                                   "max":  1153
+                               },
+                   "xp":  {
+                              "min":  625,
+                              "max":  717
+                          }
+               },
+    "defeatCandyLoss":  143
+}

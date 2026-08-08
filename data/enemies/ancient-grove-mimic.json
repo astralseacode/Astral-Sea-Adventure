@@ -1,0 +1,20 @@
+{
+    "id":  "ancient-grove-mimic",
+    "name":  "Ancient Grove Mimic",
+    "region":  "whispering-kelp-forest",
+    "level":  19,
+    "hp":  275,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  478,
+                                   "max":  916
+                               },
+                   "xp":  {
+                              "min":  478,
+                              "max":  574
+                          }
+               },
+    "defeatCandyLoss":  119
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "gilded-armorfish",
+    "name":  "Gilded Armorfish",
+    "region":  "sunken-kings-throne",
+    "level":  36,
+    "hp":  371,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  734,
+                                   "max":  1340
+                               },
+                   "xp":  {
+                              "min":  734,
+                              "max":  813
+                          }
+               },
+    "defeatCandyLoss":  159
+}

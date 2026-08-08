@@ -1,0 +1,20 @@
+{
+    "id":  "breaker-fin-alpha-boss",
+    "name":  "Breaker-Fin Alpha",
+    "region":  "leviathans-wake",
+    "level":  20,
+    "hp":  400,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1350,
+                                   "max":  1890
+                               },
+                   "xp":  {
+                              "min":  720,
+                              "max":  1000
+                          }
+               },
+    "defeatCandyLoss":  175
+}

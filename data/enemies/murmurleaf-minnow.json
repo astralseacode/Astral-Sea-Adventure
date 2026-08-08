@@ -1,0 +1,20 @@
+{
+    "id":  "murmurleaf-minnow",
+    "name":  "Murmurleaf Minnow",
+    "region":  "whispering-kelp-forest",
+    "level":  10,
+    "hp":  215,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  340,
+                                   "max":  700
+                               },
+                   "xp":  {
+                              "min":  340,
+                              "max":  410
+                          }
+               },
+    "defeatCandyLoss":  80
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "trenchstar-behemoth",
+    "name":  "Trenchstar Behemoth",
+    "region":  "starfall-trench",
+    "level":  10,
+    "hp":  215,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  350,
+                                   "max":  703
+                               },
+                   "xp":  {
+                              "min":  350,
+                              "max":  448
+                          }
+               },
+    "defeatCandyLoss":  97
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "periapsis-nautilus-boss",
+    "name":  "Periapsis Nautilus",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  288,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  853,
+                                   "max":  1194
+                               },
+                   "xp":  {
+                              "min":  429,
+                              "max":  636
+                          }
+               },
+    "defeatCandyLoss":  119
+}

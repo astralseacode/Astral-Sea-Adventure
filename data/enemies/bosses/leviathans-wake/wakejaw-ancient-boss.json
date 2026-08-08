@@ -1,0 +1,20 @@
+{
+    "id":  "wakejaw-ancient-boss",
+    "name":  "Wakejaw Ancient",
+    "region":  "leviathans-wake",
+    "level":  26,
+    "hp":  447,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1598,
+                                   "max":  2237
+                               },
+                   "xp":  {
+                              "min":  874,
+                              "max":  1121
+                          }
+               },
+    "defeatCandyLoss":  214
+}

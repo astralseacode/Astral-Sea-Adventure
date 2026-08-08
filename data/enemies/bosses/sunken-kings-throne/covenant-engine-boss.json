@@ -1,0 +1,20 @@
+{
+    "id":  "covenant-engine-boss",
+    "name":  "Covenant Engine",
+    "region":  "sunken-kings-throne",
+    "level":  48,
+    "hp":  560,
+    "damageBonus":  18,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2288,
+                                   "max":  3203
+                               },
+                   "xp":  {
+                              "min":  1312,
+                              "max":  1547
+                          }
+               },
+    "defeatCandyLoss":  293
+}

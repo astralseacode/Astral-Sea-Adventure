@@ -1,0 +1,20 @@
+{
+    "id":  "chalice-jelly",
+    "name":  "Chalice Jelly",
+    "region":  "sunken-kings-throne",
+    "level":  39,
+    "hp":  383,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  771,
+                                   "max":  1402
+                               },
+                   "xp":  {
+                              "min":  771,
+                              "max":  854
+                          }
+               },
+    "defeatCandyLoss":  165
+}

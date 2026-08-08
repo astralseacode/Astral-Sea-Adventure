@@ -1,0 +1,20 @@
+{
+    "id":  "elder-rootcoil-boss",
+    "name":  "Elder Rootcoil",
+    "region":  "whispering-kelp-forest",
+    "level":  11,
+    "hp":  337,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1055,
+                                   "max":  1477
+                               },
+                   "xp":  {
+                              "min":  553,
+                              "max":  790
+                          }
+               },
+    "defeatCandyLoss":  140
+}

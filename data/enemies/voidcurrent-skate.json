@@ -1,0 +1,20 @@
+{
+    "id":  "voidcurrent-skate",
+    "name":  "Voidcurrent Skate",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  179,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  272,
+                                   "max":  579
+                               },
+                   "xp":  {
+                              "min":  272,
+                              "max":  354
+                          }
+               },
+    "defeatCandyLoss":  74
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "abysslung-manta",
+    "name":  "Abysslung Manta",
+    "region":  "leviathans-wake",
+    "level":  25,
+    "hp":  314,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  577,
+                                   "max":  1069
+                               },
+                   "xp":  {
+                              "min":  577,
+                              "max":  661
+                          }
+               },
+    "defeatCandyLoss":  132
+}

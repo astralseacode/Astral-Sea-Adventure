@@ -1,0 +1,20 @@
+{
+    "id":  "umbra-bloom-sovereign-boss",
+    "name":  "Umbra Bloom Sovereign",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  326,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  998,
+                                   "max":  1397
+                               },
+                   "xp":  {
+                              "min":  526,
+                              "max":  742
+                          }
+               },
+    "defeatCandyLoss":  153
+}

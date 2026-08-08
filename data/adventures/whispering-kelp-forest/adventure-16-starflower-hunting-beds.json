@@ -1,0 +1,107 @@
+{
+    "id":  "starflower-hunting-beds",
+    "number":  16,
+    "name":  "Starflower Hunting Beds",
+    "regionId":  "whispering-kelp-forest",
+    "enemyId":  "predatory-starflower",
+    "recommendedLevel":  15,
+    "introDiscord":  "Starflower Hunting Beds lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Predatory Starflower.",
+    "introTwitch":  "Starflower Hunting Beds lies ahead amid towering kelp columns threaded with murmuring currents.",
+    "startRoomId":  "starflower-hunting-beds-approach",
+    "rooms":  {
+                  "starflower-hunting-beds-approach":  {
+                                                           "prompt":  "At the edge of Starflower Hunting Beds, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
+                                                           "choices":  {
+                                                                           "left":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "starflower-hunting-beds-depths",
+                                                                                        "enemyId":  "predatory-starflower",
+                                                                                        "message":  "A shift in the current exposes Predatory Starflower, which claims the left route through Starflower Hunting Beds."
+                                                                                    },
+                                                                           "right":  {
+                                                                                         "type":  "empty",
+                                                                                         "nextRoomId":  "starflower-hunting-beds-depths",
+                                                                                         "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Starflower Hunting Beds. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                         "berries":  1
+                                                                                     },
+                                                                           "forward":  {
+                                                                                           "type":  "treasure",
+                                                                                           "nextRoomId":  "starflower-hunting-beds-depths",
+                                                                                           "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
+                                                                                           "reward":  {
+                                                                                                          "min":  125,
+                                                                                                          "max":  165
+                                                                                                      }
+                                                                                       }
+                                                                       }
+                                                       },
+                  "starflower-hunting-beds-depths":  {
+                                                         "prompt":  "Deeper within Starflower Hunting Beds, living rootways beneath drifting fae lights divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "starflower-hunting-beds-threshold",
+                                                                                      "healAmount":  35,
+                                                                                      "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "starflower-hunting-beds-threshold",
+                                                                                       "enemyId":  "predatory-starflower",
+                                                                                       "message":  "A shift in the current exposes Predatory Starflower, which claims the right route through Starflower Hunting Beds."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "starflower-hunting-beds-threshold",
+                                                                                         "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
+                                                                                         "reward":  {
+                                                                                                        "min":  137,
+                                                                                                        "max":  177
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "starflower-hunting-beds-threshold":  {
+                                                            "prompt":  "Near the heart of Starflower Hunting Beds, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
+                                                            "choices":  {
+                                                                            "left":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the left route, you discover a shrine coffer covered by harmless moss.",
+                                                                                         "reward":  {
+                                                                                                        "min":  149,
+                                                                                                        "max":  189
+                                                                                                    }
+                                                                                     },
+                                                                            "right":  {
+                                                                                          "type":  "healing",
+                                                                                          "nextRoomId":  "boss-antechamber",
+                                                                                          "healAmount":  40,
+                                                                                          "message":  "The right route reaches restorative sap gathered in a folded leaf, restoring your strength.",
+                                                                                          "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                      },
+                                                                            "forward":  {
+                                                                                            "type":  "combat",
+                                                                                            "nextRoomId":  "boss-antechamber",
+                                                                                            "enemyId":  "predatory-starflower",
+                                                                                            "message":  "A shift in the current exposes Predatory Starflower, which claims the forward route through Starflower Hunting Beds."
+                                                                                        }
+                                                                        }
+                                                        },
+                  "boss-antechamber":  {
+                                           "name":  "Pollenmoon Pit",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Pollenmoon Pit."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Pollenmoon Pit. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Pollenmoon Pit: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Pollenmoon Pit. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "devouring-starflower-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Devouring Starflower reveals itself!"
+             },
+    "completionText":  "Devouring Starflower yields, and the currents beyond Pollenmoon Pit open the next route through Whispering Kelp Forest."
+}

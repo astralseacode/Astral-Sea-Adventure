@@ -1,0 +1,20 @@
+{
+    "id":  "reed-crowned-hunter-boss",
+    "name":  "Reed-Crowned Hunter",
+    "region":  "whispering-kelp-forest",
+    "level":  18,
+    "hp":  392,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1317,
+                                   "max":  1844
+                               },
+                   "xp":  {
+                              "min":  710,
+                              "max":  934
+                          }
+               },
+    "defeatCandyLoss":  186
+}

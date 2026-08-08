@@ -1,0 +1,20 @@
+{
+    "id":  "bone-lantern-angler-boss",
+    "name":  "Bone-Lantern Angler",
+    "region":  "leviathans-wake",
+    "level":  25,
+    "hp":  444,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1583,
+                                   "max":  2216
+                               },
+                   "xp":  {
+                              "min":  865,
+                              "max":  1114
+                          }
+               },
+    "defeatCandyLoss":  211
+}

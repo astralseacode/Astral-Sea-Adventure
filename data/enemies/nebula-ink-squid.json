@@ -1,0 +1,20 @@
+{
+    "id":  "nebula-ink-squid",
+    "name":  "Nebula Ink Squid",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  198,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  313,
+                                   "max":  646
+                               },
+                   "xp":  {
+                              "min":  313,
+                              "max":  404
+                          }
+               },
+    "defeatCandyLoss":  86
+}

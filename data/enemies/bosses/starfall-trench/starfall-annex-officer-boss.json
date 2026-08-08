@@ -1,0 +1,20 @@
+{
+    "id":  "starfall-annex-officer-boss",
+    "name":  "Starfall Annex Officer",
+    "region":  "starfall-trench",
+    "level":  10,
+    "hp":  340,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1050,
+                                   "max":  1470
+                               },
+                   "xp":  {
+                              "min":  560,
+                              "max":  780
+                          }
+               },
+    "defeatCandyLoss":  165
+}

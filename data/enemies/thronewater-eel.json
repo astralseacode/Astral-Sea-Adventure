@@ -1,0 +1,20 @@
+{
+    "id":  "thronewater-eel",
+    "name":  "Thronewater Eel",
+    "region":  "sunken-kings-throne",
+    "level":  36,
+    "hp":  368,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  724,
+                                   "max":  1324
+                               },
+                   "xp":  {
+                              "min":  724,
+                              "max":  803
+                          }
+               },
+    "defeatCandyLoss":  157
+}

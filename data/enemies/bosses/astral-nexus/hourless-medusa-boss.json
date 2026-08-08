@@ -1,0 +1,20 @@
+{
+    "id":  "hourless-medusa-boss",
+    "name":  "Hourless Medusa",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  581,
+    "damageBonus":  19,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2424,
+                                   "max":  3394
+                               },
+                   "xp":  {
+                              "min":  1419,
+                              "max":  1880
+                          }
+               },
+    "defeatCandyLoss":  310
+}

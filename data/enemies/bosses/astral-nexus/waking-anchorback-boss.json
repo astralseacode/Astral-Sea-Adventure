@@ -1,0 +1,20 @@
+{
+    "id":  "waking-anchorback-boss",
+    "name":  "Waking Anchorback",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  589,
+    "damageBonus":  19,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2486,
+                                   "max":  3480
+                               },
+                   "xp":  {
+                              "min":  1453,
+                              "max":  1896
+                          }
+               },
+    "defeatCandyLoss":  314
+}

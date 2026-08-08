@@ -1,0 +1,20 @@
+{
+    "id":  "fleet-eater-scuttler-boss",
+    "name":  "Fleet-Eater Scuttler",
+    "region":  "leviathans-wake",
+    "level":  26,
+    "hp":  453,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1629,
+                                   "max":  2281
+                               },
+                   "xp":  {
+                              "min":  894,
+                              "max":  1137
+                          }
+               },
+    "defeatCandyLoss":  218
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "memoryglass-crab",
+    "name":  "Memoryglass Crab",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  431,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  928,
+                                   "max":  1648
+                               },
+                   "xp":  {
+                              "min":  928,
+                              "max":  1000
+                          }
+               },
+    "defeatCandyLoss":  193
+}

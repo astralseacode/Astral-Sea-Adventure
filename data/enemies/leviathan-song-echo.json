@@ -1,0 +1,20 @@
+{
+    "id":  "leviathan-song-echo",
+    "name":  "Leviathan Song Echo",
+    "region":  "leviathans-wake",
+    "level":  28,
+    "hp":  338,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  646,
+                                   "max":  1190
+                               },
+                   "xp":  {
+                              "min":  646,
+                              "max":  740
+                          }
+               },
+    "defeatCandyLoss":  147
+}

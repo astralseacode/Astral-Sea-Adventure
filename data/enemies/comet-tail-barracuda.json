@@ -1,0 +1,20 @@
+{
+    "id":  "comet-tail-barracuda",
+    "name":  "Comet-Tail Barracuda",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  201,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  319,
+                                   "max":  654
+                               },
+                   "xp":  {
+                              "min":  319,
+                              "max":  410
+                          }
+               },
+    "defeatCandyLoss":  88
+}

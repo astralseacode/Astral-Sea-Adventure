@@ -1,0 +1,20 @@
+{
+    "id":  "aphelion-sentinel-boss",
+    "name":  "Aphelion Sentinel",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  310,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  936,
+                                   "max":  1310
+                               },
+                   "xp":  {
+                              "min":  484,
+                              "max":  697
+                          }
+               },
+    "defeatCandyLoss":  138
+}

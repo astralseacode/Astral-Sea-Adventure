@@ -1,0 +1,107 @@
+{
+    "id":  "craterback-descent",
+    "number":  2,
+    "name":  "Craterback Descent",
+    "regionId":  "starfall-trench",
+    "enemyId":  "craterback-isopod",
+    "recommendedLevel":  5,
+    "introDiscord":  "Craterback Descent lies ahead, where meteor-lit trenches conceal the territory of Craterback Isopod.",
+    "introTwitch":  "Craterback Descent lies ahead amid meteor-lit trenches.",
+    "startRoomId":  "craterback-descent-approach",
+    "rooms":  {
+                  "craterback-descent-approach":  {
+                                                      "prompt":  "At the edge of Craterback Descent, meteor-lit trenches divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "craterback-descent-depths",
+                                                                                   "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
+                                                                                   "reward":  {
+                                                                                                  "min":  142,
+                                                                                                  "max":  177
+                                                                                              }
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "craterback-descent-depths",
+                                                                                    "healAmount":  58,
+                                                                                    "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "craterback-descent-depths",
+                                                                                      "enemyId":  "craterback-isopod",
+                                                                                      "message":  "A shift in the current exposes Craterback Isopod, which claims the forward route through Craterback Descent."
+                                                                                  }
+                                                                  }
+                                                  },
+                  "craterback-descent-depths":  {
+                                                    "prompt":  "Deeper within Craterback Descent, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "craterback-descent-threshold",
+                                                                                 "enemyId":  "craterback-isopod",
+                                                                                 "message":  "A shift in the current exposes Craterback Isopod, which claims the left route through Craterback Descent."
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "empty",
+                                                                                  "nextRoomId":  "craterback-descent-threshold",
+                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Craterback Descent. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                  "berries":  1
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "craterback-descent-threshold",
+                                                                                    "message":  "Beyond the forward route, you discover a star chart coffer buried in luminous silt.",
+                                                                                    "reward":  {
+                                                                                                   "min":  154,
+                                                                                                   "max":  189
+                                                                                               }
+                                                                                }
+                                                                }
+                                                },
+                  "craterback-descent-threshold":  {
+                                                       "prompt":  "Near the heart of Craterback Descent, fractured starstone terraces divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "message":  "Beyond the left route, you discover a sealed meteor-iron reliquary.",
+                                                                                    "reward":  {
+                                                                                                   "min":  166,
+                                                                                                   "max":  201
+                                                                                               }
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "enemyId":  "craterback-isopod",
+                                                                                     "message":  "A shift in the current exposes Craterback Isopod, which claims the right route through Craterback Descent."
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "healAmount":  63,
+                                                                                       "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "boss-antechamber":  {
+                                           "name":  "Impact-Shell Hollow",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Impact-Shell Hollow."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Impact-Shell Hollow. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Impact-Shell Hollow: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Impact-Shell Hollow. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "craterback-matriarch-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Craterback Matriarch reveals itself!"
+             },
+    "completionText":  "Craterback Matriarch yields, and the currents beyond Impact-Shell Hollow open the next route through Starfall Trench."
+}

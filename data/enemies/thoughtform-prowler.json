@@ -1,0 +1,20 @@
+{
+    "id":  "thoughtform-prowler",
+    "name":  "Thoughtform Prowler",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  472,
+    "damageBonus":  16,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1121,
+                                   "max":  1986
+                               },
+                   "xp":  {
+                              "min":  1121,
+                              "max":  1207
+                          }
+               },
+    "defeatCandyLoss":  215
+}

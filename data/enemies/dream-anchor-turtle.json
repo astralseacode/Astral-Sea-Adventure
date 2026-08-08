@@ -1,0 +1,20 @@
+{
+    "id":  "dream-anchor-turtle",
+    "name":  "Dream-Anchor Turtle",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  443,
+    "damageBonus":  15,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  983,
+                                   "max":  1745
+                               },
+                   "xp":  {
+                              "min":  983,
+                              "max":  1059
+                          }
+               },
+    "defeatCandyLoss":  199
+}

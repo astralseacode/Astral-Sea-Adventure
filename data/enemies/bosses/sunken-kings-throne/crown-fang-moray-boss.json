@@ -1,0 +1,20 @@
+{
+    "id":  "crown-fang-moray-boss",
+    "name":  "Crown-Fang Moray",
+    "region":  "sunken-kings-throne",
+    "level":  40,
+    "hp":  524,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2060,
+                                   "max":  2884
+                               },
+                   "xp":  {
+                              "min":  1171,
+                              "max":  1464
+                          }
+               },
+    "defeatCandyLoss":  266
+}

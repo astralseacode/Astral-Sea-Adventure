@@ -1,0 +1,20 @@
+{
+    "id":  "dawn-before-the-sea-boss",
+    "name":  "Dawn Before the Sea",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  672,
+    "damageBonus":  22,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  3138,
+                                   "max":  4393
+                               },
+                   "xp":  {
+                              "min":  1816,
+                              "max":  2055
+                          }
+               },
+    "defeatCandyLoss":  365
+}

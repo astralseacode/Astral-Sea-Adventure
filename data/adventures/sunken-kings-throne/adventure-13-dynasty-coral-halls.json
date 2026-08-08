@@ -1,0 +1,107 @@
+{
+    "id":  "dynasty-coral-halls",
+    "number":  13,
+    "name":  "Dynasty Coral Halls",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "dynasty-coral-golem",
+    "recommendedLevel":  38,
+    "introDiscord":  "Dynasty Coral Halls lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Dynasty Coral Golem.",
+    "introTwitch":  "Dynasty Coral Halls lies ahead amid drowned palace colonnades guarded by broken royal seals.",
+    "startRoomId":  "dynasty-coral-halls-approach",
+    "rooms":  {
+                  "dynasty-coral-halls-approach":  {
+                                                       "prompt":  "At the edge of Dynasty Coral Halls, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "dynasty-coral-halls-depths",
+                                                                                    "enemyId":  "dynasty-coral-golem",
+                                                                                    "message":  "A shift in the current exposes Dynasty Coral Golem, which claims the left route through Dynasty Coral Halls."
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "dynasty-coral-halls-depths",
+                                                                                     "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                                     "reward":  {
+                                                                                                    "min":  240,
+                                                                                                    "max":  279
+                                                                                                }
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "dynasty-coral-halls-depths",
+                                                                                       "healAmount":  64,
+                                                                                       "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "dynasty-coral-halls-depths":  {
+                                                     "prompt":  "Deeper within Dynasty Coral Halls, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "treasure",
+                                                                                  "nextRoomId":  "dynasty-coral-halls-threshold",
+                                                                                  "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
+                                                                                  "reward":  {
+                                                                                                 "min":  252,
+                                                                                                 "max":  291
+                                                                                             }
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "dynasty-coral-halls-threshold",
+                                                                                   "enemyId":  "dynasty-coral-golem",
+                                                                                   "message":  "A shift in the current exposes Dynasty Coral Golem, which claims the right route through Dynasty Coral Halls."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "dynasty-coral-halls-threshold",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Dynasty Coral Halls. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 }
+                                                                 }
+                                                 },
+                  "dynasty-coral-halls-threshold":  {
+                                                        "prompt":  "Near the heart of Dynasty Coral Halls, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "healAmount":  69,
+                                                                                     "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                      "reward":  {
+                                                                                                     "min":  264,
+                                                                                                     "max":  303
+                                                                                                 }
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "enemyId":  "dynasty-coral-golem",
+                                                                                        "message":  "A shift in the current exposes Dynasty Coral Golem, which claims the forward route through Dynasty Coral Halls."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Lineage Rotunda",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Lineage Rotunda."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Lineage Rotunda. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Lineage Rotunda: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Lineage Rotunda. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "ancestral-reef-golem-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Ancestral Reef Golem reveals itself!"
+             },
+    "completionText":  "Ancestral Reef Golem yields, and the currents beyond Lineage Rotunda open the next route through Sunken King\u0027s Throne."
+}

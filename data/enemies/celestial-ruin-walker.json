@@ -1,0 +1,20 @@
+{
+    "id":  "celestial-ruin-walker",
+    "name":  "Celestial Ruin Walker",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  206,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  329,
+                                   "max":  670
+                               },
+                   "xp":  {
+                              "min":  329,
+                              "max":  423
+                          }
+               },
+    "defeatCandyLoss":  91
+}

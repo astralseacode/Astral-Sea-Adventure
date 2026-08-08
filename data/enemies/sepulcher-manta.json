@@ -1,0 +1,20 @@
+{
+    "id":  "sepulcher-manta",
+    "name":  "Sepulcher Manta",
+    "region":  "sunken-kings-throne",
+    "level":  37,
+    "hp":  374,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  743,
+                                   "max":  1355
+                               },
+                   "xp":  {
+                              "min":  743,
+                              "max":  823
+                          }
+               },
+    "defeatCandyLoss":  161
+}

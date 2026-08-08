@@ -1,0 +1,20 @@
+{
+    "id":  "singularity-cantor-boss",
+    "name":  "Singularity Cantor",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  644,
+    "damageBonus":  21,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2921,
+                                   "max":  4089
+                               },
+                   "xp":  {
+                              "min":  1695,
+                              "max":  2002
+                          }
+               },
+    "defeatCandyLoss":  348
+}

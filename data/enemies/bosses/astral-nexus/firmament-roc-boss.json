@@ -1,0 +1,20 @@
+{
+    "id":  "firmament-roc-boss",
+    "name":  "Firmament Roc",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  632,
+    "damageBonus":  20,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2828,
+                                   "max":  3959
+                               },
+                   "xp":  {
+                              "min":  1643,
+                              "max":  1979
+                          }
+               },
+    "defeatCandyLoss":  341
+}

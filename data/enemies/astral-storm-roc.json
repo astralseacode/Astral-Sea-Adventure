@@ -1,0 +1,20 @@
+{
+    "id":  "astral-storm-roc",
+    "name":  "Astral Storm Roc",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  475,
+    "damageBonus":  16,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1134,
+                                   "max":  2010
+                               },
+                   "xp":  {
+                              "min":  1134,
+                              "max":  1222
+                          }
+               },
+    "defeatCandyLoss":  216
+}

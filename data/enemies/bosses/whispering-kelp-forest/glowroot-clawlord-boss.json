@@ -1,0 +1,20 @@
+{
+    "id":  "glowroot-clawlord-boss",
+    "name":  "Glowroot Clawlord",
+    "region":  "whispering-kelp-forest",
+    "level":  10,
+    "hp":  328,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1014,
+                                   "max":  1420
+                               },
+                   "xp":  {
+                              "min":  528,
+                              "max":  768
+                          }
+               },
+    "defeatCandyLoss":  132
+}

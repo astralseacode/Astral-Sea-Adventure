@@ -1,0 +1,107 @@
+{
+    "id":  "dreamsap-pools",
+    "number":  17,
+    "name":  "Dreamsap Pools",
+    "regionId":  "whispering-kelp-forest",
+    "enemyId":  "dreamsap-leech",
+    "recommendedLevel":  16,
+    "introDiscord":  "Dreamsap Pools lies ahead, where living rootways beneath drifting fae lights conceal the territory of Dreamsap Leech.",
+    "introTwitch":  "Dreamsap Pools lies ahead amid living rootways beneath drifting fae lights.",
+    "startRoomId":  "dreamsap-pools-approach",
+    "rooms":  {
+                  "dreamsap-pools-approach":  {
+                                                  "prompt":  "At the edge of Dreamsap Pools, living rootways beneath drifting fae lights divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "treasure",
+                                                                               "nextRoomId":  "dreamsap-pools-depths",
+                                                                               "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
+                                                                               "reward":  {
+                                                                                              "min":  120,
+                                                                                              "max":  160
+                                                                                          }
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "combat",
+                                                                                "nextRoomId":  "dreamsap-pools-depths",
+                                                                                "enemyId":  "dreamsap-leech",
+                                                                                "message":  "A shift in the current exposes Dreamsap Leech, which claims the right route through Dreamsap Pools."
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "dreamsap-pools-depths",
+                                                                                  "healAmount":  32,
+                                                                                  "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              }
+                                                              }
+                                              },
+                  "dreamsap-pools-depths":  {
+                                                "prompt":  "Deeper within Dreamsap Pools, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
+                                                "choices":  {
+                                                                "left":  {
+                                                                             "type":  "combat",
+                                                                             "nextRoomId":  "dreamsap-pools-threshold",
+                                                                             "enemyId":  "dreamsap-leech",
+                                                                             "message":  "A shift in the current exposes Dreamsap Leech, which claims the left route through Dreamsap Pools."
+                                                                         },
+                                                                "right":  {
+                                                                              "type":  "treasure",
+                                                                              "nextRoomId":  "dreamsap-pools-threshold",
+                                                                              "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
+                                                                              "reward":  {
+                                                                                             "min":  132,
+                                                                                             "max":  172
+                                                                                         }
+                                                                          },
+                                                                "forward":  {
+                                                                                "type":  "empty",
+                                                                                "nextRoomId":  "dreamsap-pools-threshold",
+                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Dreamsap Pools. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                "berries":  1
+                                                                            }
+                                                            }
+                                            },
+                  "dreamsap-pools-threshold":  {
+                                                   "prompt":  "Near the heart of Dreamsap Pools, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "healing",
+                                                                                "nextRoomId":  "boss-antechamber",
+                                                                                "healAmount":  37,
+                                                                                "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
+                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "boss-antechamber",
+                                                                                 "enemyId":  "dreamsap-leech",
+                                                                                 "message":  "A shift in the current exposes Dreamsap Leech, which claims the right route through Dreamsap Pools."
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
+                                                                                   "reward":  {
+                                                                                                  "min":  144,
+                                                                                                  "max":  184
+                                                                                              }
+                                                                               }
+                                                               }
+                                               },
+                  "boss-antechamber":  {
+                                           "name":  "Sleeping Rootwell",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Sleeping Rootwell."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Sleeping Rootwell. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Sleeping Rootwell: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Sleeping Rootwell. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "nightmare-sapmother-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Nightmare Sapmother reveals itself!"
+             },
+    "completionText":  "Nightmare Sapmother yields, and the currents beyond Sleeping Rootwell open the next route through Whispering Kelp Forest."
+}

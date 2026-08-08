@@ -1,0 +1,107 @@
+{
+    "id":  "pressurejaw-drop",
+    "number":  3,
+    "name":  "Pressurejaw Drop",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "pressurejaw-eel",
+    "recommendedLevel":  21,
+    "introDiscord":  "Pressurejaw Drop lies ahead, where immense scales embedded in unstable coral shelves conceal the territory of Pressurejaw Eel.",
+    "introTwitch":  "Pressurejaw Drop lies ahead amid immense scales embedded in unstable coral shelves.",
+    "startRoomId":  "pressurejaw-drop-approach",
+    "rooms":  {
+                  "pressurejaw-drop-approach":  {
+                                                    "prompt":  "At the edge of Pressurejaw Drop, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "healing",
+                                                                                 "nextRoomId":  "pressurejaw-drop-depths",
+                                                                                 "healAmount":  82,
+                                                                                 "message":  "The left route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                 "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "pressurejaw-drop-depths",
+                                                                                  "enemyId":  "pressurejaw-eel",
+                                                                                  "message":  "A shift in the current exposes Pressurejaw Eel, which claims the right route through Pressurejaw Drop."
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "pressurejaw-drop-depths",
+                                                                                    "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                    "reward":  {
+                                                                                                   "min":  251,
+                                                                                                   "max":  286
+                                                                                               }
+                                                                                }
+                                                                }
+                                                },
+                  "pressurejaw-drop-depths":  {
+                                                  "prompt":  "Deeper within Pressurejaw Drop, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "empty",
+                                                                               "nextRoomId":  "pressurejaw-drop-threshold",
+                                                                               "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Pressurejaw Drop. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                               "berries":  1
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "treasure",
+                                                                                "nextRoomId":  "pressurejaw-drop-threshold",
+                                                                                "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
+                                                                                "reward":  {
+                                                                                               "min":  263,
+                                                                                               "max":  298
+                                                                                           }
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "pressurejaw-drop-threshold",
+                                                                                  "enemyId":  "pressurejaw-eel",
+                                                                                  "message":  "A shift in the current exposes Pressurejaw Eel, which claims the forward route through Pressurejaw Drop."
+                                                                              }
+                                                              }
+                                              },
+                  "pressurejaw-drop-threshold":  {
+                                                     "prompt":  "Near the heart of Pressurejaw Drop, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "boss-antechamber",
+                                                                                  "enemyId":  "pressurejaw-eel",
+                                                                                  "message":  "A shift in the current exposes Pressurejaw Eel, which claims the left route through Pressurejaw Drop."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "healing",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "healAmount":  87,
+                                                                                   "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
+                                                                                     "reward":  {
+                                                                                                    "min":  275,
+                                                                                                    "max":  310
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "boss-antechamber":  {
+                                           "name":  "Compression Vault",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Compression Vault."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Compression Vault. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Compression Vault: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Compression Vault. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "crushdepth-coil-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Crushdepth Coil reveals itself!"
+             },
+    "completionText":  "Crushdepth Coil yields, and the currents beyond Compression Vault open the next route through Leviathan\u0027s Wake."
+}

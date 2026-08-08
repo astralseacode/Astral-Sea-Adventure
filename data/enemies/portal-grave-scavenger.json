@@ -1,0 +1,20 @@
+{
+    "id":  "portal-grave-scavenger",
+    "name":  "Portal Grave Scavenger",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  495,
+    "damageBonus":  17,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1231,
+                                   "max":  2179
+                               },
+                   "xp":  {
+                              "min":  1231,
+                              "max":  1326
+                          }
+               },
+    "defeatCandyLoss":  227
+}

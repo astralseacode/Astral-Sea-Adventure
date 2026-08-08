@@ -1,0 +1,20 @@
+{
+    "id":  "pearl-throne-sentinel",
+    "name":  "Pearl-Throne Sentinel",
+    "region":  "sunken-kings-throne",
+    "level":  44,
+    "hp":  407,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  846,
+                                   "max":  1526
+                               },
+                   "xp":  {
+                              "min":  846,
+                              "max":  937
+                          }
+               },
+    "defeatCandyLoss":  178
+}

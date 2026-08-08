@@ -1,0 +1,20 @@
+{
+    "id":  "wrecknest-moray",
+    "name":  "Wrecknest Moray",
+    "region":  "leviathans-wake",
+    "level":  24,
+    "hp":  307,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  556,
+                                   "max":  1033
+                               },
+                   "xp":  {
+                              "min":  556,
+                              "max":  637
+                          }
+               },
+    "defeatCandyLoss":  127
+}

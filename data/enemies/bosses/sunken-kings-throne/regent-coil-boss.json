@@ -1,0 +1,20 @@
+{
+    "id":  "regent-coil-boss",
+    "name":  "Regent Coil",
+    "region":  "sunken-kings-throne",
+    "level":  36,
+    "hp":  501,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1916,
+                                   "max":  2682
+                               },
+                   "xp":  {
+                              "min":  1082,
+                              "max":  1411
+                          }
+               },
+    "defeatCandyLoss":  249
+}

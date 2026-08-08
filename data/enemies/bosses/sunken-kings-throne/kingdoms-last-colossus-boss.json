@@ -1,0 +1,20 @@
+{
+    "id":  "kingdoms-last-colossus-boss",
+    "name":  "Kingdom\u0027s Last Colossus",
+    "region":  "sunken-kings-throne",
+    "level":  49,
+    "hp":  567,
+    "damageBonus":  18,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2329,
+                                   "max":  3261
+                               },
+                   "xp":  {
+                              "min":  1337,
+                              "max":  1562
+                          }
+               },
+    "defeatCandyLoss":  298
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "dreamsap-leech",
+    "name":  "Dreamsap Leech",
+    "region":  "whispering-kelp-forest",
+    "level":  16,
+    "hp":  254,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  428,
+                                   "max":  838
+                               },
+                   "xp":  {
+                              "min":  428,
+                              "max":  515
+                          }
+               },
+    "defeatCandyLoss":  105
+}

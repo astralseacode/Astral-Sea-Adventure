@@ -1,0 +1,20 @@
+{
+    "id":  "oath-sealed-knight-boss",
+    "name":  "Oath-Sealed Knight",
+    "region":  "sunken-kings-throne",
+    "level":  32,
+    "hp":  485,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1812,
+                                   "max":  2537
+                               },
+                   "xp":  {
+                              "min":  1018,
+                              "max":  1373
+                          }
+               },
+    "defeatCandyLoss":  237
+}

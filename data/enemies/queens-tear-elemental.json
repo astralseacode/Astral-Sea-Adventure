@@ -1,0 +1,20 @@
+{
+    "id":  "queens-tear-elemental",
+    "name":  "Queen\u0027s Tear Elemental",
+    "region":  "sunken-kings-throne",
+    "level":  47,
+    "hp":  418,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  883,
+                                   "max":  1588
+                               },
+                   "xp":  {
+                              "min":  883,
+                              "max":  979
+                          }
+               },
+    "defeatCandyLoss":  184
+}

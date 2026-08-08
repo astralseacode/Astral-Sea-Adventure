@@ -1,0 +1,20 @@
+{
+    "id":  "eclipse-jaw-moray-boss",
+    "name":  "Eclipse-Jaw Moray",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  274,
+    "damageBonus":  9,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  802,
+                                   "max":  1123
+                               },
+                   "xp":  {
+                              "min":  394,
+                              "max":  598
+                          }
+               },
+    "defeatCandyLoss":  107
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "fae-ruin-architect",
+    "name":  "Fae Ruin Architect",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  489,
+    "damageBonus":  17,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1203,
+                                   "max":  2131
+                               },
+                   "xp":  {
+                              "min":  1203,
+                              "max":  1296
+                          }
+               },
+    "defeatCandyLoss":  224
+}

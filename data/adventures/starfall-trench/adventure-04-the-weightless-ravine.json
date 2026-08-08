@@ -1,0 +1,107 @@
+{
+    "id":  "the-weightless-ravine",
+    "number":  4,
+    "name":  "The Weightless Ravine",
+    "regionId":  "starfall-trench",
+    "enemyId":  "gravity-skipping-ray",
+    "recommendedLevel":  6,
+    "introDiscord":  "The Weightless Ravine lies ahead, where fractured starstone terraces conceal the territory of Gravity-Skipping Ray.",
+    "introTwitch":  "The Weightless Ravine lies ahead amid fractured starstone terraces.",
+    "startRoomId":  "the-weightless-ravine-approach",
+    "rooms":  {
+                  "the-weightless-ravine-approach":  {
+                                                         "prompt":  "At the edge of The Weightless Ravine, fractured starstone terraces divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "the-weightless-ravine-depths",
+                                                                                      "enemyId":  "gravity-skipping-ray",
+                                                                                      "message":  "A shift in the current exposes Gravity-Skipping Ray, which claims the left route through The Weightless Ravine."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "empty",
+                                                                                       "nextRoomId":  "the-weightless-ravine-depths",
+                                                                                       "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Weightless Ravine. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                       "berries":  1
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "the-weightless-ravine-depths",
+                                                                                         "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
+                                                                                         "reward":  {
+                                                                                                        "min":  135,
+                                                                                                        "max":  171
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "the-weightless-ravine-depths":  {
+                                                       "prompt":  "Deeper within The Weightless Ravine, meteor-lit trenches divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "the-weightless-ravine-threshold",
+                                                                                    "healAmount":  54,
+                                                                                    "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "the-weightless-ravine-threshold",
+                                                                                     "enemyId":  "gravity-skipping-ray",
+                                                                                     "message":  "A shift in the current exposes Gravity-Skipping Ray, which claims the right route through The Weightless Ravine."
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "treasure",
+                                                                                       "nextRoomId":  "the-weightless-ravine-threshold",
+                                                                                       "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
+                                                                                       "reward":  {
+                                                                                                      "min":  147,
+                                                                                                      "max":  183
+                                                                                                  }
+                                                                                   }
+                                                                   }
+                                                   },
+                  "the-weightless-ravine-threshold":  {
+                                                          "prompt":  "Near the heart of The Weightless Ravine, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                          "choices":  {
+                                                                          "left":  {
+                                                                                       "type":  "treasure",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "message":  "Beyond the left route, you discover a star chart coffer buried in luminous silt.",
+                                                                                       "reward":  {
+                                                                                                      "min":  159,
+                                                                                                      "max":  195
+                                                                                                  }
+                                                                                   },
+                                                                          "right":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "healAmount":  59,
+                                                                                        "message":  "The right route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    },
+                                                                          "forward":  {
+                                                                                          "type":  "combat",
+                                                                                          "nextRoomId":  "boss-antechamber",
+                                                                                          "enemyId":  "gravity-skipping-ray",
+                                                                                          "message":  "A shift in the current exposes Gravity-Skipping Ray, which claims the forward route through The Weightless Ravine."
+                                                                                      }
+                                                                      }
+                                                      },
+                  "boss-antechamber":  {
+                                           "name":  "Zero-Tide Vault",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Zero-Tide Vault."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Zero-Tide Vault. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Zero-Tide Vault: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Zero-Tide Vault. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "orbitbreaker-ray-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Orbitbreaker Ray reveals itself!"
+             },
+    "completionText":  "Orbitbreaker Ray yields, and the currents beyond Zero-Tide Vault open the next route through Starfall Trench."
+}

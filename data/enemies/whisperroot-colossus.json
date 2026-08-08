@@ -1,0 +1,20 @@
+{
+    "id":  "whisperroot-colossus",
+    "name":  "Whisperroot Colossus",
+    "region":  "whispering-kelp-forest",
+    "level":  19,
+    "hp":  280,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  489,
+                                   "max":  933
+                               },
+                   "xp":  {
+                              "min":  489,
+                              "max":  587
+                          }
+               },
+    "defeatCandyLoss":  122
+}

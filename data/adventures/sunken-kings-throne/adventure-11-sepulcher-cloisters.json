@@ -1,0 +1,107 @@
+{
+    "id":  "sepulcher-cloisters",
+    "number":  11,
+    "name":  "Sepulcher Cloisters",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "sepulcher-manta",
+    "recommendedLevel":  37,
+    "introDiscord":  "Sepulcher Cloisters lies ahead, where haunted halls beneath drifting banners conceal the territory of Sepulcher Manta.",
+    "introTwitch":  "Sepulcher Cloisters lies ahead amid haunted halls beneath drifting banners.",
+    "startRoomId":  "sepulcher-cloisters-approach",
+    "rooms":  {
+                  "sepulcher-cloisters-approach":  {
+                                                       "prompt":  "At the edge of Sepulcher Cloisters, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "sepulcher-cloisters-depths",
+                                                                                    "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
+                                                                                    "reward":  {
+                                                                                                   "min":  259,
+                                                                                                   "max":  297
+                                                                                               }
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "sepulcher-cloisters-depths",
+                                                                                     "enemyId":  "sepulcher-manta",
+                                                                                     "message":  "A shift in the current exposes Sepulcher Manta, which claims the right route through Sepulcher Cloisters."
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "sepulcher-cloisters-depths",
+                                                                                       "healAmount":  72,
+                                                                                       "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "sepulcher-cloisters-depths":  {
+                                                     "prompt":  "Deeper within Sepulcher Cloisters, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "sepulcher-cloisters-threshold",
+                                                                                  "enemyId":  "sepulcher-manta",
+                                                                                  "message":  "A shift in the current exposes Sepulcher Manta, which claims the left route through Sepulcher Cloisters."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "sepulcher-cloisters-threshold",
+                                                                                   "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                   "reward":  {
+                                                                                                  "min":  271,
+                                                                                                  "max":  309
+                                                                                              }
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "sepulcher-cloisters-threshold",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Sepulcher Cloisters. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 }
+                                                                 }
+                                                 },
+                  "sepulcher-cloisters-threshold":  {
+                                                        "prompt":  "Near the heart of Sepulcher Cloisters, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "healAmount":  77,
+                                                                                     "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "enemyId":  "sepulcher-manta",
+                                                                                      "message":  "A shift in the current exposes Sepulcher Manta, which claims the right route through Sepulcher Cloisters."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                                        "reward":  {
+                                                                                                       "min":  283,
+                                                                                                       "max":  321
+                                                                                                   }
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Royal Crypt Nave",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Royal Crypt Nave."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Royal Crypt Nave. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Royal Crypt Nave: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Royal Crypt Nave. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "funeral-wing-manta-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Funeral-Wing Manta reveals itself!"
+             },
+    "completionText":  "Funeral-Wing Manta yields, and the currents beyond Royal Crypt Nave open the next route through Sunken King\u0027s Throne."
+}

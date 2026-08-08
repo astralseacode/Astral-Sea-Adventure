@@ -1,0 +1,107 @@
+{
+    "id":  "bone-crown-march",
+    "number":  26,
+    "name":  "Bone-Crown March",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "bone-crown-behemoth",
+    "recommendedLevel":  29,
+    "introDiscord":  "Bone-Crown March lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Bone-Crown Behemoth.",
+    "introTwitch":  "Bone-Crown March lies ahead amid pressure-scarred trenches beside wrecked hulls.",
+    "startRoomId":  "bone-crown-march-approach",
+    "rooms":  {
+                  "bone-crown-march-approach":  {
+                                                    "prompt":  "At the edge of Bone-Crown March, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "treasure",
+                                                                                 "nextRoomId":  "bone-crown-march-depths",
+                                                                                 "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
+                                                                                 "reward":  {
+                                                                                                "min":  95,
+                                                                                                "max":  138
+                                                                                            }
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "bone-crown-march-depths",
+                                                                                  "healAmount":  12,
+                                                                                  "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "bone-crown-march-depths",
+                                                                                    "enemyId":  "bone-crown-behemoth",
+                                                                                    "message":  "A shift in the current exposes Bone-Crown Behemoth, which claims the forward route through Bone-Crown March."
+                                                                                }
+                                                                }
+                                                },
+                  "bone-crown-march-depths":  {
+                                                  "prompt":  "Deeper within Bone-Crown March, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "combat",
+                                                                               "nextRoomId":  "bone-crown-march-threshold",
+                                                                               "enemyId":  "bone-crown-behemoth",
+                                                                               "message":  "A shift in the current exposes Bone-Crown Behemoth, which claims the left route through Bone-Crown March."
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "empty",
+                                                                                "nextRoomId":  "bone-crown-march-threshold",
+                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Bone-Crown March. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                "berries":  1
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "treasure",
+                                                                                  "nextRoomId":  "bone-crown-march-threshold",
+                                                                                  "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                  "reward":  {
+                                                                                                 "min":  107,
+                                                                                                 "max":  150
+                                                                                             }
+                                                                              }
+                                                              }
+                                              },
+                  "bone-crown-march-threshold":  {
+                                                     "prompt":  "Near the heart of Bone-Crown March, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "treasure",
+                                                                                  "nextRoomId":  "boss-antechamber",
+                                                                                  "message":  "Beyond the left route, you discover a strongbox torn from a century-old wreck.",
+                                                                                  "reward":  {
+                                                                                                 "min":  119,
+                                                                                                 "max":  162
+                                                                                             }
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "enemyId":  "bone-crown-behemoth",
+                                                                                   "message":  "A shift in the current exposes Bone-Crown Behemoth, which claims the right route through Bone-Crown March."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "healAmount":  17,
+                                                                                     "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 }
+                                                                 }
+                                                 },
+                  "boss-antechamber":  {
+                                           "name":  "Crowned Skeleton Deep",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Crowned Skeleton Deep."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Crowned Skeleton Deep. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Crowned Skeleton Deep: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Crowned Skeleton Deep. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "ossuary-behemoth-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Ossuary Behemoth reveals itself!"
+             },
+    "completionText":  "Ossuary Behemoth yields, and the currents beyond Crowned Skeleton Deep open the next route through Leviathan\u0027s Wake."
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "shardwake-eel",
+    "name":  "Shardwake Eel",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  172,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  257,
+                                   "max":  554
+                               },
+                   "xp":  {
+                              "min":  257,
+                              "max":  336
+                          }
+               },
+    "defeatCandyLoss":  69
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "endless-dusk-behemoth-boss",
+    "name":  "Endless Dusk Behemoth",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  656,
+    "damageBonus":  21,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  3014,
+                                   "max":  4220
+                               },
+                   "xp":  {
+                              "min":  1747,
+                              "max":  2024
+                          }
+               },
+    "defeatCandyLoss":  356
+}

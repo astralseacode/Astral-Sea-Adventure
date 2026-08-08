@@ -1,0 +1,20 @@
+{
+    "id":  "behemoth-program-officer-boss",
+    "name":  "Behemoth Program Officer",
+    "region":  "leviathans-wake",
+    "level":  30,
+    "hp":  485,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1800,
+                                   "max":  2520
+                               },
+                   "xp":  {
+                              "min":  1000,
+                              "max":  1220
+                          }
+               },
+    "defeatCandyLoss":  245
+}

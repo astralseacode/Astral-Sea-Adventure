@@ -1,0 +1,20 @@
+{
+    "id":  "marrowlight-angler",
+    "name":  "Marrowlight Angler",
+    "region":  "leviathans-wake",
+    "level":  25,
+    "hp":  316,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  583,
+                                   "max":  1081
+                               },
+                   "xp":  {
+                              "min":  583,
+                              "max":  669
+                          }
+               },
+    "defeatCandyLoss":  133
+}

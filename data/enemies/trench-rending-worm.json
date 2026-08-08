@@ -1,0 +1,20 @@
+{
+    "id":  "trench-rending-worm",
+    "name":  "Trench-Rending Worm",
+    "region":  "leviathans-wake",
+    "level":  28,
+    "hp":  336,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  639,
+                                   "max":  1178
+                               },
+                   "xp":  {
+                              "min":  639,
+                              "max":  732
+                          }
+               },
+    "defeatCandyLoss":  146
+}

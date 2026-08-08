@@ -1,0 +1,107 @@
+{
+    "id":  "the-scale-that-remembers",
+    "number":  29,
+    "name":  "The Scale That Remembers",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "primeval-scale-revenant",
+    "recommendedLevel":  30,
+    "introDiscord":  "The Scale That Remembers lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Primeval Scale Revenant.",
+    "introTwitch":  "The Scale That Remembers lies ahead amid pressure-scarred trenches beside wrecked hulls.",
+    "startRoomId":  "the-scale-that-remembers-approach",
+    "rooms":  {
+                  "the-scale-that-remembers-approach":  {
+                                                            "prompt":  "At the edge of The Scale That Remembers, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                            "choices":  {
+                                                                            "left":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "the-scale-that-remembers-depths",
+                                                                                         "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
+                                                                                         "reward":  {
+                                                                                                        "min":  75,
+                                                                                                        "max":  119
+                                                                                                    }
+                                                                                     },
+                                                                            "right":  {
+                                                                                          "type":  "combat",
+                                                                                          "nextRoomId":  "the-scale-that-remembers-depths",
+                                                                                          "enemyId":  "primeval-scale-revenant",
+                                                                                          "message":  "A shift in the current exposes Primeval Scale Revenant, which claims the right route through The Scale That Remembers."
+                                                                                      },
+                                                                            "forward":  {
+                                                                                            "type":  "healing",
+                                                                                            "nextRoomId":  "the-scale-that-remembers-depths",
+                                                                                            "healAmount":  3,
+                                                                                            "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                            "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                        }
+                                                                        }
+                                                        },
+                  "the-scale-that-remembers-depths":  {
+                                                          "prompt":  "Deeper within The Scale That Remembers, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                          "choices":  {
+                                                                          "left":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "the-scale-that-remembers-threshold",
+                                                                                       "enemyId":  "primeval-scale-revenant",
+                                                                                       "message":  "A shift in the current exposes Primeval Scale Revenant, which claims the left route through The Scale That Remembers."
+                                                                                   },
+                                                                          "right":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "the-scale-that-remembers-threshold",
+                                                                                        "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                        "reward":  {
+                                                                                                       "min":  87,
+                                                                                                       "max":  131
+                                                                                                   }
+                                                                                    },
+                                                                          "forward":  {
+                                                                                          "type":  "empty",
+                                                                                          "nextRoomId":  "the-scale-that-remembers-threshold",
+                                                                                          "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Scale That Remembers. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                          "berries":  1
+                                                                                      }
+                                                                      }
+                                                      },
+                  "the-scale-that-remembers-threshold":  {
+                                                             "prompt":  "Near the heart of The Scale That Remembers, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                             "choices":  {
+                                                                             "left":  {
+                                                                                          "type":  "healing",
+                                                                                          "nextRoomId":  "boss-antechamber",
+                                                                                          "healAmount":  8,
+                                                                                          "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                          "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                      },
+                                                                             "right":  {
+                                                                                           "type":  "combat",
+                                                                                           "nextRoomId":  "boss-antechamber",
+                                                                                           "enemyId":  "primeval-scale-revenant",
+                                                                                           "message":  "A shift in the current exposes Primeval Scale Revenant, which claims the right route through The Scale That Remembers."
+                                                                                       },
+                                                                             "forward":  {
+                                                                                             "type":  "treasure",
+                                                                                             "nextRoomId":  "boss-antechamber",
+                                                                                             "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
+                                                                                             "reward":  {
+                                                                                                            "min":  99,
+                                                                                                            "max":  143
+                                                                                                        }
+                                                                                         }
+                                                                         }
+                                                         },
+                  "boss-antechamber":  {
+                                           "name":  "Memory of the Colossus",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Memory of the Colossus."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Memory of the Colossus. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Memory of the Colossus: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Memory of the Colossus. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "firstwake-revenant-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Firstwake Revenant reveals itself!"
+             },
+    "completionText":  "Firstwake Revenant yields, and the currents beyond Memory of the Colossus open the next route through Leviathan\u0027s Wake."
+}

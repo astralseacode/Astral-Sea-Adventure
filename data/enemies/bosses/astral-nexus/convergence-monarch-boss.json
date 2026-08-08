@@ -1,0 +1,20 @@
+{
+    "id":  "convergence-monarch-boss",
+    "name":  "Convergence Monarch",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  668,
+    "damageBonus":  22,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  3107,
+                                   "max":  4350
+                               },
+                   "xp":  {
+                              "min":  1798,
+                              "max":  2047
+                          }
+               },
+    "defeatCandyLoss":  363
+}

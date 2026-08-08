@@ -1,0 +1,107 @@
+{
+    "id":  "aurora-under-the-trench",
+    "number":  18,
+    "name":  "Aurora Under the Trench",
+    "regionId":  "starfall-trench",
+    "enemyId":  "trench-aurora-wisp",
+    "recommendedLevel":  8,
+    "introDiscord":  "Aurora Under the Trench lies ahead, where gravity-bent celestial ruins conceal the territory of Trench Aurora Wisp.",
+    "introTwitch":  "Aurora Under the Trench lies ahead amid gravity-bent celestial ruins.",
+    "startRoomId":  "aurora-under-the-trench-approach",
+    "rooms":  {
+                  "aurora-under-the-trench-approach":  {
+                                                           "prompt":  "At the edge of Aurora Under the Trench, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                           "choices":  {
+                                                                           "left":  {
+                                                                                        "type":  "empty",
+                                                                                        "nextRoomId":  "aurora-under-the-trench-depths",
+                                                                                        "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Aurora Under the Trench. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                        "berries":  1
+                                                                                    },
+                                                                           "right":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "aurora-under-the-trench-depths",
+                                                                                         "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
+                                                                                         "reward":  {
+                                                                                                        "min":  86,
+                                                                                                        "max":  126
+                                                                                                    }
+                                                                                     },
+                                                                           "forward":  {
+                                                                                           "type":  "combat",
+                                                                                           "nextRoomId":  "aurora-under-the-trench-depths",
+                                                                                           "enemyId":  "trench-aurora-wisp",
+                                                                                           "message":  "A shift in the current exposes Trench Aurora Wisp, which claims the forward route through Aurora Under the Trench."
+                                                                                       }
+                                                                       }
+                                                       },
+                  "aurora-under-the-trench-depths":  {
+                                                         "prompt":  "Deeper within Aurora Under the Trench, fractured starstone terraces divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "aurora-under-the-trench-threshold",
+                                                                                      "enemyId":  "trench-aurora-wisp",
+                                                                                      "message":  "A shift in the current exposes Trench Aurora Wisp, which claims the left route through Aurora Under the Trench."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "aurora-under-the-trench-threshold",
+                                                                                       "healAmount":  25,
+                                                                                       "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "aurora-under-the-trench-threshold",
+                                                                                         "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
+                                                                                         "reward":  {
+                                                                                                        "min":  98,
+                                                                                                        "max":  138
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "aurora-under-the-trench-threshold":  {
+                                                            "prompt":  "Near the heart of Aurora Under the Trench, meteor-lit trenches divide into three uncertain routes.",
+                                                            "choices":  {
+                                                                            "left":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
+                                                                                         "reward":  {
+                                                                                                        "min":  110,
+                                                                                                        "max":  150
+                                                                                                    }
+                                                                                     },
+                                                                            "right":  {
+                                                                                          "type":  "combat",
+                                                                                          "nextRoomId":  "boss-antechamber",
+                                                                                          "enemyId":  "trench-aurora-wisp",
+                                                                                          "message":  "A shift in the current exposes Trench Aurora Wisp, which claims the right route through Aurora Under the Trench."
+                                                                                      },
+                                                                            "forward":  {
+                                                                                            "type":  "healing",
+                                                                                            "nextRoomId":  "boss-antechamber",
+                                                                                            "healAmount":  30,
+                                                                                            "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                            "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                        }
+                                                                        }
+                                                        },
+                  "boss-antechamber":  {
+                                           "name":  "Curtain of the Deep",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Curtain of the Deep."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Curtain of the Deep. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Curtain of the Deep: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Curtain of the Deep. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "polar-flare-wisp-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Polar-Flare Wisp reveals itself!"
+             },
+    "completionText":  "Polar-Flare Wisp yields, and the currents beyond Curtain of the Deep open the next route through Starfall Trench."
+}

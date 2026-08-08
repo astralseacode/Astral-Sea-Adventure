@@ -1,0 +1,20 @@
+{
+    "id":  "unremembered-heir-boss",
+    "name":  "Unremembered Heir",
+    "region":  "sunken-kings-throne",
+    "level":  47,
+    "hp":  554,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2247,
+                                   "max":  3146
+                               },
+                   "xp":  {
+                              "min":  1286,
+                              "max":  1532
+                          }
+               },
+    "defeatCandyLoss":  288
+}

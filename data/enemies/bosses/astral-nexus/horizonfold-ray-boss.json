@@ -1,0 +1,20 @@
+{
+    "id":  "horizonfold-ray-boss",
+    "name":  "Horizonfold Ray",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  577,
+    "damageBonus":  18,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2393,
+                                   "max":  3350
+                               },
+                   "xp":  {
+                              "min":  1402,
+                              "max":  1873
+                          }
+               },
+    "defeatCandyLoss":  307
+}

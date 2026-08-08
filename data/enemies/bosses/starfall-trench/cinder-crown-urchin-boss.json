@@ -1,0 +1,20 @@
+{
+    "id":  "cinder-crown-urchin-boss",
+    "name":  "Cinder-Crown Urchin",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  271,
+    "damageBonus":  9,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  791,
+                                   "max":  1107
+                               },
+                   "xp":  {
+                              "min":  388,
+                              "max":  590
+                          }
+               },
+    "defeatCandyLoss":  105
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "meteor-hermit",
+    "name":  "Meteor Hermit",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  164,
+    "damageBonus":  6,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  241,
+                                   "max":  530
+                               },
+                   "xp":  {
+                              "min":  241,
+                              "max":  317
+                          }
+               },
+    "defeatCandyLoss":  64
+}

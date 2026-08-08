@@ -1,0 +1,20 @@
+{
+    "id":  "royal-menagerie-beast",
+    "name":  "Royal Menagerie Beast",
+    "region":  "sunken-kings-throne",
+    "level":  44,
+    "hp":  404,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  836,
+                                   "max":  1510
+                               },
+                   "xp":  {
+                              "min":  836,
+                              "max":  927
+                          }
+               },
+    "defeatCandyLoss":  176
+}

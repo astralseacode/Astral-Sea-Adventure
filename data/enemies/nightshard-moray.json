@@ -1,0 +1,20 @@
+{
+    "id":  "nightshard-moray",
+    "name":  "Nightshard Moray",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  162,
+    "damageBonus":  6,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  236,
+                                   "max":  521
+                               },
+                   "xp":  {
+                              "min":  236,
+                              "max":  311
+                          }
+               },
+    "defeatCandyLoss":  63
+}

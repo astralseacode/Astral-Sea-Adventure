@@ -1,0 +1,107 @@
+{
+    "id":  "celestial-ruin-march",
+    "number":  24,
+    "name":  "Celestial Ruin March",
+    "regionId":  "starfall-trench",
+    "enemyId":  "celestial-ruin-walker",
+    "recommendedLevel":  9,
+    "introDiscord":  "Celestial Ruin March lies ahead, where gravity-bent celestial ruins conceal the territory of Celestial Ruin Walker.",
+    "introTwitch":  "Celestial Ruin March lies ahead amid gravity-bent celestial ruins.",
+    "startRoomId":  "celestial-ruin-march-approach",
+    "rooms":  {
+                  "celestial-ruin-march-approach":  {
+                                                        "prompt":  "At the edge of Celestial Ruin March, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "celestial-ruin-march-depths",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Celestial Ruin March. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "celestial-ruin-march-depths",
+                                                                                      "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
+                                                                                      "reward":  {
+                                                                                                     "min":  66,
+                                                                                                     "max":  108
+                                                                                                 }
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "celestial-ruin-march-depths",
+                                                                                        "enemyId":  "celestial-ruin-walker",
+                                                                                        "message":  "A shift in the current exposes Celestial Ruin Walker, which claims the forward route through Celestial Ruin March."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "celestial-ruin-march-depths":  {
+                                                      "prompt":  "Deeper within Celestial Ruin March, fractured starstone terraces divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "celestial-ruin-march-threshold",
+                                                                                   "enemyId":  "celestial-ruin-walker",
+                                                                                   "message":  "A shift in the current exposes Celestial Ruin Walker, which claims the left route through Celestial Ruin March."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "celestial-ruin-march-threshold",
+                                                                                    "healAmount":  12,
+                                                                                    "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "celestial-ruin-march-threshold",
+                                                                                      "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
+                                                                                      "reward":  {
+                                                                                                     "min":  78,
+                                                                                                     "max":  120
+                                                                                                 }
+                                                                                  }
+                                                                  }
+                                                  },
+                  "celestial-ruin-march-threshold":  {
+                                                         "prompt":  "Near the heart of Celestial Ruin March, meteor-lit trenches divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
+                                                                                      "reward":  {
+                                                                                                     "min":  90,
+                                                                                                     "max":  132
+                                                                                                 }
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "enemyId":  "celestial-ruin-walker",
+                                                                                       "message":  "A shift in the current exposes Celestial Ruin Walker, which claims the right route through Celestial Ruin March."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "healing",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "healAmount":  17,
+                                                                                         "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                         "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Temple of the Fallen Arc",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Temple of the Fallen Arc."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Temple of the Fallen Arc. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Temple of the Fallen Arc: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Temple of the Fallen Arc. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "firmament-warden-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Firmament Warden reveals itself!"
+             },
+    "completionText":  "Firmament Warden yields, and the currents beyond Temple of the Fallen Arc open the next route through Starfall Trench."
+}

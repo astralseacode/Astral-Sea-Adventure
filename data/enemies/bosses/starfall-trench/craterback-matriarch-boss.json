@@ -1,0 +1,20 @@
+{
+    "id":  "craterback-matriarch-boss",
+    "name":  "Craterback Matriarch",
+    "region":  "starfall-trench",
+    "level":  5,
+    "hp":  263,
+    "damageBonus":  9,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  760,
+                                   "max":  1064
+                               },
+                   "xp":  {
+                              "min":  367,
+                              "max":  568
+                          }
+               },
+    "defeatCandyLoss":  97
+}

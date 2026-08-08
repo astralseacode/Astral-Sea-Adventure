@@ -1,0 +1,20 @@
+{
+    "id":  "leviathan-scale-golem",
+    "name":  "Leviathan Scale Golem",
+    "region":  "leviathans-wake",
+    "level":  23,
+    "hp":  302,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  542,
+                                   "max":  1009
+                               },
+                   "xp":  {
+                              "min":  542,
+                              "max":  621
+                          }
+               },
+    "defeatCandyLoss":  124
+}

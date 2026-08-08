@@ -1,0 +1,107 @@
+{
+    "id":  "portal-skip-expanse",
+    "number":  4,
+    "name":  "Portal-Skip Expanse",
+    "regionId":  "astral-nexus",
+    "enemyId":  "portal-skipping-ray",
+    "recommendedLevel":  50,
+    "introDiscord":  "Portal-Skip Expanse lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Portal-Skipping Ray.",
+    "introTwitch":  "Portal-Skip Expanse lies ahead amid floating ocean fragments joined by impossible currents.",
+    "startRoomId":  "portal-skip-expanse-approach",
+    "rooms":  {
+                  "portal-skip-expanse-approach":  {
+                                                       "prompt":  "At the edge of Portal-Skip Expanse, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "portal-skip-expanse-depths",
+                                                                                    "enemyId":  "portal-skipping-ray",
+                                                                                    "message":  "A shift in the current exposes Portal-Skipping Ray, which claims the left route through Portal-Skip Expanse."
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "portal-skip-expanse-depths",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Portal-Skip Expanse. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "treasure",
+                                                                                       "nextRoomId":  "portal-skip-expanse-depths",
+                                                                                       "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                       "reward":  {
+                                                                                                      "min":  414,
+                                                                                                      "max":  450
+                                                                                                  }
+                                                                                   }
+                                                                   }
+                                                   },
+                  "portal-skip-expanse-depths":  {
+                                                     "prompt":  "Deeper within Portal-Skip Expanse, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "portal-skip-expanse-threshold",
+                                                                                  "healAmount":  121,
+                                                                                  "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "portal-skip-expanse-threshold",
+                                                                                   "enemyId":  "portal-skipping-ray",
+                                                                                   "message":  "A shift in the current exposes Portal-Skipping Ray, which claims the right route through Portal-Skip Expanse."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "portal-skip-expanse-threshold",
+                                                                                     "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
+                                                                                     "reward":  {
+                                                                                                    "min":  426,
+                                                                                                    "max":  462
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "portal-skip-expanse-threshold":  {
+                                                        "prompt":  "Near the heart of Portal-Skip Expanse, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "message":  "Beyond the left route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                     "reward":  {
+                                                                                                    "min":  438,
+                                                                                                    "max":  474
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "healing",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "healAmount":  126,
+                                                                                      "message":  "The right route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                      "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "enemyId":  "portal-skipping-ray",
+                                                                                        "message":  "A shift in the current exposes Portal-Skipping Ray, which claims the forward route through Portal-Skip Expanse."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Many-Exit Vault",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Many-Exit Vault."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Many-Exit Vault. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Many-Exit Vault: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Many-Exit Vault. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "horizonfold-ray-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Horizonfold Ray reveals itself!"
+             },
+    "completionText":  "Horizonfold Ray yields, and the currents beyond Many-Exit Vault open the next route through Astral Nexus."
+}

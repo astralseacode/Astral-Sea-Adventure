@@ -1,0 +1,20 @@
+{
+    "id":  "axis-prime-sentinel-boss",
+    "name":  "Axis Prime Sentinel",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  597,
+    "damageBonus":  19,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2548,
+                                   "max":  3567
+                               },
+                   "xp":  {
+                              "min":  1488,
+                              "max":  1911
+                          }
+               },
+    "defeatCandyLoss":  319
+}

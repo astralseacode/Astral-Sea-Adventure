@@ -1,0 +1,20 @@
+{
+    "id":  "starfall-annex-grunt",
+    "name":  "Starfall Annex Grunt",
+    "region":  "starfall-trench",
+    "level":  10,
+    "hp":  220,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  360,
+                                   "max":  720
+                               },
+                   "xp":  {
+                              "min":  360,
+                              "max":  460
+                          }
+               },
+    "defeatCandyLoss":  100
+}

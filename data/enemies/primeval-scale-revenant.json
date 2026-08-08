@@ -1,0 +1,20 @@
+{
+    "id":  "primeval-scale-revenant",
+    "name":  "Primeval Scale Revenant",
+    "region":  "leviathans-wake",
+    "level":  30,
+    "hp":  348,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  673,
+                                   "max":  1238
+                               },
+                   "xp":  {
+                              "min":  673,
+                              "max":  772
+                          }
+               },
+    "defeatCandyLoss":  153
+}

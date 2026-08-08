@@ -1,0 +1,20 @@
+{
+    "id":  "kelpweave-spider",
+    "name":  "Kelpweave Spider",
+    "region":  "whispering-kelp-forest",
+    "level":  16,
+    "hp":  256,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  434,
+                                   "max":  847
+                               },
+                   "xp":  {
+                              "min":  434,
+                              "max":  521
+                          }
+               },
+    "defeatCandyLoss":  106
+}

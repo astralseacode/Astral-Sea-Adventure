@@ -1,0 +1,107 @@
+{
+    "id":  "the-queens-tear",
+    "number":  26,
+    "name":  "The Queen\u0027s Tear",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "queens-tear-elemental",
+    "recommendedLevel":  47,
+    "introDiscord":  "The Queen\u0027s Tear lies ahead, where haunted halls beneath drifting banners conceal the territory of Queen\u0027s Tear Elemental.",
+    "introTwitch":  "The Queen\u0027s Tear lies ahead amid haunted halls beneath drifting banners.",
+    "startRoomId":  "the-queens-tear-approach",
+    "rooms":  {
+                  "the-queens-tear-approach":  {
+                                                   "prompt":  "At the edge of The Queen\u0027s Tear, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "treasure",
+                                                                                "nextRoomId":  "the-queens-tear-depths",
+                                                                                "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
+                                                                                "reward":  {
+                                                                                               "min":  122,
+                                                                                               "max":  165
+                                                                                           }
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "healing",
+                                                                                 "nextRoomId":  "the-queens-tear-depths",
+                                                                                 "healAmount":  15,
+                                                                                 "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                                 "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "the-queens-tear-depths",
+                                                                                   "enemyId":  "queens-tear-elemental",
+                                                                                   "message":  "A shift in the current exposes Queen\u0027s Tear Elemental, which claims the forward route through The Queen\u0027s Tear."
+                                                                               }
+                                                               }
+                                               },
+                  "the-queens-tear-depths":  {
+                                                 "prompt":  "Deeper within The Queen\u0027s Tear, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                 "choices":  {
+                                                                 "left":  {
+                                                                              "type":  "combat",
+                                                                              "nextRoomId":  "the-queens-tear-threshold",
+                                                                              "enemyId":  "queens-tear-elemental",
+                                                                              "message":  "A shift in the current exposes Queen\u0027s Tear Elemental, which claims the left route through The Queen\u0027s Tear."
+                                                                          },
+                                                                 "right":  {
+                                                                               "type":  "empty",
+                                                                               "nextRoomId":  "the-queens-tear-threshold",
+                                                                               "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Queen\u0027s Tear. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                               "berries":  1
+                                                                           },
+                                                                 "forward":  {
+                                                                                 "type":  "treasure",
+                                                                                 "nextRoomId":  "the-queens-tear-threshold",
+                                                                                 "message":  "Beyond the forward route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                 "reward":  {
+                                                                                                "min":  134,
+                                                                                                "max":  177
+                                                                                            }
+                                                                             }
+                                                             }
+                                             },
+                  "the-queens-tear-threshold":  {
+                                                    "prompt":  "Near the heart of The Queen\u0027s Tear, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "treasure",
+                                                                                 "nextRoomId":  "boss-antechamber",
+                                                                                 "message":  "Beyond the left route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                                 "reward":  {
+                                                                                                "min":  146,
+                                                                                                "max":  189
+                                                                                            }
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "boss-antechamber",
+                                                                                  "enemyId":  "queens-tear-elemental",
+                                                                                  "message":  "A shift in the current exposes Queen\u0027s Tear Elemental, which claims the right route through The Queen\u0027s Tear."
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "healAmount":  20,
+                                                                                    "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                }
+                                                                }
+                                                },
+                  "boss-antechamber":  {
+                                           "name":  "Lamentation Basin",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Lamentation Basin."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Lamentation Basin. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Lamentation Basin: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Lamentation Basin. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "sorrow-tide-queen-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Sorrow-Tide Queen reveals itself!"
+             },
+    "completionText":  "Sorrow-Tide Queen yields, and the currents beyond Lamentation Basin open the next route through Sunken King\u0027s Throne."
+}

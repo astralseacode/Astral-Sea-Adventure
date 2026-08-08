@@ -1,0 +1,107 @@
+{
+    "id":  "drowned-lists",
+    "number":  19,
+    "name":  "Drowned Lists",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "drowned-duelist",
+    "recommendedLevel":  42,
+    "introDiscord":  "Drowned Lists lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Drowned Duelist.",
+    "introTwitch":  "Drowned Lists lies ahead amid drowned palace colonnades guarded by broken royal seals.",
+    "startRoomId":  "drowned-lists-approach",
+    "rooms":  {
+                  "drowned-lists-approach":  {
+                                                 "prompt":  "At the edge of Drowned Lists, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                 "choices":  {
+                                                                 "left":  {
+                                                                              "type":  "combat",
+                                                                              "nextRoomId":  "drowned-lists-depths",
+                                                                              "enemyId":  "drowned-duelist",
+                                                                              "message":  "A shift in the current exposes Drowned Duelist, which claims the left route through Drowned Lists."
+                                                                          },
+                                                                 "right":  {
+                                                                               "type":  "treasure",
+                                                                               "nextRoomId":  "drowned-lists-depths",
+                                                                               "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                               "reward":  {
+                                                                                              "min":  186,
+                                                                                              "max":  227
+                                                                                          }
+                                                                           },
+                                                                 "forward":  {
+                                                                                 "type":  "healing",
+                                                                                 "nextRoomId":  "drowned-lists-depths",
+                                                                                 "healAmount":  42,
+                                                                                 "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                 "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                             }
+                                                             }
+                                             },
+                  "drowned-lists-depths":  {
+                                               "prompt":  "Deeper within Drowned Lists, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                               "choices":  {
+                                                               "left":  {
+                                                                            "type":  "treasure",
+                                                                            "nextRoomId":  "drowned-lists-threshold",
+                                                                            "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
+                                                                            "reward":  {
+                                                                                           "min":  198,
+                                                                                           "max":  239
+                                                                                       }
+                                                                        },
+                                                               "right":  {
+                                                                             "type":  "combat",
+                                                                             "nextRoomId":  "drowned-lists-threshold",
+                                                                             "enemyId":  "drowned-duelist",
+                                                                             "message":  "A shift in the current exposes Drowned Duelist, which claims the right route through Drowned Lists."
+                                                                         },
+                                                               "forward":  {
+                                                                               "type":  "empty",
+                                                                               "nextRoomId":  "drowned-lists-threshold",
+                                                                               "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Drowned Lists. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                               "berries":  1
+                                                                           }
+                                                           }
+                                           },
+                  "drowned-lists-threshold":  {
+                                                  "prompt":  "Near the heart of Drowned Lists, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "healing",
+                                                                               "nextRoomId":  "boss-antechamber",
+                                                                               "healAmount":  47,
+                                                                               "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                               "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "treasure",
+                                                                                "nextRoomId":  "boss-antechamber",
+                                                                                "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                "reward":  {
+                                                                                               "min":  210,
+                                                                                               "max":  251
+                                                                                           }
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "boss-antechamber",
+                                                                                  "enemyId":  "drowned-duelist",
+                                                                                  "message":  "A shift in the current exposes Drowned Duelist, which claims the forward route through Drowned Lists."
+                                                                              }
+                                                              }
+                                              },
+                  "boss-antechamber":  {
+                                           "name":  "Tidal Tournament Floor",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Tidal Tournament Floor."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Tidal Tournament Floor. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Tidal Tournament Floor: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Tidal Tournament Floor. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "champion-of-the-last-court-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Champion of the Last Court reveals itself!"
+             },
+    "completionText":  "Champion of the Last Court yields, and the currents beyond Tidal Tournament Floor open the next route through Sunken King\u0027s Throne."
+}

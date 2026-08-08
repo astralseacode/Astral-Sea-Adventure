@@ -1,0 +1,20 @@
+{
+    "id":  "meteorbone-prowler",
+    "name":  "Meteorbone Prowler",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  210,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  339,
+                                   "max":  687
+                               },
+                   "xp":  {
+                              "min":  339,
+                              "max":  435
+                          }
+               },
+    "defeatCandyLoss":  94
+}

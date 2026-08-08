@@ -1,0 +1,107 @@
+{
+    "id":  "murmurleaf-paths",
+    "number":  1,
+    "name":  "Murmurleaf Paths",
+    "regionId":  "whispering-kelp-forest",
+    "enemyId":  "murmurleaf-minnow",
+    "recommendedLevel":  10,
+    "introDiscord":  "Murmurleaf Paths lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Murmurleaf Minnow.",
+    "introTwitch":  "Murmurleaf Paths lies ahead amid towering kelp columns threaded with murmuring currents.",
+    "startRoomId":  "murmurleaf-paths-approach",
+    "rooms":  {
+                  "murmurleaf-paths-approach":  {
+                                                    "prompt":  "At the edge of Murmurleaf Paths, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "murmurleaf-paths-depths",
+                                                                                 "enemyId":  "murmurleaf-minnow",
+                                                                                 "message":  "A shift in the current exposes Murmurleaf Minnow, which claims the left route through Murmurleaf Paths."
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "treasure",
+                                                                                  "nextRoomId":  "murmurleaf-paths-depths",
+                                                                                  "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
+                                                                                  "reward":  {
+                                                                                                 "min":  200,
+                                                                                                 "max":  235
+                                                                                             }
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "murmurleaf-paths-depths",
+                                                                                    "healAmount":  72,
+                                                                                    "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                }
+                                                                }
+                                                },
+                  "murmurleaf-paths-depths":  {
+                                                  "prompt":  "Deeper within Murmurleaf Paths, living rootways beneath drifting fae lights divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "treasure",
+                                                                               "nextRoomId":  "murmurleaf-paths-threshold",
+                                                                               "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
+                                                                               "reward":  {
+                                                                                              "min":  212,
+                                                                                              "max":  247
+                                                                                          }
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "combat",
+                                                                                "nextRoomId":  "murmurleaf-paths-threshold",
+                                                                                "enemyId":  "murmurleaf-minnow",
+                                                                                "message":  "A shift in the current exposes Murmurleaf Minnow, which claims the right route through Murmurleaf Paths."
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "empty",
+                                                                                  "nextRoomId":  "murmurleaf-paths-threshold",
+                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Murmurleaf Paths. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                  "berries":  1
+                                                                              }
+                                                              }
+                                              },
+                  "murmurleaf-paths-threshold":  {
+                                                     "prompt":  "Near the heart of Murmurleaf Paths, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "boss-antechamber",
+                                                                                  "healAmount":  77,
+                                                                                  "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
+                                                                                   "reward":  {
+                                                                                                  "min":  224,
+                                                                                                  "max":  259
+                                                                                              }
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "enemyId":  "murmurleaf-minnow",
+                                                                                     "message":  "A shift in the current exposes Murmurleaf Minnow, which claims the forward route through Murmurleaf Paths."
+                                                                                 }
+                                                                 }
+                                                 },
+                  "boss-antechamber":  {
+                                           "name":  "Choirleaf Clearing",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Choirleaf Clearing."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Choirleaf Clearing. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Choirleaf Clearing: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Choirleaf Clearing. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "chorus-fin-schoolmother-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Chorus-Fin Schoolmother reveals itself!"
+             },
+    "completionText":  "Chorus-Fin Schoolmother yields, and the currents beyond Choirleaf Clearing open the next route through Whispering Kelp Forest."
+}

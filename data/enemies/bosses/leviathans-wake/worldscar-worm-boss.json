@@ -1,0 +1,20 @@
+{
+    "id":  "worldscar-worm-boss",
+    "name":  "Worldscar Worm",
+    "region":  "leviathans-wake",
+    "level":  28,
+    "hp":  467,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1707,
+                                   "max":  2390
+                               },
+                   "xp":  {
+                              "min":  942,
+                              "max":  1174
+                          }
+               },
+    "defeatCandyLoss":  231
+}

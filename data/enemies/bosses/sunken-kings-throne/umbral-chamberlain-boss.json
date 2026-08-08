@@ -1,0 +1,20 @@
+{
+    "id":  "umbral-chamberlain-boss",
+    "name":  "Umbral Chamberlain",
+    "region":  "sunken-kings-throne",
+    "level":  43,
+    "hp":  537,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2143,
+                                   "max":  3000
+                               },
+                   "xp":  {
+                              "min":  1222,
+                              "max":  1494
+                          }
+               },
+    "defeatCandyLoss":  276
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "gravity-skipping-ray",
+    "name":  "Gravity-Skipping Ray",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  157,
+    "damageBonus":  6,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  226,
+                                   "max":  505
+                               },
+                   "xp":  {
+                              "min":  226,
+                              "max":  299
+                          }
+               },
+    "defeatCandyLoss":  60
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "euclidean-coilbreaker-boss",
+    "name":  "Euclidean Coilbreaker",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  569,
+    "damageBonus":  18,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2331,
+                                   "max":  3263
+                               },
+                   "xp":  {
+                              "min":  1367,
+                              "max":  1858
+                          }
+               },
+    "defeatCandyLoss":  302
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "polar-flare-wisp-boss",
+    "name":  "Polar-Flare Wisp",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  307,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  926,
+                                   "max":  1296
+                               },
+                   "xp":  {
+                              "min":  477,
+                              "max":  689
+                          }
+               },
+    "defeatCandyLoss":  136
+}

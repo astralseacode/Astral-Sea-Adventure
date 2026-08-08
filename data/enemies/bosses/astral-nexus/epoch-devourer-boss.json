@@ -1,0 +1,20 @@
+{
+    "id":  "epoch-devourer-boss",
+    "name":  "Epoch Devourer",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  664,
+    "damageBonus":  21,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  3076,
+                                   "max":  4306
+                               },
+                   "xp":  {
+                              "min":  1781,
+                              "max":  2040
+                          }
+               },
+    "defeatCandyLoss":  360
+}

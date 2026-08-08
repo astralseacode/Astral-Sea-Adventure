@@ -1,0 +1,20 @@
+{
+    "id":  "contradiction-leviathan-boss",
+    "name":  "Contradiction Leviathan",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  565,
+    "damageBonus":  18,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2300,
+                                   "max":  3220
+                               },
+                   "xp":  {
+                              "min":  1350,
+                              "max":  1850
+                          }
+               },
+    "defeatCandyLoss":  300
+}

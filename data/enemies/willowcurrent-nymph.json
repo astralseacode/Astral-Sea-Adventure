@@ -1,0 +1,20 @@
+{
+    "id":  "willowcurrent-nymph",
+    "name":  "Willowcurrent Nymph",
+    "region":  "whispering-kelp-forest",
+    "level":  16,
+    "hp":  258,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  439,
+                                   "max":  855
+                               },
+                   "xp":  {
+                              "min":  439,
+                              "max":  528
+                          }
+               },
+    "defeatCandyLoss":  108
+}

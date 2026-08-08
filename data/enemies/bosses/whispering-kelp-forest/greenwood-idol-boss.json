@@ -1,0 +1,20 @@
+{
+    "id":  "greenwood-idol-boss",
+    "name":  "Greenwood Idol",
+    "region":  "whispering-kelp-forest",
+    "level":  18,
+    "hp":  389,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1303,
+                                   "max":  1824
+                               },
+                   "xp":  {
+                              "min":  702,
+                              "max":  927
+                          }
+               },
+    "defeatCandyLoss":  183
+}

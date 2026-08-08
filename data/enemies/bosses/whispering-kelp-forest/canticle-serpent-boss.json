@@ -1,0 +1,20 @@
+{
+    "id":  "canticle-serpent-boss",
+    "name":  "Canticle Serpent",
+    "region":  "whispering-kelp-forest",
+    "level":  13,
+    "hp":  354,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1138,
+                                   "max":  1593
+                               },
+                   "xp":  {
+                              "min":  603,
+                              "max":  836
+                          }
+               },
+    "defeatCandyLoss":  154
+}

@@ -1,0 +1,107 @@
+{
+    "id":  "the-first-light-memory",
+    "number":  28,
+    "name":  "The First-Light Memory",
+    "regionId":  "astral-nexus",
+    "enemyId":  "first-light-remnant",
+    "recommendedLevel":  50,
+    "introDiscord":  "The First-Light Memory lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of First-Light Remnant.",
+    "introTwitch":  "The First-Light Memory lies ahead amid floating ocean fragments joined by impossible currents.",
+    "startRoomId":  "the-first-light-memory-approach",
+    "rooms":  {
+                  "the-first-light-memory-approach":  {
+                                                          "prompt":  "At the edge of The First-Light Memory, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                          "choices":  {
+                                                                          "left":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "the-first-light-memory-depths",
+                                                                                       "enemyId":  "first-light-remnant",
+                                                                                       "message":  "A shift in the current exposes First-Light Remnant, which claims the left route through The First-Light Memory."
+                                                                                   },
+                                                                          "right":  {
+                                                                                        "type":  "empty",
+                                                                                        "nextRoomId":  "the-first-light-memory-depths",
+                                                                                        "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The First-Light Memory. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                        "berries":  1
+                                                                                    },
+                                                                          "forward":  {
+                                                                                          "type":  "treasure",
+                                                                                          "nextRoomId":  "the-first-light-memory-depths",
+                                                                                          "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                          "reward":  {
+                                                                                                         "min":  129,
+                                                                                                         "max":  173
+                                                                                                     }
+                                                                                      }
+                                                                      }
+                                                      },
+                  "the-first-light-memory-depths":  {
+                                                        "prompt":  "Deeper within The First-Light Memory, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "the-first-light-memory-threshold",
+                                                                                     "healAmount":  9,
+                                                                                     "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "the-first-light-memory-threshold",
+                                                                                      "enemyId":  "first-light-remnant",
+                                                                                      "message":  "A shift in the current exposes First-Light Remnant, which claims the right route through The First-Light Memory."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "the-first-light-memory-threshold",
+                                                                                        "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
+                                                                                        "reward":  {
+                                                                                                       "min":  141,
+                                                                                                       "max":  185
+                                                                                                   }
+                                                                                    }
+                                                                    }
+                                                    },
+                  "the-first-light-memory-threshold":  {
+                                                           "prompt":  "Near the heart of The First-Light Memory, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                           "choices":  {
+                                                                           "left":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "message":  "Beyond the left route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                        "reward":  {
+                                                                                                       "min":  153,
+                                                                                                       "max":  197
+                                                                                                   }
+                                                                                    },
+                                                                           "right":  {
+                                                                                         "type":  "healing",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "healAmount":  14,
+                                                                                         "message":  "The right route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                         "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                     },
+                                                                           "forward":  {
+                                                                                           "type":  "combat",
+                                                                                           "nextRoomId":  "boss-antechamber",
+                                                                                           "enemyId":  "first-light-remnant",
+                                                                                           "message":  "A shift in the current exposes First-Light Remnant, which claims the forward route through The First-Light Memory."
+                                                                                       }
+                                                                       }
+                                                       },
+                  "boss-antechamber":  {
+                                           "name":  "Origin Reflection",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Origin Reflection."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Origin Reflection. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Origin Reflection: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Origin Reflection. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "dawn-before-the-sea-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Dawn Before the Sea reveals itself!"
+             },
+    "completionText":  "Dawn Before the Sea yields, and the currents beyond Origin Reflection open the next route through Astral Nexus."
+}

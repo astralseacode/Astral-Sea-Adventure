@@ -1,0 +1,20 @@
+{
+    "id":  "constellation-devourer-boss",
+    "name":  "Constellation Devourer",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  312,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  947,
+                                   "max":  1326
+                               },
+                   "xp":  {
+                              "min":  491,
+                              "max":  704
+                          }
+               },
+    "defeatCandyLoss":  141
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "deep-scar-prowler",
+    "name":  "Deep-Scar Prowler",
+    "region":  "leviathans-wake",
+    "level":  23,
+    "hp":  299,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  535,
+                                   "max":  997
+                               },
+                   "xp":  {
+                              "min":  535,
+                              "max":  613
+                          }
+               },
+    "defeatCandyLoss":  122
+}

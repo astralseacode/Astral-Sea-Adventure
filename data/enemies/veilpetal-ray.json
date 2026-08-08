@@ -1,0 +1,20 @@
+{
+    "id":  "veilpetal-ray",
+    "name":  "Veilpetal Ray",
+    "region":  "whispering-kelp-forest",
+    "level":  11,
+    "hp":  222,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  357,
+                                   "max":  726
+                               },
+                   "xp":  {
+                              "min":  357,
+                              "max":  430
+                          }
+               },
+    "defeatCandyLoss":  85
+}

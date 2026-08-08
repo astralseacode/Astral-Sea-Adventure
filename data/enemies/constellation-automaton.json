@@ -1,0 +1,20 @@
+{
+    "id":  "constellation-automaton",
+    "name":  "Constellation Automaton",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  460,
+    "damageBonus":  16,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1066,
+                                   "max":  1890
+                               },
+                   "xp":  {
+                              "min":  1066,
+                              "max":  1148
+                          }
+               },
+    "defeatCandyLoss":  209
+}

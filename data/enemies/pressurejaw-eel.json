@@ -1,0 +1,20 @@
+{
+    "id":  "pressurejaw-eel",
+    "name":  "Pressurejaw Eel",
+    "region":  "leviathans-wake",
+    "level":  21,
+    "hp":  285,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  494,
+                                   "max":  924
+                               },
+                   "xp":  {
+                              "min":  494,
+                              "max":  566
+                          }
+               },
+    "defeatCandyLoss":  113
+}

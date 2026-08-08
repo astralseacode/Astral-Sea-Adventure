@@ -1,0 +1,20 @@
+{
+    "id":  "sacramental-medusa-boss",
+    "name":  "Sacramental Medusa",
+    "region":  "sunken-kings-throne",
+    "level":  39,
+    "hp":  518,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2019,
+                                   "max":  2827
+                               },
+                   "xp":  {
+                              "min":  1146,
+                              "max":  1449
+                          }
+               },
+    "defeatCandyLoss":  261
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "crownshadow-stalker",
+    "name":  "Crownshadow Stalker",
+    "region":  "sunken-kings-throne",
+    "level":  43,
+    "hp":  401,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  827,
+                                   "max":  1495
+                               },
+                   "xp":  {
+                              "min":  827,
+                              "max":  917
+                          }
+               },
+    "defeatCandyLoss":  174
+}

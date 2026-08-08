@@ -1,0 +1,107 @@
+{
+    "id":  "astral-storm-islands",
+    "number":  18,
+    "name":  "Astral Storm Islands",
+    "regionId":  "astral-nexus",
+    "enemyId":  "astral-storm-roc",
+    "recommendedLevel":  50,
+    "introDiscord":  "Astral Storm Islands lies ahead, where fractured realities where memories cast physical shadows conceal the territory of Astral Storm Roc.",
+    "introTwitch":  "Astral Storm Islands lies ahead amid fractured realities where memories cast physical shadows.",
+    "startRoomId":  "astral-storm-islands-approach",
+    "rooms":  {
+                  "astral-storm-islands-approach":  {
+                                                        "prompt":  "At the edge of Astral Storm Islands, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "astral-storm-islands-depths",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Astral Storm Islands. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "astral-storm-islands-depths",
+                                                                                      "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                      "reward":  {
+                                                                                                     "min":  248,
+                                                                                                     "max":  288
+                                                                                                 }
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "astral-storm-islands-depths",
+                                                                                        "enemyId":  "astral-storm-roc",
+                                                                                        "message":  "A shift in the current exposes Astral Storm Roc, which claims the forward route through Astral Storm Islands."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "astral-storm-islands-depths":  {
+                                                      "prompt":  "Deeper within Astral Storm Islands, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "astral-storm-islands-threshold",
+                                                                                   "enemyId":  "astral-storm-roc",
+                                                                                   "message":  "A shift in the current exposes Astral Storm Roc, which claims the left route through Astral Storm Islands."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "astral-storm-islands-threshold",
+                                                                                    "healAmount":  56,
+                                                                                    "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "astral-storm-islands-threshold",
+                                                                                      "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                      "reward":  {
+                                                                                                     "min":  260,
+                                                                                                     "max":  300
+                                                                                                 }
+                                                                                  }
+                                                                  }
+                                                  },
+                  "astral-storm-islands-threshold":  {
+                                                         "prompt":  "Near the heart of Astral Storm Islands, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
+                                                                                      "reward":  {
+                                                                                                     "min":  272,
+                                                                                                     "max":  312
+                                                                                                 }
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "enemyId":  "astral-storm-roc",
+                                                                                       "message":  "A shift in the current exposes Astral Storm Roc, which claims the right route through Astral Storm Islands."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "healing",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "healAmount":  61,
+                                                                                         "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                         "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Eye of the Drowned Sky",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Eye of the Drowned Sky."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Eye of the Drowned Sky. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Eye of the Drowned Sky: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Eye of the Drowned Sky. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "firmament-roc-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Firmament Roc reveals itself!"
+             },
+    "completionText":  "Firmament Roc yields, and the currents beyond Eye of the Drowned Sky open the next route through Astral Nexus."
+}

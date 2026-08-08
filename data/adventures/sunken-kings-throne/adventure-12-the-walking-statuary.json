@@ -1,0 +1,107 @@
+{
+    "id":  "the-walking-statuary",
+    "number":  12,
+    "name":  "The Walking Statuary",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "broken-statue-walker",
+    "recommendedLevel":  38,
+    "introDiscord":  "The Walking Statuary lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Broken Statue Walker.",
+    "introTwitch":  "The Walking Statuary lies ahead amid flooded courtyards lined with watchful stone nobility.",
+    "startRoomId":  "the-walking-statuary-approach",
+    "rooms":  {
+                  "the-walking-statuary-approach":  {
+                                                        "prompt":  "At the edge of The Walking Statuary, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "empty",
+                                                                                     "nextRoomId":  "the-walking-statuary-depths",
+                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Walking Statuary. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                     "berries":  1
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "the-walking-statuary-depths",
+                                                                                      "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                      "reward":  {
+                                                                                                     "min":  249,
+                                                                                                     "max":  287
+                                                                                                 }
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "combat",
+                                                                                        "nextRoomId":  "the-walking-statuary-depths",
+                                                                                        "enemyId":  "broken-statue-walker",
+                                                                                        "message":  "A shift in the current exposes Broken Statue Walker, which claims the forward route through The Walking Statuary."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "the-walking-statuary-depths":  {
+                                                      "prompt":  "Deeper within The Walking Statuary, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "the-walking-statuary-threshold",
+                                                                                   "enemyId":  "broken-statue-walker",
+                                                                                   "message":  "A shift in the current exposes Broken Statue Walker, which claims the left route through The Walking Statuary."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "the-walking-statuary-threshold",
+                                                                                    "healAmount":  68,
+                                                                                    "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "the-walking-statuary-threshold",
+                                                                                      "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                                      "reward":  {
+                                                                                                     "min":  261,
+                                                                                                     "max":  299
+                                                                                                 }
+                                                                                  }
+                                                                  }
+                                                  },
+                  "the-walking-statuary-threshold":  {
+                                                         "prompt":  "Near the heart of The Walking Statuary, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
+                                                                                      "reward":  {
+                                                                                                     "min":  273,
+                                                                                                     "max":  311
+                                                                                                 }
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "enemyId":  "broken-statue-walker",
+                                                                                       "message":  "A shift in the current exposes Broken Statue Walker, which claims the right route through The Walking Statuary."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "healing",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "healAmount":  73,
+                                                                                         "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                         "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Sculptor\u0027s Tribunal",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Sculptor\u0027s Tribunal."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Sculptor\u0027s Tribunal. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Sculptor\u0027s Tribunal: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Sculptor\u0027s Tribunal. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "marble-tyrant-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Marble Tyrant reveals itself!"
+             },
+    "completionText":  "Marble Tyrant yields, and the currents beyond Sculptor\u0027s Tribunal open the next route through Sunken King\u0027s Throne."
+}

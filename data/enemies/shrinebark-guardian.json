@@ -1,0 +1,20 @@
+{
+    "id":  "shrinebark-guardian",
+    "name":  "Shrinebark Guardian",
+    "region":  "whispering-kelp-forest",
+    "level":  15,
+    "hp":  249,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  417,
+                                   "max":  821
+                               },
+                   "xp":  {
+                              "min":  417,
+                              "max":  502
+                          }
+               },
+    "defeatCandyLoss":  102
+}

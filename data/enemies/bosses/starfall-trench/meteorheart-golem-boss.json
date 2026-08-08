@@ -1,0 +1,20 @@
+{
+    "id":  "meteorheart-golem-boss",
+    "name":  "Meteorheart Golem",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  290,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  864,
+                                   "max":  1210
+                               },
+                   "xp":  {
+                              "min":  436,
+                              "max":  643
+                          }
+               },
+    "defeatCandyLoss":  122
+}

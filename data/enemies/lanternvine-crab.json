@@ -1,0 +1,20 @@
+{
+    "id":  "lanternvine-crab",
+    "name":  "Lanternvine Crab",
+    "region":  "whispering-kelp-forest",
+    "level":  10,
+    "hp":  217,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  346,
+                                   "max":  709
+                               },
+                   "xp":  {
+                              "min":  346,
+                              "max":  417
+                          }
+               },
+    "defeatCandyLoss":  82
+}

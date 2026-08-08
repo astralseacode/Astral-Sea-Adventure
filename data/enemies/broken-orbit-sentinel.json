@@ -1,0 +1,20 @@
+{
+    "id":  "broken-orbit-sentinel",
+    "name":  "Broken-Orbit Sentinel",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  193,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  303,
+                                   "max":  629
+                               },
+                   "xp":  {
+                              "min":  303,
+                              "max":  392
+                          }
+               },
+    "defeatCandyLoss":  83
+}

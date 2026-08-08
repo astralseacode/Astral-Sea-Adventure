@@ -1,0 +1,107 @@
+{
+    "id":  "walking-constellations",
+    "number":  13,
+    "name":  "Walking Constellations",
+    "regionId":  "astral-nexus",
+    "enemyId":  "constellation-automaton",
+    "recommendedLevel":  50,
+    "introDiscord":  "Walking Constellations lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Constellation Automaton.",
+    "introTwitch":  "Walking Constellations lies ahead amid floating ocean fragments joined by impossible currents.",
+    "startRoomId":  "walking-constellations-approach",
+    "rooms":  {
+                  "walking-constellations-approach":  {
+                                                          "prompt":  "At the edge of Walking Constellations, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                          "choices":  {
+                                                                          "left":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "walking-constellations-depths",
+                                                                                       "enemyId":  "constellation-automaton",
+                                                                                       "message":  "A shift in the current exposes Constellation Automaton, which claims the left route through Walking Constellations."
+                                                                                   },
+                                                                          "right":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "walking-constellations-depths",
+                                                                                        "message":  "Beyond the right route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                        "reward":  {
+                                                                                                       "min":  307,
+                                                                                                       "max":  346
+                                                                                                   }
+                                                                                    },
+                                                                          "forward":  {
+                                                                                          "type":  "healing",
+                                                                                          "nextRoomId":  "walking-constellations-depths",
+                                                                                          "healAmount":  79,
+                                                                                          "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                          "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                      }
+                                                                      }
+                                                      },
+                  "walking-constellations-depths":  {
+                                                        "prompt":  "Deeper within Walking Constellations, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "walking-constellations-threshold",
+                                                                                     "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
+                                                                                     "reward":  {
+                                                                                                    "min":  319,
+                                                                                                    "max":  358
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "walking-constellations-threshold",
+                                                                                      "enemyId":  "constellation-automaton",
+                                                                                      "message":  "A shift in the current exposes Constellation Automaton, which claims the right route through Walking Constellations."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "empty",
+                                                                                        "nextRoomId":  "walking-constellations-threshold",
+                                                                                        "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Walking Constellations. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                        "berries":  1
+                                                                                    }
+                                                                    }
+                                                    },
+                  "walking-constellations-threshold":  {
+                                                           "prompt":  "Near the heart of Walking Constellations, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                           "choices":  {
+                                                                           "left":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "healAmount":  84,
+                                                                                        "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    },
+                                                                           "right":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                         "reward":  {
+                                                                                                        "min":  331,
+                                                                                                        "max":  370
+                                                                                                    }
+                                                                                     },
+                                                                           "forward":  {
+                                                                                           "type":  "combat",
+                                                                                           "nextRoomId":  "boss-antechamber",
+                                                                                           "enemyId":  "constellation-automaton",
+                                                                                           "message":  "A shift in the current exposes Constellation Automaton, which claims the forward route through Walking Constellations."
+                                                                                       }
+                                                                       }
+                                                       },
+                  "boss-antechamber":  {
+                                           "name":  "Mechanical Zodiac",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Mechanical Zodiac."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Mechanical Zodiac. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Mechanical Zodiac: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Mechanical Zodiac. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "zodiac-engine-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Zodiac Engine reveals itself!"
+             },
+    "completionText":  "Zodiac Engine yields, and the currents beyond Mechanical Zodiac open the next route through Astral Nexus."
+}

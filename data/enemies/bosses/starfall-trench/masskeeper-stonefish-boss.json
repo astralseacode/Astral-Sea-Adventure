@@ -1,0 +1,20 @@
+{
+    "id":  "masskeeper-stonefish-boss",
+    "name":  "Masskeeper Stonefish",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  321,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  978,
+                                   "max":  1369
+                               },
+                   "xp":  {
+                              "min":  512,
+                              "max":  727
+                          }
+               },
+    "defeatCandyLoss":  148
+}

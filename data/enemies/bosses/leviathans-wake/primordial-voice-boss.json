@@ -1,0 +1,20 @@
+{
+    "id":  "primordial-voice-boss",
+    "name":  "Primordial Voice",
+    "region":  "leviathans-wake",
+    "level":  28,
+    "hp":  470,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1722,
+                                   "max":  2411
+                               },
+                   "xp":  {
+                              "min":  952,
+                              "max":  1182
+                          }
+               },
+    "defeatCandyLoss":  233
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "usurpers-bladefish",
+    "name":  "Usurper\u0027s Bladefish",
+    "region":  "sunken-kings-throne",
+    "level":  45,
+    "hp":  409,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  855,
+                                   "max":  1541
+                               },
+                   "xp":  {
+                              "min":  855,
+                              "max":  948
+                          }
+               },
+    "defeatCandyLoss":  179
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "thronebound-colossus",
+    "name":  "Thronebound Colossus",
+    "region":  "sunken-kings-throne",
+    "level":  49,
+    "hp":  427,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  911,
+                                   "max":  1634
+                               },
+                   "xp":  {
+                              "min":  911,
+                              "max":  1010
+                          }
+               },
+    "defeatCandyLoss":  188
+}

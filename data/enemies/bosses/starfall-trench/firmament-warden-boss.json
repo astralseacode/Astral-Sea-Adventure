@@ -1,0 +1,20 @@
+{
+    "id":  "firmament-warden-boss",
+    "name":  "Firmament Warden",
+    "region":  "starfall-trench",
+    "level":  9,
+    "hp":  323,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  988,
+                                   "max":  1383
+                               },
+                   "xp":  {
+                              "min":  519,
+                              "max":  734
+                          }
+               },
+    "defeatCandyLoss":  151
+}

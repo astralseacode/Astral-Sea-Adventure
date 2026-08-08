@@ -1,0 +1,20 @@
+{
+    "id":  "first-light-remnant",
+    "name":  "First-Light Remnant",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  504,
+    "damageBonus":  18,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1272,
+                                   "max":  2252
+                               },
+                   "xp":  {
+                              "min":  1272,
+                              "max":  1370
+                          }
+               },
+    "defeatCandyLoss":  232
+}

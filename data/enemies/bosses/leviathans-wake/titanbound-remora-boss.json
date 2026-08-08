@@ -1,0 +1,20 @@
+{
+    "id":  "titanbound-remora-boss",
+    "name":  "Titanbound Remora",
+    "region":  "leviathans-wake",
+    "level":  27,
+    "hp":  459,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1660,
+                                   "max":  2324
+                               },
+                   "xp":  {
+                              "min":  913,
+                              "max":  1152
+                          }
+               },
+    "defeatCandyLoss":  223
+}

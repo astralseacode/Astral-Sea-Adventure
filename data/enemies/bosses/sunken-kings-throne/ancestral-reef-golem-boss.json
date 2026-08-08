@@ -1,0 +1,20 @@
+{
+    "id":  "ancestral-reef-golem-boss",
+    "name":  "Ancestral Reef Golem",
+    "region":  "sunken-kings-throne",
+    "level":  38,
+    "hp":  514,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1998,
+                                   "max":  2797
+                               },
+                   "xp":  {
+                              "min":  1133,
+                              "max":  1441
+                          }
+               },
+    "defeatCandyLoss":  259
+}

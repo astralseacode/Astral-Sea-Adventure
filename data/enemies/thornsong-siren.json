@@ -1,0 +1,20 @@
+{
+    "id":  "thornsong-siren",
+    "name":  "Thornsong Siren",
+    "region":  "whispering-kelp-forest",
+    "level":  19,
+    "hp":  278,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  483,
+                                   "max":  924
+                               },
+                   "xp":  {
+                              "min":  483,
+                              "max":  580
+                          }
+               },
+    "defeatCandyLoss":  120
+}

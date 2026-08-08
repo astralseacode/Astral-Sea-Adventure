@@ -1,0 +1,20 @@
+{
+    "id":  "regal-fang-moray",
+    "name":  "Regal Fang Moray",
+    "region":  "sunken-kings-throne",
+    "level":  40,
+    "hp":  389,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  790,
+                                   "max":  1433
+                               },
+                   "xp":  {
+                              "min":  790,
+                              "max":  875
+                          }
+               },
+    "defeatCandyLoss":  168
+}

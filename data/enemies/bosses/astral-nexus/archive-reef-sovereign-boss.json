@@ -1,0 +1,20 @@
+{
+    "id":  "archive-reef-sovereign-boss",
+    "name":  "Archive-Reef Sovereign",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  640,
+    "damageBonus":  21,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2890,
+                                   "max":  4046
+                               },
+                   "xp":  {
+                              "min":  1678,
+                              "max":  1994
+                          }
+               },
+    "defeatCandyLoss":  346
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "taxkeeper-octopus",
+    "name":  "Taxkeeper Octopus",
+    "region":  "sunken-kings-throne",
+    "level":  40,
+    "hp":  386,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  780,
+                                   "max":  1417
+                               },
+                   "xp":  {
+                              "min":  780,
+                              "max":  865
+                          }
+               },
+    "defeatCandyLoss":  167
+}

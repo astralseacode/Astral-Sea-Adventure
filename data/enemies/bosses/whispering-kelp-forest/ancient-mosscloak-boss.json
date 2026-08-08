@@ -1,0 +1,20 @@
+{
+    "id":  "ancient-mosscloak-boss",
+    "name":  "Ancient Mosscloak",
+    "region":  "whispering-kelp-forest",
+    "level":  13,
+    "hp":  351,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1124,
+                                   "max":  1574
+                               },
+                   "xp":  {
+                              "min":  594,
+                              "max":  828
+                          }
+               },
+    "defeatCandyLoss":  152
+}

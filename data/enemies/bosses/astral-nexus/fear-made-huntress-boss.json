@@ -1,0 +1,20 @@
+{
+    "id":  "fear-made-huntress-boss",
+    "name":  "Fear-Made Huntress",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  628,
+    "damageBonus":  20,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2797,
+                                   "max":  3916
+                               },
+                   "xp":  {
+                              "min":  1626,
+                              "max":  1971
+                          }
+               },
+    "defeatCandyLoss":  339
+}

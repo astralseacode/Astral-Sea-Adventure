@@ -1,0 +1,20 @@
+{
+    "id":  "crown-antler-stagfish-boss",
+    "name":  "Crown-Antler Stagfish",
+    "region":  "whispering-kelp-forest",
+    "level":  12,
+    "hp":  346,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1097,
+                                   "max":  1536
+                               },
+                   "xp":  {
+                              "min":  578,
+                              "max":  813
+                          }
+               },
+    "defeatCandyLoss":  147
+}

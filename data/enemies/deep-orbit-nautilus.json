@@ -1,0 +1,20 @@
+{
+    "id":  "deep-orbit-nautilus",
+    "name":  "Deep-Orbit Nautilus",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  174,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  262,
+                                   "max":  563
+                               },
+                   "xp":  {
+                              "min":  262,
+                              "max":  342
+                          }
+               },
+    "defeatCandyLoss":  71
+}

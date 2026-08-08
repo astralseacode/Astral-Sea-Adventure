@@ -1,0 +1,20 @@
+{
+    "id":  "phaseclaw-lobster",
+    "name":  "Phaseclaw Lobster",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  478,
+    "damageBonus":  16,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1148,
+                                   "max":  2034
+                               },
+                   "xp":  {
+                              "min":  1148,
+                              "max":  1237
+                          }
+               },
+    "defeatCandyLoss":  218
+}

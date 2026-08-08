@@ -1,0 +1,20 @@
+{
+    "id":  "unseen-grovejaw-boss",
+    "name":  "Unseen Grovejaw",
+    "region":  "whispering-kelp-forest",
+    "level":  14,
+    "hp":  363,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1179,
+                                   "max":  1651
+                               },
+                   "xp":  {
+                              "min":  628,
+                              "max":  859
+                          }
+               },
+    "defeatCandyLoss":  161
+}

@@ -1,0 +1,107 @@
+{
+    "id":  "deep-scar-ravine",
+    "number":  9,
+    "name":  "Deep-Scar Ravine",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "deep-scar-prowler",
+    "recommendedLevel":  23,
+    "introDiscord":  "Deep-Scar Ravine lies ahead, where immense scales embedded in unstable coral shelves conceal the territory of Deep-Scar Prowler.",
+    "introTwitch":  "Deep-Scar Ravine lies ahead amid immense scales embedded in unstable coral shelves.",
+    "startRoomId":  "deep-scar-ravine-approach",
+    "rooms":  {
+                  "deep-scar-ravine-approach":  {
+                                                    "prompt":  "At the edge of Deep-Scar Ravine, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "healing",
+                                                                                 "nextRoomId":  "deep-scar-ravine-depths",
+                                                                                 "healAmount":  64,
+                                                                                 "message":  "The left route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                 "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "deep-scar-ravine-depths",
+                                                                                  "enemyId":  "deep-scar-prowler",
+                                                                                  "message":  "A shift in the current exposes Deep-Scar Prowler, which claims the right route through Deep-Scar Ravine."
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "deep-scar-ravine-depths",
+                                                                                    "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                    "reward":  {
+                                                                                                   "min":  211,
+                                                                                                   "max":  248
+                                                                                               }
+                                                                                }
+                                                                }
+                                                },
+                  "deep-scar-ravine-depths":  {
+                                                  "prompt":  "Deeper within Deep-Scar Ravine, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "empty",
+                                                                               "nextRoomId":  "deep-scar-ravine-threshold",
+                                                                               "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Deep-Scar Ravine. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                               "berries":  1
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "treasure",
+                                                                                "nextRoomId":  "deep-scar-ravine-threshold",
+                                                                                "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
+                                                                                "reward":  {
+                                                                                               "min":  223,
+                                                                                               "max":  260
+                                                                                           }
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "deep-scar-ravine-threshold",
+                                                                                  "enemyId":  "deep-scar-prowler",
+                                                                                  "message":  "A shift in the current exposes Deep-Scar Prowler, which claims the forward route through Deep-Scar Ravine."
+                                                                              }
+                                                              }
+                                              },
+                  "deep-scar-ravine-threshold":  {
+                                                     "prompt":  "Near the heart of Deep-Scar Ravine, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "boss-antechamber",
+                                                                                  "enemyId":  "deep-scar-prowler",
+                                                                                  "message":  "A shift in the current exposes Deep-Scar Prowler, which claims the left route through Deep-Scar Ravine."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "healing",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "healAmount":  69,
+                                                                                   "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
+                                                                                     "reward":  {
+                                                                                                    "min":  235,
+                                                                                                    "max":  272
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "boss-antechamber":  {
+                                           "name":  "Ancient Wound",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Ancient Wound."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Ancient Wound. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Ancient Wound: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Ancient Wound. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "scar-marked-huntmaster-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Scar-Marked Huntmaster reveals itself!"
+             },
+    "completionText":  "Scar-Marked Huntmaster yields, and the currents beyond Ancient Wound open the next route through Leviathan\u0027s Wake."
+}

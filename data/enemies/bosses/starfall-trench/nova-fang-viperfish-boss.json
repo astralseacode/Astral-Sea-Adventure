@@ -1,0 +1,20 @@
+{
+    "id":  "nova-fang-viperfish-boss",
+    "name":  "Nova-Fang Viperfish",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  279,
+    "damageBonus":  9,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  822,
+                                   "max":  1151
+                               },
+                   "xp":  {
+                              "min":  408,
+                              "max":  613
+                          }
+               },
+    "defeatCandyLoss":  112
+}

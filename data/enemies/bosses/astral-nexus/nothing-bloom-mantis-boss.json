@@ -1,0 +1,20 @@
+{
+    "id":  "nothing-bloom-mantis-boss",
+    "name":  "Nothing-Bloom Mantis",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  621,
+    "damageBonus":  20,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2734,
+                                   "max":  3828
+                               },
+                   "xp":  {
+                              "min":  1591,
+                              "max":  1956
+                          }
+               },
+    "defeatCandyLoss":  334
+}

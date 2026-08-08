@@ -1,0 +1,20 @@
+{
+    "id":  "scepter-crab",
+    "name":  "Scepter Crab",
+    "region":  "sunken-kings-throne",
+    "level":  33,
+    "hp":  360,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  697,
+                                   "max":  1278
+                               },
+                   "xp":  {
+                              "min":  697,
+                              "max":  772
+                          }
+               },
+    "defeatCandyLoss":  153
+}

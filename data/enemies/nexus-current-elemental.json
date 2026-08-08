@@ -1,0 +1,20 @@
+{
+    "id":  "nexus-current-elemental",
+    "name":  "Nexus Current Elemental",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  469,
+    "damageBonus":  16,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1107,
+                                   "max":  1962
+                               },
+                   "xp":  {
+                              "min":  1107,
+                              "max":  1192
+                          }
+               },
+    "defeatCandyLoss":  213
+}

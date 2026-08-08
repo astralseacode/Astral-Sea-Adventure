@@ -1,0 +1,107 @@
+{
+    "id":  "voidflower-garden",
+    "number":  15,
+    "name":  "Voidflower Garden",
+    "regionId":  "astral-nexus",
+    "enemyId":  "voidflower-mantis",
+    "recommendedLevel":  50,
+    "introDiscord":  "Voidflower Garden lies ahead, where fractured realities where memories cast physical shadows conceal the territory of Voidflower Mantis.",
+    "introTwitch":  "Voidflower Garden lies ahead amid fractured realities where memories cast physical shadows.",
+    "startRoomId":  "voidflower-garden-approach",
+    "rooms":  {
+                  "voidflower-garden-approach":  {
+                                                     "prompt":  "At the edge of Voidflower Garden, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "voidflower-garden-depths",
+                                                                                  "healAmount":  70,
+                                                                                  "message":  "The left route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "voidflower-garden-depths",
+                                                                                   "enemyId":  "voidflower-mantis",
+                                                                                   "message":  "A shift in the current exposes Voidflower Mantis, which claims the right route through Voidflower Garden."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "voidflower-garden-depths",
+                                                                                     "message":  "Beyond the forward route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                     "reward":  {
+                                                                                                    "min":  283,
+                                                                                                    "max":  322
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "voidflower-garden-depths":  {
+                                                   "prompt":  "Deeper within Voidflower Garden, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "empty",
+                                                                                "nextRoomId":  "voidflower-garden-threshold",
+                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Voidflower Garden. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                "berries":  1
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "treasure",
+                                                                                 "nextRoomId":  "voidflower-garden-threshold",
+                                                                                 "message":  "Beyond the right route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                 "reward":  {
+                                                                                                "min":  295,
+                                                                                                "max":  334
+                                                                                            }
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "voidflower-garden-threshold",
+                                                                                   "enemyId":  "voidflower-mantis",
+                                                                                   "message":  "A shift in the current exposes Voidflower Mantis, which claims the forward route through Voidflower Garden."
+                                                                               }
+                                                               }
+                                               },
+                  "voidflower-garden-threshold":  {
+                                                      "prompt":  "Near the heart of Voidflower Garden, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "enemyId":  "voidflower-mantis",
+                                                                                   "message":  "A shift in the current exposes Voidflower Mantis, which claims the left route through Voidflower Garden."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "healAmount":  75,
+                                                                                    "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
+                                                                                      "reward":  {
+                                                                                                     "min":  307,
+                                                                                                     "max":  346
+                                                                                                 }
+                                                                                  }
+                                                                  }
+                                                  },
+                  "boss-antechamber":  {
+                                           "name":  "Garden Outside Space",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Garden Outside Space."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Garden Outside Space. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Garden Outside Space: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Garden Outside Space. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "nothing-bloom-mantis-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Nothing-Bloom Mantis reveals itself!"
+             },
+    "completionText":  "Nothing-Bloom Mantis yields, and the currents beyond Garden Outside Space open the next route through Astral Nexus."
+}

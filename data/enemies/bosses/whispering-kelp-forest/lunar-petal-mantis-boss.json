@@ -1,0 +1,20 @@
+{
+    "id":  "lunar-petal-mantis-boss",
+    "name":  "Lunar Petal Mantis",
+    "region":  "whispering-kelp-forest",
+    "level":  14,
+    "hp":  357,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1152,
+                                   "max":  1613
+                               },
+                   "xp":  {
+                              "min":  611,
+                              "max":  843
+                          }
+               },
+    "defeatCandyLoss":  157
+}

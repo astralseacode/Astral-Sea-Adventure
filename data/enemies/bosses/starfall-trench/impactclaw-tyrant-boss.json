@@ -1,0 +1,20 @@
+{
+    "id":  "impactclaw-tyrant-boss",
+    "name":  "Impactclaw Tyrant",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  304,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  916,
+                                   "max":  1282
+                               },
+                   "xp":  {
+                              "min":  470,
+                              "max":  681
+                          }
+               },
+    "defeatCandyLoss":  134
+}

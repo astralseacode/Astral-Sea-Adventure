@@ -1,0 +1,107 @@
+{
+    "id":  "thunderwake-storm",
+    "number":  22,
+    "name":  "Thunderwake Storm",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "thunderwake-squid",
+    "recommendedLevel":  27,
+    "introDiscord":  "Thunderwake Storm lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Thunderwake Squid.",
+    "introTwitch":  "Thunderwake Storm lies ahead amid titanic ribs rising through violent crosscurrents.",
+    "startRoomId":  "thunderwake-storm-approach",
+    "rooms":  {
+                  "thunderwake-storm-approach":  {
+                                                     "prompt":  "At the edge of Thunderwake Storm, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "thunderwake-storm-depths",
+                                                                                  "enemyId":  "thunderwake-squid",
+                                                                                  "message":  "A shift in the current exposes Thunderwake Squid, which claims the left route through Thunderwake Storm."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "empty",
+                                                                                   "nextRoomId":  "thunderwake-storm-depths",
+                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Thunderwake Storm. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                   "berries":  1
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "thunderwake-storm-depths",
+                                                                                     "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
+                                                                                     "reward":  {
+                                                                                                    "min":  122,
+                                                                                                    "max":  164
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "thunderwake-storm-depths":  {
+                                                   "prompt":  "Deeper within Thunderwake Storm, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "healing",
+                                                                                "nextRoomId":  "thunderwake-storm-threshold",
+                                                                                "healAmount":  24,
+                                                                                "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "thunderwake-storm-threshold",
+                                                                                 "enemyId":  "thunderwake-squid",
+                                                                                 "message":  "A shift in the current exposes Thunderwake Squid, which claims the right route through Thunderwake Storm."
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "thunderwake-storm-threshold",
+                                                                                   "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
+                                                                                   "reward":  {
+                                                                                                  "min":  134,
+                                                                                                  "max":  176
+                                                                                              }
+                                                                               }
+                                                               }
+                                               },
+                  "thunderwake-storm-threshold":  {
+                                                      "prompt":  "Near the heart of Thunderwake Storm, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "treasure",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "message":  "Beyond the left route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                   "reward":  {
+                                                                                                  "min":  146,
+                                                                                                  "max":  188
+                                                                                              }
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "healAmount":  29,
+                                                                                    "message":  "The right route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "enemyId":  "thunderwake-squid",
+                                                                                      "message":  "A shift in the current exposes Thunderwake Squid, which claims the forward route through Thunderwake Storm."
+                                                                                  }
+                                                                  }
+                                                  },
+                  "boss-antechamber":  {
+                                           "name":  "Electric Gyre",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Electric Gyre."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Electric Gyre. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Electric Gyre: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Electric Gyre. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "storm-ink-architeuthis-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Storm-Ink Architeuthis reveals itself!"
+             },
+    "completionText":  "Storm-Ink Architeuthis yields, and the currents beyond Electric Gyre open the next route through Leviathan\u0027s Wake."
+}

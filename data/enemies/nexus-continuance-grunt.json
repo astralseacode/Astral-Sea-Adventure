@@ -1,0 +1,20 @@
+{
+    "id":  "nexus-continuance-grunt",
+    "name":  "Nexus Continuance Grunt",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  510,
+    "damageBonus":  18,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1300,
+                                   "max":  2300
+                               },
+                   "xp":  {
+                              "min":  1300,
+                              "max":  1400
+                          }
+               },
+    "defeatCandyLoss":  235
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "breakerhead-patriarch-boss",
+    "name":  "Breakerhead Patriarch",
+    "region":  "leviathans-wake",
+    "level":  23,
+    "hp":  429,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1505,
+                                   "max":  2107
+                               },
+                   "xp":  {
+                              "min":  817,
+                              "max":  1076
+                          }
+               },
+    "defeatCandyLoss":  199
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "gossipcurrent-sprite",
+    "name":  "Gossipcurrent Sprite",
+    "region":  "whispering-kelp-forest",
+    "level":  14,
+    "hp":  244,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  406,
+                                   "max":  803
+                               },
+                   "xp":  {
+                              "min":  406,
+                              "max":  489
+                          }
+               },
+    "defeatCandyLoss":  99
+}

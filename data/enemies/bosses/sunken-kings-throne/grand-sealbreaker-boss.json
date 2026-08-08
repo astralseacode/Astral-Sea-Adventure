@@ -1,0 +1,20 @@
+{
+    "id":  "grand-sealbreaker-boss",
+    "name":  "Grand Sealbreaker",
+    "region":  "sunken-kings-throne",
+    "level":  42,
+    "hp":  531,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2102,
+                                   "max":  2943
+                               },
+                   "xp":  {
+                              "min":  1197,
+                              "max":  1479
+                          }
+               },
+    "defeatCandyLoss":  271
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "storm-ink-architeuthis-boss",
+    "name":  "Storm-Ink Architeuthis",
+    "region":  "leviathans-wake",
+    "level":  27,
+    "hp":  462,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1676,
+                                   "max":  2346
+                               },
+                   "xp":  {
+                              "min":  923,
+                              "max":  1159
+                          }
+               },
+    "defeatCandyLoss":  226
+}

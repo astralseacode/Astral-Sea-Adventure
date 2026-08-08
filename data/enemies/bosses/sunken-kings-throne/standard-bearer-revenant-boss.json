@@ -1,0 +1,20 @@
+{
+    "id":  "standard-bearer-revenant-boss",
+    "name":  "Standard-Bearer Revenant",
+    "region":  "sunken-kings-throne",
+    "level":  30,
+    "hp":  475,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1750,
+                                   "max":  2450
+                               },
+                   "xp":  {
+                              "min":  980,
+                              "max":  1350
+                          }
+               },
+    "defeatCandyLoss":  230
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "scar-marked-huntmaster-boss",
+    "name":  "Scar-Marked Huntmaster",
+    "region":  "leviathans-wake",
+    "level":  23,
+    "hp":  423,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1474,
+                                   "max":  2064
+                               },
+                   "xp":  {
+                              "min":  797,
+                              "max":  1061
+                          }
+               },
+    "defeatCandyLoss":  194
+}

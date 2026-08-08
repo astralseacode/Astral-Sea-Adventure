@@ -1,0 +1,20 @@
+{
+    "id":  "echo-of-self-mimic",
+    "name":  "Echo-of-Self Mimic",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  451,
+    "damageBonus":  15,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1024,
+                                   "max":  1817
+                               },
+                   "xp":  {
+                              "min":  1024,
+                              "max":  1103
+                          }
+               },
+    "defeatCandyLoss":  204
+}

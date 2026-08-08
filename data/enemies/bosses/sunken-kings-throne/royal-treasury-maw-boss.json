@@ -1,0 +1,20 @@
+{
+    "id":  "royal-treasury-maw-boss",
+    "name":  "Royal Treasury Maw",
+    "region":  "sunken-kings-throne",
+    "level":  31,
+    "hp":  478,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1771,
+                                   "max":  2479
+                               },
+                   "xp":  {
+                              "min":  993,
+                              "max":  1358
+                          }
+               },
+    "defeatCandyLoss":  232
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "starstone-lanternfish",
+    "name":  "Starstone Lanternfish",
+    "region":  "starfall-trench",
+    "level":  5,
+    "hp":  150,
+    "damageBonus":  6,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  210,
+                                   "max":  480
+                               },
+                   "xp":  {
+                              "min":  210,
+                              "max":  280
+                          }
+               },
+    "defeatCandyLoss":  55
+}

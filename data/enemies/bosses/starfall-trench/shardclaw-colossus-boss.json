@@ -1,0 +1,20 @@
+{
+    "id":  "shardclaw-colossus-boss",
+    "name":  "Shardclaw Colossus",
+    "region":  "starfall-trench",
+    "level":  5,
+    "hp":  266,
+    "damageBonus":  9,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  771,
+                                   "max":  1079
+                               },
+                   "xp":  {
+                              "min":  374,
+                              "max":  575
+                          }
+               },
+    "defeatCandyLoss":  100
+}

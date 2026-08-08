@@ -1,0 +1,20 @@
+{
+    "id":  "yesterdays-revenant",
+    "name":  "Yesterday\u0027s Revenant",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  463,
+    "damageBonus":  16,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1079,
+                                   "max":  1914
+                               },
+                   "xp":  {
+                              "min":  1079,
+                              "max":  1163
+                          }
+               },
+    "defeatCandyLoss":  210
+}

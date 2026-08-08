@@ -1,0 +1,20 @@
+{
+    "id":  "wakeheart-elemental",
+    "name":  "Wakeheart Elemental",
+    "region":  "leviathans-wake",
+    "level":  29,
+    "hp":  343,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  659,
+                                   "max":  1214
+                               },
+                   "xp":  {
+                              "min":  659,
+                              "max":  756
+                          }
+               },
+    "defeatCandyLoss":  150
+}

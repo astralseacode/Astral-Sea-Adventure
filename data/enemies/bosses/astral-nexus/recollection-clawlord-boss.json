@@ -1,0 +1,20 @@
+{
+    "id":  "recollection-clawlord-boss",
+    "name":  "Recollection Clawlord",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  573,
+    "damageBonus":  18,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2362,
+                                   "max":  3307
+                               },
+                   "xp":  {
+                              "min":  1384,
+                              "max":  1865
+                          }
+               },
+    "defeatCandyLoss":  305
+}

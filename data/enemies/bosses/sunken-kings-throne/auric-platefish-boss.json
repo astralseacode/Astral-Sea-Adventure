@@ -1,0 +1,20 @@
+{
+    "id":  "auric-platefish-boss",
+    "name":  "Auric Platefish",
+    "region":  "sunken-kings-throne",
+    "level":  36,
+    "hp":  504,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1936,
+                                   "max":  2710
+                               },
+                   "xp":  {
+                              "min":  1095,
+                              "max":  1418
+                          }
+               },
+    "defeatCandyLoss":  252
+}

@@ -1,0 +1,107 @@
+{
+    "id":  "sighing-reed-marsh",
+    "number":  24,
+    "name":  "Sighing Reed Marsh",
+    "regionId":  "whispering-kelp-forest",
+    "enemyId":  "sighing-reed-hunter",
+    "recommendedLevel":  18,
+    "introDiscord":  "Sighing Reed Marsh lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Sighing Reed Hunter.",
+    "introTwitch":  "Sighing Reed Marsh lies ahead amid moonlit fronds curling around forgotten shrines.",
+    "startRoomId":  "sighing-reed-marsh-approach",
+    "rooms":  {
+                  "sighing-reed-marsh-approach":  {
+                                                      "prompt":  "At the edge of Sighing Reed Marsh, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "empty",
+                                                                                   "nextRoomId":  "sighing-reed-marsh-depths",
+                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Sighing Reed Marsh. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                   "berries":  1
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "sighing-reed-marsh-depths",
+                                                                                    "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
+                                                                                    "reward":  {
+                                                                                                   "min":  85,
+                                                                                                   "max":  127
+                                                                                               }
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "sighing-reed-marsh-depths",
+                                                                                      "enemyId":  "sighing-reed-hunter",
+                                                                                      "message":  "A shift in the current exposes Sighing Reed Hunter, which claims the forward route through Sighing Reed Marsh."
+                                                                                  }
+                                                                  }
+                                                  },
+                  "sighing-reed-marsh-depths":  {
+                                                    "prompt":  "Deeper within Sighing Reed Marsh, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "sighing-reed-marsh-threshold",
+                                                                                 "enemyId":  "sighing-reed-hunter",
+                                                                                 "message":  "A shift in the current exposes Sighing Reed Hunter, which claims the left route through Sighing Reed Marsh."
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "healing",
+                                                                                  "nextRoomId":  "sighing-reed-marsh-threshold",
+                                                                                  "healAmount":  15,
+                                                                                  "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
+                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "sighing-reed-marsh-threshold",
+                                                                                    "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
+                                                                                    "reward":  {
+                                                                                                   "min":  97,
+                                                                                                   "max":  139
+                                                                                               }
+                                                                                }
+                                                                }
+                                                },
+                  "sighing-reed-marsh-threshold":  {
+                                                       "prompt":  "Near the heart of Sighing Reed Marsh, living rootways beneath drifting fae lights divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
+                                                                                    "reward":  {
+                                                                                                   "min":  109,
+                                                                                                   "max":  151
+                                                                                               }
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "enemyId":  "sighing-reed-hunter",
+                                                                                     "message":  "A shift in the current exposes Sighing Reed Hunter, which claims the right route through Sighing Reed Marsh."
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "healAmount":  20,
+                                                                                       "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "boss-antechamber":  {
+                                           "name":  "Breathless Fen",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Breathless Fen."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Breathless Fen. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Breathless Fen: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Breathless Fen. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "reed-crowned-hunter-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Reed-Crowned Hunter reveals itself!"
+             },
+    "completionText":  "Reed-Crowned Hunter yields, and the currents beyond Breathless Fen open the next route through Whispering Kelp Forest."
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "funeral-wing-manta-boss",
+    "name":  "Funeral-Wing Manta",
+    "region":  "sunken-kings-throne",
+    "level":  37,
+    "hp":  508,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1957,
+                                   "max":  2740
+                               },
+                   "xp":  {
+                              "min":  1108,
+                              "max":  1426
+                          }
+               },
+    "defeatCandyLoss":  254
+}

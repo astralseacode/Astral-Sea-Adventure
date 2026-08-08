@@ -1,0 +1,20 @@
+{
+    "id":  "nexus-prime-warden-boss",
+    "name":  "Nexus Prime Warden",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  676,
+    "damageBonus":  22,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  3169,
+                                   "max":  4437
+                               },
+                   "xp":  {
+                              "min":  1833,
+                              "max":  2062
+                          }
+               },
+    "defeatCandyLoss":  368
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "oathchain-serpent",
+    "name":  "Oathchain Serpent",
+    "region":  "sunken-kings-throne",
+    "level":  46,
+    "hp":  412,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  864,
+                                   "max":  1557
+                               },
+                   "xp":  {
+                              "min":  864,
+                              "max":  958
+                          }
+               },
+    "defeatCandyLoss":  181
+}

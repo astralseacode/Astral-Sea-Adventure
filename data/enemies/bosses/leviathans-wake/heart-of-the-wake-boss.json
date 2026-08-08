@@ -1,0 +1,20 @@
+{
+    "id":  "heart-of-the-wake-boss",
+    "name":  "Heart of the Wake",
+    "region":  "leviathans-wake",
+    "level":  29,
+    "hp":  476,
+    "damageBonus":  15,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1753,
+                                   "max":  2454
+                               },
+                   "xp":  {
+                              "min":  971,
+                              "max":  1197
+                          }
+               },
+    "defeatCandyLoss":  238
+}

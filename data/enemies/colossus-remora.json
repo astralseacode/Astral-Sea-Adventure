@@ -1,0 +1,20 @@
+{
+    "id":  "colossus-remora",
+    "name":  "Colossus Remora",
+    "region":  "leviathans-wake",
+    "level":  27,
+    "hp":  328,
+    "damageBonus":  11,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  618,
+                                   "max":  1141
+                               },
+                   "xp":  {
+                              "min":  618,
+                              "max":  709
+                          }
+               },
+    "defeatCandyLoss":  141
+}

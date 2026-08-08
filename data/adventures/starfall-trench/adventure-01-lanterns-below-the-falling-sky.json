@@ -1,0 +1,107 @@
+{
+    "id":  "lanterns-below-the-falling-sky",
+    "number":  1,
+    "name":  "Lanterns Below the Falling Sky",
+    "regionId":  "starfall-trench",
+    "enemyId":  "starstone-lanternfish",
+    "recommendedLevel":  5,
+    "introDiscord":  "Lanterns Below the Falling Sky lies ahead, where fractured starstone terraces conceal the territory of Starstone Lanternfish.",
+    "introTwitch":  "Lanterns Below the Falling Sky lies ahead amid fractured starstone terraces.",
+    "startRoomId":  "lanterns-below-the-falling-sky-approach",
+    "rooms":  {
+                  "lanterns-below-the-falling-sky-approach":  {
+                                                                  "prompt":  "At the edge of Lanterns Below the Falling Sky, fractured starstone terraces divide into three uncertain routes.",
+                                                                  "choices":  {
+                                                                                  "left":  {
+                                                                                               "type":  "combat",
+                                                                                               "nextRoomId":  "lanterns-below-the-falling-sky-depths",
+                                                                                               "enemyId":  "starstone-lanternfish",
+                                                                                               "message":  "A shift in the current exposes Starstone Lanternfish, which claims the left route through Lanterns Below the Falling Sky."
+                                                                                           },
+                                                                                  "right":  {
+                                                                                                "type":  "treasure",
+                                                                                                "nextRoomId":  "lanterns-below-the-falling-sky-depths",
+                                                                                                "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
+                                                                                                "reward":  {
+                                                                                                               "min":  145,
+                                                                                                               "max":  180
+                                                                                                           }
+                                                                                            },
+                                                                                  "forward":  {
+                                                                                                  "type":  "healing",
+                                                                                                  "nextRoomId":  "lanterns-below-the-falling-sky-depths",
+                                                                                                  "healAmount":  60,
+                                                                                                  "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                                  "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                              }
+                                                                              }
+                                                              },
+                  "lanterns-below-the-falling-sky-depths":  {
+                                                                "prompt":  "Deeper within Lanterns Below the Falling Sky, meteor-lit trenches divide into three uncertain routes.",
+                                                                "choices":  {
+                                                                                "left":  {
+                                                                                             "type":  "treasure",
+                                                                                             "nextRoomId":  "lanterns-below-the-falling-sky-threshold",
+                                                                                             "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
+                                                                                             "reward":  {
+                                                                                                            "min":  157,
+                                                                                                            "max":  192
+                                                                                                        }
+                                                                                         },
+                                                                                "right":  {
+                                                                                              "type":  "combat",
+                                                                                              "nextRoomId":  "lanterns-below-the-falling-sky-threshold",
+                                                                                              "enemyId":  "starstone-lanternfish",
+                                                                                              "message":  "A shift in the current exposes Starstone Lanternfish, which claims the right route through Lanterns Below the Falling Sky."
+                                                                                          },
+                                                                                "forward":  {
+                                                                                                "type":  "empty",
+                                                                                                "nextRoomId":  "lanterns-below-the-falling-sky-threshold",
+                                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Lanterns Below the Falling Sky. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                                "berries":  1
+                                                                                            }
+                                                                            }
+                                                            },
+                  "lanterns-below-the-falling-sky-threshold":  {
+                                                                   "prompt":  "Near the heart of Lanterns Below the Falling Sky, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                                   "choices":  {
+                                                                                   "left":  {
+                                                                                                "type":  "healing",
+                                                                                                "nextRoomId":  "boss-antechamber",
+                                                                                                "healAmount":  65,
+                                                                                                "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                            },
+                                                                                   "right":  {
+                                                                                                 "type":  "treasure",
+                                                                                                 "nextRoomId":  "boss-antechamber",
+                                                                                                 "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
+                                                                                                 "reward":  {
+                                                                                                                "min":  169,
+                                                                                                                "max":  204
+                                                                                                            }
+                                                                                             },
+                                                                                   "forward":  {
+                                                                                                   "type":  "combat",
+                                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                                   "enemyId":  "starstone-lanternfish",
+                                                                                                   "message":  "A shift in the current exposes Starstone Lanternfish, which claims the forward route through Lanterns Below the Falling Sky."
+                                                                                               }
+                                                                               }
+                                                               },
+                  "boss-antechamber":  {
+                                           "name":  "Fallen Lantern Basin",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Fallen Lantern Basin."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Fallen Lantern Basin. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Fallen Lantern Basin: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Fallen Lantern Basin. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "meteor-lure-angler-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Meteor-Lure Angler reveals itself!"
+             },
+    "completionText":  "Meteor-Lure Angler yields, and the currents beyond Fallen Lantern Basin open the next route through Starfall Trench."
+}

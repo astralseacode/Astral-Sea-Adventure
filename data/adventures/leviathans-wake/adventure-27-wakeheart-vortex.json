@@ -1,0 +1,107 @@
+{
+    "id":  "wakeheart-vortex",
+    "number":  27,
+    "name":  "Wakeheart Vortex",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "wakeheart-elemental",
+    "recommendedLevel":  29,
+    "introDiscord":  "Wakeheart Vortex lies ahead, where immense scales embedded in unstable coral shelves conceal the territory of Wakeheart Elemental.",
+    "introTwitch":  "Wakeheart Vortex lies ahead amid immense scales embedded in unstable coral shelves.",
+    "startRoomId":  "wakeheart-vortex-approach",
+    "rooms":  {
+                  "wakeheart-vortex-approach":  {
+                                                    "prompt":  "At the edge of Wakeheart Vortex, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "healing",
+                                                                                 "nextRoomId":  "wakeheart-vortex-depths",
+                                                                                 "healAmount":  9,
+                                                                                 "message":  "The left route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                 "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "wakeheart-vortex-depths",
+                                                                                  "enemyId":  "wakeheart-elemental",
+                                                                                  "message":  "A shift in the current exposes Wakeheart Elemental, which claims the right route through Wakeheart Vortex."
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "wakeheart-vortex-depths",
+                                                                                    "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                    "reward":  {
+                                                                                                   "min":  88,
+                                                                                                   "max":  131
+                                                                                               }
+                                                                                }
+                                                                }
+                                                },
+                  "wakeheart-vortex-depths":  {
+                                                  "prompt":  "Deeper within Wakeheart Vortex, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "empty",
+                                                                               "nextRoomId":  "wakeheart-vortex-threshold",
+                                                                               "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Wakeheart Vortex. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                               "berries":  1
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "treasure",
+                                                                                "nextRoomId":  "wakeheart-vortex-threshold",
+                                                                                "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
+                                                                                "reward":  {
+                                                                                               "min":  100,
+                                                                                               "max":  143
+                                                                                           }
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "wakeheart-vortex-threshold",
+                                                                                  "enemyId":  "wakeheart-elemental",
+                                                                                  "message":  "A shift in the current exposes Wakeheart Elemental, which claims the forward route through Wakeheart Vortex."
+                                                                              }
+                                                              }
+                                              },
+                  "wakeheart-vortex-threshold":  {
+                                                     "prompt":  "Near the heart of Wakeheart Vortex, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "boss-antechamber",
+                                                                                  "enemyId":  "wakeheart-elemental",
+                                                                                  "message":  "A shift in the current exposes Wakeheart Elemental, which claims the left route through Wakeheart Vortex."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "healing",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "healAmount":  14,
+                                                                                   "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
+                                                                                     "reward":  {
+                                                                                                    "min":  112,
+                                                                                                    "max":  155
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "boss-antechamber":  {
+                                           "name":  "Endless Current Core",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Endless Current Core."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Endless Current Core. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Endless Current Core: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Endless Current Core. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "heart-of-the-wake-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Heart of the Wake reveals itself!"
+             },
+    "completionText":  "Heart of the Wake yields, and the currents beyond Endless Current Core open the next route through Leviathan\u0027s Wake."
+}

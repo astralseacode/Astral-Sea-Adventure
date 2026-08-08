@@ -1,0 +1,20 @@
+{
+    "id":  "sealbound-squire",
+    "name":  "Sealbound Squire",
+    "region":  "sunken-kings-throne",
+    "level":  32,
+    "hp":  354,
+    "damageBonus":  12,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  678,
+                                   "max":  1247
+                               },
+                   "xp":  {
+                              "min":  678,
+                              "max":  751
+                          }
+               },
+    "defeatCandyLoss":  150
+}

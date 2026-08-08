@@ -1,0 +1,20 @@
+{
+    "id":  "crushpetal-sovereign-boss",
+    "name":  "Crushpetal Sovereign",
+    "region":  "leviathans-wake",
+    "level":  26,
+    "hp":  450,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1614,
+                                   "max":  2260
+                               },
+                   "xp":  {
+                              "min":  884,
+                              "max":  1129
+                          }
+               },
+    "defeatCandyLoss":  216
+}

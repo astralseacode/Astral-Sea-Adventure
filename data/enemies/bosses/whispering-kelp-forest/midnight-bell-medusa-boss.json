@@ -1,0 +1,20 @@
+{
+    "id":  "midnight-bell-medusa-boss",
+    "name":  "Midnight Bell Medusa",
+    "region":  "whispering-kelp-forest",
+    "level":  12,
+    "hp":  340,
+    "damageBonus":  11,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1069,
+                                   "max":  1497
+                               },
+                   "xp":  {
+                              "min":  561,
+                              "max":  798
+                          }
+               },
+    "defeatCandyLoss":  142
+}

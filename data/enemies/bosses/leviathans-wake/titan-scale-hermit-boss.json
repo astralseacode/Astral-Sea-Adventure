@@ -1,0 +1,20 @@
+{
+    "id":  "titan-scale-hermit-boss",
+    "name":  "Titan-Scale Hermit",
+    "region":  "leviathans-wake",
+    "level":  21,
+    "hp":  409,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1397,
+                                   "max":  1956
+                               },
+                   "xp":  {
+                              "min":  749,
+                              "max":  1023
+                          }
+               },
+    "defeatCandyLoss":  182
+}

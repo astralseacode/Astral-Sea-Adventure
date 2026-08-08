@@ -1,0 +1,107 @@
+{
+    "id":  "chalice-chapel",
+    "number":  14,
+    "name":  "Chalice Chapel",
+    "regionId":  "sunken-kings-throne",
+    "enemyId":  "chalice-jelly",
+    "recommendedLevel":  39,
+    "introDiscord":  "Chalice Chapel lies ahead, where haunted halls beneath drifting banners conceal the territory of Chalice Jelly.",
+    "introTwitch":  "Chalice Chapel lies ahead amid haunted halls beneath drifting banners.",
+    "startRoomId":  "chalice-chapel-approach",
+    "rooms":  {
+                  "chalice-chapel-approach":  {
+                                                  "prompt":  "At the edge of Chalice Chapel, haunted halls beneath drifting banners divide into three uncertain routes.",
+                                                  "choices":  {
+                                                                  "left":  {
+                                                                               "type":  "treasure",
+                                                                               "nextRoomId":  "chalice-chapel-depths",
+                                                                               "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
+                                                                               "reward":  {
+                                                                                              "min":  231,
+                                                                                              "max":  270
+                                                                                          }
+                                                                           },
+                                                                  "right":  {
+                                                                                "type":  "healing",
+                                                                                "nextRoomId":  "chalice-chapel-depths",
+                                                                                "healAmount":  61,
+                                                                                "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
+                                                                                "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                            },
+                                                                  "forward":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "chalice-chapel-depths",
+                                                                                  "enemyId":  "chalice-jelly",
+                                                                                  "message":  "A shift in the current exposes Chalice Jelly, which claims the forward route through Chalice Chapel."
+                                                                              }
+                                                              }
+                                              },
+                  "chalice-chapel-depths":  {
+                                                "prompt":  "Deeper within Chalice Chapel, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
+                                                "choices":  {
+                                                                "left":  {
+                                                                             "type":  "combat",
+                                                                             "nextRoomId":  "chalice-chapel-threshold",
+                                                                             "enemyId":  "chalice-jelly",
+                                                                             "message":  "A shift in the current exposes Chalice Jelly, which claims the left route through Chalice Chapel."
+                                                                         },
+                                                                "right":  {
+                                                                              "type":  "empty",
+                                                                              "nextRoomId":  "chalice-chapel-threshold",
+                                                                              "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Chalice Chapel. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                              "berries":  1
+                                                                          },
+                                                                "forward":  {
+                                                                                "type":  "treasure",
+                                                                                "nextRoomId":  "chalice-chapel-threshold",
+                                                                                "message":  "Beyond the forward route, you discover a guard stipend locked beneath fallen heraldry.",
+                                                                                "reward":  {
+                                                                                               "min":  243,
+                                                                                               "max":  282
+                                                                                           }
+                                                                            }
+                                                            }
+                                            },
+                  "chalice-chapel-threshold":  {
+                                                   "prompt":  "Near the heart of Chalice Chapel, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "treasure",
+                                                                                "nextRoomId":  "boss-antechamber",
+                                                                                "message":  "Beyond the left route, you discover a modest coffer overlooked by the ruined treasury.",
+                                                                                "reward":  {
+                                                                                               "min":  255,
+                                                                                               "max":  294
+                                                                                           }
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "combat",
+                                                                                 "nextRoomId":  "boss-antechamber",
+                                                                                 "enemyId":  "chalice-jelly",
+                                                                                 "message":  "A shift in the current exposes Chalice Jelly, which claims the right route through Chalice Chapel."
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "healing",
+                                                                                   "nextRoomId":  "boss-antechamber",
+                                                                                   "healAmount":  66,
+                                                                                   "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
+                                                                                   "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                               }
+                                                               }
+                                               },
+                  "boss-antechamber":  {
+                                           "name":  "Sunken Communion",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Sunken Communion."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Sunken Communion. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Sunken Communion: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Sunken Communion. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "sacramental-medusa-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Sacramental Medusa reveals itself!"
+             },
+    "completionText":  "Sacramental Medusa yields, and the currents beyond Sunken Communion open the next route through Sunken King\u0027s Throne."
+}

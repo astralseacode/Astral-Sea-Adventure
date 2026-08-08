@@ -1,0 +1,20 @@
+{
+    "id":  "quake-crown-barnacle-boss",
+    "name":  "Quake-Crown Barnacle",
+    "region":  "leviathans-wake",
+    "level":  24,
+    "hp":  435,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1536,
+                                   "max":  2150
+                               },
+                   "xp":  {
+                              "min":  836,
+                              "max":  1091
+                          }
+               },
+    "defeatCandyLoss":  204
+}

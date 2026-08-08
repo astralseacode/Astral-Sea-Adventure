@@ -1,0 +1,20 @@
+{
+    "id":  "diamond-maw-snapper-boss",
+    "name":  "Diamond-Maw Snapper",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  296,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  884,
+                                   "max":  1238
+                               },
+                   "xp":  {
+                              "min":  450,
+                              "max":  659
+                          }
+               },
+    "defeatCandyLoss":  126
+}

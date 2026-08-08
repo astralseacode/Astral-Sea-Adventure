@@ -1,0 +1,20 @@
+{
+    "id":  "clocktide-jelly",
+    "name":  "Clocktide Jelly",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  437,
+    "damageBonus":  15,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  955,
+                                   "max":  1697
+                               },
+                   "xp":  {
+                              "min":  955,
+                              "max":  1029
+                          }
+               },
+    "defeatCandyLoss":  196
+}

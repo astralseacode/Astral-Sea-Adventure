@@ -1,0 +1,20 @@
+{
+    "id":  "portal-skipping-ray",
+    "name":  "Portal-Skipping Ray",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  434,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  941,
+                                   "max":  1672
+                               },
+                   "xp":  {
+                              "min":  941,
+                              "max":  1014
+                          }
+               },
+    "defeatCandyLoss":  195
+}

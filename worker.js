@@ -191,6 +191,51 @@ const ADVENTURE_CHOICE_XP_BY_LEVEL = {
   3: { min: 22, max: 32 },
   4: { min: 27, max: 37 },
   5: { min: 33, max: 43 },
+  6: { min: 36, max: 46 },
+  7: { min: 39, max: 49 },
+  8: { min: 42, max: 52 },
+  9: { min: 45, max: 55 },
+  10: { min: 48, max: 58 },
+  11: { min: 51, max: 61 },
+  12: { min: 54, max: 64 },
+  13: { min: 57, max: 67 },
+  14: { min: 60, max: 70 },
+  15: { min: 63, max: 73 },
+  16: { min: 66, max: 76 },
+  17: { min: 69, max: 79 },
+  18: { min: 72, max: 82 },
+  19: { min: 75, max: 85 },
+  20: { min: 78, max: 88 },
+  21: { min: 81, max: 91 },
+  22: { min: 84, max: 94 },
+  23: { min: 87, max: 97 },
+  24: { min: 90, max: 100 },
+  25: { min: 93, max: 103 },
+  26: { min: 96, max: 106 },
+  27: { min: 99, max: 109 },
+  28: { min: 102, max: 112 },
+  29: { min: 105, max: 115 },
+  30: { min: 108, max: 118 },
+  31: { min: 111, max: 121 },
+  32: { min: 114, max: 124 },
+  33: { min: 117, max: 127 },
+  34: { min: 120, max: 130 },
+  35: { min: 123, max: 133 },
+  36: { min: 126, max: 136 },
+  37: { min: 129, max: 139 },
+  38: { min: 132, max: 142 },
+  39: { min: 135, max: 145 },
+  40: { min: 138, max: 148 },
+  41: { min: 141, max: 151 },
+  42: { min: 144, max: 154 },
+  43: { min: 147, max: 157 },
+  44: { min: 150, max: 160 },
+  45: { min: 153, max: 163 },
+  46: { min: 156, max: 166 },
+  47: { min: 159, max: 169 },
+  48: { min: 162, max: 172 },
+  49: { min: 165, max: 175 },
+  50: { min: 168, max: 178 },
 };
 const PLAYER_STATS = {
   vitality: { id: "vitality", displayName: "Vitality", maximumRank: 10, description: "+10 permanent maximum HP per rank" },
@@ -354,7 +399,7 @@ const REGIONS = [
   },
   {
     id: "sunken-kings-throne",
-    level: 35,
+    level: 30,
     name: "Sunken King's Throne",
     file: "sunken-kings-throne.json",
   },
@@ -1715,12 +1760,6 @@ async function performAdventureUnlocked(
         `${activeAdventure.name}. Use ` +
         `${platform === "discord" ? "/adventure" : "!adventure"} ` +
         "to view your current objective.",
-    };
-  }
-
-  if (region.id !== "moonlit-reef") {
-    return {
-      message: "That Adventure is not ready to explore yet.",
     };
   }
 
@@ -5813,14 +5852,21 @@ async function getEnemyDefinition(enemyId) {
     throw new Error("Invalid enemy ID.");
   }
 
-  const manifest = await getAdventureManifest("moonlit-reef");
-  const isAdventureBoss = manifest.some(
-    (entry) => entry.bossEnemyId === enemyId,
-  );
+  let bossRegionId = null;
+
+  for (const region of REGIONS) {
+    const manifest = await getAdventureManifest(region.id);
+
+    if (manifest.some((entry) => entry.bossEnemyId === enemyId)) {
+      bossRegionId = region.id;
+      break;
+    }
+  }
+
   const enemy = await fetchCachedJson(
     `enemy:${enemyId}`,
-    isAdventureBoss
-      ? `${GITHUB_DATA_BASE}/enemies/bosses/moonlit-reef/` +
+    bossRegionId
+      ? `${GITHUB_DATA_BASE}/enemies/bosses/${bossRegionId}/` +
         `${enemyId}.json`
       : `${GITHUB_DATA_BASE}/enemies/${enemyId}.json`,
   );
@@ -5889,9 +5935,7 @@ async function getAdventureDefinition(regionId, adventureNumber) {
 }
 
 async function getAdventureManifest(regionId) {
-  if (regionId !== "moonlit-reef") {
-    return [];
-  }
+  if (!getRegionById(regionId)) throw new Error("Unknown Adventure region.");
 
   const manifest = await fetchCachedJson(
     `adventure-manifest:${regionId}`,

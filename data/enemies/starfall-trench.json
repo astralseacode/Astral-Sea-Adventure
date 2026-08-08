@@ -1,0 +1,152 @@
+[
+    {
+        "encounter":  1,
+        "enemy":  "starstone-lanternfish",
+        "recommendedLevel":  5
+    },
+    {
+        "encounter":  2,
+        "enemy":  "craterback-isopod",
+        "recommendedLevel":  5
+    },
+    {
+        "encounter":  3,
+        "enemy":  "cometglass-shrimp",
+        "recommendedLevel":  5
+    },
+    {
+        "encounter":  4,
+        "enemy":  "gravity-skipping-ray",
+        "recommendedLevel":  6
+    },
+    {
+        "encounter":  5,
+        "enemy":  "emberstar-urchin",
+        "recommendedLevel":  6
+    },
+    {
+        "encounter":  6,
+        "enemy":  "nightshard-moray",
+        "recommendedLevel":  6
+    },
+    {
+        "encounter":  7,
+        "enemy":  "meteor-hermit",
+        "recommendedLevel":  6
+    },
+    {
+        "encounter":  8,
+        "enemy":  "starlit-viperfish",
+        "recommendedLevel":  6
+    },
+    {
+        "encounter":  9,
+        "enemy":  "cosmic-vent-crab",
+        "recommendedLevel":  6
+    },
+    {
+        "encounter":  10,
+        "enemy":  "shardwake-eel",
+        "recommendedLevel":  7
+    },
+    {
+        "encounter":  11,
+        "enemy":  "deep-orbit-nautilus",
+        "recommendedLevel":  7
+    },
+    {
+        "encounter":  12,
+        "enemy":  "starstone-golem",
+        "recommendedLevel":  7
+    },
+    {
+        "encounter":  13,
+        "enemy":  "voidcurrent-skate",
+        "recommendedLevel":  7
+    },
+    {
+        "encounter":  14,
+        "enemy":  "crystalfang-snapper",
+        "recommendedLevel":  7
+    },
+    {
+        "encounter":  15,
+        "enemy":  "falling-light-medusa",
+        "recommendedLevel":  7
+    },
+    {
+        "encounter":  16,
+        "enemy":  "astral-silt-stalker",
+        "recommendedLevel":  8
+    },
+    {
+        "encounter":  17,
+        "enemy":  "meteor-marked-lobster",
+        "recommendedLevel":  8
+    },
+    {
+        "encounter":  18,
+        "enemy":  "trench-aurora-wisp",
+        "recommendedLevel":  8
+    },
+    {
+        "encounter":  19,
+        "enemy":  "broken-orbit-sentinel",
+        "recommendedLevel":  8
+    },
+    {
+        "encounter":  20,
+        "enemy":  "star-eater-slug",
+        "recommendedLevel":  8
+    },
+    {
+        "encounter":  21,
+        "enemy":  "nebula-ink-squid",
+        "recommendedLevel":  8
+    },
+    {
+        "encounter":  22,
+        "enemy":  "comet-tail-barracuda",
+        "recommendedLevel":  9
+    },
+    {
+        "encounter":  23,
+        "enemy":  "gravitic-stonefish",
+        "recommendedLevel":  9
+    },
+    {
+        "encounter":  24,
+        "enemy":  "celestial-ruin-walker",
+        "recommendedLevel":  9
+    },
+    {
+        "encounter":  25,
+        "enemy":  "darkstar-anemone",
+        "recommendedLevel":  9
+    },
+    {
+        "encounter":  26,
+        "enemy":  "meteorbone-prowler",
+        "recommendedLevel":  9
+    },
+    {
+        "encounter":  27,
+        "enemy":  "riftlight-serpent",
+        "recommendedLevel":  9
+    },
+    {
+        "encounter":  28,
+        "enemy":  "trenchstar-behemoth",
+        "recommendedLevel":  10
+    },
+    {
+        "encounter":  29,
+        "enemy":  "celestial-core-keeper",
+        "recommendedLevel":  10
+    },
+    {
+        "encounter":  30,
+        "enemy":  "starfall-annex-grunt",
+        "recommendedLevel":  10
+    }
+]

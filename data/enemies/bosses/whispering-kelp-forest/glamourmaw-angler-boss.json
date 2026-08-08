@@ -1,0 +1,20 @@
+{
+    "id":  "glamourmaw-angler-boss",
+    "name":  "Glamourmaw Angler",
+    "region":  "whispering-kelp-forest",
+    "level":  13,
+    "hp":  348,
+    "damageBonus":  12,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1110,
+                                   "max":  1554
+                               },
+                   "xp":  {
+                              "min":  586,
+                              "max":  821
+                          }
+               },
+    "defeatCandyLoss":  149
+}

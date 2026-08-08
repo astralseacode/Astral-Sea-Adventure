@@ -1,0 +1,20 @@
+{
+    "id":  "wake-riding-razorfish",
+    "name":  "Wake-Riding Razorfish",
+    "region":  "leviathans-wake",
+    "level":  20,
+    "hp":  280,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  480,
+                                   "max":  900
+                               },
+                   "xp":  {
+                              "min":  480,
+                              "max":  550
+                          }
+               },
+    "defeatCandyLoss":  110
+}

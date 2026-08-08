@@ -1,0 +1,107 @@
+{
+    "id":  "fractured-ocean",
+    "number":  6,
+    "name":  "Fractured Ocean",
+    "regionId":  "astral-nexus",
+    "enemyId":  "fracturefin-shark",
+    "recommendedLevel":  50,
+    "introDiscord":  "Fractured Ocean lies ahead, where fractured realities where memories cast physical shadows conceal the territory of Fracturefin Shark.",
+    "introTwitch":  "Fractured Ocean lies ahead amid fractured realities where memories cast physical shadows.",
+    "startRoomId":  "fractured-ocean-approach",
+    "rooms":  {
+                  "fractured-ocean-approach":  {
+                                                   "prompt":  "At the edge of Fractured Ocean, fractured realities where memories cast physical shadows divide into three uncertain routes.",
+                                                   "choices":  {
+                                                                   "left":  {
+                                                                                "type":  "empty",
+                                                                                "nextRoomId":  "fractured-ocean-depths",
+                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Fractured Ocean. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                "berries":  1
+                                                                            },
+                                                                   "right":  {
+                                                                                 "type":  "treasure",
+                                                                                 "nextRoomId":  "fractured-ocean-depths",
+                                                                                 "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
+                                                                                 "reward":  {
+                                                                                                "min":  391,
+                                                                                                "max":  427
+                                                                                            }
+                                                                             },
+                                                                   "forward":  {
+                                                                                   "type":  "combat",
+                                                                                   "nextRoomId":  "fractured-ocean-depths",
+                                                                                   "enemyId":  "fracturefin-shark",
+                                                                                   "message":  "A shift in the current exposes Fracturefin Shark, which claims the forward route through Fractured Ocean."
+                                                                               }
+                                                               }
+                                               },
+                  "fractured-ocean-depths":  {
+                                                 "prompt":  "Deeper within Fractured Ocean, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
+                                                 "choices":  {
+                                                                 "left":  {
+                                                                              "type":  "combat",
+                                                                              "nextRoomId":  "fractured-ocean-threshold",
+                                                                              "enemyId":  "fracturefin-shark",
+                                                                              "message":  "A shift in the current exposes Fracturefin Shark, which claims the left route through Fractured Ocean."
+                                                                          },
+                                                                 "right":  {
+                                                                               "type":  "healing",
+                                                                               "nextRoomId":  "fractured-ocean-threshold",
+                                                                               "healAmount":  112,
+                                                                               "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
+                                                                               "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                           },
+                                                                 "forward":  {
+                                                                                 "type":  "treasure",
+                                                                                 "nextRoomId":  "fractured-ocean-threshold",
+                                                                                 "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
+                                                                                 "reward":  {
+                                                                                                "min":  403,
+                                                                                                "max":  439
+                                                                                            }
+                                                                             }
+                                                             }
+                                             },
+                  "fractured-ocean-threshold":  {
+                                                    "prompt":  "Near the heart of Fractured Ocean, fae arches opening onto incompatible skies divide into three uncertain routes.",
+                                                    "choices":  {
+                                                                    "left":  {
+                                                                                 "type":  "treasure",
+                                                                                 "nextRoomId":  "boss-antechamber",
+                                                                                 "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
+                                                                                 "reward":  {
+                                                                                                "min":  415,
+                                                                                                "max":  451
+                                                                                            }
+                                                                             },
+                                                                    "right":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "boss-antechamber",
+                                                                                  "enemyId":  "fracturefin-shark",
+                                                                                  "message":  "A shift in the current exposes Fracturefin Shark, which claims the right route through Fractured Ocean."
+                                                                              },
+                                                                    "forward":  {
+                                                                                    "type":  "healing",
+                                                                                    "nextRoomId":  "boss-antechamber",
+                                                                                    "healAmount":  117,
+                                                                                    "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
+                                                                                    "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                }
+                                                                }
+                                                },
+                  "boss-antechamber":  {
+                                           "name":  "Splitwater Arena",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Splitwater Arena."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Splitwater Arena. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Splitwater Arena: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Splitwater Arena. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "reality-bite-apex-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Reality-Bite Apex reveals itself!"
+             },
+    "completionText":  "Reality-Bite Apex yields, and the currents beyond Splitwater Arena open the next route through Astral Nexus."
+}

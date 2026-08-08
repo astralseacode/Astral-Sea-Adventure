@@ -1,0 +1,20 @@
+{
+    "id":  "trench-aurora-wisp",
+    "name":  "Trench Aurora Wisp",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  191,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  298,
+                                   "max":  621
+                               },
+                   "xp":  {
+                              "min":  298,
+                              "max":  386
+                          }
+               },
+    "defeatCandyLoss":  81
+}

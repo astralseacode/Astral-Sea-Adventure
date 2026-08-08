@@ -1,0 +1,20 @@
+{
+    "id":  "forest-heart-colossus-boss",
+    "name":  "Forest-Heart Colossus",
+    "region":  "whispering-kelp-forest",
+    "level":  19,
+    "hp":  404,
+    "damageBonus":  13,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1372,
+                                   "max":  1921
+                               },
+                   "xp":  {
+                              "min":  743,
+                              "max":  965
+                          }
+               },
+    "defeatCandyLoss":  195
+}

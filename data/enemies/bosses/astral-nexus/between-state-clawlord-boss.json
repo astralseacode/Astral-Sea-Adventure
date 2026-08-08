@@ -1,0 +1,20 @@
+{
+    "id":  "between-state-clawlord-boss",
+    "name":  "Between-State Clawlord",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  636,
+    "damageBonus":  20,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2859,
+                                   "max":  4003
+                               },
+                   "xp":  {
+                              "min":  1660,
+                              "max":  1987
+                          }
+               },
+    "defeatCandyLoss":  343
+}

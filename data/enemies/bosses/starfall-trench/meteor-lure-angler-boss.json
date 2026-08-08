@@ -1,0 +1,20 @@
+{
+    "id":  "meteor-lure-angler-boss",
+    "name":  "Meteor-Lure Angler",
+    "region":  "starfall-trench",
+    "level":  5,
+    "hp":  260,
+    "damageBonus":  9,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  750,
+                                   "max":  1050
+                               },
+                   "xp":  {
+                              "min":  360,
+                              "max":  560
+                          }
+               },
+    "defeatCandyLoss":  95
+}

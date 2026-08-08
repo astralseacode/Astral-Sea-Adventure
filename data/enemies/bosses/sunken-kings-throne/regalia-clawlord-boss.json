@@ -1,0 +1,20 @@
+{
+    "id":  "regalia-clawlord-boss",
+    "name":  "Regalia Clawlord",
+    "region":  "sunken-kings-throne",
+    "level":  33,
+    "hp":  491,
+    "damageBonus":  16,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1853,
+                                   "max":  2594
+                               },
+                   "xp":  {
+                              "min":  1044,
+                              "max":  1388
+                          }
+               },
+    "defeatCandyLoss":  242
+}

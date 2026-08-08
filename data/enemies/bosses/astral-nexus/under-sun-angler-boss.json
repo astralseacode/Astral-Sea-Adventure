@@ -1,0 +1,20 @@
+{
+    "id":  "under-sun-angler-boss",
+    "name":  "Under-Sun Angler",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  593,
+    "damageBonus":  19,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2517,
+                                   "max":  3524
+                               },
+                   "xp":  {
+                              "min":  1471,
+                              "max":  1903
+                          }
+               },
+    "defeatCandyLoss":  317
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "fae-lure-angler",
+    "name":  "Fae-Lure Angler",
+    "region":  "whispering-kelp-forest",
+    "level":  13,
+    "hp":  234,
+    "damageBonus":  9,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  384,
+                                   "max":  769
+                               },
+                   "xp":  {
+                              "min":  384,
+                              "max":  462
+                          }
+               },
+    "defeatCandyLoss":  92
+}

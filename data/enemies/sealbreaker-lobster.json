@@ -1,0 +1,20 @@
+{
+    "id":  "sealbreaker-lobster",
+    "name":  "Sealbreaker Lobster",
+    "region":  "sunken-kings-throne",
+    "level":  42,
+    "hp":  395,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  808,
+                                   "max":  1464
+                               },
+                   "xp":  {
+                              "min":  808,
+                              "max":  896
+                          }
+               },
+    "defeatCandyLoss":  171
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "geometry-eel",
+    "name":  "Geometry Eel",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  428,
+    "damageBonus":  14,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  914,
+                                   "max":  1624
+                               },
+                   "xp":  {
+                              "min":  914,
+                              "max":  985
+                          }
+               },
+    "defeatCandyLoss":  192
+}

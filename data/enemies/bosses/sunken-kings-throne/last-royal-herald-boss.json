@@ -1,0 +1,20 @@
+{
+    "id":  "last-royal-herald-boss",
+    "name":  "Last Royal Herald",
+    "region":  "sunken-kings-throne",
+    "level":  41,
+    "hp":  527,
+    "damageBonus":  17,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2081,
+                                   "max":  2913
+                               },
+                   "xp":  {
+                              "min":  1184,
+                              "max":  1471
+                          }
+               },
+    "defeatCandyLoss":  269
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "rootcoil-eel",
+    "name":  "Rootcoil Eel",
+    "region":  "whispering-kelp-forest",
+    "level":  11,
+    "hp":  225,
+    "damageBonus":  8,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  362,
+                                   "max":  734
+                               },
+                   "xp":  {
+                              "min":  362,
+                              "max":  436
+                          }
+               },
+    "defeatCandyLoss":  86
+}

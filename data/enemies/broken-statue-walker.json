@@ -1,0 +1,20 @@
+{
+    "id":  "broken-statue-walker",
+    "name":  "Broken Statue Walker",
+    "region":  "sunken-kings-throne",
+    "level":  38,
+    "hp":  377,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  752,
+                                   "max":  1371
+                               },
+                   "xp":  {
+                              "min":  752,
+                              "max":  834
+                          }
+               },
+    "defeatCandyLoss":  162
+}

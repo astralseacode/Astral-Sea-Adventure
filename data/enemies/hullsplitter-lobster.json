@@ -1,0 +1,20 @@
+{
+    "id":  "hullsplitter-lobster",
+    "name":  "Hullsplitter Lobster",
+    "region":  "leviathans-wake",
+    "level":  22,
+    "hp":  294,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  521,
+                                   "max":  972
+                               },
+                   "xp":  {
+                              "min":  521,
+                              "max":  598
+                          }
+               },
+    "defeatCandyLoss":  119
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "starstone-golem",
+    "name":  "Starstone Golem",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  177,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  267,
+                                   "max":  571
+                               },
+                   "xp":  {
+                              "min":  267,
+                              "max":  348
+                          }
+               },
+    "defeatCandyLoss":  72
+}

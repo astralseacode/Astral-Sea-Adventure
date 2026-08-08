@@ -1,0 +1,107 @@
+{
+    "id":  "cometglass-shardbeds",
+    "number":  3,
+    "name":  "Cometglass Shardbeds",
+    "regionId":  "starfall-trench",
+    "enemyId":  "cometglass-shrimp",
+    "recommendedLevel":  5,
+    "introDiscord":  "Cometglass Shardbeds lies ahead, where gravity-bent celestial ruins conceal the territory of Cometglass Shrimp.",
+    "introTwitch":  "Cometglass Shardbeds lies ahead amid gravity-bent celestial ruins.",
+    "startRoomId":  "cometglass-shardbeds-approach",
+    "rooms":  {
+                  "cometglass-shardbeds-approach":  {
+                                                        "prompt":  "At the edge of Cometglass Shardbeds, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "healing",
+                                                                                     "nextRoomId":  "cometglass-shardbeds-depths",
+                                                                                     "healAmount":  56,
+                                                                                     "message":  "The left route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "cometglass-shardbeds-depths",
+                                                                                      "enemyId":  "cometglass-shrimp",
+                                                                                      "message":  "A shift in the current exposes Cometglass Shrimp, which claims the right route through Cometglass Shardbeds."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "cometglass-shardbeds-depths",
+                                                                                        "message":  "Beyond the forward route, you discover a star chart coffer buried in luminous silt.",
+                                                                                        "reward":  {
+                                                                                                       "min":  138,
+                                                                                                       "max":  173
+                                                                                                   }
+                                                                                    }
+                                                                    }
+                                                    },
+                  "cometglass-shardbeds-depths":  {
+                                                      "prompt":  "Deeper within Cometglass Shardbeds, fractured starstone terraces divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "empty",
+                                                                                   "nextRoomId":  "cometglass-shardbeds-threshold",
+                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Cometglass Shardbeds. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                   "berries":  1
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "treasure",
+                                                                                    "nextRoomId":  "cometglass-shardbeds-threshold",
+                                                                                    "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
+                                                                                    "reward":  {
+                                                                                                   "min":  150,
+                                                                                                   "max":  185
+                                                                                               }
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "cometglass-shardbeds-threshold",
+                                                                                      "enemyId":  "cometglass-shrimp",
+                                                                                      "message":  "A shift in the current exposes Cometglass Shrimp, which claims the forward route through Cometglass Shardbeds."
+                                                                                  }
+                                                                  }
+                                                  },
+                  "cometglass-shardbeds-threshold":  {
+                                                         "prompt":  "Near the heart of Cometglass Shardbeds, meteor-lit trenches divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "enemyId":  "cometglass-shrimp",
+                                                                                      "message":  "A shift in the current exposes Cometglass Shrimp, which claims the left route through Cometglass Shardbeds."
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "healAmount":  61,
+                                                                                       "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
+                                                                                         "reward":  {
+                                                                                                        "min":  162,
+                                                                                                        "max":  197
+                                                                                                    }
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Prismfall Scar",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Prismfall Scar."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Prismfall Scar. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Prismfall Scar: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Prismfall Scar. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "shardclaw-colossus-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Shardclaw Colossus reveals itself!"
+             },
+    "completionText":  "Shardclaw Colossus yields, and the currents beyond Prismfall Scar open the next route through Starfall Trench."
+}

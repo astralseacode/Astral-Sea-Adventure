@@ -1,0 +1,20 @@
+{
+    "id":  "cloudveil-krakenet-boss",
+    "name":  "Cloudveil Krakenet",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  315,
+    "damageBonus":  10,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  957,
+                                   "max":  1340
+                               },
+                   "xp":  {
+                              "min":  498,
+                              "max":  712
+                          }
+               },
+    "defeatCandyLoss":  143
+}

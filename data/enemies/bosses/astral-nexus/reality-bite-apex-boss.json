@@ -1,0 +1,20 @@
+{
+    "id":  "reality-bite-apex-boss",
+    "name":  "Reality-Bite Apex",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  585,
+    "damageBonus":  19,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2455,
+                                   "max":  3437
+                               },
+                   "xp":  {
+                              "min":  1436,
+                              "max":  1888
+                          }
+               },
+    "defeatCandyLoss":  312
+}

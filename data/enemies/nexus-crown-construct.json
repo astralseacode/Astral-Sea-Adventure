@@ -1,0 +1,20 @@
+{
+    "id":  "nexus-crown-construct",
+    "name":  "Nexus Crown Construct",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  501,
+    "damageBonus":  18,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1259,
+                                   "max":  2228
+                               },
+                   "xp":  {
+                              "min":  1259,
+                              "max":  1356
+                          }
+               },
+    "defeatCandyLoss":  230
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "nexus-continuance-officer-boss",
+    "name":  "Nexus Continuance Officer",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  680,
+    "damageBonus":  22,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  3200,
+                                   "max":  4480
+                               },
+                   "xp":  {
+                              "min":  1850,
+                              "max":  2070
+                          }
+               },
+    "defeatCandyLoss":  370
+}

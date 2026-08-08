@@ -1,0 +1,20 @@
+{
+    "id":  "crater-throne-hermit-boss",
+    "name":  "Crater-Throne Hermit",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  277,
+    "damageBonus":  9,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  812,
+                                   "max":  1137
+                               },
+                   "xp":  {
+                              "min":  401,
+                              "max":  606
+                          }
+               },
+    "defeatCandyLoss":  109
+}

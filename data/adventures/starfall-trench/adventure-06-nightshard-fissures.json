@@ -1,0 +1,107 @@
+{
+    "id":  "nightshard-fissures",
+    "number":  6,
+    "name":  "Nightshard Fissures",
+    "regionId":  "starfall-trench",
+    "enemyId":  "nightshard-moray",
+    "recommendedLevel":  6,
+    "introDiscord":  "Nightshard Fissures lies ahead, where gravity-bent celestial ruins conceal the territory of Nightshard Moray.",
+    "introTwitch":  "Nightshard Fissures lies ahead amid gravity-bent celestial ruins.",
+    "startRoomId":  "nightshard-fissures-approach",
+    "rooms":  {
+                  "nightshard-fissures-approach":  {
+                                                       "prompt":  "At the edge of Nightshard Fissures, gravity-bent celestial ruins divide into three uncertain routes.",
+                                                       "choices":  {
+                                                                       "left":  {
+                                                                                    "type":  "empty",
+                                                                                    "nextRoomId":  "nightshard-fissures-depths",
+                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Nightshard Fissures. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                    "berries":  1
+                                                                                },
+                                                                       "right":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "nightshard-fissures-depths",
+                                                                                     "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
+                                                                                     "reward":  {
+                                                                                                    "min":  128,
+                                                                                                    "max":  164
+                                                                                                }
+                                                                                 },
+                                                                       "forward":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "nightshard-fissures-depths",
+                                                                                       "enemyId":  "nightshard-moray",
+                                                                                       "message":  "A shift in the current exposes Nightshard Moray, which claims the forward route through Nightshard Fissures."
+                                                                                   }
+                                                                   }
+                                                   },
+                  "nightshard-fissures-depths":  {
+                                                     "prompt":  "Deeper within Nightshard Fissures, fractured starstone terraces divide into three uncertain routes.",
+                                                     "choices":  {
+                                                                     "left":  {
+                                                                                  "type":  "combat",
+                                                                                  "nextRoomId":  "nightshard-fissures-threshold",
+                                                                                  "enemyId":  "nightshard-moray",
+                                                                                  "message":  "A shift in the current exposes Nightshard Moray, which claims the left route through Nightshard Fissures."
+                                                                              },
+                                                                     "right":  {
+                                                                                   "type":  "healing",
+                                                                                   "nextRoomId":  "nightshard-fissures-threshold",
+                                                                                   "healAmount":  50,
+                                                                                   "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
+                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                               },
+                                                                     "forward":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "nightshard-fissures-threshold",
+                                                                                     "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
+                                                                                     "reward":  {
+                                                                                                    "min":  140,
+                                                                                                    "max":  176
+                                                                                                }
+                                                                                 }
+                                                                 }
+                                                 },
+                  "nightshard-fissures-threshold":  {
+                                                        "prompt":  "Near the heart of Nightshard Fissures, meteor-lit trenches divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "boss-antechamber",
+                                                                                     "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
+                                                                                     "reward":  {
+                                                                                                    "min":  152,
+                                                                                                    "max":  188
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "enemyId":  "nightshard-moray",
+                                                                                      "message":  "A shift in the current exposes Nightshard Moray, which claims the right route through Nightshard Fissures."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "healAmount":  55,
+                                                                                        "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    }
+                                                                    }
+                                                    },
+                  "boss-antechamber":  {
+                                           "name":  "Blackglass Maw",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Blackglass Maw."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Blackglass Maw. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Blackglass Maw: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Blackglass Maw. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "eclipse-jaw-moray-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Eclipse-Jaw Moray reveals itself!"
+             },
+    "completionText":  "Eclipse-Jaw Moray yields, and the currents beyond Blackglass Maw open the next route through Starfall Trench."
+}

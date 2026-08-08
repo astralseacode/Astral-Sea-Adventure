@@ -1,0 +1,20 @@
+{
+    "id":  "wakefoam-medusa",
+    "name":  "Wakefoam Medusa",
+    "region":  "leviathans-wake",
+    "level":  22,
+    "hp":  297,
+    "damageBonus":  10,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  528,
+                                   "max":  984
+                               },
+                   "xp":  {
+                              "min":  528,
+                              "max":  606
+                          }
+               },
+    "defeatCandyLoss":  121
+}

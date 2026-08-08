@@ -1,0 +1,20 @@
+{
+    "id":  "star-eater-slug",
+    "name":  "Star-Eater Slug",
+    "region":  "starfall-trench",
+    "level":  8,
+    "hp":  196,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  308,
+                                   "max":  637
+                               },
+                   "xp":  {
+                              "min":  308,
+                              "max":  398
+                          }
+               },
+    "defeatCandyLoss":  84
+}

@@ -1,0 +1,20 @@
+{
+    "id":  "keeljaw-moray-boss",
+    "name":  "Keeljaw Moray",
+    "region":  "leviathans-wake",
+    "level":  24,
+    "hp":  432,
+    "damageBonus":  14,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1521,
+                                   "max":  2129
+                               },
+                   "xp":  {
+                              "min":  826,
+                              "max":  1083
+                          }
+               },
+    "defeatCandyLoss":  202
+}

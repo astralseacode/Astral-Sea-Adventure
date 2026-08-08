@@ -1,0 +1,107 @@
+{
+    "id":  "scale-shelter-wrecks",
+    "number":  4,
+    "name":  "Scale-Shelter Wrecks",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "scale-shelter-hermit",
+    "recommendedLevel":  21,
+    "introDiscord":  "Scale-Shelter Wrecks lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Scale-Shelter Hermit.",
+    "introTwitch":  "Scale-Shelter Wrecks lies ahead amid titanic ribs rising through violent crosscurrents.",
+    "startRoomId":  "scale-shelter-wrecks-approach",
+    "rooms":  {
+                  "scale-shelter-wrecks-approach":  {
+                                                        "prompt":  "At the edge of Scale-Shelter Wrecks, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "combat",
+                                                                                     "nextRoomId":  "scale-shelter-wrecks-depths",
+                                                                                     "enemyId":  "scale-shelter-hermit",
+                                                                                     "message":  "A shift in the current exposes Scale-Shelter Hermit, which claims the left route through Scale-Shelter Wrecks."
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "empty",
+                                                                                      "nextRoomId":  "scale-shelter-wrecks-depths",
+                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Scale-Shelter Wrecks. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                      "berries":  1
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "scale-shelter-wrecks-depths",
+                                                                                        "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
+                                                                                        "reward":  {
+                                                                                                       "min":  245,
+                                                                                                       "max":  281
+                                                                                                   }
+                                                                                    }
+                                                                    }
+                                                    },
+                  "scale-shelter-wrecks-depths":  {
+                                                      "prompt":  "Deeper within Scale-Shelter Wrecks, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                      "choices":  {
+                                                                      "left":  {
+                                                                                   "type":  "healing",
+                                                                                   "nextRoomId":  "scale-shelter-wrecks-threshold",
+                                                                                   "healAmount":  79,
+                                                                                   "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                               },
+                                                                      "right":  {
+                                                                                    "type":  "combat",
+                                                                                    "nextRoomId":  "scale-shelter-wrecks-threshold",
+                                                                                    "enemyId":  "scale-shelter-hermit",
+                                                                                    "message":  "A shift in the current exposes Scale-Shelter Hermit, which claims the right route through Scale-Shelter Wrecks."
+                                                                                },
+                                                                      "forward":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "scale-shelter-wrecks-threshold",
+                                                                                      "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
+                                                                                      "reward":  {
+                                                                                                     "min":  257,
+                                                                                                     "max":  293
+                                                                                                 }
+                                                                                  }
+                                                                  }
+                                                  },
+                  "scale-shelter-wrecks-threshold":  {
+                                                         "prompt":  "Near the heart of Scale-Shelter Wrecks, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                         "choices":  {
+                                                                         "left":  {
+                                                                                      "type":  "treasure",
+                                                                                      "nextRoomId":  "boss-antechamber",
+                                                                                      "message":  "Beyond the left route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                      "reward":  {
+                                                                                                     "min":  269,
+                                                                                                     "max":  305
+                                                                                                 }
+                                                                                  },
+                                                                         "right":  {
+                                                                                       "type":  "healing",
+                                                                                       "nextRoomId":  "boss-antechamber",
+                                                                                       "healAmount":  84,
+                                                                                       "message":  "The right route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                       "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                   },
+                                                                         "forward":  {
+                                                                                         "type":  "combat",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "enemyId":  "scale-shelter-hermit",
+                                                                                         "message":  "A shift in the current exposes Scale-Shelter Hermit, which claims the forward route through Scale-Shelter Wrecks."
+                                                                                     }
+                                                                     }
+                                                     },
+                  "boss-antechamber":  {
+                                           "name":  "Armored Drift",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Armored Drift."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Armored Drift. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Armored Drift: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Armored Drift. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "titan-scale-hermit-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Titan-Scale Hermit reveals itself!"
+             },
+    "completionText":  "Titan-Scale Hermit yields, and the currents beyond Armored Drift open the next route through Leviathan\u0027s Wake."
+}

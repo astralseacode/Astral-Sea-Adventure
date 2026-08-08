@@ -1,0 +1,20 @@
+{
+    "id":  "falling-light-medusa",
+    "name":  "Falling-Light Medusa",
+    "region":  "starfall-trench",
+    "level":  7,
+    "hp":  184,
+    "damageBonus":  7,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  282,
+                                   "max":  596
+                               },
+                   "xp":  {
+                              "min":  282,
+                              "max":  367
+                          }
+               },
+    "defeatCandyLoss":  77
+}

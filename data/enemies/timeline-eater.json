@@ -1,0 +1,20 @@
+{
+    "id":  "timeline-eater",
+    "name":  "Timeline Eater",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  498,
+    "damageBonus":  17,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  1245,
+                                   "max":  2203
+                               },
+                   "xp":  {
+                              "min":  1245,
+                              "max":  1341
+                          }
+               },
+    "defeatCandyLoss":  229
+}

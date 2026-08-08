@@ -1,0 +1,20 @@
+{
+    "id":  "starlit-viperfish",
+    "name":  "Starlit Viperfish",
+    "region":  "starfall-trench",
+    "level":  6,
+    "hp":  167,
+    "damageBonus":  6,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  246,
+                                   "max":  538
+                               },
+                   "xp":  {
+                              "min":  246,
+                              "max":  323
+                          }
+               },
+    "defeatCandyLoss":  66
+}

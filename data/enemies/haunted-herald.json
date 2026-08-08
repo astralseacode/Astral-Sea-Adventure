@@ -1,0 +1,20 @@
+{
+    "id":  "haunted-herald",
+    "name":  "Haunted Herald",
+    "region":  "sunken-kings-throne",
+    "level":  41,
+    "hp":  392,
+    "damageBonus":  13,
+    "isBoss":  false,
+    "reward":  {
+                   "candies":  {
+                                   "min":  799,
+                                   "max":  1448
+                               },
+                   "xp":  {
+                              "min":  799,
+                              "max":  886
+                          }
+               },
+    "defeatCandyLoss":  170
+}

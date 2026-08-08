@@ -1,0 +1,107 @@
+{
+    "id":  "hullsplitter-graveyard",
+    "number":  7,
+    "name":  "Hullsplitter Graveyard",
+    "regionId":  "leviathans-wake",
+    "enemyId":  "hullsplitter-lobster",
+    "recommendedLevel":  22,
+    "introDiscord":  "Hullsplitter Graveyard lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Hullsplitter Lobster.",
+    "introTwitch":  "Hullsplitter Graveyard lies ahead amid titanic ribs rising through violent crosscurrents.",
+    "startRoomId":  "hullsplitter-graveyard-approach",
+    "rooms":  {
+                  "hullsplitter-graveyard-approach":  {
+                                                          "prompt":  "At the edge of Hullsplitter Graveyard, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
+                                                          "choices":  {
+                                                                          "left":  {
+                                                                                       "type":  "combat",
+                                                                                       "nextRoomId":  "hullsplitter-graveyard-depths",
+                                                                                       "enemyId":  "hullsplitter-lobster",
+                                                                                       "message":  "A shift in the current exposes Hullsplitter Lobster, which claims the left route through Hullsplitter Graveyard."
+                                                                                   },
+                                                                          "right":  {
+                                                                                        "type":  "treasure",
+                                                                                        "nextRoomId":  "hullsplitter-graveyard-depths",
+                                                                                        "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
+                                                                                        "reward":  {
+                                                                                                       "min":  224,
+                                                                                                       "max":  261
+                                                                                                   }
+                                                                                    },
+                                                                          "forward":  {
+                                                                                          "type":  "healing",
+                                                                                          "nextRoomId":  "hullsplitter-graveyard-depths",
+                                                                                          "healAmount":  70,
+                                                                                          "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
+                                                                                          "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                      }
+                                                                      }
+                                                      },
+                  "hullsplitter-graveyard-depths":  {
+                                                        "prompt":  "Deeper within Hullsplitter Graveyard, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
+                                                        "choices":  {
+                                                                        "left":  {
+                                                                                     "type":  "treasure",
+                                                                                     "nextRoomId":  "hullsplitter-graveyard-threshold",
+                                                                                     "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
+                                                                                     "reward":  {
+                                                                                                    "min":  236,
+                                                                                                    "max":  273
+                                                                                                }
+                                                                                 },
+                                                                        "right":  {
+                                                                                      "type":  "combat",
+                                                                                      "nextRoomId":  "hullsplitter-graveyard-threshold",
+                                                                                      "enemyId":  "hullsplitter-lobster",
+                                                                                      "message":  "A shift in the current exposes Hullsplitter Lobster, which claims the right route through Hullsplitter Graveyard."
+                                                                                  },
+                                                                        "forward":  {
+                                                                                        "type":  "empty",
+                                                                                        "nextRoomId":  "hullsplitter-graveyard-threshold",
+                                                                                        "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Hullsplitter Graveyard. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
+                                                                                        "berries":  1
+                                                                                    }
+                                                                    }
+                                                    },
+                  "hullsplitter-graveyard-threshold":  {
+                                                           "prompt":  "Near the heart of Hullsplitter Graveyard, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
+                                                           "choices":  {
+                                                                           "left":  {
+                                                                                        "type":  "healing",
+                                                                                        "nextRoomId":  "boss-antechamber",
+                                                                                        "healAmount":  75,
+                                                                                        "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
+                                                                                        "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
+                                                                                    },
+                                                                           "right":  {
+                                                                                         "type":  "treasure",
+                                                                                         "nextRoomId":  "boss-antechamber",
+                                                                                         "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
+                                                                                         "reward":  {
+                                                                                                        "min":  248,
+                                                                                                        "max":  285
+                                                                                                    }
+                                                                                     },
+                                                                           "forward":  {
+                                                                                           "type":  "combat",
+                                                                                           "nextRoomId":  "boss-antechamber",
+                                                                                           "enemyId":  "hullsplitter-lobster",
+                                                                                           "message":  "A shift in the current exposes Hullsplitter Lobster, which claims the forward route through Hullsplitter Graveyard."
+                                                                                       }
+                                                                       }
+                                                       },
+                  "boss-antechamber":  {
+                                           "name":  "Keelbreak Arena",
+                                           "type":  "boss-prompt",
+                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Keelbreak Arena."
+                                       }
+              },
+    "bossPromptDiscord":  "You enter Keelbreak Arena. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
+    "bossPromptTwitch":  "Keelbreak Arena: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
+    "bossRetreatText":  "You withdraw from Keelbreak Arena. The hidden guardian remains beyond the threshold.",
+    "boss":  {
+                 "enemyId":  "dreadclaw-hullsplitter-boss",
+                 "roomId":  "boss",
+                 "revealText":  "The chamber\u0027s veil breaks. Dreadclaw Hullsplitter reveals itself!"
+             },
+    "completionText":  "Dreadclaw Hullsplitter yields, and the currents beyond Keelbreak Arena open the next route through Leviathan\u0027s Wake."
+}

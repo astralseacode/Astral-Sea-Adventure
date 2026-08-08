@@ -1,0 +1,20 @@
+{
+    "id":  "sixfold-tideheart-boss",
+    "name":  "Sixfold Tideheart",
+    "region":  "astral-nexus",
+    "level":  50,
+    "hp":  624,
+    "damageBonus":  20,
+    "isBoss":  true,
+    "reward":  {
+                   "candies":  {
+                                   "min":  2766,
+                                   "max":  3872
+                               },
+                   "xp":  {
+                              "min":  1609,
+                              "max":  1964
+                          }
+               },
+    "defeatCandyLoss":  336
+}
