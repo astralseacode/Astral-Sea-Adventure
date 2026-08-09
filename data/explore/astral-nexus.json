@@ -8,11 +8,11 @@
         "weight":  100,
         "title":  "Paradox Shoal",
         "reward":  {
-                       "min":  380,
-                       "max":  700
+                       "min":  450,
+                       "max":  550
                    },
-        "xp":  150,
-        "message":  "explored Paradox Shoal, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "xp":  100,
+        "message":  "You step onto a tiny shoal floating among the stars... then step off it and somehow arrive on the opposite side of the exact same shoal. You try another direction. Same result. Again. Same result. Eventually you notice {reward} Star Candies sitting in the middle the entire time. Apparently leaving was optional.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-01",
@@ -26,15 +26,15 @@
         "code":  "AN-002",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "common",
-        "weight":  98,
-        "title":  "Impossible Angles",
+        "rarity":  "uncommon",
+        "weight":  55,
+        "title":  "Upside-Down Tidepool",
         "reward":  {
-                       "min":  392,
-                       "max":  712
+                       "min":  600,
+                       "max":  705
                    },
-        "xp":  155,
-        "message":  "explored Impossible Angles, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "xp":  135,
+        "message":  "A chunk of Moonlit Reef floats high above you, complete with glowing coral and a tidepool whose water refuses to fall. Tiny reef creatures swim overhead like this is perfectly normal. A few glowing droplets drift upward and expose {reward} Star Candies caught among the inverted coral.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-02",
@@ -49,14 +49,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "common",
-        "weight":  96,
-        "title":  "Memoryglass Strand",
+        "weight":  90,
+        "title":  "Portal Roulette",
         "reward":  {
-                       "min":  404,
-                       "max":  724
+                       "min":  475,
+                       "max":  575
                    },
-        "xp":  160,
-        "message":  "explored Memoryglass Strand, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "xp":  105,
+        "message":  "Five portals shimmer in a suspiciously neat circle. The first moves you ten feet to the left. The second flips you upside down. The third drops you ankle-deep into Moonlit Reef water before immediately spitting you back out. The fourth somehow gives you a fake mustache. The fifth finally reveals {reward} Star Candies. Dozens of tally marks nearby suggest somebody tested these portals way more than necessary.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-03",
@@ -70,15 +70,15 @@
         "code":  "AN-004",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "uncommon",
-        "weight":  94,
-        "title":  "Portal-Skip Expanse",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "Walking Constellation",
         "reward":  {
-                       "min":  416,
-                       "max":  736
+                       "min":  500,
+                       "max":  600
                    },
-        "xp":  165,
-        "message":  "explored Portal-Skip Expanse, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "xp":  110,
+        "message":  "A tiny constellation detaches from the stars and begins following you. You stop—it stops. You move left—it moves left. You spin around—it spins around. Eventually it darts away, only to return moments later and excitedly circle {reward} Star Candies. Congratulations. Space has apparently adopted you.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-04",
@@ -92,15 +92,15 @@
         "code":  "AN-005",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "uncommon",
-        "weight":  92,
-        "title":  "Clocktide Drift",
+        "rarity":  "common",
+        "weight":  70,
+        "title":  "The Infinite Slide",
         "reward":  {
-                       "min":  428,
-                       "max":  748
+                       "min":  525,
+                       "max":  625
                    },
-        "xp":  170,
-        "message":  "explored Clocktide Drift, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "xp":  115,
+        "message":  "An impossibly long glowing slope disappears through several portals. There is absolutely no sensible reason to slide down it. Scratched beside the entrance are two words: \"DO IT.\" Three portals, one sideways gravity shift, and an extremely undignified landing later, you crash beside {reward} Star Candies. Another message is scratched nearby: \"Worth it.\"",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-05",
@@ -114,15 +114,15 @@
         "code":  "AN-006",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "rare",
-        "weight":  90,
-        "title":  "Fractured Ocean",
+        "rarity":  "uncommon",
+        "weight":  45,
+        "title":  "Starfall Window",
         "reward":  {
-                       "min":  440,
-                       "max":  760
+                       "min":  630,
+                       "max":  735
                    },
-        "xp":  175,
-        "message":  "explored Fractured Ocean, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "xp":  141,
+        "message":  "A rectangular tear in reality opens onto Starfall Trench. On the other side, celestial debris is falling upward. One tiny star fragment slips through, stops dead in front of you, and begins glowing like it suddenly forgot what gravity is. Its light reveals {reward} Star Candies nearby before the strange window quietly folds shut.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-06",
@@ -137,14 +137,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "common",
-        "weight":  88,
-        "title":  "Dream-Anchor Mooring",
+        "weight":  100,
+        "title":  "The Very Important Rock",
         "reward":  {
-                       "min":  452,
-                       "max":  772
+                       "min":  550,
+                       "max":  650
                    },
-        "xp":  180,
-        "message":  "explored Dream-Anchor Mooring, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "xp":  120,
+        "message":  "An ordinary rock sits on a pedestal while stars orbit it, cosmic light shines upon it, and reality bends dramatically around its edges. Someone drew a tiny face on the stone. Beneath it: \"His name is Gerald.\" Gerald is sitting beside {reward} Star Candies. You decide not to question Gerald.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-07",
@@ -158,15 +158,15 @@
         "code":  "AN-008",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "common",
-        "weight":  86,
-        "title":  "Stars Below",
+        "rarity":  "uncommon",
+        "weight":  35,
+        "title":  "Gravity Choir",
         "reward":  {
-                       "min":  464,
-                       "max":  784
+                       "min":  660,
+                       "max":  765
                    },
-        "xp":  185,
-        "message":  "explored Stars Below, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "xp":  147,
+        "message":  "A deep musical note echoes through the chamber and gravity pulls you firmly toward the floor. A higher note sends you sideways. Another sticks you to the ceiling. Then an even higher note launches you in a direction you are fairly certain should not exist. Scratched into the wall: \"THE HIGH NOTE IS A LIAR.\" After several extremely graceful attempts, you reach {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-08",
@@ -180,15 +180,15 @@
         "code":  "AN-009",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "uncommon",
-        "weight":  84,
-        "title":  "Fae Axis",
+        "rarity":  "common",
+        "weight":  90,
+        "title":  "Kelp That Shouldn\u0027t Be Here",
         "reward":  {
-                       "min":  476,
-                       "max":  796
+                       "min":  450,
+                       "max":  550
                    },
-        "xp":  190,
-        "message":  "explored Fae Axis, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "xp":  125,
+        "message":  "A strand of Whispering Kelp pokes through a tiny portal and slowly turns toward you. Another appears. Then another. All three lean closer as if inspecting you. You reach out—and every single strand immediately retreats through the portal. A few seconds later, one cautiously peeks back out. Their sudden retreat leaves {reward} Star Candies behind.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-09",
@@ -202,15 +202,15 @@
         "code":  "AN-010",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "epic",
-        "weight":  82,
-        "title":  "Hall of Other Selves",
+        "rarity":  "uncommon",
+        "weight":  30,
+        "title":  "Duplicate Footsteps",
         "reward":  {
-                       "min":  488,
-                       "max":  808
+                       "min":  690,
+                       "max":  795
                    },
-        "xp":  195,
-        "message":  "explored Hall of Other Selves, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "xp":  153,
+        "message":  "Footsteps begin echoing behind you, perfectly matching your movements—except they happen about two seconds before you move. You stop. They already stopped. You turn left. They already turned. Eventually the footsteps wander somewhere you weren\u0027t planning to go. Against your better judgment, you follow them and discover {reward} Star Candies waiting ahead.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-10",
@@ -224,15 +224,15 @@
         "code":  "AN-011",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "common",
-        "weight":  80,
-        "title":  "Stormscript Front",
+        "rarity":  "rare",
+        "weight":  18,
+        "title":  "Hall of Other Selves",
         "reward":  {
-                       "min":  500,
-                       "max":  820
+                       "min":  800,
+                       "max":  930
                    },
-        "xp":  200,
-        "message":  "explored Stormscript Front, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "xp":  180,
+        "message":  "Endless mirrors show increasingly strange versions of you: a royal you, a ridiculously heroic you, a version carrying far too many Berries, and one wearing an enormous fake mustache. Most copy your movements perfectly. One turns around before you do. ...Nope. You investigate a much friendlier mirror instead and discover {reward} Star Candies hidden behind it.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-11",
@@ -247,14 +247,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "common",
-        "weight":  78,
-        "title":  "Portalroot Junction",
+        "weight":  80,
+        "title":  "The Berry Incident",
         "reward":  {
-                       "min":  512,
-                       "max":  832
+                       "min":  475,
+                       "max":  575
                    },
-        "xp":  205,
-        "message":  "explored Portalroot Junction, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "xp":  100,
+        "message":  "Dozens of Berries float perfectly motionless in zero gravity. Nearby, someone has written: \"I HAVE A PLAN.\" Farther in: \"Okay.\" There is no explanation of the plan, what happened to it, or why so many Berries are now suspended in space. You decide ignorance is probably safer and retrieve {reward} Star Candies from the middle of the Berry field.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-12",
@@ -268,15 +268,15 @@
         "code":  "AN-013",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "common",
-        "weight":  76,
-        "title":  "Walking Constellation",
+        "rarity":  "uncommon",
+        "weight":  55,
+        "title":  "Leviathan Through Three Worlds",
         "reward":  {
-                       "min":  524,
-                       "max":  844
+                       "min":  720,
+                       "max":  825
                    },
-        "xp":  210,
-        "message":  "explored Walking Constellation, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "xp":  159,
+        "message":  "One colossal Leviathan bone stretches through three portals at once. One section is covered in Moonlit Reef organisms. Another hangs among Starfall debris. The third disappears into a place you don\u0027t recognize at all. Tiny creatures have built homes where the three realities intersect, and among their strange little settlement you discover {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-13",
@@ -290,15 +290,15 @@
         "code":  "AN-014",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "uncommon",
-        "weight":  74,
-        "title":  "Returning Yesterday",
+        "rarity":  "common",
+        "weight":  70,
+        "title":  "Yesterday\u0027s Campsite",
         "reward":  {
-                       "min":  536,
-                       "max":  856
+                       "min":  500,
+                       "max":  600
                    },
-        "xp":  215,
-        "message":  "explored Returning Yesterday, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "xp":  105,
+        "message":  "You find a tiny campsite. Blink—it looks centuries old. Blink again—it looks freshly abandoned. Again—there is no campsite at all. Again—it\u0027s back. In one version you spot a Berry container, makeshift bedding, and a familiar doodled star beside the words: \"Sleeping here was a terrible idea.\" Another flicker leaves {reward} Star Candies behind.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-14",
@@ -312,15 +312,15 @@
         "code":  "AN-015",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "uncommon",
-        "weight":  72,
-        "title":  "Voidflower Garden",
+        "rarity":  "rare",
+        "weight":  14,
+        "title":  "Memory Reef",
         "reward":  {
-                       "min":  548,
-                       "max":  868
+                       "min":  840,
+                       "max":  970
                    },
-        "xp":  220,
-        "message":  "explored Voidflower Garden, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "xp":  191,
+        "message":  "Coral made from shimmering memories grows around you. One branch becomes Moonlit Reef water. Another flashes with Starfall starlight. Whispering Kelp winds through Leviathan bone while a Sunken Kingdom lantern flickers nearby. Then a memory briefly shows a familiar white-haired elf sprinting past with an armful of Star Candies. Before you can look closer, the memory shatters into light and leaves {reward} Star Candies behind.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-15",
@@ -334,15 +334,15 @@
         "code":  "AN-016",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "rare",
-        "weight":  70,
-        "title":  "Convergent Currents",
+        "rarity":  "common",
+        "weight":  100,
+        "title":  "The Door Argument",
         "reward":  {
-                       "min":  560,
-                       "max":  880
+                       "min":  525,
+                       "max":  625
                    },
-        "xp":  225,
-        "message":  "explored Convergent Currents, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "xp":  110,
+        "message":  "Two magical doors stand side by side. The first announces, \"I AM THE ENTRANCE.\" The second immediately replies, \"INCORRECT.\" They begin arguing. Someone has written nearby: \"I picked the third one.\" There are only two doors. You turn around—and a third door is suddenly behind you. Naturally, it contains {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-16",
@@ -356,15 +356,15 @@
         "code":  "AN-017",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "common",
-        "weight":  68,
-        "title":  "Thoughtform Maze",
+        "rarity":  "uncommon",
+        "weight":  45,
+        "title":  "Nexus Rain",
         "reward":  {
-                       "min":  572,
-                       "max":  892
+                       "min":  600,
+                       "max":  705
                    },
-        "xp":  230,
-        "message":  "explored Thoughtform Maze, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "xp":  165,
+        "message":  "Tiny stars begin falling around you like rain. Just before touching anything, each one dissolves into a harmless glowing droplet. Soon the entire Nexus sparkles with soft starlight. For once, nothing explodes, moves sideways, argues with you, or sends you through a portal. When the rain finally fades, the remaining lights gather around {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-17",
@@ -379,14 +379,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "common",
-        "weight":  66,
-        "title":  "Astral Storm Island",
+        "weight":  90,
+        "title":  "Second Location",
         "reward":  {
-                       "min":  584,
-                       "max":  904
+                       "min":  550,
+                       "max":  650
                    },
-        "xp":  235,
-        "message":  "explored Astral Storm Island, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "xp":  115,
+        "message":  "An entire merchant stall from Sunken King\u0027s Throne is sitting in the middle of the stars for absolutely no reason. The old merchant statue behind the counter is wearing a fake mustache. A crooked handmade sign reads: \"SECOND LOCATION.\" The shelves are still empty. Business apparently has not improved. Beneath the counter, however, you discover {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-18",
@@ -401,14 +401,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "uncommon",
-        "weight":  64,
-        "title":  "Phaseclaw Causeway",
+        "weight":  35,
+        "title":  "Gravity Garden",
         "reward":  {
-                       "min":  596,
-                       "max":  916
+                       "min":  630,
+                       "max":  735
                    },
-        "xp":  240,
-        "message":  "explored Phaseclaw Causeway, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "xp":  135,
+        "message":  "A beautiful garden grows in every direction at once. Flowers bloom from the floor, walls, ceiling, floating stones, and several surfaces you can\u0027t actually see. A trail of glowing petals gently rotates gravity as you follow it, letting you walk sideways, upside down, and eventually somewhere resembling normal again. At the end of the path bloom {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-19",
@@ -422,15 +422,15 @@
         "code":  "AN-020",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "epic",
-        "weight":  62,
-        "title":  "Memory Reef",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "The Helpful Portal",
         "reward":  {
-                       "min":  608,
-                       "max":  928
+                       "min":  450,
+                       "max":  550
                    },
-        "xp":  245,
-        "message":  "explored Memory Reef, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "xp":  120,
+        "message":  "You spot {reward} Star Candies sitting only a few steps away. Easy. You approach—and a tiny portal moves them farther away. You approach again. Portal. Again. Portal. Again. Portal. Eventually the portal seems to get tired of its own joke, opens directly above you, and drops the Candies into reach. Scratched nearby: \"IT DID THIS TO ME TOO.\"",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-20",
@@ -444,15 +444,15 @@
         "code":  "AN-021",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "common",
-        "weight":  60,
-        "title":  "Gravity Choir",
+        "rarity":  "epic",
+        "weight":  8,
+        "title":  "First-Light Memory",
         "reward":  {
-                       "min":  620,
-                       "max":  940
+                       "min":  1050,
+                       "max":  1300
                    },
         "xp":  250,
-        "message":  "explored Gravity Choir, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "message":  "The chaos of the Nexus suddenly disappears. No portals. No impossible gravity. No strange echoes. Instead, the Astral Sea stretches peacefully before you beneath a brilliant sunrise. Someone once sat here long enough to leave a shallow resting place and a tiny star scratched into the stone. Beside it rest {reward} Star Candies. After a quiet moment, the sunrise gently folds away.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-21",
@@ -467,14 +467,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "common",
-        "weight":  58,
-        "title":  "Foldspace Spiral",
+        "weight":  70,
+        "title":  "Constellation Playground",
         "reward":  {
-                       "min":  632,
-                       "max":  952
+                       "min":  475,
+                       "max":  575
                    },
-        "xp":  255,
-        "message":  "explored Foldspace Spiral, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "xp":  125,
+        "message":  "A field of stars responds to everything you do. Jump—they jump. Spin—they spin. Wave—they wave back. Nearby tally marks lead to a sequence of notes: \"Okay ONE more.\" Then: \"Actually one more.\" Then: \"LAST ONE.\" Much farther away: \"...one more.\" Eventually the stars arrange themselves into an arrow pointing toward {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-22",
@@ -489,14 +489,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "common",
-        "weight":  56,
-        "title":  "Unbuilding Ruins",
+        "weight":  100,
+        "title":  "The Room That Forgot You",
         "reward":  {
-                       "min":  644,
-                       "max":  964
+                       "min":  500,
+                       "max":  600
                    },
-        "xp":  260,
-        "message":  "explored Unbuilding Ruins, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "xp":  100,
+        "message":  "You enter a perfectly ordinary room. You look away. Everything resets. Move a chair, turn around, and the room resets again—but the chair stays moved. Apparently the room forgets you, not the things you touch. After an embarrassing amount of furniture rearranging, you accidentally construct a path straight to {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-23",
@@ -510,15 +510,15 @@
         "code":  "AN-024",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "uncommon",
-        "weight":  54,
-        "title":  "Eventide Threshold",
+        "rarity":  "common",
+        "weight":  90,
+        "title":  "Wrong-Way Map",
         "reward":  {
-                       "min":  656,
-                       "max":  976
+                       "min":  525,
+                       "max":  625
                    },
-        "xp":  265,
-        "message":  "explored Eventide Threshold, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "xp":  105,
+        "message":  "You uncover a hand-drawn map of the Nexus covered in increasingly desperate arrows. \"THIS WAY!\" becomes \"WRONG WAY.\" Then \"ACTUALLY THIS WAY.\" Then simply \"HOW.\" Farther down: \"I HAVE BEEN HERE THREE TIMES.\" And finally: \"WHY IS THIS ROOM BACK.\" The map is almost completely useless—except for one tiny mark accurately pointing toward {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-24",
@@ -533,14 +533,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "uncommon",
-        "weight":  52,
-        "title":  "Portal Graveyard",
+        "weight":  30,
+        "title":  "Echoes of the Festival",
         "reward":  {
-                       "min":  668,
-                       "max":  988
+                       "min":  660,
+                       "max":  765
                    },
-        "xp":  270,
-        "message":  "explored Portal Graveyard, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "xp":  141,
+        "message":  "Distant music drifts through the stars. Royal lanterns flicker into existence, followed by pieces of festival stalls and glowing decorations from Sunken King\u0027s Throne. For a few moments, part of the old King\u0027s Festival overlaps with the Nexus. One magical game booth lights up, declares you a winner without explaining the rules, and spits out {reward} Star Candies before the entire festival fades away.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-25",
@@ -555,14 +555,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "rare",
-        "weight":  50,
+        "weight":  12,
         "title":  "Gnawed Timeline",
         "reward":  {
-                       "min":  680,
-                       "max":  1000
+                       "min":  880,
+                       "max":  1010
                    },
-        "xp":  275,
-        "message":  "explored Gnawed Timeline, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "xp":  202,
+        "message":  "Something is wrong with time here. You take a step—and suddenly you\u0027ve taken three. A falling stone disappears halfway down and reappears already resting on the ground. A star simply loses several seconds of its own existence. It almost looks as though something has taken bites out of the timeline. One missing moment abruptly snaps back into place, bringing {reward} Star Candies with it.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-26",
@@ -577,14 +577,14 @@
         "category":  "explore",
         "region":  "Astral Nexus",
         "rarity":  "common",
-        "weight":  48,
-        "title":  "Nexus Crown Array",
+        "weight":  80,
+        "title":  "The Shizuki Problem",
         "reward":  {
-                       "min":  692,
-                       "max":  1012
+                       "min":  550,
+                       "max":  650
                    },
-        "xp":  280,
-        "message":  "explored Nexus Crown Array, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "xp":  110,
+        "message":  "The Nexus suddenly begins replaying old magical afterimages of a familiar white-haired elf. One Shizuki runs left. Another runs right. One points upward. Another appears to argue furiously with a portal. One sits down. One confidently marches in a direction every other echo immediately ignores. None of this is helpful. Finally, one last afterimage points toward {reward} Star Candies, gives an enthusiastic thumbs-up, and vanishes.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-27",
@@ -598,15 +598,15 @@
         "code":  "AN-028",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "common",
-        "weight":  46,
-        "title":  "First-Light Memory",
+        "rarity":  "epic",
+        "weight":  4,
+        "title":  "Astral Sea in a Bottle",
         "reward":  {
-                       "min":  704,
-                       "max":  1024
+                       "min":  1100,
+                       "max":  1350
                    },
-        "xp":  285,
-        "message":  "explored First-Light Memory, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "xp":  290,
+        "message":  "An enormous glass-like sphere floats silently in the Nexus. Inside are tiny moving representations of Moonlit Reef, Starfall Trench, Whispering Kelp Forest, Leviathan\u0027s Wake, Sunken King\u0027s Throne, and the Astral Nexus itself. Currents connect the six mapped regions like a miniature living world. A small opening appears in the sphere and releases {reward} Star Candies into your hands.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-28",
@@ -620,15 +620,15 @@
         "code":  "AN-029",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "uncommon",
-        "weight":  44,
-        "title":  "Convergence Threshold",
+        "rarity":  "rare",
+        "weight":  10,
+        "title":  "Path Beyond the Map",
         "reward":  {
-                       "min":  716,
-                       "max":  1036
+                       "min":  920,
+                       "max":  1050
                    },
-        "xp":  290,
-        "message":  "explored Convergence Threshold, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "xp":  213,
+        "message":  "Several currents stretch outward from the Nexus. Most carry familiar signs of the regions you\u0027ve already explored. One does not. It flows away from every known path and continues beyond the mapped edge of the Nexus. You follow it with your eyes until it fades into distant starlight. An unfinished navigation mark nearby offers no explanation. The strange current leaves {reward} Star Candies behind before disappearing.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-29",
@@ -642,15 +642,15 @@
         "code":  "AN-030",
         "category":  "explore",
         "region":  "Astral Nexus",
-        "rarity":  "epic",
-        "weight":  42,
-        "title":  "Continuance Core Trace",
+        "rarity":  "legendary",
+        "weight":  1,
+        "title":  "Heart of the Astral Sea",
         "reward":  {
-                       "min":  728,
-                       "max":  1048
+                       "min":  1500,
+                       "max":  1800
                    },
-        "xp":  295,
-        "message":  "explored Continuance Core Trace, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "xp":  375,
+        "message":  "The Nexus grows strangely calm. Around you, pieces of the entire known Astral Sea settle into place without fighting one another. Moonlit Reef water drifts upward through the air. Starfall debris hangs motionless among tiny stars. Whispering Kelp winds around a colossal Leviathan bone. Lanterns and festival decorations from Sunken King\u0027s Throne glow softly nearby, while Astral Nexus portals and constellations weave everything together.\\n\\nScattered through it all are little things you\u0027ve learned to recognize by now: a doodled star, an old arrow, an empty Berry container, a tiny fake mustache, a scratched warning, and a familiar place where somebody once sat to rest.\\n\\nAn old Travel Note rests nearby.\\n\\n\"Made it this far, huh?\"\\n\"Pretty weird place.\"\\n\"I like it.\"\\n\"Still think there\u0027s more out there.\"\\n\\nThe Nexus answers with light. Moonlit Reef, Starfall Trench, Whispering Kelp Forest, Leviathan\u0027s Wake, Sunken King\u0027s Throne, and Astral Nexus flare around you like pieces of one enormous living map.\\n\\nThe light gathers and leaves behind {reward} Star Candies.\\n\\nLEGENDARY EXPEDITION!\\n\\nThen, just as everything begins to settle, another current appears beyond the six familiar paths.\\n\\nIt doesn\u0027t lead anywhere on the map.\\n\\nNear its edge, scratched into the stone:\\n\\n\"Okay... this part isn\u0027t on my map.\"\\n\\nThe current stretches beyond sight.\\n\\nFar away, something glimmers.\\n\\nThere is more to the Astral Sea.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-30",
