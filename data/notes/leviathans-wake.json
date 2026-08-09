@@ -2,181 +2,181 @@
     {
         "id":  "leviathans-wake-note-01",
         "number":  1,
-        "title":  "Rib Older Than Maps",
-        "text":  "A damaged traveler journal records: The smallest exposed rib is longer than a palace corridor and predates every chart of the Wake."
+        "title":  "Welcome to the Wake",
+        "text":  "The forest whispered \u0027Leviathan,\u0027 Glimmer flew down the path, and now we\u0027re standing underneath a rib longer than any building I\u0027ve ever seen. I would like it officially recorded that I suggested we proceed carefully. Glimmer would like it recorded that I followed anyway."
     },
     {
         "id":  "leviathans-wake-note-02",
         "number":  2,
-        "title":  "Pressure Language",
-        "text":  "An old field report states: Deep shelters mark danger with dents rather than ink because written signs fracture under the pressure."
+        "title":  "Pressure Has Handwriting",
+        "text":  "The old shelters here don\u0027t use painted warnings. They hammer little dents into the walls because anything written down eventually cracks under the pressure. Three dents means danger. Five means turn back. I found one wall with eleven. We chose a different route."
     },
     {
         "id":  "leviathans-wake-note-03",
         "number":  3,
         "title":  "The Feeding Scar",
-        "text":  "A local record preserves this account: A smooth trench across the seabed records where a leviathan once dragged its jaw through solid stone."
+        "text":  "I thought I found another trench today. Nope. Something enormous dragged its jaw across the seafloor and carved straight through the stone. I stood inside the groove for scale. Glimmer floated very far away before looking back at me. Rude."
     },
     {
         "id":  "leviathans-wake-note-04",
         "number":  4,
-        "title":  "Scale-Shelter Rule",
-        "text":  "An unsigned observation reads: Wreck crews survived storms by anchoring beneath shed scales, never beneath bones that might still move."
+        "title":  "Shelter Under Scales",
+        "text":  "Apparently travelers used shed Leviathan scales as shelters during pressure storms. I found one big enough for our entire campsite. Glimmer claimed one corner. I claimed the other. We now own beachfront property."
     },
     {
         "id":  "leviathans-wake-note-05",
         "number":  5,
         "title":  "Do Not Knock",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki wrote on a colossal tooth: \"Something knocked back. We are leaving this mystery unsolved.\""
+        "text":  "Found a tooth bigger than our campsite. Naturally, I knocked on it. Something knocked back. Glimmer and I have unanimously agreed that this mystery has been fully investigated and requires absolutely no follow-up."
     },
     {
         "id":  "leviathans-wake-note-06",
         "number":  6,
-        "title":  "Specimen Harness",
-        "text":  "An old field report states: A broken restraint is sized for a creature larger than any vessel and bears the organization\u0027s later insignia."
+        "title":  "The Rib Bridge",
+        "text":  "We crossed a ravine using one enormous rib as a bridge today. Halfway across, I realized I was walking on something\u0027s BONE. Glimmer chose that exact moment to bounce on it. I would like a new traveling companion."
     },
     {
         "id":  "leviathans-wake-note-07",
         "number":  7,
-        "title":  "Wakewatch Log",
-        "text":  "A local record preserves this account: Observers measured current changes days before a leviathan passed, allowing settlements to evacuate without seeing it."
+        "title":  "You Feel Them Before You See Them",
+        "text":  "Old travelers said you could tell when a living Leviathan was passing somewhere beyond the Wake because the currents changed days beforehand. Imagine something so enormous the SEA notices it before you do. Actually, don\u0027t imagine that. I already did."
     },
     {
         "id":  "leviathans-wake-note-08",
         "number":  8,
-        "title":  "Marrowlight Ecology",
-        "text":  "An unsigned observation reads: Small luminous creatures nest in hollow bones and defend them as though the skeleton were alive."
+        "title":  "The Marrowlight Neighbors",
+        "text":  "Tiny glowing creatures live inside the hollow bones! They\u0027ve decorated the openings with shells and little bits of starstone. Glimmer tried to visit one. Glimmer has now been formally evicted from a Leviathan vertebra."
     },
     {
         "id":  "leviathans-wake-note-09",
         "number":  9,
         "title":  "The Crushed Fleet",
-        "text":  "A damaged traveler journal records: Seven ships lie compressed into one another, all pointing away from the same unseen source."
+        "text":  "Seven old ships are tangled together between the bones here. Whatever happened was a very long time ago, so naturally I climbed aboard. Found a captain\u0027s hat. Lost the captain\u0027s hat. Glimmer is wearing the captain\u0027s hat."
     },
     {
         "id":  "leviathans-wake-note-10",
         "number":  10,
-        "title":  "Research Annotation",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki added: \"Calling it a controllable asset did not make it controllable. The wall demonstrates this.\""
+        "title":  "The Skull Cave",
+        "text":  "WE FOUND A LEVIATHAN SKULL. You can walk inside it. There\u0027s an entire little cave ecosystem growing where its mouth used to be. I yelled \u0027HELLO!\u0027 and heard about thirty echoes. Glimmer chimed once and somehow got more echoes than me. Unfair."
     },
     {
         "id":  "leviathans-wake-note-11",
         "number":  11,
-        "title":  "Pressure Bell",
-        "text":  "A local record preserves this account: A bronze bell rings only when the surrounding water reaches a depth dangerous to unprotected divers."
+        "title":  "The Pressure Bell",
+        "text":  "There\u0027s an old bronze bell that rings when the pressure becomes dangerous. It stayed quiet all morning. Then it rang once. Glimmer and I looked at each other. It rang twice. We were already leaving before the third."
     },
     {
         "id":  "leviathans-wake-note-12",
         "number":  12,
-        "title":  "Migration Without Bodies",
-        "text":  "An unsigned observation reads: Currents follow ancient routes even though the leviathans that carved them have vanished."
+        "title":  "The Wake Without Leviathans",
+        "text":  "The currents still follow the old migration routes even though nobody sees Leviathans traveling them anymore. The creatures are gone, but the sea keeps tracing the paths they used to swim. It\u0027s strangely beautiful."
     },
     {
         "id":  "leviathans-wake-note-13",
         "number":  13,
-        "title":  "Titan Scale Census",
-        "text":  "A damaged traveler journal records: Each recovered scale carries a different celestial pattern, suggesting the Wake held several distinct species."
+        "title":  "A Sky Made of Scales",
+        "text":  "Found a field covered in old Leviathan scales. Every one has a different glowing pattern, and when you look across all of them together it resembles a night sky. Glimmer spent an hour rearranging three. I don\u0027t think that\u0027s how constellations work, but I\u0027m not stopping it."
     },
     {
         "id":  "leviathans-wake-note-14",
         "number":  14,
-        "title":  "Weaponization Proposal",
-        "text":  "An old field report states: A damaged proposal recommends directing leviathan movement toward rebellious settlements and rival facilities."
+        "title":  "The Bone Garden",
+        "text":  "Plants have grown over one of the oldest skeletons until the ribs look like enormous garden arches. I found berries growing beneath one. Obviously I tested them. Still alive! Excellent botanical work."
     },
     {
         "id":  "leviathans-wake-note-15",
         "number":  15,
         "title":  "Emergency Exit, Enlarged",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki\u0027s handwriting reads: \"I improved the exit after the test subject improved the wall.\""
+        "text":  "We entered through a gap between two ribs and accidentally slid all the way through the skeleton. I have labeled the place \u0027Emergency Exit, Enlarged.\u0027 Was there an original emergency exit? No. Details."
     },
     {
         "id":  "leviathans-wake-note-16",
         "number":  16,
         "title":  "The Listening Bone",
-        "text":  "An unsigned observation reads: One vertebra amplifies distant songs from far beyond the mapped Wake."
+        "text":  "There\u0027s a vertebra here that carries sounds from unbelievably far away. I pressed my ear against it and heard something like singing beyond the Wake. Glimmer chimed into the bone. Something far away seemed to answer. We are pretending that did not happen."
     },
     {
         "id":  "leviathans-wake-note-17",
         "number":  17,
-        "title":  "Hullsplitter Report",
-        "text":  "A damaged traveler journal records: Salvagers blamed a predator until tooth marks proved the wreck had been bitten after it sank."
+        "title":  "The Jaw Bridge",
+        "text":  "Today\u0027s bridge was a Leviathan jaw. Do you know how unsettling it is to walk between teeth while simultaneously using the mouth as transportation? Glimmer doesn\u0027t. Glimmer enjoyed the entire experience."
     },
     {
         "id":  "leviathans-wake-note-18",
         "number":  18,
-        "title":  "Sedated Thunder",
-        "text":  "An old field report states: A research log describes a heartbeat heard through three sealed pressure doors."
+        "title":  "The Sleeping Skeleton",
+        "text":  "Found a skeleton almost completely buried in sand. Only the curve of its spine is visible, like something enormous sleeping beneath a blanket. I know it\u0027s just bones. I KNOW that. I still whispered while we passed."
     },
     {
         "id":  "leviathans-wake-note-19",
         "number":  19,
         "title":  "Wakeheart Current",
-        "text":  "A local record preserves this account: The central current accelerates in a rhythm too regular to be explained by tides."
+        "text":  "The central current pulses in a slow rhythm. Everyone calls it the Wakeheart. Glimmer started chiming along with it. For a while they matched perfectly. Then the current skipped a beat. Glimmer stopped. So did I."
     },
     {
         "id":  "leviathans-wake-note-20",
         "number":  20,
-        "title":  "Tiny Warning Sign",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki attached a miniature sign to an enormous claw: \"Danger: very large personal space.\""
+        "title":  "Very Large Personal Space",
+        "text":  "Found a claw today. Just the claw. Nothing attached. It is enormous. I made a tiny warning sign and stuck it beside one talon: \u0027Danger: very large personal space.\u0027 Glimmer says the sign is too small. THAT\u0027S THE JOKE, GLIMMER."
     },
     {
         "id":  "leviathans-wake-note-21",
         "number":  21,
-        "title":  "Program Designation",
-        "text":  "A damaged traveler journal records: The Behemoth Program inherited staff titles and equipment from several older annex operations."
+        "title":  "The Ribcage Camp",
+        "text":  "We made camp inside a ribcage tonight. There\u0027s something very strange about using the remains of an ancient sea giant as a tent, but the view is incredible. Glimmer hung little lights between the ribs. Cozy! Horrifying! Cozy-horrifying."
     },
     {
         "id":  "leviathans-wake-note-22",
         "number":  22,
-        "title":  "Failed Command Tone",
-        "text":  "An old field report states: Constructs broadcast a control signal that nearby creatures learned to imitate back at them."
+        "title":  "Echo Competition",
+        "text":  "Glimmer and I discovered that Leviathan skulls make AMAZING echoes. We held a competition. I yelled. Glimmer chimed. I yelled louder. Glimmer chimed louder. Something VERY far away answered both of us. Competition canceled."
     },
     {
         "id":  "leviathans-wake-note-23",
         "number":  23,
-        "title":  "Ancient Tooth Record",
-        "text":  "A local record preserves this account: Growth bands within the tooth contain traces of regions that no longer exist."
+        "title":  "A Tooth Full of Lost Places",
+        "text":  "The layers inside one ancient tooth contain traces of plants and minerals from places nobody recognizes anymore. Imagine traveling so far that pieces of forgotten parts of the Astral Sea become part of you. I decided not to knock on this tooth. Character growth."
     },
     {
         "id":  "leviathans-wake-note-24",
         "number":  24,
-        "title":  "The Weapon Refused",
-        "text":  "An unsigned observation reads: A final trial report admits the altered creature ignored its target and destroyed the observation platform instead."
+        "title":  "The Leviathan Playground",
+        "text":  "A cluster of curved ribs makes the BEST slides. This is important scientific information. Glimmer disagreed with my chosen route down and raced me. I won. Glimmer claims gravity won. History will remember my version."
     },
     {
         "id":  "leviathans-wake-note-25",
         "number":  25,
-        "title":  "Later Correction",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki wrote: \"It was never their weapon. It was an animal in pain. Write that part larger.\""
+        "title":  "A Quiet Giant",
+        "text":  "Found one of the most complete skeletons yet. Nothing lives inside it. No glowing plants. No little creatures. Just this enormous Leviathan resting beneath the stars. We sat there for a while without saying anything. Even Glimmer stayed quiet."
     },
     {
         "id":  "leviathans-wake-note-26",
         "number":  26,
-        "title":  "Gravewing Route",
-        "text":  "An old field report states: Mantas still avoid the corridor once used to transport restrained leviathan specimens."
+        "title":  "The Gravewing Route",
+        "text":  "Hundreds of mantas travel through the skeletons at sunset, weaving between the ribs like birds through trees. Glimmer joined them for a while. I\u0027m starting to suspect every glowing creature in the Astral Sea likes Glimmer more than me."
     },
     {
         "id":  "leviathans-wake-note-27",
         "number":  27,
-        "title":  "Artificial Scale",
-        "text":  "A local record preserves this account: One scale is built from layered metal and living coral, with attachment points facing inward."
+        "title":  "The False Leviathan",
+        "text":  "I spent twenty minutes staring at what I thought was another enormous skeleton in the distance. It was a rock formation. Glimmer knew immediately and said nothing. I am beginning to question the ethical standards of Moon Sprites."
     },
     {
         "id":  "leviathans-wake-note-28",
         "number":  28,
-        "title":  "Program Survivors",
-        "text":  "An unsigned observation reads: Personnel records continue across generations, stasis cycles, and replacement bodies without clarifying which method was used."
+        "title":  "The Biggest One Yet",
+        "text":  "We found a skull so enormous I couldn\u0027t see the other side from where we entered. There are paths inside it. PATHS. Someone left directional markers. One says \u0027LEFT EYE.\u0027 We\u0027re exploring a landmark with facial directions now."
     },
     {
         "id":  "leviathans-wake-note-29",
         "number":  29,
-        "title":  "The Empty Holding Sea",
-        "text":  "A damaged traveler journal records: The largest enclosure stands open, its restraints broken outward and its inhabitant unrecorded."
+        "title":  "The Empty Grave",
+        "text":  "At the deepest part of the Wake is an enormous empty space surrounded by Leviathan skeletons. Dozens of them, all facing inward toward the same place. But there\u0027s nothing in the center. No bones. No crater. Nothing. Glimmer stayed very close to me while we crossed it. I didn\u0027t complain."
     },
     {
         "id":  "leviathans-wake-note-30",
         "number":  30,
-        "title":  "A Continuing Wake",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: The final program ledger sends results onward to a central project rather than recording the work as complete."
+        "title":  "Beyond the Graveyard",
+        "text":  "We finally reached the far edge of Leviathan\u0027s Wake. Looking back, the bones stretch so far they disappear into the dark. I don\u0027t think anyone could ever count how many Leviathans came here—or why this became their resting place.\\n\\nAhead is something completely different. Stone roads. Broken towers. Old banners caught in the current. I can see the remains of an entire kingdom beneath the water.\\n\\nGlimmer found a tiny crown-shaped piece of metal and has been wearing it for twenty minutes.\\n\\nFine. Your Majesty.\\n\\nSunken King\u0027s Throne it is~"
     }
 ]
