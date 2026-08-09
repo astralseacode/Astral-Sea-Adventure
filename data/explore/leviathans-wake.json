@@ -8,11 +8,11 @@
         "weight":  100,
         "title":  "Wake-Rider Current",
         "reward":  {
-                       "min":  200,
-                       "max":  380
+                       "min":  225,
+                       "max":  315
                    },
-        "xp":  75,
-        "message":  "explored Wake-Rider Current, where a violent current tears open an old wreck compartment filled with Star Candies, recovering {reward} Star Candies.",
+        "xp":  55,
+        "message":  "An incredibly fast current catches you before there is time to brace for disaster. Instead, it carries you along a perfectly safe route at ridiculous speed. A sign flashes past: \"WHEEEEE - I mean, DANGER.\" The ride deposits you beside {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-01",
@@ -26,15 +26,15 @@
         "code":  "LW-002",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "common",
-        "weight":  98,
+        "rarity":  "uncommon",
+        "weight":  55,
         "title":  "Titanbone Arch",
         "reward":  {
-                       "min":  207,
-                       "max":  387
+                       "min":  325,
+                       "max":  395
                    },
-        "xp":  78,
-        "message":  "explored Titanbone Arch, where you shelter beneath an enormous scale and find a forgotten supply cache, recovering {reward} Star Candies.",
+        "xp":  75,
+        "message":  "You pass beneath a pale stone arch, then another, then dozens more fading into the distance. Only when the curves connect do you realize they are ribs and you are walking through part of an ancient Leviathan cage. Among the remains lie {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-02",
@@ -48,15 +48,15 @@
         "code":  "LW-003",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "common",
-        "weight":  96,
+        "rarity":  "uncommon",
+        "weight":  45,
         "title":  "Pressurejaw Drop",
         "reward":  {
-                       "min":  214,
-                       "max":  394
+                       "min":  345,
+                       "max":  415
                    },
-        "xp":  81,
-        "message":  "explored Pressurejaw Drop, where pressure-lit creatures lead you between colossal bones to a sealed strongbox, recovering {reward} Star Candies.",
+        "xp":  80,
+        "message":  "Two cliff walls frame a descent into the dark. Their surfaces gradually resolve into upper and lower jawbones, complete with a tooth larger than you are. A fracture in that colossal tooth holds {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-03",
@@ -70,15 +70,15 @@
         "code":  "LW-004",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "uncommon",
-        "weight":  94,
+        "rarity":  "common",
+        "weight":  90,
         "title":  "Sheltering Scale",
         "reward":  {
-                       "min":  221,
-                       "max":  401
+                       "min":  240,
+                       "max":  330
                    },
-        "xp":  84,
-        "message":  "explored Sheltering Scale, where an ancient wake exposes treasure lodged inside a scar in the seabed, recovering {reward} Star Candies.",
+        "xp":  58,
+        "message":  "A violent current drives you beneath what looks like a rocky overhang. It is a single gigantic scale. Scratched underneath are the words, \"Cozy! Ignore what this used to be attached to. - S\" When the surge passes, {reward} Star Candies and a Travel Note glint nearby.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-04",
@@ -92,15 +92,15 @@
         "code":  "LW-005",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "uncommon",
-        "weight":  92,
+        "rarity":  "common",
+        "weight":  80,
         "title":  "Currentbreaker Run",
         "reward":  {
-                       "min":  228,
-                       "max":  408
+                       "min":  255,
+                       "max":  345
                    },
-        "xp":  87,
-        "message":  "explored Currentbreaker Run, where a calm pocket behind a titanic rib holds a navigator\u0027s abandoned Candies, recovering {reward} Star Candies.",
+        "xp":  61,
+        "message":  "You struggle against a current powerful enough to bend wreckage. Something enormous shifts far beyond sight, and the water abruptly becomes still. An old note reads, \"If the water suddenly stops moving, don\u0027t ask why.\" In the unsettling calm, {reward} Star Candies and a Travel Note settle into view.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-05",
@@ -114,15 +114,15 @@
         "code":  "LW-006",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "rare",
-        "weight":  90,
+        "rarity":  "common",
+        "weight":  70,
         "title":  "Bonegarden Field",
         "reward":  {
-                       "min":  235,
-                       "max":  415
+                       "min":  270,
+                       "max":  360
                    },
-        "xp":  90,
-        "message":  "explored Bonegarden Field, where a violent current tears open an old wreck compartment filled with Star Candies, recovering {reward} Star Candies.",
+        "xp":  64,
+        "message":  "Hundreds of gigantic bones rise like pale trees from the seafloor. Tiny harmless creatures have built nests, gardens, and glowing homes along them, turning the remains into a peaceful city. One little nest contains {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-06",
@@ -136,15 +136,15 @@
         "code":  "LW-007",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "common",
-        "weight":  88,
+        "rarity":  "uncommon",
+        "weight":  35,
         "title":  "Hullsplitter Wreck",
         "reward":  {
-                       "min":  242,
-                       "max":  422
+                       "min":  365,
+                       "max":  435
                    },
-        "xp":  93,
-        "message":  "explored Hullsplitter Wreck, where you shelter beneath an enormous scale and find a forgotten supply cache, recovering {reward} Star Candies.",
+        "xp":  85,
+        "message":  "An old ship has been split and impaled upon an enormous spine. You enter one half of the wreck, cross directly through an ancient vertebra, and emerge inside the other half, where the surviving hold contains {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-07",
@@ -159,14 +159,14 @@
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
-        "weight":  86,
+        "weight":  100,
         "title":  "Wakefoam Surge",
         "reward":  {
-                       "min":  249,
-                       "max":  429
+                       "min":  285,
+                       "max":  375
                    },
-        "xp":  96,
-        "message":  "explored Wakefoam Surge, where pressure-lit creatures lead you between colossal bones to a sealed strongbox, recovering {reward} Star Candies.",
+        "xp":  67,
+        "message":  "Colliding currents pile luminous wakefoam into towers. A tiny creature surfs past on a scrap of wreckage as though this is entirely normal, then crashes into debris with considerably less dignity. The impact spills {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-08",
@@ -180,15 +180,15 @@
         "code":  "LW-009",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "uncommon",
-        "weight":  84,
+        "rarity":  "common",
+        "weight":  90,
         "title":  "Deep-Scar Path",
         "reward":  {
-                       "min":  256,
-                       "max":  436
+                       "min":  225,
+                       "max":  315
                    },
-        "xp":  99,
-        "message":  "explored Deep-Scar Path, where an ancient wake exposes treasure lodged inside a scar in the seabed, recovering {reward} Star Candies.",
+        "xp":  70,
+        "message":  "A narrow geological trench runs across the seabed with suspiciously regular edges. Four parallel cuts appear nearby, and the truth becomes unavoidable: they are ancient claw marks. Inside one scar rest {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-09",
@@ -202,15 +202,15 @@
         "code":  "LW-010",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "epic",
-        "weight":  82,
+        "rarity":  "common",
+        "weight":  80,
         "title":  "Walking Scale",
         "reward":  {
-                       "min":  263,
-                       "max":  443
+                       "min":  240,
+                       "max":  330
                    },
-        "xp":  102,
-        "message":  "explored Walking Scale, where a calm pocket behind a titanic rib holds a navigator\u0027s abandoned Candies, recovering {reward} Star Candies.",
+        "xp":  55,
+        "message":  "A detached Leviathan scale begins to crawl across the seabed. Tension builds as something moves beneath it, until a very small crab emerges carrying the colossal scale as its shell. Its absurd trail leads past {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-10",
@@ -224,15 +224,15 @@
         "code":  "LW-011",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "common",
-        "weight":  80,
+        "rarity":  "uncommon",
+        "weight":  30,
         "title":  "Riptide Crossing",
         "reward":  {
-                       "min":  270,
-                       "max":  450
+                       "min":  385,
+                       "max":  455
                    },
-        "xp":  105,
-        "message":  "explored Riptide Crossing, where a violent current tears open an old wreck compartment filled with Star Candies, recovering {reward} Star Candies.",
+        "xp":  90,
+        "message":  "Intersecting riptides force you to cross from bone to bone for shelter. Old navigation arrows mark a survivable route until one points into the worst current beside the admission, \"I regret this shortcut.\" The corrected path reaches {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-11",
@@ -247,14 +247,14 @@
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
-        "weight":  78,
+        "weight":  70,
         "title":  "Wrecknest Gap",
         "reward":  {
-                       "min":  277,
-                       "max":  457
+                       "min":  255,
+                       "max":  345
                    },
-        "xp":  108,
-        "message":  "explored Wrecknest Gap, where you shelter beneath an enormous scale and find a forgotten supply cache, recovering {reward} Star Candies.",
+        "xp":  58,
+        "message":  "Small sea creatures have built an entire colony from shattered ships: tiny walls, roofs, lanes, and a doorway far too small for you. After watching your failed attempt to approach, the residents push {reward} Star Candies and a Travel Note politely through the door.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-12",
@@ -268,15 +268,15 @@
         "code":  "LW-013",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "common",
-        "weight":  76,
+        "rarity":  "rare",
+        "weight":  18,
         "title":  "Tectonic Shelf",
         "reward":  {
-                       "min":  284,
-                       "max":  464
+                       "min":  450,
+                       "max":  550
                    },
-        "xp":  111,
-        "message":  "explored Tectonic Shelf, where pressure-lit creatures lead you between colossal bones to a sealed strongbox, recovering {reward} Star Candies.",
+        "xp":  110,
+        "message":  "The shelf trembles like an earthquake, but the vibration moves away in a perfectly straight line. Something enormous has passed beneath or beyond the stone without ever becoming visible. When the shaking fades, the opened ground reveals {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-13",
@@ -291,14 +291,14 @@
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "uncommon",
-        "weight":  74,
+        "weight":  55,
         "title":  "Roarcurrent Gorge",
         "reward":  {
-                       "min":  291,
-                       "max":  471
+                       "min":  405,
+                       "max":  475
                    },
-        "xp":  114,
-        "message":  "explored Roarcurrent Gorge, where an ancient wake exposes treasure lodged inside a scar in the seabed, recovering {reward} Star Candies.",
+        "xp":  95,
+        "message":  "A biological-sounding roar shakes the gorge until you find its source: current rushing through cavities in an enormous ancient skull. The skull has become a colossal flute, and its deepest note vibrates {reward} Star Candies and a Travel Note from a hollow.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-14",
@@ -312,15 +312,15 @@
         "code":  "LW-015",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "uncommon",
-        "weight":  72,
+        "rarity":  "rare",
+        "weight":  14,
         "title":  "Abysslung Shadow",
         "reward":  {
-                       "min":  298,
-                       "max":  478
+                       "min":  475,
+                       "max":  575
                    },
-        "xp":  117,
-        "message":  "explored Abysslung Shadow, where a calm pocket behind a titanic rib holds a navigator\u0027s abandoned Candies, recovering {reward} Star Candies.",
+        "xp":  118,
+        "message":  "An impossibly large shadow passes over you. Looking upward reveals nothing at all. Nearby, an old scrap contains a single word: \"Nope.\" The darkness eventually moves on, leaving {reward} Star Candies and a Travel Note exposed on the pale seabed.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-15",
@@ -334,15 +334,15 @@
         "code":  "LW-016",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "rare",
-        "weight":  70,
+        "rarity":  "uncommon",
+        "weight":  45,
         "title":  "Marrowlight Ossuary",
         "reward":  {
-                       "min":  305,
-                       "max":  485
+                       "min":  325,
+                       "max":  395
                    },
-        "xp":  120,
-        "message":  "explored Marrowlight Ossuary, where a violent current tears open an old wreck compartment filled with Star Candies, recovering {reward} Star Candies.",
+        "xp":  75,
+        "message":  "Blue-white Marrowlight glows from within enormous bones, illuminating thousands of tiny organisms that have transformed the skeleton into a living reef. The serene light travels along one rib and reveals {reward} Star Candies beside a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-16",
@@ -357,14 +357,14 @@
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
-        "weight":  68,
+        "weight":  100,
         "title":  "Titanwake Delta",
         "reward":  {
-                       "min":  312,
-                       "max":  492
+                       "min":  270,
+                       "max":  360
                    },
-        "xp":  123,
-        "message":  "explored Titanwake Delta, where you shelter beneath an enormous scale and find a forgotten supply cache, recovering {reward} Star Candies.",
+        "xp":  61,
+        "message":  "Several major currents intersect around a half-buried skeleton. Local creatures use them like roads, and you are accidentally swept into their orderly traffic. After three dizzying junctions, the delta deposits you beside {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-17",
@@ -378,15 +378,15 @@
         "code":  "LW-018",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "common",
-        "weight":  66,
+        "rarity":  "uncommon",
+        "weight":  35,
         "title":  "Pressure Bloom",
         "reward":  {
-                       "min":  319,
-                       "max":  499
+                       "min":  345,
+                       "max":  415
                    },
-        "xp":  126,
-        "message":  "explored Pressure Bloom, where pressure-lit creatures lead you between colossal bones to a sealed strongbox, recovering {reward} Star Candies.",
+        "xp":  80,
+        "message":  "Deep-sea flowers lie tightly closed across the plain. A massive pressure wave sweeps over them, and thousands bloom at once until the entire seafloor becomes a field of light. Between the luminous petals appear {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-18",
@@ -400,15 +400,15 @@
         "code":  "LW-019",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "uncommon",
-        "weight":  64,
+        "rarity":  "common",
+        "weight":  90,
         "title":  "Shipgrave Maze",
         "reward":  {
-                       "min":  326,
-                       "max":  506
+                       "min":  285,
+                       "max":  375
                    },
-        "xp":  129,
-        "message":  "explored Shipgrave Maze, where an ancient wake exposes treasure lodged inside a scar in the seabed, recovering {reward} Star Candies.",
+        "xp":  64,
+        "message":  "Dozens of wrecks wedged between Leviathan ribs form a sprawling maze. Old arrows cover every surface, contradicting one another until a final message admits, \"Okay I may have made this worse.\" The least impossible route reaches {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-19",
@@ -422,15 +422,15 @@
         "code":  "LW-020",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "epic",
-        "weight":  62,
+        "rarity":  "common",
+        "weight":  80,
         "title":  "Scarfin Torrent",
         "reward":  {
-                       "min":  333,
-                       "max":  513
+                       "min":  225,
+                       "max":  315
                    },
-        "xp":  132,
-        "message":  "explored Scarfin Torrent, where a calm pocket behind a titanic rib holds a navigator\u0027s abandoned Candies, recovering {reward} Star Candies.",
+        "xp":  67,
+        "message":  "Something shaped like an enormous fin cuts through the torrent. It turns out to be broken ancient armor, bearing the words \"GOT ME TOO\" across its surface. The sweeping plate catches debris, a Travel Note, and {reward} Star Candies before grinding to a halt.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-20",
@@ -445,14 +445,14 @@
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
-        "weight":  60,
+        "weight":  70,
         "title":  "Colossus Trail",
         "reward":  {
-                       "min":  340,
-                       "max":  520
+                       "min":  240,
+                       "max":  330
                    },
-        "xp":  135,
-        "message":  "explored Colossus Trail, where a violent current tears open an old wreck compartment filled with Star Candies, recovering {reward} Star Candies.",
+        "xp":  70,
+        "message":  "Calling the depression a footprint feels absurd; it is practically a crater. More prints continue beyond visibility, and this one now contains an entire small ecosystem. Among its pools and miniature reefs are {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-21",
@@ -466,15 +466,15 @@
         "code":  "LW-022",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "common",
-        "weight":  58,
+        "rarity":  "uncommon",
+        "weight":  30,
         "title":  "Thunderwake Storm",
         "reward":  {
-                       "min":  347,
-                       "max":  527
+                       "min":  365,
+                       "max":  435
                    },
-        "xp":  138,
-        "message":  "explored Thunderwake Storm, where you shelter beneath an enormous scale and find a forgotten supply cache, recovering {reward} Star Candies.",
+        "xp":  85,
+        "message":  "Distant currents collide hard enough to produce underwater thunder. Each flash of pressure-light reveals a colossal skeleton in the dark, then another farther away, then another. When the storm finally passes, {reward} Star Candies and a Travel Note shine among the wreckage.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-22",
@@ -489,14 +489,14 @@
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
-        "weight":  56,
+        "weight":  100,
         "title":  "Fallen Fang",
         "reward":  {
-                       "min":  354,
-                       "max":  534
+                       "min":  255,
+                       "max":  345
                    },
-        "xp":  141,
-        "message":  "explored Fallen Fang, where pressure-lit creatures lead you between colossal bones to a sealed strongbox, recovering {reward} Star Candies.",
+        "xp":  55,
+        "message":  "A single Leviathan tooth stands upright like a tower. Someone has drawn a tiny face on it and written, \"His name is Gerald.\" Gerald\u0027s sheltering base happens to protect {reward} Star Candies and a Travel Note from the surrounding currents.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-23",
@@ -510,15 +510,15 @@
         "code":  "LW-024",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "uncommon",
-        "weight":  54,
+        "rarity":  "rare",
+        "weight":  12,
         "title":  "Riven Trench",
         "reward":  {
-                       "min":  361,
-                       "max":  541
+                       "min":  500,
+                       "max":  600
                    },
-        "xp":  144,
-        "message":  "explored Riven Trench, where an ancient wake exposes treasure lodged inside a scar in the seabed, recovering {reward} Star Candies.",
+        "xp":  126,
+        "message":  "The seafloor fractures beside you. Instead of lava or darkness, the opening exposes gigantic bones continuing downward beyond sight. Whatever lies buried here is deeper than the trench itself. Before the crack settles, it releases {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-24",
@@ -532,15 +532,15 @@
         "code":  "LW-025",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "uncommon",
-        "weight":  52,
+        "rarity":  "epic",
+        "weight":  8,
         "title":  "Last Leviathan Song",
         "reward":  {
-                       "min":  368,
-                       "max":  548
+                       "min":  600,
+                       "max":  750
                    },
-        "xp":  147,
-        "message":  "explored Last Leviathan Song, where a calm pocket behind a titanic rib holds a navigator\u0027s abandoned Candies, recovering {reward} Star Candies.",
+        "xp":  150,
+        "message":  "A low musical note crosses the water, and nearby bones begin resonating in answer. It could be current singing through the remains - until something very far away seems to reply. The final vibration frees {reward} Star Candies and a Travel Note. Nothing else moves.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-25",
@@ -554,15 +554,15 @@
         "code":  "LW-026",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "rare",
-        "weight":  50,
+        "rarity":  "common",
+        "weight":  90,
         "title":  "Bone-Crown Reach",
         "reward":  {
-                       "min":  375,
-                       "max":  555
+                       "min":  270,
+                       "max":  360
                    },
-        "xp":  150,
-        "message":  "explored Bone-Crown Reach, where a violent current tears open an old wreck compartment filled with Star Candies, recovering {reward} Star Candies.",
+        "xp":  58,
+        "message":  "Huge curved bones form a crown around an enormous skull. Tiny harmless creatures have declared it a kingdom, with the smallest citizen seated exactly where a throne should be. Their miniature royal court has accumulated {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-26",
@@ -576,15 +576,15 @@
         "code":  "LW-027",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "common",
-        "weight":  48,
+        "rarity":  "epic",
+        "weight":  4,
         "title":  "Wakeheart Vortex",
         "reward":  {
-                       "min":  382,
-                       "max":  562
+                       "min":  650,
+                       "max":  800
                    },
-        "xp":  153,
-        "message":  "explored Wakeheart Vortex, where you shelter beneath an enormous scale and find a forgotten supply cache, recovering {reward} Star Candies.",
+        "xp":  175,
+        "message":  "A massive vortex turns steadily enough to drag wreckage around its rim, yet its exact center is perfectly calm. Reaching that silent eye takes a breathless plunge through the current. Within it float debris, a Travel Note, and {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-27",
@@ -599,14 +599,14 @@
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
-        "weight":  46,
+        "weight":  80,
         "title":  "Titan-Scar Gate",
         "reward":  {
-                       "min":  389,
-                       "max":  569
+                       "min":  285,
+                       "max":  375
                    },
-        "xp":  156,
-        "message":  "explored Titan-Scar Gate, where pressure-lit creatures lead you between colossal bones to a sealed strongbox, recovering {reward} Star Candies.",
+        "xp":  61,
+        "message":  "Two gigantic claw scars intersect like a doorway. Crossing their center changes the pressure, current, and sound all at once. An old message reads, \"That\u0027s definitely a gate. Probably. I\u0027m calling it a gate.\" Beyond the not-quite gate lie {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-28",
@@ -620,15 +620,15 @@
         "code":  "LW-029",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "uncommon",
-        "weight":  44,
+        "rarity":  "rare",
+        "weight":  10,
         "title":  "Remembering Scale",
         "reward":  {
-                       "min":  396,
-                       "max":  576
+                       "min":  525,
+                       "max":  625
                    },
-        "xp":  159,
-        "message":  "explored Remembering Scale, where an ancient wake exposes treasure lodged inside a scar in the seabed, recovering {reward} Star Candies.",
+        "xp":  134,
+        "message":  "Touching an ancient scale awakens impressions held within it: unfamiliar stars, something colossal moving below, and ancient Fae observing from far away. A later memory shows a familiar white-haired elf touch the same scale and recoil. It fades, revealing {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-29",
@@ -642,15 +642,15 @@
         "code":  "LW-030",
         "category":  "explore",
         "region":  "Leviathan\u0027s Wake",
-        "rarity":  "epic",
-        "weight":  42,
-        "title":  "Behemoth Hold Trace",
+        "rarity":  "legendary",
+        "weight":  1,
+        "title":  "Grave of the First Wake",
         "reward":  {
-                       "min":  403,
-                       "max":  583
+                       "min":  850,
+                       "max":  1050
                    },
-        "xp":  162,
-        "message":  "explored Behemoth Hold Trace, where a calm pocket behind a titanic rib holds a navigator\u0027s abandoned Candies, recovering {reward} Star Candies.",
+        "xp":  225,
+        "message":  "Bones, scars, wreckage, and terrain converge around a skeleton too enormous to comprehend; only part of it is visible before it disappears into the dark. An old folded Travel Note says, \"I don\u0027t think we were ever supposed to find this.\" The remains slowly release {reward} Star Candies. LEGENDARY EXPEDITION!",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-30",
