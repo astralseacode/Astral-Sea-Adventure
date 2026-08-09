@@ -8,11 +8,11 @@
         "weight":  100,
         "title":  "Fallen Banner Square",
         "reward":  {
-                       "min":  280,
-                       "max":  520
+                       "min":  325,
+                       "max":  420
                    },
-        "xp":  110,
-        "message":  "explored Fallen Banner Square, where a drowned civic marker opens to reveal a carefully counted Candy reserve, recovering {reward} Star Candies.",
+        "xp":  75,
+        "message":  "Ruined banners drift above a broad public square lined with merchant signs, fountains, benches, and roads that once carried half the city. Tiny sea creatures shelter beneath overturned stalls, one of which has collapsed around {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-01",
@@ -27,14 +27,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "common",
-        "weight":  98,
-        "title":  "Crowncoin Arcade",
+        "weight":  90,
+        "title":  "Crownmarket Square",
         "reward":  {
-                       "min":  289,
-                       "max":  529
+                       "min":  345,
+                       "max":  440
                    },
-        "xp":  114,
-        "message":  "explored Crowncoin Arcade, where you follow faded banners into a hall where a royal offering remains untouched, recovering {reward} Star Candies.",
+        "xp":  79,
+        "message":  "An abandoned merchant district surrounds you. One suspiciously clean stall bears a handmade sign: \"SHIZUKI\u0027S TOTALLY LEGITIMATE SHOP. EVERYTHING: 5 STAR CANDIES. NO REFUNDS.\" The shelves are empty, and a smaller note says, \"Business was slow.\" Beneath the counter wait {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-02",
@@ -48,15 +48,15 @@
         "code":  "SKT-003",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "common",
-        "weight":  96,
+        "rarity":  "uncommon",
+        "weight":  55,
         "title":  "Palace Aqueduct",
         "reward":  {
-                       "min":  298,
-                       "max":  538
+                       "min":  450,
+                       "max":  550
                    },
-        "xp":  118,
-        "message":  "explored Palace Aqueduct, where an old seal releases a modest treasury cache when you approach, recovering {reward} Star Candies.",
+        "xp":  105,
+        "message":  "Ancient aqueduct channels reactivate as you pass. Water and pale light race through transparent enchanted conduits, branching toward homes, gardens, and the palace. The renewed flow carries {reward} Star Candies and a Travel Note gently into reach.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-03",
@@ -70,15 +70,15 @@
         "code":  "SKT-004",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "uncommon",
-        "weight":  94,
-        "title":  "Sealbound Gallery",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "Royal Stables",
         "reward":  {
-                       "min":  307,
-                       "max":  547
+                       "min":  365,
+                       "max":  460
                    },
-        "xp":  122,
-        "message":  "explored Sealbound Gallery, where a haunted fountain clears long enough to expose Star Candies beneath its basin, recovering {reward} Star Candies.",
+        "xp":  83,
+        "message":  "The royal stable stands empty except for one stall containing an old blanket, a makeshift pillow, an empty Berry tin, and a tiny elf doodle. A note explains, \"The castle beds looked haunted. Horse bed was safer.\" The bedding conceals {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-04",
@@ -93,14 +93,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "uncommon",
-        "weight":  92,
+        "weight":  45,
         "title":  "Mourning Promenade",
         "reward":  {
-                       "min":  316,
-                       "max":  556
+                       "min":  475,
+                       "max":  575
                    },
-        "xp":  126,
-        "message":  "explored Mourning Promenade, where court tiles shift into an obsolete ceremonial pattern and reveal hidden payment, recovering {reward} Star Candies.",
+        "xp":  110,
+        "message":  "A palace promenade overlooks the drowned city. As you walk, old lanterns awaken one by one beside weathered statues, briefly restoring the avenue\u0027s former glow. At the final overlook, silver light reveals {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-05",
@@ -114,15 +114,15 @@
         "code":  "SKT-006",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "rare",
-        "weight":  90,
+        "rarity":  "common",
+        "weight":  70,
         "title":  "Scepter Garden",
         "reward":  {
-                       "min":  325,
-                       "max":  565
+                       "min":  385,
+                       "max":  480
                    },
-        "xp":  130,
-        "message":  "explored Scepter Garden, where a drowned civic marker opens to reveal a carefully counted Candy reserve, recovering {reward} Star Candies.",
+        "xp":  87,
+        "message":  "Ancient flowerbeds have become an underwater garden. Signs mark repeated planting attempts: \"BERRIES,\" \"BERRIES ATTEMPT 2,\" and finally, \"BERRIES ATTEMPT 7 - DO NOT JUDGE ME.\" The seventh plot is thriving, and its roots cradle {reward} Star Candies with a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-06",
@@ -137,14 +137,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "common",
-        "weight":  88,
+        "weight":  100,
         "title":  "Crownless Barracks",
         "reward":  {
-                       "min":  334,
-                       "max":  574
+                       "min":  405,
+                       "max":  500
                    },
-        "xp":  134,
-        "message":  "explored Crownless Barracks, where you follow faded banners into a hall where a royal offering remains untouched, recovering {reward} Star Candies.",
+        "xp":  91,
+        "message":  "Bunks and armor racks remain inside the abandoned guard barracks. One training dummy has been utterly demolished while every other target is intact. Above it, someone wrote, \"JELLYFISH TEST #4.\" The ruined stuffing contains {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-07",
@@ -158,15 +158,15 @@
         "code":  "SKT-008",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "common",
-        "weight":  86,
+        "rarity":  "rare",
+        "weight":  18,
         "title":  "Drowned Archive",
         "reward":  {
-                       "min":  343,
-                       "max":  583
+                       "min":  625,
+                       "max":  735
                    },
-        "xp":  138,
-        "message":  "explored Drowned Archive, where an old seal releases a modest treasury cache when you approach, recovering {reward} Star Candies.",
+        "xp":  145,
+        "message":  "Rows of water-preserved books and magical tablets fill the archive. A restoration enchantment briefly revives damaged pages, revealing children\u0027s tales, recipes, city maps, and ordinary family stories. One book compartment holds {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-08",
@@ -180,15 +180,15 @@
         "code":  "SKT-009",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "uncommon",
-        "weight":  84,
+        "rarity":  "common",
+        "weight":  90,
         "title":  "Thronewater Cistern",
         "reward":  {
-                       "min":  352,
-                       "max":  592
+                       "min":  325,
+                       "max":  420
                    },
-        "xp":  142,
-        "message":  "explored Thronewater Cistern, where a haunted fountain clears long enough to expose Star Candies beneath its basin, recovering {reward} Star Candies.",
+        "xp":  95,
+        "message":  "The enormous reservoir beneath the palace still powers enchanted fountains. Your arrival activates all of them at once, turning the cistern into an absurd obstacle course of crossing water jets. When the room settles, {reward} Star Candies and a Travel Note wash onto a ledge.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-09",
@@ -202,15 +202,15 @@
         "code":  "SKT-010",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "epic",
-        "weight":  82,
+        "rarity":  "rare",
+        "weight":  14,
         "title":  "Gilded Processional",
         "reward":  {
-                       "min":  361,
-                       "max":  601
+                       "min":  655,
+                       "max":  765
                    },
-        "xp":  146,
-        "message":  "explored Gilded Processional, where court tiles shift into an obsolete ceremonial pattern and reveal hidden payment, recovering {reward} Star Candies.",
+        "xp":  155,
+        "message":  "The ceremonial road rises toward the palace between ancient statues. As you pass, each figure awakens just enough to perform its old formal bow. At the road\u0027s end, a processional vessel opens with a flourish and presents {reward} Star Candies beside a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-10",
@@ -224,15 +224,15 @@
         "code":  "SKT-011",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "common",
-        "weight":  80,
-        "title":  "Sepulcher Cloister",
+        "rarity":  "uncommon",
+        "weight":  35,
+        "title":  "Royal Jousting Grounds",
         "reward":  {
-                       "min":  370,
-                       "max":  610
+                       "min":  500,
+                       "max":  600
                    },
-        "xp":  150,
-        "message":  "explored Sepulcher Cloister, where a drowned civic marker opens to reveal a carefully counted Candy reserve, recovering {reward} Star Candies.",
+        "xp":  115,
+        "message":  "A vast jousting arena contains a practice lance and a barrel mounted on a broken cart. Its painted face is labeled \"SIR BARRELTON.\" Across the field lies another barrel in pieces beside the note, \"Sir Barrelton challenged me first.\" Nearby rest {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-11",
@@ -247,14 +247,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "common",
-        "weight":  78,
+        "weight":  80,
         "title":  "Walking Statuary",
         "reward":  {
-                       "min":  379,
-                       "max":  619
+                       "min":  345,
+                       "max":  440
                    },
-        "xp":  154,
-        "message":  "explored Walking Statuary, where you follow faded banners into a hall where a royal offering remains untouched, recovering {reward} Star Candies.",
+        "xp":  75,
+        "message":  "Enchanted statues still attempt their ceremonial patrols, though centuries have made them extremely slow. One spends several minutes raising an arm with magnificent gravity, only to point directly toward {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-12",
@@ -269,14 +269,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "common",
-        "weight":  76,
+        "weight":  70,
         "title":  "Dynasty Coral Hall",
         "reward":  {
-                       "min":  388,
-                       "max":  628
+                       "min":  365,
+                       "max":  460
                    },
-        "xp":  158,
-        "message":  "explored Dynasty Coral Hall, where an old seal releases a modest treasury cache when you approach, recovering {reward} Star Candies.",
+        "xp":  79,
+        "message":  "Colorful coral overtakes a grand hall, winding through royal portraits and gilded columns. Tiny sea creatures occupy the empty frames; one poses so solemnly it resembles a new royal portrait. Among the coral glimmer {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-13",
@@ -291,14 +291,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "uncommon",
-        "weight":  74,
+        "weight":  30,
         "title":  "Chalice Chapel",
         "reward":  {
-                       "min":  397,
-                       "max":  637
+                       "min":  525,
+                       "max":  625
                    },
-        "xp":  162,
-        "message":  "explored Chalice Chapel, where a haunted fountain clears long enough to expose Star Candies beneath its basin, recovering {reward} Star Candies.",
+        "xp":  120,
+        "message":  "Hundreds of suspended silver chalices ring softly when you enter the chapel. Their tones build into a clear, delicate melody, and the final chord opens an alcove containing {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-14",
@@ -312,15 +312,15 @@
         "code":  "SKT-015",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "uncommon",
-        "weight":  72,
-        "title":  "Taxkeeper Office",
+        "rarity":  "common",
+        "weight":  100,
+        "title":  "Castle Kitchens",
         "reward":  {
-                       "min":  406,
-                       "max":  646
+                       "min":  385,
+                       "max":  480
                    },
-        "xp":  166,
-        "message":  "explored Taxkeeper Office, where court tiles shift into an obsolete ceremonial pattern and reveal hidden payment, recovering {reward} Star Candies.",
+        "xp":  83,
+        "message":  "The enormous castle kitchens show signs of a much later and deeply unsuccessful cooking experiment. One pot is stuck upside down near the ceiling beside a note: \"Cooking is basically alchemy. UPDATE: It is not.\" The surviving cupboards contain {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-15",
@@ -334,15 +334,15 @@
         "code":  "SKT-016",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "rare",
-        "weight":  70,
+        "rarity":  "uncommon",
+        "weight":  55,
         "title":  "Royal Hunting Canal",
         "reward":  {
-                       "min":  415,
-                       "max":  655
+                       "min":  550,
+                       "max":  650
                    },
-        "xp":  170,
-        "message":  "explored Royal Hunting Canal, where a drowned civic marker opens to reveal a carefully counted Candy reserve, recovering {reward} Star Candies.",
+        "xp":  125,
+        "message":  "The old royal excursion canal has become a racecourse for small sea creatures. An ancient START signal activates, and they immediately surge through the course. The winner\u0027s path trips a finish-line mechanism that releases {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-16",
@@ -357,14 +357,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "common",
-        "weight":  68,
+        "weight":  90,
         "title":  "Silent Heraldry",
         "reward":  {
-                       "min":  424,
-                       "max":  664
+                       "min":  405,
+                       "max":  500
                    },
-        "xp":  174,
-        "message":  "explored Silent Heraldry, where you follow faded banners into a hall where a royal offering remains untouched, recovering {reward} Star Candies.",
+        "xp":  87,
+        "message":  "Faded shields, banners, and family emblems cover the heraldry hall. Among them hangs an unofficial crest: a badly drawn Berry wearing a crown above the words \"House Berry.\" Behind it are {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-17",
@@ -378,15 +378,15 @@
         "code":  "SKT-018",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "common",
-        "weight":  66,
+        "rarity":  "uncommon",
+        "weight":  45,
         "title":  "Sealbreaker Vault",
         "reward":  {
-                       "min":  433,
-                       "max":  673
+                       "min":  450,
+                       "max":  550
                    },
-        "xp":  178,
-        "message":  "explored Sealbreaker Vault, where an old seal releases a modest treasury cache when you approach, recovering {reward} Star Candies.",
+        "xp":  130,
+        "message":  "The royal vault was looted centuries ago, but its failing defenses still make a spectacle. One magical lock repeatedly declares \"ACCESS DENIED\" beside a doorway whose door is entirely missing. An overlooked wall compartment contains {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-18",
@@ -400,15 +400,15 @@
         "code":  "SKT-019",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "uncommon",
-        "weight":  64,
-        "title":  "Drowned Lists",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "Royal Bathhouse",
         "reward":  {
-                       "min":  442,
-                       "max":  682
+                       "min":  325,
+                       "max":  420
                    },
-        "xp":  182,
-        "message":  "explored Drowned Lists, where a haunted fountain clears long enough to expose Star Candies beneath its basin, recovering {reward} Star Candies.",
+        "xp":  91,
+        "message":  "An enormous royal bathhouse still has a functioning heating enchantment. A dry ledge holds an abandoned towel, an empty Berry wrapper, and a sign reading, \"Royal bath privileges acquired. Nobody was here to stop me.\" A poolside compartment holds {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-19",
@@ -422,15 +422,15 @@
         "code":  "SKT-020",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "epic",
-        "weight":  62,
+        "rarity":  "common",
+        "weight":  70,
         "title":  "Crownshadow Arcade",
         "reward":  {
-                       "min":  451,
-                       "max":  691
+                       "min":  345,
+                       "max":  440
                    },
-        "xp":  186,
-        "message":  "explored Crownshadow Arcade, where court tiles shift into an obsolete ceremonial pattern and reveal hidden payment, recovering {reward} Star Candies.",
+        "xp":  95,
+        "message":  "The grand covered arcade contains old shops, decorative alcoves, and magical amusements. One device wakes, performs an incomprehensible but harmless fanfare, and showers you in bubbles before dispensing {reward} Star Candies and a Travel Note as its prize.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-20",
@@ -444,15 +444,15 @@
         "code":  "SKT-021",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "common",
-        "weight":  60,
+        "rarity":  "uncommon",
+        "weight":  35,
         "title":  "Ruined Menagerie",
         "reward":  {
-                       "min":  460,
-                       "max":  700
+                       "min":  475,
+                       "max":  575
                    },
-        "xp":  190,
-        "message":  "explored Ruined Menagerie, where a drowned civic marker opens to reveal a carefully counted Candy reserve, recovering {reward} Star Candies.",
+        "xp":  105,
+        "message":  "The royal animal enclosures are empty and overgrown. Several plaques have gained new names: the Royal Silver Lion is \"MR. FLUFF,\" the Great Crested Wyvern is \"BITEY,\" and the Imperial War Tortoise is \"SIR SHELLINGTON.\" One enclosure shelters {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-21",
@@ -466,15 +466,15 @@
         "code":  "SKT-022",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "common",
-        "weight":  58,
+        "rarity":  "epic",
+        "weight":  8,
         "title":  "Pearl-Throne Gate",
         "reward":  {
-                       "min":  469,
-                       "max":  709
+                       "min":  800,
+                       "max":  1000
                    },
-        "xp":  194,
-        "message":  "explored Pearl-Throne Gate, where you follow faded banners into a hall where a royal offering remains untouched, recovering {reward} Star Candies.",
+        "xp":  200,
+        "message":  "Pearls and glowing coral cover the enormous palace gate. Detecting movement for the first time in ages, its mechanism slowly opens onto a spectacular view of the drowned royal district. A ceremonial niche beside the threshold contains {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-22",
@@ -488,15 +488,15 @@
         "code":  "SKT-023",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "common",
-        "weight":  56,
-        "title":  "Usurper Passage",
+        "rarity":  "uncommon",
+        "weight":  30,
+        "title":  "Royal Theater",
         "reward":  {
-                       "min":  478,
-                       "max":  718
+                       "min":  500,
+                       "max":  600
                    },
-        "xp":  198,
-        "message":  "explored Usurper Passage, where an old seal releases a modest treasury cache when you approach, recovering {reward} Star Candies.",
+        "xp":  110,
+        "message":  "Someone repaired just enough of the royal theater to use its stage. Three reviews remain in the audience: \"Incredible performance. - Shizuki,\" \"Changed my life. - Definitely Not Shizuki,\" and \"Give her an award. - Anonymous Elf.\" Backstage wait {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-23",
@@ -510,15 +510,15 @@
         "code":  "SKT-024",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "uncommon",
-        "weight":  54,
-        "title":  "Oathchain Dungeon",
+        "rarity":  "common",
+        "weight":  100,
+        "title":  "Hedge Maze",
         "reward":  {
-                       "min":  487,
-                       "max":  727
+                       "min":  365,
+                       "max":  460
                    },
-        "xp":  202,
-        "message":  "explored Oathchain Dungeon, where a haunted fountain clears long enough to expose Star Candies beneath its basin, recovering {reward} Star Candies.",
+        "xp":  75,
+        "message":  "The magical hedge maze has survived far too well. Old signs progress from \"EXIT -\u003e\" to \"\u003c- ACTUAL EXIT,\" then \"IGNORE FIRST TWO SIGNS,\" and finally \"I HAVE MADE A TERRIBLE MISTAKE.\" The center holds {reward} Star Candies and a Travel Note; its earlier explorer clearly escaped eventually.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-24",
@@ -532,15 +532,15 @@
         "code":  "SKT-025",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "uncommon",
-        "weight":  52,
+        "rarity":  "rare",
+        "weight":  12,
         "title":  "Forgotten Prince Wing",
         "reward":  {
-                       "min":  496,
-                       "max":  736
+                       "min":  685,
+                       "max":  795
                    },
-        "xp":  206,
-        "message":  "explored Forgotten Prince Wing, where court tiles shift into an obsolete ceremonial pattern and reveal hidden payment, recovering {reward} Star Candies.",
+        "xp":  165,
+        "message":  "A quiet residential wing once belonged to a forgotten prince. Unfinished books, hobby tools, drawings, maps, a broken instrument, and childhood keepsakes make the distant royal family feel suddenly human. A bedside compartment preserves {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-25",
@@ -555,14 +555,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "rare",
-        "weight":  50,
-        "title":  "Queen\u0027s Tear Fountain",
+        "weight":  10,
+        "title":  "Queen’s Tear Fountain",
         "reward":  {
-                       "min":  505,
-                       "max":  745
+                       "min":  715,
+                       "max":  825
                    },
-        "xp":  210,
-        "message":  "explored Queen\u0027s Tear Fountain, where a drowned civic marker opens to reveal a carefully counted Candy reserve, recovering {reward} Star Candies.",
+        "xp":  175,
+        "message":  "The fountain depicts a queen gazing toward the sea. Enchanted droplets rise instead of falling, and hundreds illuminate the courtyard when you approach. Their floating light reveals {reward} Star Candies and a Travel Note beneath the basin.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-26",
@@ -577,14 +577,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "common",
-        "weight":  48,
-        "title":  "Seven Royal Seals",
+        "weight":  90,
+        "title":  "Royal Banquet Hall",
         "reward":  {
-                       "min":  514,
-                       "max":  754
+                       "min":  385,
+                       "max":  480
                    },
-        "xp":  214,
-        "message":  "explored Seven Royal Seals, where you follow faded banners into a hall where a royal offering remains untouched, recovering {reward} Star Candies.",
+        "xp":  79,
+        "message":  "Random abandoned objects have been arranged as guests around the royal banquet table: a helmet, vase, broom, statue head, and broken shield, each with a name card. A fake mustache occupies the head seat beneath a sign marked \"RESERVED.\" One setting contains {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-27",
@@ -599,14 +599,14 @@
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "common",
-        "weight":  46,
-        "title":  "Silent Council",
+        "weight":  80,
+        "title":  "Sunken Festival Street",
         "reward":  {
-                       "min":  523,
-                       "max":  763
+                       "min":  405,
+                       "max":  500
                    },
-        "xp":  218,
-        "message":  "explored Silent Council, where an old seal releases a modest treasury cache when you approach, recovering {reward} Star Candies.",
+        "xp":  83,
+        "message":  "Faded decorations and silent booths line an old festival street. Most enchantments remain dormant, but one tiny lantern flickers warmly as you pass. Its light reaches an abandoned game booth containing {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-28",
@@ -620,15 +620,15 @@
         "code":  "SKT-029",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "uncommon",
-        "weight":  44,
+        "rarity":  "epic",
+        "weight":  4,
         "title":  "Thronebound Causeway",
         "reward":  {
-                       "min":  532,
-                       "max":  772
+                       "min":  850,
+                       "max":  1050
                    },
-        "xp":  222,
-        "message":  "explored Thronebound Causeway, where a haunted fountain clears long enough to expose Star Candies beneath its basin, recovering {reward} Star Candies.",
+        "xp":  235,
+        "message":  "The immense causeway leads directly toward the throne complex between statues of knights and rulers. Ancient lights activate sequentially ahead, drawing you toward a breathtaking view of the palace. An old resting point along the route holds {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-29",
@@ -642,15 +642,15 @@
         "code":  "SKT-030",
         "category":  "explore",
         "region":  "Sunken King\u0027s Throne",
-        "rarity":  "epic",
-        "weight":  42,
-        "title":  "Compact Embassy Trace",
+        "rarity":  "legendary",
+        "weight":  1,
+        "title":  "The King\u0027s Festival",
         "reward":  {
-                       "min":  541,
-                       "max":  781
+                       "min":  1100,
+                       "max":  1400
                    },
-        "xp":  226,
-        "message":  "explored Compact Embassy Trace, where court tiles shift into an obsolete ceremonial pattern and reveal hidden payment, recovering {reward} Star Candies.",
+        "xp":  300,
+        "message":  "A hidden festival courtyard lies silent behind the palace, filled with stalls, games, jousting displays, banners, lanterns, and a stage. Then ancient magic recognizes you: lights ignite, banners unfurl, illusory musicians play, and the lost kingdom lives again for a few joyful moments. Old scoreboards remember Shizuki scoring 3 at archery, 0 at ring toss, and 47 in the pastry contest; only the last is labeled \"Champion.\" The festival welcomes its new visitor by opening a prize chest containing {reward} Star Candies and a Travel Note. LEGENDARY EXPEDITION!",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-30",
