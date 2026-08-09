@@ -3,180 +3,180 @@
         "id":  "starfall-trench-note-01",
         "number":  1,
         "title":  "The Falling Calendar",
-        "text":  "A damaged traveler journal records: Trench keepers once dated years by the color of falling fragments; blue-white showers marked safe navigation seasons."
+        "text":  "Made it to Starfall Trench!~ The stars really do fall all the way down here. Apparently travelers used to tell the seasons by their colors. Blue-white meant safe passage. Glimmer insists the bright pink ones mean \u0027snack time.\u0027 I am fairly certain Glimmer made that up."
     },
     {
         "id":  "starfall-trench-note-02",
         "number":  2,
         "title":  "Stone That Remembers Heat",
-        "text":  "An old field report states: Fresh starstone remains warm for decades, and its inner light brightens when returned near its original crater."
+        "text":  "Fresh starstone stays warm long after it falls. I found one buried deep in an old crater and it started glowing brighter when I carried it closer to the center. Naturally I spent twenty minutes moving it back and forth. For research. Definitely not because the shiny rock was entertaining."
     },
     {
         "id":  "starfall-trench-note-03",
         "number":  3,
-        "title":  "A Bent Plumb Line",
-        "text":  "A local record preserves this account: A surveyor recorded that every weight leaned east here, although east changed whenever the largest fragment pulsed."
+        "title":  "Gravity Has Opinions",
+        "text":  "My compass works. My map works. Gravity does NOT work. I dropped a pebble and it fell sideways. Then another fell behind me. Glimmer has been floating upside down for ten minutes and seems extremely pleased with this development."
     },
     {
         "id":  "starfall-trench-note-04",
         "number":  4,
         "title":  "Crystalline Nursery",
-        "text":  "An unsigned observation reads: Tiny glass-finned fish shelter inside meteor cracks because larger predators cannot tolerate the harmonic ringing."
+        "text":  "Tiny glass-finned fish live inside the meteor cracks! Whenever something larger swims nearby, the crystal walls start ringing and scare it away. I tried tapping one gently. The entire nursery rang back. I apologized. The fish did not accept my apology."
     },
     {
         "id":  "starfall-trench-note-05",
         "number":  5,
         "title":  "Do Not Lick the Comet",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: A handwritten addition reads: \"It tastes like cold lightning. This warning exists because I made a scientific mistake. --Shizuki\""
+        "text":  "Important scientific discovery: cometglass tastes like cold lightning. Secondary scientific discovery: I should stop testing whether strange glowing objects taste like anything. Glimmer watched me do it and somehow looked disappointed without having a face."
     },
     {
         "id":  "starfall-trench-note-06",
         "number":  6,
-        "title":  "Annex Transit Mark",
-        "text":  "An old field report states: A faded cargo seal matches Moonlit Lab workmanship but bears a trench designation and a much later revision number."
+        "title":  "A Familiar Mark",
+        "text":  "I found an old cargo seal buried beneath the trench today. The workmanship looks almost exactly like the Moonlit Lab ruins... but this one says Starfall Annex. Different place. Same symbols. Much newer markings, too. I don\u0027t like that part. Naturally, I am going to investigate it."
     },
     {
         "id":  "starfall-trench-note-07",
         "number":  7,
         "title":  "The Quiet Impact",
-        "text":  "A local record preserves this account: One crater contains no debris, only a perfect absence where sound and current vanish at its rim."
+        "text":  "Found a crater where absolutely nothing makes noise. No current. No bubbles. Even my footsteps disappear at the edge. Glimmer chimed before entering and the sound just... stopped. We left pretty quickly. I wrote \u0027NOPE\u0027 on a nearby stone for the next explorer."
     },
     {
         "id":  "starfall-trench-note-08",
         "number":  8,
-        "title":  "Ventkeeper Record",
-        "text":  "An unsigned observation reads: Old divers harvested cosmic vent glass with copper tools; iron implements became too heavy to lift near the plume."
+        "title":  "Ventkeeper Tricks",
+        "text":  "The cosmic vents turn iron ridiculously heavy, but copper works normally. I learned this after trying to lift my gear beside one and nearly becoming part of the floor. Somewhere, an ancient Ventkeeper is probably laughing at me."
     },
     {
         "id":  "starfall-trench-note-09",
         "number":  9,
-        "title":  "Borrowed Constellations",
-        "text":  "A damaged traveler journal records: Celestial fragments on the seabed form patterns absent from the sky, suggesting they fell from somewhere else."
+        "title":  "Stars From Somewhere Else",
+        "text":  "The fallen fragments down here form constellations I can\u0027t find anywhere in the sky. I checked twice. Then three times. Either my astronomy is terrible—which is completely possible—or some of these stars fell from somewhere we can\u0027t see."
     },
     {
         "id":  "starfall-trench-note-10",
         "number":  10,
         "title":  "Helpful Arrow Number Seven",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki drew seven arrows toward seven different tunnels and labeled all of them \"probably the shortcut.\""
+        "text":  "I found seven tunnels and drew an arrow toward the shortcut. Then I realized another tunnel might be faster, so I drew another arrow. Then another. There are now seven arrows. Glimmer has refused to follow any of them. Honestly? Fair."
     },
     {
         "id":  "starfall-trench-note-11",
         "number":  11,
-        "title":  "Deep-Orbit Shell",
-        "text":  "A local record preserves this account: A nautilus shell records a spiral matching the orbit of a star no modern chart recognizes."
+        "title":  "The Starcoil Shell",
+        "text":  "I found a beautiful nautilus shell with a spiral that matches an orbit on an old star chart. Problem: that star isn\u0027t on any modern chart I own. I showed Glimmer. Glimmer chimed once and hid in my hood. Very informative, thank you."
     },
     {
         "id":  "starfall-trench-note-12",
         "number":  12,
-        "title":  "Ruin Without a Sky",
-        "text":  "An unsigned observation reads: The oldest celestial arch was built before the surrounding impact, yet its carvings depict the fragment arriving."
+        "title":  "A Ruin That Knew",
+        "text":  "There\u0027s an old arch here that predates the crater around it, but its carvings show the star falling anyway. I stared at it for a long time trying to understand how someone carved an event before it happened. My conclusion: Starfall Trench is cheating."
     },
     {
         "id":  "starfall-trench-note-13",
         "number":  13,
-        "title":  "Meteorwake Song",
-        "text":  "A damaged traveler journal records: When several shards resonate together, their notes reproduce a navigation hymn used by vanished trench settlements."
+        "title":  "The Trench Sings",
+        "text":  "Several meteor shards started humming together today. At first I thought something enormous was approaching and very bravely hid behind a rock. Turns out they were playing an old navigation melody! I tried humming along. The shards stopped. Rude."
     },
     {
         "id":  "starfall-trench-note-14",
         "number":  14,
-        "title":  "Gravity-Sick Journal",
-        "text":  "An old field report states: An explorer learned to sleep tied to the floor after waking on the ceiling three mornings in succession."
+        "title":  "Ceiling: 3, Shizuki: 0",
+        "text":  "I woke up on the ceiling again. THIRD TIME. I am tying my bedroll to the floor tonight. Glimmer, who does not need a bedroll and can float whenever it wants, has been absolutely unbearable about this."
     },
     {
         "id":  "starfall-trench-note-15",
         "number":  15,
         "title":  "Emergency Mustache Protocol",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: A facility notice has been amended: \"Facial disguise ineffective against security constructs. Still stylish. --S\""
+        "text":  "Found an old security notice near the Annex. It says disguises are ineffective against automated constructs. I added a fake mustache to the diagram anyway. Scientific conclusion: ineffective against security constructs. Extremely effective for morale."
     },
     {
         "id":  "starfall-trench-note-16",
         "number":  16,
-        "title":  "Buried Observation Lens",
-        "text":  "An unsigned observation reads: A cracked lens magnifies not distance but age, showing nearby ruins as they looked roughly a century ago."
+        "title":  "A Hundred Years Ago",
+        "text":  "I uncovered a cracked observation lens that doesn\u0027t magnify distance—it shows places as they looked long ago. I pointed it toward the ruins and, for a moment, everything was standing again. Lights. Doors. People moving inside. Then the lens cracked a little more and the image vanished. I think I\u0027m keeping my hands off this one."
     },
     {
         "id":  "starfall-trench-note-17",
         "number":  17,
-        "title":  "The Star-Eater Trail",
-        "text":  "A damaged traveler journal records: Smooth grooves end at empty sockets where luminous fragments once rested, each surrounded by silver residue."
+        "title":  "Something Ate the Stars",
+        "text":  "There are smooth trails carved through the stone ending at empty places where star fragments should be. Whatever removed them left silver residue behind. Glimmer wants to follow the trail. I would like to formally record that for once, I am the responsible one."
     },
     {
         "id":  "starfall-trench-note-18",
         "number":  18,
-        "title":  "Unsent Cargo Complaint",
-        "text":  "An old field report states: An annex quartermaster objected to receiving sealed specimen crates without origin papers or living-content warnings."
+        "title":  "Absolutely Normal Cargo",
+        "text":  "Found part of an old Annex shipping complaint. Whoever wrote it was VERY upset about receiving sealed crates with no origin labels and no warning about whether the contents were alive. Which means someone, somewhere, apparently had to write: \u0027Please tell us if the box is alive.\u0027 I almost respect the chaos."
     },
     {
         "id":  "starfall-trench-note-19",
         "number":  19,
-        "title":  "Aurora Below",
-        "text":  "A local record preserves this account: Trench auroras rise from the seabed rather than descending from above and briefly reverse weak currents."
+        "title":  "Aurora From Below",
+        "text":  "An aurora rose out of the seafloor tonight. Not from the sky—the ground. It turned the whole trench blue and violet, then reversed the current and sent half my supplies floating past my head. Beautiful! Majestic! I would like my other boot back."
     },
     {
         "id":  "starfall-trench-note-20",
         "number":  20,
-        "title":  "An Older Insignia",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: A corroded badge bears the organization mark beneath another emblem that someone deliberately filed away."
+        "title":  "Something Underneath",
+        "text":  "I found an old badge near the Annex. It has the same organization mark I\u0027ve seen before, but there\u0027s another symbol underneath it that someone deliberately scratched away. I tried holding it toward the light. Glimmer immediately knocked it out of my hand. I\u0027m beginning to think the sprite has better survival instincts than I do."
     },
     {
         "id":  "starfall-trench-note-21",
         "number":  21,
         "title":  "Cometglass Etiquette",
-        "text":  "A damaged traveler journal records: Local tradition held that taking the first shard from a new crater invited every falling stone to notice you."
+        "text":  "Old travelers apparently believed taking the first cometglass shard from a fresh crater made the falling stars \u0027notice\u0027 you. Obviously superstition. Completely ridiculous. Anyway, I waited until the SECOND shard before taking one. There\u0027s no reason to be reckless."
     },
     {
         "id":  "starfall-trench-note-22",
         "number":  22,
         "title":  "The Weightless Camp",
-        "text":  "An old field report states: Bedrolls remain tied around a floating stone where travelers once waited for gravity to remember its direction."
+        "text":  "Found an old campsite built around a floating boulder. Every bedroll was tied down. Every storage box was tied down. Even the cooking pot was tied down. Whoever camped here understood Starfall much better than I did on night one. I am stealing this strategy immediately."
     },
     {
         "id":  "starfall-trench-note-23",
         "number":  23,
-        "title":  "Security Revision Forty-Two",
-        "text":  "A local record preserves this account: The annex repeatedly upgraded its pursuit protocols long after Moonlit Lab should have ceased operating."
+        "title":  "They Kept Searching",
+        "text":  "The deeper Annex records keep mentioning upgraded pursuit systems—revision after revision, long after the Moonlit Lab should have been abandoned. They were still looking for something. Or someone. I have a very uncomfortable guess about who."
     },
     {
         "id":  "starfall-trench-note-24",
         "number":  24,
-        "title":  "Starwalker Footprints",
-        "text":  "An unsigned observation reads: A trail of fused footprints crosses molten-looking stone without approaching or leaving the site."
+        "title":  "The Fallen Star Walker",
+        "text":  "There are footprints fused into the stone here, but they don\u0027t begin anywhere and they don\u0027t end anywhere. Just a line of glowing steps across the crater. I put one foot beside them for comparison. Much bigger than mine. Glimmer has voted that we do NOT follow them. Motion carried unanimously."
     },
     {
         "id":  "starfall-trench-note-25",
         "number":  25,
         "title":  "Return Visit",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki wrote over a warning placard: \"I came back voluntarily, moved your furniture, and left voluntarily. Important distinction.\""
+        "text":  "Found another Annex room today. I moved one chair exactly three feet to the left and wrote: \u0027I came back voluntarily, moved your furniture, and left voluntarily. Important distinction.\u0027 Petty? Maybe. Satisfying? Absolutely."
     },
     {
         "id":  "starfall-trench-note-26",
         "number":  26,
-        "title":  "The Trench Map",
-        "text":  "An old field report states: A celestial map marks other facilities as dim points beyond the reef, but water damage erased their names."
+        "title":  "The Bigger Map",
+        "text":  "I finally found a damaged celestial chart inside the Annex. Moonlit Lab and Starfall aren\u0027t the only marked locations. There were other points farther out, but the names are ruined. One path seems to continue toward a forest wrapped in glowing currents. I knew the Astral Sea was big, but... maybe I didn\u0027t know how big."
     },
     {
         "id":  "starfall-trench-note-27",
         "number":  27,
-        "title":  "Corekeeper Memorandum",
-        "text":  "A local record preserves this account: A maintenance order describes an artificial body expected to remain functional beyond the lifespan of its makers."
+        "title":  "The Corekeeper",
+        "text":  "A maintenance record describes an artificial guardian built to keep functioning long after the people who made it were gone. That\u0027s unsettling enough on its own. Then I found fresh-looking scratches near the old chamber door. I have decided this is a problem for Future Shizuki."
     },
     {
         "id":  "starfall-trench-note-28",
         "number":  28,
-        "title":  "The Missing Shipment",
-        "text":  "An unsigned observation reads: Records mention \"Subject Seven transfer materials,\" although the destination field has been cut from the page."
+        "title":  "Subject Seven",
+        "text":  "I found those words again today. \u0027Subject Seven transfer materials.\u0027 The destination was cut out of the record. Seeing that number still makes my stomach twist, even after all this time. Glimmer stayed unusually quiet. I folded the page and kept moving. I\u0027m not letting an old number decide where I go next."
     },
     {
         "id":  "starfall-trench-note-29",
         "number":  29,
         "title":  "Annex Night Watch",
-        "text":  "A damaged traveler journal records: A guard log ends with reports of laughter in sealed ducts and every Officer portrait acquiring a paper mustache."
+        "text":  "Found an old guard log complaining about laughter in sealed ducts and someone putting paper mustaches on every Officer portrait. I would like it officially recorded that this happened LONG before I got here. I am innocent. Completely innocent. ...I did fix one of the mustaches, though. It was crooked."
     },
     {
         "id":  "starfall-trench-note-30",
         "number":  30,
-        "title":  "Not an Isolated Laboratory",
-        "text":  "A page in Shizuki\u0027s familiar handwriting says: The final surviving ledger confirms the Starfall Annex and Moonlit Lab reported to the same unseen authority."
+        "title":  "The Trench Wasn\u0027t the End",
+        "text":  "The last intact Annex ledger confirms it: Moonlit Lab and Starfall Annex answered to the same organization, and neither one was operating alone. There are more marks on the old maps—more places, more paths, more questions. One route disappears into a forest where travelers wrote that the currents themselves whisper back. Glimmer is already heading that way. I suppose that\u0027s my answer, then~"
     }
 ]
