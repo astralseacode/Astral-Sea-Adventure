@@ -5,7 +5,7 @@
     "regionId":  "sunken-kings-throne",
     "enemyId":  "taxkeeper-octopus",
     "recommendedLevel":  40,
-    "introDiscord":  "Taxkeeper Offices lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Taxkeeper Octopus.",
+    "introDiscord":  "Taxkeeper Offices lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Tithekeeper Octopus.",
     "introTwitch":  "Taxkeeper Offices lies ahead amid flooded courtyards lined with watchful stone nobility.",
     "startRoomId":  "taxkeeper-offices-approach",
     "rooms":  {
@@ -23,7 +23,7 @@
                                                                                    "type":  "combat",
                                                                                    "nextRoomId":  "taxkeeper-offices-depths",
                                                                                    "enemyId":  "taxkeeper-octopus",
-                                                                                   "message":  "A shift in the current exposes Taxkeeper Octopus, which claims the right route through Taxkeeper Offices."
+                                                                                   "message":  "A shift in the current exposes Tithekeeper Octopus, which claims the right route through Taxkeeper Offices."
                                                                                },
                                                                      "forward":  {
                                                                                      "type":  "treasure",
@@ -58,7 +58,7 @@
                                                                                    "type":  "combat",
                                                                                    "nextRoomId":  "taxkeeper-offices-threshold",
                                                                                    "enemyId":  "taxkeeper-octopus",
-                                                                                   "message":  "A shift in the current exposes Taxkeeper Octopus, which claims the forward route through Taxkeeper Offices."
+                                                                                   "message":  "A shift in the current exposes Tithekeeper Octopus, which claims the forward route through Taxkeeper Offices."
                                                                                }
                                                                }
                                                },
@@ -69,7 +69,7 @@
                                                                                    "type":  "combat",
                                                                                    "nextRoomId":  "boss-antechamber",
                                                                                    "enemyId":  "taxkeeper-octopus",
-                                                                                   "message":  "A shift in the current exposes Taxkeeper Octopus, which claims the left route through Taxkeeper Offices."
+                                                                                   "message":  "A shift in the current exposes Tithekeeper Octopus, which claims the left route through Taxkeeper Offices."
                                                                                },
                                                                       "right":  {
                                                                                     "type":  "healing",

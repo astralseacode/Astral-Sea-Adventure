@@ -5,7 +5,7 @@
     "regionId":  "leviathans-wake",
     "enemyId":  "leviathan-song-echo",
     "recommendedLevel":  28,
-    "introDiscord":  "The Last Leviathan Song lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Leviathan Song Echo.",
+    "introDiscord":  "The Last Leviathan Song lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Songwake Phantom.",
     "introTwitch":  "The Last Leviathan Song lies ahead amid titanic ribs rising through violent crosscurrents.",
     "startRoomId":  "the-last-leviathan-song-approach",
     "rooms":  {
@@ -16,7 +16,7 @@
                                                                                         "type":  "combat",
                                                                                         "nextRoomId":  "the-last-leviathan-song-depths",
                                                                                         "enemyId":  "leviathan-song-echo",
-                                                                                        "message":  "A shift in the current exposes Leviathan Song Echo, which claims the left route through The Last Leviathan Song."
+                                                                                        "message":  "A shift in the current exposes Songwake Phantom, which claims the left route through The Last Leviathan Song."
                                                                                     },
                                                                            "right":  {
                                                                                          "type":  "treasure",
@@ -52,7 +52,7 @@
                                                                                        "type":  "combat",
                                                                                        "nextRoomId":  "the-last-leviathan-song-threshold",
                                                                                        "enemyId":  "leviathan-song-echo",
-                                                                                       "message":  "A shift in the current exposes Leviathan Song Echo, which claims the right route through The Last Leviathan Song."
+                                                                                       "message":  "A shift in the current exposes Songwake Phantom, which claims the right route through The Last Leviathan Song."
                                                                                    },
                                                                          "forward":  {
                                                                                          "type":  "empty",
@@ -85,7 +85,7 @@
                                                                                             "type":  "combat",
                                                                                             "nextRoomId":  "boss-antechamber",
                                                                                             "enemyId":  "leviathan-song-echo",
-                                                                                            "message":  "A shift in the current exposes Leviathan Song Echo, which claims the forward route through The Last Leviathan Song."
+                                                                                            "message":  "A shift in the current exposes Songwake Phantom, which claims the forward route through The Last Leviathan Song."
                                                                                         }
                                                                         }
                                                         },

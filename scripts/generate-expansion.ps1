@@ -22,6 +22,15 @@ $scaling = @{
   'sunken-kings-throne' = @(345,430,12,14,650,920,1200,1650,145,475,570,15,18,980,1350,1750,2350,200,230,350,85,110)
   'astral-nexus' = @(425,510,14,18,900,1300,1600,2300,190,565,680,18,22,1350,1850,2300,3200,260,300,450,105,135)
 }
+$stableRenamedIds = @{
+  'Starvent Crab'='cosmic-vent-crab'; 'Starforge Clawlord'='superheated-ventlord'; 'Starcoil Nautilus'='periapsis-nautilus';
+  'Fallen Star Walker'='celestial-ruin-walker'; 'Celestial Corekeeper'='celestial-core-keeper'; 'Veilmoss Grouper'='camouflage-grouper';
+  'Starmaw Blossom'='predatory-starflower'; 'Moonloom Weaver'='grand-loom-spider'; 'Titanwake Drake'='titanwake-crocodile';
+  'Primeval Fangkeeper'='first-tooth-sentinel'; 'Songwake Phantom'='leviathan-song-echo'; 'Gilded Platefin'='gilded-armorfish';
+  'Tithekeeper Octopus'='taxkeeper-octopus'; 'Crown-Caged Chimera'='royal-menagerie-beast'; 'Royal Oath Construct'='royal-seal-construct';
+  'Angleweave Eel'='geometry-eel'; 'Fractured-Angle Coil'='euclidean-coilbreaker'; 'Mirror-Self Mimic'='echo-of-self-mimic';
+  'Convergence Elemental'='nexus-current-elemental'; 'Fae Stoneweaver'='fae-ruin-architect'; 'Portalgrave Prowler'='portal-grave-scavenger'
+}
 $layouts = @(
   @(@('combat','treasure','healing'),@('treasure','combat','empty'),@('healing','treasure','combat')),
   @(@('treasure','healing','combat'),@('combat','empty','treasure'),@('treasure','combat','healing')),
@@ -54,8 +63,9 @@ foreach ($match in $matches) {
     $row = $enemyRows[$i]
     $enemyName,$adventureName,$bossName,$chamber = 1..4 | ForEach-Object { $row.Groups[$_].Value }
     $number = $i + 1
-    $enemyId = Slug $enemyName
-    $bossId = (Slug $bossName) + '-boss'
+    $enemyId = if($stableRenamedIds.ContainsKey($enemyName)){$stableRenamedIds[$enemyName]}else{Slug $enemyName}
+    $bossBaseId = if($stableRenamedIds.ContainsKey($bossName)){$stableRenamedIds[$bossName]}else{Slug $bossName}
+    $bossId = $bossBaseId + '-boss'
     $adventureId = Slug $adventureName
     $level = if ($low -eq $high) { $low } else { [Math]::Round($low + (($high-$low)*$i/29.0), [MidpointRounding]::AwayFromZero) }
     $normal = [ordered]@{id=$enemyId;name=$enemyName;region=$id;level=$level;hp=(Lerp $s[0] $s[1] $i);damageBonus=(Lerp $s[2] $s[3] $i);isBoss=$false;reward=[ordered]@{candies=[ordered]@{min=(Lerp $s[4] $s[5] $i);max=(Lerp $s[6] $s[7] $i)};xp=[ordered]@{min=(Lerp $s[4] $s[5] $i);max=(Lerp ($s[4]+70) ($s[5]+100) $i)}};defeatCandyLoss=(Lerp $s[8] ($s[8]+45) $i)}

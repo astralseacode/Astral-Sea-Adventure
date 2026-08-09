@@ -5,7 +5,7 @@
     "regionId":  "sunken-kings-throne",
     "enemyId":  "royal-menagerie-beast",
     "recommendedLevel":  44,
-    "introDiscord":  "The Ruined Menagerie lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Royal Menagerie Beast.",
+    "introDiscord":  "The Ruined Menagerie lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Crown-Caged Chimera.",
     "introTwitch":  "The Ruined Menagerie lies ahead amid flooded courtyards lined with watchful stone nobility.",
     "startRoomId":  "the-ruined-menagerie-approach",
     "rooms":  {
@@ -23,7 +23,7 @@
                                                                                       "type":  "combat",
                                                                                       "nextRoomId":  "the-ruined-menagerie-depths",
                                                                                       "enemyId":  "royal-menagerie-beast",
-                                                                                      "message":  "A shift in the current exposes Royal Menagerie Beast, which claims the right route through The Ruined Menagerie."
+                                                                                      "message":  "A shift in the current exposes Crown-Caged Chimera, which claims the right route through The Ruined Menagerie."
                                                                                   },
                                                                         "forward":  {
                                                                                         "type":  "treasure",
@@ -58,7 +58,7 @@
                                                                                       "type":  "combat",
                                                                                       "nextRoomId":  "the-ruined-menagerie-threshold",
                                                                                       "enemyId":  "royal-menagerie-beast",
-                                                                                      "message":  "A shift in the current exposes Royal Menagerie Beast, which claims the forward route through The Ruined Menagerie."
+                                                                                      "message":  "A shift in the current exposes Crown-Caged Chimera, which claims the forward route through The Ruined Menagerie."
                                                                                   }
                                                                   }
                                                   },
@@ -69,7 +69,7 @@
                                                                                       "type":  "combat",
                                                                                       "nextRoomId":  "boss-antechamber",
                                                                                       "enemyId":  "royal-menagerie-beast",
-                                                                                      "message":  "A shift in the current exposes Royal Menagerie Beast, which claims the left route through The Ruined Menagerie."
+                                                                                      "message":  "A shift in the current exposes Crown-Caged Chimera, which claims the left route through The Ruined Menagerie."
                                                                                   },
                                                                          "right":  {
                                                                                        "type":  "healing",

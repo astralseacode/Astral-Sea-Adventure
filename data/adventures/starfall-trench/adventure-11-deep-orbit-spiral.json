@@ -101,7 +101,7 @@
     "boss":  {
                  "enemyId":  "periapsis-nautilus-boss",
                  "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Periapsis Nautilus reveals itself!"
+                 "revealText":  "The chamber\u0027s veil breaks. Starcoil Nautilus reveals itself!"
              },
-    "completionText":  "Periapsis Nautilus yields, and the currents beyond Celestial Coil open the next route through Starfall Trench."
+    "completionText":  "Starcoil Nautilus yields, and the currents beyond Celestial Coil open the next route through Starfall Trench."
 }

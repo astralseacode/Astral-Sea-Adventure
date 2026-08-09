@@ -5,7 +5,7 @@
     "regionId":  "sunken-kings-throne",
     "enemyId":  "royal-seal-construct",
     "recommendedLevel":  48,
-    "introDiscord":  "The Seven Royal Seals lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Royal Seal Construct.",
+    "introDiscord":  "The Seven Royal Seals lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Royal Oath Construct.",
     "introTwitch":  "The Seven Royal Seals lies ahead amid flooded courtyards lined with watchful stone nobility.",
     "startRoomId":  "the-seven-royal-seals-approach",
     "rooms":  {
@@ -23,7 +23,7 @@
                                                                                        "type":  "combat",
                                                                                        "nextRoomId":  "the-seven-royal-seals-depths",
                                                                                        "enemyId":  "royal-seal-construct",
-                                                                                       "message":  "A shift in the current exposes Royal Seal Construct, which claims the right route through The Seven Royal Seals."
+                                                                                       "message":  "A shift in the current exposes Royal Oath Construct, which claims the right route through The Seven Royal Seals."
                                                                                    },
                                                                          "forward":  {
                                                                                          "type":  "treasure",
@@ -58,7 +58,7 @@
                                                                                        "type":  "combat",
                                                                                        "nextRoomId":  "the-seven-royal-seals-threshold",
                                                                                        "enemyId":  "royal-seal-construct",
-                                                                                       "message":  "A shift in the current exposes Royal Seal Construct, which claims the forward route through The Seven Royal Seals."
+                                                                                       "message":  "A shift in the current exposes Royal Oath Construct, which claims the forward route through The Seven Royal Seals."
                                                                                    }
                                                                    }
                                                    },
@@ -69,7 +69,7 @@
                                                                                        "type":  "combat",
                                                                                        "nextRoomId":  "boss-antechamber",
                                                                                        "enemyId":  "royal-seal-construct",
-                                                                                       "message":  "A shift in the current exposes Royal Seal Construct, which claims the left route through The Seven Royal Seals."
+                                                                                       "message":  "A shift in the current exposes Royal Oath Construct, which claims the left route through The Seven Royal Seals."
                                                                                    },
                                                                           "right":  {
                                                                                         "type":  "healing",

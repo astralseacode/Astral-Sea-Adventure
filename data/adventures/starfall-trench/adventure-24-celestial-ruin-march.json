@@ -5,7 +5,7 @@
     "regionId":  "starfall-trench",
     "enemyId":  "celestial-ruin-walker",
     "recommendedLevel":  9,
-    "introDiscord":  "Celestial Ruin March lies ahead, where gravity-bent celestial ruins conceal the territory of Celestial Ruin Walker.",
+    "introDiscord":  "Celestial Ruin March lies ahead, where gravity-bent celestial ruins conceal the territory of Fallen Star Walker.",
     "introTwitch":  "Celestial Ruin March lies ahead amid gravity-bent celestial ruins.",
     "startRoomId":  "celestial-ruin-march-approach",
     "rooms":  {
@@ -31,7 +31,7 @@
                                                                                         "type":  "combat",
                                                                                         "nextRoomId":  "celestial-ruin-march-depths",
                                                                                         "enemyId":  "celestial-ruin-walker",
-                                                                                        "message":  "A shift in the current exposes Celestial Ruin Walker, which claims the forward route through Celestial Ruin March."
+                                                                                        "message":  "A shift in the current exposes Fallen Star Walker, which claims the forward route through Celestial Ruin March."
                                                                                     }
                                                                     }
                                                     },
@@ -42,7 +42,7 @@
                                                                                    "type":  "combat",
                                                                                    "nextRoomId":  "celestial-ruin-march-threshold",
                                                                                    "enemyId":  "celestial-ruin-walker",
-                                                                                   "message":  "A shift in the current exposes Celestial Ruin Walker, which claims the left route through Celestial Ruin March."
+                                                                                   "message":  "A shift in the current exposes Fallen Star Walker, which claims the left route through Celestial Ruin March."
                                                                                },
                                                                       "right":  {
                                                                                     "type":  "healing",
@@ -78,7 +78,7 @@
                                                                                        "type":  "combat",
                                                                                        "nextRoomId":  "boss-antechamber",
                                                                                        "enemyId":  "celestial-ruin-walker",
-                                                                                       "message":  "A shift in the current exposes Celestial Ruin Walker, which claims the right route through Celestial Ruin March."
+                                                                                       "message":  "A shift in the current exposes Fallen Star Walker, which claims the right route through Celestial Ruin March."
                                                                                    },
                                                                          "forward":  {
                                                                                          "type":  "healing",

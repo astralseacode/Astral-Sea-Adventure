@@ -5,7 +5,7 @@
     "regionId":  "astral-nexus",
     "enemyId":  "portal-grave-scavenger",
     "recommendedLevel":  50,
-    "introDiscord":  "Portal Graveyard lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Portal Grave Scavenger.",
+    "introDiscord":  "Portal Graveyard lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Portalgrave Prowler.",
     "introTwitch":  "Portal Graveyard lies ahead amid floating ocean fragments joined by impossible currents.",
     "startRoomId":  "portal-graveyard-approach",
     "rooms":  {
@@ -16,7 +16,7 @@
                                                                                  "type":  "combat",
                                                                                  "nextRoomId":  "portal-graveyard-depths",
                                                                                  "enemyId":  "portal-grave-scavenger",
-                                                                                 "message":  "A shift in the current exposes Portal Grave Scavenger, which claims the left route through Portal Graveyard."
+                                                                                 "message":  "A shift in the current exposes Portalgrave Prowler, which claims the left route through Portal Graveyard."
                                                                              },
                                                                     "right":  {
                                                                                   "type":  "treasure",
@@ -52,7 +52,7 @@
                                                                                 "type":  "combat",
                                                                                 "nextRoomId":  "portal-graveyard-threshold",
                                                                                 "enemyId":  "portal-grave-scavenger",
-                                                                                "message":  "A shift in the current exposes Portal Grave Scavenger, which claims the right route through Portal Graveyard."
+                                                                                "message":  "A shift in the current exposes Portalgrave Prowler, which claims the right route through Portal Graveyard."
                                                                             },
                                                                   "forward":  {
                                                                                   "type":  "empty",
@@ -85,7 +85,7 @@
                                                                                      "type":  "combat",
                                                                                      "nextRoomId":  "boss-antechamber",
                                                                                      "enemyId":  "portal-grave-scavenger",
-                                                                                     "message":  "A shift in the current exposes Portal Grave Scavenger, which claims the forward route through Portal Graveyard."
+                                                                                     "message":  "A shift in the current exposes Portalgrave Prowler, which claims the forward route through Portal Graveyard."
                                                                                  }
                                                                  }
                                                  },

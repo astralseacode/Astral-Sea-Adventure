@@ -5,7 +5,7 @@
     "regionId":  "starfall-trench",
     "enemyId":  "celestial-core-keeper",
     "recommendedLevel":  10,
-    "introDiscord":  "The Buried Celestial Engine lies ahead, where meteor-lit trenches conceal the territory of Celestial Core Keeper.",
+    "introDiscord":  "The Buried Celestial Engine lies ahead, where meteor-lit trenches conceal the territory of Celestial Corekeeper.",
     "introTwitch":  "The Buried Celestial Engine lies ahead amid meteor-lit trenches.",
     "startRoomId":  "the-buried-celestial-engine-approach",
     "rooms":  {
@@ -25,7 +25,7 @@
                                                                                              "type":  "combat",
                                                                                              "nextRoomId":  "the-buried-celestial-engine-depths",
                                                                                              "enemyId":  "celestial-core-keeper",
-                                                                                             "message":  "A shift in the current exposes Celestial Core Keeper, which claims the right route through The Buried Celestial Engine."
+                                                                                             "message":  "A shift in the current exposes Celestial Corekeeper, which claims the right route through The Buried Celestial Engine."
                                                                                          },
                                                                                "forward":  {
                                                                                                "type":  "healing",
@@ -43,7 +43,7 @@
                                                                                           "type":  "combat",
                                                                                           "nextRoomId":  "the-buried-celestial-engine-threshold",
                                                                                           "enemyId":  "celestial-core-keeper",
-                                                                                          "message":  "A shift in the current exposes Celestial Core Keeper, which claims the left route through The Buried Celestial Engine."
+                                                                                          "message":  "A shift in the current exposes Celestial Corekeeper, which claims the left route through The Buried Celestial Engine."
                                                                                       },
                                                                              "right":  {
                                                                                            "type":  "treasure",
@@ -76,7 +76,7 @@
                                                                                               "type":  "combat",
                                                                                               "nextRoomId":  "boss-antechamber",
                                                                                               "enemyId":  "celestial-core-keeper",
-                                                                                              "message":  "A shift in the current exposes Celestial Core Keeper, which claims the right route through The Buried Celestial Engine."
+                                                                                              "message":  "A shift in the current exposes Celestial Corekeeper, which claims the right route through The Buried Celestial Engine."
                                                                                           },
                                                                                 "forward":  {
                                                                                                 "type":  "treasure",

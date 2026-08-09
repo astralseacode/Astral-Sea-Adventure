@@ -5,7 +5,7 @@
     "regionId":  "starfall-trench",
     "enemyId":  "cosmic-vent-crab",
     "recommendedLevel":  6,
-    "introDiscord":  "Cosmic Ventworks lies ahead, where gravity-bent celestial ruins conceal the territory of Cosmic Vent Crab.",
+    "introDiscord":  "Cosmic Ventworks lies ahead, where gravity-bent celestial ruins conceal the territory of Starvent Crab.",
     "introTwitch":  "Cosmic Ventworks lies ahead amid gravity-bent celestial ruins.",
     "startRoomId":  "cosmic-ventworks-approach",
     "rooms":  {
@@ -23,7 +23,7 @@
                                                                                   "type":  "combat",
                                                                                   "nextRoomId":  "cosmic-ventworks-depths",
                                                                                   "enemyId":  "cosmic-vent-crab",
-                                                                                  "message":  "A shift in the current exposes Cosmic Vent Crab, which claims the right route through Cosmic Ventworks."
+                                                                                  "message":  "A shift in the current exposes Starvent Crab, which claims the right route through Cosmic Ventworks."
                                                                               },
                                                                     "forward":  {
                                                                                     "type":  "treasure",
@@ -58,7 +58,7 @@
                                                                                   "type":  "combat",
                                                                                   "nextRoomId":  "cosmic-ventworks-threshold",
                                                                                   "enemyId":  "cosmic-vent-crab",
-                                                                                  "message":  "A shift in the current exposes Cosmic Vent Crab, which claims the forward route through Cosmic Ventworks."
+                                                                                  "message":  "A shift in the current exposes Starvent Crab, which claims the forward route through Cosmic Ventworks."
                                                                               }
                                                               }
                                               },
@@ -69,7 +69,7 @@
                                                                                   "type":  "combat",
                                                                                   "nextRoomId":  "boss-antechamber",
                                                                                   "enemyId":  "cosmic-vent-crab",
-                                                                                  "message":  "A shift in the current exposes Cosmic Vent Crab, which claims the left route through Cosmic Ventworks."
+                                                                                  "message":  "A shift in the current exposes Starvent Crab, which claims the left route through Cosmic Ventworks."
                                                                               },
                                                                      "right":  {
                                                                                    "type":  "healing",
@@ -101,7 +101,7 @@
     "boss":  {
                  "enemyId":  "superheated-ventlord-boss",
                  "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Superheated Ventlord reveals itself!"
+                 "revealText":  "The chamber\u0027s veil breaks. Starforge Clawlord reveals itself!"
              },
-    "completionText":  "Superheated Ventlord yields, and the currents beyond Forge of Blue Fire open the next route through Starfall Trench."
+    "completionText":  "Starforge Clawlord yields, and the currents beyond Forge of Blue Fire open the next route through Starfall Trench."
 }

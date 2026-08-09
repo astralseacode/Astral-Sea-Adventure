@@ -5,7 +5,7 @@
     "regionId":  "astral-nexus",
     "enemyId":  "geometry-eel",
     "recommendedLevel":  50,
-    "introDiscord":  "Impossible Angles lies ahead, where fae arches opening onto incompatible skies conceal the territory of Geometry Eel.",
+    "introDiscord":  "Impossible Angles lies ahead, where fae arches opening onto incompatible skies conceal the territory of Angleweave Eel.",
     "introTwitch":  "Impossible Angles lies ahead amid fae arches opening onto incompatible skies.",
     "startRoomId":  "impossible-angles-approach",
     "rooms":  {
@@ -32,7 +32,7 @@
                                                                                      "type":  "combat",
                                                                                      "nextRoomId":  "impossible-angles-depths",
                                                                                      "enemyId":  "geometry-eel",
-                                                                                     "message":  "A shift in the current exposes Geometry Eel, which claims the forward route through Impossible Angles."
+                                                                                     "message":  "A shift in the current exposes Angleweave Eel, which claims the forward route through Impossible Angles."
                                                                                  }
                                                                  }
                                                  },
@@ -43,7 +43,7 @@
                                                                                 "type":  "combat",
                                                                                 "nextRoomId":  "impossible-angles-threshold",
                                                                                 "enemyId":  "geometry-eel",
-                                                                                "message":  "A shift in the current exposes Geometry Eel, which claims the left route through Impossible Angles."
+                                                                                "message":  "A shift in the current exposes Angleweave Eel, which claims the left route through Impossible Angles."
                                                                             },
                                                                    "right":  {
                                                                                  "type":  "empty",
@@ -78,7 +78,7 @@
                                                                                     "type":  "combat",
                                                                                     "nextRoomId":  "boss-antechamber",
                                                                                     "enemyId":  "geometry-eel",
-                                                                                    "message":  "A shift in the current exposes Geometry Eel, which claims the right route through Impossible Angles."
+                                                                                    "message":  "A shift in the current exposes Angleweave Eel, which claims the right route through Impossible Angles."
                                                                                 },
                                                                       "forward":  {
                                                                                       "type":  "healing",
@@ -101,7 +101,7 @@
     "boss":  {
                  "enemyId":  "euclidean-coilbreaker-boss",
                  "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Euclidean Coilbreaker reveals itself!"
+                 "revealText":  "The chamber\u0027s veil breaks. Fractured-Angle Coil reveals itself!"
              },
-    "completionText":  "Euclidean Coilbreaker yields, and the currents beyond The Unclosed Triangle open the next route through Astral Nexus."
+    "completionText":  "Fractured-Angle Coil yields, and the currents beyond The Unclosed Triangle open the next route through Astral Nexus."
 }

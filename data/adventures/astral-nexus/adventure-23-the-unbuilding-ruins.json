@@ -5,7 +5,7 @@
     "regionId":  "astral-nexus",
     "enemyId":  "fae-ruin-architect",
     "recommendedLevel":  50,
-    "introDiscord":  "The Unbuilding Ruins lies ahead, where fae arches opening onto incompatible skies conceal the territory of Fae Ruin Architect.",
+    "introDiscord":  "The Unbuilding Ruins lies ahead, where fae arches opening onto incompatible skies conceal the territory of Fae Stoneweaver.",
     "introTwitch":  "The Unbuilding Ruins lies ahead amid fae arches opening onto incompatible skies.",
     "startRoomId":  "the-unbuilding-ruins-approach",
     "rooms":  {
@@ -25,7 +25,7 @@
                                                                                       "type":  "combat",
                                                                                       "nextRoomId":  "the-unbuilding-ruins-depths",
                                                                                       "enemyId":  "fae-ruin-architect",
-                                                                                      "message":  "A shift in the current exposes Fae Ruin Architect, which claims the right route through The Unbuilding Ruins."
+                                                                                      "message":  "A shift in the current exposes Fae Stoneweaver, which claims the right route through The Unbuilding Ruins."
                                                                                   },
                                                                         "forward":  {
                                                                                         "type":  "healing",
@@ -43,7 +43,7 @@
                                                                                    "type":  "combat",
                                                                                    "nextRoomId":  "the-unbuilding-ruins-threshold",
                                                                                    "enemyId":  "fae-ruin-architect",
-                                                                                   "message":  "A shift in the current exposes Fae Ruin Architect, which claims the left route through The Unbuilding Ruins."
+                                                                                   "message":  "A shift in the current exposes Fae Stoneweaver, which claims the left route through The Unbuilding Ruins."
                                                                                },
                                                                       "right":  {
                                                                                     "type":  "treasure",
@@ -76,7 +76,7 @@
                                                                                        "type":  "combat",
                                                                                        "nextRoomId":  "boss-antechamber",
                                                                                        "enemyId":  "fae-ruin-architect",
-                                                                                       "message":  "A shift in the current exposes Fae Ruin Architect, which claims the right route through The Unbuilding Ruins."
+                                                                                       "message":  "A shift in the current exposes Fae Stoneweaver, which claims the right route through The Unbuilding Ruins."
                                                                                    },
                                                                          "forward":  {
                                                                                          "type":  "treasure",

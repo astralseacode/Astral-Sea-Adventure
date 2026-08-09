@@ -5,7 +5,7 @@
     "regionId":  "leviathans-wake",
     "enemyId":  "titanwake-crocodile",
     "recommendedLevel":  26,
-    "introDiscord":  "Titanwake Delta lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Titanwake Crocodile.",
+    "introDiscord":  "Titanwake Delta lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Titanwake Drake.",
     "introTwitch":  "Titanwake Delta lies ahead amid pressure-scarred trenches beside wrecked hulls.",
     "startRoomId":  "titanwake-delta-approach",
     "rooms":  {
@@ -25,7 +25,7 @@
                                                                                  "type":  "combat",
                                                                                  "nextRoomId":  "titanwake-delta-depths",
                                                                                  "enemyId":  "titanwake-crocodile",
-                                                                                 "message":  "A shift in the current exposes Titanwake Crocodile, which claims the right route through Titanwake Delta."
+                                                                                 "message":  "A shift in the current exposes Titanwake Drake, which claims the right route through Titanwake Delta."
                                                                              },
                                                                    "forward":  {
                                                                                    "type":  "healing",
@@ -43,7 +43,7 @@
                                                                               "type":  "combat",
                                                                               "nextRoomId":  "titanwake-delta-threshold",
                                                                               "enemyId":  "titanwake-crocodile",
-                                                                              "message":  "A shift in the current exposes Titanwake Crocodile, which claims the left route through Titanwake Delta."
+                                                                              "message":  "A shift in the current exposes Titanwake Drake, which claims the left route through Titanwake Delta."
                                                                           },
                                                                  "right":  {
                                                                                "type":  "treasure",
@@ -76,7 +76,7 @@
                                                                                   "type":  "combat",
                                                                                   "nextRoomId":  "boss-antechamber",
                                                                                   "enemyId":  "titanwake-crocodile",
-                                                                                  "message":  "A shift in the current exposes Titanwake Crocodile, which claims the right route through Titanwake Delta."
+                                                                                  "message":  "A shift in the current exposes Titanwake Drake, which claims the right route through Titanwake Delta."
                                                                               },
                                                                     "forward":  {
                                                                                     "type":  "treasure",

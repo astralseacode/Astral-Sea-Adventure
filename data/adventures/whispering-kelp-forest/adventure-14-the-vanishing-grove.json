@@ -5,7 +5,7 @@
     "regionId":  "whispering-kelp-forest",
     "enemyId":  "camouflage-grouper",
     "recommendedLevel":  14,
-    "introDiscord":  "The Vanishing Grove lies ahead, where living rootways beneath drifting fae lights conceal the territory of Camouflage Grouper.",
+    "introDiscord":  "The Vanishing Grove lies ahead, where living rootways beneath drifting fae lights conceal the territory of Veilmoss Grouper.",
     "introTwitch":  "The Vanishing Grove lies ahead amid living rootways beneath drifting fae lights.",
     "startRoomId":  "the-vanishing-grove-approach",
     "rooms":  {
@@ -32,7 +32,7 @@
                                                                                        "type":  "combat",
                                                                                        "nextRoomId":  "the-vanishing-grove-depths",
                                                                                        "enemyId":  "camouflage-grouper",
-                                                                                       "message":  "A shift in the current exposes Camouflage Grouper, which claims the forward route through The Vanishing Grove."
+                                                                                       "message":  "A shift in the current exposes Veilmoss Grouper, which claims the forward route through The Vanishing Grove."
                                                                                    }
                                                                    }
                                                    },
@@ -43,7 +43,7 @@
                                                                                   "type":  "combat",
                                                                                   "nextRoomId":  "the-vanishing-grove-threshold",
                                                                                   "enemyId":  "camouflage-grouper",
-                                                                                  "message":  "A shift in the current exposes Camouflage Grouper, which claims the left route through The Vanishing Grove."
+                                                                                  "message":  "A shift in the current exposes Veilmoss Grouper, which claims the left route through The Vanishing Grove."
                                                                               },
                                                                      "right":  {
                                                                                    "type":  "empty",
@@ -78,7 +78,7 @@
                                                                                       "type":  "combat",
                                                                                       "nextRoomId":  "boss-antechamber",
                                                                                       "enemyId":  "camouflage-grouper",
-                                                                                      "message":  "A shift in the current exposes Camouflage Grouper, which claims the right route through The Vanishing Grove."
+                                                                                      "message":  "A shift in the current exposes Veilmoss Grouper, which claims the right route through The Vanishing Grove."
                                                                                   },
                                                                         "forward":  {
                                                                                         "type":  "healing",

@@ -5,7 +5,7 @@
     "regionId":  "sunken-kings-throne",
     "enemyId":  "gilded-armorfish",
     "recommendedLevel":  36,
-    "introDiscord":  "Gilded Processional lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Gilded Armorfish.",
+    "introDiscord":  "Gilded Processional lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Gilded Platefin.",
     "introTwitch":  "Gilded Processional lies ahead amid drowned palace colonnades guarded by broken royal seals.",
     "startRoomId":  "gilded-processional-approach",
     "rooms":  {
@@ -16,7 +16,7 @@
                                                                                     "type":  "combat",
                                                                                     "nextRoomId":  "gilded-processional-depths",
                                                                                     "enemyId":  "gilded-armorfish",
-                                                                                    "message":  "A shift in the current exposes Gilded Armorfish, which claims the left route through Gilded Processional."
+                                                                                    "message":  "A shift in the current exposes Gilded Platefin, which claims the left route through Gilded Processional."
                                                                                 },
                                                                        "right":  {
                                                                                      "type":  "empty",
@@ -49,7 +49,7 @@
                                                                                    "type":  "combat",
                                                                                    "nextRoomId":  "gilded-processional-threshold",
                                                                                    "enemyId":  "gilded-armorfish",
-                                                                                   "message":  "A shift in the current exposes Gilded Armorfish, which claims the right route through Gilded Processional."
+                                                                                   "message":  "A shift in the current exposes Gilded Platefin, which claims the right route through Gilded Processional."
                                                                                },
                                                                      "forward":  {
                                                                                      "type":  "treasure",
@@ -85,7 +85,7 @@
                                                                                         "type":  "combat",
                                                                                         "nextRoomId":  "boss-antechamber",
                                                                                         "enemyId":  "gilded-armorfish",
-                                                                                        "message":  "A shift in the current exposes Gilded Armorfish, which claims the forward route through Gilded Processional."
+                                                                                        "message":  "A shift in the current exposes Gilded Platefin, which claims the forward route through Gilded Processional."
                                                                                     }
                                                                     }
                                                     },

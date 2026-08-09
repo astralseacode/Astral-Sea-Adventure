@@ -5,7 +5,7 @@
     "regionId":  "astral-nexus",
     "enemyId":  "echo-of-self-mimic",
     "recommendedLevel":  50,
-    "introDiscord":  "Hall of Other Selves lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Echo-of-Self Mimic.",
+    "introDiscord":  "Hall of Other Selves lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Mirror-Self Mimic.",
     "introTwitch":  "Hall of Other Selves lies ahead amid floating ocean fragments joined by impossible currents.",
     "startRoomId":  "hall-of-other-selves-approach",
     "rooms":  {
@@ -16,7 +16,7 @@
                                                                                      "type":  "combat",
                                                                                      "nextRoomId":  "hall-of-other-selves-depths",
                                                                                      "enemyId":  "echo-of-self-mimic",
-                                                                                     "message":  "A shift in the current exposes Echo-of-Self Mimic, which claims the left route through Hall of Other Selves."
+                                                                                     "message":  "A shift in the current exposes Mirror-Self Mimic, which claims the left route through Hall of Other Selves."
                                                                                  },
                                                                         "right":  {
                                                                                       "type":  "empty",
@@ -49,7 +49,7 @@
                                                                                     "type":  "combat",
                                                                                     "nextRoomId":  "hall-of-other-selves-threshold",
                                                                                     "enemyId":  "echo-of-self-mimic",
-                                                                                    "message":  "A shift in the current exposes Echo-of-Self Mimic, which claims the right route through Hall of Other Selves."
+                                                                                    "message":  "A shift in the current exposes Mirror-Self Mimic, which claims the right route through Hall of Other Selves."
                                                                                 },
                                                                       "forward":  {
                                                                                       "type":  "treasure",
@@ -85,7 +85,7 @@
                                                                                          "type":  "combat",
                                                                                          "nextRoomId":  "boss-antechamber",
                                                                                          "enemyId":  "echo-of-self-mimic",
-                                                                                         "message":  "A shift in the current exposes Echo-of-Self Mimic, which claims the forward route through Hall of Other Selves."
+                                                                                         "message":  "A shift in the current exposes Mirror-Self Mimic, which claims the forward route through Hall of Other Selves."
                                                                                      }
                                                                      }
                                                      },

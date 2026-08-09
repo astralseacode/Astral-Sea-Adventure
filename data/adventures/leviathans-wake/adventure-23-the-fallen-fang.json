@@ -101,7 +101,7 @@
     "boss":  {
                  "enemyId":  "first-tooth-sentinel-boss",
                  "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. First-Tooth Sentinel reveals itself!"
+                 "revealText":  "The chamber\u0027s veil breaks. Primeval Fangkeeper reveals itself!"
              },
-    "completionText":  "First-Tooth Sentinel yields, and the currents beyond Fang of Ages open the next route through Leviathan\u0027s Wake."
+    "completionText":  "Primeval Fangkeeper yields, and the currents beyond Fang of Ages open the next route through Leviathan\u0027s Wake."
 }

@@ -101,7 +101,7 @@
     "boss":  {
                  "enemyId":  "grand-loom-spider-boss",
                  "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Grand Loom Spider reveals itself!"
+                 "revealText":  "The chamber\u0027s veil breaks. Moonloom Weaver reveals itself!"
              },
-    "completionText":  "Grand Loom Spider yields, and the currents beyond Tide-Silk Rotunda open the next route through Whispering Kelp Forest."
+    "completionText":  "Moonloom Weaver yields, and the currents beyond Tide-Silk Rotunda open the next route through Whispering Kelp Forest."
 }
