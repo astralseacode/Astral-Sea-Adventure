@@ -5812,7 +5812,7 @@ function isValidCombatState(combatState) {
 async function getRegionCombatEntries(regionId) {
   const entries = await fetchCachedJson(
     `combat:${regionId}`,
-    `${GITHUB_DATA_BASE}/enemies/${regionId}.json`,
+    `${GITHUB_DATA_BASE}/enemies/${regionId}/index.json`,
   );
 
   if (!Array.isArray(entries) || entries.length === 0) {
@@ -5853,6 +5853,7 @@ async function getEnemyDefinition(enemyId) {
   }
 
   let bossRegionId = null;
+  let normalRegionId = null;
 
   for (const region of REGIONS) {
     const manifest = await getAdventureManifest(region.id);
@@ -5861,6 +5862,14 @@ async function getEnemyDefinition(enemyId) {
       bossRegionId = region.id;
       break;
     }
+
+    if (manifest.some((entry) => entry.enemyId === enemyId)) {
+      normalRegionId = region.id;
+    }
+  }
+
+  if (!bossRegionId && !normalRegionId) {
+    throw new Error(`Unknown enemy ID: ${enemyId}.`);
   }
 
   const enemy = await fetchCachedJson(
@@ -5868,7 +5877,7 @@ async function getEnemyDefinition(enemyId) {
     bossRegionId
       ? `${GITHUB_DATA_BASE}/enemies/bosses/${bossRegionId}/` +
         `${enemyId}.json`
-      : `${GITHUB_DATA_BASE}/enemies/${enemyId}.json`,
+      : `${GITHUB_DATA_BASE}/enemies/${normalRegionId}/${enemyId}.json`,
   );
 
   return validateEnemyDefinition(enemy, enemyId);

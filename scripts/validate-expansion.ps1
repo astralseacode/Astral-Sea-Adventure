@@ -1,17 +1,20 @@
 $ErrorActionPreference='Stop'
 $repo=Split-Path -Parent $PSScriptRoot
 $regions=@('starfall-trench','whispering-kelp-forest','leviathans-wake','sunken-kings-throne','astral-nexus')
+$allRegions=@('moonlit-reef')+$regions
 $allIds=@{};$failures=[System.Collections.Generic.List[string]]::new();$report=@()
 function Fail($message){$failures.Add($message)}
 foreach($region in $regions){
   $dir=Join-Path $repo "data/adventures/$region"
   $adventureFiles=@(Get-ChildItem $dir -Filter 'adventure-*.json')
   $manifest=Get-Content -Raw (Join-Path $dir 'manifest.json')|ConvertFrom-Json
-  $index=Get-Content -Raw (Join-Path $repo "data/enemies/$region.json")|ConvertFrom-Json
+  $index=Get-Content -Raw (Join-Path $repo "data/enemies/$region/index.json")|ConvertFrom-Json
+  $normalFiles=@(Get-ChildItem (Join-Path $repo "data/enemies/$region") -File -Filter '*.json'|Where-Object{$_.Name-ne'index.json'})
   $bossFiles=@(Get-ChildItem (Join-Path $repo "data/enemies/bosses/$region") -Filter '*.json')
   if($adventureFiles.Count-ne 30){Fail "$region adventure files: $($adventureFiles.Count)"}
   if($manifest.Count-ne 30){Fail "$region manifest entries: $($manifest.Count)"}
   if($index.Count-ne 30){Fail "$region index entries: $($index.Count)"}
+  if($normalFiles.Count-ne 30){Fail "$region normal files: $($normalFiles.Count)"}
   if($bossFiles.Count-ne 30){Fail "$region boss files: $($bossFiles.Count)"}
   $levels=@()
   for($i=0;$i-lt 30;$i++){
@@ -22,7 +25,7 @@ foreach($region in $regions){
     $a=Get-Content -Raw $file|ConvertFrom-Json
     if($a.number-ne$n-or$a.regionId-ne$region-or$a.enemyId-ne$m.enemyId-or$a.boss.enemyId-ne$m.bossEnemyId){Fail "$region reference mismatch $n"}
     if($a.name-ne$m.name){Fail "$region name mismatch $n"}
-    $normalFile=Join-Path $repo "data/enemies/$($a.enemyId).json";$bossFile=Join-Path $repo "data/enemies/bosses/$region/$($a.boss.enemyId).json"
+    $normalFile=Join-Path $repo "data/enemies/$region/$($a.enemyId).json";$bossFile=Join-Path $repo "data/enemies/bosses/$region/$($a.boss.enemyId).json"
     if(!(Test-Path $normalFile)){Fail "$region missing normal $($a.enemyId)";continue};if(!(Test-Path $bossFile)){Fail "$region missing boss $($a.boss.enemyId)";continue}
     $normal=Get-Content -Raw $normalFile|ConvertFrom-Json;$boss=Get-Content -Raw $bossFile|ConvertFrom-Json
     if($normal.isBoss-ne$false-or$boss.isBoss-ne$true){Fail "$region boss flag $n"};if($normal.region-ne$region-or$boss.region-ne$region){Fail "$region enemy region $n"}
@@ -45,9 +48,12 @@ foreach($region in $regions){
 }
 $jsonFiles=@(Get-ChildItem (Join-Path $repo 'data') -Recurse -Filter '*.json');foreach($file in $jsonFiles){try{Get-Content -Raw $file.FullName|ConvertFrom-Json|Out-Null}catch{Fail "JSON parse: $($file.FullName)"}}
 $adventureTotal=@(Get-ChildItem (Join-Path $repo 'data/adventures') -Recurse -Filter 'adventure-*.json').Count
-$normalTotal=0;foreach($file in Get-ChildItem (Join-Path $repo 'data/enemies') -File -Filter '*.json'){try{$j=Get-Content -Raw $file.FullName|ConvertFrom-Json;if($j -isnot [array] -and $j.id -and $j.isBoss -ne $true){$normalTotal++}}catch{}}
+$normalTotal=0;foreach($region in $allRegions){$regionIndex=Get-Content -Raw (Join-Path $repo "data/enemies/$region/index.json")|ConvertFrom-Json;$regionNormals=@(Get-ChildItem (Join-Path $repo "data/enemies/$region") -File -Filter '*.json'|Where-Object{$_.Name-ne'index.json'});if($regionIndex.Count-ne30){Fail "$region structural index count $($regionIndex.Count)"};if($regionNormals.Count-ne30){Fail "$region structural normal count $($regionNormals.Count)"};$normalTotal+=$regionNormals.Count}
 $bossTotal=@(Get-ChildItem (Join-Path $repo 'data/enemies/bosses') -Recurse -Filter '*.json').Count
+$indexTotal=@(Get-ChildItem (Join-Path $repo 'data/enemies') -Recurse -Filter 'index.json').Count
+$rootEnemyJson=@(Get-ChildItem (Join-Path $repo 'data/enemies') -File -Filter '*.json').Count
 if($adventureTotal-ne180){Fail "global adventures $adventureTotal"};if($normalTotal-ne180){Fail "global normals $normalTotal"};if($bossTotal-ne180){Fail "global bosses $bossTotal"}
+if($indexTotal-ne6){Fail "global indexes $indexTotal"};if($rootEnemyJson-ne0){Fail "loose root enemy JSON $rootEnemyJson"}
 $badText=rg -n 'TODO|PLACEHOLDER|Enemy [0-9]+|Boss [0-9]+|Adventure 31|�' data/adventures data/enemies 2>$null;if($LASTEXITCODE-eq0){Fail "placeholder/encoding matches: $badText"}
 $worker=Get-Content -Raw (Join-Path $repo 'worker.js');$chars=$worker.ToCharArray();foreach($pair in @(@('(',')'),@('[',']'),@('{','}'))){$open=($chars|Where-Object{$_-eq$pair[0]}).Count;$close=($chars|Where-Object{$_-eq$pair[1]}).Count;if($open-ne$close){Fail "worker delimiter count $($pair[0])=$open $($pair[1])=$close"}}
 $report|Format-Table -AutoSize

@@ -271,7 +271,7 @@ for (const region of regions) {
       reward: { candies: { min: bossCandyMin, max: Math.round(bossCandyMin * 1.4) }, xp: { min: lerp(s[13],s[14],i), max: lerp(s[14],s[14]+220,i) } },
       defeatCandyLoss: lerp(s[18],s[18]+70,i),
     };
-    writeJson(path.join(root,"data","enemies",`${enemyId}.json`), normal);
+    writeJson(path.join(root,"data","enemies",region.id,`${enemyId}.json`), normal);
     writeJson(path.join(root,"data","enemies","bosses",region.id,`${bossId}.json`), boss);
     index.push({ encounter: number, enemy: enemyId, recommendedLevel: level });
     const roomIds = [`${adventureId}-approach`,`${adventureId}-depths`,`${adventureId}-threshold`];
@@ -308,7 +308,7 @@ for (const region of regions) {
     manifest.push({number,id:adventureId,name:adventureName,enemyId,bossEnemyId:bossId,file});
   });
   writeJson(path.join(root,"data","adventures",region.id,"manifest.json"),manifest);
-  writeJson(path.join(root,"data","enemies",`${region.id}.json`),index);
+  writeJson(path.join(root,"data","enemies",region.id,"index.json"),index);
 }
 
 console.log(`Generated ${regions.length * 30} Adventures, normal enemies, and bosses.`);

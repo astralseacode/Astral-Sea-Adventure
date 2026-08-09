@@ -71,7 +71,7 @@ foreach ($match in $matches) {
     $normal = [ordered]@{id=$enemyId;name=$enemyName;region=$id;level=$level;hp=(Lerp $s[0] $s[1] $i);damageBonus=(Lerp $s[2] $s[3] $i);isBoss=$false;reward=[ordered]@{candies=[ordered]@{min=(Lerp $s[4] $s[5] $i);max=(Lerp $s[6] $s[7] $i)};xp=[ordered]@{min=(Lerp $s[4] $s[5] $i);max=(Lerp ($s[4]+70) ($s[5]+100) $i)}};defeatCandyLoss=(Lerp $s[8] ($s[8]+45) $i)}
     $bossCandyMin=Lerp $s[15] $s[16] $i
     $boss = [ordered]@{id=$bossId;name=$bossName;region=$id;level=$level;hp=(Lerp $s[9] $s[10] $i);damageBonus=(Lerp $s[11] $s[12] $i);isBoss=$true;reward=[ordered]@{candies=[ordered]@{min=$bossCandyMin;max=[Math]::Round($bossCandyMin*1.4,[MidpointRounding]::AwayFromZero)};xp=[ordered]@{min=(Lerp $s[13] $s[14] $i);max=(Lerp $s[14] ($s[14]+220) $i)}};defeatCandyLoss=(Lerp $s[18] ($s[18]+70) $i)}
-    Write-JsonFile (Join-Path $repo "data/enemies/$enemyId.json") $normal
+    Write-JsonFile (Join-Path $repo "data/enemies/$id/$enemyId.json") $normal
     Write-JsonFile (Join-Path $repo "data/enemies/bosses/$id/$bossId.json") $boss
     $index += [ordered]@{encounter=$number;enemy=$enemyId;recommendedLevel=$level}
 
@@ -102,6 +102,6 @@ foreach ($match in $matches) {
     $manifest += [ordered]@{number=$number;id=$adventureId;name=$adventureName;enemyId=$enemyId;bossEnemyId=$bossId;file=$file}
   }
   Write-JsonFile (Join-Path $repo "data/adventures/$id/manifest.json") $manifest
-  Write-JsonFile (Join-Path $repo "data/enemies/$id.json") $index
+  Write-JsonFile (Join-Path $repo "data/enemies/$id/index.json") $index
 }
 Write-Output 'Generated 150 Adventures, normal enemies, and bosses.'
