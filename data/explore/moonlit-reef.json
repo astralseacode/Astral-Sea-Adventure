@@ -1,662 +1,662 @@
 [
-  {
-    "id": 1,
-    "code": "MR-001",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 100,
-    "title": "The First Page",
-    "reward": {
-      "min": 30,
-      "max": 120
+    {
+        "id":  1,
+        "code":  "MR-001",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  100,
+        "title":  "The First Page",
+        "reward":  {
+                       "min":  30,
+                       "max":  120
+                   },
+        "xp":  20,
+        "message":  "wandered beneath the glowing corals of Moonlit Reef and recovered {reward} Star Candies from an ancient Elven shrine. A folded page rested beneath the moonstone altar~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-01",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 20,
-    "message": "wandered beneath the glowing corals of Moonlit Reef and recovered {reward} Star Candies from an ancient Elven shrine. A folded page rested beneath the moonstone altar~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-01",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "code": "MR-002",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 100,
-    "title": "The Definitely Shorter Path",
-    "reward": {
-      "min": 30,
-      "max": 120
+    {
+        "id":  2,
+        "code":  "MR-002",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  100,
+        "title":  "The Definitely Shorter Path",
+        "reward":  {
+                       "min":  30,
+                       "max":  120
+                   },
+        "xp":  20,
+        "message":  "followed a trail of silver shells through Moonlit Reef after finding one of Shizuki\u0027s handwritten shortcuts. The path somehow led in a complete circle, but a hidden tidepool held {reward} Star Candies and another folded page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-02",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 20,
-    "message": "followed a trail of silver shells through Moonlit Reef after finding one of Shizuki's handwritten shortcuts. The path somehow led in a complete circle, but a hidden tidepool held {reward} Star Candies and another folded page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-02",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "code": "MR-003",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 95,
-    "title": "A Sprite in the Coral",
-    "reward": {
-      "min": 30,
-      "max": 100
+    {
+        "id":  3,
+        "code":  "MR-003",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  95,
+        "title":  "A Sprite in the Coral",
+        "reward":  {
+                       "min":  30,
+                       "max":  100
+                   },
+        "xp":  18,
+        "message":  "followed a flicker of moonlight between the corals and met a tiny Moon Sprite guarding {reward} Star Candies. It darted away, leaving one of Shizuki\u0027s folded pages behind~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-03",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 18,
-    "message": "followed a flicker of moonlight between the corals and met a tiny Moon Sprite guarding {reward} Star Candies. It darted away, leaving one of Shizuki's folded pages behind~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-03",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "code": "MR-004",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 95,
-    "title": "The Reef Worth Sketching",
-    "reward": {
-      "min": 25,
-      "max": 85
+    {
+        "id":  4,
+        "code":  "MR-004",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  95,
+        "title":  "The Reef Worth Sketching",
+        "reward":  {
+                       "min":  25,
+                       "max":  85
+                   },
+        "xp":  16,
+        "message":  "paused beneath a sweeping arch of luminous coral where Shizuki had left a half-finished sketch beside {reward} Star Candies and another journal page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-04",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 16,
-    "message": "paused beneath a sweeping arch of luminous coral where Shizuki had left a half-finished sketch beside {reward} Star Candies and another journal page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-04",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "code": "MR-005",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 90,
-    "title": "The Berry Thief",
-    "reward": {
-      "min": 40,
-      "max": 105
+    {
+        "id":  5,
+        "code":  "MR-005",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  90,
+        "title":  "The Berry Thief",
+        "reward":  {
+                       "min":  40,
+                       "max":  105
+                   },
+        "xp":  20,
+        "message":  "chased a bold little crab through the reef after it stole Shizuki\u0027s berry pouch. The thief surrendered beside a cache of {reward} Star Candies and a folded page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-05",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 20,
-    "message": "chased a bold little crab through the reef after it stole Shizuki's berry pouch. The thief surrendered beside a cache of {reward} Star Candies and a folded page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-05",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "code": "MR-006",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 90,
-    "title": "Moon Jelly Lanterns",
-    "reward": {
-      "min": 55,
-      "max": 100
+    {
+        "id":  6,
+        "code":  "MR-006",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  90,
+        "title":  "Moon Jelly Lanterns",
+        "reward":  {
+                       "min":  55,
+                       "max":  100
+                   },
+        "xp":  20,
+        "message":  "drifted beneath a bloom of glowing moon jellies that gathered around Shizuki\u0027s trail marks. Their light revealed {reward} Star Candies and another page caught beneath a shell~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-06",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 20,
-    "message": "drifted beneath a bloom of glowing moon jellies that gathered around Shizuki's trail marks. Their light revealed {reward} Star Candies and another page caught beneath a shell~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-06",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "code": "MR-007",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 85,
-    "title": "Starlight Lagoon",
-    "reward": {
-      "min": 50,
-      "max": 115
+    {
+        "id":  7,
+        "code":  "MR-007",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  85,
+        "title":  "Starlight Lagoon",
+        "reward":  {
+                       "min":  50,
+                       "max":  115
+                   },
+        "xp":  22,
+        "message":  "reached Starlight Lagoon by following Shizuki\u0027s directions marked \u0027probably east.\u0027 Glimmer uncovered {reward} Star Candies beneath the silver water along with another folded page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-07",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 22,
-    "message": "reached Starlight Lagoon by following Shizuki's directions marked 'probably east.' Glimmer uncovered {reward} Star Candies beneath the silver water along with another folded page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-07",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "code": "MR-008",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 85,
-    "title": "The Silverfin Council",
-    "reward": {
-      "min": 45,
-      "max": 90
+    {
+        "id":  8,
+        "code":  "MR-008",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  85,
+        "title":  "The Silverfin Council",
+        "reward":  {
+                       "min":  45,
+                       "max":  90
+                   },
+        "xp":  18,
+        "message":  "found a school of Silverfin gathered around one of Shizuki\u0027s sketches as though holding a serious meeting. Beneath them rested {reward} Star Candies and a damp journal page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-08",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 18,
-    "message": "found a school of Silverfin gathered around one of Shizuki's sketches as though holding a serious meeting. Beneath them rested {reward} Star Candies and a damp journal page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-08",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "code": "MR-009",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 80,
-    "title": "The Accidental Current",
-    "reward": {
-      "min": 75,
-      "max": 110
+    {
+        "id":  9,
+        "code":  "MR-009",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "The Accidental Current",
+        "reward":  {
+                       "min":  75,
+                       "max":  110
+                   },
+        "xp":  24,
+        "message":  "was swept through the reef when one of Shizuki\u0027s experimental runes awakened a Lunar Current. It deposited you safely beside {reward} Star Candies and another folded page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-09",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 24,
-    "message": "was swept through the reef when one of Shizuki's experimental runes awakened a Lunar Current. It deposited you safely beside {reward} Star Candies and another folded page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-09",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "code": "MR-010",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "uncommon",
-    "weight": 40,
-    "title": "The Moonkeeper Watches",
-    "reward": {
-      "min": 100,
-      "max": 180
+    {
+        "id":  10,
+        "code":  "MR-010",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "uncommon",
+        "weight":  40,
+        "title":  "The Moonkeeper Watches",
+        "reward":  {
+                       "min":  100,
+                       "max":  180
+                   },
+        "xp":  40,
+        "message":  "encountered the mysterious Fae Moonkeeper beside a silver shrine. After reading one of Shizuki\u0027s abandoned direction signs, the Moonkeeper silently granted {reward} Star Candies and left behind another page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-10",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 40,
-    "message": "encountered the mysterious Fae Moonkeeper beside a silver shrine. After reading one of Shizuki's abandoned direction signs, the Moonkeeper silently granted {reward} Star Candies and left behind another page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-10",
-        "type": "travel-note",
-        "chance": 0.85
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "code": "MR-011",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 85,
-    "title": "Sea Blossoms at Dusk",
-    "reward": {
-      "min": 35,
-      "max": 100
+    {
+        "id":  11,
+        "code":  "MR-011",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  85,
+        "title":  "Sea Blossoms at Dusk",
+        "reward":  {
+                       "min":  35,
+                       "max":  100
+                   },
+        "xp":  18,
+        "message":  "wandered through a garden of glowing Fae Sea Blossoms planted along Shizuki\u0027s route. Their petals opened to reveal {reward} Star Candies and a carefully folded page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-11",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 18,
-    "message": "wandered through a garden of glowing Fae Sea Blossoms planted along Shizuki's route. Their petals opened to reveal {reward} Star Candies and a carefully folded page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-11",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "code": "MR-012",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 80,
-    "title": "Moonglass Reflections",
-    "reward": {
-      "min": 40,
-      "max": 110
+    {
+        "id":  12,
+        "code":  "MR-012",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "Moonglass Reflections",
+        "reward":  {
+                       "min":  40,
+                       "max":  110
+                   },
+        "xp":  22,
+        "message":  "entered Moonglass Cavern and found Shizuki\u0027s arrows reflected across every crystal wall. After following several wrong copies, you discovered {reward} Star Candies and another page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-12",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 22,
-    "message": "entered Moonglass Cavern and found Shizuki's arrows reflected across every crystal wall. After following several wrong copies, you discovered {reward} Star Candies and another page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-12",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "code": "MR-013",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "uncommon",
-    "weight": 55,
-    "title": "The Elder's Test",
-    "reward": {
-      "min": 45,
-      "max": 120
+    {
+        "id":  13,
+        "code":  "MR-013",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "uncommon",
+        "weight":  55,
+        "title":  "The Elder\u0027s Test",
+        "reward":  {
+                       "min":  45,
+                       "max":  120
+                   },
+        "xp":  32,
+        "message":  "met an Elder Moon Turtle resting across Shizuki\u0027s marked path. It allowed passage only after Glimmer uncovered {reward} Star Candies and a weathered journal page beneath its shell~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-13",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 32,
-    "message": "met an Elder Moon Turtle resting across Shizuki's marked path. It allowed passage only after Glimmer uncovered {reward} Star Candies and a weathered journal page beneath its shell~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-13",
-        "type": "travel-note",
-        "chance": 0.85
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "code": "MR-014",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 80,
-    "title": "Moonbeam Cascade",
-    "reward": {
-      "min": 45,
-      "max": 115
+    {
+        "id":  14,
+        "code":  "MR-014",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "Moonbeam Cascade",
+        "reward":  {
+                       "min":  45,
+                       "max":  115
+                   },
+        "xp":  22,
+        "message":  "followed drifting pages through Moonbeam Cascade, where silver light traced Shizuki\u0027s winding route toward {reward} Star Candies and another entry from her journal~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-14",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 22,
-    "message": "followed drifting pages through Moonbeam Cascade, where silver light traced Shizuki's winding route toward {reward} Star Candies and another entry from her journal~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-14",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 15,
-    "code": "MR-015",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "uncommon",
-    "weight": 45,
-    "title": "When Stars Fell",
-    "reward": {
-      "min": 100,
-      "max": 175
+    {
+        "id":  15,
+        "code":  "MR-015",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "uncommon",
+        "weight":  45,
+        "title":  "When Stars Fell",
+        "reward":  {
+                       "min":  100,
+                       "max":  175
+                   },
+        "xp":  38,
+        "message":  "crossed Moonlit Reef during a gentle celestial starfall. Shizuki and Glimmer had gathered fallen sparks around {reward} Star Candies and tucked another page beneath them~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-15",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 38,
-    "message": "crossed Moonlit Reef during a gentle celestial starfall. Shizuki and Glimmer had gathered fallen sparks around {reward} Star Candies and tucked another page beneath them~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-15",
-        "type": "travel-note",
-        "chance": 0.85
-      }
-    ]
-  },
-  {
-    "id": 16,
-    "code": "MR-016",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 80,
-    "title": "Treasures of the Astral Tide",
-    "reward": {
-      "min": 25,
-      "max": 120
+    {
+        "id":  16,
+        "code":  "MR-016",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "Treasures of the Astral Tide",
+        "reward":  {
+                       "min":  25,
+                       "max":  120
+                   },
+        "xp":  20,
+        "message":  "reached a quiet shore where the Astral Tide had arranged Shizuki\u0027s lost supplies beside {reward} Star Candies and another folded journal page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-16",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 20,
-    "message": "reached a quiet shore where the Astral Tide had arranged Shizuki's lost supplies beside {reward} Star Candies and another folded journal page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-16",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 17,
-    "code": "MR-017",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "uncommon",
-    "weight": 35,
-    "title": "The Manta's Invitation",
-    "reward": {
-      "min": 100,
-      "max": 190
+    {
+        "id":  17,
+        "code":  "MR-017",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "uncommon",
+        "weight":  35,
+        "title":  "The Manta\u0027s Invitation",
+        "reward":  {
+                       "min":  100,
+                       "max":  190
+                   },
+        "xp":  46,
+        "message":  "was guided by a majestic Astral Manta Ray along a route marked in Shizuki\u0027s handwriting. It carried you to {reward} Star Candies and another page hidden in a Fae cache~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-17",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 46,
-    "message": "was guided by a majestic Astral Manta Ray along a route marked in Shizuki's handwriting. It carried you to {reward} Star Candies and another page hidden in a Fae cache~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-17",
-        "type": "travel-note",
-        "chance": 0.85
-      }
-    ]
-  },
-  {
-    "id": 18,
-    "code": "MR-018",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 75,
-    "title": "Echoes Beneath the Sand",
-    "reward": {
-      "min": 50,
-      "max": 125
+    {
+        "id":  18,
+        "code":  "MR-018",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  75,
+        "title":  "Echoes Beneath the Sand",
+        "reward":  {
+                       "min":  50,
+                       "max":  125
+                   },
+        "xp":  22,
+        "message":  "heard the Echoing Star Reef repeat one of Shizuki\u0027s cheerful humming tunes. Following the sound uncovered {reward} Star Candies and another journal page beneath the sand~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-18",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 22,
-    "message": "heard the Echoing Star Reef repeat one of Shizuki's cheerful humming tunes. Following the sound uncovered {reward} Star Candies and another journal page beneath the sand~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-18",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 19,
-    "code": "MR-019",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 75,
-    "title": "Beneath the Moonstone Arch",
-    "reward": {
-      "min": 55,
-      "max": 130
+    {
+        "id":  19,
+        "code":  "MR-019",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  75,
+        "title":  "Beneath the Moonstone Arch",
+        "reward":  {
+                       "min":  55,
+                       "max":  130
+                   },
+        "xp":  24,
+        "message":  "passed beneath the ancient Moonstone Arch, where Shizuki\u0027s newest shortcut pointed in two directions at once. The correct path held {reward} Star Candies and another page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-19",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 24,
-    "message": "passed beneath the ancient Moonstone Arch, where Shizuki's newest shortcut pointed in two directions at once. The correct path held {reward} Star Candies and another page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-19",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 20,
-    "code": "MR-020",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "uncommon",
-    "weight": 35,
-    "title": "The Lantern Left Behind",
-    "reward": {
-      "min": 110,
-      "max": 200
+    {
+        "id":  20,
+        "code":  "MR-020",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "uncommon",
+        "weight":  35,
+        "title":  "The Lantern Left Behind",
+        "reward":  {
+                       "min":  110,
+                       "max":  200
+                   },
+        "xp":  46,
+        "message":  "discovered Shizuki\u0027s enchanted lantern glowing beside a set of hurried footprints. Its light revealed {reward} Star Candies and another folded page beneath the waves~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-20",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 46,
-    "message": "discovered Shizuki's enchanted lantern glowing beside a set of hurried footprints. Its light revealed {reward} Star Candies and another folded page beneath the waves~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-20",
-        "type": "travel-note",
-        "chance": 0.85
-      }
-    ]
-  },
-  {
-    "id": 21,
-    "code": "MR-021",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "uncommon",
-    "weight": 30,
-    "title": "The Starshell Bargain",
-    "reward": {
-      "min": 120,
-      "max": 210
+    {
+        "id":  21,
+        "code":  "MR-021",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "uncommon",
+        "weight":  30,
+        "title":  "The Starshell Bargain",
+        "reward":  {
+                       "min":  120,
+                       "max":  210
+                   },
+        "xp":  50,
+        "message":  "found Shizuki negotiating with a Starshell Hermit using three berries and an extremely questionable map. The hermit accepted and revealed {reward} Star Candies with another page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-21",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 50,
-    "message": "found Shizuki negotiating with a Starshell Hermit using three berries and an extremely questionable map. The hermit accepted and revealed {reward} Star Candies with another page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-21",
-        "type": "travel-note",
-        "chance": 0.85
-      }
-    ]
-  },
-  {
-    "id": 22,
-    "code": "MR-022",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "uncommon",
-    "weight": 35,
-    "title": "The Star Pearl",
-    "reward": {
-      "min": 60,
-      "max": 140
+    {
+        "id":  22,
+        "code":  "MR-022",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "uncommon",
+        "weight":  35,
+        "title":  "The Star Pearl",
+        "reward":  {
+                       "min":  60,
+                       "max":  140
+                   },
+        "xp":  46,
+        "message":  "opened a radiant Star Pearl Oyster after following a clue in Shizuki\u0027s journal. Inside rested {reward} Star Candies and another page protected by pearlescent magic~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-22",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 46,
-    "message": "opened a radiant Star Pearl Oyster after following a clue in Shizuki's journal. Inside rested {reward} Star Candies and another page protected by pearlescent magic~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-22",
-        "type": "travel-note",
-        "chance": 0.85
-      }
-    ]
-  },
-  {
-    "id": 23,
-    "code": "MR-023",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 70,
-    "title": "The Celestial Garden",
-    "reward": {
-      "min": 55,
-      "max": 135
+    {
+        "id":  23,
+        "code":  "MR-023",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  70,
+        "title":  "The Celestial Garden",
+        "reward":  {
+                       "min":  55,
+                       "max":  135
+                   },
+        "xp":  24,
+        "message":  "wandered into a Celestial Coral Garden where every bloom leaned toward Shizuki\u0027s passing trail. At its center waited {reward} Star Candies and another folded page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-23",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 24,
-    "message": "wandered into a Celestial Coral Garden where every bloom leaned toward Shizuki's passing trail. At its center waited {reward} Star Candies and another folded page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-23",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 24,
-    "code": "MR-024",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "epic",
-    "weight": 8,
-    "title": "The Compass That Disagreed",
-    "reward": {
-      "min": 130,
-      "max": 220
+    {
+        "id":  24,
+        "code":  "MR-024",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "epic",
+        "weight":  8,
+        "title":  "The Compass That Disagreed",
+        "reward":  {
+                       "min":  130,
+                       "max":  220
+                   },
+        "xp":  90,
+        "message":  "uncovered an ancient Elvish Star Compass that spun wildly near Shizuki\u0027s map. When both finally pointed the same way, they led to {reward} Star Candies and another page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-24",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 90,
-    "message": "uncovered an ancient Elvish Star Compass that spun wildly near Shizuki's map. When both finally pointed the same way, they led to {reward} Star Candies and another page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-24",
-        "type": "travel-note",
-        "chance": 1.0
-      }
-    ]
-  },
-  {
-    "id": 25,
-    "code": "MR-025",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 70,
-    "title": "Moonveil Grove",
-    "reward": {
-      "min": 60,
-      "max": 145
+    {
+        "id":  25,
+        "code":  "MR-025",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  70,
+        "title":  "Moonveil Grove",
+        "reward":  {
+                       "min":  60,
+                       "max":  145
+                   },
+        "xp":  24,
+        "message":  "rested among glowing Moonveil Anemones where Shizuki had hidden a berry snack. Beneath the grove you found {reward} Star Candies and another journal page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-25",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 24,
-    "message": "rested among glowing Moonveil Anemones where Shizuki had hidden a berry snack. Beneath the grove you found {reward} Star Candies and another journal page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-25",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 26,
-    "code": "MR-026",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 65,
-    "title": "The Whispering Tidepool",
-    "reward": {
-      "min": 65,
-      "max": 150
+    {
+        "id":  26,
+        "code":  "MR-026",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  65,
+        "title":  "The Whispering Tidepool",
+        "reward":  {
+                       "min":  65,
+                       "max":  150
+                   },
+        "xp":  28,
+        "message":  "arrived at a tidepool that whispered fragments of Shizuki\u0027s earlier notes. The voices guided you toward {reward} Star Candies and one more folded page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-26",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 28,
-    "message": "arrived at a tidepool that whispered fragments of Shizuki's earlier notes. The voices guided you toward {reward} Star Candies and one more folded page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-26",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 27,
-    "code": "MR-027",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "rare",
-    "weight": 12,
-    "title": "A Fallen Constellation",
-    "reward": {
-      "min": 250,
-      "max": 350
+    {
+        "id":  27,
+        "code":  "MR-027",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "rare",
+        "weight":  12,
+        "title":  "A Fallen Constellation",
+        "reward":  {
+                       "min":  250,
+                       "max":  350
+                   },
+        "xp":  72,
+        "message":  "found Shizuki and Glimmer rearranging fragments of a fallen constellation. When the final star clicked into place, it revealed {reward} Star Candies and another page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-27",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 72,
-    "message": "found Shizuki and Glimmer rearranging fragments of a fallen constellation. When the final star clicked into place, it revealed {reward} Star Candies and another page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-27",
-        "type": "travel-note",
-        "chance": 0.9
-      }
-    ]
-  },
-  {
-    "id": 28,
-    "code": "MR-028",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "common",
-    "weight": 65,
-    "title": "The Dreaming Lilies",
-    "reward": {
-      "min": 70,
-      "max": 155
+    {
+        "id":  28,
+        "code":  "MR-028",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "common",
+        "weight":  65,
+        "title":  "The Dreaming Lilies",
+        "reward":  {
+                       "min":  70,
+                       "max":  155
+                   },
+        "xp":  28,
+        "message":  "crossed a meadow of Dreaming Sea Lilies that showed glimpses of Shizuki\u0027s journey. One bloom opened to reveal {reward} Star Candies and another folded page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-28",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 28,
-    "message": "crossed a meadow of Dreaming Sea Lilies that showed glimpses of Shizuki's journey. One bloom opened to reveal {reward} Star Candies and another folded page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-28",
-        "type": "travel-note",
-        "chance": 0.75
-      }
-    ]
-  },
-  {
-    "id": 29,
-    "code": "MR-029",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "rare",
-    "weight": 10,
-    "title": "The Moonkeeper's Vault",
-    "reward": {
-      "min": 275,
-      "max": 375
+    {
+        "id":  29,
+        "code":  "MR-029",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "rare",
+        "weight":  10,
+        "title":  "The Moonkeeper\u0027s Vault",
+        "reward":  {
+                       "min":  275,
+                       "max":  375
+                   },
+        "xp":  84,
+        "message":  "found Shizuki waiting beside a forgotten Fae vault while the Moonkeeper watched from afar. The recovered key opened a chamber containing {reward} Star Candies and another page~",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-29",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
     },
-    "xp": 84,
-    "message": "found Shizuki waiting beside a forgotten Fae vault while the Moonkeeper watched from afar. The recovered key opened a chamber containing {reward} Star Candies and another page~",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-29",
-        "type": "travel-note",
-        "chance": 0.9
-      }
-    ]
-  },
-  {
-    "id": 30,
-    "code": "MR-030",
-    "category": "explore",
-    "region": "Moonlit Reef",
-    "rarity": "legendary",
-    "weight": 1,
-    "title": "The Astral Heart",
-    "reward": {
-      "min": 401,
-      "max": 500
-    },
-    "xp": 150,
-    "message": "reached the heart of Moonlit Reef where an ancient moonstone archive awakened in silver light, granting {reward} Star Candies and the final page of the chapter~ / LEGENDARY EXPEDITION!",
-    "itemDrops": [
-      {
-        "id": "moonlit-reef-note-30",
-        "type": "travel-note",
-        "chance": 1.0
-      }
-    ]
-  }
+    {
+        "id":  30,
+        "code":  "MR-030",
+        "category":  "explore",
+        "region":  "Moonlit Reef",
+        "rarity":  "legendary",
+        "weight":  1,
+        "title":  "The Astral Heart",
+        "reward":  {
+                       "min":  401,
+                       "max":  500
+                   },
+        "xp":  150,
+        "message":  "reached the heart of Moonlit Reef where an ancient moonstone archive awakened in silver light, granting {reward} Star Candies and the final page of the chapter~ / LEGENDARY EXPEDITION!",
+        "itemDrops":  [
+                          {
+                              "id":  "moonlit-reef-note-30",
+                              "type":  "travel-note",
+                              "chance":  1
+                          }
+                      ]
+    }
 ]

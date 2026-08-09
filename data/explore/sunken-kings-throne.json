@@ -16,7 +16,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-01",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -38,7 +38,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-02",
-                              "chance":  0.19999999999999998,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -60,7 +60,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-03",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -82,7 +82,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-04",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -104,7 +104,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-05",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -126,7 +126,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-06",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -148,7 +148,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-07",
-                              "chance":  0.19999999999999998,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -170,7 +170,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-08",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -192,7 +192,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-09",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -214,7 +214,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-10",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -236,7 +236,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-11",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -258,7 +258,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-12",
-                              "chance":  0.19999999999999998,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -280,7 +280,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-13",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -302,7 +302,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-14",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -324,7 +324,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-15",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -346,7 +346,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-16",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -368,7 +368,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-17",
-                              "chance":  0.19999999999999998,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -390,7 +390,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-18",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -412,7 +412,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-19",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -434,7 +434,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-20",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -456,7 +456,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-21",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -478,7 +478,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-22",
-                              "chance":  0.19999999999999998,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -500,7 +500,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-23",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -522,7 +522,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-24",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -544,7 +544,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-25",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -566,7 +566,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-26",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -588,7 +588,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-27",
-                              "chance":  0.19999999999999998,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -610,7 +610,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-28",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -632,7 +632,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-29",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -654,7 +654,7 @@
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-30",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]

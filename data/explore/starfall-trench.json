@@ -8,15 +8,15 @@
         "weight":  100,
         "title":  "Edge of the Trench",
         "reward":  {
-                       "min":  50,
-                       "max":  140
+                       "min":  70,
+                       "max":  145
                    },
-        "xp":  14,
-        "message":  "Descended into the Starfall Trench, where Shizuki quietly watched glowing stars drift through the depths before uncovering {reward} Star Candies from ancient star debris",
+        "xp":  20,
+        "message":  "At the first great overlook, a tiny sign hammered beside the abyss reads, \"TOTALLY SAFE DROP. Probably. — S\" Far below, another somehow remains legible: \"Okay this was higher than I remembered.\" A narrow ledge between them holds {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-01",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -30,15 +30,15 @@
         "weight":  100,
         "title":  "Falling Starlight",
         "reward":  {
-                       "min":  55,
-                       "max":  145
+                       "min":  75,
+                       "max":  150
                    },
-        "xp":  14,
-        "message":  "wandered through the Starfall Trench as drifting starlight slowly settled upon the ancient seabed, revealing {reward} Star Candies hidden beneath shimmering Fae ruins~",
+        "xp":  22,
+        "message":  "Tiny falling stars drift through the water like snow. One persistently bounces off your shoulder, helmet, and nose until you finally catch it; with a pleased little flash, it cracks open and spills {reward} Star Candies into your hands.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-02",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -48,19 +48,19 @@
         "code":  "ST-003",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  95,
+        "rarity":  "uncommon",
+        "weight":  48,
         "title":  "The Silent Archway",
         "reward":  {
-                       "min":  60,
-                       "max":  150
+                       "min":  120,
+                       "max":  210
                    },
-        "xp":  15,
-        "message":  "wandered beneath a weathered Fae archway in the Starfall Trench, where drifting starlight illuminated {reward} Star Candies resting undisturbed for ages~",
+        "xp":  35,
+        "message":  "An ancient arch glows above the path. Someone has written, \"Don\u0027t touch the glowing part,\" then added beneath it, \"I touched it.\" Passing through rotates gravity upside down long enough for you to tumble onto a ledge containing {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-03",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -70,19 +70,19 @@
         "code":  "ST-004",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  95,
+        "rarity":  "uncommon",
+        "weight":  45,
         "title":  "Forgotten Star Collector",
         "reward":  {
-                       "min":  55,
-                       "max":  150
+                       "min":  125,
+                       "max":  215
                    },
-        "xp":  15,
-        "message":  "discovered a forgotten Fae Star Collector deep within the Starfall Trench, where centuries of drifting starlight had gathered into {reward} Star Candies~",
+        "xp":  38,
+        "message":  "A dormant Fae collector wakes and requests something \"celestial.\" It rejects a star chart, a cometglass splinter, and an increasingly desperate constellation doodle—then accepts an ordinary shiny pebble and dispenses {reward} Star Candies. Its standards have not survived the centuries.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-04",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -92,19 +92,19 @@
         "code":  "ST-005",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  90,
+        "rarity":  "uncommon",
+        "weight":  42,
         "title":  "Elven Observatory",
         "reward":  {
-                       "min":  65,
-                       "max":  155
+                       "min":  130,
+                       "max":  220
                    },
-        "xp":  16,
-        "message":  "explored an ancient Elven Observatory overlooking the Starfall Trench, where moon carved lenses still gathered drifting starlight around {reward} Star Candies left untouched for centuries~",
+        "xp":  41,
+        "message":  "The Elven Observatory\u0027s telescope still turns toward the deep. Its constellation labels now include \"Fish,\" \"Other fish,\" \"Suspiciously large fish,\" and \"??? DON\u0027T LIKE THAT ONE.\" Adjusting the annotated lens opens a compartment holding {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-05",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -115,18 +115,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  95,
         "title":  "Moonstone Runes",
         "reward":  {
-                       "min":  65,
-                       "max":  160
+                       "min":  80,
+                       "max":  155
                    },
-        "xp":  16,
-        "message":  "followed a trail of glowing Moonstone Runes through the Starfall Trench, where ancient Elven inscriptions led you to {reward} Star Candies hidden beneath weathered stone~",
+        "xp":  24,
+        "message":  "Moonstone runes ignite beneath your feet beside a chalk translation: \"Treasure this way.\" A second line reads, \"EDIT: NOT TREASURE.\" The misleading route ends at a cosmic vent; the actual hoard of {reward} Star Candies is tucked safely behind the first rune.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-06",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -140,15 +140,15 @@
         "weight":  90,
         "title":  "Forgotten Camp",
         "reward":  {
-                       "min":  70,
-                       "max":  165
+                       "min":  85,
+                       "max":  160
                    },
-        "xp":  17,
-        "message":  "stumbled upon a small camp tucked beneath ancient Elven stonework, where a note reading \u0027Definitely not mine. - Shizuki\u0027 rested beside {reward} Star Candies left behind~",
+        "xp":  26,
+        "message":  "Beneath weathered Elven stonework rests an old but carefully packed camp: a faded blanket, an empty berry tin, and a field journal beside {reward} Star Candies. A tag tied to the bedroll insists, \"Definitely not mine. — Shizuki\"",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-07",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -159,18 +159,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  88,
         "title":  "Moonstone Crossing",
         "reward":  {
-                       "min":  70,
-                       "max":  170
+                       "min":  90,
+                       "max":  165
                    },
-        "xp":  17,
-        "message":  "crossed an elegant Moonstone bridge suspended above the Starfall Trench, where shimmering starlight revealed {reward} Star Candies nestled between centuries old Elven carvings~",
+        "xp":  28,
+        "message":  "Each step across the Moonstone bridge rings like a glass bell. Halfway over, a sequence of scuffed stones reveals that an earlier traveler discovered how to play a truly awful little tune; completing it makes the bridge chime and releases {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-08",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -181,18 +181,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
-        "title":  "Berry Thief",
+        "weight":  85,
+        "title":  "Star Sprite Heist",
         "reward":  {
-                       "min":  70,
-                       "max":  175
+                       "min":  95,
+                       "max":  170
                    },
-        "xp":  18,
-        "message":  "caught a mischievous Moon Sprite dragging away Shizuki\u0027s berry pouch, but it dropped {reward} Star Candies while making its escape~",
+        "xp":  20,
+        "message":  "A Star Sprite snatches one of your shinier Candies and darts through drifting, low-gravity rubble. The chase ends when it collides with a starstone box, accidentally opening a much larger stash of {reward} Star Candies. It returns your stolen Candy and looks offended by the outcome.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-09",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -203,18 +203,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  85,
         "title":  "The Stubborn Star",
         "reward":  {
-                       "min":  75,
-                       "max":  180
+                       "min":  100,
+                       "max":  175
                    },
-        "xp":  18,
-        "message":  "noticed a tiny falling star stubbornly following you through the Starfall Trench before it finally landed with a cheerful *plink*, revealing {reward} Star Candies hidden beneath the sand~",
+        "xp":  22,
+        "message":  "A tiny falling star follows you through three tunnels, around two meteor scars, and past every attempt to shoo it away. At last it settles behind you with a cheerful *plink*, and its landing uncovers {reward} Star Candies beneath the celestial sand.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-10",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -225,18 +225,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  82,
         "title":  "Star Snail",
         "reward":  {
-                       "min":  75,
-                       "max":  185
+                       "min":  105,
+                       "max":  180
                    },
-        "xp":  19,
-        "message":  "helped a Star Snail flip back onto its tiny feet, and it happily pointed you toward {reward} Star Candies hidden beneath a glowing Moonstone pebble~",
+        "xp":  24,
+        "message":  "After you flip a stranded Star Snail upright, it insists upon guiding you somewhere important. Very. Very. Slowly. Ten patient feet later, it proudly presents a Moonstone hollow filled with {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-11",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -247,18 +247,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  82,
         "title":  "Moon Crab Treasure",
         "reward":  {
-                       "min":  80,
-                       "max":  190
+                       "min":  70,
+                       "max":  145
                    },
-        "xp":  19,
-        "message":  "challenged a grumpy Moon Crab guarding its \u0027treasure,\u0027 only to discover it had proudly collected {reward} Star Candies and a very ordinary rock~",
+        "xp":  26,
+        "message":  "A Moon Crab guards an extremely ordinary rock with heroic intensity. Just beyond its claws, {reward} Star Candies sit completely unattended. The crab ignores them; clearly, you are the one failing to appreciate the real treasure.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-12",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -269,18 +269,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  80,
         "title":  "The Moon Crab Tax",
         "reward":  {
-                       "min":  80,
-                       "max":  195
+                       "min":  75,
+                       "max":  150
                    },
-        "xp":  20,
-        "message":  "was stopped by a serious Moon Crab demanding one shiny pebble as a \u0027crossing fee,\u0027 then discovered it had been sitting on {reward} Star Candies the entire time~",
+        "xp":  28,
+        "message":  "An organized Moon Crab checkpoint blocks the crossing. One guard demands a shiny pebble, another solemnly stamps an invisible document, and a third waves you through without explanation. Their little booth conceals {reward} Star Candies beneath its floor.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-13",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -291,18 +291,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
-        "title":  "Almost Caught Her",
+        "weight":  78,
+        "title":  "One Step Behind",
         "reward":  {
-                       "min":  250,
-                       "max":  300
+                       "min":  80,
+                       "max":  155
                    },
         "xp":  20,
-        "message":  "heard laughter echo through the trench just before spotting Shizuki disappear around a Moonstone pillar, leaving behind {reward} Star Candies and a tiny note that simply read, \u0027Too slow!\u0027~",
+        "message":  "Fresh-looking handwriting on a starstone slab reads, \"If you\u0027re reading this, you\u0027re getting warmer!~\" Below it: \"Not literally. If the rocks are getting warmer, RUN.\" The warning\u0027s arrow points to {reward} Star Candies, though its age is impossible to judge.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-14",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -313,18 +313,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  76,
         "title":  "Still Warm",
         "reward":  {
-                       "min":  90,
-                       "max":  205
+                       "min":  85,
+                       "max":  160
                    },
-        "xp":  21,
-        "message":  "followed the comforting scent of fresh berry tea to a tiny campsite, but Shizuki had already wandered off, leaving a warm mug beside {reward} Star Candies and a note saying, \u0027Be back... probably!~\u0027",
+        "xp":  22,
+        "message":  "An abandoned camp contains a cup of berry tea that is somehow still warm. A tiny heat rune beneath the mug explains the mystery, while a note says, \"Finally invented tea that waits for me. This can only end responsibly.\" Nearby, a travel case holds {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-15",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -335,18 +335,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  75,
         "title":  "Fresh Sketch",
         "reward":  {
-                       "min":  95,
-                       "max":  210
+                       "min":  90,
+                       "max":  165
                    },
-        "xp":  21,
-        "message":  "discovered a beautifully sketched map of an ancient Elven observatory. In the corner, someone had scribbled, \u0027Needs more berries.\u0027 Following the map led you to {reward} Star Candies~",
+        "xp":  24,
+        "message":  "An impressively detailed sketch captures every arch and lens of the Starfall Observatory. Its margins contain berry doodles, questionable arrows, and \"Needs more berries.\" Following the one genuinely useful measurement reveals {reward} Star Candies inside a survey niche.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-16",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -357,18 +357,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  90,
+        "weight":  74,
         "title":  "The Shortcut",
         "reward":  {
                        "min":  95,
-                       "max":  215
+                       "max":  170
                    },
-        "xp":  22,
-        "message":  "followed one of Shizuki\u0027s notes promising, \u0027Shortcut this way!~\u0027 After wandering in a complete circle, you somehow stumbled upon {reward} Star Candies hidden beneath a Moonstone arch anyway~",
+        "xp":  26,
+        "message":  "A chalk note promises, \"Shortcut this way!~\" Its arrows lead through a complete circle and return you to the same Moonstone arch. Somehow the pointless lap shifts a loose stone, revealing {reward} Star Candies anyway.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-17",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -379,18 +379,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "rare",
-        "weight":  64,
+        "weight":  16,
         "title":  "Meteor Scar Crossing",
         "reward":  {
-                       "min":  110,
-                       "max":  240
+                       "min":  210,
+                       "max":  310
                    },
-        "xp":  23,
-        "message":  "crossed Meteor Scar Crossing as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  60,
+        "message":  "A rumble rolls across Meteor Scar Crossing. Scratched into the nearest stone is one urgent word: \"DUCK.\" A tiny meteor screams overhead and strikes the ridge; beneath the warning, \"You\u0027re welcome\" appears in smaller letters as the impact shakes loose {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-18",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -400,19 +400,19 @@
         "code":  "ST-019",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  62,
+        "rarity":  "uncommon",
+        "weight":  40,
         "title":  "Starstone Rain",
         "reward":  {
-                       "min":  115,
-                       "max":  245
+                       "min":  135,
+                       "max":  225
                    },
-        "xp":  24,
-        "message":  "crossed Starstone Rain as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  45,
+        "message":  "Starstone pebbles begin raining upward into the dark. An abandoned umbrella has been wedged upside down beneath a boulder to catch them, and amid the softly glowing stones inside it have accumulated {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-19",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -422,19 +422,19 @@
         "code":  "ST-020",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  60,
+        "rarity":  "uncommon",
+        "weight":  38,
         "title":  "Crystalline Shoal",
         "reward":  {
-                       "min":  120,
-                       "max":  250
+                       "min":  140,
+                       "max":  230
                    },
-        "xp":  25,
-        "message":  "crossed Crystalline Shoal as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  35,
+        "message":  "Crystals across the shoal sing when touched by the current. One bears a careful warning: \"DO NOT HIT THIS ONE.\" A tumbling pebble immediately does. *BWOOOOONG* rolls through the trench, shaking {reward} Star Candies from a crystalline shelf.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-20",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -444,19 +444,19 @@
         "code":  "ST-021",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "uncommon",
-        "weight":  58,
+        "rarity":  "rare",
+        "weight":  14,
         "title":  "Gravity Fold",
         "reward":  {
-                       "min":  125,
-                       "max":  255
+                       "min":  220,
+                       "max":  320
                    },
-        "xp":  26,
-        "message":  "crossed Gravity Fold as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  64,
+        "message":  "Gravity turns ninety degrees without warning, dropping you sideways onto what had been a wall. Old footprints cross the new floor and stop beside the message, \"This place is RUDE.\" Following them leads to {reward} Star Candies wedged in the corner where down used to be.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-21",
-                              "chance":  0.19999999999999998,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -466,19 +466,19 @@
         "code":  "ST-022",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  56,
+        "rarity":  "uncommon",
+        "weight":  36,
         "title":  "Cosmic Vent Bloom",
         "reward":  {
-                       "min":  130,
-                       "max":  260
+                       "min":  145,
+                       "max":  235
                    },
-        "xp":  27,
-        "message":  "crossed Cosmic Vent Bloom as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  38,
+        "message":  "A field of cosmic vents releases miniature stars like bubbles. One clings stubbornly to your sleeve, then your hair, before popping free in a bright hiccup; its light exposes {reward} Star Candies nestled among the tiny vent mouths.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-22",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -489,18 +489,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "rare",
-        "weight":  54,
+        "weight":  12,
         "title":  "Buried Sky-Ruin",
         "reward":  {
-                       "min":  135,
-                       "max":  265
+                       "min":  230,
+                       "max":  330
                    },
-        "xp":  28,
-        "message":  "crossed Buried Sky-Ruin as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  68,
+        "message":  "An astronomical ruin lies buried completely upside down, its furniture fixed to the apparent ceiling. Exploration arrows cover both floor and ceiling before dissolving into frustrated question marks. Beyond the last contradictory arrow, an inverted cabinet contains {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-23",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -511,18 +511,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "common",
-        "weight":  52,
+        "weight":  72,
         "title":  "Cometglass Shelf",
         "reward":  {
-                       "min":  140,
-                       "max":  270
+                       "min":  100,
+                       "max":  175
                    },
-        "xp":  29,
-        "message":  "crossed Cometglass Shelf as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  28,
+        "message":  "Translucent cometglass grows from the shelf in frozen ribbons. A note reads, \"Before you ask: no, it does not taste like candy.\" Beneath that, smaller writing admits, \"...I checked.\" A nearby stone case contains actual Star Candies—{reward} of them.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-24",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -532,19 +532,19 @@
         "code":  "ST-025",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  50,
+        "rarity":  "epic",
+        "weight":  6,
         "title":  "Darkstar Current",
         "reward":  {
-                       "min":  145,
-                       "max":  275
+                       "min":  300,
+                       "max":  400
                    },
-        "xp":  30,
-        "message":  "crossed Darkstar Current as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  95,
+        "message":  "Every lamp and rune goes dark as the current passes, leaving only pinprick stars suspended around you. The lights slowly rearrange into an arrow, turning the ominous silence unexpectedly gentle; at its point waits a sealed vessel of {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-25",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -555,18 +555,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "uncommon",
-        "weight":  48,
+        "weight":  34,
         "title":  "Falling-Light Curtain",
         "reward":  {
                        "min":  150,
-                       "max":  280
+                       "max":  240
                    },
-        "xp":  31,
-        "message":  "crossed Falling-Light Curtain as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  41,
+        "message":  "A waterfall of descending starlight spans the trench. Passing through paints your equipment and skin with temporary constellations, each movement trailing silver light. Beyond the radiant curtain, {reward} Star Candies glow inside a clear cometglass basin.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-26",
-                              "chance":  0.19999999999999998,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -576,19 +576,19 @@
         "code":  "ST-027",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  46,
+        "rarity":  "uncommon",
+        "weight":  32,
         "title":  "Broken Orrery",
         "reward":  {
-                       "min":  155,
-                       "max":  285
+                       "min":  120,
+                       "max":  210
                    },
-        "xp":  32,
-        "message":  "crossed Broken Orrery as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  45,
+        "message":  "An ancient orrery has unmistakably been \"repaired.\" Several planets turn backward, one moon races dangerously fast, and another has been replaced by a berry-shaped stone. A tiny label declares, \"Fixed.\" The wobbling mechanism eventually opens to release {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-27",
-                              "chance":  0.22,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -599,18 +599,18 @@
         "category":  "explore",
         "region":  "Starfall Trench",
         "rarity":  "rare",
-        "weight":  44,
+        "weight":  10,
         "title":  "Deep Crater Garden",
         "reward":  {
-                       "min":  160,
-                       "max":  290
+                       "min":  240,
+                       "max":  340
                    },
-        "xp":  33,
-        "message":  "crossed Deep Crater Garden as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  72,
+        "message":  "At the bottom of an ancient crater, a garden blooms entirely from celestial dust: glass leaves, comet-tailed flowers, and luminous roots. One perfectly ordinary berry bush grows among them beneath a sign reading, \"HOW???\" Its roots cradle {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-28",
-                              "chance":  0.24,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -620,19 +620,19 @@
         "code":  "ST-029",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  42,
+        "rarity":  "epic",
+        "weight":  4,
         "title":  "Celestial Fault",
         "reward":  {
-                       "min":  165,
-                       "max":  295
+                       "min":  325,
+                       "max":  425
                    },
-        "xp":  34,
-        "message":  "crossed Celestial Fault as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  100,
+        "message":  "The trench floor splits open, revealing stars that do not match any sky above the Astral Sea. For several breathless seconds, somewhere else seems to look back through the fracture. It seals without explanation, leaving {reward} Star Candies where the impossible opening had been.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-29",
-                              "chance":  0.26,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
@@ -642,19 +642,19 @@
         "code":  "ST-030",
         "category":  "explore",
         "region":  "Starfall Trench",
-        "rarity":  "common",
-        "weight":  40,
+        "rarity":  "legendary",
+        "weight":  1,
         "title":  "Annex Signal",
         "reward":  {
-                       "min":  170,
-                       "max":  300
+                       "min":  450,
+                   "max":  575
                    },
-        "xp":  35,
-        "message":  "crossed Annex Signal as celestial debris shifted through the trench, revealing {reward} Star Candies beneath luminous starstone.",
+        "xp":  150,
+        "message":  "An artificial signal pulses beneath the trench—neither Elven nor recognizably Fae, but deliberately constructed. Most of its buried housing is unreadable. An old warning nearby says, \"I don\u0027t like this. Don\u0027t touch anything. — Shizuki\" The signal abruptly stops, a damaged compartment breaks loose, and {reward} Star Candies spill into the silence. ...What was that?",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-30",
-                              "chance":  0.18,
+                              "chance":  1,
                               "type":  "travel-note"
                           }
                       ]
