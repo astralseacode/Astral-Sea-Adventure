@@ -1,0 +1,25 @@
+{
+  "id": "moonbeam",
+  "name": "Moonbeam",
+  "aliases": ["moonbeam"],
+  "requiredLevel": 5,
+  "manaCost": 20,
+  "type": "offensive",
+  "description": "Cast Moonbeam at Level 5 for 20 Mana.",
+  "damage": { "dice": 2, "sides": 20, "keepHighest": true, "bonusDieSides": 6 },
+  "criticalThreshold": 20,
+  "criticalDamage": 40,
+  "narrationTiers": [
+    { "id": "weak", "displayName": "Weak Cast", "naturalMaximum": 7, "narration": "A faint moonbeam slips through the water, but it flickers before reaching its full brilliance. Even so, it grazes your foe with a pale shimmer." },
+    { "id": "steady", "displayName": "Steady Cast", "naturalMaximum": 12, "narration": "A gentle moonbeam descends from above, washing over your foe before bursting into a shower of shimmering light." },
+    { "id": "strong", "displayName": "Strong Cast", "naturalMaximum": 17, "narration": "The sea briefly falls silent as a focused moonbeam crashes into your foe, scattering brilliant fragments of light in every direction." },
+    { "id": "excellent", "displayName": "Excellent Cast", "naturalMaximum": 19, "narration": "The moon itself seems to answer your call. A brilliant beam tears through the water, exploding against your foe in a dazzling flash that leaves the battlefield glowing." },
+    { "id": "critical", "displayName": "Critical Cast", "narration": "For a heartbeat, the entire Astral Sea glows as though night itself has awakened. A blinding pillar of moonlight crashes down with impossible force, leaving only drifting stardust in its wake." }
+  ],
+  "criticalFlavorChance": 0.25,
+  "criticalFlavor": [
+    "...You could swear you hear Shizuki quietly whisper, “Not bad.”",
+    "Somewhere nearby, a single approving clap echoes through the reef.",
+    "A fake mustache briefly floats through the moonlight... then vanishes."
+  ]
+}

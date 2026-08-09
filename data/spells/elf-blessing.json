@@ -1,0 +1,24 @@
+{
+  "id": "elf_blessing",
+  "name": "Elf Blessing",
+  "aliases": ["elf blessing", "elf_blessing", "blessing"],
+  "requiredLevel": 1,
+  "manaCost": 30,
+  "type": "timed-support",
+  "description": "+2 to offensive rolls for 30 minutes",
+  "effectId": "elf_blessing",
+  "durationMs": 1800000,
+  "modifier": 2,
+  "successScenes": [
+    "A nearby bush rustles suspiciously.\n\nYou spot Shizuki peeking through the leaves and giving you an enthusiastic thumbs-up. The instant she realizes you noticed her, she vanishes deeper into the shrubbery.\n\nWarm Fae magic gathers around you.",
+    "A tiny paper note flutters down from somewhere above.\n\nIt reads:\n\n\"You're doing great.\"\n\nThere is no signature, but the handwriting is unmistakably Shizuki's.\n\nSilver light settles around your weapon.",
+    "A gentle breeze carries glowing moon petals around you.\n\nFrom somewhere in the distance, a voice calls:\n\n\"YOU GOT THIS!\"\n\nAfter a startled pause, the same voice loudly whispers:\n\n\"...Nobody heard that.\"",
+    "You spot Shizuki hiding behind a nearby tree.\n\nWhen she realizes you can see her, she freezes, raises both arms like branches, and attempts to pass herself off as an ordinary forest shrub.\n\nSomehow, this fills you with determination.",
+    "A fake mustache tumbles from behind a nearby rock.\n\nA hand immediately reaches out, snatches it, and disappears.\n\nA warm magical blessing settles around you moments later.\n\nThese events are completely unrelated."
+  ],
+  "recastScenes": [
+    "A familiar voice whispers from somewhere nearby:\n\n\"I already blessed you. I'm good—but not that good.\"",
+    "A note lands at your feet:\n\n\"ONE blessing at a time. Please use responsibly.\"\n\nThe handwriting is unmistakably Shizuki's.",
+    "A nearby bush shakes its leaves disapprovingly.\n\nYou are already under the effects of Elf Blessing."
+  ]
+}

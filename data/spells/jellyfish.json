@@ -1,0 +1,20 @@
+{
+  "id": "jelly",
+  "name": "Jellyfish",
+  "aliases": ["jelly"],
+  "requiredLevel": 3,
+  "manaCost": 10,
+  "type": "offensive",
+  "description": "Cast Jellyfish for 10 Mana.",
+  "damage": { "dice": 3, "sides": 8 },
+  "criticalThreshold": 24,
+  "criticalDamage": 35,
+  "personalities": [
+    { "maximumRoll": 4, "adjective": "sad", "followUp": "It drifts lazily into the enemy..." },
+    { "maximumRoll": 8, "adjective": "sleepy", "followUp": "It slowly floats toward its target..." },
+    { "maximumRoll": 13, "adjective": "curious", "followUp": "It circles once before bumping the enemy..." },
+    { "maximumRoll": 17, "adjective": "confident", "followUp": "It glides gracefully through the current..." },
+    { "maximumRoll": 24, "adjective": "dedicated", "followUp": "It surges forward with surprising determination..." }
+  ],
+  "criticalText": "It erupts in brilliant Astral light! Critical Hit!"
+}

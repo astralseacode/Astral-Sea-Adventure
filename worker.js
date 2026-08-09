@@ -16,7 +16,8 @@ const SHORT_REST_COOLDOWN_MS = 20 * 60 * 1000;
 const LONG_REST_COOLDOWN_MS = 60 * 60 * 1000;
 const LONG_REST_ENCOUNTER_CHANCE = 0.5;
 const OFFENSIVE_ROLL_TRIGGER = "next_offensive_d20";
-const ELF_BLESSING_DURATION_MS = 30 * 60 * 1000;
+// Used only when migrating the original charge-based saved effect.
+const LEGACY_ELF_BLESSING_DURATION_MS = 30 * 60 * 1000;
 const BERRY_HEAL_AMOUNT = 25;
 const BERRY_MANA_AMOUNT = 25;
 const BERRY_OUTSIDE_COMBAT_MESSAGES = [
@@ -157,18 +158,6 @@ const LONG_REST_ENCOUNTER_TRANSITIONS = [
   (enemyName) =>
     `You finish gathering your belongings when something lunges from behind a nearby ruin.\n\nA **${enemyName}** has discovered your resting place and seems unwilling to discuss boundaries.`,
 ];
-const ELF_BLESSING_SUCCESS_SCENES = [
-  "A nearby bush rustles suspiciously.\n\nYou spot Shizuki peeking through the leaves and giving you an enthusiastic thumbs-up. The instant she realizes you noticed her, she vanishes deeper into the shrubbery.\n\nWarm Fae magic gathers around you.",
-  "A tiny paper note flutters down from somewhere above.\n\nIt reads:\n\n\"You're doing great.\"\n\nThere is no signature, but the handwriting is unmistakably Shizuki's.\n\nSilver light settles around your weapon.",
-  "A gentle breeze carries glowing moon petals around you.\n\nFrom somewhere in the distance, a voice calls:\n\n\"YOU GOT THIS!\"\n\nAfter a startled pause, the same voice loudly whispers:\n\n\"...Nobody heard that.\"",
-  "You spot Shizuki hiding behind a nearby tree.\n\nWhen she realizes you can see her, she freezes, raises both arms like branches, and attempts to pass herself off as an ordinary forest shrub.\n\nSomehow, this fills you with determination.",
-  "A fake mustache tumbles from behind a nearby rock.\n\nA hand immediately reaches out, snatches it, and disappears.\n\nA warm magical blessing settles around you moments later.\n\nThese events are completely unrelated.",
-];
-const ELF_BLESSING_RECAST_SCENES = [
-  "A familiar voice whispers from somewhere nearby:\n\n\"I already blessed you. I'm good—but not that good.\"",
-  "A note lands at your feet:\n\n\"ONE blessing at a time. Please use responsibly.\"\n\nThe handwriting is unmistakably Shizuki's.",
-  "A nearby bush shakes its leaves disapprovingly.\n\nYou are already under the effects of Elf Blessing.",
-];
 const BERRY_DROP_CHANCE_BY_REGION = {
   "moonlit-reef": 0.77,
   "starfall-trench": 0.60,
@@ -268,107 +257,11 @@ const STAT_SHIZUKI_RESPONSES = Object.fromEntries(
     }),
   ]),
 );
-const SPELLS = {
-  elf_blessing: {
-    id: "elf_blessing",
-    name: "Elf Blessing",
-    aliases: ["elf blessing", "elf_blessing", "blessing"],
-    requiredLevel: 1,
-    manaCost: 30,
-    type: "support",
-    description: "+2 to offensive rolls for 30 minutes",
-    effectId: "elf_blessing",
-  },
-  jelly: {
-    id: "jelly",
-    name: "Jellyfish",
-    aliases: ["jelly"],
-    requiredLevel: 3,
-    manaCost: 10,
-    type: "offensive",
-    damage: {
-      dice: 3,
-      sides: 8,
-    },
-    criticalDamage: 35,
-    personalities: [
-      {
-        maximumRoll: 4,
-        adjective: "sad",
-        followUp: "It drifts lazily into the enemy...",
-      },
-      {
-        maximumRoll: 8,
-        adjective: "sleepy",
-        followUp: "It slowly floats toward its target...",
-      },
-      {
-        maximumRoll: 13,
-        adjective: "curious",
-        followUp: "It circles once before bumping the enemy...",
-      },
-      {
-        maximumRoll: 17,
-        adjective: "confident",
-        followUp: "It glides gracefully through the current...",
-      },
-      {
-        maximumRoll: 24,
-        adjective: "dedicated",
-        followUp: "It surges forward with surprising determination...",
-      },
-    ],
-    criticalText: "It erupts in brilliant Astral light! Critical Hit!",
-  },
-  moonbeam: {
-    id: "moonbeam",
-    name: "Moonbeam",
-    aliases: ["moonbeam"],
-    requiredLevel: 5,
-    manaCost: 20,
-    type: "offensive",
-    damage: {
-      dice: 2,
-      sides: 20,
-      keepHighest: true,
-      bonusDieSides: 6,
-    },
-    criticalThreshold: 20,
-    criticalDamage: 40,
-  },
+const SPELL_FILES = {
+  elf_blessing: "elf-blessing.json",
+  jelly: "jellyfish.json",
+  moonbeam: "moonbeam.json",
 };
-const MOONBEAM_CAST_TIERS = {
-  weak: {
-    id: "weak",
-    displayName: "Weak Cast",
-    narration: "A faint moonbeam slips through the water, but it flickers before reaching its full brilliance. Even so, it grazes your foe with a pale shimmer.",
-  },
-  steady: {
-    id: "steady",
-    displayName: "Steady Cast",
-    narration: "A gentle moonbeam descends from above, washing over your foe before bursting into a shower of shimmering light.",
-  },
-  strong: {
-    id: "strong",
-    displayName: "Strong Cast",
-    narration: "The sea briefly falls silent as a focused moonbeam crashes into your foe, scattering brilliant fragments of light in every direction.",
-  },
-  excellent: {
-    id: "excellent",
-    displayName: "Excellent Cast",
-    narration: "The moon itself seems to answer your call. A brilliant beam tears through the water, exploding against your foe in a dazzling flash that leaves the battlefield glowing.",
-  },
-  critical: {
-    id: "critical",
-    displayName: "Critical Cast",
-    narration: "For a heartbeat, the entire Astral Sea glows as though night itself has awakened. A blinding pillar of moonlight crashes down with impossible force, leaving only drifting stardust in its wake.",
-  },
-};
-const MOONBEAM_CRITICAL_FLAVOR = [
-  "...You could swear you hear Shizuki quietly whisper, “Not bad.”",
-  "Somewhere nearby, a single approving clap echoes through the reef.",
-  "A fake mustache briefly floats through the moonlight... then vanishes.",
-];
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
 
@@ -2934,7 +2827,8 @@ async function performCastUnlocked(
     };
   }
 
-  const spell = Object.values(SPELLS).find(
+  const spellDefinitions = await getSpellDefinitions();
+  const spell = spellDefinitions.find(
     (candidate) =>
       candidate.id === spellInputValue ||
       candidate.aliases.includes(spellInputValue),
@@ -2963,11 +2857,11 @@ async function performCastUnlocked(
     };
   }
 
-  if (spell.type === "support" && spell.effectId === "elf_blessing") {
+  if (spell.type === "timed-support" && spell.effectId === "elf_blessing") {
     const activeEffect = getStatusEffect(progress, spell.effectId);
 
     if (activeEffect) {
-      const message = `${randomChoice(ELF_BLESSING_RECAST_SCENES)}\n\n` +
+      const message = `${randomChoice(spell.recastScenes)}\n\n` +
         `Elf Blessing Remaining: ${formatEffectRemaining(activeEffect)}`;
       return {
         message: currentCombatState && platform === "discord"
@@ -2990,7 +2884,7 @@ async function performCastUnlocked(
       mana: progress.mana - spell.manaCost,
       statusEffects: addStatusEffect(
         progress,
-        createElfBlessingEffect(),
+        createElfBlessingEffect(spell),
       ),
     };
 
@@ -3005,7 +2899,7 @@ async function performCastUnlocked(
 
       throw error;
     }
-    const scene = randomChoice(ELF_BLESSING_SUCCESS_SCENES);
+    const scene = randomChoice(spell.successScenes);
     const activeEffects = formatActiveEffects(
       updatedProgress,
       platform,
@@ -3111,7 +3005,10 @@ async function performCastUnlocked(
 
 function rollSpellDamage(spell) {
   if (spell.id === "moonbeam") {
-    const rolls = [randomInteger(1, 20), randomInteger(1, 20)];
+    const rolls = Array.from(
+      { length: spell.damage.dice },
+      () => randomInteger(1, spell.damage.sides),
+    );
     const keptRoll = Math.max(...rolls);
 
     return {
@@ -3129,8 +3026,7 @@ function rollSpellDamage(spell) {
   );
 
   const total = rolls.reduce((sum, roll) => sum + roll, 0);
-  const maximumRoll = spell.damage.dice * spell.damage.sides;
-  const isCritical = total === maximumRoll;
+  const isCritical = total >= spell.criticalThreshold;
 
   return {
     rolls,
@@ -3158,12 +3054,11 @@ function resolveSpellRoll(spell, spellRoll, finalTotal) {
       baseDamage,
       bonusDamage,
       damage: baseDamage + bonusDamage,
-      criticalFlavor: isCritical ? getMoonbeamCriticalFlavor() : null,
+      criticalFlavor: isCritical ? getMoonbeamCriticalFlavor(spell) : null,
     };
   }
 
-  const maximumRoll = spell.damage.dice * spell.damage.sides;
-  const isCritical = finalTotal >= maximumRoll;
+  const isCritical = finalTotal >= spell.criticalThreshold;
 
   return {
     ...spellRoll,
@@ -3180,7 +3075,7 @@ function formatSpellCastMessage(
   platform = "twitch",
 ) {
   if (spell.id === "moonbeam") {
-    return formatMoonbeamCastMessage(spellRoll, effectResult, platform);
+    return formatMoonbeamCastMessage(spell, spellRoll, effectResult, platform);
   }
 
   const personality =
@@ -3211,22 +3106,23 @@ function formatSpellCastMessage(
     fadeText;
 }
 
-function getMoonbeamCastTier({ naturalKeptRoll, finalRoll, isCritical }) {
-  if (isCritical || finalRoll >= 20) return MOONBEAM_CAST_TIERS.critical;
-  if (naturalKeptRoll <= 7) return MOONBEAM_CAST_TIERS.weak;
-  if (naturalKeptRoll <= 12) return MOONBEAM_CAST_TIERS.steady;
-  if (naturalKeptRoll <= 17) return MOONBEAM_CAST_TIERS.strong;
-  return MOONBEAM_CAST_TIERS.excellent;
+function getMoonbeamCastTier(spell, { naturalKeptRoll, finalRoll, isCritical }) {
+  if (isCritical || finalRoll >= spell.criticalThreshold) {
+    return spell.narrationTiers.find((tier) => tier.id === "critical");
+  }
+  return spell.narrationTiers.find(
+    (tier) => tier.id !== "critical" && naturalKeptRoll <= tier.naturalMaximum,
+  );
 }
 
-function getMoonbeamCriticalFlavor() {
-  return Math.random() < 0.25
-    ? randomChoice(MOONBEAM_CRITICAL_FLAVOR)
+function getMoonbeamCriticalFlavor(spell) {
+  return Math.random() < spell.criticalFlavorChance
+    ? randomChoice(spell.criticalFlavor)
     : null;
 }
 
-function formatMoonbeamCastMessage(spellRoll, effectResult, platform = "twitch") {
-  const tier = getMoonbeamCastTier({
+function formatMoonbeamCastMessage(spell, spellRoll, effectResult, platform = "twitch") {
+  const tier = getMoonbeamCastTier(spell, {
     naturalKeptRoll: spellRoll.keptRoll,
     finalRoll: spellRoll.finalTotal,
     isCritical: spellRoll.isCritical,
@@ -6245,7 +6141,7 @@ function normalizeStatusEffects(statusEffects, now = Date.now()) {
     if (isElfBlessing && durationType === "charges") {
       durationType = "time";
       startedAt = now;
-      expiresAt = now + ELF_BLESSING_DURATION_MS;
+      expiresAt = now + LEGACY_ELF_BLESSING_DURATION_MS;
       remainingCharges = 0;
     }
 
@@ -6264,7 +6160,7 @@ function normalizeStatusEffects(statusEffects, now = Date.now()) {
           ? "Elf Blessing"
           : String(effect.displayName || effectId).trim() || effectId,
       description: isElfBlessing
-        ? "+2 to offensive rolls"
+        ? String(effect.description || "+2 to offensive rolls").trim()
         : String(effect.description || "").trim(),
       category: String(effect.category || "neutral").trim(),
       source: String(effect.source || "unknown").trim(),
@@ -6277,12 +6173,12 @@ function normalizeStatusEffects(statusEffects, now = Date.now()) {
         ? OFFENSIVE_ROLL_TRIGGER
         : String(effect.trigger || "").trim(),
       modifiers: {
-        attackRoll: isElfBlessing
-          ? 2
-          : Number.isSafeInteger(
-              Number(effect.modifiers?.attackRoll),
-            )
-            ? Number(effect.modifiers.attackRoll)
+        attackRoll: Number.isSafeInteger(
+          Number(effect.modifiers?.attackRoll),
+        )
+          ? Number(effect.modifiers.attackRoll)
+          : isElfBlessing
+            ? 2
             : 0,
       },
       createdAt: Math.max(
@@ -6318,20 +6214,20 @@ function removeStatusEffect(progress, effectId) {
   return statusEffects;
 }
 
-function createElfBlessingEffect(now = Date.now()) {
+function createElfBlessingEffect(spell, now = Date.now()) {
   return {
     id: "elf_blessing",
     displayName: "Elf Blessing",
-    description: "+2 to offensive rolls",
+    description: `+${spell.modifier} to offensive rolls`,
     category: "buff",
     source: "spell",
     visibility: "public",
     durationType: "time",
     startedAt: now,
-    expiresAt: now + ELF_BLESSING_DURATION_MS,
+    expiresAt: now + spell.durationMs,
     trigger: OFFENSIVE_ROLL_TRIGGER,
     modifiers: {
-      attackRoll: 2,
+      attackRoll: spell.modifier,
     },
     createdAt: now,
   };
@@ -6622,6 +6518,94 @@ async function fetchCachedJson(cacheKey, url) {
   });
 
   return value;
+}
+
+function validateSpellDefinition(spell, expectedId) {
+  const isPositiveInteger = (value) =>
+    Number.isSafeInteger(Number(value)) && Number(value) > 0;
+  const isTextArray = (value) =>
+    Array.isArray(value) && value.length > 0 &&
+    value.every((entry) => typeof entry === "string" && entry.trim());
+
+  if (
+    !spell ||
+    spell.id !== expectedId ||
+    typeof spell.name !== "string" ||
+    !spell.name.trim() ||
+    !isTextArray(spell.aliases) ||
+    !isPositiveInteger(spell.requiredLevel) ||
+    !Number.isFinite(Number(spell.manaCost)) ||
+    Number(spell.manaCost) < 0 ||
+    !["offensive", "timed-support"].includes(spell.type)
+  ) {
+    throw new Error(`Invalid spell definition for ${expectedId}.`);
+  }
+
+  if (spell.type === "offensive") {
+    if (
+      !isPositiveInteger(spell.damage?.dice) ||
+      !isPositiveInteger(spell.damage?.sides) ||
+      !isPositiveInteger(spell.criticalThreshold) ||
+      !Number.isFinite(Number(spell.criticalDamage)) ||
+      Number(spell.criticalDamage) < 0
+    ) {
+      throw new Error(`Invalid offensive spell definition for ${expectedId}.`);
+    }
+  }
+
+  if (spell.type === "timed-support") {
+    if (
+      typeof spell.effectId !== "string" ||
+      !spell.effectId.trim() ||
+      !isPositiveInteger(spell.durationMs) ||
+      !Number.isFinite(Number(spell.modifier)) ||
+      !isTextArray(spell.successScenes) ||
+      !isTextArray(spell.recastScenes)
+    ) {
+      throw new Error(`Invalid timed support spell definition for ${expectedId}.`);
+    }
+  }
+
+  if (expectedId === "jelly" && (
+    !Array.isArray(spell.personalities) ||
+    spell.personalities.length !== 5 ||
+    typeof spell.criticalText !== "string" ||
+    !spell.criticalText.trim()
+  )) {
+    throw new Error("Invalid Jellyfish narration data.");
+  }
+
+  if (expectedId === "moonbeam" && (
+    spell.damage.keepHighest !== true ||
+    !isPositiveInteger(spell.damage.bonusDieSides) ||
+    !Array.isArray(spell.narrationTiers) ||
+    spell.narrationTiers.length !== 5 ||
+    !Number.isFinite(Number(spell.criticalFlavorChance)) ||
+    Number(spell.criticalFlavorChance) < 0 ||
+    Number(spell.criticalFlavorChance) > 1 ||
+    !isTextArray(spell.criticalFlavor)
+  )) {
+    throw new Error("Invalid Moonbeam content data.");
+  }
+
+  return spell;
+}
+
+async function getSpellDefinition(spellId) {
+  const file = SPELL_FILES[spellId];
+  if (!file) return null;
+
+  const spell = await fetchCachedJson(
+    `spell:${spellId}`,
+    `${GITHUB_DATA_BASE}/spells/${file}`,
+  );
+  return validateSpellDefinition(spell, spellId);
+}
+
+async function getSpellDefinitions() {
+  return Promise.all(
+    Object.keys(SPELL_FILES).map((spellId) => getSpellDefinition(spellId)),
+  );
 }
 
 async function getRegionMetadata(regionId) {
