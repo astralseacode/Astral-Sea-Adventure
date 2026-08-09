@@ -1,0 +1,182 @@
+[
+    {
+        "id":  "starfall-trench-note-01",
+        "number":  1,
+        "title":  "The Falling Calendar",
+        "text":  "A damaged traveler journal records: Trench keepers once dated years by the color of falling fragments; blue-white showers marked safe navigation seasons."
+    },
+    {
+        "id":  "starfall-trench-note-02",
+        "number":  2,
+        "title":  "Stone That Remembers Heat",
+        "text":  "An old field report states: Fresh starstone remains warm for decades, and its inner light brightens when returned near its original crater."
+    },
+    {
+        "id":  "starfall-trench-note-03",
+        "number":  3,
+        "title":  "A Bent Plumb Line",
+        "text":  "A local record preserves this account: A surveyor recorded that every weight leaned east here, although east changed whenever the largest fragment pulsed."
+    },
+    {
+        "id":  "starfall-trench-note-04",
+        "number":  4,
+        "title":  "Crystalline Nursery",
+        "text":  "An unsigned observation reads: Tiny glass-finned fish shelter inside meteor cracks because larger predators cannot tolerate the harmonic ringing."
+    },
+    {
+        "id":  "starfall-trench-note-05",
+        "number":  5,
+        "title":  "Do Not Lick the Comet",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: A handwritten addition reads: \"It tastes like cold lightning. This warning exists because I made a scientific mistake. --Shizuki\""
+    },
+    {
+        "id":  "starfall-trench-note-06",
+        "number":  6,
+        "title":  "Annex Transit Mark",
+        "text":  "An old field report states: A faded cargo seal matches Moonlit Lab workmanship but bears a trench designation and a much later revision number."
+    },
+    {
+        "id":  "starfall-trench-note-07",
+        "number":  7,
+        "title":  "The Quiet Impact",
+        "text":  "A local record preserves this account: One crater contains no debris, only a perfect absence where sound and current vanish at its rim."
+    },
+    {
+        "id":  "starfall-trench-note-08",
+        "number":  8,
+        "title":  "Ventkeeper Record",
+        "text":  "An unsigned observation reads: Old divers harvested cosmic vent glass with copper tools; iron implements became too heavy to lift near the plume."
+    },
+    {
+        "id":  "starfall-trench-note-09",
+        "number":  9,
+        "title":  "Borrowed Constellations",
+        "text":  "A damaged traveler journal records: Celestial fragments on the seabed form patterns absent from the sky, suggesting they fell from somewhere else."
+    },
+    {
+        "id":  "starfall-trench-note-10",
+        "number":  10,
+        "title":  "Helpful Arrow Number Seven",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki drew seven arrows toward seven different tunnels and labeled all of them \"probably the shortcut.\""
+    },
+    {
+        "id":  "starfall-trench-note-11",
+        "number":  11,
+        "title":  "Deep-Orbit Shell",
+        "text":  "A local record preserves this account: A nautilus shell records a spiral matching the orbit of a star no modern chart recognizes."
+    },
+    {
+        "id":  "starfall-trench-note-12",
+        "number":  12,
+        "title":  "Ruin Without a Sky",
+        "text":  "An unsigned observation reads: The oldest celestial arch was built before the surrounding impact, yet its carvings depict the fragment arriving."
+    },
+    {
+        "id":  "starfall-trench-note-13",
+        "number":  13,
+        "title":  "Meteorwake Song",
+        "text":  "A damaged traveler journal records: When several shards resonate together, their notes reproduce a navigation hymn used by vanished trench settlements."
+    },
+    {
+        "id":  "starfall-trench-note-14",
+        "number":  14,
+        "title":  "Gravity-Sick Journal",
+        "text":  "An old field report states: An explorer learned to sleep tied to the floor after waking on the ceiling three mornings in succession."
+    },
+    {
+        "id":  "starfall-trench-note-15",
+        "number":  15,
+        "title":  "Emergency Mustache Protocol",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: A facility notice has been amended: \"Facial disguise ineffective against security constructs. Still stylish. --S\""
+    },
+    {
+        "id":  "starfall-trench-note-16",
+        "number":  16,
+        "title":  "Buried Observation Lens",
+        "text":  "An unsigned observation reads: A cracked lens magnifies not distance but age, showing nearby ruins as they looked roughly a century ago."
+    },
+    {
+        "id":  "starfall-trench-note-17",
+        "number":  17,
+        "title":  "The Star-Eater Trail",
+        "text":  "A damaged traveler journal records: Smooth grooves end at empty sockets where luminous fragments once rested, each surrounded by silver residue."
+    },
+    {
+        "id":  "starfall-trench-note-18",
+        "number":  18,
+        "title":  "Unsent Cargo Complaint",
+        "text":  "An old field report states: An annex quartermaster objected to receiving sealed specimen crates without origin papers or living-content warnings."
+    },
+    {
+        "id":  "starfall-trench-note-19",
+        "number":  19,
+        "title":  "Aurora Below",
+        "text":  "A local record preserves this account: Trench auroras rise from the seabed rather than descending from above and briefly reverse weak currents."
+    },
+    {
+        "id":  "starfall-trench-note-20",
+        "number":  20,
+        "title":  "An Older Insignia",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: A corroded badge bears the organization mark beneath another emblem that someone deliberately filed away."
+    },
+    {
+        "id":  "starfall-trench-note-21",
+        "number":  21,
+        "title":  "Cometglass Etiquette",
+        "text":  "A damaged traveler journal records: Local tradition held that taking the first shard from a new crater invited every falling stone to notice you."
+    },
+    {
+        "id":  "starfall-trench-note-22",
+        "number":  22,
+        "title":  "The Weightless Camp",
+        "text":  "An old field report states: Bedrolls remain tied around a floating stone where travelers once waited for gravity to remember its direction."
+    },
+    {
+        "id":  "starfall-trench-note-23",
+        "number":  23,
+        "title":  "Security Revision Forty-Two",
+        "text":  "A local record preserves this account: The annex repeatedly upgraded its pursuit protocols long after Moonlit Lab should have ceased operating."
+    },
+    {
+        "id":  "starfall-trench-note-24",
+        "number":  24,
+        "title":  "Starwalker Footprints",
+        "text":  "An unsigned observation reads: A trail of fused footprints crosses molten-looking stone without approaching or leaving the site."
+    },
+    {
+        "id":  "starfall-trench-note-25",
+        "number":  25,
+        "title":  "Return Visit",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki wrote over a warning placard: \"I came back voluntarily, moved your furniture, and left voluntarily. Important distinction.\""
+    },
+    {
+        "id":  "starfall-trench-note-26",
+        "number":  26,
+        "title":  "The Trench Map",
+        "text":  "An old field report states: A celestial map marks other facilities as dim points beyond the reef, but water damage erased their names."
+    },
+    {
+        "id":  "starfall-trench-note-27",
+        "number":  27,
+        "title":  "Corekeeper Memorandum",
+        "text":  "A local record preserves this account: A maintenance order describes an artificial body expected to remain functional beyond the lifespan of its makers."
+    },
+    {
+        "id":  "starfall-trench-note-28",
+        "number":  28,
+        "title":  "The Missing Shipment",
+        "text":  "An unsigned observation reads: Records mention \"Subject Seven transfer materials,\" although the destination field has been cut from the page."
+    },
+    {
+        "id":  "starfall-trench-note-29",
+        "number":  29,
+        "title":  "Annex Night Watch",
+        "text":  "A damaged traveler journal records: A guard log ends with reports of laughter in sealed ducts and every Officer portrait acquiring a paper mustache."
+    },
+    {
+        "id":  "starfall-trench-note-30",
+        "number":  30,
+        "title":  "Not an Isolated Laboratory",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: The final surviving ledger confirms the Starfall Annex and Moonlit Lab reported to the same unseen authority."
+    }
+]

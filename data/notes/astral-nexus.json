@@ -1,0 +1,182 @@
+[
+    {
+        "id":  "astral-nexus-note-01",
+        "number":  1,
+        "title":  "The Same Door Twice",
+        "text":  "A damaged traveler journal records: A portal opens onto both sides of the same corridor, but travelers return carrying different memories."
+    },
+    {
+        "id":  "astral-nexus-note-02",
+        "number":  2,
+        "title":  "Stars Underfoot",
+        "text":  "An old field report states: The lights below are not reflections; several respond when addressed by forgotten constellation names."
+    },
+    {
+        "id":  "astral-nexus-note-03",
+        "number":  3,
+        "title":  "Borrowed Yesterday",
+        "text":  "A local record preserves this account: A physical memory of rainfall persists in one chamber despite the Astral Sea never having weather there."
+    },
+    {
+        "id":  "astral-nexus-note-04",
+        "number":  4,
+        "title":  "The Folded Mile",
+        "text":  "An unsigned observation reads: Surveyors walked one hundred steps forward and returned behind their starting marker."
+    },
+    {
+        "id":  "astral-nexus-note-05",
+        "number":  5,
+        "title":  "Please Ignore Future Me",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki wrote: \"If another version of me says this sign is safe, ask which one touched it first.\""
+    },
+    {
+        "id":  "astral-nexus-note-06",
+        "number":  6,
+        "title":  "Continuance Route",
+        "text":  "An old field report states: Facility traffic records converge here from annexes separated by distance, politics, and nearly a century."
+    },
+    {
+        "id":  "astral-nexus-note-07",
+        "number":  7,
+        "title":  "Memory Coral",
+        "text":  "A local record preserves this account: The coral grows scenes instead of branches and sheds them when someone recognizes the people depicted."
+    },
+    {
+        "id":  "astral-nexus-note-08",
+        "number":  8,
+        "title":  "Portal Etiquette",
+        "text":  "An unsigned observation reads: Old Fae instructions advise greeting a doorway before asking where it leads."
+    },
+    {
+        "id":  "astral-nexus-note-09",
+        "number":  9,
+        "title":  "The Missing Minute",
+        "text":  "A damaged traveler journal records: Every clock loses the same minute near the central convergence, though witnesses remember spending hours inside it."
+    },
+    {
+        "id":  "astral-nexus-note-10",
+        "number":  10,
+        "title":  "Terminal Name Updated",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki renamed the central terminal \"Definitely_Not_Shizuki.txt\" and replaced its alert tone with applause."
+    },
+    {
+        "id":  "astral-nexus-note-11",
+        "number":  11,
+        "title":  "Subject Index Fragment",
+        "text":  "A local record preserves this account: Entries One through Six end in failure codes; Subject Seven\u0027s result field redirects to a sealed project file."
+    },
+    {
+        "id":  "astral-nexus-note-12",
+        "number":  12,
+        "title":  "Architecture in Reverse",
+        "text":  "An unsigned observation reads: One structure is assembled from its roof downward while foundations appear only after rooms are entered."
+    },
+    {
+        "id":  "astral-nexus-note-13",
+        "number":  13,
+        "title":  "The Other Ocean",
+        "text":  "A damaged traveler journal records: A portal briefly shows an Astral Sea with no Moonlit Reef and a different arrangement of stars."
+    },
+    {
+        "id":  "astral-nexus-note-14",
+        "number":  14,
+        "title":  "Century Counter",
+        "text":  "An old field report states: A project clock measures from the original escape rather than from the facility\u0027s construction."
+    },
+    {
+        "id":  "astral-nexus-note-15",
+        "number":  15,
+        "title":  "Emotionally Out of Order",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki\u0027s label on a security construct reads: \"Technically functional. Spiritually having a difficult day.\""
+    },
+    {
+        "id":  "astral-nexus-note-16",
+        "number":  16,
+        "title":  "Convergence Law",
+        "text":  "An unsigned observation reads: Objects from all six regions drift toward the Nexus but stop before touching, held in a permanent almost-collision."
+    },
+    {
+        "id":  "astral-nexus-note-17",
+        "number":  17,
+        "title":  "White-Haired Figure",
+        "text":  "A damaged traveler journal records: A damaged memory projection shows someone kneeling beside a small elf, but the face and spoken name are missing."
+    },
+    {
+        "id":  "astral-nexus-note-18",
+        "number":  18,
+        "title":  "Portal Root",
+        "text":  "An old field report states: Living Fae roots pass through sealed geometry without puncturing it, connecting rooms that cannot share space."
+    },
+    {
+        "id":  "astral-nexus-note-19",
+        "number":  19,
+        "title":  "The Viability Question",
+        "text":  "A local record preserves this account: Researchers repeatedly ask why Seven survived procedures that killed or destabilized earlier subjects."
+    },
+    {
+        "id":  "astral-nexus-note-20",
+        "number":  20,
+        "title":  "Helpful Future Warning",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki wrote: \"Do not enter the blue portal until yesterday. You will understand later, unfortunately.\""
+    },
+    {
+        "id":  "astral-nexus-note-21",
+        "number":  21,
+        "title":  "Replacement Personnel",
+        "text":  "A damaged traveler journal records: Staff records continue through descendants, constructed bodies, and unexplained identity transfers."
+    },
+    {
+        "id":  "astral-nexus-note-22",
+        "number":  22,
+        "title":  "The Kindness Gap",
+        "text":  "An old field report states: Several records were removed by someone with authorized access immediately after Subject Seven received a personal name."
+    },
+    {
+        "id":  "astral-nexus-note-23",
+        "number":  23,
+        "title":  "Central Objective",
+        "text":  "A local record preserves this account: The project sought a stable living connection among Fae magic, memory, and Astral currents, but its intended use is redacted."
+    },
+    {
+        "id":  "astral-nexus-note-24",
+        "number":  24,
+        "title":  "A Room Remembering Shizuki",
+        "text":  "An unsigned observation reads: The chamber recreates an empty berry pouch and laughter, evidence of a later visit made freely."
+    },
+    {
+        "id":  "astral-nexus-note-25",
+        "number":  25,
+        "title":  "Access Card With Doodles",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki returned an executive card covered in stars and wrote: \"Your security remains adorable.\""
+    },
+    {
+        "id":  "astral-nexus-note-26",
+        "number":  26,
+        "title":  "Timeline Scar",
+        "text":  "An old field report states: One corridor contains overlapping evacuation alarms from events separated by eighty-three years."
+    },
+    {
+        "id":  "astral-nexus-note-27",
+        "number":  27,
+        "title":  "The Unresolved Name",
+        "text":  "A local record preserves this account: A file confirms someone named Subject Seven but removes every clue identifying that person."
+    },
+    {
+        "id":  "astral-nexus-note-28",
+        "number":  28,
+        "title":  "Continuance Directive",
+        "text":  "An unsigned observation reads: The organization ordered all surviving annexes to send results here even after their original leaders disappeared."
+    },
+    {
+        "id":  "astral-nexus-note-29",
+        "number":  29,
+        "title":  "Why Seven Endured",
+        "text":  "A damaged traveler journal records: The answer field is intact but encrypted by a Fae pattern that changes whenever it is observed."
+    },
+    {
+        "id":  "astral-nexus-note-30",
+        "number":  30,
+        "title":  "The Open Convergence",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: The final record promises a next phase beyond the Nexus while leaving its architects and purpose unknown."
+    }
+]

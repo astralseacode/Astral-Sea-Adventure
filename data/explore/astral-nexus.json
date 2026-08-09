@@ -1,0 +1,662 @@
+[
+    {
+        "id":  1,
+        "code":  "AN-001",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  100,
+        "title":  "Paradox Shoal",
+        "reward":  {
+                       "min":  380,
+                       "max":  700
+                   },
+        "xp":  150,
+        "message":  "explored Paradox Shoal, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-01",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  2,
+        "code":  "AN-002",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  98,
+        "title":  "Impossible Angles",
+        "reward":  {
+                       "min":  392,
+                       "max":  712
+                   },
+        "xp":  155,
+        "message":  "explored Impossible Angles, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-02",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  3,
+        "code":  "AN-003",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  96,
+        "title":  "Memoryglass Strand",
+        "reward":  {
+                       "min":  404,
+                       "max":  724
+                   },
+        "xp":  160,
+        "message":  "explored Memoryglass Strand, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-03",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  4,
+        "code":  "AN-004",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  94,
+        "title":  "Portal-Skip Expanse",
+        "reward":  {
+                       "min":  416,
+                       "max":  736
+                   },
+        "xp":  165,
+        "message":  "explored Portal-Skip Expanse, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-04",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  5,
+        "code":  "AN-005",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  92,
+        "title":  "Clocktide Drift",
+        "reward":  {
+                       "min":  428,
+                       "max":  748
+                   },
+        "xp":  170,
+        "message":  "explored Clocktide Drift, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-05",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  6,
+        "code":  "AN-006",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "rare",
+        "weight":  90,
+        "title":  "Fractured Ocean",
+        "reward":  {
+                       "min":  440,
+                       "max":  760
+                   },
+        "xp":  175,
+        "message":  "explored Fractured Ocean, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-06",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  7,
+        "code":  "AN-007",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  88,
+        "title":  "Dream-Anchor Mooring",
+        "reward":  {
+                       "min":  452,
+                       "max":  772
+                   },
+        "xp":  180,
+        "message":  "explored Dream-Anchor Mooring, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-07",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  8,
+        "code":  "AN-008",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  86,
+        "title":  "Stars Below",
+        "reward":  {
+                       "min":  464,
+                       "max":  784
+                   },
+        "xp":  185,
+        "message":  "explored Stars Below, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-08",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  9,
+        "code":  "AN-009",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  84,
+        "title":  "Fae Axis",
+        "reward":  {
+                       "min":  476,
+                       "max":  796
+                   },
+        "xp":  190,
+        "message":  "explored Fae Axis, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-09",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  10,
+        "code":  "AN-010",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "epic",
+        "weight":  82,
+        "title":  "Hall of Other Selves",
+        "reward":  {
+                       "min":  488,
+                       "max":  808
+                   },
+        "xp":  195,
+        "message":  "explored Hall of Other Selves, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-10",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  11,
+        "code":  "AN-011",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "Stormscript Front",
+        "reward":  {
+                       "min":  500,
+                       "max":  820
+                   },
+        "xp":  200,
+        "message":  "explored Stormscript Front, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-11",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  12,
+        "code":  "AN-012",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  78,
+        "title":  "Portalroot Junction",
+        "reward":  {
+                       "min":  512,
+                       "max":  832
+                   },
+        "xp":  205,
+        "message":  "explored Portalroot Junction, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-12",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  13,
+        "code":  "AN-013",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  76,
+        "title":  "Walking Constellation",
+        "reward":  {
+                       "min":  524,
+                       "max":  844
+                   },
+        "xp":  210,
+        "message":  "explored Walking Constellation, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-13",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  14,
+        "code":  "AN-014",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  74,
+        "title":  "Returning Yesterday",
+        "reward":  {
+                       "min":  536,
+                       "max":  856
+                   },
+        "xp":  215,
+        "message":  "explored Returning Yesterday, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-14",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  15,
+        "code":  "AN-015",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  72,
+        "title":  "Voidflower Garden",
+        "reward":  {
+                       "min":  548,
+                       "max":  868
+                   },
+        "xp":  220,
+        "message":  "explored Voidflower Garden, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-15",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  16,
+        "code":  "AN-016",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "rare",
+        "weight":  70,
+        "title":  "Convergent Currents",
+        "reward":  {
+                       "min":  560,
+                       "max":  880
+                   },
+        "xp":  225,
+        "message":  "explored Convergent Currents, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-16",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  17,
+        "code":  "AN-017",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  68,
+        "title":  "Thoughtform Maze",
+        "reward":  {
+                       "min":  572,
+                       "max":  892
+                   },
+        "xp":  230,
+        "message":  "explored Thoughtform Maze, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-17",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  18,
+        "code":  "AN-018",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  66,
+        "title":  "Astral Storm Island",
+        "reward":  {
+                       "min":  584,
+                       "max":  904
+                   },
+        "xp":  235,
+        "message":  "explored Astral Storm Island, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-18",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  19,
+        "code":  "AN-019",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  64,
+        "title":  "Phaseclaw Causeway",
+        "reward":  {
+                       "min":  596,
+                       "max":  916
+                   },
+        "xp":  240,
+        "message":  "explored Phaseclaw Causeway, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-19",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  20,
+        "code":  "AN-020",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "epic",
+        "weight":  62,
+        "title":  "Memory Reef",
+        "reward":  {
+                       "min":  608,
+                       "max":  928
+                   },
+        "xp":  245,
+        "message":  "explored Memory Reef, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-20",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  21,
+        "code":  "AN-021",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  60,
+        "title":  "Gravity Choir",
+        "reward":  {
+                       "min":  620,
+                       "max":  940
+                   },
+        "xp":  250,
+        "message":  "explored Gravity Choir, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-21",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  22,
+        "code":  "AN-022",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  58,
+        "title":  "Foldspace Spiral",
+        "reward":  {
+                       "min":  632,
+                       "max":  952
+                   },
+        "xp":  255,
+        "message":  "explored Foldspace Spiral, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-22",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  23,
+        "code":  "AN-023",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  56,
+        "title":  "Unbuilding Ruins",
+        "reward":  {
+                       "min":  644,
+                       "max":  964
+                   },
+        "xp":  260,
+        "message":  "explored Unbuilding Ruins, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-23",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  24,
+        "code":  "AN-024",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  54,
+        "title":  "Eventide Threshold",
+        "reward":  {
+                       "min":  656,
+                       "max":  976
+                   },
+        "xp":  265,
+        "message":  "explored Eventide Threshold, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-24",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  25,
+        "code":  "AN-025",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  52,
+        "title":  "Portal Graveyard",
+        "reward":  {
+                       "min":  668,
+                       "max":  988
+                   },
+        "xp":  270,
+        "message":  "explored Portal Graveyard, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-25",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  26,
+        "code":  "AN-026",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "rare",
+        "weight":  50,
+        "title":  "Gnawed Timeline",
+        "reward":  {
+                       "min":  680,
+                       "max":  1000
+                   },
+        "xp":  275,
+        "message":  "explored Gnawed Timeline, where folded space returns your own footsteps carrying a pouch of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-26",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  27,
+        "code":  "AN-027",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  48,
+        "title":  "Nexus Crown Array",
+        "reward":  {
+                       "min":  692,
+                       "max":  1012
+                   },
+        "xp":  280,
+        "message":  "explored Nexus Crown Array, where a portal deposits a cache from somewhere that has not happened yet, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-27",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  28,
+        "code":  "AN-028",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "common",
+        "weight":  46,
+        "title":  "First-Light Memory",
+        "reward":  {
+                       "min":  704,
+                       "max":  1024
+                   },
+        "xp":  285,
+        "message":  "explored First-Light Memory, where physical memories gather into Candies when you recognize the scene, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-28",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  29,
+        "code":  "AN-029",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "uncommon",
+        "weight":  44,
+        "title":  "Convergence Threshold",
+        "reward":  {
+                       "min":  716,
+                       "max":  1036
+                   },
+        "xp":  290,
+        "message":  "explored Convergence Threshold, where impossible stars align beneath you and illuminate a hidden convergence offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-29",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  30,
+        "code":  "AN-030",
+        "category":  "explore",
+        "region":  "Astral Nexus",
+        "rarity":  "epic",
+        "weight":  42,
+        "title":  "Continuance Core Trace",
+        "reward":  {
+                       "min":  728,
+                       "max":  1048
+                   },
+        "xp":  295,
+        "message":  "explored Continuance Core Trace, where a Fae structure unfolds one extra room containing a stable Candy cache, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "astral-nexus-note-30",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    }
+]

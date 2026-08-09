@@ -1,0 +1,182 @@
+[
+    {
+        "id":  "whispering-kelp-forest-note-01",
+        "number":  1,
+        "title":  "The Forest Repeats",
+        "text":  "A damaged traveler journal records: Whispering currents retain short phrases for years, but the roots change their meaning by altering the pauses."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-02",
+        "number":  2,
+        "title":  "Lanternvine Courtesy",
+        "text":  "An old field report states: Fae lights dim when approached directly and brighten when travelers politely pretend not to notice them."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-03",
+        "number":  3,
+        "title":  "Rootway Agreement",
+        "text":  "A local record preserves this account: Ancient residents marked safe paths by braiding three living vines without cutting any stem."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-04",
+        "number":  4,
+        "title":  "Pollen Moon",
+        "text":  "An unsigned observation reads: Silver spores rise once each cycle and cause nearby flowers to imitate whatever constellation hangs overhead."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-05",
+        "number":  5,
+        "title":  "Please Stop Teaching the Vines",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki wrote: \"They learned to open buckles. I accept some responsibility and none of the blame.\""
+    },
+    {
+        "id":  "whispering-kelp-forest-note-06",
+        "number":  6,
+        "title":  "Search Team Marker",
+        "text":  "An old field report states: A metal tag beneath the moss identifies a pursuit unit assigned to recover escaped experimental subjects."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-07",
+        "number":  7,
+        "title":  "The Listening Grove",
+        "text":  "A local record preserves this account: Travelers avoided speaking names here because the forest whispered them back in unfamiliar voices."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-08",
+        "number":  8,
+        "title":  "Dreamsap Warning",
+        "text":  "An unsigned observation reads: Fresh dreamsap closes wounds, while old dreamsap preserves the last nightmare of anything that touched it."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-09",
+        "number":  9,
+        "title":  "Shrine Beneath the Roots",
+        "text":  "A damaged traveler journal records: A Fae altar predates the surrounding forest; the oldest roots curve around it without crossing its shadow."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-10",
+        "number":  10,
+        "title":  "An Excellent Hiding Place",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki annotated a search map: \"They checked this grove six times. I was in the map cabinet.\""
+    },
+    {
+        "id":  "whispering-kelp-forest-note-11",
+        "number":  11,
+        "title":  "Moonmoth Migration",
+        "text":  "A local record preserves this account: Moonmoths navigate by reflected starlight even where the canopy has hidden the surface for centuries."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-12",
+        "number":  12,
+        "title":  "Briar Treaty",
+        "text":  "An unsigned observation reads: A carved tablet grants one grove the right to defend itself against axes, fire, and rude singing."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-13",
+        "number":  13,
+        "title":  "The Borrowed Voice",
+        "text":  "A damaged traveler journal records: One vine repeats a researcher\u0027s command phrase, but records identify that researcher as dead for eighty years."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-14",
+        "number":  14,
+        "title":  "Greenwater Apothecary",
+        "text":  "An old field report states: Forest healers collected remedies only from plants that voluntarily released a leaf when thanked."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-15",
+        "number":  15,
+        "title":  "Definitely a Normal Bush",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: A doodled sign reads: \"No escaped elf behind this shrub. Please direct search teams elsewhere. --Not Shizuki\""
+    },
+    {
+        "id":  "whispering-kelp-forest-note-16",
+        "number":  16,
+        "title":  "Pursuit Ledger Fragment",
+        "text":  "An unsigned observation reads: The teams tracked unusual Fae signatures from Moonlit Reef into the forest, then lost the trail among thousands of false echoes."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-17",
+        "number":  17,
+        "title":  "Memory in the Bark",
+        "text":  "A damaged traveler journal records: A cut root grew rings around a metal restraint and eventually crushed it into harmless flakes."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-18",
+        "number":  18,
+        "title":  "Whispercap Consensus",
+        "text":  "An old field report states: A colony of whispercaps repeats warnings by majority vote, making urgent messages take several hours."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-19",
+        "number":  19,
+        "title":  "Grovekeeper\u0027s Law",
+        "text":  "A local record preserves this account: Visitors may harvest fallen pods, but taking a living bloom without permission forfeits the thief\u0027s sense of direction."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-20",
+        "number":  20,
+        "title":  "Searchlight Spores",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki\u0027s note says: \"Their detection spores make you glow. Rolling in blue pollen makes you glow differently. Problem solved.\""
+    },
+    {
+        "id":  "whispering-kelp-forest-note-21",
+        "number":  21,
+        "title":  "The Unseen Shrine",
+        "text":  "A damaged traveler journal records: A shrine becomes visible only in reflections and disappears whenever anyone attempts to measure it."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-22",
+        "number":  22,
+        "title":  "Rootbound Effigy",
+        "text":  "An old field report states: The effigy contains no bones or machinery, only compacted letters from travelers who asked the forest for guidance."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-23",
+        "number":  23,
+        "title":  "Team Twelve\u0027s Last Report",
+        "text":  "A local record preserves this account: A pursuit captain reported that the target could not be distinguished from the forest\u0027s own Fae magic."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-24",
+        "number":  24,
+        "title":  "The Moving Boundary",
+        "text":  "An unsigned observation reads: Survey stones migrate several paces each night while the trees insist, through whispers, that they have not moved."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-25",
+        "number":  25,
+        "title":  "Returned Access Card",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki returned an old card decades later with flowers painted over the authorization stripe."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-26",
+        "number":  26,
+        "title":  "Glimmerpod Nursery",
+        "text":  "An old field report states: Glimmerpods open around patient visitors and snap shut near active facility weapons."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-27",
+        "number":  27,
+        "title":  "The Search Continued",
+        "text":  "A local record preserves this account: Successor records show the organization renewed its escaped-subject search under new personnel and inherited ranks."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-28",
+        "number":  28,
+        "title":  "Forest Countermeasure",
+        "text":  "An unsigned observation reads: Roots learned to mimic pursuit signals, sending search constructs in circles until their power failed."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-29",
+        "number":  29,
+        "title":  "No Recapture Record",
+        "text":  "A damaged traveler journal records: Every surviving ledger lists Subject Seven as outstanding; none records a successful recovery."
+    },
+    {
+        "id":  "whispering-kelp-forest-note-30",
+        "number":  30,
+        "title":  "The Forest Keeps Secrets",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: The final root archive closes around names connected to the rebellion, preserving them without revealing their fate."
+    }
+]

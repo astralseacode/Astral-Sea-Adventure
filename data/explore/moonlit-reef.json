@@ -650,7 +650,7 @@
       "max": 500
     },
     "xp": 150,
-    "message": "reached the heart of Moonlit Reef where Shizuki and Glimmer stood before an ancient relic. It awakened in silver light, granting {reward} Star Candies and the final page of the chapter~ / LEGENDARY EXPEDITION!",
+    "message": "reached the heart of Moonlit Reef where an ancient moonstone archive awakened in silver light, granting {reward} Star Candies and the final page of the chapter~ / LEGENDARY EXPEDITION!",
     "itemDrops": [
       {
         "id": "moonlit-reef-note-30",

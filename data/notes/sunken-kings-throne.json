@@ -1,0 +1,182 @@
+[
+    {
+        "id":  "sunken-kings-throne-note-01",
+        "number":  1,
+        "title":  "Law of the First Fountain",
+        "text":  "A damaged traveler journal records: Citizens could petition the crown by placing a silver shell in the eastern palace fountain."
+    },
+    {
+        "id":  "sunken-kings-throne-note-02",
+        "number":  2,
+        "title":  "Banner Order",
+        "text":  "An old field report states: Royal banners displayed civic duties by knot pattern, allowing decrees to be read through dark water."
+    },
+    {
+        "id":  "sunken-kings-throne-note-03",
+        "number":  3,
+        "title":  "The Empty Coronation",
+        "text":  "A local record preserves this account: A court record describes a crown placed on an empty throne while every noble swore loyalty anyway."
+    },
+    {
+        "id":  "sunken-kings-throne-note-04",
+        "number":  4,
+        "title":  "Sealkeeper\u0027s Oath",
+        "text":  "An unsigned observation reads: Breaking a royal seal required three witnesses, a tide-priest, and a written apology to the door."
+    },
+    {
+        "id":  "sunken-kings-throne-note-05",
+        "number":  5,
+        "title":  "Portrait Improvement",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki wrote: \"The king looked too serious, so I supplied the traditional mustache. Tradition began today.\""
+    },
+    {
+        "id":  "sunken-kings-throne-note-06",
+        "number":  6,
+        "title":  "Foreign Compact",
+        "text":  "An old field report states: An embassy ledger records the arrival of researchers offering preservation methods in exchange for royal protection."
+    },
+    {
+        "id":  "sunken-kings-throne-note-07",
+        "number":  7,
+        "title":  "Drowned Market Law",
+        "text":  "A local record preserves this account: Merchants were forbidden to sell memories, shadows, or weather captured outside the kingdom."
+    },
+    {
+        "id":  "sunken-kings-throne-note-08",
+        "number":  8,
+        "title":  "The Queen\u0027s Measure",
+        "text":  "An unsigned observation reads: Public fountains were calibrated against the queen\u0027s chalice and still fill to precisely the same depth."
+    },
+    {
+        "id":  "sunken-kings-throne-note-09",
+        "number":  9,
+        "title":  "Court of Echoes",
+        "text":  "A damaged traveler journal records: Petitioners spoke through carved masks so the throne judged arguments without recognizing rank."
+    },
+    {
+        "id":  "sunken-kings-throne-note-10",
+        "number":  10,
+        "title":  "Unhelpful Palace Map",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki labeled every stairway \"up-ish\" and every sealed treasury \"probably snacks.\""
+    },
+    {
+        "id":  "sunken-kings-throne-note-11",
+        "number":  11,
+        "title":  "The Tax on Pearls",
+        "text":  "A local record preserves this account: Pearls formed inside royal waters belonged one-third to the finder, one-third to the crown, and one-third to the sea."
+    },
+    {
+        "id":  "sunken-kings-throne-note-12",
+        "number":  12,
+        "title":  "Treaty Chamber Draft",
+        "text":  "An unsigned observation reads: The organization promised defensive constructs while reserving unrestricted access to royal ruins and prisoners."
+    },
+    {
+        "id":  "sunken-kings-throne-note-13",
+        "number":  13,
+        "title":  "The Crownless Guard",
+        "text":  "A damaged traveler journal records: After the palace fell, surviving guards removed their crests but continued patrolling the evacuation routes."
+    },
+    {
+        "id":  "sunken-kings-throne-note-14",
+        "number":  14,
+        "title":  "Banquet Protocol",
+        "text":  "An old field report states: Guests received seven utensils, three of which were ceremonial and one of which was reportedly alive."
+    },
+    {
+        "id":  "sunken-kings-throne-note-15",
+        "number":  15,
+        "title":  "Returned Embassy Key",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki\u0027s annotation reads: \"Borrowed during an emergency. Returned during a different century. Still counts.\""
+    },
+    {
+        "id":  "sunken-kings-throne-note-16",
+        "number":  16,
+        "title":  "Royal Archive Flooding",
+        "text":  "An unsigned observation reads: Archivists deliberately flooded the lowest stacks to hide politically dangerous records in salt-preserved cases."
+    },
+    {
+        "id":  "sunken-kings-throne-note-17",
+        "number":  17,
+        "title":  "The Prince Without a Name",
+        "text":  "A damaged traveler journal records: One nursery ledger removes an heir from every succession list without explaining whether he died or was erased."
+    },
+    {
+        "id":  "sunken-kings-throne-note-18",
+        "number":  18,
+        "title":  "Covenant Engine Clause",
+        "text":  "An old field report states: A treaty permits royal seals to command facility constructs, but only while the ancient bloodline endures."
+    },
+    {
+        "id":  "sunken-kings-throne-note-19",
+        "number":  19,
+        "title":  "Law Beneath the Law",
+        "text":  "A local record preserves this account: An older tablet states that no crown may own a living mind, contradicting several later royal decrees."
+    },
+    {
+        "id":  "sunken-kings-throne-note-20",
+        "number":  20,
+        "title":  "Officer Portrait Gallery",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki added paper crowns to the Officers and a note: \"Now everyone is equally overqualified.\""
+    },
+    {
+        "id":  "sunken-kings-throne-note-21",
+        "number":  21,
+        "title":  "The Menagerie Petition",
+        "text":  "A damaged traveler journal records: Keepers begged the court to release creatures altered by visiting researchers; the petition was denied."
+    },
+    {
+        "id":  "sunken-kings-throne-note-22",
+        "number":  22,
+        "title":  "Council Vote",
+        "text":  "An old field report states: Three ministers opposed the Compact, two vanished, and the surviving record lists the decision as unanimous."
+    },
+    {
+        "id":  "sunken-kings-throne-note-23",
+        "number":  23,
+        "title":  "Seal Number Seven",
+        "text":  "A local record preserves this account: The seventh seal bears both royal script and the same Subject Seven notation used in facility records."
+    },
+    {
+        "id":  "sunken-kings-throne-note-24",
+        "number":  24,
+        "title":  "The Last Public Notice",
+        "text":  "An unsigned observation reads: Citizens were ordered away from the palace while research personnel received protected passage inward."
+    },
+    {
+        "id":  "sunken-kings-throne-note-25",
+        "number":  25,
+        "title":  "Throne Room Correction",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: Shizuki scratched out \"eternal authority\" and wrote \"very temporary furniture.\""
+    },
+    {
+        "id":  "sunken-kings-throne-note-26",
+        "number":  26,
+        "title":  "The Drowned Constitution",
+        "text":  "An old field report states: Fragments preserve rights to safe currents, honest measures, and freedom from magical alteration."
+    },
+    {
+        "id":  "sunken-kings-throne-note-27",
+        "number":  27,
+        "title":  "Compact Renewal",
+        "text":  "A local record preserves this account: Successor rulers renewed the organization\u0027s privileges long after the original signatories should have died."
+    },
+    {
+        "id":  "sunken-kings-throne-note-28",
+        "number":  28,
+        "title":  "The Royal Price",
+        "text":  "An unsigned observation reads: A private letter suggests the crown exchanged political prisoners for defenses against an approaching Astral threat."
+    },
+    {
+        "id":  "sunken-kings-throne-note-29",
+        "number":  29,
+        "title":  "Embassy Closure",
+        "text":  "A damaged traveler journal records: The final embassy log seals its staff inside under Continuance orders rather than royal command."
+    },
+    {
+        "id":  "sunken-kings-throne-note-30",
+        "number":  30,
+        "title":  "No Throne Is Forever",
+        "text":  "A page in Shizuki\u0027s familiar handwriting says: An unknown clerk wrote that kingdoms drown, institutions change names, and records remember both."
+    }
+]

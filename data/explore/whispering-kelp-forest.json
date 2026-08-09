@@ -1,0 +1,662 @@
+[
+    {
+        "id":  1,
+        "code":  "WKF-001",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  100,
+        "title":  "Murmuring Rootway",
+        "reward":  {
+                       "min":  140,
+                       "max":  280
+                   },
+        "xp":  45,
+        "message":  "explored Murmuring Rootway, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-01",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  2,
+        "code":  "WKF-002",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  98,
+        "title":  "Lanternvine Crossing",
+        "reward":  {
+                       "min":  145,
+                       "max":  285
+                   },
+        "xp":  47,
+        "message":  "explored Lanternvine Crossing, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-02",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  3,
+        "code":  "WKF-003",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  96,
+        "title":  "Whispercap Circle",
+        "reward":  {
+                       "min":  150,
+                       "max":  290
+                   },
+        "xp":  49,
+        "message":  "explored Whispercap Circle, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-03",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  4,
+        "code":  "WKF-004",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  94,
+        "title":  "Veilpetal Drift",
+        "reward":  {
+                       "min":  155,
+                       "max":  295
+                   },
+        "xp":  51,
+        "message":  "explored Veilpetal Drift, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-04",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  5,
+        "code":  "WKF-005",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  92,
+        "title":  "Rootcoil Bend",
+        "reward":  {
+                       "min":  160,
+                       "max":  300
+                   },
+        "xp":  53,
+        "message":  "explored Rootcoil Bend, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-05",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  6,
+        "code":  "WKF-006",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "rare",
+        "weight":  90,
+        "title":  "Dewbell Canopy",
+        "reward":  {
+                       "min":  165,
+                       "max":  305
+                   },
+        "xp":  55,
+        "message":  "explored Dewbell Canopy, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-06",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  7,
+        "code":  "WKF-007",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  88,
+        "title":  "Briarfin Trail",
+        "reward":  {
+                       "min":  170,
+                       "max":  310
+                   },
+        "xp":  57,
+        "message":  "explored Briarfin Trail, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-07",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  8,
+        "code":  "WKF-008",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  86,
+        "title":  "Hushwater Grove",
+        "reward":  {
+                       "min":  175,
+                       "max":  315
+                   },
+        "xp":  59,
+        "message":  "explored Hushwater Grove, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-08",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  9,
+        "code":  "WKF-009",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  84,
+        "title":  "Fae-Lure Lights",
+        "reward":  {
+                       "min":  180,
+                       "max":  320
+                   },
+        "xp":  61,
+        "message":  "explored Fae-Lure Lights, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-09",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  10,
+        "code":  "WKF-010",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "epic",
+        "weight":  82,
+        "title":  "Mosscloak Hollow",
+        "reward":  {
+                       "min":  185,
+                       "max":  325
+                   },
+        "xp":  63,
+        "message":  "explored Mosscloak Hollow, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-10",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  11,
+        "code":  "WKF-011",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  80,
+        "title":  "Singing Vineway",
+        "reward":  {
+                       "min":  190,
+                       "max":  330
+                   },
+        "xp":  65,
+        "message":  "explored Singing Vineway, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-11",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  12,
+        "code":  "WKF-012",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  78,
+        "title":  "Moonblossom Clearing",
+        "reward":  {
+                       "min":  195,
+                       "max":  335
+                   },
+        "xp":  67,
+        "message":  "explored Moonblossom Clearing, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-12",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  13,
+        "code":  "WKF-013",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  76,
+        "title":  "Gossipcurrent Fork",
+        "reward":  {
+                       "min":  200,
+                       "max":  340
+                   },
+        "xp":  69,
+        "message":  "explored Gossipcurrent Fork, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-13",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  14,
+        "code":  "WKF-014",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  74,
+        "title":  "Vanishing Grove",
+        "reward":  {
+                       "min":  205,
+                       "max":  345
+                   },
+        "xp":  71,
+        "message":  "explored Vanishing Grove, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-14",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  15,
+        "code":  "WKF-015",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  72,
+        "title":  "Shrinebark Shrine",
+        "reward":  {
+                       "min":  210,
+                       "max":  350
+                   },
+        "xp":  73,
+        "message":  "explored Shrinebark Shrine, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-15",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  16,
+        "code":  "WKF-016",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "rare",
+        "weight":  70,
+        "title":  "Starflower Patch",
+        "reward":  {
+                       "min":  215,
+                       "max":  355
+                   },
+        "xp":  75,
+        "message":  "explored Starflower Patch, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-16",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  17,
+        "code":  "WKF-017",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  68,
+        "title":  "Dreamsap Pool",
+        "reward":  {
+                       "min":  220,
+                       "max":  360
+                   },
+        "xp":  77,
+        "message":  "explored Dreamsap Pool, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-17",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  18,
+        "code":  "WKF-018",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  66,
+        "title":  "Kelpweave Arch",
+        "reward":  {
+                       "min":  225,
+                       "max":  365
+                   },
+        "xp":  79,
+        "message":  "explored Kelpweave Arch, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-18",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  19,
+        "code":  "WKF-019",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  64,
+        "title":  "Willowcurrent Turn",
+        "reward":  {
+                       "min":  230,
+                       "max":  370
+                   },
+        "xp":  81,
+        "message":  "explored Willowcurrent Turn, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-19",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  20,
+        "code":  "WKF-020",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "epic",
+        "weight":  62,
+        "title":  "Bramblejaw Understory",
+        "reward":  {
+                       "min":  235,
+                       "max":  375
+                   },
+        "xp":  83,
+        "message":  "explored Bramblejaw Understory, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-20",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  21,
+        "code":  "WKF-021",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  60,
+        "title":  "Echo-Bark Stand",
+        "reward":  {
+                       "min":  240,
+                       "max":  380
+                   },
+        "xp":  85,
+        "message":  "explored Echo-Bark Stand, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-21",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  22,
+        "code":  "WKF-022",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  58,
+        "title":  "Moonmoth Cloud",
+        "reward":  {
+                       "min":  245,
+                       "max":  385
+                   },
+        "xp":  87,
+        "message":  "explored Moonmoth Cloud, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-22",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  23,
+        "code":  "WKF-023",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  56,
+        "title":  "Rootbound Effigy",
+        "reward":  {
+                       "min":  250,
+                       "max":  390
+                   },
+        "xp":  89,
+        "message":  "explored Rootbound Effigy, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-23",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  24,
+        "code":  "WKF-024",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  54,
+        "title":  "Sighing Reedbed",
+        "reward":  {
+                       "min":  255,
+                       "max":  395
+                   },
+        "xp":  91,
+        "message":  "explored Sighing Reedbed, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-24",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  25,
+        "code":  "WKF-025",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  52,
+        "title":  "Glimmerpod Nursery",
+        "reward":  {
+                       "min":  260,
+                       "max":  400
+                   },
+        "xp":  93,
+        "message":  "explored Glimmerpod Nursery, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-25",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  26,
+        "code":  "WKF-026",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "rare",
+        "weight":  50,
+        "title":  "Borrowed Grove",
+        "reward":  {
+                       "min":  265,
+                       "max":  405
+                   },
+        "xp":  95,
+        "message":  "explored Borrowed Grove, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-26",
+                              "chance":  0.18,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  27,
+        "code":  "WKF-027",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  48,
+        "title":  "Thornsong Vale",
+        "reward":  {
+                       "min":  270,
+                       "max":  410
+                   },
+        "xp":  97,
+        "message":  "explored Thornsong Vale, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-27",
+                              "chance":  0.19999999999999998,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  28,
+        "code":  "WKF-028",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "common",
+        "weight":  46,
+        "title":  "Whisperroot Deep",
+        "reward":  {
+                       "min":  275,
+                       "max":  415
+                   },
+        "xp":  99,
+        "message":  "explored Whisperroot Deep, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-28",
+                              "chance":  0.22,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  29,
+        "code":  "WKF-029",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "uncommon",
+        "weight":  44,
+        "title":  "Memory-Kelp Pool",
+        "reward":  {
+                       "min":  280,
+                       "max":  420
+                   },
+        "xp":  101,
+        "message":  "explored Memory-Kelp Pool, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-29",
+                              "chance":  0.24,
+                              "type":  "travel-note"
+                          }
+                      ]
+    },
+    {
+        "id":  30,
+        "code":  "WKF-030",
+        "category":  "explore",
+        "region":  "Whispering Kelp Forest",
+        "rarity":  "epic",
+        "weight":  42,
+        "title":  "Verdant Station Trace",
+        "reward":  {
+                       "min":  285,
+                       "max":  425
+                   },
+        "xp":  103,
+        "message":  "explored Verdant Station Trace, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "itemDrops":  [
+                          {
+                              "id":  "whispering-kelp-forest-note-30",
+                              "chance":  0.26,
+                              "type":  "travel-note"
+                          }
+                      ]
+    }
+]

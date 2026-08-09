@@ -557,7 +557,7 @@ const DAILY_BLESSINGS = [
 
   "A playful spirit tied a ribbon around your Backpack before filling it with gifts.",
 
-  "Shizuki found an ancient relic, admired it for five seconds, then gave it to you.",
+  "Shizuki found an ancient treasure, admired it for five seconds, then gave it to you.",
 
   "A tiny sea slug proudly delivered today's blessing at maximum slug speed.",
 
@@ -599,7 +599,7 @@ const DAILY_BLESSINGS = [
 
   "Ancient runes beneath the reef pulsed softly as they recognized your return.",
 
-  "A starlit current revealed relics untouched for countless ages.",
+  "A starlit current revealed treasures untouched for countless ages.",
 
   "The spirits of forgotten navigators guided you toward hidden fortune.",
 
@@ -835,7 +835,7 @@ const DISCORD_COMMANDS = [
   {
     name: "moonlitreef",
     description:
-      "View your Moonlit Reef exploration and relic completion.",
+      "View your Moonlit Reef exploration and Travel Note completion.",
     type: 1,
   },
   {
@@ -3786,24 +3786,6 @@ async function performExploreUnlocked(
     }
   }
 
-  const relicDrop = rollUniqueRelic(
-    log,
-    progress.relics,
-  );
-
-  let updatedRelics = [...progress.relics];
-  let foundNewRelic = false;
-
-  if (relicDrop) {
-    const relicResult = addUniqueRelic(
-      updatedRelics,
-      relicDrop,
-    );
-
-    updatedRelics = relicResult.relics;
-    foundNewRelic = relicResult.isNew;
-  }
-
   const berryDropChance = BERRY_DROP_CHANCE_BY_REGION[startingRegion.id] ?? 0;
 
   if (!(startingRegion.id in BERRY_DROP_CHANCE_BY_REGION)) {
@@ -3828,7 +3810,6 @@ async function performExploreUnlocked(
     backpackKey,
     {
       ...xpProgression.progress,
-      relics: updatedRelics,
       discoveries: updatedDiscoveries,
       notes: updatedNotes,
       currentRegion: startingRegion.id,
@@ -3880,12 +3861,6 @@ async function performExploreUnlocked(
     );
   }
 
-  if (foundNewRelic && relicDrop) {
-    messageLines.push(
-      `RELIC DISCOVERED: ${formatRelicName(relicDrop)}`,
-    );
-  }
-
   if (noteDrop && noteWasDuplicate) {
     messageLines.push(
       `Duplicate Travel Note: +${DUPLICATE_NOTE_CANDY_BONUS} bonus Star Candies.`,
@@ -3919,7 +3894,6 @@ async function performExploreUnlocked(
     level: endingLevel,
     title: endingTitle,
     region: startingRegion.name,
-    relic: foundNewRelic ? relicDrop : null,
     note: noteDrop,
     berry: foundBerry,
     berries: updatedBerryCount,
@@ -6852,12 +6826,13 @@ async function performRegionCompletion(
   backpackKey,
   region,
 ) {
-  const [progress, logs] = await Promise.all([
+  const [progress, logs, metadata] = await Promise.all([
     getPlayerProgress(
       env,
       backpackKey,
     ),
     loadRegionLogs(region),
+    getRegionMetadata(region.id),
   ]);
 
   const validExploreCodes = [
@@ -6870,28 +6845,8 @@ async function performRegionCompletion(
     ),
   ];
 
-  const regionRelicIds = [
-    ...new Set(
-      logs.flatMap((log) =>
-        Array.isArray(log.itemDrops)
-          ? log.itemDrops
-              .map((drop) =>
-                String(
-                  drop?.id || "",
-                ).trim(),
-              )
-              .filter(Boolean)
-          : [],
-      ),
-    ),
-  ];
-
   const discoveredCodes = new Set(
     progress.discoveries?.[region.name] || [],
-  );
-
-  const ownedRelics = new Set(
-    progress.relics || [],
   );
 
   const completedExplores =
@@ -6899,22 +6854,20 @@ async function performRegionCompletion(
       (code) => discoveredCodes.has(code),
     ).length;
 
-  const completedRelics =
-    regionRelicIds.filter(
-      (relicId) => ownedRelics.has(relicId),
-    ).length;
-
   const totalExplores =
     validExploreCodes.length;
 
-  const totalRelics =
-    regionRelicIds.length;
+  const completedNotes = getOwnedNoteNumbers(
+    progress,
+    region.id,
+    metadata.noteCount,
+  ).length;
 
   const totalObjectives =
-    totalExplores + totalRelics;
+    totalExplores + metadata.noteCount;
 
   const completedObjectives =
-    completedExplores + completedRelics;
+    completedExplores + completedNotes;
 
   const completionPercent =
     totalObjectives > 0
@@ -6929,13 +6882,13 @@ async function performRegionCompletion(
   return {
     completedExplores,
     totalExplores,
-    completedRelics,
-    totalRelics,
+    completedNotes,
+    totalNotes: metadata.noteCount,
     completionPercent,
     message:
       `${region.name} Completion\n` +
       `Explores: ${completedExplores}/${totalExplores} | ` +
-      `Relics: ${completedRelics}/${totalRelics} | ` +
+      `Travel Notes: ${completedNotes}/${metadata.noteCount} | ` +
       `Completion: ${completionPercent}%`,
   };
 }
@@ -7149,7 +7102,6 @@ function createEmptyProgress() {
     unspentStatPoints: 0,
     statPointsGrantedThroughLevel: 1,
     statusEffects: {},
-    relics: [],
     discoveries: {},
     notes: {},
     combatProgress: {},
@@ -7264,18 +7216,6 @@ async function getPlayerProgress(
         ? "moonlit-reef"
         : getRegionForLevel(levelFromXp(xp)).id;
 
-    const relics = Array.isArray(parsed.relics)
-      ? [
-          ...new Set(
-            parsed.relics
-              .map((relicId) =>
-                String(relicId).trim(),
-              )
-              .filter(Boolean),
-          ),
-        ]
-      : [];
-
     const discoveries = {};
     const notes = {};
     const combatProgress = {};
@@ -7376,7 +7316,6 @@ async function getPlayerProgress(
       unspentStatPoints,
       statPointsGrantedThroughLevel,
       statusEffects,
-      relics,
       discoveries,
       notes,
       combatProgress,
@@ -7421,18 +7360,6 @@ async function savePlayerProgress(
   backpackKey,
   progress,
 ) {
-  const safeRelics = [
-    ...new Set(
-      Array.isArray(progress.relics)
-        ? progress.relics
-            .map((relicId) =>
-              String(relicId).trim(),
-            )
-            .filter(Boolean)
-        : [],
-    ),
-  ];
-
   const safeDiscoveries = {};
   const safeNotes = {};
   const safeCombatProgress = {};
@@ -7571,7 +7498,6 @@ async function savePlayerProgress(
     unspentStatPoints: Math.max(0, Math.floor(Number(progress.unspentStatPoints) || 0)),
     statPointsGrantedThroughLevel: Math.max(1, Math.floor(Number(progress.statPointsGrantedThroughLevel) || levelFromXp(Number(progress.xp) || 0))),
     statusEffects: normalizeStatusEffects(progress.statusEffects),
-    relics: safeRelics,
     discoveries: safeDiscoveries,
     notes: safeNotes,
     combatProgress: safeCombatProgress,
@@ -7622,29 +7548,6 @@ function addDiscovery(
     regionDiscoveries;
 
   return updatedDiscoveries;
-}
-
-function addUniqueRelic(
-  relics,
-  relicId,
-) {
-  const updatedRelics = Array.isArray(relics)
-    ? [...relics]
-    : [];
-
-  if (!updatedRelics.includes(relicId)) {
-    updatedRelics.push(relicId);
-
-    return {
-      relics: updatedRelics,
-      isNew: true,
-    };
-  }
-
-  return {
-    relics: updatedRelics,
-    isNew: false,
-  };
 }
 
 function isTravelNoteId(value) {
@@ -7739,72 +7642,6 @@ function formatNumberRanges(numbers) {
   }
 
   return ranges.join(", ");
-}
-
-function rollUniqueRelic(
-  log,
-  ownedRelics,
-) {
-  if (!Array.isArray(log.itemDrops)) {
-    return null;
-  }
-
-  const owned = new Set(
-    Array.isArray(ownedRelics)
-      ? ownedRelics
-      : [],
-  );
-
-  const availableDrops = log.itemDrops.filter(
-    (drop) => {
-      const relicId = String(
-        drop?.id || "",
-      ).trim();
-
-      const chance = Number(
-        drop?.chance,
-      );
-
-      return (
-        relicId &&
-        !isTravelNoteDrop(drop) &&
-        Number.isFinite(chance) &&
-        chance > 0 &&
-        !owned.has(relicId)
-      );
-    },
-  );
-
-  for (const drop of availableDrops) {
-    const chance = Math.min(
-      1,
-      Math.max(
-        0,
-        Number(drop.chance),
-      ),
-    );
-
-    if (Math.random() < chance) {
-      return String(drop.id).trim();
-    }
-  }
-
-  return null;
-}
-
-function formatRelicName(relicId) {
-  return relicId
-    .split("_")
-    .map((word) =>
-      word.length > 0
-        ? word[0].toUpperCase() +
-          word.slice(1)
-        : word,
-    )
-    .join(" ")
-    .replace(/\bShizukis\b/g, "Shizuki's")
-    .replace(/\bMoonkeepers\b/g, "Moonkeeper's")
-    .replace(/\bNavigators\b/g, "Navigator's");
 }
 
 /*
