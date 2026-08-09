@@ -8,11 +8,11 @@
         "weight":  100,
         "title":  "Murmuring Rootway",
         "reward":  {
-                       "min":  140,
-                       "max":  280
+                       "min":  130,
+                       "max":  220
                    },
-        "xp":  45,
-        "message":  "explored Murmuring Rootway, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "xp":  35,
+        "message":  "Roots murmur as you pass. \"The new one,\" whispers a thick coil, only for another to shush it sharply. The gossip grows louder and increasingly specific until it leads beneath a knotted root, where {reward} Star Candies and a folded Travel Note have been tucked away.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-01",
@@ -27,14 +27,14 @@
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
         "rarity":  "common",
-        "weight":  98,
+        "weight":  90,
         "title":  "Lanternvine Crossing",
         "reward":  {
-                       "min":  145,
-                       "max":  285
+                       "min":  140,
+                       "max":  230
                    },
-        "xp":  47,
-        "message":  "explored Lanternvine Crossing, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "xp":  37,
+        "message":  "Lanternvines brighten into a suspiciously perfect trail. The moment you trust it, every lantern goes dark. After a long, smug pause, they relight farther ahead around {reward} Star Candies and a Travel Note; the vines flicker as though laughing.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-02",
@@ -49,14 +49,14 @@
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
         "rarity":  "common",
-        "weight":  96,
+        "weight":  80,
         "title":  "Whispercap Circle",
         "reward":  {
                        "min":  150,
-                       "max":  290
+                       "max":  240
                    },
-        "xp":  49,
-        "message":  "explored Whispercap Circle, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "xp":  39,
+        "message":  "A circle of Whispercaps begins copying the rhythm of your footsteps. One mushroom lands every beat painfully late. Investigating the terrible percussionist reveals a Travel Note beneath its cap and {reward} Star Candies nestled around its roots.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-03",
@@ -70,15 +70,15 @@
         "code":  "WKF-004",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "uncommon",
-        "weight":  94,
+        "rarity":  "common",
+        "weight":  70,
         "title":  "Veilpetal Drift",
         "reward":  {
-                       "min":  155,
-                       "max":  295
+                       "min":  160,
+                       "max":  250
                    },
-        "xp":  51,
-        "message":  "explored Veilpetal Drift, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "xp":  41,
+        "message":  "Veilpetals keep attaching themselves to your sleeves, boots, and hair until you resemble an ambulatory bouquet. One carries a folded Travel Note; when you remove it, the others flutter apart to reveal {reward} Star Candies they had been concealing.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-04",
@@ -92,15 +92,15 @@
         "code":  "WKF-005",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "uncommon",
-        "weight":  92,
+        "rarity":  "common",
+        "weight":  100,
         "title":  "Rootcoil Bend",
         "reward":  {
-                       "min":  160,
-                       "max":  300
+                       "min":  170,
+                       "max":  260
                    },
-        "xp":  53,
-        "message":  "explored Rootcoil Bend, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "xp":  43,
+        "message":  "A root blocks the obvious trail. You step around it, and another slides into place. After several increasingly petty repetitions, the forest apparently grows bored and opens the way, exposing {reward} Star Candies beside a waiting Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-05",
@@ -114,15 +114,15 @@
         "code":  "WKF-006",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "rare",
+        "rarity":  "common",
         "weight":  90,
         "title":  "Dewbell Canopy",
         "reward":  {
-                       "min":  165,
-                       "max":  305
+                       "min":  130,
+                       "max":  220
                    },
-        "xp":  55,
-        "message":  "explored Dewbell Canopy, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "xp":  45,
+        "message":  "Dewbells chime whenever you move. Trying to sneak only makes them ring louder until one enormous magical *DONG* rolls through the canopy, shaking loose a Travel Note and {reward} Star Candies in a shower of silver droplets.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-06",
@@ -137,14 +137,14 @@
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
         "rarity":  "common",
-        "weight":  88,
+        "weight":  80,
         "title":  "Briarfin Trail",
         "reward":  {
-                       "min":  170,
-                       "max":  310
+                       "min":  140,
+                       "max":  230
                    },
-        "xp":  57,
-        "message":  "explored Briarfin Trail, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "xp":  35,
+        "message":  "Briar-like kelp plucks a harmless trinket from your bag and passes it from vine to vine. The chase winds through half the trail before the briars return it with theatrical innocence beside {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-07",
@@ -158,15 +158,15 @@
         "code":  "WKF-008",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  86,
+        "rarity":  "uncommon",
+        "weight":  55,
         "title":  "Hushwater Grove",
         "reward":  {
-                       "min":  175,
-                       "max":  315
+                       "min":  200,
+                       "max":  280
                    },
-        "xp":  59,
-        "message":  "explored Hushwater Grove, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "xp":  50,
+        "message":  "Every sound vanishes inside the grove. A wooden sign says, \"SHHH.\" Familiar handwriting beneath it adds, \"they are dramatic.\" The silence holds until reeds part without a sound, revealing {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-08",
@@ -181,14 +181,14 @@
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
         "rarity":  "uncommon",
-        "weight":  84,
+        "weight":  45,
         "title":  "Fae-Lure Lights",
         "reward":  {
-                       "min":  180,
-                       "max":  320
+                       "min":  215,
+                       "max":  295
                    },
-        "xp":  61,
-        "message":  "explored Fae-Lure Lights, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "xp":  55,
+        "message":  "Fae lights divide into several beautiful paths beside a scratched warning: \"DON\u0027T FOLLOW THE BLUE ONES.\" Immediately, every light turns blue. After an exhausting argument conducted entirely through pointing, one reluctantly guides you to {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-09",
@@ -202,15 +202,15 @@
         "code":  "WKF-010",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "epic",
-        "weight":  82,
+        "rarity":  "common",
+        "weight":  70,
         "title":  "Mosscloak Hollow",
         "reward":  {
-                       "min":  185,
-                       "max":  325
+                       "min":  150,
+                       "max":  240
                    },
-        "xp":  63,
-        "message":  "explored Mosscloak Hollow, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "xp":  37,
+        "message":  "A moss-covered lump looks exactly like buried treasure. It contains one damp pebble. A second, even more suspicious lump nearby proves far more honest, unfolding to reveal {reward} Star Candies and a carefully wrapped Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-10",
@@ -224,15 +224,15 @@
         "code":  "WKF-011",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  80,
+        "rarity":  "uncommon",
+        "weight":  35,
         "title":  "Singing Vineway",
         "reward":  {
-                       "min":  190,
-                       "max":  330
+                       "min":  230,
+                       "max":  310
                    },
-        "xp":  65,
-        "message":  "explored Singing Vineway, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "xp":  60,
+        "message":  "Living vines weave a beautiful melody through the current until one begins improvising terribly. Its neighbors wrap around the offending musician until it stops. The scuffle dislodges a Travel Note and {reward} Star Candies from the woven canopy.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-11",
@@ -246,15 +246,15 @@
         "code":  "WKF-012",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  78,
+        "rarity":  "uncommon",
+        "weight":  30,
         "title":  "Moonblossom Clearing",
         "reward":  {
-                       "min":  195,
-                       "max":  335
+                       "min":  245,
+                       "max":  325
                    },
-        "xp":  67,
-        "message":  "explored Moonblossom Clearing, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "xp":  65,
+        "message":  "Moonblossoms turn toward you one by one, filling the clearing with pale light. Then every flower abruptly turns away and points toward the same patch of earth. Beneath their silent attention rest {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-12",
@@ -268,15 +268,15 @@
         "code":  "WKF-013",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  76,
+        "rarity":  "uncommon",
+        "weight":  55,
         "title":  "Gossipcurrent Fork",
         "reward":  {
-                       "min":  200,
+                       "min":  260,
                        "max":  340
                    },
-        "xp":  69,
-        "message":  "explored Gossipcurrent Fork, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "xp":  50,
+        "message":  "The current whispers, \"Shizuki got lost here.\" Another adds, \"Twice.\" A third corrects it: \"Four times.\" An old Travel Note wedged between the roots insists this absolutely did not happen, while the delighted gossip carries you toward {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-13",
@@ -290,15 +290,15 @@
         "code":  "WKF-014",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "uncommon",
-        "weight":  74,
+        "rarity":  "epic",
+        "weight":  8,
         "title":  "Vanishing Grove",
         "reward":  {
-                       "min":  205,
-                       "max":  345
+                       "min":  425,
+                       "max":  550
                    },
-        "xp":  71,
-        "message":  "explored Vanishing Grove, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "xp":  110,
+        "message":  "The grove disappears whenever you glance away. By walking backward and refusing to break eye contact, you finally catch the forest cheating. The trees rustle with embarrassment and admit you into a hidden clearing containing {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-14",
@@ -312,15 +312,15 @@
         "code":  "WKF-015",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "uncommon",
-        "weight":  72,
+        "rarity":  "common",
+        "weight":  100,
         "title":  "Shrinebark Shrine",
         "reward":  {
-                       "min":  210,
-                       "max":  350
+                       "min":  160,
+                       "max":  250
                    },
-        "xp":  73,
-        "message":  "explored Shrinebark Shrine, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "xp":  39,
+        "message":  "An old Fae shrine appears to demand an offering. Someone previously left exactly one berry beside a tiny note: \"ONE. Don\u0027t get greedy. - Shizuki\" The shrine seems satisfied with this arrangement and opens a rootwork drawer holding {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-15",
@@ -334,15 +334,15 @@
         "code":  "WKF-016",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "rare",
-        "weight":  70,
+        "rarity":  "common",
+        "weight":  90,
         "title":  "Starflower Patch",
         "reward":  {
-                       "min":  215,
-                       "max":  355
+                       "min":  170,
+                       "max":  260
                    },
-        "xp":  75,
-        "message":  "explored Starflower Patch, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "xp":  41,
+        "message":  "Every Starflower snaps shut as you approach except one stubborn bloom. A tiny pebble, deliberately wedged into its petals long ago, explains why. Inside the propped-open flower rest {reward} Star Candies and a Travel Note marked with familiar berry doodles.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-16",
@@ -356,15 +356,15 @@
         "code":  "WKF-017",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  68,
+        "rarity":  "rare",
+        "weight":  18,
         "title":  "Dreamsap Pool",
         "reward":  {
-                       "min":  220,
-                       "max":  360
+                       "min":  300,
+                       "max":  390
                    },
-        "xp":  77,
-        "message":  "explored Dreamsap Pool, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "xp":  75,
+        "message":  "Touching the Dreamsap Pool summons what promises to be a profound vision. Instead, an old magical memory shows Shizuki arguing with a vine that stole her berry. The vision cuts off at the vine\u0027s rebuttal, and the rippling pool releases {reward} Star Candies with a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-17",
@@ -378,15 +378,15 @@
         "code":  "WKF-018",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  66,
+        "rarity":  "rare",
+        "weight":  14,
         "title":  "Kelpweave Arch",
         "reward":  {
-                       "min":  225,
-                       "max":  365
+                       "min":  320,
+                       "max":  410
                    },
-        "xp":  79,
-        "message":  "explored Kelpweave Arch, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "xp":  80,
+        "message":  "The living arch rearranges its branches into unmistakable symbols: \"TURN AROUND.\" You continue forward. After several more increasingly stern arrangements, it opens with a weary creak and reveals {reward} Star Candies beside a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-18",
@@ -401,14 +401,14 @@
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
         "rarity":  "uncommon",
-        "weight":  64,
+        "weight":  45,
         "title":  "Willowcurrent Turn",
         "reward":  {
-                       "min":  230,
-                       "max":  370
+                       "min":  200,
+                       "max":  280
                    },
-        "xp":  81,
-        "message":  "explored Willowcurrent Turn, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "xp":  55,
+        "message":  "Willow fronds point in several contradictory directions. An old arrow says, \"I picked left.\" A second message beneath it adds, \"Update: don\u0027t.\" Eliminating that option and following the least unhelpful fronds leads to {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-19",
@@ -422,15 +422,15 @@
         "code":  "WKF-020",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "epic",
-        "weight":  62,
+        "rarity":  "common",
+        "weight":  80,
         "title":  "Bramblejaw Understory",
         "reward":  {
-                       "min":  235,
-                       "max":  375
+                       "min":  130,
+                       "max":  220
                    },
-        "xp":  83,
-        "message":  "explored Bramblejaw Understory, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "xp":  43,
+        "message":  "The understory forms the unmistakable shape of a gigantic mouth. It closes dramatically behind you, waits through one tense heartbeat, then opens again. Apparently satisfied with the scare, the forest uncovers {reward} Star Candies and a Travel Note beneath its leafy tongue.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-20",
@@ -444,15 +444,15 @@
         "code":  "WKF-021",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  60,
+        "rarity":  "uncommon",
+        "weight":  35,
         "title":  "Echo-Bark Stand",
         "reward":  {
-                       "min":  240,
-                       "max":  380
+                       "min":  215,
+                       "max":  295
                    },
-        "xp":  85,
-        "message":  "explored Echo-Bark Stand, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "xp":  60,
+        "message":  "Echo-Bark repeats every sound it has heard. From deep in the old voices comes Shizuki saying, \"Don\u0027t repeat that.\" The entire grove immediately choruses, \"Don\u0027t repeat that.\" Their delighted echoes converge around {reward} Star Candies and an old Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-21",
@@ -467,14 +467,14 @@
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
         "rarity":  "common",
-        "weight":  58,
+        "weight":  70,
         "title":  "Moonmoth Cloud",
         "reward":  {
-                       "min":  245,
-                       "max":  385
+                       "min":  140,
+                       "max":  230
                    },
-        "xp":  87,
-        "message":  "explored Moonmoth Cloud, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "xp":  45,
+        "message":  "Hundreds of Moonmoths surround you, gathering shells, twigs, and loose stones without showing any aggression. They arrange everything into a gigantic arrow, which points with remarkable precision toward {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-22",
@@ -488,15 +488,15 @@
         "code":  "WKF-023",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  56,
+        "rarity":  "epic",
+        "weight":  4,
         "title":  "Rootbound Effigy",
         "reward":  {
-                       "min":  250,
-                       "max":  390
+                       "min":  450,
+                       "max":  575
                    },
-        "xp":  89,
-        "message":  "explored Rootbound Effigy, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "xp":  125,
+        "message":  "Ancient roots have grown into a vaguely humanoid effigy. Someone has fitted it with a magnificent fake mustache. When the current tilts its distinguished disguise, a hollow opens beneath the figure, revealing {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-23",
@@ -510,15 +510,15 @@
         "code":  "WKF-024",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "uncommon",
-        "weight":  54,
+        "rarity":  "common",
+        "weight":  100,
         "title":  "Sighing Reedbed",
         "reward":  {
-                       "min":  255,
-                       "max":  395
+                       "min":  150,
+                       "max":  240
                    },
-        "xp":  91,
-        "message":  "explored Sighing Reedbed, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "xp":  35,
+        "message":  "Every wrong turn makes the surrounding reeds sigh in unmistakable disappointment. You eventually navigate by choosing whichever direction earns the least judgmental reaction, reaching {reward} Star Candies and a Travel Note to a final chorus of reluctant approval.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-24",
@@ -532,15 +532,15 @@
         "code":  "WKF-025",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "uncommon",
-        "weight":  52,
+        "rarity":  "common",
+        "weight":  90,
         "title":  "Glimmerpod Nursery",
         "reward":  {
-                       "min":  260,
-                       "max":  400
+                       "min":  160,
+                       "max":  250
                    },
-        "xp":  93,
-        "message":  "explored Glimmerpod Nursery, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "xp":  37,
+        "message":  "Baby Glimmerpods blink open as you approach. One suddenly spits a Star Candy at you, then another joins in, and soon the nursery is pelting you harmlessly from every side. By the time they settle down, you have gathered {reward} Star Candies and found a Travel Note among them.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-25",
@@ -554,15 +554,15 @@
         "code":  "WKF-026",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "rare",
-        "weight":  50,
+        "rarity":  "common",
+        "weight":  80,
         "title":  "Borrowed Grove",
         "reward":  {
-                       "min":  265,
-                       "max":  405
+                       "min":  170,
+                       "max":  260
                    },
-        "xp":  95,
-        "message":  "explored Borrowed Grove, where living roots fold aside to reveal a pocket of Star Candies, recovering {reward} Star Candies.",
+        "xp":  39,
+        "message":  "The grove has collected shells, stones from distant regions, scraps of old equipment, and harmless belongings misplaced by generations of travelers. Among the forest\u0027s extensive \"borrowed\" collection are {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-26",
@@ -576,15 +576,15 @@
         "code":  "WKF-027",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  48,
+        "rarity":  "uncommon",
+        "weight":  30,
         "title":  "Thornsong Vale",
         "reward":  {
-                       "min":  270,
-                       "max":  410
+                       "min":  230,
+                       "max":  310
                    },
-        "xp":  97,
-        "message":  "explored Thornsong Vale, where whispering currents guide you beneath a curtain of silver fronds, recovering {reward} Star Candies.",
+        "xp":  65,
+        "message":  "Thorned vines sing beautifully as the current passes through them, except for several suspicious additions that ruin the melody at precisely the worst moments. Following the surviving tune through the sabotage leads to {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-27",
@@ -598,15 +598,15 @@
         "code":  "WKF-028",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "common",
-        "weight":  46,
+        "rarity":  "rare",
+        "weight":  12,
         "title":  "Whisperroot Deep",
         "reward":  {
-                       "min":  275,
-                       "max":  415
+                       "min":  340,
+                       "max":  430
                    },
-        "xp":  99,
-        "message":  "explored Whisperroot Deep, where Fae lights gather around a cache hidden inside a hollow vine, recovering {reward} Star Candies.",
+        "xp":  85,
+        "message":  "The oldest roots whisper your recent actions back to you in perfect order. Then one calmly says something that has not happened: \"Found it.\" A moment later the roots open beneath your hand, and there are {reward} Star Candies with a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-28",
@@ -620,15 +620,15 @@
         "code":  "WKF-029",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "uncommon",
-        "weight":  44,
+        "rarity":  "rare",
+        "weight":  10,
         "title":  "Memory-Kelp Pool",
         "reward":  {
-                       "min":  280,
-                       "max":  420
+                       "min":  360,
+                       "max":  450
                    },
-        "xp":  101,
-        "message":  "explored Memory-Kelp Pool, where glowing spores outline a path to an overlooked forest offering, recovering {reward} Star Candies.",
+        "xp":  90,
+        "message":  "Memory-kelp fills the pool with hazy impressions of earlier travelers. A familiar white-haired elf repeatedly passes the same tree until her old reflection stops, stares at it, and realizes she has walked in circles. The memory fades, leaving {reward} Star Candies and her Travel Note behind.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-29",
@@ -642,15 +642,15 @@
         "code":  "WKF-030",
         "category":  "explore",
         "region":  "Whispering Kelp Forest",
-        "rarity":  "epic",
-        "weight":  42,
-        "title":  "Verdant Station Trace",
+        "rarity":  "legendary",
+        "weight":  1,
+        "title":  "Heart of the Whisperwood",
         "reward":  {
-                       "min":  285,
-                       "max":  425
+                       "min":  600,
+                       "max":  750
                    },
-        "xp":  103,
-        "message":  "explored Verdant Station Trace, where moving vines uncover a moonlit coffer and carefully close behind you, recovering {reward} Star Candies.",
+        "xp":  175,
+        "message":  "For once, the entire forest falls completely silent. Ancient Fae roots open around a living sanctuary untouched by time, where an old folded Travel Note shows that Shizuki once respected this place enough to leave it undisturbed. The sanctuary willingly releases {reward} Star Candies into your hands. LEGENDARY EXPEDITION!",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-30",
