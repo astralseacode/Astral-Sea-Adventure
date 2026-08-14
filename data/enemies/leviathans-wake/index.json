@@ -1,152 +1,152 @@
 [
     {
-        "encounter":  1,
-        "enemy":  "wake-riding-razorfish",
-        "recommendedLevel":  20
+        "encounter": 1,
+        "enemy": "wake-riding-razorfish",
+        "recommendedLevel": 20
     },
     {
-        "encounter":  2,
-        "enemy":  "titanbone-crab",
-        "recommendedLevel":  20
+        "encounter": 2,
+        "enemy": "titanbone-crab",
+        "recommendedLevel": 20
     },
     {
-        "encounter":  3,
-        "enemy":  "pressurejaw-eel",
-        "recommendedLevel":  21
+        "encounter": 3,
+        "enemy": "pressurejaw-eel",
+        "recommendedLevel": 21
     },
     {
-        "encounter":  4,
-        "enemy":  "scale-shelter-hermit",
-        "recommendedLevel":  21
+        "encounter": 4,
+        "enemy": "scale-shelter-hermit",
+        "recommendedLevel": 21
     },
     {
-        "encounter":  5,
-        "enemy":  "currentbreaker-shark",
-        "recommendedLevel":  21
+        "encounter": 5,
+        "enemy": "currentbreaker-shark",
+        "recommendedLevel": 21
     },
     {
-        "encounter":  6,
-        "enemy":  "bonegarden-urchin",
-        "recommendedLevel":  22
+        "encounter": 6,
+        "enemy": "bonegarden-urchin",
+        "recommendedLevel": 22
     },
     {
-        "encounter":  7,
-        "enemy":  "hullsplitter-lobster",
-        "recommendedLevel":  22
+        "encounter": 7,
+        "enemy": "hullsplitter-lobster",
+        "recommendedLevel": 22
     },
     {
-        "encounter":  8,
-        "enemy":  "wakefoam-medusa",
-        "recommendedLevel":  22
+        "encounter": 8,
+        "enemy": "wakefoam-medusa",
+        "recommendedLevel": 22
     },
     {
-        "encounter":  9,
-        "enemy":  "deep-scar-prowler",
-        "recommendedLevel":  23
+        "encounter": 9,
+        "enemy": "deep-scar-prowler",
+        "recommendedLevel": 23
     },
     {
-        "encounter":  10,
-        "enemy":  "leviathan-scale-golem",
-        "recommendedLevel":  23
+        "encounter": 10,
+        "enemy": "leviathan-scale-golem",
+        "recommendedLevel": 23
     },
     {
-        "encounter":  11,
-        "enemy":  "riptide-hammerhead",
-        "recommendedLevel":  23
+        "encounter": 11,
+        "enemy": "riptide-hammerhead",
+        "recommendedLevel": 23
     },
     {
-        "encounter":  12,
-        "enemy":  "wrecknest-moray",
-        "recommendedLevel":  24
+        "encounter": 12,
+        "enemy": "wrecknest-moray",
+        "recommendedLevel": 24
     },
     {
-        "encounter":  13,
-        "enemy":  "tectonic-barnacle",
-        "recommendedLevel":  24
+        "encounter": 13,
+        "enemy": "tectonic-barnacle",
+        "recommendedLevel": 24
     },
     {
-        "encounter":  14,
-        "enemy":  "roarcurrent-siren",
-        "recommendedLevel":  24
+        "encounter": 14,
+        "enemy": "roarcurrent-siren",
+        "recommendedLevel": 24
     },
     {
-        "encounter":  15,
-        "enemy":  "abysslung-manta",
-        "recommendedLevel":  25
+        "encounter": 15,
+        "enemy": "abysslung-manta",
+        "recommendedLevel": 25
     },
     {
-        "encounter":  16,
-        "enemy":  "marrowlight-angler",
-        "recommendedLevel":  25
+        "encounter": 16,
+        "enemy": "marrowlight-angler",
+        "recommendedLevel": 25
     },
     {
-        "encounter":  17,
-        "enemy":  "titanwake-crocodile",
-        "recommendedLevel":  26
+        "encounter": 17,
+        "enemy": "titanwake-crocodile",
+        "recommendedLevel": 26
     },
     {
-        "encounter":  18,
-        "enemy":  "pressure-bloom-anemone",
-        "recommendedLevel":  26
+        "encounter": 18,
+        "enemy": "pressure-bloom-anemone",
+        "recommendedLevel": 26
     },
     {
-        "encounter":  19,
-        "enemy":  "shipgrave-scuttler",
-        "recommendedLevel":  26
+        "encounter": 19,
+        "enemy": "shipgrave-scuttler",
+        "recommendedLevel": 26
     },
     {
-        "encounter":  20,
-        "enemy":  "scarfin-barracuda",
-        "recommendedLevel":  27
+        "encounter": 20,
+        "enemy": "scarfin-barracuda",
+        "recommendedLevel": 27
     },
     {
-        "encounter":  21,
-        "enemy":  "colossus-remora",
-        "recommendedLevel":  27
+        "encounter": 21,
+        "enemy": "colossus-remora",
+        "recommendedLevel": 27
     },
     {
-        "encounter":  22,
-        "enemy":  "thunderwake-squid",
-        "recommendedLevel":  27
+        "encounter": 22,
+        "enemy": "thunderwake-squid",
+        "recommendedLevel": 27
     },
     {
-        "encounter":  23,
-        "enemy":  "ancient-tooth-sentinel",
-        "recommendedLevel":  28
+        "encounter": 23,
+        "enemy": "ancient-tooth-sentinel",
+        "recommendedLevel": 28
     },
     {
-        "encounter":  24,
-        "enemy":  "trench-rending-worm",
-        "recommendedLevel":  28
+        "encounter": 24,
+        "enemy": "trench-rending-worm",
+        "recommendedLevel": 28
     },
     {
-        "encounter":  25,
-        "enemy":  "leviathan-song-echo",
-        "recommendedLevel":  28
+        "encounter": 25,
+        "enemy": "leviathan-song-echo",
+        "recommendedLevel": 28
     },
     {
-        "encounter":  26,
-        "enemy":  "bone-crown-behemoth",
-        "recommendedLevel":  29
+        "encounter": 26,
+        "enemy": "bone-crown-behemoth",
+        "recommendedLevel": 29
     },
     {
-        "encounter":  27,
-        "enemy":  "wakeheart-elemental",
-        "recommendedLevel":  29
+        "encounter": 27,
+        "enemy": "wakeheart-elemental",
+        "recommendedLevel": 29
     },
     {
-        "encounter":  28,
-        "enemy":  "titan-scar-guardian",
-        "recommendedLevel":  29
+        "encounter": 28,
+        "enemy": "titan-scar-guardian",
+        "recommendedLevel": 29
     },
     {
-        "encounter":  29,
-        "enemy":  "primeval-scale-revenant",
-        "recommendedLevel":  30
+        "encounter": 29,
+        "enemy": "primeval-scale-revenant",
+        "recommendedLevel": 30
     },
     {
-        "encounter":  30,
-        "enemy":  "behemoth-program-grunt",
-        "recommendedLevel":  30
+        "encounter": 30,
+        "enemy": "firstwake-gravekeeper",
+        "recommendedLevel": 30
     }
 ]

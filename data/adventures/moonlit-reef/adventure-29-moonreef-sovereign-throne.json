@@ -5,24 +5,24 @@
   "regionId": "moonlit-reef",
   "enemyId": "moonreef-sovereign",
   "recommendedLevel": 5,
-  "introDiscord": "At the Moonlit Reef’s farthest boundary, a royal reef rises where the Astral Tide and Lunar Current meet.",
-  "introTwitch": "At the Moonlit Reef’s farthest boundary, a royal reef rises where the Astral Tide and Lunar Current meet.",
+  "introDiscord": "At Moonlit Reef's farthest boundary, the Astral Tide and Lunar Current meet beneath a royal reef of towering coral. Old Moonkeeper banners drift above monumental roads leading toward a crown-shaped silhouette.",
+  "introTwitch": "At Moonlit Reef's farthest boundary, the Astral Tide and Lunar Current meet beneath a royal reef of towering coral. Old Moonkeeper banners drift above monumental roads leading toward a crown-shaped silhouette.",
   "startRoomId": "sovereign-approach",
   "rooms": {
     "sovereign-approach": {
-      "prompt": "The sovereign approach crosses monumental coral toward three paths beneath a darkened crown.",
+      "prompt": "The royal approach begins beneath towering coral arches where the Astral Tide and Lunar Current braid together. Three monumental roads climb toward the distant throne.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "crownreef-processional",
           "healAmount": 50,
-          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Sovereign restorative. I saved the best bottle for whoever made it this far.\"",
-          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki's best restorative waits beneath a marker: \"Saved this for whoever made it this far. Yes, that includes me. Past me was very thoughtful.\"",
+          "fullHpMessage": "Preserve full-HP behavior with Adventure-specific wording consistent with the above."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "crownreef-processional",
-          "message": "Within Moonreef Sovereign Throne, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache rests beneath the first royal arch. Unlike nearly every other cache you've encountered, nothing has stolen, moved, chewed, reflected, hidden, or insulted it. Suspicious. Inside are Star Candies.",
           "reward": {
             "min": 90,
             "max": 130
@@ -32,30 +32,30 @@
           "type": "combat",
           "nextRoomId": "crownreef-processional",
           "enemyId": "moonreef-sovereign",
-          "message": "The water folds around Moonreef Sovereign, revealing the creature as it claims the passage."
+          "message": "A Moonreef Sovereign descends from the monumental coral above, its armor reflecting both currents at once. This guardian clearly takes the royal approach seriously."
         }
       }
     },
     "crownreef-processional": {
-      "prompt": "Beyond the outer passages of Moonreef Sovereign Throne, a processional of shattered Moonkeeper standards surrounds three routes through the royal reef.",
+      "prompt": "Shattered Moonkeeper standards line a long processional toward the throne. Ancient guardian figures stand beneath them while three routes cross the royal reef.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "last-moonkeeper-way",
           "enemyId": "moonreef-sovereign",
-          "message": "The water folds around Moonreef Sovereign, revealing the creature as it claims the passage."
+          "message": "A Sovereign blocks the processional with ceremonial precision. No tricks. No ambush. It simply points its weapon at the exit behind it. Refreshingly straightforward."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "last-moonkeeper-way",
           "healAmount": 50,
-          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"No throne grants freedom. Walking away does. Drink up.\"",
-          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
+          "message": "Shizuki's note reads: \"No throne grants freedom. Walking away does. Also drink this because walking away is easier when not bleeding.\"",
+          "fullHpMessage": "Shizuki's freedom-minded restorative remains unused. You are already at full health and ready to keep walking away on your own terms."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "last-moonkeeper-way",
-          "message": "Within Moonreef Sovereign Throne, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer sits beneath one broken standard. Opening it releases Star Candies and a tiny puff of ceremonial glitter. The ancient Moonkeepers had style.",
           "reward": {
             "min": 105,
             "max": 150
@@ -64,12 +64,12 @@
       }
     },
     "last-moonkeeper-way": {
-      "prompt": "Near the innermost reaches of Moonreef Sovereign Throne, the last way climbs through silent starlight, dividing before three gates to the throne.",
+      "prompt": "The last path climbs through silent starlight toward three gates beneath the throne. Behind you, Moonlit Reef stretches across every place you have traveled.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonreef Sovereign Throne, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel rests beside the final gate containing Star Candies. Someone has tied a tiny ribbon around it. No trap. No joke. Just a gift for reaching the end.",
           "reward": {
             "min": 120,
             "max": 175
@@ -79,12 +79,12 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moonreef-sovereign",
-          "message": "The water folds around Moonreef Sovereign, revealing the creature as it claims the passage."
+          "message": "The final Sovereign stands before the throne chamber. It bows once before raising its weapon."
         },
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "Deeper inside Moonreef Sovereign Throne, one final Berry rests below Shizuki's carving: \"I survived, I wandered, and I chose what came next.\"",
+          "message": "One final Berry rests beneath Shizuki's carving:\n\n\"I survived.\n\nI wandered.\n\nI got VERY lost.\n\nThen I chose what came next.\n\nYour turn.\"",
           "berries": 1
         }
       }
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Throne of the First Tide",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "Use an appropriately majestic room prompt describing the Throne itself while preserving the existing chamber identity."
     }
   },
-  "bossPromptDiscord": "You reach Throne of the First Tide. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Throne of the First Tide: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Throne of the First Tide. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The Astral Tide slows.\n\nThe Lunar Current stills.\n\nAbove the throne, ancient moonlight gathers into the shape of a vast crown while every surviving Sovereign kneels along the processional.\n\nThe heart of Moonlit Reef is waking.\n\nUse /yes to approach the Throne of the First Tide or /no to return when you are ready.",
+  "bossPromptTwitch": "The Astral Tide slows.\n\nThe Lunar Current stills.\n\nAbove the throne, ancient moonlight gathers into the shape of a vast crown while every surviving Sovereign kneels along the processional.\n\nThe heart of Moonlit Reef is waking.\n\nUse !yes to approach the Throne of the First Tide or !no to return when you are ready.",
+  "bossRetreatText": "You step back from the Throne of the First Tide. The gathered crown of moonlight dims, and the kneeling Sovereigns remain perfectly still.",
   "boss": {
     "enemyId": "crown-of-the-moonreef-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Crown of the Moonreef reveals itself!"
+    "revealText": "Lunar radiance pours from the throne and takes shape around an ancient guardian. The Crown of the Moonreef rises!"
   },
-  "completionText": "The Crown of the Moonreef dissolves into lunar radiance, but the currents beneath its throne expose something unnatural: a sealed human passage pulsing with artificial moonlight. Adventure 30 — Moonlit Lab has been unlocked."
+  "completionText": "The Crown of the Moonreef dissolves into soft lunar radiance.\n\nFor a moment, the Throne of the First Tide is peaceful.\n\nThen something beneath it answers.\n\nStone shifts.\n\nArtificial moonlight leaks through a seam that absolutely does not belong in the ancient reef.\n\nA hidden human passage opens beneath the throne.\n\nAdventure 30 — Moonlit Lab is unlocked."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "the-vanishing-grove",
-    "number":  14,
-    "name":  "The Vanishing Grove",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "camouflage-grouper",
-    "recommendedLevel":  14,
-    "introDiscord":  "The Vanishing Grove lies ahead, where living rootways beneath drifting fae lights conceal the territory of Veilmoss Grouper.",
-    "introTwitch":  "The Vanishing Grove lies ahead amid living rootways beneath drifting fae lights.",
-    "startRoomId":  "the-vanishing-grove-approach",
-    "rooms":  {
-                  "the-vanishing-grove-approach":  {
-                                                       "prompt":  "At the edge of The Vanishing Grove, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "the-vanishing-grove-depths",
-                                                                                    "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                    "reward":  {
-                                                                                                   "min":  135,
-                                                                                                   "max":  174
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "the-vanishing-grove-depths",
-                                                                                     "healAmount":  40,
-                                                                                     "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "the-vanishing-grove-depths",
-                                                                                       "enemyId":  "camouflage-grouper",
-                                                                                       "message":  "A shift in the current exposes Veilmoss Grouper, which claims the forward route through The Vanishing Grove."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "the-vanishing-grove-depths":  {
-                                                     "prompt":  "Deeper within The Vanishing Grove, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "the-vanishing-grove-threshold",
-                                                                                  "enemyId":  "camouflage-grouper",
-                                                                                  "message":  "A shift in the current exposes Veilmoss Grouper, which claims the left route through The Vanishing Grove."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "the-vanishing-grove-threshold",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Vanishing Grove. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "the-vanishing-grove-threshold",
-                                                                                     "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                     "reward":  {
-                                                                                                    "min":  147,
-                                                                                                    "max":  186
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "the-vanishing-grove-threshold":  {
-                                                        "prompt":  "Near the heart of The Vanishing Grove, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the left route, you discover an offering basket hidden inside a living root.",
-                                                                                     "reward":  {
-                                                                                                    "min":  159,
-                                                                                                    "max":  198
-                                                                                                }
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "camouflage-grouper",
-                                                                                      "message":  "A shift in the current exposes Veilmoss Grouper, which claims the right route through The Vanishing Grove."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "healAmount":  45,
-                                                                                        "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Mirror-Moss Hollow",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Mirror-Moss Hollow."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Mirror-Moss Hollow. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Mirror-Moss Hollow: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Mirror-Moss Hollow. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "unseen-grovejaw-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Unseen Grovejaw reveals itself!"
-             },
-    "completionText":  "Unseen Grovejaw yields, and the currents beyond Mirror-Moss Hollow open the next route through Whispering Kelp Forest."
+  "id": "the-vanishing-grove",
+  "number": 14,
+  "name": "The Vanishing Grove",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "camouflage-grouper",
+  "recommendedLevel": 14,
+  "introDiscord": "The grove ahead seems incomplete. Roots fade into moss, moss fades\ninto fish, and several entire pieces of scenery disappear when viewed\nfrom the wrong angle.",
+  "introTwitch": "The grove ahead seems incomplete. Roots fade into moss, moss fades\ninto fish, and several entire pieces of scenery disappear when viewed\nfrom the wrong angle.",
+  "startRoomId": "the-vanishing-grove-approach",
+  "rooms": {
+    "the-vanishing-grove-approach": {
+      "prompt": "Three paths pass through veilmoss so perfectly camouflaged that even\nthe routes seem uncertain about whether they exist.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "the-vanishing-grove-depths",
+          "message": "Broad silver kelp conceals a Star Candy cache.\n\nYou only notice it because the moss covering it blinks.",
+          "reward": {
+            "min": 135,
+            "max": 174
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "the-vanishing-grove-depths",
+          "healAmount": 40,
+          "message": "A moonblossom pool rests beside Shizuki's sign:\n\n'POOL IS HERE.\n\nWriting this because I lost it twice.'",
+          "fullHpMessage": "You leave the pool where it is. Hopefully it remains there."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "the-vanishing-grove-depths",
+          "enemyId": "camouflage-grouper",
+          "message": "A section of the grove opens one eye.\n\nThen another.\n\nThe 'root wall' detaches itself and becomes a Veilmoss Grouper."
+        }
+      }
+    },
+    "the-vanishing-grove-depths": {
+      "prompt": "Moonlit fronds surround three corridors whose landmarks disappear\nwhenever you turn around.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "the-vanishing-grove-threshold",
+          "enemyId": "camouflage-grouper",
+          "message": "A familiar-looking mossy stone from the previous chamber swims past.\n\nIt was a Grouper the entire time.\n\nExcellent."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "the-vanishing-grove-threshold",
+          "message": "One Berry sits beneath Shizuki's landmark sign:\n\n'BIG ROCK.\n\nVERY IMPORTANT LANDMARK.'\n\nThere is no rock.\n\nA note below adds:\n\n'Rock left.'",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "the-vanishing-grove-threshold",
+          "message": "A shrine coffer is completely invisible beneath mirror-moss until your\nhand bumps the latch.\n\nVery secure.\n\nMostly by accident.",
+          "reward": {
+            "min": 147,
+            "max": 186
+          }
+        }
+      }
+    },
+    "the-vanishing-grove-threshold": {
+      "prompt": "Towering kelp frames Mirror-Moss Hollow. Three final routes blend into\nwalls that look almost identical.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "An offering basket hidden inside a root appears only in reflection.\nInside are Star Candies and Shizuki's tiny note:\n\n'Found this by walking into wall.'",
+          "reward": {
+            "min": 159,
+            "max": 198
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "camouflage-grouper",
+          "message": "Nothing blocks the path.\n\nThen the nothing develops teeth."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 45,
+          "message": "Restorative sap sits beneath a bright ribbon Shizuki tied around the\nbottle.\n\n'Could not find medicine.\n\nMade medicine easier to find.\n\nEvolution.'",
+          "fullHpMessage": "You leave the extremely visible bottle exactly where it is."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Mirror-Moss Hollow",
+      "type": "boss-prompt",
+      "prompt": "The Hollow looks empty.\n\nEvery smaller Grouper has disappeared.\n\nYou are absolutely certain that means nothing good."
+    }
+  },
+  "bossPromptDiscord": "Mirror-moss reflects an empty chamber.\n\nThen one reflection moves.\n\nA huge section of the forest behind you is suddenly missing from the\nreflection entirely.\n\nSomething enormous has been standing there the whole time.\n\nUse /yes to enter Mirror-Moss Hollow or /no to leave before the scenery\ntries anything else.",
+  "bossPromptTwitch": "Mirror-moss reflects an empty chamber.\n\nThen one reflection moves.\n\nA huge section of the forest behind you is suddenly missing from the\nreflection entirely.\n\nSomething enormous has been standing there the whole time.\n\nUse !yes to enter Mirror-Moss Hollow or !no to leave before the scenery\ntries anything else.",
+  "bossRetreatText": "You retreat while carefully refusing to trust any object larger than a\nBerry.",
+  "boss": {
+    "enemyId": "unseen-grovejaw-boss",
+    "roomId": "boss",
+    "revealText": "The moss-covered wall opens an enormous jaw.\n\nUnseen Grovejaw reveals itself!"
+  },
+  "completionText": "\"The Unseen Grovejaw fades back into the forest.\n\nWithin seconds, you cannot tell where it went.\n\nYou leave promptly.\"\n\n\n#################################################################"
 }

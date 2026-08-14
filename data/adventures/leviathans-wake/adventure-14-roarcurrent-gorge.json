@@ -1,107 +1,107 @@
 {
-    "id":  "roarcurrent-gorge",
-    "number":  14,
-    "name":  "Roarcurrent Gorge",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "roarcurrent-siren",
-    "recommendedLevel":  24,
-    "introDiscord":  "Roarcurrent Gorge lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Roarcurrent Siren.",
-    "introTwitch":  "Roarcurrent Gorge lies ahead amid pressure-scarred trenches beside wrecked hulls.",
-    "startRoomId":  "roarcurrent-gorge-approach",
-    "rooms":  {
-                  "roarcurrent-gorge-approach":  {
-                                                     "prompt":  "At the edge of Roarcurrent Gorge, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "roarcurrent-gorge-depths",
-                                                                                  "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                                  "reward":  {
-                                                                                                 "min":  177,
-                                                                                                 "max":  216
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "roarcurrent-gorge-depths",
-                                                                                   "healAmount":  49,
-                                                                                   "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "roarcurrent-gorge-depths",
-                                                                                     "enemyId":  "roarcurrent-siren",
-                                                                                     "message":  "A shift in the current exposes Roarcurrent Siren, which claims the forward route through Roarcurrent Gorge."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "roarcurrent-gorge-depths":  {
-                                                   "prompt":  "Deeper within Roarcurrent Gorge, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "roarcurrent-gorge-threshold",
-                                                                                "enemyId":  "roarcurrent-siren",
-                                                                                "message":  "A shift in the current exposes Roarcurrent Siren, which claims the left route through Roarcurrent Gorge."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "empty",
-                                                                                 "nextRoomId":  "roarcurrent-gorge-threshold",
-                                                                                 "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Roarcurrent Gorge. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                 "berries":  1
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "roarcurrent-gorge-threshold",
-                                                                                   "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                   "reward":  {
-                                                                                                  "min":  189,
-                                                                                                  "max":  228
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "roarcurrent-gorge-threshold":  {
-                                                      "prompt":  "Near the heart of Roarcurrent Gorge, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "message":  "Beyond the left route, you discover a strongbox torn from a century-old wreck.",
-                                                                                   "reward":  {
-                                                                                                  "min":  201,
-                                                                                                  "max":  240
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "roarcurrent-siren",
-                                                                                    "message":  "A shift in the current exposes Roarcurrent Siren, which claims the right route through Roarcurrent Gorge."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "healAmount":  54,
-                                                                                      "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Howling Scar",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Howling Scar."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Howling Scar. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Howling Scar: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Howling Scar. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "tempest-voice-siren-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Tempest-Voice Siren reveals itself!"
-             },
-    "completionText":  "Tempest-Voice Siren yields, and the currents beyond Howling Scar open the next route through Leviathan\u0027s Wake."
+    "id": "roarcurrent-gorge",
+    "number": 14,
+    "name": "Roarcurrent Gorge",
+    "regionId": "leviathans-wake",
+    "enemyId": "roarcurrent-siren",
+    "recommendedLevel": 24,
+    "introDiscord": "Currents rushing through hollow Leviathan bones produce a deep roar\nthat echoes across the gorge.\n\nRoarcurrent Sirens learned to sing with it.",
+    "introTwitch": "Currents rushing through hollow Leviathan bones produce a deep roar\nthat echoes across the gorge.\n\nRoarcurrent Sirens learned to sing with it.",
+    "startRoomId": "roarcurrent-gorge-approach",
+    "rooms": {
+        "roarcurrent-gorge-approach": {
+            "prompt": "Three routes pass between hollow ribs humming with low sound.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "roarcurrent-gorge-depths",
+                    "message": "Star Candies rest inside a hollow scale pocket.",
+                    "reward": {
+                        "min": 177,
+                        "max": 216
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "roarcurrent-gorge-depths",
+                    "healAmount": 49,
+                    "message": "Shizuki's bottle sits beneath her review:\n\n'Giant bone flute.\n\nBeautiful.\n\nLoud.\n\nWould not recommend sleeping beside.'",
+                    "fullHpMessage": "You leave the restorative untouched."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "roarcurrent-gorge-depths",
+                    "enemyId": "roarcurrent-siren",
+                    "message": "A Siren's voice joins the roaring bone.\n\nThen its owner appears."
+                }
+            }
+        },
+        "roarcurrent-gorge-depths": {
+            "prompt": "The gorge becomes a natural concert hall.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "roarcurrent-gorge-threshold",
+                    "enemyId": "roarcurrent-siren",
+                    "message": "A Roarcurrent Siren matches the note of a hollow rib perfectly before\nturning the performance toward you."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "roarcurrent-gorge-threshold",
+                    "message": "One Berry rests beside Shizuki's attempt at sheet music:\n\n'RRRRRRRROOOOOOOOAAAARRRRRR.\n\nAccurate transcription.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "roarcurrent-gorge-threshold",
+                    "message": "A navigator's chest lies inside a resonant bone hollow.",
+                    "reward": {
+                        "min": 189,
+                        "max": 228
+                    }
+                }
+            }
+        },
+        "roarcurrent-gorge-threshold": {
+            "prompt": "Howling Scar amplifies every current.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A wrecked strongbox rests beneath the roaring water.",
+                    "reward": {
+                        "min": 201,
+                        "max": 240
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "roarcurrent-siren",
+                    "message": "A Siren emerges from behind an enormous vertebra while the entire gorge\nharmonizes."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 54,
+                    "message": "Shizuki's bottle reads:\n\n'Concert recovery.\n\nEar recovery unavailable.'",
+                    "fullHpMessage": "You leave the medicine."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Howling Scar",
+            "type": "boss-prompt",
+            "prompt": "The gorge falls quiet."
+        }
+    },
+    "bossPromptDiscord": "The gorge falls quiet.\n\nOne voice remains.\n\nIt begins softly.\n\nThen the entire Leviathan skeleton answers it.\n\nUse /yes to enter Howling Scar or /no to leave before the final chorus.",
+    "bossPromptTwitch": "The gorge falls quiet.\n\nOne voice remains.\n\nIt begins softly.\n\nThen the entire Leviathan skeleton answers it.\n\nUse !yes to enter Howling Scar or !no to leave before the final chorus.",
+    "bossRetreatText": "You leave the natural amphitheater.",
+    "boss": {
+        "enemyId": "tempest-voice-siren-boss",
+        "roomId": "boss",
+        "revealText": "A powerful Siren rises through the roaring current.\n\nTempest-Voice Siren reveals itself!"
+    },
+    "completionText": "The Siren's song fades.\n\nThe bones keep humming long after it is gone."
 }

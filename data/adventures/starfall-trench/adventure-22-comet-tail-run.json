@@ -1,107 +1,107 @@
 {
-    "id":  "comet-tail-run",
-    "number":  22,
-    "name":  "Comet-Tail Run",
-    "regionId":  "starfall-trench",
-    "enemyId":  "comet-tail-barracuda",
-    "recommendedLevel":  9,
-    "introDiscord":  "Comet-Tail Run lies ahead, where fractured starstone terraces conceal the territory of Comet-Tail Barracuda.",
-    "introTwitch":  "Comet-Tail Run lies ahead amid fractured starstone terraces.",
-    "startRoomId":  "comet-tail-run-approach",
-    "rooms":  {
-                  "comet-tail-run-approach":  {
-                                                  "prompt":  "At the edge of Comet-Tail Run, fractured starstone terraces divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "comet-tail-run-depths",
-                                                                               "enemyId":  "comet-tail-barracuda",
-                                                                               "message":  "A shift in the current exposes Comet-Tail Barracuda, which claims the left route through Comet-Tail Run."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "comet-tail-run-depths",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Comet-Tail Run. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "comet-tail-run-depths",
-                                                                                  "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                  "reward":  {
-                                                                                                 "min":  73,
-                                                                                                 "max":  115
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "comet-tail-run-depths":  {
-                                                "prompt":  "Deeper within Comet-Tail Run, meteor-lit trenches divide into three uncertain routes.",
-                                                "choices":  {
-                                                                "left":  {
-                                                                             "type":  "healing",
-                                                                             "nextRoomId":  "comet-tail-run-threshold",
-                                                                             "healAmount":  17,
-                                                                             "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                             "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                         },
-                                                                "right":  {
-                                                                              "type":  "combat",
-                                                                              "nextRoomId":  "comet-tail-run-threshold",
-                                                                              "enemyId":  "comet-tail-barracuda",
-                                                                              "message":  "A shift in the current exposes Comet-Tail Barracuda, which claims the right route through Comet-Tail Run."
-                                                                          },
-                                                                "forward":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "comet-tail-run-threshold",
-                                                                                "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
-                                                                                "reward":  {
-                                                                                               "min":  85,
-                                                                                               "max":  127
-                                                                                           }
-                                                                            }
-                                                            }
-                                            },
-                  "comet-tail-run-threshold":  {
-                                                   "prompt":  "Near the heart of Comet-Tail Run, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                "message":  "Beyond the left route, you discover a star chart coffer buried in luminous silt.",
-                                                                                "reward":  {
-                                                                                               "min":  97,
-                                                                                               "max":  139
-                                                                                           }
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "healAmount":  22,
-                                                                                 "message":  "The right route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "comet-tail-barracuda",
-                                                                                   "message":  "A shift in the current exposes Comet-Tail Barracuda, which claims the forward route through Comet-Tail Run."
-                                                                               }
-                                                               }
-                                               },
-                  "boss-antechamber":  {
-                                           "name":  "The Blazing Course",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of The Blazing Course."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter The Blazing Course. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "The Blazing Course: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from The Blazing Course. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "perseid-barracuda-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Perseid Barracuda reveals itself!"
-             },
-    "completionText":  "Perseid Barracuda yields, and the currents beyond The Blazing Course open the next route through Starfall Trench."
+  "id": "comet-tail-run",
+  "number": 22,
+  "name": "Comet-Tail Run",
+  "regionId": "starfall-trench",
+  "enemyId": "comet-tail-barracuda",
+  "recommendedLevel": 9,
+  "introDiscord": "A blazing current cuts through the trench like a racetrack. Comet-Tail Barracudas streak through it at impossible speed. Shizuki's signs suggest she absolutely tried racing them.",
+  "introTwitch": "A blazing current cuts through the trench like a racetrack. Comet-Tail Barracudas streak through it at impossible speed. Shizuki's signs suggest she absolutely tried racing them.",
+  "startRoomId": "comet-tail-run-approach",
+  "rooms": {
+    "comet-tail-run-approach": {
+      "prompt": "Three routes join the blazing course.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "comet-tail-run-depths",
+          "enemyId": "comet-tail-barracuda",
+          "message": "A Barracuda rockets beside you.\n\nApparently the race has begun."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "comet-tail-run-depths",
+          "message": "A Berry rests beneath Shizuki's race sign:\n\n\"SHIZUKI: 0\nBARRACUDA: 6\nGlimmer stop updating scoreboard.\"",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "comet-tail-run-depths",
+          "message": "A meteor-iron reliquary rests beside the course.",
+          "reward": {
+            "min": 73,
+            "max": 115
+          }
+        }
+      }
+    },
+    "comet-tail-run-depths": {
+      "prompt": "The current accelerates through three sharp turns.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "comet-tail-run-threshold",
+          "healAmount": 17,
+          "message": "Shizuki's tonic reads: \"Race recovery. I nearly won if distance, speed, and winner are ignored.\"",
+          "fullHpMessage": "You leave the race-recovery medicine untouched."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "comet-tail-run-threshold",
+          "enemyId": "comet-tail-barracuda",
+          "message": "A Barracuda pulls alongside you.\n\nRematch."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "comet-tail-run-threshold",
+          "message": "Star Candies have collected behind a cometglass barrier.",
+          "reward": {
+            "min": 85,
+            "max": 127
+          }
+        }
+      }
+    },
+    "comet-tail-run-threshold": {
+      "prompt": "Three blazing lanes converge on The Blazing Course.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A star-chart coffer sits beside what appears to be a finish marker.",
+          "reward": {
+            "min": 97,
+            "max": 139
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 22,
+          "message": "Shizuki's bottle reads: \"Official training potion. Contents: normal potion.\"",
+          "fullHpMessage": "You decline the highly advanced athletic supplement."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "comet-tail-barracuda",
+          "message": "\"A Barracuda streaks across the final lane.\n\nRound seven.\"\n\nBOSS:"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "The Blazing Course",
+      "type": "boss-prompt",
+      "prompt": "The entire course clears."
+    }
+  },
+  "bossPromptDiscord": "The entire course clears.\n\nSomething enormous leaves a blazing trail through the distance.\n\nUse /yes to enter The Blazing Course or /no to retire undefeated by technicality.",
+  "bossPromptTwitch": "The entire course clears.\n\nSomething enormous leaves a blazing trail through the distance.\n\nUse !yes to enter The Blazing Course or !no to retire undefeated by technicality.",
+  "bossRetreatText": "You retire from professional Barracuda racing.",
+  "boss": {
+    "enemyId": "perseid-barracuda-boss",
+    "roomId": "boss",
+    "revealText": "A colossal Barracuda streaks through the chamber.\n\nPerseid Barracuda reveals itself!"
+  },
+  "completionText": "\"The Perseid slows and disappears down the course.\n\nSomewhere, Shizuki's scoreboard probably just updated itself.\"\n\n\n#################################################################"
 }

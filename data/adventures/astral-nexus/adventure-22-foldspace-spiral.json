@@ -1,107 +1,107 @@
 {
-    "id":  "foldspace-spiral",
-    "number":  22,
-    "name":  "Foldspace Spiral",
-    "regionId":  "astral-nexus",
-    "enemyId":  "foldspace-nautilus",
-    "recommendedLevel":  50,
-    "introDiscord":  "Foldspace Spiral lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Foldspace Nautilus.",
-    "introTwitch":  "Foldspace Spiral lies ahead amid floating ocean fragments joined by impossible currents.",
-    "startRoomId":  "foldspace-spiral-approach",
-    "rooms":  {
-                  "foldspace-spiral-approach":  {
-                                                    "prompt":  "At the edge of Foldspace Spiral, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "foldspace-spiral-depths",
-                                                                                 "enemyId":  "foldspace-nautilus",
-                                                                                 "message":  "A shift in the current exposes Foldspace Nautilus, which claims the left route through Foldspace Spiral."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "empty",
-                                                                                  "nextRoomId":  "foldspace-spiral-depths",
-                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Foldspace Spiral. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                  "berries":  1
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "foldspace-spiral-depths",
-                                                                                    "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                    "reward":  {
-                                                                                                   "min":  200,
-                                                                                                   "max":  242
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "foldspace-spiral-depths":  {
-                                                  "prompt":  "Deeper within Foldspace Spiral, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "healing",
-                                                                               "nextRoomId":  "foldspace-spiral-threshold",
-                                                                               "healAmount":  37,
-                                                                               "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                               "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "foldspace-spiral-threshold",
-                                                                                "enemyId":  "foldspace-nautilus",
-                                                                                "message":  "A shift in the current exposes Foldspace Nautilus, which claims the right route through Foldspace Spiral."
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "foldspace-spiral-threshold",
-                                                                                  "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
-                                                                                  "reward":  {
-                                                                                                 "min":  212,
-                                                                                                 "max":  254
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "foldspace-spiral-threshold":  {
-                                                     "prompt":  "Near the heart of Foldspace Spiral, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "message":  "Beyond the left route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                  "reward":  {
-                                                                                                 "min":  224,
-                                                                                                 "max":  266
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  42,
-                                                                                   "message":  "The right route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "enemyId":  "foldspace-nautilus",
-                                                                                     "message":  "A shift in the current exposes Foldspace Nautilus, which claims the forward route through Foldspace Spiral."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "Room Within Its Shell",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Room Within Its Shell."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Room Within Its Shell. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Room Within Its Shell: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Room Within Its Shell. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "infinite-chamber-nautilus-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Infinite-Chamber Nautilus reveals itself!"
-             },
-    "completionText":  "Infinite-Chamber Nautilus yields, and the currents beyond Room Within Its Shell open the next route through Astral Nexus."
+    "id": "foldspace-spiral",
+    "number": 22,
+    "name": "Foldspace Spiral",
+    "regionId": "astral-nexus",
+    "enemyId": "foldspace-nautilus",
+    "recommendedLevel": 50,
+    "introDiscord": "The path spirals inward.\n\nThen keeps spiraling inward.\n\nThe inside somehow becomes larger than the outside.",
+    "introTwitch": "The path spirals inward.\n\nThen keeps spiraling inward.\n\nThe inside somehow becomes larger than the outside.",
+    "startRoomId": "foldspace-spiral-approach",
+    "rooms": {
+        "foldspace-spiral-approach": {
+            "prompt": "Three impossible routes open across Foldspace Spiral.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "foldspace-spiral-depths",
+                    "enemyId": "foldspace-nautilus",
+                    "message": "A Foldspace Nautilus retreats into its shell and reappears fifty feet\naway without crossing the distance."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "foldspace-spiral-depths",
+                    "message": "One Berry rests beside Shizuki's sign:\n\n'Entered small shell.\n\nShell contained hallway.\n\nHallway contained room.\n\nRoom contained larger shell.\n\nLeaving.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "foldspace-spiral-depths",
+                    "message": "A coffer sits inside a pocket larger than the rock containing it.",
+                    "reward": {
+                        "min": 200,
+                        "max": 242
+                    }
+                }
+            }
+        },
+        "foldspace-spiral-depths": {
+            "prompt": "Deeper within Foldspace Spiral, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "foldspace-spiral-threshold",
+                    "healAmount": 37,
+                    "message": "A tiny chamber opens into an enormous peaceful cavern.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "foldspace-spiral-threshold",
+                    "enemyId": "foldspace-nautilus",
+                    "message": "A Nautilus attacks from the interior of its own shell."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "foldspace-spiral-threshold",
+                    "message": "Star Candies spiral through folded space.",
+                    "reward": {
+                        "min": 212,
+                        "max": 254
+                    }
+                }
+            }
+        },
+        "foldspace-spiral-threshold": {
+            "prompt": "Near Room Within Its Shell, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A cache is larger inside than the entire corridor outside.",
+                    "reward": {
+                        "min": 224,
+                        "max": 266
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 42,
+                    "message": "A restorative chamber fits impossibly inside a shell fragment.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "foldspace-nautilus",
+                    "message": "A Foldspace Nautilus unfolds an entire room around you."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Room Within Its Shell",
+            "type": "boss-prompt",
+            "prompt": "Room Within Its Shell opens."
+        }
+    },
+    "bossPromptDiscord": "Room Within Its Shell opens.\n\nThen another room opens inside that.\n\nThen another.\n\nSomething enormous occupies ALL of them.\n\nUse /yes to enter or /no to reject spatial nesting.",
+    "bossPromptTwitch": "Room Within Its Shell opens.\n\nThen another room opens inside that.\n\nThen another.\n\nSomething enormous occupies ALL of them.\n\nUse !yes to enter or !no to reject spatial nesting.",
+    "bossRetreatText": "You withdraw from Room Within Its Shell. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "infinite-chamber-nautilus-boss",
+        "roomId": "boss",
+        "revealText": "The innermost shell opens into impossible distance.\n\nInfinite-Chamber Nautilus reveals itself!"
+    },
+    "completionText": "The shell closes.\n\nIt now fits comfortably in your palm.\n\nAbsolutely unacceptable."
 }

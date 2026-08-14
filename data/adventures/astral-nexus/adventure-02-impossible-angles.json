@@ -1,107 +1,107 @@
 {
-    "id":  "impossible-angles",
-    "number":  2,
-    "name":  "Impossible Angles",
-    "regionId":  "astral-nexus",
-    "enemyId":  "geometry-eel",
-    "recommendedLevel":  50,
-    "introDiscord":  "Impossible Angles lies ahead, where fae arches opening onto incompatible skies conceal the territory of Angleweave Eel.",
-    "introTwitch":  "Impossible Angles lies ahead amid fae arches opening onto incompatible skies.",
-    "startRoomId":  "impossible-angles-approach",
-    "rooms":  {
-                  "impossible-angles-approach":  {
-                                                     "prompt":  "At the edge of Impossible Angles, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "impossible-angles-depths",
-                                                                                  "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
-                                                                                  "reward":  {
-                                                                                                 "min":  438,
-                                                                                                 "max":  473
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "impossible-angles-depths",
-                                                                                   "healAmount":  130,
-                                                                                   "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "impossible-angles-depths",
-                                                                                     "enemyId":  "geometry-eel",
-                                                                                     "message":  "A shift in the current exposes Angleweave Eel, which claims the forward route through Impossible Angles."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "impossible-angles-depths":  {
-                                                   "prompt":  "Deeper within Impossible Angles, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "impossible-angles-threshold",
-                                                                                "enemyId":  "geometry-eel",
-                                                                                "message":  "A shift in the current exposes Angleweave Eel, which claims the left route through Impossible Angles."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "empty",
-                                                                                 "nextRoomId":  "impossible-angles-threshold",
-                                                                                 "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Impossible Angles. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                 "berries":  1
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "impossible-angles-threshold",
-                                                                                   "message":  "Beyond the forward route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                   "reward":  {
-                                                                                                  "min":  450,
-                                                                                                  "max":  485
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "impossible-angles-threshold":  {
-                                                      "prompt":  "Near the heart of Impossible Angles, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "message":  "Beyond the left route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                   "reward":  {
-                                                                                                  "min":  462,
-                                                                                                  "max":  497
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "geometry-eel",
-                                                                                    "message":  "A shift in the current exposes Angleweave Eel, which claims the right route through Impossible Angles."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "healAmount":  135,
-                                                                                      "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "The Unclosed Triangle",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of The Unclosed Triangle."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter The Unclosed Triangle. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "The Unclosed Triangle: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from The Unclosed Triangle. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "euclidean-coilbreaker-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Fractured-Angle Coil reveals itself!"
-             },
-    "completionText":  "Fractured-Angle Coil yields, and the currents beyond The Unclosed Triangle open the next route through Astral Nexus."
+    "id": "impossible-angles",
+    "number": 2,
+    "name": "Impossible Angles",
+    "regionId": "astral-nexus",
+    "enemyId": "geometry-eel",
+    "recommendedLevel": 50,
+    "introDiscord": "Architecture begins immediately committing crimes.\n\nStairs meet walls sideways.\nCorners contain too many corners.\nA doorway appears behind itself.\n\nShizuki wrote:\n\n'I have officially stopped believing in geometry.'",
+    "introTwitch": "Architecture begins immediately committing crimes.\n\nStairs meet walls sideways.\nCorners contain too many corners.\nA doorway appears behind itself.\n\nShizuki wrote:\n\n'I have officially stopped believing in geometry.'",
+    "startRoomId": "impossible-angles-approach",
+    "rooms": {
+        "impossible-angles-approach": {
+            "prompt": "Three impossible routes open across Impossible Angles.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "impossible-angles-depths",
+                    "message": "Star Candies rest inside a corner with approximately five sides.",
+                    "reward": {
+                        "min": 438,
+                        "max": 473
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "impossible-angles-depths",
+                    "healAmount": 130,
+                    "message": "A perfectly ordinary bench exists at an impossible 47-degree wall-floor.\n\nShizuki labeled it:\n\n'NORMAL BENCH.\n\nDO NOT QUESTION BENCH.\n\nBENCH IS OUR FRIEND.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "impossible-angles-depths",
+                    "enemyId": "geometry-eel",
+                    "message": "An Angleweave Eel turns around a corner without actually turning."
+                }
+            }
+        },
+        "impossible-angles-depths": {
+            "prompt": "Deeper within Impossible Angles, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "impossible-angles-threshold",
+                    "enemyId": "geometry-eel",
+                    "message": "The Eel folds itself through an angle that should not fit an Eel."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "impossible-angles-threshold",
+                    "message": "One Berry rests beside Shizuki's ruler.\n\nThe ruler has been snapped in half.\n\n'MEASUREMENT TOOLS HAVE BETRAYED ME.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "impossible-angles-threshold",
+                    "message": "A cache is embedded in a wall that becomes the floor when touched.",
+                    "reward": {
+                        "min": 450,
+                        "max": 485
+                    }
+                }
+            }
+        },
+        "impossible-angles-threshold": {
+            "prompt": "Near The Unclosed Triangle, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A chest sits inside a triangle whose third side refuses to exist.",
+                    "reward": {
+                        "min": 462,
+                        "max": 497
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "geometry-eel",
+                    "message": "An Angleweave Eel emerges from the missing side."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 135,
+                    "message": "A stable square of water restores your strength.\n\nShizuki's note:\n\n'FOUR SIDES.\n\nBEAUTIFUL.\n\nI MISSED YOU.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "The Unclosed Triangle",
+            "type": "boss-prompt",
+            "prompt": "The Unclosed Triangle rotates around an absent edge."
+        }
+    },
+    "bossPromptDiscord": "The Unclosed Triangle rotates around an absent edge.\n\nSomething coils through the geometry itself.\n\nUse /yes to enter or /no to preserve your remaining trust\nin shapes.",
+    "bossPromptTwitch": "The Unclosed Triangle rotates around an absent edge.\n\nSomething coils through the geometry itself.\n\nUse !yes to enter or !no to preserve your remaining trust\nin shapes.",
+    "bossRetreatText": "You withdraw from The Unclosed Triangle. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "euclidean-coilbreaker-boss",
+        "roomId": "boss",
+        "revealText": "Space folds inward.\n\nFractured-Angle Coil reveals itself!"
+    },
+    "completionText": "The impossible structure relaxes.\n\nFor one glorious moment, every triangle has three sides.\n\nThen Glimmer's old doodle appears on a fourth."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "voidcurrent-crossing",
-    "number":  13,
-    "name":  "Voidcurrent Crossing",
-    "regionId":  "starfall-trench",
-    "enemyId":  "voidcurrent-skate",
-    "recommendedLevel":  7,
-    "introDiscord":  "Voidcurrent Crossing lies ahead, where fractured starstone terraces conceal the territory of Voidcurrent Skate.",
-    "introTwitch":  "Voidcurrent Crossing lies ahead amid fractured starstone terraces.",
-    "startRoomId":  "voidcurrent-crossing-approach",
-    "rooms":  {
-                  "voidcurrent-crossing-approach":  {
-                                                        "prompt":  "At the edge of Voidcurrent Crossing, fractured starstone terraces divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "voidcurrent-crossing-depths",
-                                                                                     "enemyId":  "voidcurrent-skate",
-                                                                                     "message":  "A shift in the current exposes Voidcurrent Skate, which claims the left route through Voidcurrent Crossing."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "voidcurrent-crossing-depths",
-                                                                                      "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
-                                                                                      "reward":  {
-                                                                                                     "min":  104,
-                                                                                                     "max":  143
-                                                                                                 }
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "voidcurrent-crossing-depths",
-                                                                                        "healAmount":  35,
-                                                                                        "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "voidcurrent-crossing-depths":  {
-                                                      "prompt":  "Deeper within Voidcurrent Crossing, meteor-lit trenches divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "voidcurrent-crossing-threshold",
-                                                                                   "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                   "reward":  {
-                                                                                                  "min":  116,
-                                                                                                  "max":  155
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "voidcurrent-crossing-threshold",
-                                                                                    "enemyId":  "voidcurrent-skate",
-                                                                                    "message":  "A shift in the current exposes Voidcurrent Skate, which claims the right route through Voidcurrent Crossing."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "empty",
-                                                                                      "nextRoomId":  "voidcurrent-crossing-threshold",
-                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Voidcurrent Crossing. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                      "berries":  1
-                                                                                  }
-                                                                  }
-                                                  },
-                  "voidcurrent-crossing-threshold":  {
-                                                         "prompt":  "Near the heart of Voidcurrent Crossing, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "healAmount":  40,
-                                                                                      "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
-                                                                                       "reward":  {
-                                                                                                      "min":  128,
-                                                                                                      "max":  167
-                                                                                                  }
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "combat",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "enemyId":  "voidcurrent-skate",
-                                                                                         "message":  "A shift in the current exposes Voidcurrent Skate, which claims the forward route through Voidcurrent Crossing."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "boss-antechamber":  {
-                                           "name":  "Currentless Expanse",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Currentless Expanse."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Currentless Expanse. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Currentless Expanse: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Currentless Expanse. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "eventide-skate-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Eventide Skate reveals itself!"
-             },
-    "completionText":  "Eventide Skate yields, and the currents beyond Currentless Expanse open the next route through Starfall Trench."
+  "id": "voidcurrent-crossing",
+  "number": 13,
+  "name": "Voidcurrent Crossing",
+  "regionId": "starfall-trench",
+  "enemyId": "voidcurrent-skate",
+  "recommendedLevel": 7,
+  "introDiscord": "A currentless gap cuts through Starfall Trench. Glimmer's old trail marks suggest it attempted navigation here. The results are... interpretive.",
+  "introTwitch": "A currentless gap cuts through Starfall Trench. Glimmer's old trail marks suggest it attempted navigation here. The results are... interpretive.",
+  "startRoomId": "voidcurrent-crossing-approach",
+  "rooms": {
+    "voidcurrent-crossing-approach": {
+      "prompt": "Three paths cross water that refuses to move.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "voidcurrent-crossing-depths",
+          "enemyId": "voidcurrent-skate",
+          "message": "A Voidcurrent Skate glides through water that supposedly has no current. Show-off."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "voidcurrent-crossing-depths",
+          "message": "A meteor-iron reliquary hangs motionless in open water.",
+          "reward": {
+            "min": 104,
+            "max": 143
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "voidcurrent-crossing-depths",
+          "healAmount": 35,
+          "message": "Shizuki's tonic sits beneath a glowing Glimmer mark shaped vaguely like an arrow.\n\nShizuki added: \"Glimmer says this means forward. I think.\"",
+          "fullHpMessage": "You leave the tonic and trust Glimmer's artistic interpretation of directional signage."
+        }
+      }
+    },
+    "voidcurrent-crossing-depths": {
+      "prompt": "Three routes split beneath increasingly abstract glowing arrows.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "voidcurrent-crossing-threshold",
+          "message": "A cometglass seam gleams beneath the still water.",
+          "reward": {
+            "min": 116,
+            "max": 155
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "voidcurrent-crossing-threshold",
+          "enemyId": "voidcurrent-skate",
+          "message": "A Voidcurrent Skate emerges from behind one of Glimmer's arrows."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "voidcurrent-crossing-threshold",
+          "message": "A Berry rests beside a glowing spiral.\n\nShizuki wrote: \"Asked Glimmer for directions. Glimmer drew circle. We have been here before.\"",
+          "berries": 1
+        }
+      }
+    },
+    "voidcurrent-crossing-threshold": {
+      "prompt": "The Currentless Expanse opens ahead.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 40,
+          "message": "Shizuki's tonic is marked by one final Glimmer arrow. It points in four directions.",
+          "fullHpMessage": "The medicine stays untouched. The arrow remains philosophically correct."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A star-chart coffer floats perfectly still.",
+          "reward": {
+            "min": 128,
+            "max": 167
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "voidcurrent-skate",
+          "message": "\"A Voidcurrent Skate silently crosses the final route.\"\n\nBOSS:"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Currentless Expanse",
+      "type": "boss-prompt",
+      "prompt": "Every Glimmer mark suddenly points toward the same enormous shadow."
+    }
+  },
+  "bossPromptDiscord": "Every Glimmer mark suddenly points toward the same enormous shadow.\n\nThat is either excellent navigation or terrible news.\n\nUse /yes to enter the Currentless Expanse or /no to question Glimmer's credentials elsewhere.",
+  "bossPromptTwitch": "Every Glimmer mark suddenly points toward the same enormous shadow.\n\nThat is either excellent navigation or terrible news.\n\nUse !yes to enter the Currentless Expanse or !no to question Glimmer's credentials elsewhere.",
+  "bossRetreatText": "You retreat. Glimmer's old arrows offer no useful commentary.",
+  "boss": {
+    "enemyId": "eventide-skate-boss",
+    "roomId": "boss",
+    "revealText": "A vast Skate unfolds across the motionless water.\n\nEventide Skate reveals itself!"
+  },
+  "completionText": "\"The Expanse settles.\n\nOne tiny Glimmer arrow illuminates the correct exit.\n\nIt knew all along.\n\nProbably.\"\n\n\n#################################################################"
 }

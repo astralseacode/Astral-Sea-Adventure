@@ -1,107 +1,107 @@
 {
-    "id":  "starlit-hunting-dark",
-    "number":  8,
-    "name":  "Starlit Hunting Dark",
-    "regionId":  "starfall-trench",
-    "enemyId":  "starlit-viperfish",
-    "recommendedLevel":  6,
-    "introDiscord":  "Starlit Hunting Dark lies ahead, where meteor-lit trenches conceal the territory of Starlit Viperfish.",
-    "introTwitch":  "Starlit Hunting Dark lies ahead amid meteor-lit trenches.",
-    "startRoomId":  "starlit-hunting-dark-approach",
-    "rooms":  {
-                  "starlit-hunting-dark-approach":  {
-                                                        "prompt":  "At the edge of Starlit Hunting Dark, meteor-lit trenches divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "starlit-hunting-dark-depths",
-                                                                                     "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                     "reward":  {
-                                                                                                    "min":  121,
-                                                                                                    "max":  158
-                                                                                                }
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "starlit-hunting-dark-depths",
-                                                                                      "healAmount":  46,
-                                                                                      "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "combat",
-                                                                                        "nextRoomId":  "starlit-hunting-dark-depths",
-                                                                                        "enemyId":  "starlit-viperfish",
-                                                                                        "message":  "A shift in the current exposes Starlit Viperfish, which claims the forward route through Starlit Hunting Dark."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "starlit-hunting-dark-depths":  {
-                                                      "prompt":  "Deeper within Starlit Hunting Dark, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "starlit-hunting-dark-threshold",
-                                                                                   "enemyId":  "starlit-viperfish",
-                                                                                   "message":  "A shift in the current exposes Starlit Viperfish, which claims the left route through Starlit Hunting Dark."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "empty",
-                                                                                    "nextRoomId":  "starlit-hunting-dark-threshold",
-                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Starlit Hunting Dark. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                    "berries":  1
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "starlit-hunting-dark-threshold",
-                                                                                      "message":  "Beyond the forward route, you discover a star chart coffer buried in luminous silt.",
-                                                                                      "reward":  {
-                                                                                                     "min":  133,
-                                                                                                     "max":  170
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "starlit-hunting-dark-threshold":  {
-                                                         "prompt":  "Near the heart of Starlit Hunting Dark, fractured starstone terraces divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the left route, you discover a sealed meteor-iron reliquary.",
-                                                                                      "reward":  {
-                                                                                                     "min":  145,
-                                                                                                     "max":  182
-                                                                                                 }
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "enemyId":  "starlit-viperfish",
-                                                                                       "message":  "A shift in the current exposes Starlit Viperfish, which claims the right route through Starlit Hunting Dark."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "healing",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "healAmount":  51,
-                                                                                         "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                         "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "boss-antechamber":  {
-                                           "name":  "Gleaming Abyss",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Gleaming Abyss."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Gleaming Abyss. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Gleaming Abyss: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Gleaming Abyss. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "nova-fang-viperfish-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Nova-Fang Viperfish reveals itself!"
-             },
-    "completionText":  "Nova-Fang Viperfish yields, and the currents beyond Gleaming Abyss open the next route through Starfall Trench."
+  "id": "starlit-hunting-dark",
+  "number": 8,
+  "name": "Starlit Hunting Dark",
+  "regionId": "starfall-trench",
+  "enemyId": "starlit-viperfish",
+  "recommendedLevel": 6,
+  "introDiscord": "The darkness ahead is filled with tiny stars. Unfortunately, several of those stars are attached to Starlit Viperfish.",
+  "introTwitch": "The darkness ahead is filled with tiny stars. Unfortunately, several of those stars are attached to Starlit Viperfish.",
+  "startRoomId": "starlit-hunting-dark-approach",
+  "rooms": {
+    "starlit-hunting-dark-approach": {
+      "prompt": "Three routes disappear into a field of beautiful lights that absolutely cannot be trusted.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "starlit-hunting-dark-depths",
+          "message": "A cometglass seam sparkles beneath the darkness. You verify it has no teeth before approaching.",
+          "reward": {
+            "min": 121,
+            "max": 158
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "starlit-hunting-dark-depths",
+          "healAmount": 46,
+          "message": "Shizuki's tonic reads: \"If star moves toward you: fish. If star opens mouth: definitely fish.\"",
+          "fullHpMessage": "You leave the tonic untouched and memorize the extremely advanced identification system."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "starlit-hunting-dark-depths",
+          "enemyId": "starlit-viperfish",
+          "message": "A beautiful star drifts closer.\n\nIt smiles.\n\nStars should not smile."
+        }
+      }
+    },
+    "starlit-hunting-dark-depths": {
+      "prompt": "The hunting dark thickens. Three paths are marked only by moving points of light.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "starlit-hunting-dark-threshold",
+          "enemyId": "starlit-viperfish",
+          "message": "A constellation rearranges itself into one extremely hungry Viperfish."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "starlit-hunting-dark-threshold",
+          "message": "A Berry floats beside Shizuki's abandoned telescope.\n\n\"Telescope update: excellent at locating stars. Unfortunately excellent at locating fish pretending to be stars.\"",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "starlit-hunting-dark-threshold",
+          "message": "A star-chart coffer rests beneath a cluster of genuine stars.\n\nProbably.",
+          "reward": {
+            "min": 133,
+            "max": 170
+          }
+        }
+      }
+    },
+    "starlit-hunting-dark-threshold": {
+      "prompt": "Gleaming Abyss waits beyond three corridors filled with slowly approaching lights.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A meteor-iron reliquary glints beneath the seabed.",
+          "reward": {
+            "min": 145,
+            "max": 182
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "starlit-viperfish",
+          "message": "One light rushes toward you.\n\nYou don't even bother calling it a star anymore."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 51,
+          "message": "Shizuki's emergency bottle is labeled: \"Astronomy-related bite treatment.\"",
+          "fullHpMessage": "\"The astronomy-related bite treatment remains unnecessary. Excellent.\"\n\nBOSS:"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Gleaming Abyss",
+      "type": "boss-prompt",
+      "prompt": "Every small light suddenly disappears.\n\nOne enormous star remains."
+    }
+  },
+  "bossPromptDiscord": "The lone star opens an enormous jaw.\n\nThat answers that.\n\nUse /yes to enter Gleaming Abyss or /no to permanently distrust celestial objects from a safer distance.",
+  "bossPromptTwitch": "The lone star opens an enormous jaw.\n\nThat answers that.\n\nUse !yes to enter Gleaming Abyss or !no to permanently distrust celestial objects from a safer distance.",
+  "bossRetreatText": "You retreat. The enormous false star follows briefly, then disappears into the dark.",
+  "boss": {
+    "enemyId": "nova-fang-viperfish-boss",
+    "roomId": "boss",
+    "revealText": "The brilliant lure splits around rows of enormous teeth.\n\nNova-Fang Viperfish reveals itself!"
+  },
+  "completionText": "\"The Nova-Fang vanishes.\n\nReal stars slowly become visible again.\n\nYou inspect every single one suspiciously.\"\n\n\n#################################################################"
 }

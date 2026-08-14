@@ -1,107 +1,107 @@
 {
-    "id":  "thoughtform-maze",
-    "number":  17,
-    "name":  "Thoughtform Maze",
-    "regionId":  "astral-nexus",
-    "enemyId":  "thoughtform-prowler",
-    "recommendedLevel":  50,
-    "introDiscord":  "Thoughtform Maze lies ahead, where fae arches opening onto incompatible skies conceal the territory of Thoughtform Prowler.",
-    "introTwitch":  "Thoughtform Maze lies ahead amid fae arches opening onto incompatible skies.",
-    "startRoomId":  "thoughtform-maze-approach",
-    "rooms":  {
-                  "thoughtform-maze-approach":  {
-                                                    "prompt":  "At the edge of Thoughtform Maze, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "thoughtform-maze-depths",
-                                                                                 "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
-                                                                                 "reward":  {
-                                                                                                "min":  260,
-                                                                                                "max":  300
-                                                                                            }
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "thoughtform-maze-depths",
-                                                                                  "enemyId":  "thoughtform-prowler",
-                                                                                  "message":  "A shift in the current exposes Thoughtform Prowler, which claims the right route through Thoughtform Maze."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "thoughtform-maze-depths",
-                                                                                    "healAmount":  61,
-                                                                                    "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                }
-                                                                }
-                                                },
-                  "thoughtform-maze-depths":  {
-                                                  "prompt":  "Deeper within Thoughtform Maze, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "thoughtform-maze-threshold",
-                                                                               "enemyId":  "thoughtform-prowler",
-                                                                               "message":  "A shift in the current exposes Thoughtform Prowler, which claims the left route through Thoughtform Maze."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "thoughtform-maze-threshold",
-                                                                                "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                "reward":  {
-                                                                                               "min":  272,
-                                                                                               "max":  312
-                                                                                           }
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "empty",
-                                                                                  "nextRoomId":  "thoughtform-maze-threshold",
-                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Thoughtform Maze. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                  "berries":  1
-                                                                              }
-                                                              }
-                                              },
-                  "thoughtform-maze-threshold":  {
-                                                     "prompt":  "Near the heart of Thoughtform Maze, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "healAmount":  66,
-                                                                                  "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "thoughtform-prowler",
-                                                                                   "message":  "A shift in the current exposes Thoughtform Prowler, which claims the right route through Thoughtform Maze."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                     "reward":  {
-                                                                                                    "min":  284,
-                                                                                                    "max":  324
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "Unspoken Labyrinth",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Unspoken Labyrinth."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Unspoken Labyrinth. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Unspoken Labyrinth: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Unspoken Labyrinth. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "fear-made-huntress-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Fear-Made Huntress reveals itself!"
-             },
-    "completionText":  "Fear-Made Huntress yields, and the currents beyond Unspoken Labyrinth open the next route through Astral Nexus."
+    "id": "thoughtform-maze",
+    "number": 17,
+    "name": "Thoughtform Maze",
+    "regionId": "astral-nexus",
+    "enemyId": "thoughtform-prowler",
+    "recommendedLevel": 50,
+    "introDiscord": "The maze changes when you think about it.\n\nUnfortunately, knowing this also changes it.",
+    "introTwitch": "The maze changes when you think about it.\n\nUnfortunately, knowing this also changes it.",
+    "startRoomId": "thoughtform-maze-approach",
+    "rooms": {
+        "thoughtform-maze-approach": {
+            "prompt": "Three impossible routes open across Thoughtform Maze.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "thoughtform-maze-depths",
+                    "message": "You think about treasure.\n\nA chest appears.\n\nThis seems suspiciously convenient.",
+                    "reward": {
+                        "min": 260,
+                        "max": 300
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "thoughtform-maze-depths",
+                    "enemyId": "thoughtform-prowler",
+                    "message": "You wonder whether something is following you.\n\nA Thoughtform Prowler appears.\n\nSTOP THINKING."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "thoughtform-maze-depths",
+                    "healAmount": 61,
+                    "message": "You imagine somewhere safe.\n\nFor once, the Nexus cooperates.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "thoughtform-maze-depths": {
+            "prompt": "Deeper within Thoughtform Maze, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "thoughtform-maze-threshold",
+                    "enemyId": "thoughtform-prowler",
+                    "message": "You briefly think:\n\n'At least there isn't another Prowler.'\n\nThere is now another Prowler."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "thoughtform-maze-threshold",
+                    "message": "You deliberately imagine Star Candies.\n\nSuccess.\n\nUseful brain.",
+                    "reward": {
+                        "min": 272,
+                        "max": 312
+                    }
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "thoughtform-maze-threshold",
+                    "message": "One Berry sits beneath Shizuki's message:\n\n'DO NOT THINK ABOUT GIANT BERRY.\n\nSeriously.\n\nIt blocks hallway.'",
+                    "berries": 1
+                }
+            }
+        },
+        "thoughtform-maze-threshold": {
+            "prompt": "Near Unspoken Labyrinth, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 66,
+                    "message": "You focus on rest.\n\nThe maze forms a quiet room.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "thoughtform-prowler",
+                    "message": "A fleeting worried thought becomes claws."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A deliberately imagined coffer becomes real.",
+                    "reward": {
+                        "min": 284,
+                        "max": 324
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Unspoken Labyrinth",
+            "type": "boss-prompt",
+            "prompt": "Unspoken Labyrinth goes dark."
+        }
+    },
+    "bossPromptDiscord": "Unspoken Labyrinth goes dark.\n\nThe one thing you don't want to imagine begins taking shape anyway.\n\nUse /yes to face it or /no to go think about puppies or\nsomething.",
+    "bossPromptTwitch": "Unspoken Labyrinth goes dark.\n\nThe one thing you don't want to imagine begins taking shape anyway.\n\nUse !yes to face it or !no to go think about puppies or\nsomething.",
+    "bossRetreatText": "You withdraw from Unspoken Labyrinth. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "fear-made-huntress-boss",
+        "roomId": "boss",
+        "revealText": "Fear becomes solid.\n\nFear-Made Huntress reveals itself!"
+    },
+    "completionText": "The maze stops responding.\n\nShizuki's final thought is carved into the wall:\n\n'BERRIES.\n\nBERRIES.\n\nBERRIES.\n\nSafety strategy.'"
 }

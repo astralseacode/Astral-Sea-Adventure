@@ -1,107 +1,107 @@
 {
-    "id":  "nexus-crown-array",
-    "number":  27,
-    "name":  "Nexus Crown Array",
-    "regionId":  "astral-nexus",
-    "enemyId":  "nexus-crown-construct",
-    "recommendedLevel":  50,
-    "introDiscord":  "Nexus Crown Array lies ahead, where fractured realities where memories cast physical shadows conceal the territory of Nexus Crown Construct.",
-    "introTwitch":  "Nexus Crown Array lies ahead amid fractured realities where memories cast physical shadows.",
-    "startRoomId":  "nexus-crown-array-approach",
-    "rooms":  {
-                  "nexus-crown-array-approach":  {
-                                                     "prompt":  "At the edge of Nexus Crown Array, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "nexus-crown-array-depths",
-                                                                                  "healAmount":  14,
-                                                                                  "message":  "The left route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "nexus-crown-array-depths",
-                                                                                   "enemyId":  "nexus-crown-construct",
-                                                                                   "message":  "A shift in the current exposes Nexus Crown Construct, which claims the right route through Nexus Crown Array."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "nexus-crown-array-depths",
-                                                                                     "message":  "Beyond the forward route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                     "reward":  {
-                                                                                                    "min":  141,
-                                                                                                    "max":  184
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "nexus-crown-array-depths":  {
-                                                   "prompt":  "Deeper within Nexus Crown Array, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "nexus-crown-array-threshold",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Nexus Crown Array. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "nexus-crown-array-threshold",
-                                                                                 "message":  "Beyond the right route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                 "reward":  {
-                                                                                                "min":  153,
-                                                                                                "max":  196
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "nexus-crown-array-threshold",
-                                                                                   "enemyId":  "nexus-crown-construct",
-                                                                                   "message":  "A shift in the current exposes Nexus Crown Construct, which claims the forward route through Nexus Crown Array."
-                                                                               }
-                                                               }
-                                               },
-                  "nexus-crown-array-threshold":  {
-                                                      "prompt":  "Near the heart of Nexus Crown Array, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "nexus-crown-construct",
-                                                                                   "message":  "A shift in the current exposes Nexus Crown Construct, which claims the left route through Nexus Crown Array."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  19,
-                                                                                    "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
-                                                                                      "reward":  {
-                                                                                                     "min":  165,
-                                                                                                     "max":  208
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Crown of Six Currents",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Crown of Six Currents."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Crown of Six Currents. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Crown of Six Currents: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Crown of Six Currents. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "convergence-monarch-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Convergence Monarch reveals itself!"
-             },
-    "completionText":  "Convergence Monarch yields, and the currents beyond Crown of Six Currents open the next route through Astral Nexus."
+    "id": "nexus-crown-array",
+    "number": 27,
+    "name": "Nexus Crown Array",
+    "regionId": "astral-nexus",
+    "enemyId": "nexus-crown-construct",
+    "recommendedLevel": 50,
+    "introDiscord": "Six enormous rings orbit a central crown-shaped structure.\n\nEach ring contains glimpses of a different region.\n\nShizuki immediately wrote:\n\n'ANOTHER CROWN.\n\nI AM QUALIFIED AFTER SUNKEN KINGDOM.'",
+    "introTwitch": "Six enormous rings orbit a central crown-shaped structure.\n\nEach ring contains glimpses of a different region.\n\nShizuki immediately wrote:\n\n'ANOTHER CROWN.\n\nI AM QUALIFIED AFTER SUNKEN KINGDOM.'",
+    "startRoomId": "nexus-crown-array-approach",
+    "rooms": {
+        "nexus-crown-array-approach": {
+            "prompt": "Three impossible routes open across Nexus Crown Array.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "nexus-crown-array-depths",
+                    "healAmount": 14,
+                    "message": "A ring aligned with Moonlit Reef releases restorative light.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "nexus-crown-array-depths",
+                    "enemyId": "nexus-crown-construct",
+                    "message": "A Nexus Crown Construct descends from the Array."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "nexus-crown-array-depths",
+                    "message": "A cache rotates through all six rings.",
+                    "reward": {
+                        "min": 141,
+                        "max": 184
+                    }
+                }
+            }
+        },
+        "nexus-crown-array-depths": {
+            "prompt": "Deeper within Nexus Crown Array, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "nexus-crown-array-threshold",
+                    "message": "One Berry sits beneath a paper crown.\n\nShizuki wrote:\n\n'Queen of Nexus.\n\nAuthority:\n\nsame as last time.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "nexus-crown-array-threshold",
+                    "message": "Star Candies orbit the crown.",
+                    "reward": {
+                        "min": 153,
+                        "max": 196
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "nexus-crown-array-threshold",
+                    "enemyId": "nexus-crown-construct",
+                    "message": "A Construct activates beneath the six regions."
+                }
+            }
+        },
+        "nexus-crown-array-threshold": {
+            "prompt": "Near Crown of Six Currents, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "nexus-crown-construct",
+                    "message": "A Nexus Crown Construct blocks the central ring."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 19,
+                    "message": "Six gentle currents overlap and restore you.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A coffer bears symbols from every mapped region.",
+                    "reward": {
+                        "min": 165,
+                        "max": 208
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Crown of Six Currents",
+            "type": "boss-prompt",
+            "prompt": "Crown of Six Currents locks into place."
+        }
+    },
+    "bossPromptDiscord": "Crown of Six Currents locks into place.\n\nA regal construct forms beneath it.\n\nUse /yes to approach or /no to avoid Shizuki starting\nanother constitutional crisis.",
+    "bossPromptTwitch": "Crown of Six Currents locks into place.\n\nA regal construct forms beneath it.\n\nUse !yes to approach or !no to avoid Shizuki starting\nanother constitutional crisis.",
+    "bossRetreatText": "You withdraw from Crown of Six Currents. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "convergence-monarch-boss",
+        "roomId": "boss",
+        "revealText": "The six rings bow inward.\n\nConvergence Monarch reveals itself!"
+    },
+    "completionText": "The Crown opens.\n\nBeyond it is not another region.\n\nIt is a memory."
 }

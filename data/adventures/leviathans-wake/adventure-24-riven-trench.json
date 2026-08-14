@@ -1,107 +1,107 @@
 {
-    "id":  "riven-trench",
-    "number":  24,
-    "name":  "Riven Trench",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "trench-rending-worm",
-    "recommendedLevel":  28,
-    "introDiscord":  "Riven Trench lies ahead, where immense scales embedded in unstable coral shelves conceal the territory of Trench-Rending Worm.",
-    "introTwitch":  "Riven Trench lies ahead amid immense scales embedded in unstable coral shelves.",
-    "startRoomId":  "riven-trench-approach",
-    "rooms":  {
-                  "riven-trench-approach":  {
-                                                "prompt":  "At the edge of Riven Trench, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                "choices":  {
-                                                                "left":  {
-                                                                             "type":  "empty",
-                                                                             "nextRoomId":  "riven-trench-depths",
-                                                                             "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Riven Trench. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                             "berries":  1
-                                                                         },
-                                                                "right":  {
-                                                                              "type":  "treasure",
-                                                                              "nextRoomId":  "riven-trench-depths",
-                                                                              "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                              "reward":  {
-                                                                                             "min":  109,
-                                                                                             "max":  151
-                                                                                         }
-                                                                          },
-                                                                "forward":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "riven-trench-depths",
-                                                                                "enemyId":  "trench-rending-worm",
-                                                                                "message":  "A shift in the current exposes Trench-Rending Worm, which claims the forward route through Riven Trench."
-                                                                            }
-                                                            }
-                                            },
-                  "riven-trench-depths":  {
-                                              "prompt":  "Deeper within Riven Trench, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                              "choices":  {
-                                                              "left":  {
-                                                                           "type":  "combat",
-                                                                           "nextRoomId":  "riven-trench-threshold",
-                                                                           "enemyId":  "trench-rending-worm",
-                                                                           "message":  "A shift in the current exposes Trench-Rending Worm, which claims the left route through Riven Trench."
-                                                                       },
-                                                              "right":  {
-                                                                            "type":  "healing",
-                                                                            "nextRoomId":  "riven-trench-threshold",
-                                                                            "healAmount":  18,
-                                                                            "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                            "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                        },
-                                                              "forward":  {
-                                                                              "type":  "treasure",
-                                                                              "nextRoomId":  "riven-trench-threshold",
-                                                                              "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
-                                                                              "reward":  {
-                                                                                             "min":  121,
-                                                                                             "max":  163
-                                                                                         }
-                                                                          }
-                                                          }
-                                          },
-                  "riven-trench-threshold":  {
-                                                 "prompt":  "Near the heart of Riven Trench, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                 "choices":  {
-                                                                 "left":  {
-                                                                              "type":  "treasure",
-                                                                              "nextRoomId":  "boss-antechamber",
-                                                                              "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                              "reward":  {
-                                                                                             "min":  133,
-                                                                                             "max":  175
-                                                                                         }
-                                                                          },
-                                                                 "right":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "boss-antechamber",
-                                                                               "enemyId":  "trench-rending-worm",
-                                                                               "message":  "A shift in the current exposes Trench-Rending Worm, which claims the right route through Riven Trench."
-                                                                           },
-                                                                 "forward":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "healAmount":  23,
-                                                                                 "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             }
-                                                             }
-                                             },
-                  "boss-antechamber":  {
-                                           "name":  "Split-Sea Chasm",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Split-Sea Chasm."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Split-Sea Chasm. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Split-Sea Chasm: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Split-Sea Chasm. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "worldscar-worm-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Worldscar Worm reveals itself!"
-             },
-    "completionText":  "Worldscar Worm yields, and the currents beyond Split-Sea Chasm open the next route through Leviathan\u0027s Wake."
+    "id": "riven-trench",
+    "number": 24,
+    "name": "Riven Trench",
+    "regionId": "leviathans-wake",
+    "enemyId": "trench-rending-worm",
+    "recommendedLevel": 28,
+    "introDiscord": "The trench is split by wounds so deep they resemble cracks through the\nworld itself.\n\nTrench-Rending Worms have made those cracks deeper.",
+    "introTwitch": "The trench is split by wounds so deep they resemble cracks through the\nworld itself.\n\nTrench-Rending Worms have made those cracks deeper.",
+    "startRoomId": "riven-trench-approach",
+    "rooms": {
+        "riven-trench-approach": {
+            "prompt": "Three routes cross the fractured seabed.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "riven-trench-depths",
+                    "message": "One Berry sits beside Shizuki's warning:\n\n'Crack was already huge.\n\nWorm made bigger.\n\nI am contributing by touching NOTHING.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "riven-trench-depths",
+                    "message": "A navigator's chest rests inside the fracture.",
+                    "reward": {
+                        "min": 109,
+                        "max": 151
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "riven-trench-depths",
+                    "enemyId": "trench-rending-worm",
+                    "message": "A Trench-Rending Worm erupts through the seabed."
+                }
+            }
+        },
+        "riven-trench-depths": {
+            "prompt": "The cracks spread beneath enormous bones.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "riven-trench-threshold",
+                    "enemyId": "trench-rending-worm",
+                    "message": "A Worm tears through an old Leviathan scar."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "riven-trench-threshold",
+                    "healAmount": 18,
+                    "message": "Shizuki's medicine:\n\n'Ground-related emergency kit.\n\nThis region has expanded definition of ground.'",
+                    "fullHpMessage": "You leave the geology medicine."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "riven-trench-threshold",
+                    "message": "A strongbox lies inside a fresh split.",
+                    "reward": {
+                        "min": 121,
+                        "max": 163
+                    }
+                }
+            }
+        },
+        "riven-trench-threshold": {
+            "prompt": "Split-Sea Chasm opens ahead.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "Star Candies rest beneath a fractured scale.",
+                    "reward": {
+                        "min": 133,
+                        "max": 175
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "trench-rending-worm",
+                    "message": "A Trench-Rending Worm crosses the chasm wall."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 23,
+                    "message": "Shizuki's bottle reads:\n\n'If crack gets any larger, it becomes destination.\n\nLeaving now.'",
+                    "fullHpMessage": "You leave the restorative and appreciate the logic."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Split-Sea Chasm",
+            "type": "boss-prompt",
+            "prompt": "Split-Sea Chasm widens."
+        }
+    },
+    "bossPromptDiscord": "Split-Sea Chasm widens.\n\nThe stone itself begins moving.\n\nSomething below is not merely living inside the fracture.\n\nIt is creating it.\n\nUse /yes to enter the Chasm or /no to preserve the current number of\npieces the seabed is in.",
+    "bossPromptTwitch": "Split-Sea Chasm widens.\n\nThe stone itself begins moving.\n\nSomething below is not merely living inside the fracture.\n\nIt is creating it.\n\nUse !yes to enter the Chasm or !no to preserve the current number of\npieces the seabed is in.",
+    "bossRetreatText": "You retreat onto relatively intact terrain.",
+    "boss": {
+        "enemyId": "worldscar-worm-boss",
+        "roomId": "boss",
+        "revealText": "The chasm tears wider as an enormous Worm rises.\n\nWorldscar Worm reveals itself!"
+    },
+    "completionText": "The Worldscar disappears beneath the trench.\n\nThe fracture stops growing.\n\nFor now."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "stormscript-tempest",
-    "number":  11,
-    "name":  "Stormscript Tempest",
-    "regionId":  "astral-nexus",
-    "enemyId":  "stormscript-squid",
-    "recommendedLevel":  50,
-    "introDiscord":  "Stormscript Tempest lies ahead, where fae arches opening onto incompatible skies conceal the territory of Stormscript Squid.",
-    "introTwitch":  "Stormscript Tempest lies ahead amid fae arches opening onto incompatible skies.",
-    "startRoomId":  "stormscript-tempest-approach",
-    "rooms":  {
-                  "stormscript-tempest-approach":  {
-                                                       "prompt":  "At the edge of Stormscript Tempest, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "stormscript-tempest-depths",
-                                                                                    "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
-                                                                                    "reward":  {
-                                                                                                   "min":  331,
-                                                                                                   "max":  369
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "stormscript-tempest-depths",
-                                                                                     "enemyId":  "stormscript-squid",
-                                                                                     "message":  "A shift in the current exposes Stormscript Squid, which claims the right route through Stormscript Tempest."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "stormscript-tempest-depths",
-                                                                                       "healAmount":  88,
-                                                                                       "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "stormscript-tempest-depths":  {
-                                                     "prompt":  "Deeper within Stormscript Tempest, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "stormscript-tempest-threshold",
-                                                                                  "enemyId":  "stormscript-squid",
-                                                                                  "message":  "A shift in the current exposes Stormscript Squid, which claims the left route through Stormscript Tempest."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "stormscript-tempest-threshold",
-                                                                                   "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                   "reward":  {
-                                                                                                  "min":  343,
-                                                                                                  "max":  381
-                                                                                              }
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "empty",
-                                                                                     "nextRoomId":  "stormscript-tempest-threshold",
-                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Stormscript Tempest. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                     "berries":  1
-                                                                                 }
-                                                                 }
-                                                 },
-                  "stormscript-tempest-threshold":  {
-                                                        "prompt":  "Near the heart of Stormscript Tempest, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  93,
-                                                                                     "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "stormscript-squid",
-                                                                                      "message":  "A shift in the current exposes Stormscript Squid, which claims the right route through Stormscript Tempest."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                        "reward":  {
-                                                                                                       "min":  355,
-                                                                                                       "max":  393
-                                                                                                   }
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Formula of Thunder",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Formula of Thunder."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Formula of Thunder. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Formula of Thunder: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Formula of Thunder. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "living-equation-krakenet-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Living Equation Krakenet reveals itself!"
-             },
-    "completionText":  "Living Equation Krakenet yields, and the currents beyond Formula of Thunder open the next route through Astral Nexus."
+    "id": "stormscript-tempest",
+    "number": 11,
+    "name": "Stormscript Tempest",
+    "regionId": "astral-nexus",
+    "enemyId": "stormscript-squid",
+    "recommendedLevel": 50,
+    "introDiscord": "Lightning writes glowing symbols across the water.\n\nStormscript Squid add ink between the flashes.\n\nThe result resembles someone doing mathematics during a thunderstorm.",
+    "introTwitch": "Lightning writes glowing symbols across the water.\n\nStormscript Squid add ink between the flashes.\n\nThe result resembles someone doing mathematics during a thunderstorm.",
+    "startRoomId": "stormscript-tempest-approach",
+    "rooms": {
+        "stormscript-tempest-approach": {
+            "prompt": "Three impossible routes open across Stormscript Tempest.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "stormscript-tempest-depths",
+                    "message": "Star Candies sit beneath a glowing equation.\n\nShizuki added:\n\n'+ Berry = better.'",
+                    "reward": {
+                        "min": 331,
+                        "max": 369
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "stormscript-tempest-depths",
+                    "enemyId": "stormscript-squid",
+                    "message": "A Stormscript Squid writes something with ink.\n\nLightning answers.\n\nApparently that was a combat spell."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "stormscript-tempest-depths",
+                    "healAmount": 88,
+                    "message": "A quiet gap between equations restores you.\n\nShizuki's note:\n\n'Tried solving storm.\n\nStorm gave me headache.\n\nTaking break.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "stormscript-tempest-depths": {
+            "prompt": "Deeper within Stormscript Tempest, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "stormscript-tempest-threshold",
+                    "enemyId": "stormscript-squid",
+                    "message": "A Squid writes a spiral that becomes actual lightning."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "stormscript-tempest-threshold",
+                    "message": "A cache appears at the end of a completed equation.",
+                    "reward": {
+                        "min": 343,
+                        "max": 381
+                    }
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "stormscript-tempest-threshold",
+                    "message": "One Berry rests beneath Shizuki's contribution:\n\n'2 + 2 = 4.\n\nI helped.'",
+                    "berries": 1
+                }
+            }
+        },
+        "stormscript-tempest-threshold": {
+            "prompt": "Near Formula of Thunder, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 93,
+                    "message": "A blank section of storm provides restorative calm.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "stormscript-squid",
+                    "message": "A Stormscript Squid corrects Shizuki's equation aggressively."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "Star Candies orbit the final symbol.",
+                    "reward": {
+                        "min": 355,
+                        "max": 393
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Formula of Thunder",
+            "type": "boss-prompt",
+            "prompt": "Formula of Thunder fills the entire chamber."
+        }
+    },
+    "bossPromptDiscord": "Formula of Thunder fills the entire chamber.\n\nOne enormous creature begins completing the equation with its tentacles.\n\nUse /yes to continue or /no to accept that math has become\ntoo dangerous.",
+    "bossPromptTwitch": "Formula of Thunder fills the entire chamber.\n\nOne enormous creature begins completing the equation with its tentacles.\n\nUse !yes to continue or !no to accept that math has become\ntoo dangerous.",
+    "bossRetreatText": "You withdraw from Formula of Thunder. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "living-equation-krakenet-boss",
+        "roomId": "boss",
+        "revealText": "The equation completes.\n\nLightning takes form.\n\nLiving Equation Krakenet reveals itself!"
+    },
+    "completionText": "The storm erases itself.\n\nShizuki's '2 + 2 = 4' survives.\n\nHighest-quality scholarship in the chamber."
 }

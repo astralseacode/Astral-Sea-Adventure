@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "moon-puff",
   "recommendedLevel": 1,
-  "introDiscord": "Soft clouds of enchanted sea-foam gather around a coral aerie high above the reef floor.",
-  "introTwitch": "Soft clouds of enchanted sea-foam gather around a coral aerie high above the reef floor.",
+  "introDiscord": "The Lunar Current rises toward a coral aerie wrapped in enchanted sea-foam. Puffy white shapes drift between weightless branches, little nests cling to every ledge, and something overhead releases the tiniest, sleepiest snore.",
+  "introTwitch": "The Lunar Current rises toward a coral aerie wrapped in enchanted sea-foam. Puffy white shapes drift between weightless branches, little nests cling to every ledge, and something overhead releases the tiniest, sleepiest snore.",
   "startRoomId": "cloudcoral-rise",
   "rooms": {
     "cloudcoral-rise": {
-      "prompt": "Foam drifts past a rising shelf where three paths wind through weightless coral branches.",
+      "prompt": "Weightless coral branches rise through clouds of soft foam. Tiny nests sway between them, and three paths weave upward while several suspiciously fluffy shapes pretend not to be watching you.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "drowsing-terrace",
-          "message": "Within Moon Puff Aerie, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel is completely buried beneath a pile of impossibly soft nesting fluff. After digging through what feels like an entire pillow, you uncover Star Candies. A nearby Moon Puff looks personally offended that you disturbed the bedding.",
           "reward": {
             "min": 25,
             "max": 50
@@ -25,30 +25,30 @@
           "type": "healing",
           "nextRoomId": "drowsing-terrace",
           "healAmount": 25,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Cloudmint draught. May cause naps, so run first.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "Beneath a foam-covered ledge, you find Shizuki's old field kit being used as part of a Moon Puff nest. The surviving bottle reads: \"Cloudmint draught. May cause naps, so run first. Learned that order the hard way.\"",
+          "fullHpMessage": "The Cloudmint draught can stay inside its extremely fluffy new home. You're already healthy, and waking the Moon Puff sleeping on the lid seems medically unnecessary."
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "drowsing-terrace",
           "enemyId": "moon-puff",
-          "message": "The water folds around Moon Puff, revealing the creature as it claims the passage."
+          "message": "A fluffy shape drops from a coral branch and lands directly in your path. It yawns. You wait. It yawns again. Then it realizes you are standing near its nest and suddenly becomes much less sleepy."
         }
       }
     },
     "drowsing-terrace": {
-      "prompt": "The passages carry you deeper into Moon Puff Aerie, where the current grows hushed across a drowsing terrace, with three openings beyond pale mist.",
+      "prompt": "The aerie opens onto a wide terrace covered in sleeping Moon Puffs. Some float gently in bubbles. Others have wedged themselves into coral branches. One is somehow asleep upside down. Three routes continue through the napping crowd.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "whisperdown-loft",
           "enemyId": "moon-puff",
-          "message": "The water folds around Moon Puff, revealing the creature as it claims the passage."
+          "message": "You carefully step around one sleeping Moon Puff. Then another. Then a third. Your foot brushes a tiny shell. Click. Every nearby Puff opens its eyes at once. One has apparently volunteered to handle the complaint."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "whisperdown-loft",
-          "message": "Within Moon Puff Aerie, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache has been turned into a pillow platform. Three Moon Puffs are asleep on top of it. After an extremely delicate extraction operation, you recover Star Candies without waking two of them. The third is judging you.",
           "reward": {
             "min": 30,
             "max": 55
@@ -58,30 +58,30 @@
           "type": "healing",
           "nextRoomId": "whisperdown-loft",
           "healAmount": 25,
-          "message": "Deeper inside Moon Puff Aerie, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"I traded a Moon Puff three buttons for this recipe. Worth it.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Shizuki's abandoned camp has been completely absorbed into a nest. Beside a stoppered bottle she wrote: \"I traded a Moon Puff three buttons for this recipe. Worth it. It wanted four. I negotiated.\"",
+          "fullHpMessage": "The medicine remains safely tucked in Shizuki's old nest. At full health, you can avoid reopening what was apparently a complicated button-based trade agreement."
         }
       }
     },
     "whisperdown-loft": {
-      "prompt": "Close to the heart of Moon Puff Aerie, fae feathers and bubbles turn through a lofty chamber where three routes descend unseen.",
+      "prompt": "Fae feathers, bubbles, and loose clouds of foam spiral through the highest loft. Moon Puffs drift between hanging nests while three passages descend toward a quiet pocket of cloudcoral.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "An old blanket nest in the surrounding passage contains one Berry for the next tired traveler. Shizuki rated the ceiling \"excellent after midnight.\"",
+          "message": "An old blanket nest contains one Berry beside Shizuki's handwritten review: \"Ceiling: excellent after midnight. Bed: suspiciously fluffy. Room service stole my sock.\"",
           "berries": 1
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moon-puff",
-          "message": "The water folds around Moon Puff, revealing the creature as it claims the passage."
+          "message": "A Moon Puff emerges from a nest holding something familiar-looking. A sock. It spots you noticing the sock, stuffs it behind itself, and immediately assumes a defensive position. The evidence is overwhelming."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moon Puff Aerie, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer hangs from a nest by a ribbon of foam. Inside are Star Candies and what appears to be a small collection of stolen buttons. Shizuki's trade partner may have been doing very well for itself.",
           "reward": {
             "min": 35,
             "max": 60
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Quietstorm Nest",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The loft opens into a vast nest suspended inside a slow-turning cloud. Dozens of Moon Puffs are sleeping around its edges. In the center, one enormous mound of silver-white fluff rises and falls with each deep breath."
     }
   },
-  "bossPromptDiscord": "You reach Quietstorm Nest. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Quietstorm Nest: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Quietstorm Nest. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "A tremendous yawn rolls through Quietstorm Nest.\n\nThe surrounding foam begins circling like a tiny storm as every smaller Moon Puff hurriedly relocates to a safer branch.\n\nThe enormous pile of fluff in the center opens two glowing eyes.\n\nUse /yes to approach or /no to let the giant Puff finish its nap.",
+  "bossPromptTwitch": "A tremendous yawn rolls through Quietstorm Nest.\n\nThe surrounding foam begins circling like a tiny storm as every smaller Moon Puff hurriedly relocates to a safer branch.\n\nThe enormous pile of fluff in the center opens two glowing eyes.\n\nUse !yes to approach or !no to let the giant Puff finish its nap.",
+  "bossRetreatText": "You quietly back away. The enormous Moon Puff closes its eyes again, and within seconds the entire nest resumes snoring.",
   "boss": {
     "enemyId": "dreamcloud-moon-puff-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Dreamcloud Moon Puff reveals itself!"
+    "revealText": "The cloud erupts into a spiraling pillow-storm as an enormous Moon Puff rises from the nest. Foam crackles around its body—the Dreamcloud Moon Puff is VERY awake!"
   },
-  "completionText": "Dreamcloud Moon Puff yields to the returning current. Moon Puff Aerie settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Dreamcloud Moon Puff gives one final grumpy huff before collapsing back into its nest. The foam settles, the smaller Puffs cautiously return, and within moments half the aerie is asleep again. A new route opens beyond the cloudcoral. Somewhere behind you, one Moon Puff triumphantly disappears with another sock."
 }

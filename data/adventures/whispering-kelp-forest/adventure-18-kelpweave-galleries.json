@@ -1,107 +1,107 @@
 {
-    "id":  "kelpweave-galleries",
-    "number":  18,
-    "name":  "Kelpweave Galleries",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "kelpweave-spider",
-    "recommendedLevel":  16,
-    "introDiscord":  "Kelpweave Galleries lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Kelpweave Spider.",
-    "introTwitch":  "Kelpweave Galleries lies ahead amid moonlit fronds curling around forgotten shrines.",
-    "startRoomId":  "kelpweave-galleries-approach",
-    "rooms":  {
-                  "kelpweave-galleries-approach":  {
-                                                       "prompt":  "At the edge of Kelpweave Galleries, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "empty",
-                                                                                    "nextRoomId":  "kelpweave-galleries-depths",
-                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Kelpweave Galleries. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                    "berries":  1
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "kelpweave-galleries-depths",
-                                                                                     "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
-                                                                                     "reward":  {
-                                                                                                    "min":  115,
-                                                                                                    "max":  155
-                                                                                                }
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "kelpweave-galleries-depths",
-                                                                                       "enemyId":  "kelpweave-spider",
-                                                                                       "message":  "A shift in the current exposes Kelpweave Spider, which claims the forward route through Kelpweave Galleries."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "kelpweave-galleries-depths":  {
-                                                     "prompt":  "Deeper within Kelpweave Galleries, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "kelpweave-galleries-threshold",
-                                                                                  "enemyId":  "kelpweave-spider",
-                                                                                  "message":  "A shift in the current exposes Kelpweave Spider, which claims the left route through Kelpweave Galleries."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "kelpweave-galleries-threshold",
-                                                                                   "healAmount":  30,
-                                                                                   "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "kelpweave-galleries-threshold",
-                                                                                     "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                     "reward":  {
-                                                                                                    "min":  127,
-                                                                                                    "max":  167
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "kelpweave-galleries-threshold":  {
-                                                        "prompt":  "Near the heart of Kelpweave Galleries, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                     "reward":  {
-                                                                                                    "min":  139,
-                                                                                                    "max":  179
-                                                                                                }
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "kelpweave-spider",
-                                                                                      "message":  "A shift in the current exposes Kelpweave Spider, which claims the right route through Kelpweave Galleries."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "healAmount":  35,
-                                                                                        "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Tide-Silk Rotunda",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Tide-Silk Rotunda."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Tide-Silk Rotunda. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Tide-Silk Rotunda: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Tide-Silk Rotunda. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "grand-loom-spider-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Moonloom Weaver reveals itself!"
-             },
-    "completionText":  "Moonloom Weaver yields, and the currents beyond Tide-Silk Rotunda open the next route through Whispering Kelp Forest."
+  "id": "kelpweave-galleries",
+  "number": 18,
+  "name": "Kelpweave Galleries",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "kelpweave-spider",
+  "recommendedLevel": 16,
+  "introDiscord": "Sheets of kelp-silk stretch between the roots like tapestries.\nKelpweave Spiders move across them with impossible grace, turning the\nforest into equal parts gallery and web.",
+  "introTwitch": "Sheets of kelp-silk stretch between the roots like tapestries.\nKelpweave Spiders move across them with impossible grace, turning the\nforest into equal parts gallery and web.",
+  "startRoomId": "kelpweave-galleries-approach",
+  "rooms": {
+    "kelpweave-galleries-approach": {
+      "prompt": "Three routes pass beneath woven scenes of moons, fish, travelers, and\nseveral suspiciously accurate depictions of people getting stuck.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "kelpweave-galleries-depths",
+          "message": "One Berry hangs inside a small silk pouch beside Shizuki's note:\n\n'Spider made bag.\n\nExcellent craftsmanship.\n\nBag attached to wall.\n\nDesign flaw.'",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "kelpweave-galleries-depths",
+          "message": "A shrine coffer has been wrapped in decorative kelp-silk. Opening it\nreveals Star Candies beneath a beautifully woven lid.\n\nFive-star packaging.",
+          "reward": {
+            "min": 115,
+            "max": 155
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "kelpweave-galleries-depths",
+          "enemyId": "kelpweave-spider",
+          "message": "A tapestry depicting a Spider shifts.\n\nThe Spider steps out of its own portrait.\n\nOkay, that was impressive."
+        }
+      }
+    },
+    "kelpweave-galleries-depths": {
+      "prompt": "Towering kelp columns support three gallery walks suspended on woven\nbridges.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "kelpweave-galleries-threshold",
+          "enemyId": "kelpweave-spider",
+          "message": "A Kelpweave Spider races across a thread too thin to see.\n\nYou notice the web only when the Spider is already standing in front of\nyou."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "kelpweave-galleries-threshold",
+          "healAmount": 30,
+          "message": "A moonblossom pool rests beneath a little silk canopy.\n\nShizuki wrote:\n\n'Spider built roof over my camp.\n\nDid not ask.\n\nStill grateful.'",
+          "fullHpMessage": "You leave the pool untouched beneath Shizuki's professionally installed\nspider roof."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "kelpweave-galleries-threshold",
+          "message": "An offering basket has been woven into the gallery wall. Inside are\nStar Candies surrounded by a silk border shaped like tiny stars.",
+          "reward": {
+            "min": 127,
+            "max": 167
+          }
+        }
+      }
+    },
+    "kelpweave-galleries-threshold": {
+      "prompt": "Living roots converge on Tide-Silk Rotunda. Three final approaches hang\nbetween enormous layered tapestries.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Broad silver kelp hides a Star Candy bundle behind an unfinished\ntapestry.\n\nThe missing section appears to be shaped exactly like you.\n\nUnsettling artistic process.",
+          "reward": {
+            "min": 139,
+            "max": 179
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "kelpweave-spider",
+          "message": "A Kelpweave Spider descends upside down on one silver thread.\n\nIt pauses at eye level.\n\nThen chooses violence."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 35,
+          "message": "Restorative sap sits beneath Shizuki's note:\n\n'For web-related falls.\n\nThere were several.\n\nNo further questions.'",
+          "fullHpMessage": "You leave the fall medicine untouched and avoid reviewing Shizuki's\nincident history."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Tide-Silk Rotunda",
+      "type": "boss-prompt",
+      "prompt": "Every woven bridge in the Rotunda tightens simultaneously."
+    }
+  },
+  "bossPromptDiscord": "The enormous tapestries pull upward like curtains.\n\nAt their center hangs a web spanning the entire Tide-Silk Rotunda.\n\nSomething vast moves across it without making a single strand tremble.\n\nUse /yes to enter the Rotunda or /no to leave the master weaver's\ngallery untouched.",
+  "bossPromptTwitch": "The enormous tapestries pull upward like curtains.\n\nAt their center hangs a web spanning the entire Tide-Silk Rotunda.\n\nSomething vast moves across it without making a single strand tremble.\n\nUse !yes to enter the Rotunda or !no to leave the master weaver's\ngallery untouched.",
+  "bossRetreatText": "You withdraw beneath the hanging tapestries. The enormous web remains\nperfectly still behind you.",
+  "boss": {
+    "enemyId": "grand-loom-spider-boss",
+    "roomId": "boss",
+    "revealText": "Silver threads snap taut as a colossal Spider descends into the\nRotunda.\n\nMoonloom Weaver reveals itself!"
+  },
+  "completionText": "\"The Moonloom Weaver retreats into the highest web.\n\nThe smaller Spiders immediately begin repairing the gallery.\n\nOne is already weaving the battle.\n\nYour likeness is questionable.\"\n\n\n#################################################################"
 }

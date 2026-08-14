@@ -1,107 +1,107 @@
 {
-    "id":  "convergence-threshold",
-    "number":  29,
-    "name":  "Convergence Threshold",
-    "regionId":  "astral-nexus",
-    "enemyId":  "astral-convergence-warden",
-    "recommendedLevel":  50,
-    "introDiscord":  "Convergence Threshold lies ahead, where fae arches opening onto incompatible skies conceal the territory of Astral Convergence Warden.",
-    "introTwitch":  "Convergence Threshold lies ahead amid fae arches opening onto incompatible skies.",
-    "startRoomId":  "convergence-threshold-approach",
-    "rooms":  {
-                  "convergence-threshold-approach":  {
-                                                         "prompt":  "At the edge of Convergence Threshold, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "convergence-threshold-depths",
-                                                                                      "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
-                                                                                      "reward":  {
-                                                                                                     "min":  117,
-                                                                                                     "max":  161
-                                                                                                 }
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "convergence-threshold-depths",
-                                                                                       "enemyId":  "astral-convergence-warden",
-                                                                                       "message":  "A shift in the current exposes Astral Convergence Warden, which claims the right route through Convergence Threshold."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "healing",
-                                                                                         "nextRoomId":  "convergence-threshold-depths",
-                                                                                         "healAmount":  5,
-                                                                                         "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                         "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "convergence-threshold-depths":  {
-                                                       "prompt":  "Deeper within Convergence Threshold, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "convergence-threshold-threshold",
-                                                                                    "enemyId":  "astral-convergence-warden",
-                                                                                    "message":  "A shift in the current exposes Astral Convergence Warden, which claims the left route through Convergence Threshold."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "convergence-threshold-threshold",
-                                                                                     "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                     "reward":  {
-                                                                                                    "min":  129,
-                                                                                                    "max":  173
-                                                                                                }
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "empty",
-                                                                                       "nextRoomId":  "convergence-threshold-threshold",
-                                                                                       "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Convergence Threshold. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                       "berries":  1
-                                                                                   }
-                                                                   }
-                                                   },
-                  "convergence-threshold-threshold":  {
-                                                          "prompt":  "Near the heart of Convergence Threshold, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                          "choices":  {
-                                                                          "left":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  10,
-                                                                                       "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   },
-                                                                          "right":  {
-                                                                                        "type":  "combat",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "enemyId":  "astral-convergence-warden",
-                                                                                        "message":  "A shift in the current exposes Astral Convergence Warden, which claims the right route through Convergence Threshold."
-                                                                                    },
-                                                                          "forward":  {
-                                                                                          "type":  "treasure",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                          "reward":  {
-                                                                                                         "min":  141,
-                                                                                                         "max":  185
-                                                                                                     }
-                                                                                      }
-                                                                      }
-                                                      },
-                  "boss-antechamber":  {
-                                           "name":  "Heart-Crossing Seal",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Heart-Crossing Seal."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Heart-Crossing Seal. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Heart-Crossing Seal: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Heart-Crossing Seal. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "nexus-prime-warden-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Nexus Prime Warden reveals itself!"
-             },
-    "completionText":  "Nexus Prime Warden yields, and the currents beyond Heart-Crossing Seal open the next route through Astral Nexus."
+    "id": "convergence-threshold",
+    "number": 29,
+    "name": "Convergence Threshold",
+    "regionId": "astral-nexus",
+    "enemyId": "astral-convergence-warden",
+    "recommendedLevel": 50,
+    "introDiscord": "Everything returns at once.\n\nMoonlit coral.\n\nStarfall crystal.\n\nWhispering roots.\n\nLeviathan bones.\n\nSunken palace stone.\n\nNexus starlight.\n\nAll six roads meet here.",
+    "introTwitch": "Everything returns at once.\n\nMoonlit coral.\n\nStarfall crystal.\n\nWhispering roots.\n\nLeviathan bones.\n\nSunken palace stone.\n\nNexus starlight.\n\nAll six roads meet here.",
+    "startRoomId": "convergence-threshold-approach",
+    "rooms": {
+        "convergence-threshold-approach": {
+            "prompt": "Three impossible routes open across Convergence Threshold.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "convergence-threshold-depths",
+                    "message": "A cache contains small pieces of the entire journey.",
+                    "reward": {
+                        "min": 117,
+                        "max": 161
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "convergence-threshold-depths",
+                    "enemyId": "astral-convergence-warden",
+                    "message": "An Astral Convergence Warden guards the unified path."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "convergence-threshold-depths",
+                    "healAmount": 5,
+                    "message": "Every region's restorative magic overlaps for a brief moment.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "convergence-threshold-depths": {
+            "prompt": "Deeper within Convergence Threshold, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "convergence-threshold-threshold",
+                    "enemyId": "astral-convergence-warden",
+                    "message": "A Warden appears where six paths become one."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "convergence-threshold-threshold",
+                    "message": "Star Candies orbit a map of the known Astral Sea.",
+                    "reward": {
+                        "min": 129,
+                        "max": 173
+                    }
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "convergence-threshold-threshold",
+                    "message": "One Berry rests on Shizuki's final map.\n\nFor once:\n\nit is accurate.\n\nShe wrote:\n\n'DO NOT TELL GLIMMER.\n\nI need this moment.'",
+                    "berries": 1
+                }
+            }
+        },
+        "convergence-threshold-threshold": {
+            "prompt": "Near Heart-Crossing Seal, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 10,
+                    "message": "The Heart-Crossing current restores you.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "astral-convergence-warden",
+                    "message": "The final Warden blocks the Seal."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A chest bears symbols from Moonlit Reef, Starfall Trench, Whispering\nKelp Forest, Leviathan's Wake, Sunken King's Throne and Astral Nexus.",
+                    "reward": {
+                        "min": 141,
+                        "max": 185
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Heart-Crossing Seal",
+            "type": "boss-prompt",
+            "prompt": "Heart-Crossing Seal opens."
+        }
+    },
+    "bossPromptDiscord": "Heart-Crossing Seal opens.\n\nBehind it, every region appears at once.\n\nA final guardian stands between the mapped Astral Sea and whatever lies\npast it.\n\nUse /yes to cross or /no to stand at the edge of the known\nworld a little longer.",
+    "bossPromptTwitch": "Heart-Crossing Seal opens.\n\nBehind it, every region appears at once.\n\nA final guardian stands between the mapped Astral Sea and whatever lies\npast it.\n\nUse !yes to cross or !no to stand at the edge of the known\nworld a little longer.",
+    "bossRetreatText": "You withdraw from Heart-Crossing Seal. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "nexus-prime-warden-boss",
+        "roomId": "boss",
+        "revealText": "Six currents form one towering guardian.\n\nNexus Prime Warden reveals itself!"
+    },
+    "completionText": "The Warden falls.\n\nThe Seal opens completely.\n\nThere is one final place within the Nexus.\n\nNot a command center.\n\nNot a laboratory.\n\nNot an institution.\n\nA heart."
 }

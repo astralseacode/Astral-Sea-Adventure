@@ -5,23 +5,23 @@
   "regionId": "moonlit-reef",
   "enemyId": "fae-petal-ray",
   "recommendedLevel": 2,
-  "introDiscord": "Fae-touched petals drift through underwater gardens rooted in forgotten elven stone.",
-  "introTwitch": "Fae-touched petals drift through underwater gardens rooted in forgotten elven stone.",
+  "introDiscord": "The Lunar Current enters a garden rooted in forgotten elven stone. Fae-touched petals drift like confetti through moonlit water, flowers turn toward passing travelers, and graceful shapes glide beneath the blossoms.",
+  "introTwitch": "The Lunar Current enters a garden rooted in forgotten elven stone. Fae-touched petals drift like confetti through moonlit water, flowers turn toward passing travelers, and graceful shapes glide beneath the blossoms.",
   "startRoomId": "petalwake-arch",
   "rooms": {
     "petalwake-arch": {
-      "prompt": "A floral arch scatters colored shadows across three paths hidden among swaying stems.",
+      "prompt": "A floral arch scatters colored shadows over three garden paths. Petals swirl around your feet, then suspiciously arrange themselves into an arrow that changes direction when you look away.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "blooming-arcade",
           "enemyId": "fae-petal-ray",
-          "message": "The water folds around Fae Petal Ray, revealing the creature as it claims the passage."
+          "message": "A mound of petals suddenly rises off the path. A Fae Petal Ray has been hiding underneath them so perfectly that it seems mildly offended you noticed."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "blooming-arcade",
-          "message": "Within Fae Petal Gardens, the right path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer sits inside a flower that closes whenever you reach toward it. After several polite requests—and one less polite request—the blossom opens and reveals Star Candies.",
           "reward": {
             "min": 35,
             "max": 60
@@ -31,18 +31,18 @@
           "type": "healing",
           "nextRoomId": "blooming-arcade",
           "healAmount": 30,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Petalwater remedy. The Fae insisted on proper steeping.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Shizuki's little shelter contains a carefully steeped floral tonic. Her note reads: \"Petalwater remedy. The Fae insisted on proper steeping. Apparently 'put flower in bottle and shake' is culturally offensive.\"",
+          "fullHpMessage": "The Petalwater remedy remains untouched. At full health, you can avoid asking the flowers to rate your recovery technique."
         }
       }
     },
     "blooming-arcade": {
-      "prompt": "Continuing through Fae Petal Gardens, you find moonflowers climb a ruined arcade where three garden walks pass beyond curtains of petals.",
+      "prompt": "Moonflowers climb a ruined arcade while curtains of petals drift between three garden walks. Tiny Fae lights hover nearby as though waiting to see whether you understand the rules.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "fae-pollen-court",
-          "message": "Within Fae Petal Gardens, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel rests beneath a flower arch surrounded by petals arranged into a suspiciously formal circle. You bow just in case. Nothing happens. You take the Star Candies. A flower nods approvingly.",
           "reward": {
             "min": 40,
             "max": 70
@@ -51,37 +51,37 @@
         "right": {
           "type": "empty",
           "nextRoomId": "fae-pollen-court",
-          "message": "Shizuki pressed one Berry among Fae petals along the route, payment for anyone patient enough to decode which bargains were jokes.",
+          "message": "One Berry rests among folded petals beside Shizuki's note: \"Payment for anyone patient enough to work out which Fae bargains were jokes. I am still unsure about three of them.\"",
           "berries": 1
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "fae-pollen-court",
           "enemyId": "fae-petal-ray",
-          "message": "The water folds around Fae Petal Ray, revealing the creature as it claims the passage."
+          "message": "A Petal Ray glides overhead trailing blossoms behind it. One petal lands on your head. The Ray circles back, apparently decides this is unacceptable, and dives to retrieve it."
         }
       }
     },
     "fae-pollen-court": {
-      "prompt": "In the depths of Fae Petal Gardens, fae pollen sketches fleeting runes over a court whose three exits remain uncertain.",
+      "prompt": "Glowing pollen sketches temporary runes over the old court floor. Some appear to be directions. Others appear to be insults. Three exits shimmer beyond the flowers.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 30,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"Smells like flowers, tastes like rebellion.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Shizuki's restorative bottle has been decorated with an unnecessary number of flowers. Its label reads: \"Smells like flowers. Tastes like rebellion. Fae rating: 'adequate.' Rude.\"",
+          "fullHpMessage": "Shizuki's flower-covered restorative remains unused. You are already at full health, sparing you both the taste of rebellion and another Fae review."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "fae-petal-ray",
-          "message": "The water folds around Fae Petal Ray, revealing the creature as it claims the passage."
+          "message": "A graceful Petal Ray sweeps through the glowing pollen, accidentally draws a perfect circle around you, and then seems to interpret its own artwork as a challenge ring."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Fae Petal Gardens, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache has become the centerpiece of a very enthusiastic flowerbed. The blossoms pull aside when you approach, exposing Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Grandmother Blossom",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The garden opens around an ancient flower larger than a house. Petal Rays circle it quietly while centuries of blossoms cover the roots like layered blankets."
     }
   },
-  "bossPromptDiscord": "You reach Grandmother Blossom. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Grandmother Blossom: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Grandmother Blossom. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The petals across the entire garden stop falling.\n\nThe enormous blossom slowly turns toward you.\n\nA vast winged silhouette unfolds from within while every smaller Petal Ray retreats into the flowers.\n\nUse /yes to approach Grandmother Blossom or /no to leave the ancient garden undisturbed.",
+  "bossPromptTwitch": "The petals across the entire garden stop falling.\n\nThe enormous blossom slowly turns toward you.\n\nA vast winged silhouette unfolds from within while every smaller Petal Ray retreats into the flowers.\n\nUse !yes to approach Grandmother Blossom or !no to leave the ancient garden undisturbed.",
+  "bossRetreatText": "You leave Grandmother Blossom undisturbed. The vast silhouette folds back into the flower, and petals resume their careful drift.",
   "boss": {
     "enemyId": "petalwing-grandmother-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Petalwing Grandmother reveals itself!"
+    "revealText": "Thousands of petals explode into the current as a vast Ray unfurls from the ancient bloom. The Petalwing Grandmother has awakened!"
   },
-  "completionText": "Petalwing Grandmother yields to the returning current. Fae Petal Gardens settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Petalwing Grandmother settles back among the flowers. Petals resume drifting through the garden, and the smaller Rays cautiously return. One flower near the exit bows when you pass. You bow back. Best not to risk another etiquette incident."
 }

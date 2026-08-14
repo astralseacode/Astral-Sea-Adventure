@@ -1,107 +1,107 @@
 {
-    "id":  "whisperroot-deeps",
-    "number":  28,
-    "name":  "Whisperroot Deeps",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "whisperroot-colossus",
-    "recommendedLevel":  19,
-    "introDiscord":  "Whisperroot Deeps lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Whisperroot Colossus.",
-    "introTwitch":  "Whisperroot Deeps lies ahead amid towering kelp columns threaded with murmuring currents.",
-    "startRoomId":  "whisperroot-deeps-approach",
-    "rooms":  {
-                  "whisperroot-deeps-approach":  {
-                                                     "prompt":  "At the edge of Whisperroot Deeps, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "whisperroot-deeps-depths",
-                                                                                  "enemyId":  "whisperroot-colossus",
-                                                                                  "message":  "A shift in the current exposes Whisperroot Colossus, which claims the left route through Whisperroot Deeps."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "whisperroot-deeps-depths",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Whisperroot Deeps. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "whisperroot-deeps-depths",
-                                                                                     "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                     "reward":  {
-                                                                                                    "min":  65,
-                                                                                                    "max":  109
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "whisperroot-deeps-depths":  {
-                                                   "prompt":  "Deeper within Whisperroot Deeps, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "healing",
-                                                                                "nextRoomId":  "whisperroot-deeps-threshold",
-                                                                                "healAmount":  5,
-                                                                                "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "whisperroot-deeps-threshold",
-                                                                                 "enemyId":  "whisperroot-colossus",
-                                                                                 "message":  "A shift in the current exposes Whisperroot Colossus, which claims the right route through Whisperroot Deeps."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "whisperroot-deeps-threshold",
-                                                                                   "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                   "reward":  {
-                                                                                                  "min":  77,
-                                                                                                  "max":  121
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "whisperroot-deeps-threshold":  {
-                                                      "prompt":  "Near the heart of Whisperroot Deeps, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "message":  "Beyond the left route, you discover a shrine coffer covered by harmless moss.",
-                                                                                   "reward":  {
-                                                                                                  "min":  89,
-                                                                                                  "max":  133
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  10,
-                                                                                    "message":  "The right route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "whisperroot-colossus",
-                                                                                      "message":  "A shift in the current exposes Whisperroot Colossus, which claims the forward route through Whisperroot Deeps."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Primeval Root Cathedral",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Primeval Root Cathedral."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Primeval Root Cathedral. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Primeval Root Cathedral: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Primeval Root Cathedral. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "forest-heart-colossus-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Forest-Heart Colossus reveals itself!"
-             },
-    "completionText":  "Forest-Heart Colossus yields, and the currents beyond Primeval Root Cathedral open the next route through Whispering Kelp Forest."
+  "id": "whisperroot-deeps",
+  "number": 28,
+  "name": "Whisperroot Deeps",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "whisperroot-colossus",
+  "recommendedLevel": 19,
+  "introDiscord": "The ordinary kelp thins as roots older than the surrounding forest\nrise from the Deeps. Some are wider than houses. Some have footprints.",
+  "introTwitch": "The ordinary kelp thins as roots older than the surrounding forest\nrise from the Deeps. Some are wider than houses. Some have footprints.",
+  "startRoomId": "whisperroot-deeps-approach",
+  "rooms": {
+    "whisperroot-deeps-approach": {
+      "prompt": "Three paths wind between colossal roots disappearing into darkness\nabove and below.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "whisperroot-deeps-depths",
+          "enemyId": "whisperroot-colossus",
+          "message": "A wall of bark shifts.\n\nThen stands.\n\nYou were not walking beside a root.\n\nYou were walking beside a Whisperroot Colossus."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "whisperroot-deeps-depths",
+          "message": "One Berry rests inside Shizuki's tiny camp beneath a root large enough\nto support a village.\n\nHer note reads:\n\n'Excellent shelter.\n\nRoot moved at breakfast.\n\nShelter rating adjusted.'",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "whisperroot-deeps-depths",
+          "message": "An offering basket hidden inside a root hollow contains Star Candies.\nThe hollow is large enough to qualify as a room.",
+          "reward": {
+            "min": 65,
+            "max": 109
+          }
+        }
+      }
+    },
+    "whisperroot-deeps-depths": {
+      "prompt": "Living rootways descend deeper beneath drifting Fae lights. Three paths\ncross a forest floor made almost entirely from ancient roots.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "whisperroot-deeps-threshold",
+          "healAmount": 5,
+          "message": "A tiny moonblossom pool rests in a crack between enormous roots.\n\nShizuki wrote:\n\n'Found smallest thing in area.\n\nMe.\n\nRude.'",
+          "fullHpMessage": "You leave the restorative pool untouched and continue feeling\nappropriately small."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "whisperroot-deeps-threshold",
+          "enemyId": "whisperroot-colossus",
+          "message": "One immense root lifts away from the path.\n\nA Whisperroot Colossus straightens beneath it.\n\nApparently that root had legs."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "whisperroot-deeps-threshold",
+          "message": "Broad silver kelp wraps a cache tucked between two roots. The Star\nCandies look absurdly tiny beside the surrounding forest.",
+          "reward": {
+            "min": 77,
+            "max": 121
+          }
+        }
+      }
+    },
+    "whisperroot-deeps-threshold": {
+      "prompt": "Moonlit fronds vanish almost entirely as three approaches descend\ntoward Primeval Root Cathedral.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A shrine coffer rests inside a natural arch formed from two ancient\nroots. The carvings on it are almost completely grown over.",
+          "reward": {
+            "min": 89,
+            "max": 133
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 10,
+          "message": "Restorative sap sits beneath Shizuki's note:\n\n'If giant root moves:\n\n1. Do not panic.\n2. Move.\n3. Panic after moving.'",
+          "fullHpMessage": "You leave the medicine untouched and memorize the emergency order of\noperations."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "whisperroot-colossus",
+          "message": "The final 'pillar' beside the Cathedral opens two glowing eyes.\n\nWhisperroot Colossus.\n\nYou are very glad you did not lean against it."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Primeval Root Cathedral",
+      "type": "boss-prompt",
+      "prompt": "The roots forming the Cathedral begin moving independently."
+    }
+  },
+  "bossPromptDiscord": "Primeval Root Cathedral groans around you.\n\nAncient roots lift from the forest floor one after another.\n\nWhat looked like the foundation of the entire chamber slowly rises into\na single colossal shape.\n\nEvery smaller Whisperroot Colossus kneels.\n\nUse /yes to enter the Cathedral or /no to leave before the forest itself\nstands completely upright.",
+  "bossPromptTwitch": "Primeval Root Cathedral groans around you.\n\nAncient roots lift from the forest floor one after another.\n\nWhat looked like the foundation of the entire chamber slowly rises into\na single colossal shape.\n\nEvery smaller Whisperroot Colossus kneels.\n\nUse !yes to enter the Cathedral or !no to leave before the forest itself\nstands completely upright.",
+  "bossRetreatText": "You withdraw while the enormous roots continue shifting behind you.\nThe Cathedral remains half forest, half creature.",
+  "boss": {
+    "enemyId": "forest-heart-colossus-boss",
+    "roomId": "boss",
+    "revealText": "The oldest roots tear free from the seabed as an immense guardian\nstands over the Deeps.\n\nForest-Heart Colossus reveals itself!"
+  },
+  "completionText": "\"The Forest-Heart Colossus lowers itself back into the ancient roots.\n\nWithin moments, the Cathedral looks like part of the landscape again.\n\nYou now trust landscapes considerably less.\"\n\n\n#################################################################"
 }

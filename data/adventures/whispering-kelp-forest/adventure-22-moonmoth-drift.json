@@ -1,107 +1,107 @@
 {
-    "id":  "moonmoth-drift",
-    "number":  22,
-    "name":  "Moonmoth Drift",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "moonmoth-nudibranch",
-    "recommendedLevel":  17,
-    "introDiscord":  "Moonmoth Drift lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Moonmoth Nudibranch.",
-    "introTwitch":  "Moonmoth Drift lies ahead amid towering kelp columns threaded with murmuring currents.",
-    "startRoomId":  "moonmoth-drift-approach",
-    "rooms":  {
-                  "moonmoth-drift-approach":  {
-                                                  "prompt":  "At the edge of Moonmoth Drift, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "moonmoth-drift-depths",
-                                                                               "enemyId":  "moonmoth-nudibranch",
-                                                                               "message":  "A shift in the current exposes Moonmoth Nudibranch, which claims the left route through Moonmoth Drift."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "moonmoth-drift-depths",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Moonmoth Drift. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "moonmoth-drift-depths",
-                                                                                  "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                  "reward":  {
-                                                                                                 "min":  95,
-                                                                                                 "max":  137
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "moonmoth-drift-depths":  {
-                                                "prompt":  "Deeper within Moonmoth Drift, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                "choices":  {
-                                                                "left":  {
-                                                                             "type":  "healing",
-                                                                             "nextRoomId":  "moonmoth-drift-threshold",
-                                                                             "healAmount":  20,
-                                                                             "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                             "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                         },
-                                                                "right":  {
-                                                                              "type":  "combat",
-                                                                              "nextRoomId":  "moonmoth-drift-threshold",
-                                                                              "enemyId":  "moonmoth-nudibranch",
-                                                                              "message":  "A shift in the current exposes Moonmoth Nudibranch, which claims the right route through Moonmoth Drift."
-                                                                          },
-                                                                "forward":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "moonmoth-drift-threshold",
-                                                                                "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                "reward":  {
-                                                                                               "min":  107,
-                                                                                               "max":  149
-                                                                                           }
-                                                                            }
-                                                            }
-                                            },
-                  "moonmoth-drift-threshold":  {
-                                                   "prompt":  "Near the heart of Moonmoth Drift, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                "message":  "Beyond the left route, you discover a shrine coffer covered by harmless moss.",
-                                                                                "reward":  {
-                                                                                               "min":  119,
-                                                                                               "max":  161
-                                                                                           }
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "healAmount":  25,
-                                                                                 "message":  "The right route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "moonmoth-nudibranch",
-                                                                                   "message":  "A shift in the current exposes Moonmoth Nudibranch, which claims the forward route through Moonmoth Drift."
-                                                                               }
-                                                               }
-                                               },
-                  "boss-antechamber":  {
-                                           "name":  "Dustlight Bower",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Dustlight Bower."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Dustlight Bower. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Dustlight Bower: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Dustlight Bower. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "pale-wing-moonmoth-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Pale-Wing Moonmoth reveals itself!"
-             },
-    "completionText":  "Pale-Wing Moonmoth yields, and the currents beyond Dustlight Bower open the next route through Whispering Kelp Forest."
+  "id": "moonmoth-drift",
+  "number": 22,
+  "name": "Moonmoth Drift",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "moonmoth-nudibranch",
+  "recommendedLevel": 17,
+  "introDiscord": "Thousands of pale Moonmoth Nudibranchs drift through the kelp like\nunderwater moths. Their glowing backs follow reflected starlight through\npaths hidden beneath the canopy.",
+  "introTwitch": "Thousands of pale Moonmoth Nudibranchs drift through the kelp like\nunderwater moths. Their glowing backs follow reflected starlight through\npaths hidden beneath the canopy.",
+  "startRoomId": "moonmoth-drift-approach",
+  "rooms": {
+    "moonmoth-drift-approach": {
+      "prompt": "Three routes shimmer beneath clouds of drifting Moonmoths.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "moonmoth-drift-depths",
+          "enemyId": "moonmoth-nudibranch",
+          "message": "One Moonmoth settles peacefully on a leaf.\n\nAnother joins it.\n\nThen a much larger Nudibranch drops directly into your route and proves\nthat 'peaceful' was a premature classification."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "moonmoth-drift-depths",
+          "message": "One Berry rests inside Shizuki's folded hood.\n\nHer note reads:\n\n'Moonmoths slept in hood.\n\nCould not wear hood.\n\nWas cold.\n\nStill worth it.'",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "moonmoth-drift-depths",
+          "message": "An offering basket glows beneath dozens of tiny Moonmoths. The Star\nCandies inside reflect enough light to briefly attract even more.",
+          "reward": {
+            "min": 95,
+            "max": 137
+          }
+        }
+      }
+    },
+    "moonmoth-drift-depths": {
+      "prompt": "Living rootways curve beneath a migration cloud so thick the forest\nlooks full of silver snow.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "moonmoth-drift-threshold",
+          "healAmount": 20,
+          "message": "A moonblossom pool rests under a quiet branch.\n\nShizuki wrote:\n\n'Rest spot.\n\nDo not shake branch.\n\nTrust me.'",
+          "fullHpMessage": "You leave the pool untouched and, more importantly, do not shake the\nbranch."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "moonmoth-drift-threshold",
+          "enemyId": "moonmoth-nudibranch",
+          "message": "A Moonmoth Nudibranch detaches from the migration cloud and glides\ntoward you with surprising speed."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "moonmoth-drift-threshold",
+          "message": "Broad silver kelp wraps a Star Candy cache beneath several sleeping\nMoonmoths.\n\nYou perform the quietest treasure opening of your career.",
+          "reward": {
+            "min": 107,
+            "max": 149
+          }
+        }
+      }
+    },
+    "moonmoth-drift-threshold": {
+      "prompt": "Moonlit fronds surround Dustlight Bower as three routes vanish beneath\npale drifting wings.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A shrine coffer rests beneath a natural arch. Star Candies inside\nscatter tiny points of reflected light across the entire Bower.",
+          "reward": {
+            "min": 119,
+            "max": 161
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 25,
+          "message": "Restorative sap sits beside Shizuki's handwritten review:\n\n'Moonmoth pillow:\nsoft.\nglowy.\nmoves away while sleeping.\nThree stars.'",
+          "fullHpMessage": "You leave the restorative sap and the migrating pillow review behind."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "moonmoth-nudibranch",
+          "message": "A cluster of Moonmoths suddenly parts around one much larger\nNudibranch.\n\nIt lands directly in the route.\n\nMigration checkpoint."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Dustlight Bower",
+      "type": "boss-prompt",
+      "prompt": "The entire migration cloud circles the Bower instead of continuing\nthrough it."
+    }
+  },
+  "bossPromptDiscord": "Moonmoths fill Dustlight Bower from root to canopy.\n\nThen every tiny creature turns toward the same pale silhouette overhead.\n\nTwo enormous glowing wings unfold among the drifting lights.\n\nUse /yes to enter the Bower or /no to let the migration continue without\nanother disturbance.",
+  "bossPromptTwitch": "Moonmoths fill Dustlight Bower from root to canopy.\n\nThen every tiny creature turns toward the same pale silhouette overhead.\n\nTwo enormous glowing wings unfold among the drifting lights.\n\nUse !yes to enter the Bower or !no to let the migration continue without\nanother disturbance.",
+  "bossRetreatText": "You step away from Dustlight Bower. The migration continues circling\nthe hidden guardian.",
+  "boss": {
+    "enemyId": "pale-wing-moonmoth-boss",
+    "roomId": "boss",
+    "revealText": "The cloud parts as an enormous luminous Nudibranch descends like a pale\nmoth.\n\nPale-Wing Moonmoth reveals itself!"
+  },
+  "completionText": "\"The Pale-Wing Moonmoth rejoins the drifting migration.\n\nThousands of tiny lights resume their journey through the forest.\n\nOne briefly lands on your shoulder before moving on.\"\n\n\n#################################################################"
 }

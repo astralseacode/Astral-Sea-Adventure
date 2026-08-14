@@ -1,0 +1,107 @@
+{
+    "id": "heart-of-the-astral-sea",
+    "number": 30,
+    "name": "Heart of the Astral Sea",
+    "regionId": "astral-nexus",
+    "enemyId": "astral-heart-echo",
+    "recommendedLevel": 50,
+    "introDiscord": "The Heart-Crossing Seal opens.\n\nThere is no dungeon behind it.\n\nNo corridor.\n\nNo palace.\n\nNo ruin.\n\nYou step onto a small island beneath an endless field of stars.\n\nAround you float pieces of the entire journey.\n\nMoonlit Reef coral glows beside Starfall crystal.\n\nWhispering kelp winds around a Leviathan rib.\n\nA lantern from the King's Festival hangs from one end.\n\nGlimmer-sized lights drift between them.\n\nAnd beyond everything—\n\nthere is open water.\n\nNo map.\n\nNo route marker.\n\nNo visible end.",
+    "introTwitch": "The Heart-Crossing Seal opens.\n\nThere is no dungeon behind it.\n\nNo corridor.\n\nNo palace.\n\nNo ruin.\n\nYou step onto a small island beneath an endless field of stars.\n\nAround you float pieces of the entire journey.\n\nMoonlit Reef coral glows beside Starfall crystal.\n\nWhispering kelp winds around a Leviathan rib.\n\nA lantern from the King's Festival hangs from one end.\n\nGlimmer-sized lights drift between them.\n\nAnd beyond everything—\n\nthere is open water.\n\nNo map.\n\nNo route marker.\n\nNo visible end.",
+    "startRoomId": "heart-of-the-astral-sea-journey",
+    "rooms": {
+        "heart-of-the-astral-sea-journey": {
+            "prompt": "Three impossible routes open across Heart of the Astral Sea.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "heart-of-the-astral-sea-footsteps",
+                    "message": "One Berry rests inside a familiar little shell cup.\n\nBeside it is Shizuki's handwriting:\n\n'Started with berries.\n\nEnding with berry.\n\nNarrative structure.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "heart-of-the-astral-sea-footsteps",
+                    "message": "A small chest contains pieces from across the journey:\n\na silver shell from Moonlit Reef.\n\na warm starstone chip from Starfall Trench.\n\na silver leaf from Whispering Kelp Forest.\n\na tiny fossil fragment from Leviathan's Wake.\n\na paper festival crown from Sunken King's Throne.\n\nand one shard of Nexus starlight.\n\nAmong them are Star Candies.\n\nFor once, nothing is trying to eat the treasure.",
+                    "reward": {
+                        "min": 105,
+                        "max": 149
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "heart-of-the-astral-sea-footsteps",
+                    "enemyId": "astral-heart-echo",
+                    "message": "Starlight gathers into an Astral Heart Echo.\n\nIt resembles no single creature you've fought.\n\nFor a moment it becomes a Nibbler.\n\nThen a forest creature.\n\nThen a tiny Leviathan-shaped light.\n\nThen a knight.\n\nThen something made entirely of stars.\n\nThe journey itself seems to be testing you."
+                }
+            }
+        },
+        "heart-of-the-astral-sea-footsteps": {
+            "prompt": "Deeper within Heart of the Astral Sea, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "heart-of-the-astral-sea-horizon",
+                    "enemyId": "astral-heart-echo",
+                    "message": "Another Astral Heart Echo rises.\n\nThis one repeats movements from enemies across every region.\n\nNot perfectly.\n\nLike a memory trying its best."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "heart-of-the-astral-sea-horizon",
+                    "healAmount": 0,
+                    "message": "A small campsite waits beneath a floating fragment of Sunken King's\nFestival Street.\n\nShizuki and Glimmer camped here before leaving the mapped sea.\n\nHer final restorative bottle sits beside the journal.\n\nThe note reads:\n\n'Rest.\n\nSeriously.\n\nWe made it really far.\n\nEven Glimmer stopped moving for five whole minutes.\n\nHistoric event.'",
+                    "fullHpMessage": "You leave the final restorative untouched.\n\nThe campsite is peaceful enough without it."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "heart-of-the-astral-sea-horizon",
+                    "message": "A chest opens beneath six tiny symbols:\n\na moon.\n\na falling star.\n\na silver leaf.\n\na Leviathan rib.\n\na crown.\n\na six-pointed Nexus star.\n\nInside:\n\nStar Candies.\n\nObviously.",
+                    "reward": {
+                        "min": 117,
+                        "max": 161
+                    }
+                }
+            }
+        },
+        "heart-of-the-astral-sea-horizon": {
+            "prompt": "Near The Open Horizon, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A tiny travel box sits beneath Shizuki's handmade sign.\n\nInside are souvenirs from all six regions.\n\nThe sign says:\n\n'EMERGENCY EXPLORER SUPPLIES.\n\nCandy.\n\nMap.\n\nSecond map for when first map becomes wrong.\n\nBerry.\n\nOptimism.'",
+                    "reward": {
+                        "min": 129,
+                        "max": 173
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "astral-heart-echo",
+                    "message": "The last Astral Heart Echo forms at the edge of the known sea.\n\nThis one takes Shizuki's silhouette for half a second.\n\nThen yours.\n\nThen dissolves into a creature of starlight.\n\nThe Nexus remembers explorers too."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 5,
+                    "message": "The final resting place is nothing more than a smooth stone overlooking\nthe unknown water.\n\nShizuki's last note before the horizon:\n\n'I thought getting here would make everything make sense.\n\nIt did not.\n\nActually I have significantly MORE questions.\n\nSo...\n\nsuccess?~'",
+                    "fullHpMessage": "You sit for a moment anyway.\n\nSome journeys deserve it."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "The Open Horizon",
+            "type": "boss-prompt",
+            "prompt": "The stars begin moving.\n\nNot falling.\n\nNot rising.\n\nGathering.\n\nEvery region behind you lights in answer.\n\nMoonlit Reef glows silver.\n\nStarfall Trench burns blue-white.\n\nWhispering Kelp Forest shines through its roots.\n\nLeviathan's Wake hums with the old song.\n\nThe Sunken Kingdom's festival lanterns ignite.\n\nThe Astral Nexus opens every portal at once.\n\nSomething is waking at the center."
+        }
+    },
+    "bossPromptDiscord": "The Open Horizon fills with starlight.\n\nScenes from the entire journey appear around you.\n\nThe first Moonlit Reef path.\n\nThe falling stars of Starfall Trench.\n\nThe whispering forest.\n\nThe ancient Leviathan graveyard.\n\nThe King's Festival.\n\nThe impossible halls of the Nexus.\n\nThey do not appear as separate places anymore.\n\nThey are one sea.\n\nOne journey.\n\nAt the center of it all, the currents gather around a vast luminous\nshape.\n\nNot a ruler.\n\nNot an ancient organization.\n\nNot the end of the Astral Sea.\n\nOnly the living memory of everything connected here.\n\nThe Heart of the Nexus turns toward you.\n\nOne final challenge before the map ends.\n\nUse /yes to enter the Open Horizon or /no to stay with the memories a\nlittle longer.",
+    "bossPromptTwitch": "The Open Horizon fills with starlight.\n\nScenes from the entire journey appear around you.\n\nThe first Moonlit Reef path.\n\nThe falling stars of Starfall Trench.\n\nThe whispering forest.\n\nThe ancient Leviathan graveyard.\n\nThe King's Festival.\n\nThe impossible halls of the Nexus.\n\nThey do not appear as separate places anymore.\n\nThey are one sea.\n\nOne journey.\n\nAt the center of it all, the currents gather around a vast luminous\nshape.\n\nNot a ruler.\n\nNot an ancient organization.\n\nNot the end of the Astral Sea.\n\nOnly the living memory of everything connected here.\n\nThe Heart of the Nexus turns toward you.\n\nOne final challenge before the map ends.\n\nUse !yes to enter the Open Horizon or !no to stay with the memories a\nlittle longer.",
+    "bossRetreatText": "You step back.\n\nThe Heart does not pursue.\n\nThe memories continue drifting around the island.\n\nThe horizon will still be there.",
+    "boss": {
+        "enemyId": "heart-of-the-nexus-boss",
+        "roomId": "boss",
+        "revealText": "Every current in the Nexus surges toward the center.\n\nStarlight forms fins, wings, roots, horns, coral, scales and shapes that\nrefuse to remain one thing for long.\n\nFor a moment, the creature resembles every region at once.\n\nThe Heart of the Nexus awakens!"
+    },
+    "completionText": "The Heart of the Nexus breaks apart.\n\nNot violently.\n\nIt simply becomes light again.\n\nThousands of tiny stars scatter across the Open Horizon.\n\nOne enters Moonlit Reef.\n\nOne falls toward Starfall Trench.\n\nSeveral disappear into Whispering Kelp Forest.\n\nA long ribbon of light passes through Leviathan's Wake.\n\nFestival lanterns flicker in Sunken King's Throne.\n\nThe rest drift outward through the Nexus.\n\nThen everything becomes quiet.\n\nA journal rests on the stone where the Heart disappeared.\n\nShizuki's handwriting fills the final pages.\n\n'Okay.\n\nI think this officially counts as a journey now.\n\nMoonlit Reef:\n\nGot lost immediately.\nFound Glimmer.\nCrab stole berries.\n\nExcellent start.\n\nStarfall Trench:\n\nGravity became optional.\nTasted comet.\nDo not recommend.\n\nWhispering Kelp Forest:\n\nVines learned crimes.\nForest became accomplice.\nGlimmer encouraged both.\n\nLeviathan's Wake:\n\nGIANT BONES.\n\nStill thinking about giant bones.\n\nSunken King's Throne:\n\nBEST KINGDOM.\n\nI was queen for approximately several afternoons.\n\nNobody recognized reign.\n\nPolitical tragedy.\n\nAstral Nexus:\n\n...\n\nI don't know how to summarize this place.\n\nWe walked through yesterday.\n\nArgued with doors.\n\nMet stars with legs.\n\nGot attacked by geometry.\n\nFound other versions of ourselves.\n\nLost gravity.\n\nFound gravity.\n\nLost time.\n\nFound time.\n\nI think Glimmer may have committed several portal crimes.\n\nBut we made it.\n\nAll the way to the edge of the map.'\n\nBelow the writing is a doodle.\n\nShizuki.\n\nGlimmer.\n\nSix little symbols behind them.\n\nAnd a huge blank space ahead.\n\nThen one final entry:\n\n'The map ends here.\n\nThe sea doesn't.\n\nThere's a current going farther out.\n\nNothing on the charts.\n\nNo region name.\n\nNo warning.\n\nNo idea where it goes.\n\n...\n\nObviously we're following it.\n\nGlimmer already left.\n\nAgain.\n\nHEY—\n\nWAIT FOR MEEEE—\n\nI wasn't finished exploring anyway~'\n\nThe journal ends.\n\nAhead of you, beyond the mapped Astral Sea, one faint current appears.\n\nIt does not lead to another implemented region.\n\nNot yet.\n\nThere is no seventh destination.\n\nNo new command.\n\nNo unlock.\n\nOnly the suggestion that somewhere beyond everything currently known...\n\nthe Astral Sea continues.\n\nBehind you lies:\n\nMoonlit Reef.\n\nStarfall Trench.\n\nWhispering Kelp Forest.\n\nLeviathan's Wake.\n\nSunken King's Throne.\n\nAstral Nexus.\n\nAhead:\n\nthe unknown.\n\nFor now, your journey through the Astral Sea is complete."
+}

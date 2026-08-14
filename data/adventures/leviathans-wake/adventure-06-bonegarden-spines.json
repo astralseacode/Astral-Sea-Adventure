@@ -1,107 +1,107 @@
 {
-    "id":  "bonegarden-spines",
-    "number":  6,
-    "name":  "Bonegarden Spines",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "bonegarden-urchin",
-    "recommendedLevel":  22,
-    "introDiscord":  "Bonegarden Spines lies ahead, where immense scales embedded in unstable coral shelves conceal the territory of Bonegarden Urchin.",
-    "introTwitch":  "Bonegarden Spines lies ahead amid immense scales embedded in unstable coral shelves.",
-    "startRoomId":  "bonegarden-spines-approach",
-    "rooms":  {
-                  "bonegarden-spines-approach":  {
-                                                     "prompt":  "At the edge of Bonegarden Spines, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "empty",
-                                                                                  "nextRoomId":  "bonegarden-spines-depths",
-                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Bonegarden Spines. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                  "berries":  1
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "bonegarden-spines-depths",
-                                                                                   "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                   "reward":  {
-                                                                                                  "min":  231,
-                                                                                                  "max":  267
-                                                                                              }
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "bonegarden-spines-depths",
-                                                                                     "enemyId":  "bonegarden-urchin",
-                                                                                     "message":  "A shift in the current exposes Bonegarden Urchin, which claims the forward route through Bonegarden Spines."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "bonegarden-spines-depths":  {
-                                                   "prompt":  "Deeper within Bonegarden Spines, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "bonegarden-spines-threshold",
-                                                                                "enemyId":  "bonegarden-urchin",
-                                                                                "message":  "A shift in the current exposes Bonegarden Urchin, which claims the left route through Bonegarden Spines."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "bonegarden-spines-threshold",
-                                                                                 "healAmount":  73,
-                                                                                 "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "bonegarden-spines-threshold",
-                                                                                   "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
-                                                                                   "reward":  {
-                                                                                                  "min":  243,
-                                                                                                  "max":  279
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "bonegarden-spines-threshold":  {
-                                                      "prompt":  "Near the heart of Bonegarden Spines, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                                   "reward":  {
-                                                                                                  "min":  255,
-                                                                                                  "max":  291
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "bonegarden-urchin",
-                                                                                    "message":  "A shift in the current exposes Bonegarden Urchin, which claims the right route through Bonegarden Spines."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "healAmount":  78,
-                                                                                      "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Ivory Thornfield",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Ivory Thornfield."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Ivory Thornfield. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Ivory Thornfield: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Ivory Thornfield. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "marrow-crown-urchin-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Marrow-Crown Urchin reveals itself!"
-             },
-    "completionText":  "Marrow-Crown Urchin yields, and the currents beyond Ivory Thornfield open the next route through Leviathan\u0027s Wake."
+    "id": "bonegarden-spines",
+    "number": 6,
+    "name": "Bonegarden Spines",
+    "regionId": "leviathans-wake",
+    "enemyId": "bonegarden-urchin",
+    "recommendedLevel": 22,
+    "introDiscord": "Leviathan spines rise from the seabed like an ivory garden.\n\nBonegarden Urchins have settled between them, resulting in a landscape\nwhere EVERYTHING is pointy.",
+    "introTwitch": "Leviathan spines rise from the seabed like an ivory garden.\n\nBonegarden Urchins have settled between them, resulting in a landscape\nwhere EVERYTHING is pointy.",
+    "startRoomId": "bonegarden-spines-approach",
+    "rooms": {
+        "bonegarden-spines-approach": {
+            "prompt": "Three paths cross between enormous vertebral spines.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "bonegarden-spines-depths",
+                    "message": "One Berry rests inside Shizuki's abandoned glove.\n\nHer note:\n\n'Bone spikes.\nUrchin spikes.\nCoral spikes.\n\nArea review:\n\ntoo many spikes.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "bonegarden-spines-depths",
+                    "message": "A navigator's chest is wedged between two ancient spines.",
+                    "reward": {
+                        "min": 231,
+                        "max": 267
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "bonegarden-spines-depths",
+                    "enemyId": "bonegarden-urchin",
+                    "message": "A Bonegarden Urchin rolls from behind a Leviathan spine.\n\nThe smaller spikes have become mobile."
+                }
+            }
+        },
+        "bonegarden-spines-depths": {
+            "prompt": "The ivory garden grows denser.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "bonegarden-spines-threshold",
+                    "enemyId": "bonegarden-urchin",
+                    "message": "An Urchin sits perfectly between the bone spikes.\n\nYou briefly fail to identify which spikes belong to whom."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "bonegarden-spines-threshold",
+                    "healAmount": 73,
+                    "message": "Shizuki left medicine inside a padded shell:\n\n'Spike-related emergency kit.\n\nI should have made this earlier.'",
+                    "fullHpMessage": "You leave the spike kit untouched."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "bonegarden-spines-threshold",
+                    "message": "A wrecked strongbox rests beneath an enormous vertebra.",
+                    "reward": {
+                        "min": 243,
+                        "max": 279
+                    }
+                }
+            }
+        },
+        "bonegarden-spines-threshold": {
+            "prompt": "Ivory Thornfield lies beyond three passages surrounded by increasingly\ndense bone.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "Star Candies glitter inside the hollow of an ancient spine.",
+                    "reward": {
+                        "min": 255,
+                        "max": 291
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "bonegarden-urchin",
+                    "message": "An Urchin rolls down the bone toward you.\n\nIt has weaponized gravity AND spikes."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 78,
+                    "message": "A calm pocket holds Shizuki's second kit:\n\n'More spike medicine.\n\nNo commentary.\n\nArea still pointy.'",
+                    "fullHpMessage": "You leave the medicine untouched.\n\nArea remains pointy."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Ivory Thornfield",
+            "type": "boss-prompt",
+            "prompt": "The smallest Urchins scatter."
+        }
+    },
+    "bossPromptDiscord": "The smallest Urchins scatter.\n\nAt the center of Ivory Thornfield, an enormous crown of glowing spines\nbegins moving between the Leviathan bones.\n\nUse /yes to enter the Thornfield or /no to choose the revolutionary\nstrategy of avoiding spikes.",
+    "bossPromptTwitch": "The smallest Urchins scatter.\n\nAt the center of Ivory Thornfield, an enormous crown of glowing spines\nbegins moving between the Leviathan bones.\n\nUse !yes to enter the Thornfield or !no to choose the revolutionary\nstrategy of avoiding spikes.",
+    "bossRetreatText": "You retreat.\n\nFor once, nobody gets poked.",
+    "boss": {
+        "enemyId": "marrow-crown-urchin-boss",
+        "roomId": "boss",
+        "revealText": "A massive Urchin rises beneath a crown of ivory-colored spines.\n\nMarrow-Crown Urchin reveals itself!"
+    },
+    "completionText": "The Marrow-Crown settles among the bones.\n\nYou leave the Bonegarden with exactly the recommended number of extra\nholes:\n\nzero."
 }

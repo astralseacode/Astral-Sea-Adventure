@@ -1,107 +1,107 @@
 {
-    "id":  "the-starfall-annex",
-    "number":  30,
-    "name":  "The Starfall Annex",
-    "regionId":  "starfall-trench",
-    "enemyId":  "starfall-annex-grunt",
-    "recommendedLevel":  10,
-    "introDiscord":  "The Starfall Annex lies ahead, where gravity-bent celestial ruins conceal the territory of Starfall Annex Grunt.",
-    "introTwitch":  "The Starfall Annex lies ahead amid gravity-bent celestial ruins.",
-    "startRoomId":  "the-starfall-annex-approach",
-    "rooms":  {
-                  "the-starfall-annex-approach":  {
-                                                      "prompt":  "At the edge of The Starfall Annex, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "the-starfall-annex-depths",
-                                                                                   "message":  "A berry cache sits beneath a terminal Shizuki renamed \"Definitely_Not_Shizuki_starfall-trench.txt.\" Its note reads: \"If you\u0027re reading this, their dramatic security system lost again. You\u0027re welcome.\"",
-                                                                                   "berries":  1
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "the-starfall-annex-depths",
-                                                                                    "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
-                                                                                    "reward":  {
-                                                                                                   "min":  45,
-                                                                                                   "max":  89
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "the-starfall-annex-depths",
-                                                                                      "enemyId":  "starfall-annex-grunt",
-                                                                                      "message":  "A shift in the current exposes Starfall Annex Grunt, which claims the forward route through The Starfall Annex."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "the-starfall-annex-depths":  {
-                                                    "prompt":  "Deeper within The Starfall Annex, fractured starstone terraces divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "the-starfall-annex-threshold",
-                                                                                 "enemyId":  "starfall-annex-grunt",
-                                                                                 "message":  "A shift in the current exposes Starfall Annex Grunt, which claims the left route through The Starfall Annex."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "the-starfall-annex-threshold",
-                                                                                  "healAmount":  0,
-                                                                                  "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "the-starfall-annex-threshold",
-                                                                                    "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                    "reward":  {
-                                                                                                   "min":  57,
-                                                                                                   "max":  101
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "the-starfall-annex-threshold":  {
-                                                       "prompt":  "Near the heart of The Starfall Annex, meteor-lit trenches divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                    "reward":  {
-                                                                                                   "min":  69,
-                                                                                                   "max":  113
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "enemyId":  "starfall-annex-grunt",
-                                                                                     "message":  "A shift in the current exposes Starfall Annex Grunt, which claims the right route through The Starfall Annex."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  5,
-                                                                                       "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Meteor Archive Command",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Meteor Archive Command."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Meteor Archive Command. A uniformed figure bearing an old institutional rank waits beyond a sealed command dais.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Meteor Archive Command: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Meteor Archive Command. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "starfall-annex-officer-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Starfall Annex Officer reveals itself!"
-             },
-    "completionText":  "Starfall Annex Officer falls, exposing preserved records among later additions defaced with Shizuki\u0027s cheerful graffiti. Surviving records confirm that Moonlit Lab was only one annex in a network spanning the Astral Sea. Shizuki\u0027s newest annotation reads: \"Came back on my own. Added mustache. Left whenever I wanted.\" All 30 Adventures in Starfall Trench are complete."
+  "id": "the-starfall-annex",
+  "number": 30,
+  "name": "The Starfall Annex",
+  "regionId": "starfall-trench",
+  "enemyId": "starfall-annex-grunt",
+  "recommendedLevel": 10,
+  "introDiscord": "\"Beyond the celestial engine, carved stone gives way to something disturbingly familiar: sealed doors, dead terminals, faded warning lights, and an old institutional insignia Shizuki has very clearly drawn a mustache on.\"\n\n---------------- ROOM 1 — APPROACH ----------------",
+  "introTwitch": "\"Beyond the celestial engine, carved stone gives way to something disturbingly familiar: sealed doors, dead terminals, faded warning lights, and an old institutional insignia Shizuki has very clearly drawn a mustache on.\"\n\n---------------- ROOM 1 — APPROACH ----------------",
+  "startRoomId": "the-starfall-annex-approach",
+  "rooms": {
+    "the-starfall-annex-approach": {
+      "prompt": "The ruined Starfall Annex stretches through the trench beneath layers of meteor dust. Three corridors remain open, and one terminal still displays a security warning that someone renamed 'Definitely_Not_Shizuki.'",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "the-starfall-annex-depths",
+          "message": "A Berry cache sits beneath the terminal.\n\nShizuki's note reads:\n\n\"If you're reading this, their dramatic security system lost again.\n\nAlso I improved the terminal name.\n\nYou're welcome.\"",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "the-starfall-annex-depths",
+          "message": "An old archive locker has split open beneath fallen starstone. Star Candies were apparently being stored alongside completely incomprehensible facility paperwork.\n\nShizuki has labeled the paperwork:\n\n\"BORING.\"",
+          "reward": {
+            "min": 45,
+            "max": 89
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "the-starfall-annex-depths",
+          "enemyId": "starfall-annex-grunt",
+          "message": "\"A warning light flashes.\n\nA Starfall Annex Grunt emerges from the ruined corridor.\n\nAfter all this time, something here is still following orders.\"\n\n---------------- ROOM 2 — DEPTHS ----------------"
+        }
+      }
+    },
+    "the-starfall-annex-depths": {
+      "prompt": "Deeper inside, the annex stops resembling a ruin and begins resembling a place someone deliberately abandoned. Old doors stand open. Shizuki's arrows cover the walls. Three routes lead toward the central archive.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "the-starfall-annex-threshold",
+          "enemyId": "starfall-annex-grunt",
+          "message": "A Starfall Annex Grunt activates beneath an old recovery-order sign.\n\nSomeone has crossed out RECOVER SUBJECT and written:\n\n\"NO ♥\"\n\nThe construct does not appreciate the edit."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "the-starfall-annex-threshold",
+          "healAmount": 1,
+          "message": "An old medical station still contains one usable restorative.\n\nAcross the cabinet, Shizuki wrote:\n\n\"Their medicine.\n\nMy bottle now.\n\nConsider it back pay.\"",
+          "fullHpMessage": "The old medical supply remains untouched.\n\nFor once, this place has nothing you need."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "the-starfall-annex-threshold",
+          "message": "\"A sealed archive compartment opens.\n\nInside are Star Candies, damaged records, and a faded transit seal matching markings found elsewhere in Starfall Trench.\n\nThis place was connected to something larger.\"\n\n---------------- ROOM 3 — THRESHOLD ----------------",
+          "reward": {
+            "min": 57,
+            "max": 101
+          }
+        }
+      }
+    },
+    "the-starfall-annex-threshold": {
+      "prompt": "The final corridors converge beneath the Meteor Archive Command. Old insignias line the walls beside newer repairs, as though this place survived far longer than it should have.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A damaged records vault has collapsed open.\n\nAmong the surviving documents are references to other annexes scattered across the Astral Sea.\n\nMoonlit Lab was not alone.",
+          "reward": {
+            "min": 69,
+            "max": 113
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "starfall-annex-grunt",
+          "message": "A final Starfall Annex Grunt steps between you and the command chamber.\n\nBehind it, Shizuki has drawn a tiny mustache directly onto the warning placard.\n\nSome traditions survive everything."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 5,
+          "message": "A restorative bottle rests beneath Shizuki's final trail note:\n\n\"Came back because I wanted answers.\n\nStayed because Glimmer found a button.\n\nLeaving because Glimmer found another button.\n\nIf you're following us...\n\ngood luck~\"",
+          "fullHpMessage": "\"You leave Shizuki's final restorative untouched.\n\nWhatever waited for her beyond this point, she walked toward it by choice.\"\n\n---------------- BOSS — METEOR ARCHIVE COMMAND ----------------"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Meteor Archive Command",
+      "type": "boss-prompt",
+      "prompt": "The command chamber awakens.\n\nDead screens flicker to life one after another.\n\nAn old rank insignia appears across the central display while a uniformed silhouette steps from behind the sealed command dais."
+    }
+  },
+  "bossPromptDiscord": "The Meteor Archive Command recognizes an intruder.\n\nOld security systems awaken throughout the annex.\n\nAt the center of the chamber, a uniformed figure bearing an institutional rank waits beneath records that survived long after Moonlit Lab disappeared.\n\nWhatever this place knows, something still intends to guard it.\n\nUse /yes to enter Meteor Archive Command or /no to retreat before the annex fully awakens.",
+  "bossPromptTwitch": "The Meteor Archive Command recognizes an intruder.\n\nOld security systems awaken throughout the annex.\n\nAt the center of the chamber, a uniformed figure bearing an institutional rank waits beneath records that survived long after Moonlit Lab disappeared.\n\nWhatever this place knows, something still intends to guard it.\n\nUse !yes to enter Meteor Archive Command or !no to retreat before the annex fully awakens.",
+  "bossRetreatText": "You withdraw from Meteor Archive Command.\n\nThe old systems remain active behind you.\n\nBeside the doorway, Shizuki's tiny handwritten arrow still points inward:\n\n\"Answers this way.\n\nProbably.\"",
+  "boss": {
+    "enemyId": "starfall-annex-officer-boss",
+    "roomId": "boss",
+    "revealText": "The command dais unlocks.\n\nThe uniformed figure steps into the surviving light.\n\nStarfall Annex Officer reveals itself!"
+  },
+  "completionText": "The Starfall Annex Officer falls.\n\nThe command archive finally opens.\n\nAmong its surviving records is the confirmation Shizuki once discovered here herself:\n\nMoonlit Lab was never alone.\n\nThe facility belonged to a wider network of annexes scattered throughout the Astral Sea.\n\nYet the oldest records point farther onward, toward routes hidden beneath living roots and whispering currents.\n\nAcross the final terminal, Shizuki left one last message beside a doodle of herself and Glimmer:\n\n\"Came back on my own.\n\nAdded mustache.\n\nFound answers.\n\nFound more questions.\n\nGlimmer already picked the next direction, so I guess we're going that way now~\"\n\nBeyond the annex, a distant current winds toward the Whispering Kelp Forest.\n\nStarfall Trench is complete.\n\nThe journey isn't."
 }

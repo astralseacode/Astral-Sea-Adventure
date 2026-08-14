@@ -1,107 +1,107 @@
 {
-    "id":  "the-wandering-craters",
-    "number":  7,
-    "name":  "The Wandering Craters",
-    "regionId":  "starfall-trench",
-    "enemyId":  "meteor-hermit",
-    "recommendedLevel":  6,
-    "introDiscord":  "The Wandering Craters lies ahead, where fractured starstone terraces conceal the territory of Meteor Hermit.",
-    "introTwitch":  "The Wandering Craters lies ahead amid fractured starstone terraces.",
-    "startRoomId":  "the-wandering-craters-approach",
-    "rooms":  {
-                  "the-wandering-craters-approach":  {
-                                                         "prompt":  "At the edge of The Wandering Craters, fractured starstone terraces divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "the-wandering-craters-depths",
-                                                                                      "enemyId":  "meteor-hermit",
-                                                                                      "message":  "A shift in the current exposes Meteor Hermit, which claims the left route through The Wandering Craters."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "the-wandering-craters-depths",
-                                                                                       "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
-                                                                                       "reward":  {
-                                                                                                      "min":  124,
-                                                                                                      "max":  161
-                                                                                                  }
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "healing",
-                                                                                         "nextRoomId":  "the-wandering-craters-depths",
-                                                                                         "healAmount":  48,
-                                                                                         "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                         "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "the-wandering-craters-depths":  {
-                                                       "prompt":  "Deeper within The Wandering Craters, meteor-lit trenches divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "the-wandering-craters-threshold",
-                                                                                    "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                    "reward":  {
-                                                                                                   "min":  136,
-                                                                                                   "max":  173
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "the-wandering-craters-threshold",
-                                                                                     "enemyId":  "meteor-hermit",
-                                                                                     "message":  "A shift in the current exposes Meteor Hermit, which claims the right route through The Wandering Craters."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "empty",
-                                                                                       "nextRoomId":  "the-wandering-craters-threshold",
-                                                                                       "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Wandering Craters. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                       "berries":  1
-                                                                                   }
-                                                                   }
-                                                   },
-                  "the-wandering-craters-threshold":  {
-                                                          "prompt":  "Near the heart of The Wandering Craters, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                          "choices":  {
-                                                                          "left":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  53,
-                                                                                       "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   },
-                                                                          "right":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
-                                                                                        "reward":  {
-                                                                                                       "min":  148,
-                                                                                                       "max":  185
-                                                                                                   }
-                                                                                    },
-                                                                          "forward":  {
-                                                                                          "type":  "combat",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "enemyId":  "meteor-hermit",
-                                                                                          "message":  "A shift in the current exposes Meteor Hermit, which claims the forward route through The Wandering Craters."
-                                                                                      }
-                                                                      }
-                                                      },
-                  "boss-antechamber":  {
-                                           "name":  "Pilgrim\u0027s Impact",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Pilgrim\u0027s Impact."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Pilgrim\u0027s Impact. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Pilgrim\u0027s Impact: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Pilgrim\u0027s Impact. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "crater-throne-hermit-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Crater-Throne Hermit reveals itself!"
-             },
-    "completionText":  "Crater-Throne Hermit yields, and the currents beyond Pilgrim\u0027s Impact open the next route through Starfall Trench."
+  "id": "the-wandering-craters",
+  "number": 7,
+  "name": "The Wandering Craters",
+  "regionId": "starfall-trench",
+  "enemyId": "meteor-hermit",
+  "recommendedLevel": 6,
+  "introDiscord": "The impact craters here move. Not metaphorically. Entire pits slowly wander across the trench while Meteor Hermits ride inside them like extremely patient travelers.",
+  "introTwitch": "The impact craters here move. Not metaphorically. Entire pits slowly wander across the trench while Meteor Hermits ride inside them like extremely patient travelers.",
+  "startRoomId": "the-wandering-craters-approach",
+  "rooms": {
+    "the-wandering-craters-approach": {
+      "prompt": "Three routes wind between craters that are definitely not where the map says they should be.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "the-wandering-craters-depths",
+          "enemyId": "meteor-hermit",
+          "message": "A Meteor Hermit emerges from a passing crater and objects strongly to you standing at its next stop."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "the-wandering-craters-depths",
+          "message": "A meteor-iron reliquary sits inside an abandoned crater. The crater is already beginning to move again.",
+          "reward": {
+            "min": 124,
+            "max": 161
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "the-wandering-craters-depths",
+          "healAmount": 48,
+          "message": "Shizuki's tonic is tied to a marker labeled: \"Camp was here yesterday. Camp is over there now.\"",
+          "fullHpMessage": "The tonic stays tied down. The marker itself is slowly drifting left."
+        }
+      }
+    },
+    "the-wandering-craters-depths": {
+      "prompt": "The craters cross paths like enormous wandering carts, briefly opening three routes.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "the-wandering-craters-threshold",
+          "message": "A cometglass seam has been exposed by a crater that apparently excavated the treasure for you.",
+          "reward": {
+            "min": 136,
+            "max": 173
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "the-wandering-craters-threshold",
+          "enemyId": "meteor-hermit",
+          "message": "A Meteor Hermit rides past.\n\nIt stops.\n\nThe entire crater reverses.\n\nApparently it wants a rematch."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "the-wandering-craters-threshold",
+          "message": "A Berry sits on a moving crater beside Shizuki's note: \"I named this one Pebble. Pebble has traveled farther today than I have.\"",
+          "berries": 1
+        }
+      }
+    },
+    "the-wandering-craters-threshold": {
+      "prompt": "The wandering impacts circle Pilgrim's Impact, opening and closing three final paths.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 53,
+          "message": "Shizuki's emergency bottle rests inside a crater currently behaving itself.",
+          "fullHpMessage": "You leave the bottle. The crater immediately begins leaving too."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A star-chart coffer has been carried here by one of the wandering pits.",
+          "reward": {
+            "min": 148,
+            "max": 185
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "meteor-hermit",
+          "message": "\"A Meteor Hermit blocks the final route from inside its personal traveling crater.\"\n\nBOSS:"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Pilgrim's Impact",
+      "type": "boss-prompt",
+      "prompt": "Every wandering crater begins circling one enormous impact at the center."
+    }
+  },
+  "bossPromptDiscord": "A massive shell rises from the central crater like a throne carried by the trench itself.\n\nUse /yes to approach Pilgrim's Impact or /no to let the royal crater procession continue without you.",
+  "bossPromptTwitch": "A massive shell rises from the central crater like a throne carried by the trench itself.\n\nUse !yes to approach Pilgrim's Impact or !no to let the royal crater procession continue without you.",
+  "bossRetreatText": "You retreat while the wandering craters continue their extremely slow parade.",
+  "boss": {
+    "enemyId": "crater-throne-hermit-boss",
+    "roomId": "boss",
+    "revealText": "The central crater shifts and its colossal inhabitant rises.\n\nCrater-Throne Hermit reveals itself!"
+  },
+  "completionText": "\"The Crater-Throne Hermit settles.\n\nThe wandering craters resume their journeys.\n\nPebble is nowhere to be seen.\n\nSafe travels, Pebble.\"\n\n\n#################################################################"
 }

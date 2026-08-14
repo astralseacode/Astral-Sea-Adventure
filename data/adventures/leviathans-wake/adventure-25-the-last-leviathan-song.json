@@ -1,107 +1,107 @@
 {
-    "id":  "the-last-leviathan-song",
-    "number":  25,
-    "name":  "The Last Leviathan Song",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "leviathan-song-echo",
-    "recommendedLevel":  28,
-    "introDiscord":  "The Last Leviathan Song lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Songwake Phantom.",
-    "introTwitch":  "The Last Leviathan Song lies ahead amid titanic ribs rising through violent crosscurrents.",
-    "startRoomId":  "the-last-leviathan-song-approach",
-    "rooms":  {
-                  "the-last-leviathan-song-approach":  {
-                                                           "prompt":  "At the edge of The Last Leviathan Song, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                           "choices":  {
-                                                                           "left":  {
-                                                                                        "type":  "combat",
-                                                                                        "nextRoomId":  "the-last-leviathan-song-depths",
-                                                                                        "enemyId":  "leviathan-song-echo",
-                                                                                        "message":  "A shift in the current exposes Songwake Phantom, which claims the left route through The Last Leviathan Song."
-                                                                                    },
-                                                                           "right":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "the-last-leviathan-song-depths",
-                                                                                         "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
-                                                                                         "reward":  {
-                                                                                                        "min":  102,
-                                                                                                        "max":  145
-                                                                                                    }
-                                                                                     },
-                                                                           "forward":  {
-                                                                                           "type":  "healing",
-                                                                                           "nextRoomId":  "the-last-leviathan-song-depths",
-                                                                                           "healAmount":  15,
-                                                                                           "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                           "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                       }
-                                                                       }
-                                                       },
-                  "the-last-leviathan-song-depths":  {
-                                                         "prompt":  "Deeper within The Last Leviathan Song, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "the-last-leviathan-song-threshold",
-                                                                                      "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                                      "reward":  {
-                                                                                                     "min":  114,
-                                                                                                     "max":  157
-                                                                                                 }
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "the-last-leviathan-song-threshold",
-                                                                                       "enemyId":  "leviathan-song-echo",
-                                                                                       "message":  "A shift in the current exposes Songwake Phantom, which claims the right route through The Last Leviathan Song."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "empty",
-                                                                                         "nextRoomId":  "the-last-leviathan-song-threshold",
-                                                                                         "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Last Leviathan Song. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                         "berries":  1
-                                                                                     }
-                                                                     }
-                                                     },
-                  "the-last-leviathan-song-threshold":  {
-                                                            "prompt":  "Near the heart of The Last Leviathan Song, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                            "choices":  {
-                                                                            "left":  {
-                                                                                         "type":  "healing",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "healAmount":  20,
-                                                                                         "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                         "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                     },
-                                                                            "right":  {
-                                                                                          "type":  "treasure",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                          "reward":  {
-                                                                                                         "min":  126,
-                                                                                                         "max":  169
-                                                                                                     }
-                                                                                      },
-                                                                            "forward":  {
-                                                                                            "type":  "combat",
-                                                                                            "nextRoomId":  "boss-antechamber",
-                                                                                            "enemyId":  "leviathan-song-echo",
-                                                                                            "message":  "A shift in the current exposes Songwake Phantom, which claims the forward route through The Last Leviathan Song."
-                                                                                        }
-                                                                        }
-                                                        },
-                  "boss-antechamber":  {
-                                           "name":  "Resonance Grave",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Resonance Grave."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Resonance Grave. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Resonance Grave: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Resonance Grave. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "primordial-voice-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Primordial Voice reveals itself!"
-             },
-    "completionText":  "Primordial Voice yields, and the currents beyond Resonance Grave open the next route through Leviathan\u0027s Wake."
+    "id": "the-last-leviathan-song",
+    "number": 25,
+    "name": "The Last Leviathan Song",
+    "regionId": "leviathans-wake",
+    "enemyId": "leviathan-song-echo",
+    "recommendedLevel": 28,
+    "introDiscord": "A low song passes through the graveyard.\n\nNot through the water.\n\nThrough the bones.\n\nEvery skeleton in the Wake seems to remember the same melody.",
+    "introTwitch": "A low song passes through the graveyard.\n\nNot through the water.\n\nThrough the bones.\n\nEvery skeleton in the Wake seems to remember the same melody.",
+    "startRoomId": "the-last-leviathan-song-approach",
+    "rooms": {
+        "the-last-leviathan-song-approach": {
+            "prompt": "Three paths follow the ancient resonance.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "the-last-leviathan-song-depths",
+                    "enemyId": "leviathan-song-echo",
+                    "message": "A Songwake Phantom forms inside the vibration of a rib."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "the-last-leviathan-song-depths",
+                    "message": "A strongbox rests where the song is quietest.",
+                    "reward": {
+                        "min": 102,
+                        "max": 145
+                    }
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "the-last-leviathan-song-depths",
+                    "healAmount": 15,
+                    "message": "Shizuki's old camp contains one bottle and a note:\n\n'Heard song all night.\n\nDidn't feel dangerous.\n\nJust lonely.'",
+                    "fullHpMessage": "You leave the restorative.\n\nThe song continues."
+                }
+            }
+        },
+        "the-last-leviathan-song-depths": {
+            "prompt": "The melody passes from skeleton to skeleton.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "the-last-leviathan-song-threshold",
+                    "message": "Star Candies rest inside a hollow vertebra humming with the song.",
+                    "reward": {
+                        "min": 114,
+                        "max": 157
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "the-last-leviathan-song-threshold",
+                    "enemyId": "leviathan-song-echo",
+                    "message": "A Phantom condenses from the resonance."
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "the-last-leviathan-song-threshold",
+                    "message": "One Berry rests beneath Shizuki's journal:\n\n'Glimmer stopped chiming and listened.\n\nWe sat here for a while.\n\nI think this place remembers them.'",
+                    "berries": 1
+                }
+            }
+        },
+        "the-last-leviathan-song-threshold": {
+            "prompt": "Resonance Grave lies where the song becomes clearest.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 20,
+                    "message": "A mineral spring rests beneath an enormous rib.\n\nShizuki wrote:\n\n'Not every quiet thing needs a joke.\n\nRest here.'",
+                    "fullHpMessage": "You leave the spring untouched and listen."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A navigator's chest rests beneath the singing bones.",
+                    "reward": {
+                        "min": 126,
+                        "max": 169
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "leviathan-song-echo",
+                    "message": "A Songwake Phantom emerges from the final note."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Resonance Grave",
+            "type": "boss-prompt",
+            "prompt": "The graveyard falls silent."
+        }
+    },
+    "bossPromptDiscord": "The graveyard falls silent.\n\nThen one voice sings alone.\n\nThe sound is impossibly deep—larger than anything still living here.\n\nA shape forms from light and memory inside Resonance Grave.\n\nUse /yes to enter the Grave or /no to leave the final song undisturbed.",
+    "bossPromptTwitch": "The graveyard falls silent.\n\nThen one voice sings alone.\n\nThe sound is impossibly deep—larger than anything still living here.\n\nA shape forms from light and memory inside Resonance Grave.\n\nUse !yes to enter the Grave or !no to leave the final song undisturbed.",
+    "bossRetreatText": "You step back.\n\nThe ancient song resumes softly.",
+    "boss": {
+        "enemyId": "primordial-voice-boss",
+        "roomId": "boss",
+        "revealText": "The resonance gathers into an immense spectral presence.\n\nPrimordial Voice reveals itself!"
+    },
+    "completionText": "The Primordial Voice fades.\n\nOne final note travels through every skeleton in Leviathan's Wake.\n\nThen silence.\n\nWhatever sang first is gone.\n\nBut the Wake remembered."
 }

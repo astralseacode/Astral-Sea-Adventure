@@ -5,30 +5,30 @@
   "regionId": "moonlit-reef",
   "enemyId": "moonkeeper-sentinel",
   "recommendedLevel": 4,
-  "introDiscord": "A sealed Moonkeeper vault awakens as old guardian sigils recognize a living traveler.",
-  "introTwitch": "A sealed Moonkeeper vault awakens as old guardian sigils recognize a living traveler.",
+  "introDiscord": "An ancient Moonkeeper vault recognizes your approach and begins waking up whether you asked it to or not. Runes flash, doors unlock, and dormant Sentinels receive the worst notification imaginable: a visitor.",
+  "introTwitch": "An ancient Moonkeeper vault recognizes your approach and begins waking up whether you asked it to or not. Runes flash, doors unlock, and dormant Sentinels receive the worst notification imaginable: a visitor.",
   "startRoomId": "keeper-seal",
   "rooms": {
     "keeper-seal": {
-      "prompt": "A keeper seal retracts before three corridors lined with dormant runes.",
+      "prompt": "The Keeper Seal flashes awake across three vault doors. Catalog runes begin counting your belongings while an armored niche quietly unlocks.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "vigil-corridor",
           "enemyId": "moonkeeper-sentinel",
-          "message": "The water folds around Moonkeeper Sentinel, revealing the creature as it claims the passage."
+          "message": "A Moonkeeper Sentinel steps from its niche, scans you, checks a glowing rune, scans you again, and somehow becomes even less satisfied."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "vigil-corridor",
           "healAmount": 40,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Keeper-root medicine. Hidden from sentinels and anyone fond of inventories.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Shizuki's Keeper-root medicine reads: \"Hidden from Sentinels and anyone fond of inventories. If you're reading this, congratulations on ignoring both.\"",
+          "fullHpMessage": "The Keeper-root medicine remains hidden. You are already at full health, and the inventory can remain blissfully inaccurate."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "vigil-corridor",
-          "message": "Within Moonkeeper Sentinel Vault, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer remains catalogued inside a storage recess. The inventory slate still says 'DO NOT REMOVE.' You remove Star Candies.",
           "reward": {
             "min": 60,
             "max": 90
@@ -37,12 +37,12 @@
       }
     },
     "vigil-corridor": {
-      "prompt": "As Moonkeeper Sentinel Vault closes around you, silent armor niches border a vigil corridor where three routes continue into the vault.",
+      "prompt": "Silent armor niches line the corridor. Some are empty. Some are definitely not. Three routes continue beneath runes displaying increasingly stern warnings.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "oathbound-gallery",
-          "message": "Within Moonkeeper Sentinel Vault, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel has apparently been sitting in evidence storage for centuries. Its offense is listed only as 'UNAUTHORIZED WHIMSY.' You free it and find Star Candies.",
           "reward": {
             "min": 70,
             "max": 105
@@ -52,30 +52,30 @@
           "type": "combat",
           "nextRoomId": "oathbound-gallery",
           "enemyId": "moonkeeper-sentinel",
-          "message": "The water folds around Moonkeeper Sentinel, revealing the creature as it claims the passage."
+          "message": "One supposedly empty armor niche closes behind you. That is the exact moment its Sentinel steps out."
         },
         "forward": {
           "type": "empty",
           "nextRoomId": "oathbound-gallery",
-          "message": "Shizuki hid one Berry inside the broken insignia of her creators in the surrounding passage, turning their mark into an emergency cache.",
+          "message": "Shizuki turned an old broken insignia into a Berry cache. Her note reads: \"Much better use for official symbols.\"",
           "berries": 1
         }
       }
     },
     "oathbound-gallery": {
-      "prompt": "The final stretch through Moonkeeper Sentinel Vault reveals oathbound reliefs cover a gallery whose three doors remain without labels.",
+      "prompt": "Ancient reliefs depict generations of Moonkeepers taking ceremonial vows. Three doors remain unlabeled, presumably because everyone who worked here already knew where they went. Helpful.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"Old guardians watch doors. Clever wanderers watch reflections.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Shizuki's bottle reads: \"Old guardians watch doors. Clever wanderers watch reflections. Very clever wanderers leave before the door notices.\"",
+          "fullHpMessage": "Shizuki's door-watching remedy remains unused. At full health, you can concentrate on leaving before the door notices."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonkeeper Sentinel Vault, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache requires an authorization sigil. The sigil is still inserted in the lock. Whoever designed this security system had tremendous faith in workplace honesty. Inside: Star Candies.",
           "reward": {
             "min": 80,
             "max": 120
@@ -85,23 +85,23 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moonkeeper-sentinel",
-          "message": "The water folds around Moonkeeper Sentinel, revealing the creature as it claims the passage."
+          "message": "The final Sentinel does not scan you. It has apparently received enough information already."
         }
       }
     },
     "boss-antechamber": {
       "name": "Eternal Watchroom",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The vault's deepest chamber is lined with ancient armor niches and one uninterrupted watch-rune. Every suit faces the oldest station at the center."
     }
   },
-  "bossPromptDiscord": "You reach Eternal Watchroom. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Eternal Watchroom: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Eternal Watchroom. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Every dormant armor niche activates at once—then kneels.\n\nThe Watchroom's oldest suit of armor moves for the first time in centuries.\n\nA single rune flashes:\n\nWATCH CONTINUES.\n\nUse /yes to challenge the Moonkeeper Eternal or /no to let it continue watching somebody else.",
+  "bossPromptTwitch": "Every dormant armor niche activates at once—then kneels.\n\nThe Watchroom's oldest suit of armor moves for the first time in centuries.\n\nA single rune flashes:\n\nWATCH CONTINUES.\n\nUse !yes to challenge the Moonkeeper Eternal or !no to let it continue watching somebody else.",
+  "bossRetreatText": "You leave the Eternal Watchroom to its vigil. The ancient armor settles back while WATCH CONTINUES glows behind you.",
   "boss": {
     "enemyId": "moonkeeper-eternal-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Moonkeeper Eternal reveals itself!"
+    "revealText": "Ancient armor locks into place around a brilliant watch-rune. The Moonkeeper Eternal resumes its vigil!"
   },
-  "completionText": "Moonkeeper Eternal yields to the returning current. Moonkeeper Sentinel Vault settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Moonkeeper Eternal returns to its station. A nearby rune changes from INTRUDER to TRAVELER. That is probably the closest this place gets to hospitality."
 }

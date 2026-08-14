@@ -5,30 +5,30 @@
   "regionId": "moonlit-reef",
   "enemyId": "starfall-razorfin",
   "recommendedLevel": 4,
-  "introDiscord": "Fragments of fallen starlight streak through a reef reach sharpened by swift currents.",
-  "introTwitch": "Fragments of fallen starlight streak through a reef reach sharpened by swift currents.",
+  "introDiscord": "Falling fragments of starlight streak through a narrow reef reach. Razorfin slice between them at terrifying speed, turning the entire route into something between a migration path and a knife drawer.",
+  "introTwitch": "Falling fragments of starlight streak through a narrow reef reach. Razorfin slice between them at terrifying speed, turning the entire route into something between a migration path and a knife drawer.",
   "startRoomId": "meteor-shoal",
   "rooms": {
     "meteor-shoal": {
-      "prompt": "A meteor shoal scatters light over three channels between dark coral blades.",
+      "prompt": "Star fragments fall across a crowded meteor shoal, leaving bright impact trails between three routes. Razorfin streak through the gaps before the light can fade.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "razor-current",
           "healAmount": 40,
-          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Starfall remedy. Catch the bottle, not the falling blade.\"",
-          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki's Starfall remedy reads: \"Catch the bottle, not the falling blade. This distinction feels obvious until both are glowing.\"",
+          "fullHpMessage": "The Starfall remedy remains safely in hand. You are already at full health, so there is no need to compare it with the other glowing hazards."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "razor-current",
           "enemyId": "starfall-razorfin",
-          "message": "The water folds around Starfall Razorfin, revealing the creature as it claims the passage."
+          "message": "A Starfall Razorfin streaks past so quickly you only see the trail. It returns slower the second time—apparently so you can properly appreciate the threat."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "razor-current",
-          "message": "Within Starfall Razorfin Reach, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache has survived beneath a coral overhang while star fragments repeatedly strike around it. Timing your dash earns Star Candies.",
           "reward": {
             "min": 60,
             "max": 90
@@ -37,12 +37,12 @@
       }
     },
     "razor-current": {
-      "prompt": "Farther within Starfall Razorfin Reach, the razor current divides around a stone fin, leaving three routes through silver turbulence.",
+      "prompt": "A silver current funnels through a narrow gap. Razorfin use it to accelerate to deeply unreasonable speeds while three routes cut around a stone fin.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "falling-star-cut",
-          "message": "Within Starfall Razorfin Reach, the left path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer spins inside the current. You grab it during the half-second between Razorfin passes and recover Star Candies.",
           "reward": {
             "min": 70,
             "max": 105
@@ -52,30 +52,30 @@
           "type": "healing",
           "nextRoomId": "falling-star-cut",
           "healAmount": 40,
-          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"For the wound you expected and the three you absolutely did not.\"",
-          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
+          "message": "Shizuki's remedy reads: \"For the wound you expected and the three you absolutely did not. I ran out of labels after that.\"",
+          "fullHpMessage": "Shizuki's many-wound remedy remains unused. At full health, you can spare it another label."
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "falling-star-cut",
           "enemyId": "starfall-razorfin",
-          "message": "The water folds around Starfall Razorfin, revealing the creature as it claims the passage."
+          "message": "One Razorfin streaks through. Then another. The third stops directly in front of you. Somehow the stationary one is more concerning."
         }
       }
     },
     "falling-star-cut": {
-      "prompt": "With the outer passages behind you, Starfall Razorfin Reach narrows until a falling-star cut crosses the reef where three openings gleam with reflected sky.",
+      "prompt": "A glowing scar cuts through the reef where ancient star fragments still fall in slow arcs. Three routes cross beneath them while Razorfin shadows weave between the light.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "starfall-razorfin",
-          "message": "The water folds around Starfall Razorfin, revealing the creature as it claims the passage."
+          "message": "A Razorfin uses a falling fragment as cover, darts behind it, then emerges from the other side directly toward you. Clever little knife-fish."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Starfall Razorfin Reach, the right path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel landed inside an impact groove and somehow survived. Inside are Star Candies and several tiny scorch marks.",
           "reward": {
             "min": 80,
             "max": 120
@@ -84,7 +84,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "Shizuki wedged one Berry behind a weathered note in the surrounding passage: \"Chaos is not destruction. Sometimes it is the door nobody planned.\"",
+          "message": "Shizuki wedged one Berry behind a battered warning sign: \"Things falling from the sky: dangerous. Things swimming sideways at thirty times reasonable speed: ALSO dangerous. Educational area.\"",
           "berries": 1
         }
       }
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Bladefin Impact Crater",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The Reach ends inside a crater carved by an ancient falling star. Glowing scars ring the impact site while every fast-moving shadow abruptly abandons it."
     }
   },
-  "bossPromptDiscord": "You reach Bladefin Impact Crater. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Bladefin Impact Crater: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Bladefin Impact Crater. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Every smaller Razorfin abandons the crater.\n\nA streak of light circles the impact site faster and faster until it becomes a continuous glowing ring.\n\nThen the ring breaks toward you.\n\nUse /yes to face the Starfall Bladefin or /no to leave before it completes another orbit.",
+  "bossPromptTwitch": "Every smaller Razorfin abandons the crater.\n\nA streak of light circles the impact site faster and faster until it becomes a continuous glowing ring.\n\nThen the ring breaks toward you.\n\nUse !yes to face the Starfall Bladefin or !no to leave before it completes another orbit.",
+  "bossRetreatText": "You leave Bladefin Impact Crater before the glowing ring completes another orbit. The smaller Razorfin do not return until you are gone.",
   "boss": {
     "enemyId": "starfall-bladefin-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Starfall Bladefin reveals itself!"
+    "revealText": "The glowing ring snaps inward as a massive Razorfin streaks across the crater. The Starfall Bladefin strikes!"
   },
-  "completionText": "Starfall Bladefin yields to the returning current. Starfall Razorfin Reach settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Starfall Bladefin vanishes into the current, and the Reach slows from 'impossibly dangerous' to merely 'deeply questionable.' Another route becomes visible."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "wake-rider-crossing",
-    "number":  1,
-    "name":  "Wake-Rider Crossing",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "wake-riding-razorfish",
-    "recommendedLevel":  20,
-    "introDiscord":  "Wake-Rider Crossing lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Wake-Riding Razorfish.",
-    "introTwitch":  "Wake-Rider Crossing lies ahead amid titanic ribs rising through violent crosscurrents.",
-    "startRoomId":  "wake-rider-crossing-approach",
-    "rooms":  {
-                  "wake-rider-crossing-approach":  {
-                                                       "prompt":  "At the edge of Wake-Rider Crossing, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "wake-rider-crossing-depths",
-                                                                                    "enemyId":  "wake-riding-razorfish",
-                                                                                    "message":  "A shift in the current exposes Wake-Riding Razorfish, which claims the left route through Wake-Rider Crossing."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "wake-rider-crossing-depths",
-                                                                                     "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
-                                                                                     "reward":  {
-                                                                                                    "min":  265,
-                                                                                                    "max":  300
-                                                                                                }
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "wake-rider-crossing-depths",
-                                                                                       "healAmount":  88,
-                                                                                       "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "wake-rider-crossing-depths":  {
-                                                     "prompt":  "Deeper within Wake-Rider Crossing, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "wake-rider-crossing-threshold",
-                                                                                  "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                                  "reward":  {
-                                                                                                 "min":  277,
-                                                                                                 "max":  312
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "wake-rider-crossing-threshold",
-                                                                                   "enemyId":  "wake-riding-razorfish",
-                                                                                   "message":  "A shift in the current exposes Wake-Riding Razorfish, which claims the right route through Wake-Rider Crossing."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "empty",
-                                                                                     "nextRoomId":  "wake-rider-crossing-threshold",
-                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Wake-Rider Crossing. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                     "berries":  1
-                                                                                 }
-                                                                 }
-                                                 },
-                  "wake-rider-crossing-threshold":  {
-                                                        "prompt":  "Near the heart of Wake-Rider Crossing, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  93,
-                                                                                     "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                      "reward":  {
-                                                                                                     "min":  289,
-                                                                                                     "max":  324
-                                                                                                 }
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "combat",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "enemyId":  "wake-riding-razorfish",
-                                                                                        "message":  "A shift in the current exposes Wake-Riding Razorfish, which claims the forward route through Wake-Rider Crossing."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Whitewater Saddle",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Whitewater Saddle."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Whitewater Saddle. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Whitewater Saddle: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Whitewater Saddle. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "breaker-fin-alpha-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Breaker-Fin Alpha reveals itself!"
-             },
-    "completionText":  "Breaker-Fin Alpha yields, and the currents beyond Whitewater Saddle open the next route through Leviathan\u0027s Wake."
+    "id": "wake-rider-crossing",
+    "number": 1,
+    "name": "Wake-Rider Crossing",
+    "regionId": "leviathans-wake",
+    "enemyId": "wake-riding-razorfish",
+    "recommendedLevel": 20,
+    "introDiscord": "The last roots of Whispering Kelp Forest disappear behind you.\n\nAhead, enormous white arches rise through violent crosscurrents.\n\nAt first they resemble stone pillars.\n\nThen you notice the joints.\n\nThey're ribs.\n\nSomething that once lived here was large enough for its skeleton to\nreshape the sea.",
+    "introTwitch": "The last roots of Whispering Kelp Forest disappear behind you.\n\nAhead, enormous white arches rise through violent crosscurrents.\n\nAt first they resemble stone pillars.\n\nThen you notice the joints.\n\nThey're ribs.\n\nSomething that once lived here was large enough for its skeleton to\nreshape the sea.",
+    "startRoomId": "wake-rider-crossing-approach",
+    "rooms": {
+        "wake-rider-crossing-approach": {
+            "prompt": "Wake-Rider Crossing threads between the first colossal ribs of the\ngraveyard. Three currents race through the bones while Wake-Riding\nRazorfish surf along their edges like they invented bad decisions.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "wake-rider-crossing-depths",
+                    "enemyId": "wake-riding-razorfish",
+                    "message": "A Wake-Riding Razorfish catches the strongest current and rockets around\na rib.\n\nIt circles back.\n\nAgain.\n\nApparently you've entered its racetrack."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "wake-rider-crossing-depths",
+                    "message": "A century-old wreck has been pinned between two ribs.\n\nIts broken strongbox has survived remarkably well considering its current\nlocation inside the skeleton of something larger than the entire ship.",
+                    "reward": {
+                        "min": 265,
+                        "max": 300
+                    }
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "wake-rider-crossing-depths",
+                    "healAmount": 88,
+                    "message": "Behind one enormous rib, the violent current disappears completely.\n\nShizuki once camped in the calm pocket and left a restorative bottle\nbeneath a note:\n\n'FIRST LEVIATHAN RIB!!!\n\n...I think.\n\nIf this is actually a finger I am leaving.'",
+                    "fullHpMessage": "The restorative remains beneath Shizuki's old campsite.\n\nYou're already healthy enough to continue determining which horrifying\nanatomical structure you're standing beside."
+                }
+            }
+        },
+        "wake-rider-crossing-depths": {
+            "prompt": "More bones emerge through the current ahead. Wreckage has collected\nbetween them over centuries, and three routes weave through the\nribcage.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "wake-rider-crossing-threshold",
+                    "message": "An enormous scale has trapped a small cache beneath one edge.\n\nIt takes several attempts to accept that the curved object overhead is\none scale.\n\nShizuki scratched into the nearby stone:\n\n'THAT was on its SKIN?!'",
+                    "reward": {
+                        "min": 277,
+                        "max": 312
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "wake-rider-crossing-threshold",
+                    "enemyId": "wake-riding-razorfish",
+                    "message": "A Razorfish shoots through two ribs, uses a wrecked mast as a turning\nmarker, and races directly back toward you.\n\nLocal motorsport remains unregulated."
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "wake-rider-crossing-threshold",
+                    "message": "One Berry rests inside Shizuki's old trail pouch beside a sketch titled:\n\n'EXTREMELY SCIENTIFIC SIZE COMPARISON.'\n\nIt shows:\n\nShizuki: tiny stick figure.\n\nRib: enormous arch.\n\nGlimmer: tiny glowing blob.\n\nCaption:\n\n'Glimmer says this drawing lacks scale.\n\nTHE RIB IS THE SCALE.'",
+                    "berries": 1
+                }
+            }
+        },
+        "wake-rider-crossing-threshold": {
+            "prompt": "Near Whitewater Saddle, three routes cross through an immense ribcage\nwhile the current crashes around the bones like permanent surf.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 93,
+                    "message": "Mineral-rich water rises through a crack beneath one rib.\n\nShizuki left a bottle nearby:\n\n'Good healing spot.\n\nAlso excellent place to sit and question how large the REST of it was.'",
+                    "fullHpMessage": "You leave the restorative untouched.\n\nThe existential size question remains available."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A navigator's chest rests in a calm hollow beneath an enormous vertebra.\n\nThe original navigator apparently chose a very unfortunate parking spot.",
+                    "reward": {
+                        "min": 289,
+                        "max": 324
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "wake-riding-razorfish",
+                    "message": "A Wake-Riding Razorfish launches through the ribs.\n\nFor one beautiful second it is airborne in the current.\n\nThen it remembers you exist."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Whitewater Saddle",
+            "type": "boss-prompt",
+            "prompt": "The crosscurrents converge between two towering ribs.\n\nEvery ordinary Razorfish suddenly abandons the strongest wake."
+        }
+    },
+    "bossPromptDiscord": "Whitewater Saddle becomes a roaring tunnel between the bones.\n\nSomething much larger catches the current.\n\nA fin cuts through the foam.\n\nThen another.\n\nWhatever rules this crossing has apparently noticed someone using its\nracetrack.\n\nUse /yes to enter Whitewater Saddle or /no to retire from competitive\nLeviathan-rib racing while you still have the option.",
+    "bossPromptTwitch": "Whitewater Saddle becomes a roaring tunnel between the bones.\n\nSomething much larger catches the current.\n\nA fin cuts through the foam.\n\nThen another.\n\nWhatever rules this crossing has apparently noticed someone using its\nracetrack.\n\nUse !yes to enter Whitewater Saddle or !no to retire from competitive\nLeviathan-rib racing while you still have the option.",
+    "bossRetreatText": "You withdraw between the ribs.\n\nThe ordinary Razorfish immediately reclaim the current.\n\nRace resumed.",
+    "boss": {
+        "enemyId": "breaker-fin-alpha-boss",
+        "roomId": "boss",
+        "revealText": "The whitewater explodes as an enormous Razorfish tears across the\nSaddle.\n\nBreaker-Fin Alpha reveals itself!"
+    },
+    "completionText": "Breaker-Fin Alpha disappears down the racing current.\n\nBeyond Whitewater Saddle, the graveyard opens wider.\n\nThe first skeleton was enormous.\n\nIt is not the only one."
 }

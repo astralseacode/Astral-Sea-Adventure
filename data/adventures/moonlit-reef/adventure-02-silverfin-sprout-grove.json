@@ -5,16 +5,16 @@
   "regionId": "moonlit-reef",
   "enemyId": "silverfin-sprout",
   "recommendedLevel": 1,
-  "introDiscord": "The Lunar Current carries you into an ancient grove where silver kelp rises like an underwater forest. Pale leaves drift through the water as three overgrown paths wind between the towering fronds.",
-  "introTwitch": "The Lunar Current carries you into an ancient forest of silver kelp. Three hidden paths wind deeper into the grove.",
+  "introDiscord": "The Lunar Current carries you into an ancient grove where silver kelp rises like an underwater forest. Pale leaves drift through the water, tiny flashes of movement vanish between the roots, and three overgrown paths wind deeper into the grove.",
+  "introTwitch": "The Lunar Current carries you into an ancient grove where silver kelp rises like an underwater forest. Pale leaves drift through the water, tiny flashes of movement vanish between the roots, and three overgrown paths wind deeper into the grove.",
   "startRoomId": "moonleaf-threshold",
   "rooms": {
     "moonleaf-threshold": {
-      "prompt": "Silver leaves turn slowly in the current while distant moonlight scatters across three paths through the shifting forest.",
+      "prompt": "Silver leaves turn slowly toward you as the current passes through the grove. Something tiny darts behind a root, and a trail of disturbed leaves disappears between three moonlit paths.",
       "choices": {
         "left": {
           "type": "treasure",
-          "message": "You discover a moon-shell offering bowl hidden beneath the roots.",
+          "message": "Beneath a curtain of silver leaves, you discover an old moon-shell offering bowl tangled in the roots. Most of its contents have long since scattered, but several curious little sprouts seem to have pushed some Star Candies into a neat pile inside it. You're not entirely sure whether this is an offering or their idea of decorating.",
           "reward": {
             "min": 25,
             "max": 45
@@ -28,25 +28,25 @@
         },
         "forward": {
           "type": "empty",
-          "message": "Deeper inside Silverfin Sprout Grove, Shizuki wrapped one Berry in a silver leaf beside her journal: \"Followed the prettiest path. Tactical error. Excellent view.\"",
+          "message": "A Berry has been carefully wrapped inside a silver leaf beside one of Shizuki's crooked trail markers. Her note reads: \"Followed the prettiest path. Tactical error. Excellent view. Leaving emergency Berry for whoever makes the same excellent decision.\"",
           "nextRoomId": "whispering-fronds",
           "berries": 1
         }
       }
     },
     "whispering-fronds": {
-      "prompt": "Farther within Silverfin Sprout Grove, towering kelp hides the moonlit surface, and faint Fae runes shimmer across the roots surrounding three narrow passages.",
+      "prompt": "The kelp grows tall enough to hide the moonlit surface completely. Pale Fae runes shimmer across ancient roots, while the silver fronds whisper against one another whenever you move. Three narrow passages twist deeper into the grove—and you could swear one of them just moved.",
       "choices": {
         "left": {
           "type": "healing",
           "healAmount": 25,
-          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Emergency leaf tonic. Side effects may include confidence.\"",
-          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need.",
+          "message": "Behind a cluster of broad silver leaves, you discover one of Shizuki's old survival caches marked by a crooked arrow. One bottle remains inside. Its label reads: \"Emergency leaf tonic. Side effects may include confidence, suspicious aftertaste, and believing you know where you're going.\"",
+          "fullHpMessage": "Shizuki's emergency leaf tonic remains untouched in the cache. At full health, you have the rare privilege of not discovering whether \"confidence\" was an actual side effect.",
           "nextRoomId": "heartroot-crossing"
         },
         "right": {
           "type": "treasure",
-          "message": "Behind pale vines, you find an old Fae wayfinder's pouch.",
+          "message": "Pale vines have grown around an old Fae wayfinder's pouch. When you gently pull it free, the surrounding leaves flutter as though mildly offended. Inside, you discover a cache of Star Candies and decide to apologize to the plant anyway.",
           "reward": {
             "min": 30,
             "max": 50
@@ -61,7 +61,7 @@
       }
     },
     "heartroot-crossing": {
-      "prompt": "With the outer passages behind you, Silverfin Sprout Grove narrows until ancient roots form a natural crossing at the grove's heart, where three final paths wait beyond the silver kelp.",
+      "prompt": "At the grove's heart, enormous silver roots twist together into a natural bridge beneath a canopy of glowing leaves. Tiny sprouts peek from the kelp and immediately disappear whenever you look directly at them. Beyond the crossing, three final paths lead toward a faint moonlit glow.",
       "choices": {
         "left": {
           "type": "combat",
@@ -69,14 +69,15 @@
           "nextRoomId": "boss-antechamber"
         },
         "right": {
-          "type": "empty",
-          "message": "A tiny map along the route has one Berry wedged into its last fold. Shizuki wrote: \"Grove still moving. Rude.\"",
+          "type": "healing",
+          "message": "Wedged between two roots is a tiny Shizuki campsite containing a folded map, a half-empty field kit, and one surviving restorative tonic. Across the map she has written: \"Grove still moving. Rude. Drew new map. Grove moved again. RUDER.\"",
+          "fullHpMessage": "The tonic remains beside Shizuki's increasingly angry map revisions. You don't need the remedy, but the final drawing of the grove with an angry face is worth finding anyway.",
           "nextRoomId": "boss-antechamber",
-          "berries": 1
+          "healAmount": 25
         },
         "forward": {
           "type": "treasure",
-          "message": "You uncover a sealed coral seedpod marked with a faded Moonkeeper sigil.",
+          "message": "An ancient coral seedpod rests between the heartroots, sealed with a faded Moonkeeper sigil. As you approach, the pod slowly unfolds like a flower and reveals Star Candies nestled inside. The surrounding sprouts immediately begin staring at you as if they were waiting to see whether it would open.",
           "reward": {
             "min": 35,
             "max": 55
@@ -88,16 +89,16 @@
     "boss-antechamber": {
       "name": "Groveheart Sanctuary",
       "type": "boss-prompt",
-      "prompt": "An enormous moonlit blossom stirs while smaller sprouts gather silently among its roots."
+      "prompt": "The roots open into a hidden sanctuary beneath the grove. Hundreds of silver leaves drift through the water while tiny sprouts gather quietly around an enormous closed blossom. As you enter, every sprout turns toward you at once."
     }
   },
-  "bossPromptDiscord": "You enter the Groveheart Sanctuary. An enormous moonlit blossom stirs while smaller sprouts gather silently along the grove floor. Something powerful guards the heart of this grove.\nUse /yes to approach or /no to retreat for now.",
-  "bossPromptTwitch": "You enter the Groveheart Sanctuary. An enormous moonlit blossom stirs while sprouts gather among its roots. Something powerful guards the grove. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You step back into the silver kelp. The guardian remains within the Groveheart Sanctuary.",
+  "bossPromptDiscord": "A low pulse travels through the roots.\n\nThe enormous blossom at the center of the sanctuary begins to open, and every Silverfin Sprout hurriedly retreats behind the surrounding kelp. Whatever they've been protecting is waking up.\n\nUse /yes to approach or /no to quietly reconsider disturbing the giant flower.",
+  "bossPromptTwitch": "A low pulse travels through the roots.\n\nThe enormous blossom at the center of the sanctuary begins to open, and every Silverfin Sprout hurriedly retreats behind the surrounding kelp. Whatever they've been protecting is waking up.\n\nUse !yes to approach or !no to quietly reconsider disturbing the giant flower.",
+  "bossRetreatText": "You back away from the sanctuary. The enormous blossom slowly closes again, and several Silverfin Sprouts cautiously peek out from behind the kelp to make sure you're actually leaving.",
   "boss": {
     "enemyId": "groveheart-sprout",
     "roomId": "boss",
-    "revealText": "The ancient blossom tears open as silver roots lash through the water. The Groveheart Sprout awakens!"
+    "revealText": "The blossom tears open in a burst of silver leaves. Ancient roots unfurl across the sanctuary as a towering Sprout rises from the heart of the grove. The smaller Silverfins scatter into the kelp—the Groveheart Sprout has awakened!"
   },
-  "completionText": "The Groveheart Sprout sinks back into the ancient roots. The silver kelp slowly begins to sway again, and moonlight returns to the grove."
+  "completionText": "The Groveheart Sprout finally falters and sinks back among the ancient roots. For a moment, the entire grove goes still. Then one tiny Silverfin Sprout cautiously emerges from the kelp... followed by another, then another. The silver leaves begin swaying again, moonlight returns through the canopy, and a new path quietly opens beyond the sanctuary."
 }

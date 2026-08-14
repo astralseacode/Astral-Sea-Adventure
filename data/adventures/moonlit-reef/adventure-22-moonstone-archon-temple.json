@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "moonstone-archon",
   "recommendedLevel": 4,
-  "introDiscord": "A moonstone temple hums with vows left by reef guardians before recorded tides.",
-  "introTwitch": "A moonstone temple hums with vows left by reef guardians before recorded tides.",
+  "introDiscord": "A moonstone temple hums with vows older than recorded tides. Silver inscriptions glow beneath every step, guardian statues face the central halls, and someone has placed a tiny pebble hat on one of them.",
+  "introTwitch": "A moonstone temple hums with vows older than recorded tides. Silver inscriptions glow beneath every step, guardian statues face the central halls, and someone has placed a tiny pebble hat on one of them.",
   "startRoomId": "votive-stair",
   "rooms": {
     "votive-stair": {
-      "prompt": "Votive stairs meet a landing where three halls continue beneath silver inscriptions.",
+      "prompt": "Silver votive steps climb beneath guardian statues toward three temple doors. Moonstone inscriptions brighten underfoot while one statue wears a suspiciously jaunty pebble.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "archon-nave",
-          "message": "Within Moonstone Archon Temple, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel rests between rows of proper ceremonial gifts. Beside them sits one obviously nonceremonial shiny rock. You suspect Shizuki. The vessel contains Star Candies.",
           "reward": {
             "min": 60,
             "max": 90
@@ -25,30 +25,30 @@
           "type": "combat",
           "nextRoomId": "archon-nave",
           "enemyId": "moonstone-archon",
-          "message": "The water folds around Moonstone Archon, revealing the creature as it claims the passage."
+          "message": "A Moonstone Archon statue turns its head toward you. You stop. It stands. Apparently this temple has very active security."
         },
         "forward": {
           "type": "healing",
           "nextRoomId": "archon-nave",
           "healAmount": 40,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Moonstone restorative. Borrowed from an altar that looked underused.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "Shizuki's restorative reads: \"Borrowed from an altar that looked underused. Left replacement offering: one excellent pebble.\"",
+          "fullHpMessage": "The borrowed altar restorative remains untouched. You are already at full health, so the excellent pebble may continue covering the debt."
         }
       }
     },
     "archon-nave": {
-      "prompt": "The route winds deeper through Moonstone Archon Temple until tall pillars divide an Archon nave into three routes of equal solemnity.",
+      "prompt": "Tall pillars divide the solemn nave into three routes. Every inscription requests silence. Somewhere behind you, a tiny stone falls over with an extremely loud clack.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "lunar-apse",
-          "message": "Shizuki tucked one Berry behind a quiet journal page in the surrounding passage: \"Freedom gets lonely. Still worth every step.\"",
+          "message": "One Berry rests behind Shizuki's folded note: \"This place made me think too hard, so here is a snack. Philosophy postponed.\"",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "lunar-apse",
-          "message": "Within Moonstone Archon Temple, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache rests beneath a relief of ancient guardians. Opening it reveals Star Candies and does not summon divine judgment. Encouraging.",
           "reward": {
             "min": 70,
             "max": 105
@@ -58,30 +58,30 @@
           "type": "combat",
           "nextRoomId": "lunar-apse",
           "enemyId": "moonstone-archon",
-          "message": "The water folds around Moonstone Archon, revealing the creature as it claims the passage."
+          "message": "A Moonstone Archon steps from between the pillars. It raises one hand, waits for you to leave, then visibly seems disappointed when you don't."
         }
       }
     },
     "lunar-apse": {
-      "prompt": "As Moonstone Archon Temple grows strangely still, the Lunar apse bends around a quiet altar and opens toward three shadowed doors.",
+      "prompt": "The apse curves around a quiet moonstone altar. Three shadowed doors open behind it while faded offerings drift in the water.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moonstone-archon",
-          "message": "The water folds around Moonstone Archon, revealing the creature as it claims the passage."
+          "message": "One Archon kneels at the altar. When you approach, it rises with the painfully slow dignity of something that has been waiting centuries to do this."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Deeper inside Moonstone Archon Temple, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"I left an apology. It was almost sincere.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Shizuki's bottle says: \"I left an apology for borrowing the first one. It was almost sincere. This one is actually mine.\"",
+          "fullHpMessage": "Shizuki's actually-her-own medicine remains sealed. At full health, no further temple apologies are required."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonstone Archon Temple, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer is hidden beneath the altar platform. You discover Star Candies and another pebble. Definitely Shizuki.",
           "reward": {
             "min": 80,
             "max": 120
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Hierophant Sanctum",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The temple's oldest inscriptions circle a moonstone sanctum. Every guardian statue faces the central figure seated beyond the altar."
     }
   },
-  "bossPromptDiscord": "You reach Hierophant Sanctum. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Hierophant Sanctum: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Hierophant Sanctum. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The inscriptions across the entire temple light at once.\n\nEvery Archon kneels.\n\nThe central moonstone statue opens its eyes.\n\nUse /yes to approach the Hierophant or /no to leave before the temple decides your pebble etiquette is unacceptable.",
+  "bossPromptTwitch": "The inscriptions across the entire temple light at once.\n\nEvery Archon kneels.\n\nThe central moonstone statue opens its eyes.\n\nUse !yes to approach the Hierophant or !no to leave before the temple decides your pebble etiquette is unacceptable.",
+  "bossRetreatText": "You leave the Hierophant Sanctum. The central statue closes its eyes, and the inscriptions return to their solemn glow.",
   "boss": {
     "enemyId": "moonstone-hierophant-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Moonstone Hierophant reveals itself!"
+    "revealText": "Moonstone radiance surrounds the central statue as it rises from the sanctum. The Moonstone Hierophant awakens!"
   },
-  "completionText": "Moonstone Hierophant yields to the returning current. Moonstone Archon Temple settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Moonstone Hierophant lowers its hands. The inscriptions dim, and every Archon returns to its post. As you leave, you notice the tiny pebble hat has somehow been placed back on the statue."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "the-verdant-pursuit-station",
-    "number":  30,
-    "name":  "The Verdant Pursuit Station",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "verdant-pursuit-grunt",
-    "recommendedLevel":  20,
-    "introDiscord":  "The Verdant Pursuit Station lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Verdant Pursuit Grunt.",
-    "introTwitch":  "The Verdant Pursuit Station lies ahead amid moonlit fronds curling around forgotten shrines.",
-    "startRoomId":  "the-verdant-pursuit-station-approach",
-    "rooms":  {
-                  "the-verdant-pursuit-station-approach":  {
-                                                               "prompt":  "At the edge of The Verdant Pursuit Station, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                               "choices":  {
-                                                                               "left":  {
-                                                                                            "type":  "empty",
-                                                                                            "nextRoomId":  "the-verdant-pursuit-station-depths",
-                                                                                            "message":  "A berry cache sits beneath a terminal Shizuki renamed \"Definitely_Not_Shizuki_whispering-kelp-forest.txt.\" Its note reads: \"If you\u0027re reading this, their dramatic security system lost again. You\u0027re welcome.\"",
-                                                                                            "berries":  1
-                                                                                        },
-                                                                               "right":  {
-                                                                                             "type":  "treasure",
-                                                                                             "nextRoomId":  "the-verdant-pursuit-station-depths",
-                                                                                             "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
-                                                                                             "reward":  {
-                                                                                                            "min":  55,
-                                                                                                            "max":  99
-                                                                                                        }
-                                                                                         },
-                                                                               "forward":  {
-                                                                                               "type":  "combat",
-                                                                                               "nextRoomId":  "the-verdant-pursuit-station-depths",
-                                                                                               "enemyId":  "verdant-pursuit-grunt",
-                                                                                               "message":  "A shift in the current exposes Verdant Pursuit Grunt, which claims the forward route through The Verdant Pursuit Station."
-                                                                                           }
-                                                                           }
-                                                           },
-                  "the-verdant-pursuit-station-depths":  {
-                                                             "prompt":  "Deeper within The Verdant Pursuit Station, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                             "choices":  {
-                                                                             "left":  {
-                                                                                          "type":  "combat",
-                                                                                          "nextRoomId":  "the-verdant-pursuit-station-threshold",
-                                                                                          "enemyId":  "verdant-pursuit-grunt",
-                                                                                          "message":  "A shift in the current exposes Verdant Pursuit Grunt, which claims the left route through The Verdant Pursuit Station."
-                                                                                      },
-                                                                             "right":  {
-                                                                                           "type":  "healing",
-                                                                                           "nextRoomId":  "the-verdant-pursuit-station-threshold",
-                                                                                           "healAmount":  0,
-                                                                                           "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                           "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                       },
-                                                                             "forward":  {
-                                                                                             "type":  "treasure",
-                                                                                             "nextRoomId":  "the-verdant-pursuit-station-threshold",
-                                                                                             "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                             "reward":  {
-                                                                                                            "min":  67,
-                                                                                                            "max":  111
-                                                                                                        }
-                                                                                         }
-                                                                         }
-                                                         },
-                  "the-verdant-pursuit-station-threshold":  {
-                                                                "prompt":  "Near the heart of The Verdant Pursuit Station, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                                "choices":  {
-                                                                                "left":  {
-                                                                                             "type":  "treasure",
-                                                                                             "nextRoomId":  "boss-antechamber",
-                                                                                             "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                             "reward":  {
-                                                                                                            "min":  79,
-                                                                                                            "max":  123
-                                                                                                        }
-                                                                                         },
-                                                                                "right":  {
-                                                                                              "type":  "combat",
-                                                                                              "nextRoomId":  "boss-antechamber",
-                                                                                              "enemyId":  "verdant-pursuit-grunt",
-                                                                                              "message":  "A shift in the current exposes Verdant Pursuit Grunt, which claims the right route through The Verdant Pursuit Station."
-                                                                                          },
-                                                                                "forward":  {
-                                                                                                "type":  "healing",
-                                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                                "healAmount":  5,
-                                                                                                "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                                "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                            }
-                                                                            }
-                                                            },
-                  "boss-antechamber":  {
-                                           "name":  "Overgrown Search Command",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Overgrown Search Command."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Overgrown Search Command. A uniformed figure bearing an old institutional rank waits beyond a sealed command dais.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Overgrown Search Command: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Overgrown Search Command. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "verdant-pursuit-officer-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Verdant Pursuit Officer reveals itself!"
-             },
-    "completionText":  "Verdant Pursuit Officer falls, exposing preserved records among later additions defaced with Shizuki\u0027s cheerful graffiti. Search ledgers show that successor teams hunted escaped experiments after the rebellion, but contain no record of Shizuki\u0027s recapture. Shizuki\u0027s newest annotation reads: \"Came back on my own. Added mustache. Left whenever I wanted.\" All 30 Adventures in Whispering Kelp Forest are complete."
+  "id": "the-verdant-pursuit-station",
+  "number": 30,
+  "name": "The Verdant Pursuit Station",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "verdant-pursuit-grunt",
+  "recommendedLevel": 20,
+  "introDiscord": "Beyond Recollection Grove, ancient roots close around something that\ndoes not belong in the forest.\n\nConcrete.\n\nMetal.\n\nDead searchlights.\n\nA pursuit station lies crushed beneath decades of living growth, its\nold insignias buried beneath moss while roots twist through shattered\nsecurity doors.\n\nSomeone has drawn a cheerful mustache on the entrance sign.",
+  "introTwitch": "Beyond Recollection Grove, ancient roots close around something that\ndoes not belong in the forest.\n\nConcrete.\n\nMetal.\n\nDead searchlights.\n\nA pursuit station lies crushed beneath decades of living growth, its\nold insignias buried beneath moss while roots twist through shattered\nsecurity doors.\n\nSomeone has drawn a cheerful mustache on the entrance sign.",
+  "startRoomId": "the-verdant-pursuit-station-approach",
+  "rooms": {
+    "the-verdant-pursuit-station-approach": {
+      "prompt": "The station's outer corridors have become part forest and part ruin.\nRoots punch through observation windows, warning lights blink beneath\nmoss, and three routes remain barely recognizable.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "the-verdant-pursuit-station-depths",
+          "message": "A terminal still displays one surviving filename:\n\nDefinitely_Not_Shizuki_whispering-kelp-forest.txt\n\nOpening it reveals a doodle of Shizuki hiding behind an extremely\nunconvincing bush while Glimmer floats directly above her.\n\nOne Berry is taped underneath.\n\nThe note reads:\n\n'They checked this forest SIX TIMES.\n\nAt one point I was hiding in their map cabinet.\n\nExcellent professionals.'",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "the-verdant-pursuit-station-depths",
+          "message": "An old equipment locker has been forced open by tree roots.\n\nInside are Star Candies beneath a faded label:\n\nPURSUIT SUPPLIES.\n\nShizuki crossed it out and wrote:\n\n'FOREST DONATION BOX.'",
+          "reward": {
+            "min": 55,
+            "max": 99
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "the-verdant-pursuit-station-depths",
+          "enemyId": "verdant-pursuit-grunt",
+          "message": "A cracked searchlight flickers awake.\n\nSomething in the station answers.\n\nA Verdant Pursuit Grunt steps through the roots, old recovery insignia\nstill visible beneath the moss.\n\nThe forest may have forgotten its orders.\n\nThis thing has not."
+        }
+      }
+    },
+    "the-verdant-pursuit-station-depths": {
+      "prompt": "Deeper inside, broken map tables and tracking equipment remain tangled\nbeneath thick roots. Old pursuit routes cover the walls, though most now\nlead directly into trees.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "the-verdant-pursuit-station-threshold",
+          "enemyId": "verdant-pursuit-grunt",
+          "message": "A tracking console activates.\n\nSeveral old search markers flicker across the map.\n\nThen the nearest Verdant Pursuit Grunt turns directly toward you.\n\nApparently one piece of equipment still works.\n\nRude."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "the-verdant-pursuit-station-threshold",
+          "healAmount": 0,
+          "message": "A damaged medical cabinet is trapped beneath living roots.\n\nShizuki's newer handwriting crosses over the original facility label:\n\n'Used to hide from them here.\n\nCame back later and stole their medicine.\n\nMuch better visit.'",
+          "fullHpMessage": "The old medical supply remains in the cabinet.\n\nYou're already healthy, and the best part of this room is that nobody\ngets to tell you whether you can leave."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "the-verdant-pursuit-station-threshold",
+          "message": "An old supply crate sits beneath roots that have crushed the facility\nseal in half.\n\nInside are Star Candies.\n\nShizuki added:\n\n'Roots opened it first.\n\nI am merely participating in forest-approved salvage.'",
+          "reward": {
+            "min": 67,
+            "max": 111
+          }
+        }
+      }
+    },
+    "the-verdant-pursuit-station-threshold": {
+      "prompt": "The final station wing overlooks Whispering Kelp Forest through cracked\nobservation glass. Tracking records flicker on dead terminals while\nroots grow directly through the old search command insignia.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A sealed archive drawer has burst open beneath root pressure.\n\nAmong the Star Candies are old pursuit maps.\n\nEvery marked search route eventually ends in the same handwritten\nannotation:\n\n'STILL MISSED ME.'",
+          "reward": {
+            "min": 79,
+            "max": 123
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "verdant-pursuit-grunt",
+          "message": "A Verdant Pursuit Grunt stands beneath an old display:\n\nESCAPED SUBJECT RECOVERY — ACTIVE\n\nSomeone has written underneath:\n\n'Good luck with that.'\n\nThe Grunt turns toward you.\n\nApparently it took the message personally."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 5,
+          "message": "A final restorative bottle rests inside Shizuki's old hiding place\nbehind the archive wall.\n\nHer newer note reads:\n\n'First time I was here, I was hiding.\n\nSecond time I came because I wanted to.\n\nThird time I came to put a mustache on the Officer portrait.\n\nImportant differences.'",
+          "fullHpMessage": "You leave the restorative untouched.\n\nThe mustache remains flawless."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Overgrown Search Command",
+      "type": "boss-prompt",
+      "prompt": "The command doors grind open beneath roots thicker than the surrounding\nwalls.\n\nOld search systems begin waking one screen at a time."
+    }
+  },
+  "bossPromptDiscord": "Overgrown Search Command flickers back to life.\n\nMaps of Whispering Kelp Forest cover the walls.\n\nOld pursuit routes.\n\nFailed containment sweeps.\n\nYears of searches with no successful recovery.\n\nAt the center of the ruined command room, a uniformed figure stands\nbeneath an institutional rank insignia almost completely covered in\nvines.\n\nShizuki has added a paper mustache to the portrait beside it.\n\nAnd underneath:\n\n'Came back on my own.\n\nAdded mustache.\n\nLeft whenever I wanted.'\n\nThe Officer turns toward you.\n\nUse /yes to enter Overgrown Search Command or /no to leave Shizuki's\nart critique hanging a little longer.",
+  "bossPromptTwitch": "Overgrown Search Command flickers back to life.\n\nMaps of Whispering Kelp Forest cover the walls.\n\nOld pursuit routes.\n\nFailed containment sweeps.\n\nYears of searches with no successful recovery.\n\nAt the center of the ruined command room, a uniformed figure stands\nbeneath an institutional rank insignia almost completely covered in\nvines.\n\nShizuki has added a paper mustache to the portrait beside it.\n\nAnd underneath:\n\n'Came back on my own.\n\nAdded mustache.\n\nLeft whenever I wanted.'\n\nThe Officer turns toward you.\n\nUse !yes to enter Overgrown Search Command or !no to leave Shizuki's\nart critique hanging a little longer.",
+  "bossRetreatText": "You withdraw into the living roots.\n\nThe command doors struggle to close around them and fail.\n\nThe forest has been winning this argument for years.",
+  "boss": {
+    "enemyId": "verdant-pursuit-officer-boss",
+    "roomId": "boss",
+    "revealText": "The remaining searchlights flare green beneath the overgrowth.\n\nThe uniformed figure draws its weapon as an old command flashes across\nthe surviving terminal:\n\nPURSUIT AUTHORITY RESTORED.\n\nVerdant Pursuit Officer reveals itself!"
+  },
+  "completionText": "The Verdant Pursuit Officer falls silent.\n\nFor a moment, the old station waits for another command.\n\nNone comes.\n\nThen the forest answers instead.\n\nRoots tear through the final search displays.\n\nMoss covers the remaining insignia.\n\nThe pursuit maps disappear beneath new growth.\n\nOne surviving ledger confirms what the forest already knew:\n\nSubject Seven was never recaptured.\n\nShizuki's newest writing crosses directly over the final record:\n\n'They spent all this time searching the forest for me.\n\nThe forest knew exactly where I was.\n\nIt just wasn't telling them~\n\nThanks, forest.'\n\nBeside the note, Glimmer has apparently left one tiny glowing mark.\n\nBeyond the ruined station, the roots open onto a darker current leading\naway from the forest.\n\nFar in the distance, something enormous rests beneath the water.\n\nA shape like a rib.\n\nThen another.\n\nAnd another.\n\nThe route toward Leviathan's Wake is open.\n\nWhispering Kelp Forest is complete."
 }

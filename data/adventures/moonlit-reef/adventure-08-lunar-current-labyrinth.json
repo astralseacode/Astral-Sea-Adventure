@@ -5,30 +5,30 @@
   "regionId": "moonlit-reef",
   "enemyId": "lunar-current-eel",
   "recommendedLevel": 2,
-  "introDiscord": "The Lunar Current enters a moonglass labyrinth whose walls redirect every pulse of water.",
-  "introTwitch": "The Lunar Current enters a moonglass labyrinth whose walls redirect every pulse of water.",
+  "introDiscord": "The Lunar Current pours into a moonglass labyrinth where every wall bends the water somewhere unexpected. Reflections point in conflicting directions, currents cross through solid-looking glass, and an eel slips through one corridor only to appear behind you.",
+  "introTwitch": "The Lunar Current pours into a moonglass labyrinth where every wall bends the water somewhere unexpected. Reflections point in conflicting directions, currents cross through solid-looking glass, and an eel slips through one corridor only to appear behind you.",
   "startRoomId": "moonflow-intake",
   "rooms": {
     "moonflow-intake": {
-      "prompt": "Blue currents cross an engraved intake before splitting through three glass-lined corridors.",
+      "prompt": "Three glass-lined corridors split around an engraved intake. Blue currents point toward all three simultaneously. Somewhere inside the walls, a Lunar Current Eel watches you make your first mistake.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "spiral-channel",
           "healAmount": 30,
-          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Current-root tonic. Hold the rail before drinking.\"",
-          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki wedged a field kit beside the only railing that seems permanently attached to reality. Its bottle reads: \"Current-root tonic. Hold the rail before drinking. No, seriously.\"",
+          "fullHpMessage": "The tonic stays closed. You are healthy enough to experience the labyrinth's nonsense without medicinal assistance."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "spiral-channel",
           "enemyId": "lunar-current-eel",
-          "message": "The water folds around Lunar Current Eel, revealing the creature as it claims the passage."
+          "message": "A Lunar Current Eel shoots through the corridor, disappears through a reflected wall, and reappears beside you. It pauses just long enough to look smug before attacking."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "spiral-channel",
-          "message": "Within Lunar Current Labyrinth, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache sits at the end of a perfectly straight corridor. Suspiciously straight. You walk toward it, somehow circle the room twice, and eventually reach it from behind. Inside are Star Candies.",
           "reward": {
             "min": 35,
             "max": 60
@@ -37,12 +37,12 @@
       }
     },
     "spiral-channel": {
-      "prompt": "Farther within Lunar Current Labyrinth, a spiral channel bends around itself, leaving three exits beneath shifting lunar reflections.",
+      "prompt": "The corridor curls around itself until the floor, walls, and ceiling all seem equally plausible. Three exits rotate beneath shifting lunar reflections while an eel repeatedly takes the route you were about to choose.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "tideglass-junction",
-          "message": "Within Lunar Current Labyrinth, the left path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer is visible behind one pane of moonglass. Unfortunately, so are five reflections of it. After opening two fake cupboards and one very offended clam, you finally locate the real coffer and Star Candies.",
           "reward": {
             "min": 40,
             "max": 70
@@ -52,30 +52,30 @@
           "type": "healing",
           "nextRoomId": "tideglass-junction",
           "healAmount": 30,
-          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"The labyrinth cheats. This bottle cheats back.\"",
-          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
+          "message": "A crooked Shizuki arrow points toward a survival cache. The bottle reads: \"The labyrinth cheats. This bottle cheats back.\" Someone has added beneath it: \"Still lost though.\"",
+          "fullHpMessage": "You don't need the tonic. Shizuki's seventeen scratched-out arrows nearby may be more concerning."
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "tideglass-junction",
           "enemyId": "lunar-current-eel",
-          "message": "The water folds around Lunar Current Eel, revealing the creature as it claims the passage."
+          "message": "An eel flashes through three reflections at once. Two vanish. The third charges. You have no idea whether you picked the real one or it picked you."
         }
       }
     },
     "tideglass-junction": {
-      "prompt": "With the outer passages behind you, Lunar Current Labyrinth narrows until moonglass fins resonate at a junction where three currents pull with equal force.",
+      "prompt": "Moonglass fins hum around a junction where three currents pull with exactly equal force. Shizuki's old directional markings cover nearly every surface. None agree.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "lunar-current-eel",
-          "message": "The water folds around Lunar Current Eel, revealing the creature as it claims the passage."
+          "message": "A Lunar Current Eel loops around one fin, slips through another, and emerges directly across your path as though arriving for a scheduled appointment."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Lunar Current Labyrinth, the right path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel floats perfectly between three competing currents. Every attempt to reach it sends it somewhere else. Eventually the currents cancel each other out long enough for you to claim Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -84,7 +84,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "One Berry pins down the seventeenth correction on Shizuki's the surrounding passage map. The compass rose has been replaced with an accusation against north.",
+          "message": "One Berry pins down Shizuki's seventeenth map correction. The compass rose has been violently crossed out and replaced with: \"NORTH KNOWS WHAT IT DID.\"",
           "berries": 1
         }
       }
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Coilheart Conduit",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The labyrinth's passages finally converge around a vast rotating conduit. Currents spiral through transparent walls in impossible knots, all orbiting one enormous shadow moving effortlessly through them."
     }
   },
-  "bossPromptDiscord": "You reach Coilheart Conduit. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Coilheart Conduit: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Coilheart Conduit. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Every current in the labyrinth suddenly reverses.\n\nThe moonglass walls flare blue as a massive shape coils through passage after passage without touching a single wall.\n\nWhatever has been making the labyrinth look easy has finally noticed you.\n\nUse /yes to enter the conduit or /no to accept that the labyrinth wins this round.",
+  "bossPromptTwitch": "Every current in the labyrinth suddenly reverses.\n\nThe moonglass walls flare blue as a massive shape coils through passage after passage without touching a single wall.\n\nWhatever has been making the labyrinth look easy has finally noticed you.\n\nUse !yes to enter the conduit or !no to accept that the labyrinth wins this round.",
+  "bossRetreatText": "You back away from Coilheart Conduit. The currents resume their impossible routes, and the labyrinth seems unbearably pleased with itself.",
   "boss": {
     "enemyId": "lunar-current-coil-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Lunar Current Coil reveals itself!"
+    "revealText": "A colossal eel erupts through a ring of moonglass, currents twisting around its body like ribbons. The Lunar Current Coil has arrived!"
   },
-  "completionText": "Lunar Current Coil yields to the returning current. Lunar Current Labyrinth settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Lunar Current Coil disappears into the deepest channel, and the labyrinth finally stops rearranging itself long enough to reveal a clear exit. Shizuki's map is still completely wrong."
 }

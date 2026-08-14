@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "astral-manta-hunter",
   "recommendedLevel": 3,
-  "introDiscord": "Vast currents sweep a hunting ground suspended above the deepest coral valleys.",
-  "introTwitch": "Vast currents sweep a hunting ground suspended above the deepest coral valleys.",
+  "introDiscord": "The reef suddenly drops away beneath an enormous field of open blue. Astral Mantas glide far overhead like stars with wings, while three currents stretch across the exposed hunting grounds.",
+  "introTwitch": "The reef suddenly drops away beneath an enormous field of open blue. Astral Mantas glide far overhead like stars with wings, while three currents stretch across the exposed hunting grounds.",
   "startRoomId": "skywater-shelf",
   "rooms": {
     "skywater-shelf": {
-      "prompt": "Open skywater surrounds a shelf where three courses cross the blue emptiness.",
+      "prompt": "Nothing hides you here. Three routes cross the open water while broad shadows pass silently over the reef below.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "hunter-current",
-          "message": "Within Astral Manta Hunting Grounds, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel drifts in open water with absolutely no cover around it. You retrieve Star Candies while feeling several times more visible than necessary.",
           "reward": {
             "min": 45,
             "max": 75
@@ -25,30 +25,30 @@
           "type": "combat",
           "nextRoomId": "hunter-current",
           "enemyId": "astral-manta-hunter",
-          "message": "The water folds around Astral Manta Hunter, revealing the creature as it claims the passage."
+          "message": "A shadow passes overhead. Then again. On the third circle, an Astral Manta Hunter folds its wings and dives."
         },
         "forward": {
           "type": "healing",
           "nextRoomId": "hunter-current",
           "healAmount": 35,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Skywater restorative. A manta hunter lost track of me while I brewed it.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "Shizuki's Skywater restorative reads: \"A manta hunter lost track of me while I brewed this. Either excellent stealth or terrible hunter. Taking the win.\"",
+          "fullHpMessage": "The Skywater restorative remains unused. You are already at full health, though the circling shadows still dispute the safety of stopping."
         }
       }
     },
     "hunter-current": {
-      "prompt": "The route winds deeper through Astral Manta Hunting Grounds until a hunter current traces broad circles around three routes through towering coral fins.",
+      "prompt": "A broad current circles towering coral fins. Mantas use it like a racetrack, banking around the stone while three routes cross their hunting pattern.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "widewing-pass",
-          "message": "Shizuki fastened one Berry to a compass made from broken arrows in the surrounding passage. Every arrow points away from an unnamed laboratory.",
+          "message": "One Berry is attached to Shizuki's handmade compass. Every arrow points somewhere different. She wrote: \"New navigation rule: whichever direction the giant predator ISN'T going.\"",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "widewing-pass",
-          "message": "Within Astral Manta Hunting Grounds, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache lies inside the hollow of a coral fin. You wait for a circling Manta to pass, dart inside, and recover Star Candies.",
           "reward": {
             "min": 55,
             "max": 85
@@ -58,30 +58,30 @@
           "type": "combat",
           "nextRoomId": "widewing-pass",
           "enemyId": "astral-manta-hunter",
-          "message": "The water folds around Astral Manta Hunter, revealing the creature as it claims the passage."
+          "message": "An Astral Manta Hunter glides past without attacking. Then it banks around the coral fin. You realize too late that the first pass was reconnaissance."
         }
       }
     },
     "widewing-pass": {
-      "prompt": "As Astral Manta Hunting Grounds grows strangely still, widewing shadows pass over a high channel whose three exits descend at different angles.",
+      "prompt": "Immense shadows glide across the high channel. Three exits descend at different angles, but every path briefly passes through open water.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "astral-manta-hunter",
-          "message": "The water folds around Astral Manta Hunter, revealing the creature as it claims the passage."
+          "message": "An Astral Manta Hunter approaches almost invisibly from above, its glowing markings blending with the starlight until its wings suddenly fill your vision."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Deeper inside Astral Manta Hunting Grounds, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"For long flights, longer falls, and refusing to land where ordered.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Shizuki's bottle reads: \"For long flights, longer falls, and refusing to land where ordered. Glimmer insists falling does not count as flying.\"",
+          "fullHpMessage": "Shizuki's flight-and-falling remedy remains sealed. At full health, you can postpone the argument over whether falling counts as flying."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Astral Manta Hunting Grounds, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer is lodged high on a coral fin. Reaching it provides Star Candies and a spectacular view of several Hunters realizing where you are.",
           "reward": {
             "min": 60,
             "max": 95
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Huntmaster Eyrie",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The currents converge around a high coral Eyrie exposed on every side. Smaller Mantas circle at a distance while one immense shadow crosses the open water below."
     }
   },
-  "bossPromptDiscord": "You reach Huntmaster Eyrie. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Huntmaster Eyrie: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Huntmaster Eyrie. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Every Manta in the hunting grounds suddenly breaks formation.\n\nThe open water empties.\n\nOne enormous shadow sweeps across the entire Eyrie.\n\nThen the Huntmaster begins circling.\n\nUse /yes to stand your ground or /no to leave before it completes another pass.",
+  "bossPromptTwitch": "Every Manta in the hunting grounds suddenly breaks formation.\n\nThe open water empties.\n\nOne enormous shadow sweeps across the entire Eyrie.\n\nThen the Huntmaster begins circling.\n\nUse !yes to stand your ground or !no to leave before it completes another pass.",
+  "bossRetreatText": "You leave Huntmaster Eyrie before the enormous shadow completes another pass. Smaller Mantas cautiously return to the high current.",
   "boss": {
     "enemyId": "astral-manta-huntmaster-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Astral Manta Huntmaster reveals itself!"
+    "revealText": "The circling shadow folds its immense wings and descends into the Eyrie. The Astral Manta Huntmaster dives!"
   },
-  "completionText": "Astral Manta Huntmaster yields to the returning current. Astral Manta Hunting Grounds settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Astral Manta Huntmaster climbs back into the high current. The smaller Hunters follow, leaving a brief opening through the blue. You take it before they reconsider."
 }

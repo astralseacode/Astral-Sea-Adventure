@@ -1,107 +1,107 @@
 {
-    "id":  "veilpetal-glade",
-    "number":  4,
-    "name":  "Veilpetal Glade",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "veilpetal-ray",
-    "recommendedLevel":  11,
-    "introDiscord":  "Veilpetal Glade lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Veilpetal Ray.",
-    "introTwitch":  "Veilpetal Glade lies ahead amid towering kelp columns threaded with murmuring currents.",
-    "startRoomId":  "veilpetal-glade-approach",
-    "rooms":  {
-                  "veilpetal-glade-approach":  {
-                                                   "prompt":  "At the edge of Veilpetal Glade, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "veilpetal-glade-depths",
-                                                                                "enemyId":  "veilpetal-ray",
-                                                                                "message":  "A shift in the current exposes Veilpetal Ray, which claims the left route through Veilpetal Glade."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "empty",
-                                                                                 "nextRoomId":  "veilpetal-glade-depths",
-                                                                                 "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Veilpetal Glade. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                 "berries":  1
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "veilpetal-glade-depths",
-                                                                                   "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                   "reward":  {
-                                                                                                  "min":  185,
-                                                                                                  "max":  221
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "veilpetal-glade-depths":  {
-                                                 "prompt":  "Deeper within Veilpetal Glade, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                 "choices":  {
-                                                                 "left":  {
-                                                                              "type":  "healing",
-                                                                              "nextRoomId":  "veilpetal-glade-threshold",
-                                                                              "healAmount":  65,
-                                                                              "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                              "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                          },
-                                                                 "right":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "veilpetal-glade-threshold",
-                                                                               "enemyId":  "veilpetal-ray",
-                                                                               "message":  "A shift in the current exposes Veilpetal Ray, which claims the right route through Veilpetal Glade."
-                                                                           },
-                                                                 "forward":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "veilpetal-glade-threshold",
-                                                                                 "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                 "reward":  {
-                                                                                                "min":  197,
-                                                                                                "max":  233
-                                                                                            }
-                                                                             }
-                                                             }
-                                             },
-                  "veilpetal-glade-threshold":  {
-                                                    "prompt":  "Near the heart of Veilpetal Glade, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "message":  "Beyond the left route, you discover a shrine coffer covered by harmless moss.",
-                                                                                 "reward":  {
-                                                                                                "min":  209,
-                                                                                                "max":  245
-                                                                                            }
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "healAmount":  70,
-                                                                                  "message":  "The right route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "veilpetal-ray",
-                                                                                    "message":  "A shift in the current exposes Veilpetal Ray, which claims the forward route through Veilpetal Glade."
-                                                                                }
-                                                                }
-                                                },
-                  "boss-antechamber":  {
-                                           "name":  "Curtained Moon Grove",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Curtained Moon Grove."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Curtained Moon Grove. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Curtained Moon Grove: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Curtained Moon Grove. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "veilpetal-grandwing-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Veilpetal Grandwing reveals itself!"
-             },
-    "completionText":  "Veilpetal Grandwing yields, and the currents beyond Curtained Moon Grove open the next route through Whispering Kelp Forest."
+  "id": "veilpetal-glade",
+  "number": 4,
+  "name": "Veilpetal Glade",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "veilpetal-ray",
+  "recommendedLevel": 11,
+  "introDiscord": "Silvery petals drift through a glade so densely that entire paths vanish\nbehind them. Veilpetal Rays glide beneath the flowers, lifting the\npetal curtains only when they choose to be seen.",
+  "introTwitch": "Silvery petals drift through a glade so densely that entire paths vanish\nbehind them. Veilpetal Rays glide beneath the flowers, lifting the\npetal curtains only when they choose to be seen.",
+  "startRoomId": "veilpetal-glade-approach",
+  "rooms": {
+    "veilpetal-glade-approach": {
+      "prompt": "Three paths wind through curtains of pale petals. Something wide keeps\nmoving beneath the flowerbed without disturbing a single bloom.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "veilpetal-glade-depths",
+          "enemyId": "veilpetal-ray",
+          "message": "A mound of petals rises.\n\nTwo glowing eyes appear underneath.\n\nA Veilpetal Ray bursts from its floral blanket, apparently furious that\nyou noticed the world's least convincing flower."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "veilpetal-glade-depths",
+          "message": "One Berry rests inside Shizuki's abandoned flower crown.\n\nHer note reads:\n\n'Made crown.\n\nGlimmer refused crown.\n\nRay stole crown.\n\nFound crown again.\n\nCrown has lived full life.'",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "veilpetal-glade-depths",
+          "message": "An offering basket lies behind a curtain of silver petals. The flowers\npart when you approach, revealing Star Candies arranged like the center\nof a blossom.",
+          "reward": {
+            "min": 185,
+            "max": 221
+          }
+        }
+      }
+    },
+    "veilpetal-glade-depths": {
+      "prompt": "Living rootways wind beneath drifting Fae lights while petals swirl\nthrough three narrow garden corridors.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "veilpetal-glade-threshold",
+          "healAmount": 65,
+          "message": "A moonblossom pool rests beneath folded petals. Shizuki left a note:\n\n'Excellent healing spot.\n\nPetal Ray used me as pillow.\n\nWould return.'",
+          "fullHpMessage": "You leave the pool untouched. You're already healthy, and there is no\nneed to disturb any potential Ray bedding."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "veilpetal-glade-threshold",
+          "enemyId": "veilpetal-ray",
+          "message": "A Veilpetal Ray sweeps through the garden trailing petals behind it.\n\nOne lands on your head.\n\nThe Ray circles back.\n\nApparently that petal was not complimentary."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "veilpetal-glade-threshold",
+          "message": "Broad silver kelp wraps a cache of Star Candies beneath a giant blossom.\nSeveral petals fold over the bundle like gift paper.",
+          "reward": {
+            "min": 197,
+            "max": 233
+          }
+        }
+      }
+    },
+    "veilpetal-glade-threshold": {
+      "prompt": "Moonlit fronds curl toward Curtained Moon Grove, where three routes\ndisappear behind enormous hanging blossoms.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A moss-covered shrine coffer rests beneath an arch of petals. Opening\nit releases Star Candies and approximately enough flower petals for one\nextremely dramatic entrance.",
+          "reward": {
+            "min": 209,
+            "max": 245
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 70,
+          "message": "Restorative sap waits beneath Shizuki's handwritten label:\n\n'Flower medicine.\n\nFlower unrelated to medicine.\n\nFlower insisted on being included.'",
+          "fullHpMessage": "You leave the sap and its apparently very important decorative flower."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "veilpetal-ray",
+          "message": "A curtain of petals rises by itself.\n\nA Veilpetal Ray was holding it.\n\nThe performance becomes hostile."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Curtained Moon Grove",
+      "type": "boss-prompt",
+      "prompt": "Every petal in the glade lifts from the ground and begins circling the\nsame enormous silhouette."
+    }
+  },
+  "bossPromptDiscord": "The flower curtains across Curtained Moon Grove pull aside.\n\nSomething vast glides beneath them, its wings large enough to lift the\nentire garden in its wake.\n\nEvery smaller Veilpetal Ray disappears beneath the blossoms.\n\nUse /yes to enter the Grove or /no to let the curtain fall again.",
+  "bossPromptTwitch": "The flower curtains across Curtained Moon Grove pull aside.\n\nSomething vast glides beneath them, its wings large enough to lift the\nentire garden in its wake.\n\nEvery smaller Veilpetal Ray disappears beneath the blossoms.\n\nUse !yes to enter the Grove or !no to let the curtain fall again.",
+  "bossRetreatText": "You step back. The petals descend, hiding the enormous silhouette once\nmore.",
+  "boss": {
+    "enemyId": "veilpetal-grandwing-boss",
+    "roomId": "boss",
+    "revealText": "A storm of silver petals erupts as vast wings unfold.\n\nVeilpetal Grandwing reveals itself!"
+  },
+  "completionText": "\"The Grandwing settles beneath the flowers.\n\nThe petals drift gently back into place.\n\nOne lands on your head.\n\nThis time, nobody attacks.\"\n\n\n#################################################################"
 }

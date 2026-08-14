@@ -1,107 +1,107 @@
 {
-    "id":  "trenchstar-depths",
-    "number":  28,
-    "name":  "Trenchstar Depths",
-    "regionId":  "starfall-trench",
-    "enemyId":  "trenchstar-behemoth",
-    "recommendedLevel":  10,
-    "introDiscord":  "Trenchstar Depths lies ahead, where fractured starstone terraces conceal the territory of Trenchstar Behemoth.",
-    "introTwitch":  "Trenchstar Depths lies ahead amid fractured starstone terraces.",
-    "startRoomId":  "trenchstar-depths-approach",
-    "rooms":  {
-                  "trenchstar-depths-approach":  {
-                                                     "prompt":  "At the edge of Trenchstar Depths, fractured starstone terraces divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "trenchstar-depths-depths",
-                                                                                  "enemyId":  "trenchstar-behemoth",
-                                                                                  "message":  "A shift in the current exposes Trenchstar Behemoth, which claims the left route through Trenchstar Depths."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "trenchstar-depths-depths",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Trenchstar Depths. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "trenchstar-depths-depths",
-                                                                                     "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                     "reward":  {
-                                                                                                    "min":  52,
-                                                                                                    "max":  96
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "trenchstar-depths-depths":  {
-                                                   "prompt":  "Deeper within Trenchstar Depths, meteor-lit trenches divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "healing",
-                                                                                "nextRoomId":  "trenchstar-depths-threshold",
-                                                                                "healAmount":  4,
-                                                                                "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "trenchstar-depths-threshold",
-                                                                                 "enemyId":  "trenchstar-behemoth",
-                                                                                 "message":  "A shift in the current exposes Trenchstar Behemoth, which claims the right route through Trenchstar Depths."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "trenchstar-depths-threshold",
-                                                                                   "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
-                                                                                   "reward":  {
-                                                                                                  "min":  64,
-                                                                                                  "max":  108
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "trenchstar-depths-threshold":  {
-                                                      "prompt":  "Near the heart of Trenchstar Depths, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "message":  "Beyond the left route, you discover a star chart coffer buried in luminous silt.",
-                                                                                   "reward":  {
-                                                                                                  "min":  76,
-                                                                                                  "max":  120
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  9,
-                                                                                    "message":  "The right route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "trenchstar-behemoth",
-                                                                                      "message":  "A shift in the current exposes Trenchstar Behemoth, which claims the forward route through Trenchstar Depths."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Bedrock Constellation",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Bedrock Constellation."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Bedrock Constellation. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Bedrock Constellation: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Bedrock Constellation. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "abyssal-star-behemoth-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Abyssal Star Behemoth reveals itself!"
-             },
-    "completionText":  "Abyssal Star Behemoth yields, and the currents beyond Bedrock Constellation open the next route through Starfall Trench."
+  "id": "trenchstar-depths",
+  "number": 28,
+  "name": "Trenchstar Depths",
+  "regionId": "starfall-trench",
+  "enemyId": "trenchstar-behemoth",
+  "recommendedLevel": 10,
+  "introDiscord": "The trench descends farther than every previous map claimed possible. Shizuki's old markers repeatedly announce that she has 'finally found the bottom.'",
+  "introTwitch": "The trench descends farther than every previous map claimed possible. Shizuki's old markers repeatedly announce that she has 'finally found the bottom.'",
+  "startRoomId": "trenchstar-depths-approach",
+  "rooms": {
+    "trenchstar-depths-approach": {
+      "prompt": "Three routes descend beneath Marker #1: 'BOTTOM FOUND!'",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "trenchstar-depths-depths",
+          "enemyId": "trenchstar-behemoth",
+          "message": "A Trenchstar Behemoth rises from below.\n\nApparently there is more below."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "trenchstar-depths-depths",
+          "message": "A Berry rests beside Marker #2:\n\n\"Correction.\n\nTHAT was not bottom.\n\nTHIS is bottom.\"",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "trenchstar-depths-depths",
+          "message": "A meteor-iron reliquary sits inside a deeper crater.",
+          "reward": {
+            "min": 52,
+            "max": 96
+          }
+        }
+      }
+    },
+    "trenchstar-depths-depths": {
+      "prompt": "Three routes descend beneath Marker #6.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "trenchstar-depths-threshold",
+          "healAmount": 4,
+          "message": "Shizuki's tonic rests beneath:\n\n\"BOTTOM FOUND FOR REAL THIS TIME.\"",
+          "fullHpMessage": "You leave the medicine and continue doubting the signage."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "trenchstar-depths-threshold",
+          "enemyId": "trenchstar-behemoth",
+          "message": "A Behemoth emerges from yet another lower level."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "trenchstar-depths-threshold",
+          "message": "Star Candies glitter inside deep cometglass.",
+          "reward": {
+            "min": 64,
+            "max": 108
+          }
+        }
+      }
+    },
+    "trenchstar-depths-threshold": {
+      "prompt": "Three enormous descents lead toward Bedrock Constellation. Marker #11 waits nearby.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A star-chart coffer lies beneath Marker #11.",
+          "reward": {
+            "min": 76,
+            "max": 120
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 9,
+          "message": "Shizuki's bottle reads:\n\n\"I am no longer using the word bottom.\n\nThe trench has won.\"",
+          "fullHpMessage": "You leave the bottle. Personal growth has occurred."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "trenchstar-behemoth",
+          "message": "\"A Trenchstar Behemoth rises from below the supposed lowest point.\"\n\nBOSS:"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Bedrock Constellation",
+      "type": "boss-prompt",
+      "prompt": "The seabed cracks."
+    }
+  },
+  "bossPromptDiscord": "The seabed cracks.\n\nThere is, unbelievably, more trench underneath it.\n\nSomething enormous rises from the darkness.\n\nUse /yes to enter Bedrock Constellation or /no to stop asking how deep this place goes.",
+  "bossPromptTwitch": "The seabed cracks.\n\nThere is, unbelievably, more trench underneath it.\n\nSomething enormous rises from the darkness.\n\nUse !yes to enter Bedrock Constellation or !no to stop asking how deep this place goes.",
+  "bossRetreatText": "You retreat upward.\n\nUp is a comforting concept.",
+  "boss": {
+    "enemyId": "abyssal-star-behemoth-boss",
+    "roomId": "boss",
+    "revealText": "A colossal star-lit body rises from beneath the bedrock.\n\nAbyssal Star Behemoth reveals itself!"
+  },
+  "completionText": "\"The Behemoth descends again.\n\nYou have reached the bottom.\n\nProbably.\n\nNo. We're not writing that down.\"\n\n\n#################################################################"
 }

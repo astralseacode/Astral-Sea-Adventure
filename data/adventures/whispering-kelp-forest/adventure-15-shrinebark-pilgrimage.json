@@ -1,107 +1,107 @@
 {
-    "id":  "shrinebark-pilgrimage",
-    "number":  15,
-    "name":  "Shrinebark Pilgrimage",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "shrinebark-guardian",
-    "recommendedLevel":  15,
-    "introDiscord":  "Shrinebark Pilgrimage lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Shrinebark Guardian.",
-    "introTwitch":  "Shrinebark Pilgrimage lies ahead amid moonlit fronds curling around forgotten shrines.",
-    "startRoomId":  "shrinebark-pilgrimage-approach",
-    "rooms":  {
-                  "shrinebark-pilgrimage-approach":  {
-                                                         "prompt":  "At the edge of Shrinebark Pilgrimage, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "shrinebark-pilgrimage-depths",
-                                                                                      "healAmount":  37,
-                                                                                      "message":  "The left route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "shrinebark-pilgrimage-depths",
-                                                                                       "enemyId":  "shrinebark-guardian",
-                                                                                       "message":  "A shift in the current exposes Shrinebark Guardian, which claims the right route through Shrinebark Pilgrimage."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "shrinebark-pilgrimage-depths",
-                                                                                         "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                         "reward":  {
-                                                                                                        "min":  130,
-                                                                                                        "max":  169
-                                                                                                    }
-                                                                                     }
-                                                                     }
-                                                     },
-                  "shrinebark-pilgrimage-depths":  {
-                                                       "prompt":  "Deeper within Shrinebark Pilgrimage, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "empty",
-                                                                                    "nextRoomId":  "shrinebark-pilgrimage-threshold",
-                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Shrinebark Pilgrimage. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                    "berries":  1
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "shrinebark-pilgrimage-threshold",
-                                                                                     "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
-                                                                                     "reward":  {
-                                                                                                    "min":  142,
-                                                                                                    "max":  181
-                                                                                                }
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "shrinebark-pilgrimage-threshold",
-                                                                                       "enemyId":  "shrinebark-guardian",
-                                                                                       "message":  "A shift in the current exposes Shrinebark Guardian, which claims the forward route through Shrinebark Pilgrimage."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "shrinebark-pilgrimage-threshold":  {
-                                                          "prompt":  "Near the heart of Shrinebark Pilgrimage, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                          "choices":  {
-                                                                          "left":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "enemyId":  "shrinebark-guardian",
-                                                                                       "message":  "A shift in the current exposes Shrinebark Guardian, which claims the left route through Shrinebark Pilgrimage."
-                                                                                   },
-                                                                          "right":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "healAmount":  42,
-                                                                                        "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    },
-                                                                          "forward":  {
-                                                                                          "type":  "treasure",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                          "reward":  {
-                                                                                                         "min":  154,
-                                                                                                         "max":  193
-                                                                                                     }
-                                                                                      }
-                                                                      }
-                                                      },
-                  "boss-antechamber":  {
-                                           "name":  "Old Bark Sanctuary",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Old Bark Sanctuary."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Old Bark Sanctuary. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Old Bark Sanctuary: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Old Bark Sanctuary. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "first-root-guardian-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. First-Root Guardian reveals itself!"
-             },
-    "completionText":  "First-Root Guardian yields, and the currents beyond Old Bark Sanctuary open the next route through Whispering Kelp Forest."
+  "id": "shrinebark-pilgrimage",
+  "number": 15,
+  "name": "Shrinebark Pilgrimage",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "shrinebark-guardian",
+  "recommendedLevel": 15,
+  "introDiscord": "Old shrine trees line a ceremonial route through the forest. Their bark\nis covered in offerings left by generations of travelers, while\nShrinebark Guardians quietly watch each step.",
+  "introTwitch": "Old shrine trees line a ceremonial route through the forest. Their bark\nis covered in offerings left by generations of travelers, while\nShrinebark Guardians quietly watch each step.",
+  "startRoomId": "shrinebark-pilgrimage-approach",
+  "rooms": {
+    "shrinebark-pilgrimage-approach": {
+      "prompt": "Three pilgrimage paths climb between carved roots and faded offerings.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "shrinebark-pilgrimage-depths",
+          "healAmount": 37,
+          "message": "Restorative sap rests in a folded ceremonial leaf.\n\nShizuki left one shiny pebble beside it and wrote:\n\n'Borrowed medicine.\n\nLeft payment.\n\nPebble excellent quality.'",
+          "fullHpMessage": "You leave the restorative sap and Shizuki's premium ceremonial pebble\nundisturbed."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "shrinebark-pilgrimage-depths",
+          "enemyId": "shrinebark-guardian",
+          "message": "A Shrinebark Guardian steps from beside the path and taps its staff\nagainst the root once.\n\nYou do not know the rule you broke.\n\nUnfortunately, it does."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "shrinebark-pilgrimage-depths",
+          "message": "A moss-covered shrine coffer contains Star Candies beneath dozens of\nold travel tokens.\n\nShizuki's pebble is somehow the shiniest offering.",
+          "reward": {
+            "min": 130,
+            "max": 169
+          }
+        }
+      }
+    },
+    "shrinebark-pilgrimage-depths": {
+      "prompt": "Towering kelp columns rise around three deeper pilgrimage routes.\nAncient carvings suggest travelers once stopped at every shrine.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "shrinebark-pilgrimage-threshold",
+          "message": "One Berry rests inside a tiny offering bowl.\n\nShizuki wrote:\n\n'Left Berry for shrine.\n\nGot hungry.\n\nReplaced Berry.\n\nAte replacement.\n\nBought third Berry.\n\nTHIS is third Berry.\n\nDo not continue cycle.'",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "shrinebark-pilgrimage-threshold",
+          "message": "An offering basket hidden inside an old root contains Star Candies and\nseveral polished shells.",
+          "reward": {
+            "min": 142,
+            "max": 181
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "shrinebark-pilgrimage-threshold",
+          "enemyId": "shrinebark-guardian",
+          "message": "A Shrinebark Guardian raises one hand in silent warning.\n\nYou bow.\n\nIt pauses.\n\nThen still attacks.\n\nEtiquette only gets you so far."
+        }
+      }
+    },
+    "shrinebark-pilgrimage-threshold": {
+      "prompt": "Living rootways lead toward Old Bark Sanctuary. Three paths cross\nbeneath ancient prayer ribbons.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "shrinebark-guardian",
+          "message": "A Guardian kneels beside a shrine.\n\nAs you approach the final route, it stands.\n\nVery slowly.\n\nVery ceremonially.\n\nStill a problem."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 42,
+          "message": "A tranquil grove pool sits beneath Shizuki's note:\n\n'Pilgrimage status:\nRespectful.\nMostly.\nGlimmer wore offering ribbon as cape for ten minutes.'",
+          "fullHpMessage": "You leave the pool untouched. No further ceremonial incidents are\nrequired."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Broad silver kelp wraps a cache of Star Candies beneath a carved image\nof the oldest roots.",
+          "reward": {
+            "min": 154,
+            "max": 193
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Old Bark Sanctuary",
+      "type": "boss-prompt",
+      "prompt": "Every Shrinebark Guardian along the pilgrimage kneels toward the oldest\ntree."
+    }
+  },
+  "bossPromptDiscord": "The bark of Old Bark Sanctuary begins to glow.\n\nAncient carvings awaken one by one as the roots split around a towering\nfigure that has stood within the tree for longer than the surrounding\nshrines.\n\nUse /yes to approach the Sanctuary or /no to leave the oldest Guardian\nto its watch.",
+  "bossPromptTwitch": "The bark of Old Bark Sanctuary begins to glow.\n\nAncient carvings awaken one by one as the roots split around a towering\nfigure that has stood within the tree for longer than the surrounding\nshrines.\n\nUse !yes to approach the Sanctuary or !no to leave the oldest Guardian\nto its watch.",
+  "bossRetreatText": "You step away from the Sanctuary. The old carvings dim, and the\nGuardians remain kneeling.",
+  "boss": {
+    "enemyId": "first-root-guardian-boss",
+    "roomId": "boss",
+    "revealText": "The ancient bark opens and a massive guardian steps from the heartwood.\n\nFirst-Root Guardian reveals itself!"
+  },
+  "completionText": "\"The First-Root Guardian returns to the ancient tree.\n\nThe pilgrimage route opens ahead.\n\nShizuki's shiny pebble remains on the shrine.\n\nAccepted, apparently.\"\n\n\n#################################################################"
 }

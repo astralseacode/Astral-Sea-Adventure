@@ -1,0 +1,20 @@
+{
+    "id": "festival-crown-guardian",
+    "name": "Festival Crown Guardian",
+    "region": "sunken-kings-throne",
+    "level": 50,
+    "hp": 430,
+    "damageBonus": 14,
+    "isBoss": false,
+    "reward": {
+        "candies": {
+            "min": 920,
+            "max": 1650
+        },
+        "xp": {
+            "min": 920,
+            "max": 1020
+        }
+    },
+    "defeatCandyLoss": 190
+}

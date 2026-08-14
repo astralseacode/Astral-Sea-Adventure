@@ -1,107 +1,107 @@
 {
-    "id":  "the-returning-yesterday",
-    "number":  14,
-    "name":  "The Returning Yesterday",
-    "regionId":  "astral-nexus",
-    "enemyId":  "yesterdays-revenant",
-    "recommendedLevel":  50,
-    "introDiscord":  "The Returning Yesterday lies ahead, where fae arches opening onto incompatible skies conceal the territory of Yesterday\u0027s Revenant.",
-    "introTwitch":  "The Returning Yesterday lies ahead amid fae arches opening onto incompatible skies.",
-    "startRoomId":  "the-returning-yesterday-approach",
-    "rooms":  {
-                  "the-returning-yesterday-approach":  {
-                                                           "prompt":  "At the edge of The Returning Yesterday, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                           "choices":  {
-                                                                           "left":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "the-returning-yesterday-depths",
-                                                                                        "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
-                                                                                        "reward":  {
-                                                                                                       "min":  295,
-                                                                                                       "max":  334
-                                                                                                   }
-                                                                                    },
-                                                                           "right":  {
-                                                                                         "type":  "healing",
-                                                                                         "nextRoomId":  "the-returning-yesterday-depths",
-                                                                                         "healAmount":  74,
-                                                                                         "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                         "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                     },
-                                                                           "forward":  {
-                                                                                           "type":  "combat",
-                                                                                           "nextRoomId":  "the-returning-yesterday-depths",
-                                                                                           "enemyId":  "yesterdays-revenant",
-                                                                                           "message":  "A shift in the current exposes Yesterday\u0027s Revenant, which claims the forward route through The Returning Yesterday."
-                                                                                       }
-                                                                       }
-                                                       },
-                  "the-returning-yesterday-depths":  {
-                                                         "prompt":  "Deeper within The Returning Yesterday, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "the-returning-yesterday-threshold",
-                                                                                      "enemyId":  "yesterdays-revenant",
-                                                                                      "message":  "A shift in the current exposes Yesterday\u0027s Revenant, which claims the left route through The Returning Yesterday."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "empty",
-                                                                                       "nextRoomId":  "the-returning-yesterday-threshold",
-                                                                                       "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Returning Yesterday. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                       "berries":  1
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "the-returning-yesterday-threshold",
-                                                                                         "message":  "Beyond the forward route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                         "reward":  {
-                                                                                                        "min":  307,
-                                                                                                        "max":  346
-                                                                                                    }
-                                                                                     }
-                                                                     }
-                                                     },
-                  "the-returning-yesterday-threshold":  {
-                                                            "prompt":  "Near the heart of The Returning Yesterday, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                            "choices":  {
-                                                                            "left":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "message":  "Beyond the left route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                         "reward":  {
-                                                                                                        "min":  319,
-                                                                                                        "max":  358
-                                                                                                    }
-                                                                                     },
-                                                                            "right":  {
-                                                                                          "type":  "combat",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "enemyId":  "yesterdays-revenant",
-                                                                                          "message":  "A shift in the current exposes Yesterday\u0027s Revenant, which claims the right route through The Returning Yesterday."
-                                                                                      },
-                                                                            "forward":  {
-                                                                                            "type":  "healing",
-                                                                                            "nextRoomId":  "boss-antechamber",
-                                                                                            "healAmount":  79,
-                                                                                            "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                            "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                        }
-                                                                        }
-                                                        },
-                  "boss-antechamber":  {
-                                           "name":  "Chronology Crypt",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Chronology Crypt."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Chronology Crypt. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Chronology Crypt: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Chronology Crypt. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "tomorrows-ancestor-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Tomorrow\u0027s Ancestor reveals itself!"
-             },
-    "completionText":  "Tomorrow\u0027s Ancestor yields, and the currents beyond Chronology Crypt open the next route through Astral Nexus."
+    "id": "the-returning-yesterday",
+    "number": 14,
+    "name": "The Returning Yesterday",
+    "regionId": "astral-nexus",
+    "enemyId": "yesterdays-revenant",
+    "recommendedLevel": 50,
+    "introDiscord": "You arrive at a campsite.\n\nShizuki's campsite.\n\nFresh.\n\nThen you blink.\n\nIt becomes ancient.\n\nThen fresh again.",
+    "introTwitch": "You arrive at a campsite.\n\nShizuki's campsite.\n\nFresh.\n\nThen you blink.\n\nIt becomes ancient.\n\nThen fresh again.",
+    "startRoomId": "the-returning-yesterday-approach",
+    "rooms": {
+        "the-returning-yesterday-approach": {
+            "prompt": "Three impossible routes open across The Returning Yesterday.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "the-returning-yesterday-depths",
+                    "message": "A chest alternates between unopened, empty, and already-looted.\n\nYou grab it during unopened.",
+                    "reward": {
+                        "min": 295,
+                        "max": 334
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "the-returning-yesterday-depths",
+                    "healAmount": 74,
+                    "message": "You rest beside yesterday's version of Shizuki's camp.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "the-returning-yesterday-depths",
+                    "enemyId": "yesterdays-revenant",
+                    "message": "A Yesterday's Revenant arrives from an event that already happened."
+                }
+            }
+        },
+        "the-returning-yesterday-depths": {
+            "prompt": "Deeper within The Returning Yesterday, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "the-returning-yesterday-threshold",
+                    "enemyId": "yesterdays-revenant",
+                    "message": "The Revenant repeats the same entrance.\n\nYou remember it this time."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "the-returning-yesterday-threshold",
+                    "message": "One Berry rests beside a note:\n\n'I remember writing this tomorrow.\n\nThis sentence made sense when I started it.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "the-returning-yesterday-threshold",
+                    "message": "A cache contains dust from tomorrow and treasure from yesterday.",
+                    "reward": {
+                        "min": 307,
+                        "max": 346
+                    }
+                }
+            }
+        },
+        "the-returning-yesterday-threshold": {
+            "prompt": "Near Chronology Crypt, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A coffer appears before whoever originally hid it.",
+                    "reward": {
+                        "min": 319,
+                        "max": 358
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "yesterdays-revenant",
+                    "message": "A Revenant arrives one day too early."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 79,
+                    "message": "A peaceful version of yesterday restores you.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Chronology Crypt",
+            "type": "boss-prompt",
+            "prompt": "Chronology Crypt fills with overlapping versions of the same chamber."
+        }
+    },
+    "bossPromptDiscord": "Chronology Crypt fills with overlapping versions of the same chamber.\n\nA figure walks toward you from tomorrow while casting a shadow into\nyesterday.\n\nUse /yes to enter or /no to deal with this at a more\nreasonable time.",
+    "bossPromptTwitch": "Chronology Crypt fills with overlapping versions of the same chamber.\n\nA figure walks toward you from tomorrow while casting a shadow into\nyesterday.\n\nUse !yes to enter or !no to deal with this at a more\nreasonable time.",
+    "bossRetreatText": "You withdraw from Chronology Crypt. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "tomorrows-ancestor-boss",
+        "roomId": "boss",
+        "revealText": "The timelines overlap.\n\nTomorrow's Ancestor reveals itself!"
+    },
+    "completionText": "The chamber returns to the present.\n\nShizuki's note says:\n\n'FINALLY.'"
 }

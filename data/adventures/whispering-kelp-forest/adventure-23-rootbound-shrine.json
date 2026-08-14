@@ -1,107 +1,107 @@
 {
-    "id":  "rootbound-shrine",
-    "number":  23,
-    "name":  "Rootbound Shrine",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "rootbound-effigy",
-    "recommendedLevel":  18,
-    "introDiscord":  "Rootbound Shrine lies ahead, where living rootways beneath drifting fae lights conceal the territory of Rootbound Effigy.",
-    "introTwitch":  "Rootbound Shrine lies ahead amid living rootways beneath drifting fae lights.",
-    "startRoomId":  "rootbound-shrine-approach",
-    "rooms":  {
-                  "rootbound-shrine-approach":  {
-                                                    "prompt":  "At the edge of Rootbound Shrine, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "rootbound-shrine-depths",
-                                                                                 "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                 "reward":  {
-                                                                                                "min":  90,
-                                                                                                "max":  132
-                                                                                            }
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "rootbound-shrine-depths",
-                                                                                  "enemyId":  "rootbound-effigy",
-                                                                                  "message":  "A shift in the current exposes Rootbound Effigy, which claims the right route through Rootbound Shrine."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "rootbound-shrine-depths",
-                                                                                    "healAmount":  17,
-                                                                                    "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                }
-                                                                }
-                                                },
-                  "rootbound-shrine-depths":  {
-                                                  "prompt":  "Deeper within Rootbound Shrine, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "rootbound-shrine-threshold",
-                                                                               "enemyId":  "rootbound-effigy",
-                                                                               "message":  "A shift in the current exposes Rootbound Effigy, which claims the left route through Rootbound Shrine."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "rootbound-shrine-threshold",
-                                                                                "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
-                                                                                "reward":  {
-                                                                                               "min":  102,
-                                                                                               "max":  144
-                                                                                           }
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "empty",
-                                                                                  "nextRoomId":  "rootbound-shrine-threshold",
-                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Rootbound Shrine. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                  "berries":  1
-                                                                              }
-                                                              }
-                                              },
-                  "rootbound-shrine-threshold":  {
-                                                     "prompt":  "Near the heart of Rootbound Shrine, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "healAmount":  22,
-                                                                                  "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "rootbound-effigy",
-                                                                                   "message":  "A shift in the current exposes Rootbound Effigy, which claims the right route through Rootbound Shrine."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                     "reward":  {
-                                                                                                    "min":  114,
-                                                                                                    "max":  156
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "Knot of Old Oaths",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Knot of Old Oaths."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Knot of Old Oaths. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Knot of Old Oaths: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Knot of Old Oaths. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "greenwood-idol-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Greenwood Idol reveals itself!"
-             },
-    "completionText":  "Greenwood Idol yields, and the currents beyond Knot of Old Oaths open the next route through Whispering Kelp Forest."
+  "id": "rootbound-shrine",
+  "number": 23,
+  "name": "Rootbound Shrine",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "rootbound-effigy",
+  "recommendedLevel": 18,
+  "introDiscord": "A forgotten shrine has been completely swallowed by roots. Rootbound\nEffigies stand among old offerings, their wooden bodies packed with\nletters left by travelers asking the forest for guidance.",
+  "introTwitch": "A forgotten shrine has been completely swallowed by roots. Rootbound\nEffigies stand among old offerings, their wooden bodies packed with\nletters left by travelers asking the forest for guidance.",
+  "startRoomId": "rootbound-shrine-approach",
+  "rooms": {
+    "rootbound-shrine-approach": {
+      "prompt": "Three rootways pass between silent effigies wrapped in old ribbons and\nweathered notes.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "rootbound-shrine-depths",
+          "message": "Broad silver kelp hides Star Candies beneath an effigy holding dozens\nof tiny folded letters.\n\nOne wooden hand points helpfully toward the cache.",
+          "reward": {
+            "min": 90,
+            "max": 132
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "rootbound-shrine-depths",
+          "enemyId": "rootbound-effigy",
+          "message": "A Rootbound Effigy turns its head.\n\nSeveral old letters rustle inside its chest.\n\nThen it steps off the shrine platform."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "rootbound-shrine-depths",
+          "healAmount": 17,
+          "message": "Restorative sap rests in a ceremonial leaf.\n\nShizuki left a folded message beside it:\n\n'Dear Forest,\n\nPlease provide directions.\n\nActual directions.\n\nNot philosophical directions.\n\nThank you.'",
+          "fullHpMessage": "You leave the restorative sap and Shizuki's unanswered customer-service\nrequest in place."
+        }
+      }
+    },
+    "rootbound-shrine-depths": {
+      "prompt": "Moonlit fronds surround three shrine corridors where roots grow around\nstacks of old traveler letters.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "rootbound-shrine-threshold",
+          "enemyId": "rootbound-effigy",
+          "message": "An Effigy quietly collects one fallen letter from the floor.\n\nThen it notices you standing beyond the shrine marker.\n\nApparently letter duty and guard duty overlap."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "rootbound-shrine-threshold",
+          "message": "A moss-covered coffer contains Star Candies and a bundle of unopened\nnotes addressed simply:\n\n'To the Forest.'",
+          "reward": {
+            "min": 102,
+            "max": 144
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "rootbound-shrine-threshold",
+          "message": "One Berry rests beside Shizuki's second letter:\n\n'Dear Forest,\n\nFound destination myself.\n\nPlease disregard previous complaint.\n\nStill think signage could improve.'",
+          "berries": 1
+        }
+      }
+    },
+    "rootbound-shrine-threshold": {
+      "prompt": "Towering roots converge around Knot of Old Oaths, where three routes\npass through generations of offerings.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 22,
+          "message": "A moonblossom pool rests beneath hundreds of tiny prayer ribbons.\n\nShizuki's contribution reads:\n\n'Wish:\nmore berries.\nbetter maps.\nGlimmer stop stealing pencil.'",
+          "fullHpMessage": "You leave the pool and Shizuki's carefully prioritized wishes\nundisturbed."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "rootbound-effigy",
+          "message": "A Rootbound Effigy blocks the shrine path.\n\nIts wooden face is featureless.\n\nSomeone has drawn a tiny smile on it.\n\nShizuki."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "An offering basket woven directly into the roots contains Star Candies\nand one exceptionally shiny pebble.\n\nThe pilgrimage pebble tradition continues.",
+          "reward": {
+            "min": 114,
+            "max": 156
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Knot of Old Oaths",
+      "type": "boss-prompt",
+      "prompt": "Every Rootbound Effigy turns toward the oldest knot of roots."
+    }
+  },
+  "bossPromptDiscord": "The old letters throughout the Shrine begin lifting into the current.\n\nHundreds circle the Knot of Old Oaths as the roots beneath it rise into\nthe shape of an enormous wooden figure.\n\nUse /yes to approach the Knot or /no to leave the forest's oldest\ncollection of promises undisturbed.",
+  "bossPromptTwitch": "The old letters throughout the Shrine begin lifting into the current.\n\nHundreds circle the Knot of Old Oaths as the roots beneath it rise into\nthe shape of an enormous wooden figure.\n\nUse !yes to approach the Knot or !no to leave the forest's oldest\ncollection of promises undisturbed.",
+  "bossRetreatText": "You withdraw. The letters settle slowly back among the roots.",
+  "boss": {
+    "enemyId": "greenwood-idol-boss",
+    "roomId": "boss",
+    "revealText": "The oldest roots twist together around a massive carved body.\n\nGreenwood Idol reveals itself!"
+  },
+  "completionText": "\"The Greenwood Idol settles back into the Knot.\n\nOne old letter drifts down beside the exit.\n\nIt contains no grand prophecy.\n\nOnly:\n\n'Please help me find the way home.'\n\nThe forest has kept it all this time.\"\n\n\n#################################################################"
 }

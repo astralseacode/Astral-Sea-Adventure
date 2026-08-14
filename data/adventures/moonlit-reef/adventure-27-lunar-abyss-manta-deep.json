@@ -5,23 +5,23 @@
   "regionId": "moonlit-reef",
   "enemyId": "lunar-abyss-manta",
   "recommendedLevel": 4,
-  "introDiscord": "The reef drops into a lunar abyss where distant light bends across immense blackwater.",
-  "introTwitch": "The reef drops into a lunar abyss where distant light bends across immense blackwater.",
+  "introDiscord": "Moonlit Reef drops away into blackwater so deep the light bends before reaching the bottom. Vast Manta silhouettes glide through the darkness, visible only when their markings briefly resemble distant moons.",
+  "introTwitch": "Moonlit Reef drops away into blackwater so deep the light bends before reaching the bottom. Vast Manta silhouettes glide through the darkness, visible only when their markings briefly resemble distant moons.",
   "startRoomId": "duskfall-shelf",
   "rooms": {
     "duskfall-shelf": {
-      "prompt": "A duskfall shelf ends at three descents swallowed by quiet blue darkness.",
+      "prompt": "The duskfall shelf ends where three routes descend into immeasurable blackwater. Pale crescents drift beyond the last moonlight, far too large to be stars.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "abyssal-gallery",
           "enemyId": "lunar-abyss-manta",
-          "message": "The water folds around Lunar Abyss Manta, revealing the creature as it claims the passage."
+          "message": "A pale crescent appears in the darkness. Then a second. They move together. You realize they are markings on the wings of something enormous coming closer."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "abyssal-gallery",
-          "message": "Within Lunar Abyss Manta Deep, the right path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer rests at the very edge of the shelf. You recover Star Candies while carefully refusing to look directly down.",
           "reward": {
             "min": 60,
             "max": 90
@@ -31,18 +31,18 @@
           "type": "healing",
           "nextRoomId": "abyssal-gallery",
           "healAmount": 40,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Abyssmint tonic. Even darkness needs emergency supplies.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Shizuki's Abyssmint tonic reads: \"Even darkness needs emergency supplies. Also: do not drop bottle. We are NOT going after it.\"",
+          "fullHpMessage": "The Abyssmint tonic remains secured at the shelf. You are already at full health, and nobody needs to retrieve a dropped bottle from below."
         }
       }
     },
     "abyssal-gallery": {
-      "prompt": "Continuing through Lunar Abyss Manta Deep, you find faint mineral lines trace an abyssal gallery with three openings beyond sight.",
+      "prompt": "Faint mineral lines trace three paths through the blackwater. Beyond their glow, the Deep appears infinite.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "moonless-span",
-          "message": "Within Lunar Abyss Manta Deep, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel floats just outside the mineral light. Retrieving Star Candies requires exactly enough darkness to make you regret the decision.",
           "reward": {
             "min": 70,
             "max": 105
@@ -51,37 +51,37 @@
         "right": {
           "type": "empty",
           "nextRoomId": "moonless-span",
-          "message": "One Berry is bound to Shizuki's journal promise in the surrounding passage, reserved for the journey back to those still trapped by her creators.",
+          "message": "One Berry is tied to Shizuki's old depth marker. Her note reads: \"Could not see bottom. Decided bottom did not require my supervision.\"",
           "berries": 1
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "moonless-span",
           "enemyId": "lunar-abyss-manta",
-          "message": "The water folds around Lunar Abyss Manta, revealing the creature as it claims the passage."
+          "message": "An enormous shadow glides beneath the path. For several seconds nothing happens. Then a Lunar Abyss Manta rises silently from below."
         }
       }
     },
     "moonless-span": {
-      "prompt": "In the depths of Lunar Abyss Manta Deep, a moonless span stretches between stone pillars as three currents sink deeper.",
+      "prompt": "Stone pillars cross a stretch of absolute blackwater. Three currents descend between them while distant points of light move in ways stars should not.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"Drink slowly. The deep notices sudden confidence.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Shizuki's bottle reads: \"Drink slowly. The Deep notices sudden confidence. Probably. I wasn't willing to test it.\"",
+          "fullHpMessage": "Shizuki's confidence-sensitive remedy remains sealed. At full health, you can continue moving slowly enough not to attract the Deep's attention."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "lunar-abyss-manta",
-          "message": "The water folds around Lunar Abyss Manta, revealing the creature as it claims the passage."
+          "message": "Two glowing eyes appear beyond the pillar. They are far apart. Much farther apart than you would prefer."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Lunar Abyss Manta Deep, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache has been chained to the stone so it cannot sink farther. Inside are Star Candies and a very sensible amount of rope.",
           "reward": {
             "min": 80,
             "max": 120
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Moonwing Blackwater",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "Stone pillars vanish into the Moonwing blackwater around a current with no visible floor. Distant moon-shaped lights circle beneath the span."
     }
   },
-  "bossPromptDiscord": "You reach Moonwing Blackwater. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Moonwing Blackwater: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Moonwing Blackwater. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The distant lights vanish.\n\nSomething enormous passes beneath every pillar at once.\n\nA pair of moon-shaped markings slowly rises from the blackwater.\n\nUse /yes to remain on the Span or /no to return to somewhere with a visible floor.",
+  "bossPromptTwitch": "The distant lights vanish.\n\nSomething enormous passes beneath every pillar at once.\n\nA pair of moon-shaped markings slowly rises from the blackwater.\n\nUse !yes to remain on the Span or !no to return to somewhere with a visible floor.",
+  "bossRetreatText": "You return toward visible stone. The moon-shaped markings sink into the blackwater, and distant lights slowly reappear.",
   "boss": {
     "enemyId": "abyssal-moonwing-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Abyssal Moonwing reveals itself!"
+    "revealText": "An immense Manta rises from the abyss, moonlight flowing across its wings. The Abyssal Moonwing fills the blackwater!"
   },
-  "completionText": "Abyssal Moonwing yields to the returning current. Lunar Abyss Manta Deep settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Abyssal Moonwing dives back into the Deep until its glow becomes another distant star. A current opens ahead. You decide not to find out how far down it went."
 }

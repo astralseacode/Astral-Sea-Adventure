@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "reef-rune-otter",
   "recommendedLevel": 2,
-  "introDiscord": "Playful reef runes rearrange themselves across ruins once tended by Fae wayfinders.",
-  "introTwitch": "Playful reef runes rearrange themselves across ruins once tended by Fae wayfinders.",
+  "introDiscord": "Ancient Fae runes hop between ruined stones like pieces of a game board. Reef Rune Otters race after them, slap glowing symbols into new positions, and appear to be having the time of their lives.",
+  "introTwitch": "Ancient Fae runes hop between ruined stones like pieces of a game board. Reef Rune Otters race after them, slap glowing symbols into new positions, and appear to be having the time of their lives.",
   "startRoomId": "glyphskip-landing",
   "rooms": {
     "glyphskip-landing": {
-      "prompt": "Glyphs hop between stones at a landing where three paths refuse to keep their shapes.",
+      "prompt": "Runes bounce from stone to stone while three paths repeatedly change symbols. An otter nearby moves one rune, looks directly at you, and waits.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "riddlepool-ring",
-          "message": "Within Reef Rune Playgrounds, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel sits behind a simple rune puzzle. The moment you solve it, an otter changes one symbol. You solve it again. The otter changes it again. Eventually it gets bored and you claim Star Candies.",
           "reward": {
             "min": 35,
             "max": 60
@@ -25,30 +25,30 @@
           "type": "healing",
           "nextRoomId": "riddlepool-ring",
           "healAmount": 30,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Runeberry tonic. I translated the warning after drinking it.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "Shizuki's bottle reads: \"Runeberry tonic. I translated the warning AFTER drinking it. Apparently that was not recommended.\"",
+          "fullHpMessage": "The Runeberry tonic remains unopened. You are already at full health, so the untranslated warning can stay theoretical."
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "riddlepool-ring",
           "enemyId": "reef-rune-otter",
-          "message": "The water folds around Reef Rune Otter, revealing the creature as it claims the passage."
+          "message": "A Reef Rune Otter slaps a glowing symbol onto the floor between you. The rune flashes START. The otter immediately attacks. Apparently you entered a game."
         }
       }
     },
     "riddlepool-ring": {
-      "prompt": "The passages carry you deeper into Reef Rune Playgrounds, where a circular pool reflects changing riddles while three routes curve beyond its rim.",
+      "prompt": "A circular pool displays changing riddles across its surface while otters paddle through the answers and deliberately erase important parts.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "carved-current",
           "enemyId": "reef-rune-otter",
-          "message": "The water folds around Reef Rune Otter, revealing the creature as it claims the passage."
+          "message": "An otter presents three glowing symbols. You choose one. It dramatically reveals that every answer was apparently wrong, celebrates its victory, and charges."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "carved-current",
-          "message": "Within Reef Rune Playgrounds, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache sits beneath a rune marked 'DEFINITELY NOT TREASURE.' This is the least convincing rune you have encountered. It contains Star Candies.",
           "reward": {
             "min": 40,
             "max": 70
@@ -58,30 +58,30 @@
           "type": "healing",
           "nextRoomId": "carved-current",
           "healAmount": 30,
-          "message": "Deeper inside Reef Rune Playgrounds, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"The otters call this cheating. I call it preparation.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Shizuki's camp note reads: \"The otters call medicine cheating. I call it preparation. They also call hiding the bottle cheating. Skill issue.\"",
+          "fullHpMessage": "Shizuki's hidden medicine remains unused. At full health, you can continue arguing that preparation is not cheating."
         }
       }
     },
     "carved-current": {
-      "prompt": "Close to the heart of Reef Rune Playgrounds, carved currents animate old symbols around three equally mysterious passages.",
+      "prompt": "Animated symbols race through carved currents like pieces on a magical game board. Three passages wait while several otters gather to watch your next move.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A carved rune circle holds one Berry, the final token from a game Shizuki won by changing rules her creators had written.",
+          "message": "A rune circle holds one Berry beside Shizuki's final scorecard: \"Won by changing the rules halfway through. The otters objected. I cited precedent: them.\"",
           "berries": 1
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "reef-rune-otter",
-          "message": "The water folds around Reef Rune Otter, revealing the creature as it claims the passage."
+          "message": "A Reef Rune Otter blocks the path and rapidly arranges glowing symbols into what appears to be an elaborate challenge. Then it simply throws one at you."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Reef Rune Playgrounds, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer is locked behind a rune combination. An otter helpfully demonstrates the sequence, then immediately tries to cover its own eyes. You collect Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Trickster Tableau",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The final chamber resembles an enormous game board covered in shifting Fae symbols. Every Reef Rune Otter takes a seat along the edge like an audience."
     }
   },
-  "bossPromptDiscord": "You reach Trickster Tableau. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Trickster Tableau: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Trickster Tableau. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The central rune flips from PLAY to CHEAT.\n\nThe watching otters erupt into delighted splashing.\n\nA larger figure steps onto the board and rearranges every rule at once.\n\nUse /yes to play or /no to refuse what is clearly a completely fair and unbiased competition.",
+  "bossPromptTwitch": "The central rune flips from PLAY to CHEAT.\n\nThe watching otters erupt into delighted splashing.\n\nA larger figure steps onto the board and rearranges every rule at once.\n\nUse !yes to play or !no to refuse what is clearly a completely fair and unbiased competition.",
+  "bossRetreatText": "You decline the Trickster's game. The otters splash in theatrical disappointment while the central rune flips back to PLAY.",
   "boss": {
     "enemyId": "reef-rune-trickster-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Reef-Rune Trickster reveals itself!"
+    "revealText": "The runes explode into motion as the Reef-Rune Trickster bounds onto the tableau!"
   },
-  "completionText": "Reef-Rune Trickster yields to the returning current. Reef Rune Playgrounds settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Trickster finally drops its last rune. The audience of otters goes silent... then erupts into frantic applause. A new path lights up. One otter quietly changes the scoreboard after you turn away."
 }

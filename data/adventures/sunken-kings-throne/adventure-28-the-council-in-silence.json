@@ -1,107 +1,107 @@
 {
-    "id":  "the-council-in-silence",
-    "number":  28,
-    "name":  "The Council in Silence",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "drowned-councilor",
-    "recommendedLevel":  49,
-    "introDiscord":  "The Council in Silence lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Drowned Councilor.",
-    "introTwitch":  "The Council in Silence lies ahead amid drowned palace colonnades guarded by broken royal seals.",
-    "startRoomId":  "the-council-in-silence-approach",
-    "rooms":  {
-                  "the-council-in-silence-approach":  {
-                                                          "prompt":  "At the edge of The Council in Silence, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                          "choices":  {
-                                                                          "left":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "the-council-in-silence-depths",
-                                                                                       "enemyId":  "drowned-councilor",
-                                                                                       "message":  "A shift in the current exposes Drowned Councilor, which claims the left route through The Council in Silence."
-                                                                                   },
-                                                                          "right":  {
-                                                                                        "type":  "empty",
-                                                                                        "nextRoomId":  "the-council-in-silence-depths",
-                                                                                        "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Council in Silence. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                        "berries":  1
-                                                                                    },
-                                                                          "forward":  {
-                                                                                          "type":  "treasure",
-                                                                                          "nextRoomId":  "the-council-in-silence-depths",
-                                                                                          "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                          "reward":  {
-                                                                                                         "min":  103,
-                                                                                                         "max":  147
-                                                                                                     }
-                                                                                      }
-                                                                      }
-                                                      },
-                  "the-council-in-silence-depths":  {
-                                                        "prompt":  "Deeper within The Council in Silence, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "the-council-in-silence-threshold",
-                                                                                     "healAmount":  8,
-                                                                                     "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "the-council-in-silence-threshold",
-                                                                                      "enemyId":  "drowned-councilor",
-                                                                                      "message":  "A shift in the current exposes Drowned Councilor, which claims the right route through The Council in Silence."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "the-council-in-silence-threshold",
-                                                                                        "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                        "reward":  {
-                                                                                                       "min":  115,
-                                                                                                       "max":  159
-                                                                                                   }
-                                                                                    }
-                                                                    }
-                                                    },
-                  "the-council-in-silence-threshold":  {
-                                                           "prompt":  "Near the heart of The Council in Silence, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                           "choices":  {
-                                                                           "left":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "message":  "Beyond the left route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                        "reward":  {
-                                                                                                       "min":  127,
-                                                                                                       "max":  171
-                                                                                                   }
-                                                                                    },
-                                                                           "right":  {
-                                                                                         "type":  "healing",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "healAmount":  13,
-                                                                                         "message":  "The right route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                         "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                     },
-                                                                           "forward":  {
-                                                                                           "type":  "combat",
-                                                                                           "nextRoomId":  "boss-antechamber",
-                                                                                           "enemyId":  "drowned-councilor",
-                                                                                           "message":  "A shift in the current exposes Drowned Councilor, which claims the forward route through The Council in Silence."
-                                                                                       }
-                                                                       }
-                                                       },
-                  "boss-antechamber":  {
-                                           "name":  "Submerged Council Ring",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Submerged Council Ring."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Submerged Council Ring. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Submerged Council Ring: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Submerged Council Ring. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "first-minister-revenant-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. First Minister Revenant reveals itself!"
-             },
-    "completionText":  "First Minister Revenant yields, and the currents beyond Submerged Council Ring open the next route through Sunken King\u0027s Throne."
+    "id": "the-council-in-silence",
+    "number": 28,
+    "name": "Sunken Festival Street",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "drowned-councilor",
+    "recommendedLevel": 49,
+    "introDiscord": "A street beyond the palace is frozen in the remains of a festival.\n\nLantern strings cross overhead.\n\nGame booths line the road.\n\nMasks hang from stalls.\n\nPaper stars drift through the current.\n\nFor once, the kingdom doesn't feel abandoned.\n\nIt feels like everyone simply stepped away for a moment.",
+    "introTwitch": "A street beyond the palace is frozen in the remains of a festival.\n\nLantern strings cross overhead.\n\nGame booths line the road.\n\nMasks hang from stalls.\n\nPaper stars drift through the current.\n\nFor once, the kingdom doesn't feel abandoned.\n\nIt feels like everyone simply stepped away for a moment.",
+    "startRoomId": "the-council-in-silence-approach",
+    "rooms": {
+        "the-council-in-silence-approach": {
+            "prompt": "Sunken Festival Street opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "the-council-in-silence-depths",
+                    "enemyId": "drowned-councilor",
+                    "message": "A masked Revenant rises from behind an old festival stall."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "the-council-in-silence-depths",
+                    "message": "One Berry rests beneath Shizuki's festival scorecard:\n\n'RING TOSS:\n\nShizuki — 2\nGlimmer — 9\n\nGLIMMER CAN FLY CLOSER TO TARGET.\n\nDISQUALIFIED.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "the-council-in-silence-depths",
+                    "message": "A prize booth still contains Star Candies.",
+                    "reward": {
+                        "min": 103,
+                        "max": 147
+                    }
+                }
+            }
+        },
+        "the-council-in-silence-depths": {
+            "prompt": "Deeper within Sunken Festival Street, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "the-council-in-silence-threshold",
+                    "healAmount": 8,
+                    "message": "A festival refreshment stand contains restorative drinks.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "the-council-in-silence-threshold",
+                    "enemyId": "drowned-councilor",
+                    "message": "A masked Revenant blocks the lantern street."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "the-council-in-silence-threshold",
+                    "message": "A game booth contains sealed prize Star Candies.",
+                    "reward": {
+                        "min": 115,
+                        "max": 159
+                    }
+                }
+            }
+        },
+        "the-council-in-silence-threshold": {
+            "prompt": "Near Festival Lantern Stage, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A mask seller's chest contains Star Candies and paper crowns.",
+                    "reward": {
+                        "min": 127,
+                        "max": 171
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 13,
+                    "message": "Shizuki's restorative bottle:\n\n'Festival recovery.\n\nUsed after attempting every game in one afternoon.\n\nNo regrets.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "drowned-councilor",
+                    "message": "A final masked guardian waits beneath the lantern arch."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Festival Lantern Stage",
+            "type": "boss-prompt",
+            "prompt": "Every festival lantern suddenly lights."
+        }
+    },
+    "bossPromptDiscord": "Every festival lantern suddenly lights.\n\nMusic begins from instruments with no musicians.\n\nAt the end of the street, one elaborate masked figure raises a\nceremonial baton.\n\nUse /yes to enter the final festival game or /no to leave\nbefore Glimmer finds another unfair competition.",
+    "bossPromptTwitch": "Every festival lantern suddenly lights.\n\nMusic begins from instruments with no musicians.\n\nAt the end of the street, one elaborate masked figure raises a\nceremonial baton.\n\nUse !yes to enter the final festival game or !no to leave\nbefore Glimmer finds another unfair competition.",
+    "bossRetreatText": "You withdraw from Festival Lantern Stage. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "first-minister-revenant-boss",
+        "roomId": "boss",
+        "revealText": "The Festival Master Revenant reveals itself!"
+    },
+    "completionText": "The music fades.\n\nThe lanterns remain glowing.\n\nShizuki's final scorecard says:\n\n'Festival Street:\n\n★★★★★\n\nGlimmer still disqualified.'"
 }

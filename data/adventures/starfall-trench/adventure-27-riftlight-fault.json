@@ -1,107 +1,107 @@
 {
-    "id":  "riftlight-fault",
-    "number":  27,
-    "name":  "Riftlight Fault",
-    "regionId":  "starfall-trench",
-    "enemyId":  "riftlight-serpent",
-    "recommendedLevel":  9,
-    "introDiscord":  "Riftlight Fault lies ahead, where gravity-bent celestial ruins conceal the territory of Riftlight Serpent.",
-    "introTwitch":  "Riftlight Fault lies ahead amid gravity-bent celestial ruins.",
-    "startRoomId":  "riftlight-fault-approach",
-    "rooms":  {
-                  "riftlight-fault-approach":  {
-                                                   "prompt":  "At the edge of Riftlight Fault, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "healing",
-                                                                                "nextRoomId":  "riftlight-fault-depths",
-                                                                                "healAmount":  6,
-                                                                                "message":  "The left route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "riftlight-fault-depths",
-                                                                                 "enemyId":  "riftlight-serpent",
-                                                                                 "message":  "A shift in the current exposes Riftlight Serpent, which claims the right route through Riftlight Fault."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "riftlight-fault-depths",
-                                                                                   "message":  "Beyond the forward route, you discover a star chart coffer buried in luminous silt.",
-                                                                                   "reward":  {
-                                                                                                  "min":  55,
-                                                                                                  "max":  98
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "riftlight-fault-depths":  {
-                                                 "prompt":  "Deeper within Riftlight Fault, fractured starstone terraces divide into three uncertain routes.",
-                                                 "choices":  {
-                                                                 "left":  {
-                                                                              "type":  "empty",
-                                                                              "nextRoomId":  "riftlight-fault-threshold",
-                                                                              "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Riftlight Fault. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                              "berries":  1
-                                                                          },
-                                                                 "right":  {
-                                                                               "type":  "treasure",
-                                                                               "nextRoomId":  "riftlight-fault-threshold",
-                                                                               "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
-                                                                               "reward":  {
-                                                                                              "min":  67,
-                                                                                              "max":  110
-                                                                                          }
-                                                                           },
-                                                                 "forward":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "riftlight-fault-threshold",
-                                                                                 "enemyId":  "riftlight-serpent",
-                                                                                 "message":  "A shift in the current exposes Riftlight Serpent, which claims the forward route through Riftlight Fault."
-                                                                             }
-                                                             }
-                                             },
-                  "riftlight-fault-threshold":  {
-                                                    "prompt":  "Near the heart of Riftlight Fault, meteor-lit trenches divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "enemyId":  "riftlight-serpent",
-                                                                                 "message":  "A shift in the current exposes Riftlight Serpent, which claims the left route through Riftlight Fault."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "healAmount":  11,
-                                                                                  "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
-                                                                                    "reward":  {
-                                                                                                   "min":  79,
-                                                                                                   "max":  122
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "boss-antechamber":  {
-                                           "name":  "Radiant Fracture",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Radiant Fracture."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Radiant Fracture. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Radiant Fracture: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Radiant Fracture. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "fault-crowned-serpent-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Fault-Crowned Serpent reveals itself!"
-             },
-    "completionText":  "Fault-Crowned Serpent yields, and the currents beyond Radiant Fracture open the next route through Starfall Trench."
+  "id": "riftlight-fault",
+  "number": 27,
+  "name": "Riftlight Fault",
+  "regionId": "starfall-trench",
+  "enemyId": "riftlight-serpent",
+  "recommendedLevel": 9,
+  "introDiscord": "A brilliant tear cuts through the trench, leaking impossible colors from somewhere that definitely isn't here. Shizuki's first surviving sign reads: 'DO NOT ENTER RIFT.'",
+  "introTwitch": "A brilliant tear cuts through the trench, leaking impossible colors from somewhere that definitely isn't here. Shizuki's first surviving sign reads: 'DO NOT ENTER RIFT.'",
+  "startRoomId": "riftlight-fault-approach",
+  "rooms": {
+    "riftlight-fault-approach": {
+      "prompt": "Three paths run alongside the glowing fracture.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "riftlight-fault-depths",
+          "healAmount": 6,
+          "message": "Shizuki's tonic sits beneath another sign: \"Seriously. Do not enter glowing dimensional wound.\"",
+          "fullHpMessage": "You leave the medicine and demonstrate excellent rift etiquette."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "riftlight-fault-depths",
+          "enemyId": "riftlight-serpent",
+          "message": "A Riftlight Serpent emerges halfway through the fracture."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "riftlight-fault-depths",
+          "message": "A star-chart coffer has been warped into an angle that should not exist.",
+          "reward": {
+            "min": 55,
+            "max": 98
+          }
+        }
+      }
+    },
+    "riftlight-fault-depths": {
+      "prompt": "The fault widens. Three paths flicker between slightly different versions of themselves.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "riftlight-fault-threshold",
+          "message": "A Berry floats halfway inside the rift.\n\nBeside it:\n\n\"I dropped this.\n\nI am NOT reaching in there.\n\nFuture explorer may make own questionable decision.\"",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "riftlight-fault-threshold",
+          "message": "A meteor-iron reliquary flickers between two locations.",
+          "reward": {
+            "min": 67,
+            "max": 110
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "riftlight-fault-threshold",
+          "enemyId": "riftlight-serpent",
+          "message": "A Riftlight Serpent crosses into your route from somewhere else."
+        }
+      }
+    },
+    "riftlight-fault-threshold": {
+      "prompt": "Radiant Fracture pulses beyond three unstable approaches.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "riftlight-serpent",
+          "message": "A Serpent coils across the rift."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 11,
+          "message": "Shizuki's bottle reads:\n\n\"RIFT INCIDENT MEDICINE.\n\nThere was no rift incident.\n\nBecause I did not enter rift.\n\nOfficially.\"",
+          "fullHpMessage": "You leave the suspiciously specific medicine untouched."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "\"Star Candies glitter along the fracture's stable edge.\"\n\nBOSS:",
+          "reward": {
+            "min": 79,
+            "max": 122
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Radiant Fracture",
+      "type": "boss-prompt",
+      "prompt": "The rift opens wider."
+    }
+  },
+  "bossPromptDiscord": "The rift opens wider.\n\nSomething enormous moves on the other side.\n\nShizuki's final sign simply says:\n\n\"NO.\"\n\nUse /yes to approach Radiant Fracture or /no to become the first person here to respect the sign.",
+  "bossPromptTwitch": "The rift opens wider.\n\nSomething enormous moves on the other side.\n\nShizuki's final sign simply says:\n\n\"NO.\"\n\nUse !yes to approach Radiant Fracture or !no to become the first person here to respect the sign.",
+  "bossRetreatText": "You respect the sign.\n\nSomewhere in the universe, Shizuki would be amazed.",
+  "boss": {
+    "enemyId": "fault-crowned-serpent-boss",
+    "roomId": "boss",
+    "revealText": "A colossal serpent tears through the radiant fault.\n\nFault-Crowned Serpent reveals itself!"
+  },
+  "completionText": "\"The fracture shrinks.\n\nShizuki's sign remains:\n\n\"DO NOT ENTER RIFT.\"\n\nGood sign.\"\n\n\n#################################################################"
 }

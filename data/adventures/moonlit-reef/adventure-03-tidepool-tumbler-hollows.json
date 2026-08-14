@@ -5,23 +5,23 @@
   "regionId": "moonlit-reef",
   "enemyId": "tidepool-tumbler",
   "recommendedLevel": 1,
-  "introDiscord": "Tidal pools fold through coral hollows where the Lunar Current circles back upon itself.",
-  "introTwitch": "Tidal pools fold through coral hollows where the Lunar Current circles back upon itself.",
+  "introDiscord": "The Lunar Current spills into a maze of tidal pools carved through smooth coral. Water curls through the hollows in impossible loops, bubbles drift upstream, and something round goes tumbling past an opening before vanishing around the bend.",
+  "introTwitch": "The Lunar Current spills into a maze of tidal pools carved through smooth coral. Water curls through the hollows in impossible loops, bubbles drift upstream, and something round goes tumbling past an opening before vanishing around the bend.",
   "startRoomId": "ripplegate-shelf",
   "rooms": {
     "ripplegate-shelf": {
-      "prompt": "Water rings drift across a chamber of smooth reefstone while three submerged ways curve beyond sight.",
+      "prompt": "Perfect rings ripple across a chamber of smooth reefstone, even though nothing has disturbed the water. A shell drifts past you, disappears into one current, then floats past again from the opposite direction. Three submerged passages curve away from the looping pool.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "turning-pool",
           "enemyId": "tidepool-tumbler",
-          "message": "The water folds around Tidepool Tumbler, revealing the creature as it claims the passage."
+          "message": "A round shape shoots through the current, loops around the chamber, and comes flying past you a second time. On its third lap, a Tidepool Tumbler finally notices you, skids through the water, and immediately changes course in your direction."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "turning-pool",
-          "message": "Within Tidepool Tumbler Hollows, the right path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer spins lazily in the center of a tiny whirlpool. Every time you reach for it, the current carries it around the pool and back to exactly where it started. After several increasingly personal attempts, you finally catch it and uncover Star Candies inside.",
           "reward": {
             "min": 25,
             "max": 50
@@ -31,18 +31,18 @@
           "type": "healing",
           "nextRoomId": "turning-pool",
           "healAmount": 25,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Drink before the current notices you are tired.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Beneath a little shelter wedged safely outside the looping current, you find clean bandages and one of Shizuki's medicinal flasks. A note is tied around the bottle: \"Drink before the current notices you are tired. I don't know what happens if it notices. I didn't wait to find out.\"",
+          "fullHpMessage": "Shizuki's medicinal flask remains tucked safely outside the current. You're already at full health, so whatever happens when the water \"notices you're tired\" can remain an unanswered question."
         }
       }
     },
     "turning-pool": {
-      "prompt": "Continuing through Tidepool Tumbler Hollows, you find shell spirals mark a pool where the current turns without wind, dividing around three shadowed openings.",
+      "prompt": "The passage empties into a perfectly circular pool where the current turns endlessly without wind or tide. Shells, leaves, and several extremely dizzy-looking fish orbit the center while three shadowed openings wait around the edge.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "hollowwater-bend",
-          "message": "Within Tidepool Tumbler Hollows, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A tiny Fae offering vessel circles the pool again... and again... and again. You wait for it to pass and carefully scoop it out of the current. Inside are Star Candies and a little carved symbol that looks suspiciously like someone laughing.",
           "reward": {
             "min": 30,
             "max": 55
@@ -51,37 +51,37 @@
         "right": {
           "type": "empty",
           "nextRoomId": "hollowwater-bend",
-          "message": "Shizuki anchored one Berry beneath a spiral shell in the surrounding passage. Her trail note reads: \"Never trust water that looks polite.\"",
+          "message": "A perfectly calm little tidepool sits beside the spinning current. Beneath a spiral shell, you find one Berry anchored with a piece of string and a note from Shizuki: \"Never trust water that looks polite.\" The tidepool immediately produces one completely innocent bubble. Suspicious.",
           "berries": 1
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "hollowwater-bend",
           "enemyId": "tidepool-tumbler",
-          "message": "The water folds around Tidepool Tumbler, revealing the creature as it claims the passage."
+          "message": "A Tidepool Tumbler rockets out of one opening, circles the entire pool twice, vanishes down another passage, and somehow returns directly behind you. It looks extremely proud of this maneuver. Then it charges."
         }
       }
     },
     "hollowwater-bend": {
-      "prompt": "In the depths of Tidepool Tumbler Hollows, pale foam gathers beneath a low coral ceiling as three channels disappear into blue distance.",
+      "prompt": "Deep inside the hollows, the ceiling drops low over pale blue water. Foam drifts upward instead of toward the surface, and three currents disappear beneath coral bends before somehow returning from directions that shouldn't connect.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 25,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"I tested this on myself first. Mostly.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Moonlight slips through a crack in the coral and reveals one of Shizuki's old sleeping spots tucked safely above the current. Beside the bedroll is a restorative bottle labeled: \"I tested this on myself first. Mostly. Glimmer watched, which probably counts as supervision.\"",
+          "fullHpMessage": "The restorative bottle remains beside Shizuki's old sleeping spot. At full health, you have no reason to investigate what \"mostly tested\" means. A rare victory."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "tidepool-tumbler",
-          "message": "The water folds around Tidepool Tumbler, revealing the creature as it claims the passage."
+          "message": "The foam suddenly starts moving against the current. A Tidepool Tumbler bursts through it, rolls through a full loop of water, and comes flying back toward you like this was absolutely the plan."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Tidepool Tumbler Hollows, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "Behind a curtain of upward-drifting foam, you uncover an old Moonkeeper cache sealed into the reefstone. The lock clicks open when moonlight touches it, revealing Star Candies untouched by the looping currents. Apparently somebody around here understood waterproof storage.",
           "reward": {
             "min": 35,
             "max": 60
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Primeval Tidewell",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The final channel opens into a vast circular tidewell. For the first time since entering the hollows, the water is completely still. No looping currents. No drifting foam. No tumbling shells. At the center, something enormous rests beneath the glass-smooth surface."
     }
   },
-  "bossPromptDiscord": "You reach Primeval Tidewell. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Primeval Tidewell: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Primeval Tidewell. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "A single ripple crosses the Primeval Tidewell.\n\nThen another.\n\nThe still water begins turning in one enormous circle as something beneath the surface rolls with the current. Whatever taught the smaller Tidepool Tumblers how to move through these hollows is waking up.\n\nUse /yes to approach or /no to back away while the water is still giving you the option.",
+  "bossPromptTwitch": "A single ripple crosses the Primeval Tidewell.\n\nThen another.\n\nThe still water begins turning in one enormous circle as something beneath the surface rolls with the current. Whatever taught the smaller Tidepool Tumblers how to move through these hollows is waking up.\n\nUse !yes to approach or !no to back away while the water is still giving you the option.",
+  "bossRetreatText": "You back away from the Primeval Tidewell. The enormous current slows behind you until the surface becomes perfectly still again. Somehow, that is not more reassuring.",
   "boss": {
     "enemyId": "tidepool-tumbler-ancient-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Tidepool Tumbler Ancient reveals itself!"
+    "revealText": "The entire tidewell suddenly turns. Water climbs the walls in a spiraling ring as an enormous shape rolls up from the depths. With a crash of foam and moonlit spray, the Tidepool Tumbler Ancient surges into view!"
   },
-  "completionText": "Tidepool Tumbler Ancient yields to the returning current. Tidepool Tumbler Hollows settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Tidepool Tumbler Ancient gives one final spin before sinking peacefully beneath the tidewell. The enormous current loosens, and throughout the hollows the looping waters settle into gentler circles. Somewhere behind you, a smaller Tumbler shoots through a current, misses its turn, and tumbles straight into a patch of foam. Another route through Moonlit Reef opens ahead."
 }

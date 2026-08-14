@@ -1,107 +1,107 @@
 {
-    "id":  "the-silent-heraldry",
-    "number":  17,
-    "name":  "The Silent Heraldry",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "haunted-herald",
-    "recommendedLevel":  41,
-    "introDiscord":  "The Silent Heraldry lies ahead, where haunted halls beneath drifting banners conceal the territory of Haunted Herald.",
-    "introTwitch":  "The Silent Heraldry lies ahead amid haunted halls beneath drifting banners.",
-    "startRoomId":  "the-silent-heraldry-approach",
-    "rooms":  {
-                  "the-silent-heraldry-approach":  {
-                                                       "prompt":  "At the edge of The Silent Heraldry, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "the-silent-heraldry-depths",
-                                                                                    "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                    "reward":  {
-                                                                                                   "min":  204,
-                                                                                                   "max":  244
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "the-silent-heraldry-depths",
-                                                                                     "enemyId":  "haunted-herald",
-                                                                                     "message":  "A shift in the current exposes Haunted Herald, which claims the right route through The Silent Heraldry."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "the-silent-heraldry-depths",
-                                                                                       "healAmount":  49,
-                                                                                       "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "the-silent-heraldry-depths":  {
-                                                     "prompt":  "Deeper within The Silent Heraldry, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "the-silent-heraldry-threshold",
-                                                                                  "enemyId":  "haunted-herald",
-                                                                                  "message":  "A shift in the current exposes Haunted Herald, which claims the left route through The Silent Heraldry."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "the-silent-heraldry-threshold",
-                                                                                   "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                   "reward":  {
-                                                                                                  "min":  216,
-                                                                                                  "max":  256
-                                                                                              }
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "empty",
-                                                                                     "nextRoomId":  "the-silent-heraldry-threshold",
-                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Silent Heraldry. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                     "berries":  1
-                                                                                 }
-                                                                 }
-                                                 },
-                  "the-silent-heraldry-threshold":  {
-                                                        "prompt":  "Near the heart of The Silent Heraldry, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  54,
-                                                                                     "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "haunted-herald",
-                                                                                      "message":  "A shift in the current exposes Haunted Herald, which claims the right route through The Silent Heraldry."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                        "reward":  {
-                                                                                                       "min":  228,
-                                                                                                       "max":  268
-                                                                                                   }
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Proclamation Hall",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Proclamation Hall."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Proclamation Hall. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Proclamation Hall: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Proclamation Hall. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "last-royal-herald-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Last Royal Herald reveals itself!"
-             },
-    "completionText":  "Last Royal Herald yields, and the currents beyond Proclamation Hall open the next route through Sunken King\u0027s Throne."
+    "id": "the-silent-heraldry",
+    "number": 17,
+    "name": "The Silent Heraldry",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "haunted-herald",
+    "recommendedLevel": 41,
+    "introDiscord": "Royal announcement halls line the next district.\n\nAncient Heralds still stand on balconies waiting to proclaim news to a\npopulation that left centuries ago.",
+    "introTwitch": "Royal announcement halls line the next district.\n\nAncient Heralds still stand on balconies waiting to proclaim news to a\npopulation that left centuries ago.",
+    "startRoomId": "the-silent-heraldry-approach",
+    "rooms": {
+        "the-silent-heraldry-approach": {
+            "prompt": "The Silent Heraldry opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "the-silent-heraldry-depths",
+                    "message": "A proclamation podium contains Star Candies.",
+                    "reward": {
+                        "min": 204,
+                        "max": 244
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "the-silent-heraldry-depths",
+                    "enemyId": "haunted-herald",
+                    "message": "A Haunted Herald raises a ceremonial staff."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "the-silent-heraldry-depths",
+                    "healAmount": 49,
+                    "message": "Shizuki's bottle rests beside a proclamation:\n\n'HEAR YE HEAR YE:\n\nGlimmer has been promoted to Royal Lamp.\n\nGlimmer objects to title.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "the-silent-heraldry-depths": {
+            "prompt": "Deeper within The Silent Heraldry, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "the-silent-heraldry-threshold",
+                    "enemyId": "haunted-herald",
+                    "message": "A Herald steps from an announcement balcony."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "the-silent-heraldry-threshold",
+                    "message": "A royal message chest contains Star Candies.",
+                    "reward": {
+                        "min": 216,
+                        "max": 256
+                    }
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "the-silent-heraldry-threshold",
+                    "message": "One Berry rests beneath another proclamation:\n\n'OFFICIAL DECREE:\n\nBerries are now legal tender.\n\nIssued by Queen Shizuki.\n\nAuthority:\n\nself-appointed.'",
+                    "berries": 1
+                }
+            }
+        },
+        "the-silent-heraldry-threshold": {
+            "prompt": "Near Proclamation Hall, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 54,
+                    "message": "Restorative salts sit in a herald's station.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "haunted-herald",
+                    "message": "A Haunted Herald blocks Proclamation Hall."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A ceremonial dispatch box contains Star Candies.",
+                    "reward": {
+                        "min": 228,
+                        "max": 268
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Proclamation Hall",
+            "type": "boss-prompt",
+            "prompt": "The old proclamation bells ring."
+        }
+    },
+    "bossPromptDiscord": "The old proclamation bells ring.\n\nOne final Herald takes the central balcony.\n\nUse /yes to hear the kingdom's last announcement or /no to\ncontinue ignoring unauthorized royal decrees.",
+    "bossPromptTwitch": "The old proclamation bells ring.\n\nOne final Herald takes the central balcony.\n\nUse !yes to hear the kingdom's last announcement or !no to\ncontinue ignoring unauthorized royal decrees.",
+    "bossRetreatText": "You withdraw from Proclamation Hall. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "last-royal-herald-boss",
+        "roomId": "boss",
+        "revealText": "Last Royal Herald reveals itself!"
+    },
+    "completionText": "The proclamation hall quiets.\n\nShizuki's decree remains posted.\n\nBerry-based economy officially unofficial."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "the-forgotten-princes-wing",
-    "number":  25,
-    "name":  "The Forgotten Prince\u0027s Wing",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "forgotten-prince-revenant",
-    "recommendedLevel":  47,
-    "introDiscord":  "The Forgotten Prince\u0027s Wing lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Forgotten Prince Revenant.",
-    "introTwitch":  "The Forgotten Prince\u0027s Wing lies ahead amid drowned palace colonnades guarded by broken royal seals.",
-    "startRoomId":  "the-forgotten-princes-wing-approach",
-    "rooms":  {
-                  "the-forgotten-princes-wing-approach":  {
-                                                              "prompt":  "At the edge of The Forgotten Prince\u0027s Wing, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                              "choices":  {
-                                                                              "left":  {
-                                                                                           "type":  "combat",
-                                                                                           "nextRoomId":  "the-forgotten-princes-wing-depths",
-                                                                                           "enemyId":  "forgotten-prince-revenant",
-                                                                                           "message":  "A shift in the current exposes Forgotten Prince Revenant, which claims the left route through The Forgotten Prince\u0027s Wing."
-                                                                                       },
-                                                                              "right":  {
-                                                                                            "type":  "treasure",
-                                                                                            "nextRoomId":  "the-forgotten-princes-wing-depths",
-                                                                                            "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                            "reward":  {
-                                                                                                           "min":  131,
-                                                                                                           "max":  174
-                                                                                                       }
-                                                                                        },
-                                                                              "forward":  {
-                                                                                              "type":  "healing",
-                                                                                              "nextRoomId":  "the-forgotten-princes-wing-depths",
-                                                                                              "healAmount":  19,
-                                                                                              "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                              "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                          }
-                                                                          }
-                                                          },
-                  "the-forgotten-princes-wing-depths":  {
-                                                            "prompt":  "Deeper within The Forgotten Prince\u0027s Wing, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                            "choices":  {
-                                                                            "left":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "the-forgotten-princes-wing-threshold",
-                                                                                         "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                         "reward":  {
-                                                                                                        "min":  143,
-                                                                                                        "max":  186
-                                                                                                    }
-                                                                                     },
-                                                                            "right":  {
-                                                                                          "type":  "combat",
-                                                                                          "nextRoomId":  "the-forgotten-princes-wing-threshold",
-                                                                                          "enemyId":  "forgotten-prince-revenant",
-                                                                                          "message":  "A shift in the current exposes Forgotten Prince Revenant, which claims the right route through The Forgotten Prince\u0027s Wing."
-                                                                                      },
-                                                                            "forward":  {
-                                                                                            "type":  "empty",
-                                                                                            "nextRoomId":  "the-forgotten-princes-wing-threshold",
-                                                                                            "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Forgotten Prince\u0027s Wing. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                            "berries":  1
-                                                                                        }
-                                                                        }
-                                                        },
-                  "the-forgotten-princes-wing-threshold":  {
-                                                               "prompt":  "Near the heart of The Forgotten Prince\u0027s Wing, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                               "choices":  {
-                                                                               "left":  {
-                                                                                            "type":  "healing",
-                                                                                            "nextRoomId":  "boss-antechamber",
-                                                                                            "healAmount":  24,
-                                                                                            "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                            "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                        },
-                                                                               "right":  {
-                                                                                             "type":  "treasure",
-                                                                                             "nextRoomId":  "boss-antechamber",
-                                                                                             "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                             "reward":  {
-                                                                                                            "min":  155,
-                                                                                                            "max":  198
-                                                                                                        }
-                                                                                         },
-                                                                               "forward":  {
-                                                                                               "type":  "combat",
-                                                                                               "nextRoomId":  "boss-antechamber",
-                                                                                               "enemyId":  "forgotten-prince-revenant",
-                                                                                               "message":  "A shift in the current exposes Forgotten Prince Revenant, which claims the forward route through The Forgotten Prince\u0027s Wing."
-                                                                                           }
-                                                                           }
-                                                           },
-                  "boss-antechamber":  {
-                                           "name":  "Nameless Nursery Throne",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Nameless Nursery Throne."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Nameless Nursery Throne. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Nameless Nursery Throne: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Nameless Nursery Throne. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "unremembered-heir-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Unremembered Heir reveals itself!"
-             },
-    "completionText":  "Unremembered Heir yields, and the currents beyond Nameless Nursery Throne open the next route through Sunken King\u0027s Throne."
+    "id": "the-forgotten-princes-wing",
+    "number": 25,
+    "name": "The Forgotten Prince's Wing",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "forgotten-prince-revenant",
+    "recommendedLevel": 47,
+    "introDiscord": "A quieter palace wing contains children's rooms, toy chests, miniature\nfurniture, faded murals, and one royal crest whose name has been removed.",
+    "introTwitch": "A quieter palace wing contains children's rooms, toy chests, miniature\nfurniture, faded murals, and one royal crest whose name has been removed.",
+    "startRoomId": "the-forgotten-princes-wing-approach",
+    "rooms": {
+        "the-forgotten-princes-wing-approach": {
+            "prompt": "The Forgotten Prince's Wing opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "the-forgotten-princes-wing-depths",
+                    "enemyId": "forgotten-prince-revenant",
+                    "message": "A Forgotten Prince Revenant emerges beneath the faded crest."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "the-forgotten-princes-wing-depths",
+                    "message": "A toy chest contains Star Candies among wooden knights and tiny boats.",
+                    "reward": {
+                        "min": 131,
+                        "max": 174
+                    }
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "the-forgotten-princes-wing-depths",
+                    "healAmount": 19,
+                    "message": "A nursery cabinet contains restorative herbs.\n\nShizuki wrote:\n\n'Found tiny crown.\n\nToo small for me.\n\nGlimmer fits.\n\nGlimmer is prince now.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "the-forgotten-princes-wing-depths": {
+            "prompt": "Deeper within The Forgotten Prince's Wing, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "the-forgotten-princes-wing-threshold",
+                    "message": "A child's bedside coffer contains Star Candies.",
+                    "reward": {
+                        "min": 143,
+                        "max": 186
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "the-forgotten-princes-wing-threshold",
+                    "enemyId": "forgotten-prince-revenant",
+                    "message": "A Revenant moves through the nursery corridor."
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "the-forgotten-princes-wing-threshold",
+                    "message": "One Berry rests beside a little wooden castle.\n\nShizuki wrote:\n\n'Someone lived here.\n\nEveryone forgot the name.\n\nThat feels unfair.'",
+                    "berries": 1
+                }
+            }
+        },
+        "the-forgotten-princes-wing-threshold": {
+            "prompt": "Near Nameless Nursery Throne, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 24,
+                    "message": "A quiet nursery fountain restores strength.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A sealed memory box contains Star Candies and old toy medals.",
+                    "reward": {
+                        "min": 155,
+                        "max": 198
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "forgotten-prince-revenant",
+                    "message": "A Forgotten Prince Revenant guards the tiny throne."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Nameless Nursery Throne",
+            "type": "boss-prompt",
+            "prompt": "The nursery mural glows."
+        }
+    },
+    "bossPromptDiscord": "The nursery mural glows.\n\nA child-sized crown floats above the empty throne.\n\nA spectral heir appears beneath it.\n\nUse /yes to approach the Nameless Nursery Throne or /no to\nleave the forgotten room quiet.",
+    "bossPromptTwitch": "The nursery mural glows.\n\nA child-sized crown floats above the empty throne.\n\nA spectral heir appears beneath it.\n\nUse !yes to approach the Nameless Nursery Throne or !no to\nleave the forgotten room quiet.",
+    "bossRetreatText": "You withdraw from Nameless Nursery Throne. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "unremembered-heir-boss",
+        "roomId": "boss",
+        "revealText": "Unremembered Heir reveals itself!"
+    },
+    "completionText": "The heir fades.\n\nOne name remains impossible to read.\n\nShizuki's note beneath it says only:\n\n'I don't know who you were.\n\nBut somebody found your room again.'"
 }

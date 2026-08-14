@@ -1,107 +1,107 @@
 {
-    "id":  "the-fallen-banner-way",
-    "number":  1,
-    "name":  "The Fallen Banner Way",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "drowned-banner-guard",
-    "recommendedLevel":  30,
-    "introDiscord":  "The Fallen Banner Way lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Drowned Banner Guard.",
-    "introTwitch":  "The Fallen Banner Way lies ahead amid drowned palace colonnades guarded by broken royal seals.",
-    "startRoomId":  "the-fallen-banner-way-approach",
-    "rooms":  {
-                  "the-fallen-banner-way-approach":  {
-                                                         "prompt":  "At the edge of The Fallen Banner Way, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "the-fallen-banner-way-depths",
-                                                                                      "enemyId":  "drowned-banner-guard",
-                                                                                      "message":  "A shift in the current exposes Drowned Banner Guard, which claims the left route through The Fallen Banner Way."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "the-fallen-banner-way-depths",
-                                                                                       "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                       "reward":  {
-                                                                                                      "min":  350,
-                                                                                                      "max":  385
-                                                                                                  }
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "healing",
-                                                                                         "nextRoomId":  "the-fallen-banner-way-depths",
-                                                                                         "healAmount":  110,
-                                                                                         "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                         "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "the-fallen-banner-way-depths":  {
-                                                       "prompt":  "Deeper within The Fallen Banner Way, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "the-fallen-banner-way-threshold",
-                                                                                    "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                    "reward":  {
-                                                                                                   "min":  362,
-                                                                                                   "max":  397
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "the-fallen-banner-way-threshold",
-                                                                                     "enemyId":  "drowned-banner-guard",
-                                                                                     "message":  "A shift in the current exposes Drowned Banner Guard, which claims the right route through The Fallen Banner Way."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "empty",
-                                                                                       "nextRoomId":  "the-fallen-banner-way-threshold",
-                                                                                       "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Fallen Banner Way. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                       "berries":  1
-                                                                                   }
-                                                                   }
-                                                   },
-                  "the-fallen-banner-way-threshold":  {
-                                                          "prompt":  "Near the heart of The Fallen Banner Way, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                          "choices":  {
-                                                                          "left":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  115,
-                                                                                       "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   },
-                                                                          "right":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                        "reward":  {
-                                                                                                       "min":  374,
-                                                                                                       "max":  409
-                                                                                                   }
-                                                                                    },
-                                                                          "forward":  {
-                                                                                          "type":  "combat",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "enemyId":  "drowned-banner-guard",
-                                                                                          "message":  "A shift in the current exposes Drowned Banner Guard, which claims the forward route through The Fallen Banner Way."
-                                                                                      }
-                                                                      }
-                                                      },
-                  "boss-antechamber":  {
-                                           "name":  "Hall of Torn Colors",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Hall of Torn Colors."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Hall of Torn Colors. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Hall of Torn Colors: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Hall of Torn Colors. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "standard-bearer-revenant-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Standard-Bearer Revenant reveals itself!"
-             },
-    "completionText":  "Standard-Bearer Revenant yields, and the currents beyond Hall of Torn Colors open the next route through Sunken King\u0027s Throne."
+    "id": "the-fallen-banner-way",
+    "number": 1,
+    "name": "The Fallen Banner Way",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "drowned-banner-guard",
+    "recommendedLevel": 30,
+    "introDiscord": "The road from Leviathan's Wake finally reaches stone.\n\nNot bone.\n\nActual stone.\n\nA drowned avenue stretches between toppled towers and faded royal\nbanners while statues of armored guards line the old kingdom gates.\n\nSomeone has tied a tiny ribbon around one statue's spear.\n\nShizuki was definitely here.",
+    "introTwitch": "The road from Leviathan's Wake finally reaches stone.\n\nNot bone.\n\nActual stone.\n\nA drowned avenue stretches between toppled towers and faded royal\nbanners while statues of armored guards line the old kingdom gates.\n\nSomeone has tied a tiny ribbon around one statue's spear.\n\nShizuki was definitely here.",
+    "startRoomId": "the-fallen-banner-way-approach",
+    "rooms": {
+        "the-fallen-banner-way-approach": {
+            "prompt": "The Fallen Banner Way opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "the-fallen-banner-way-depths",
+                    "enemyId": "drowned-banner-guard",
+                    "message": "A Drowned Banner Guard steps from beneath a hanging royal standard.\n\nThe kingdom has been abandoned for ages.\n\nThe guard has apparently not received the memo."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "the-fallen-banner-way-depths",
+                    "message": "An overturned welcome booth still contains a little ceremonial coffer.\n\nShizuki scratched into the counter:\n\n'Kingdom admission fee:\n\napparently free now.'",
+                    "reward": {
+                        "min": 350,
+                        "max": 385
+                    }
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "the-fallen-banner-way-depths",
+                    "healAmount": 110,
+                    "message": "A public fountain still bubbles with clear mineral water.\n\nBeside it is Shizuki's note:\n\n'FIRST ROYAL FOUNTAIN!!!\n\nI made a wish.\n\nGlimmer says telling you the wish invalidates it.\n\nSo obviously it involved berries.'",
+                    "fullHpMessage": "You leave the fountain untouched.\n\nYour health is already excellent.\n\nWish eligibility remains untested."
+                }
+            }
+        },
+        "the-fallen-banner-way-depths": {
+            "prompt": "Deeper within The Fallen Banner Way, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "the-fallen-banner-way-threshold",
+                    "message": "A ceremonial chalice rests inside an abandoned guard kiosk.\n\nIt contains Star Candies.\n\nSomeone wrote beneath it:\n\n'Royal snack cup.\n\nSource: me.'",
+                    "reward": {
+                        "min": 362,
+                        "max": 397
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "the-fallen-banner-way-threshold",
+                    "enemyId": "drowned-banner-guard",
+                    "message": "A Drowned Banner Guard raises its standard and blocks the street.\n\nYou are being challenged by someone whose shift ended several centuries\nago."
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "the-fallen-banner-way-threshold",
+                    "message": "One Berry rests beneath Shizuki's first kingdom map.\n\nEvery street has a label.\n\n'PALACE?'\n\n'MARKET??'\n\n'VERY NICE FOUNTAIN.'\n\nOne arrow simply says:\n\n'GLIMMER WENT THIS WAY HELP.'",
+                    "berries": 1
+                }
+            }
+        },
+        "the-fallen-banner-way-threshold": {
+            "prompt": "Near Hall of Torn Colors, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 115,
+                    "message": "An intact guardhouse contains old restorative salts.\n\nShizuki added a sign:\n\n'Royal medical supplies.\n\nI have promoted myself to authorized personnel.'",
+                    "fullHpMessage": "You leave Her Royal Medical Authorization unused."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A fallen banner pole has pinned a guard stipend beneath the stone.\n\nThe coins are useless.\n\nThe Star Candies mixed among them are considerably more relevant.",
+                    "reward": {
+                        "min": 374,
+                        "max": 409
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "drowned-banner-guard",
+                    "message": "One final Banner Guard plants its standard in the road.\n\nThe gesture is extremely dramatic.\n\nRespectfully:\n\nmove."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Hall of Torn Colors",
+            "type": "boss-prompt",
+            "prompt": "The Hall of Torn Colors opens beyond the avenue."
+        }
+    },
+    "bossPromptDiscord": "The Hall of Torn Colors opens beyond the avenue.\n\nHundreds of old standards hang from the ceiling, their faded colors\nmoving together in the current.\n\nEvery remaining Banner Guard steps aside.\n\nAt the far end, something lifts a standard larger than any of the others.\n\nUse /yes to enter the Hall or /no to postpone your extremely unofficial\nroyal visit.",
+    "bossPromptTwitch": "The Hall of Torn Colors opens beyond the avenue.\n\nHundreds of old standards hang from the ceiling, their faded colors\nmoving together in the current.\n\nEvery remaining Banner Guard steps aside.\n\nAt the far end, something lifts a standard larger than any of the others.\n\nUse !yes to enter the Hall or !no to postpone your extremely unofficial\nroyal visit.",
+    "bossRetreatText": "You return to the outer avenue.\n\nThe banners continue drifting behind you.",
+    "boss": {
+        "enemyId": "standard-bearer-revenant-boss",
+        "roomId": "boss",
+        "revealText": "The largest standard sweeps aside.\n\nStandard-Bearer Revenant reveals itself!"
+    },
+    "completionText": "The Revenant lowers its standard.\n\nBeyond the Hall, the kingdom proper finally opens.\n\nShops.\n\nCanals.\n\nGardens.\n\nPalaces.\n\nShizuki's next arrow reads:\n\n'WE ARE GOING SHOPPING.'"
 }

@@ -1,242 +1,242 @@
 [
     {
-        "number":  1,
-        "id":  "wake-rider-crossing",
-        "name":  "Wake-Rider Crossing",
-        "enemyId":  "wake-riding-razorfish",
-        "bossEnemyId":  "breaker-fin-alpha-boss",
-        "file":  "adventure-01-wake-rider-crossing.json"
+        "number": 1,
+        "id": "wake-rider-crossing",
+        "name": "Wake-Rider Crossing",
+        "enemyId": "wake-riding-razorfish",
+        "bossEnemyId": "breaker-fin-alpha-boss",
+        "file": "adventure-01-wake-rider-crossing.json"
     },
     {
-        "number":  2,
-        "id":  "titanbone-ribs",
-        "name":  "Titanbone Ribs",
-        "enemyId":  "titanbone-crab",
-        "bossEnemyId":  "ossuary-clawking-boss",
-        "file":  "adventure-02-titanbone-ribs.json"
+        "number": 2,
+        "id": "titanbone-ribs",
+        "name": "Titanbone Ribs",
+        "enemyId": "titanbone-crab",
+        "bossEnemyId": "ossuary-clawking-boss",
+        "file": "adventure-02-titanbone-ribs.json"
     },
     {
-        "number":  3,
-        "id":  "pressurejaw-drop",
-        "name":  "Pressurejaw Drop",
-        "enemyId":  "pressurejaw-eel",
-        "bossEnemyId":  "crushdepth-coil-boss",
-        "file":  "adventure-03-pressurejaw-drop.json"
+        "number": 3,
+        "id": "pressurejaw-drop",
+        "name": "Pressurejaw Drop",
+        "enemyId": "pressurejaw-eel",
+        "bossEnemyId": "crushdepth-coil-boss",
+        "file": "adventure-03-pressurejaw-drop.json"
     },
     {
-        "number":  4,
-        "id":  "scale-shelter-wrecks",
-        "name":  "Scale-Shelter Wrecks",
-        "enemyId":  "scale-shelter-hermit",
-        "bossEnemyId":  "titan-scale-hermit-boss",
-        "file":  "adventure-04-scale-shelter-wrecks.json"
+        "number": 4,
+        "id": "scale-shelter-wrecks",
+        "name": "Scale-Shelter Wrecks",
+        "enemyId": "scale-shelter-hermit",
+        "bossEnemyId": "titan-scale-hermit-boss",
+        "file": "adventure-04-scale-shelter-wrecks.json"
     },
     {
-        "number":  5,
-        "id":  "currentbreaker-run",
-        "name":  "Currentbreaker Run",
-        "enemyId":  "currentbreaker-shark",
-        "bossEnemyId":  "maelstrom-apex-boss",
-        "file":  "adventure-05-currentbreaker-run.json"
+        "number": 5,
+        "id": "currentbreaker-run",
+        "name": "Currentbreaker Run",
+        "enemyId": "currentbreaker-shark",
+        "bossEnemyId": "maelstrom-apex-boss",
+        "file": "adventure-05-currentbreaker-run.json"
     },
     {
-        "number":  6,
-        "id":  "bonegarden-spines",
-        "name":  "Bonegarden Spines",
-        "enemyId":  "bonegarden-urchin",
-        "bossEnemyId":  "marrow-crown-urchin-boss",
-        "file":  "adventure-06-bonegarden-spines.json"
+        "number": 6,
+        "id": "bonegarden-spines",
+        "name": "Bonegarden Spines",
+        "enemyId": "bonegarden-urchin",
+        "bossEnemyId": "marrow-crown-urchin-boss",
+        "file": "adventure-06-bonegarden-spines.json"
     },
     {
-        "number":  7,
-        "id":  "hullsplitter-graveyard",
-        "name":  "Hullsplitter Graveyard",
-        "enemyId":  "hullsplitter-lobster",
-        "bossEnemyId":  "dreadclaw-hullsplitter-boss",
-        "file":  "adventure-07-hullsplitter-graveyard.json"
+        "number": 7,
+        "id": "hullsplitter-graveyard",
+        "name": "Hullsplitter Graveyard",
+        "enemyId": "hullsplitter-lobster",
+        "bossEnemyId": "dreadclaw-hullsplitter-boss",
+        "file": "adventure-07-hullsplitter-graveyard.json"
     },
     {
-        "number":  8,
-        "id":  "wakefoam-tempest",
-        "name":  "Wakefoam Tempest",
-        "enemyId":  "wakefoam-medusa",
-        "bossEnemyId":  "stormbell-medusa-boss",
-        "file":  "adventure-08-wakefoam-tempest.json"
+        "number": 8,
+        "id": "wakefoam-tempest",
+        "name": "Wakefoam Tempest",
+        "enemyId": "wakefoam-medusa",
+        "bossEnemyId": "stormbell-medusa-boss",
+        "file": "adventure-08-wakefoam-tempest.json"
     },
     {
-        "number":  9,
-        "id":  "deep-scar-ravine",
-        "name":  "Deep-Scar Ravine",
-        "enemyId":  "deep-scar-prowler",
-        "bossEnemyId":  "scar-marked-huntmaster-boss",
-        "file":  "adventure-09-deep-scar-ravine.json"
+        "number": 9,
+        "id": "deep-scar-ravine",
+        "name": "Deep-Scar Ravine",
+        "enemyId": "deep-scar-prowler",
+        "bossEnemyId": "scar-marked-huntmaster-boss",
+        "file": "adventure-09-deep-scar-ravine.json"
     },
     {
-        "number":  10,
-        "id":  "the-walking-scale",
-        "name":  "The Walking Scale",
-        "enemyId":  "leviathan-scale-golem",
-        "bossEnemyId":  "scale-forged-colossus-boss",
-        "file":  "adventure-10-the-walking-scale.json"
+        "number": 10,
+        "id": "the-walking-scale",
+        "name": "The Walking Scale",
+        "enemyId": "leviathan-scale-golem",
+        "bossEnemyId": "scale-forged-colossus-boss",
+        "file": "adventure-10-the-walking-scale.json"
     },
     {
-        "number":  11,
-        "id":  "riptide-gauntlet",
-        "name":  "Riptide Gauntlet",
-        "enemyId":  "riptide-hammerhead",
-        "bossEnemyId":  "breakerhead-patriarch-boss",
-        "file":  "adventure-11-riptide-gauntlet.json"
+        "number": 11,
+        "id": "riptide-gauntlet",
+        "name": "Riptide Gauntlet",
+        "enemyId": "riptide-hammerhead",
+        "bossEnemyId": "breakerhead-patriarch-boss",
+        "file": "adventure-11-riptide-gauntlet.json"
     },
     {
-        "number":  12,
-        "id":  "wrecknest-passage",
-        "name":  "Wrecknest Passage",
-        "enemyId":  "wrecknest-moray",
-        "bossEnemyId":  "keeljaw-moray-boss",
-        "file":  "adventure-12-wrecknest-passage.json"
+        "number": 12,
+        "id": "wrecknest-passage",
+        "name": "Wrecknest Passage",
+        "enemyId": "wrecknest-moray",
+        "bossEnemyId": "keeljaw-moray-boss",
+        "file": "adventure-12-wrecknest-passage.json"
     },
     {
-        "number":  13,
-        "id":  "tectonic-shelf",
-        "name":  "Tectonic Shelf",
-        "enemyId":  "tectonic-barnacle",
-        "bossEnemyId":  "quake-crown-barnacle-boss",
-        "file":  "adventure-13-tectonic-shelf.json"
+        "number": 13,
+        "id": "tectonic-shelf",
+        "name": "Tectonic Shelf",
+        "enemyId": "tectonic-barnacle",
+        "bossEnemyId": "quake-crown-barnacle-boss",
+        "file": "adventure-13-tectonic-shelf.json"
     },
     {
-        "number":  14,
-        "id":  "roarcurrent-gorge",
-        "name":  "Roarcurrent Gorge",
-        "enemyId":  "roarcurrent-siren",
-        "bossEnemyId":  "tempest-voice-siren-boss",
-        "file":  "adventure-14-roarcurrent-gorge.json"
+        "number": 14,
+        "id": "roarcurrent-gorge",
+        "name": "Roarcurrent Gorge",
+        "enemyId": "roarcurrent-siren",
+        "bossEnemyId": "tempest-voice-siren-boss",
+        "file": "adventure-14-roarcurrent-gorge.json"
     },
     {
-        "number":  15,
-        "id":  "abysslung-expanse",
-        "name":  "Abysslung Expanse",
-        "enemyId":  "abysslung-manta",
-        "bossEnemyId":  "gravewing-manta-boss",
-        "file":  "adventure-15-abysslung-expanse.json"
+        "number": 15,
+        "id": "abysslung-expanse",
+        "name": "Abysslung Expanse",
+        "enemyId": "abysslung-manta",
+        "bossEnemyId": "gravewing-manta-boss",
+        "file": "adventure-15-abysslung-expanse.json"
     },
     {
-        "number":  16,
-        "id":  "marrowlight-ossuary",
-        "name":  "Marrowlight Ossuary",
-        "enemyId":  "marrowlight-angler",
-        "bossEnemyId":  "bone-lantern-angler-boss",
-        "file":  "adventure-16-marrowlight-ossuary.json"
+        "number": 16,
+        "id": "marrowlight-ossuary",
+        "name": "Marrowlight Ossuary",
+        "enemyId": "marrowlight-angler",
+        "bossEnemyId": "bone-lantern-angler-boss",
+        "file": "adventure-16-marrowlight-ossuary.json"
     },
     {
-        "number":  17,
-        "id":  "titanwake-delta",
-        "name":  "Titanwake Delta",
-        "enemyId":  "titanwake-crocodile",
-        "bossEnemyId":  "wakejaw-ancient-boss",
-        "file":  "adventure-17-titanwake-delta.json"
+        "number": 17,
+        "id": "titanwake-delta",
+        "name": "Titanwake Delta",
+        "enemyId": "titanwake-crocodile",
+        "bossEnemyId": "wakejaw-ancient-boss",
+        "file": "adventure-17-titanwake-delta.json"
     },
     {
-        "number":  18,
-        "id":  "pressure-bloom-shelf",
-        "name":  "Pressure Bloom Shelf",
-        "enemyId":  "pressure-bloom-anemone",
-        "bossEnemyId":  "crushpetal-sovereign-boss",
-        "file":  "adventure-18-pressure-bloom-shelf.json"
+        "number": 18,
+        "id": "pressure-bloom-shelf",
+        "name": "Pressure Bloom Shelf",
+        "enemyId": "pressure-bloom-anemone",
+        "bossEnemyId": "crushpetal-sovereign-boss",
+        "file": "adventure-18-pressure-bloom-shelf.json"
     },
     {
-        "number":  19,
-        "id":  "shipgrave-maze",
-        "name":  "Shipgrave Maze",
-        "enemyId":  "shipgrave-scuttler",
-        "bossEnemyId":  "fleet-eater-scuttler-boss",
-        "file":  "adventure-19-shipgrave-maze.json"
+        "number": 19,
+        "id": "shipgrave-maze",
+        "name": "Shipgrave Maze",
+        "enemyId": "shipgrave-scuttler",
+        "bossEnemyId": "fleet-eater-scuttler-boss",
+        "file": "adventure-19-shipgrave-maze.json"
     },
     {
-        "number":  20,
-        "id":  "scarfin-torrent",
-        "name":  "Scarfin Torrent",
-        "enemyId":  "scarfin-barracuda",
-        "bossEnemyId":  "rendwake-barracuda-boss",
-        "file":  "adventure-20-scarfin-torrent.json"
+        "number": 20,
+        "id": "scarfin-torrent",
+        "name": "Scarfin Torrent",
+        "enemyId": "scarfin-barracuda",
+        "bossEnemyId": "rendwake-barracuda-boss",
+        "file": "adventure-20-scarfin-torrent.json"
     },
     {
-        "number":  21,
-        "id":  "colossus-trail",
-        "name":  "Colossus Trail",
-        "enemyId":  "colossus-remora",
-        "bossEnemyId":  "titanbound-remora-boss",
-        "file":  "adventure-21-colossus-trail.json"
+        "number": 21,
+        "id": "colossus-trail",
+        "name": "Colossus Trail",
+        "enemyId": "colossus-remora",
+        "bossEnemyId": "titanbound-remora-boss",
+        "file": "adventure-21-colossus-trail.json"
     },
     {
-        "number":  22,
-        "id":  "thunderwake-storm",
-        "name":  "Thunderwake Storm",
-        "enemyId":  "thunderwake-squid",
-        "bossEnemyId":  "storm-ink-architeuthis-boss",
-        "file":  "adventure-22-thunderwake-storm.json"
+        "number": 22,
+        "id": "thunderwake-storm",
+        "name": "Thunderwake Storm",
+        "enemyId": "thunderwake-squid",
+        "bossEnemyId": "storm-ink-architeuthis-boss",
+        "file": "adventure-22-thunderwake-storm.json"
     },
     {
-        "number":  23,
-        "id":  "the-fallen-fang",
-        "name":  "The Fallen Fang",
-        "enemyId":  "ancient-tooth-sentinel",
-        "bossEnemyId":  "first-tooth-sentinel-boss",
-        "file":  "adventure-23-the-fallen-fang.json"
+        "number": 23,
+        "id": "the-fallen-fang",
+        "name": "The Fallen Fang",
+        "enemyId": "ancient-tooth-sentinel",
+        "bossEnemyId": "first-tooth-sentinel-boss",
+        "file": "adventure-23-the-fallen-fang.json"
     },
     {
-        "number":  24,
-        "id":  "riven-trench",
-        "name":  "Riven Trench",
-        "enemyId":  "trench-rending-worm",
-        "bossEnemyId":  "worldscar-worm-boss",
-        "file":  "adventure-24-riven-trench.json"
+        "number": 24,
+        "id": "riven-trench",
+        "name": "Riven Trench",
+        "enemyId": "trench-rending-worm",
+        "bossEnemyId": "worldscar-worm-boss",
+        "file": "adventure-24-riven-trench.json"
     },
     {
-        "number":  25,
-        "id":  "the-last-leviathan-song",
-        "name":  "The Last Leviathan Song",
-        "enemyId":  "leviathan-song-echo",
-        "bossEnemyId":  "primordial-voice-boss",
-        "file":  "adventure-25-the-last-leviathan-song.json"
+        "number": 25,
+        "id": "the-last-leviathan-song",
+        "name": "The Last Leviathan Song",
+        "enemyId": "leviathan-song-echo",
+        "bossEnemyId": "primordial-voice-boss",
+        "file": "adventure-25-the-last-leviathan-song.json"
     },
     {
-        "number":  26,
-        "id":  "bone-crown-march",
-        "name":  "Bone-Crown March",
-        "enemyId":  "bone-crown-behemoth",
-        "bossEnemyId":  "ossuary-behemoth-boss",
-        "file":  "adventure-26-bone-crown-march.json"
+        "number": 26,
+        "id": "bone-crown-march",
+        "name": "Bone-Crown March",
+        "enemyId": "bone-crown-behemoth",
+        "bossEnemyId": "ossuary-behemoth-boss",
+        "file": "adventure-26-bone-crown-march.json"
     },
     {
-        "number":  27,
-        "id":  "wakeheart-vortex",
-        "name":  "Wakeheart Vortex",
-        "enemyId":  "wakeheart-elemental",
-        "bossEnemyId":  "heart-of-the-wake-boss",
-        "file":  "adventure-27-wakeheart-vortex.json"
+        "number": 27,
+        "id": "wakeheart-vortex",
+        "name": "Wakeheart Vortex",
+        "enemyId": "wakeheart-elemental",
+        "bossEnemyId": "heart-of-the-wake-boss",
+        "file": "adventure-27-wakeheart-vortex.json"
     },
     {
-        "number":  28,
-        "id":  "titan-scar-threshold",
-        "name":  "Titan-Scar Threshold",
-        "enemyId":  "titan-scar-guardian",
-        "bossEnemyId":  "scarbound-warden-boss",
-        "file":  "adventure-28-titan-scar-threshold.json"
+        "number": 28,
+        "id": "titan-scar-threshold",
+        "name": "Titan-Scar Threshold",
+        "enemyId": "titan-scar-guardian",
+        "bossEnemyId": "scarbound-warden-boss",
+        "file": "adventure-28-titan-scar-threshold.json"
     },
     {
-        "number":  29,
-        "id":  "the-scale-that-remembers",
-        "name":  "The Scale That Remembers",
-        "enemyId":  "primeval-scale-revenant",
-        "bossEnemyId":  "firstwake-revenant-boss",
-        "file":  "adventure-29-the-scale-that-remembers.json"
+        "number": 29,
+        "id": "the-scale-that-remembers",
+        "name": "The Scale That Remembers",
+        "enemyId": "primeval-scale-revenant",
+        "bossEnemyId": "firstwake-revenant-boss",
+        "file": "adventure-29-the-scale-that-remembers.json"
     },
     {
-        "number":  30,
-        "id":  "the-behemoth-program-hold",
-        "name":  "The Behemoth Program Hold",
-        "enemyId":  "behemoth-program-grunt",
-        "bossEnemyId":  "behemoth-program-officer-boss",
-        "file":  "adventure-30-the-behemoth-program-hold.json"
+        "number": 30,
+        "id": "grave-of-the-first-wake",
+        "name": "Grave of the First Wake",
+        "enemyId": "firstwake-gravekeeper",
+        "bossEnemyId": "first-leviathan-echo-boss",
+        "file": "adventure-30-grave-of-the-first-wake.json"
     }
 ]

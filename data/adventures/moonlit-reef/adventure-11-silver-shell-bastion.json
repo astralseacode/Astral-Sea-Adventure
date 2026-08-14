@@ -5,24 +5,24 @@
   "regionId": "moonlit-reef",
   "enemyId": "silver-shell-sentry",
   "recommendedLevel": 2,
-  "introDiscord": "Interlocked silver shells form a bastion guarding a forgotten Moonkeeper route.",
-  "introTwitch": "Interlocked silver shells form a bastion guarding a forgotten Moonkeeper route.",
+  "introDiscord": "Interlocked silver shells form an old Moonkeeper bastion across the reef route. Watchful carvings turn toward you, sealed gates click open and closed by themselves, and something armored is already counting your footsteps.",
+  "introTwitch": "Interlocked silver shells form an old Moonkeeper bastion across the reef route. Watchful carvings turn toward you, sealed gates click open and closed by themselves, and something armored is already counting your footsteps.",
   "startRoomId": "argent-causeway",
   "rooms": {
     "argent-causeway": {
-      "prompt": "An argent causeway reaches a fortified junction with three unmarked approaches.",
+      "prompt": "A fortified causeway crosses toward three approaches. Silver shell plates line the walls, each engraved with an eye that seems much too interested in where you're standing.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "sentry-rampart",
           "healAmount": 30,
-          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Sentry-salve. Quiet feet are healthier feet.\"",
-          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki's field kit is hidden behind a loose plate. \"Sentry-salve. Quiet feet are healthier feet. Loud feet discovered this medicine.\"",
+          "fullHpMessage": "The Sentry-salve remains behind the loose plate. You are already at full health, and your footsteps have attracted enough attention."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "sentry-rampart",
-          "message": "Within Silver Shell Bastion, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache sits behind a security grille that repeatedly closes one second before you reach it. Timing the mechanism earns you Star Candies and unreasonable satisfaction.",
           "reward": {
             "min": 35,
             "max": 60
@@ -32,30 +32,30 @@
           "type": "combat",
           "nextRoomId": "sentry-rampart",
           "enemyId": "silver-shell-sentry",
-          "message": "The water folds around Silver Shell Sentry, revealing the creature as it claims the passage."
+          "message": "A Silver Shell Sentry steps from an alcove, scans you from head to toe, and produces a deeply disapproving metallic click. Apparently your authorization is 'absolutely not.'"
         }
       }
     },
     "sentry-rampart": {
-      "prompt": "Beyond the outer passages of Silver Shell Bastion, shell ramparts rise through the water while three passages continue beneath watchful carvings.",
+      "prompt": "Shell ramparts rise through the water beneath rows of watchful carvings. Old warning bells sway overhead while three passages lead farther into the fortification.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "moonplate-keep",
           "enemyId": "silver-shell-sentry",
-          "message": "The water folds around Silver Shell Sentry, revealing the creature as it claims the passage."
+          "message": "A Sentry marches past without noticing you. You move. It stops. You stop. It resumes. You move again. It slowly turns around. Stealth negotiations have ended."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "moonplate-keep",
           "healAmount": 30,
-          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Drink now. The silver shells count footsteps.\"",
-          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
+          "message": "Shizuki's cache reads: \"Drink now. The silver shells count footsteps. I tested this. They also count running footsteps faster.\"",
+          "fullHpMessage": "Shizuki's cache remains unopened. At full health, there is no reason to let the silver shells count one more stop."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "moonplate-keep",
-          "message": "Within Silver Shell Bastion, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer is sitting inside what was clearly once a confiscated-items locker. Among several ancient spoons and one sandal are Star Candies.",
           "reward": {
             "min": 40,
             "max": 70
@@ -64,12 +64,12 @@
       }
     },
     "moonplate-keep": {
-      "prompt": "Near the innermost reaches of Silver Shell Bastion, moonplate walls enclose a keep where three gates stand equally still.",
+      "prompt": "Moonplate walls enclose the inner keep. Three gates stand perfectly still, each beneath a different faded security symbol. One has 'NOPE' scratched beneath it in Shizuki's handwriting.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Silver Shell Bastion, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel has been confiscated and tagged with an ancient citation. Whatever crime it committed, its sentence has lasted long enough. You liberate Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -79,12 +79,12 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "silver-shell-sentry",
-          "message": "The water folds around Silver Shell Sentry, revealing the creature as it claims the passage."
+          "message": "A Silver Shell Sentry emerges carrying an enormous ring of old keys. None fit the gate behind it. This does not appear to have improved its mood."
         },
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "Shizuki sealed one Berry inside a spare lockpick pouch along the route: \"Reward for opening the wrong door correctly.\"",
+          "message": "Shizuki sealed one Berry inside a lockpick pouch: \"Reward for opening the wrong door correctly. Yes, that is a skill.\"",
           "berries": 1
         }
       }
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Castellan Watch",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The keep opens into a command chamber where hundreds of silver shell plates form one enormous armored silhouette at the far end."
     }
   },
-  "bossPromptDiscord": "You reach Castellan Watch. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Castellan Watch: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Castellan Watch. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Every gate in the Bastion locks at once.\n\nThree warning bells ring.\n\nThe armored figure at Castellan Watch rises, and every Sentry in the adjoining halls immediately stands at attention.\n\nUse /yes to challenge the Castellan or /no to leave before it files the world's oldest trespassing report.",
+  "bossPromptTwitch": "Every gate in the Bastion locks at once.\n\nThree warning bells ring.\n\nThe armored figure at Castellan Watch rises, and every Sentry in the adjoining halls immediately stands at attention.\n\nUse !yes to challenge the Castellan or !no to leave before it files the world's oldest trespassing report.",
+  "bossRetreatText": "You retreat from Castellan Watch. The warning bells stop, but the Bastion's locks remain deeply suspicious of you.",
   "boss": {
     "enemyId": "argent-shell-castellan-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Argent Shell Castellan reveals itself!"
+    "revealText": "The armored silhouette separates into hundreds of interlocked plates as the Argent Shell Castellan advances from the watch!"
   },
-  "completionText": "Argent Shell Castellan yields to the returning current. Silver Shell Bastion settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Argent Shell Castellan lowers its weapon. One by one, the Bastion's locks release. A final security plate flashes ACCESS: RELUCTANTLY GRANTED before another route opens."
 }

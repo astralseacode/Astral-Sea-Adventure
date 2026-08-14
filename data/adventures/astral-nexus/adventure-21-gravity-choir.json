@@ -1,107 +1,107 @@
 {
-    "id":  "gravity-choir",
-    "number":  21,
-    "name":  "Gravity Choir",
-    "regionId":  "astral-nexus",
-    "enemyId":  "gravity-choir-siren",
-    "recommendedLevel":  50,
-    "introDiscord":  "Gravity Choir lies ahead, where fractured realities where memories cast physical shadows conceal the territory of Gravity Choir Siren.",
-    "introTwitch":  "Gravity Choir lies ahead amid fractured realities where memories cast physical shadows.",
-    "startRoomId":  "gravity-choir-approach",
-    "rooms":  {
-                  "gravity-choir-approach":  {
-                                                 "prompt":  "At the edge of Gravity Choir, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                 "choices":  {
-                                                                 "left":  {
-                                                                              "type":  "healing",
-                                                                              "nextRoomId":  "gravity-choir-depths",
-                                                                              "healAmount":  42,
-                                                                              "message":  "The left route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                              "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                          },
-                                                                 "right":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "gravity-choir-depths",
-                                                                               "enemyId":  "gravity-choir-siren",
-                                                                               "message":  "A shift in the current exposes Gravity Choir Siren, which claims the right route through Gravity Choir."
-                                                                           },
-                                                                 "forward":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "gravity-choir-depths",
-                                                                                 "message":  "Beyond the forward route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                 "reward":  {
-                                                                                                "min":  212,
-                                                                                                "max":  253
-                                                                                            }
-                                                                             }
-                                                             }
-                                             },
-                  "gravity-choir-depths":  {
-                                               "prompt":  "Deeper within Gravity Choir, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                               "choices":  {
-                                                               "left":  {
-                                                                            "type":  "empty",
-                                                                            "nextRoomId":  "gravity-choir-threshold",
-                                                                            "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Gravity Choir. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                            "berries":  1
-                                                                        },
-                                                               "right":  {
-                                                                             "type":  "treasure",
-                                                                             "nextRoomId":  "gravity-choir-threshold",
-                                                                             "message":  "Beyond the right route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                             "reward":  {
-                                                                                            "min":  224,
-                                                                                            "max":  265
-                                                                                        }
-                                                                         },
-                                                               "forward":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "gravity-choir-threshold",
-                                                                               "enemyId":  "gravity-choir-siren",
-                                                                               "message":  "A shift in the current exposes Gravity Choir Siren, which claims the forward route through Gravity Choir."
-                                                                           }
-                                                           }
-                                           },
-                  "gravity-choir-threshold":  {
-                                                  "prompt":  "Near the heart of Gravity Choir, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "boss-antechamber",
-                                                                               "enemyId":  "gravity-choir-siren",
-                                                                               "message":  "A shift in the current exposes Gravity Choir Siren, which claims the left route through Gravity Choir."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "healing",
-                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                "healAmount":  47,
-                                                                                "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
-                                                                                  "reward":  {
-                                                                                                 "min":  236,
-                                                                                                 "max":  277
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "boss-antechamber":  {
-                                           "name":  "Mass-Song Amphitheater",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Mass-Song Amphitheater."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Mass-Song Amphitheater. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Mass-Song Amphitheater: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Mass-Song Amphitheater. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "singularity-cantor-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Singularity Cantor reveals itself!"
-             },
-    "completionText":  "Singularity Cantor yields, and the currents beyond Mass-Song Amphitheater open the next route through Astral Nexus."
+    "id": "gravity-choir",
+    "number": 21,
+    "name": "Gravity Choir",
+    "regionId": "astral-nexus",
+    "enemyId": "gravity-choir-siren",
+    "recommendedLevel": 50,
+    "introDiscord": "Music changes gravity.\n\nHigh notes send stones upward.\n\nLow notes slam them down.\n\nShizuki's handwriting begins several feet above the floor and ends on\nthe ceiling.",
+    "introTwitch": "Music changes gravity.\n\nHigh notes send stones upward.\n\nLow notes slam them down.\n\nShizuki's handwriting begins several feet above the floor and ends on\nthe ceiling.",
+    "startRoomId": "gravity-choir-approach",
+    "rooms": {
+        "gravity-choir-approach": {
+            "prompt": "Three impossible routes open across Gravity Choir.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "gravity-choir-depths",
+                    "healAmount": 42,
+                    "message": "A gentle note makes you almost weightless and eases your wounds.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "gravity-choir-depths",
+                    "enemyId": "gravity-choir-siren",
+                    "message": "A Gravity Choir Siren sings.\n\nThe floor immediately becomes a wall."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "gravity-choir-depths",
+                    "message": "A cache hangs motionless in midwater.",
+                    "reward": {
+                        "min": 212,
+                        "max": 253
+                    }
+                }
+            }
+        },
+        "gravity-choir-depths": {
+            "prompt": "Deeper within Gravity Choir, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "gravity-choir-threshold",
+                    "message": "One Berry is stuck to the ceiling.\n\nShizuki wrote below:\n\n'Berry escaped due to soprano.\n\nRecovery pending.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "gravity-choir-threshold",
+                    "message": "Star Candies orbit a floating stone.",
+                    "reward": {
+                        "min": 224,
+                        "max": 265
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "gravity-choir-threshold",
+                    "enemyId": "gravity-choir-siren",
+                    "message": "A Siren changes gravity mid-charge."
+                }
+            }
+        },
+        "gravity-choir-threshold": {
+            "prompt": "Near Mass-Song Amphitheater, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "gravity-choir-siren",
+                    "message": "A Gravity Choir Siren drops you upward."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 47,
+                    "message": "A perfect chord restores normal gravity and your strength.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A coffer lands gently after a final note.",
+                    "reward": {
+                        "min": 236,
+                        "max": 277
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Mass-Song Amphitheater",
+            "type": "boss-prompt",
+            "prompt": "Mass-Song Amphitheater begins singing without musicians."
+        }
+    },
+    "bossPromptDiscord": "Mass-Song Amphitheater begins singing without musicians.\n\nEverything starts falling toward the center.\n\nUse /yes to enter or /no to maintain a traditional\nrelationship with downward.",
+    "bossPromptTwitch": "Mass-Song Amphitheater begins singing without musicians.\n\nEverything starts falling toward the center.\n\nUse !yes to enter or !no to maintain a traditional\nrelationship with downward.",
+    "bossRetreatText": "You withdraw from Mass-Song Amphitheater. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "singularity-cantor-boss",
+        "roomId": "boss",
+        "revealText": "A dark point forms inside the song.\n\nSingularity Cantor reveals itself!"
+    },
+    "completionText": "Gravity returns.\n\nThe Berry on the ceiling finally falls.\n\nMystery resolved."
 }

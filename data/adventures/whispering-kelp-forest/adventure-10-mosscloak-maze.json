@@ -1,107 +1,107 @@
 {
-    "id":  "mosscloak-maze",
-    "number":  10,
-    "name":  "Mosscloak Maze",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "mosscloak-octopus",
-    "recommendedLevel":  13,
-    "introDiscord":  "Mosscloak Maze lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Mosscloak Octopus.",
-    "introTwitch":  "Mosscloak Maze lies ahead amid towering kelp columns threaded with murmuring currents.",
-    "startRoomId":  "mosscloak-maze-approach",
-    "rooms":  {
-                  "mosscloak-maze-approach":  {
-                                                  "prompt":  "At the edge of Mosscloak Maze, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "mosscloak-maze-depths",
-                                                                               "enemyId":  "mosscloak-octopus",
-                                                                               "message":  "A shift in the current exposes Mosscloak Octopus, which claims the left route through Mosscloak Maze."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "mosscloak-maze-depths",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Mosscloak Maze. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "mosscloak-maze-depths",
-                                                                                  "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                  "reward":  {
-                                                                                                 "min":  155,
-                                                                                                 "max":  193
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "mosscloak-maze-depths":  {
-                                                "prompt":  "Deeper within Mosscloak Maze, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                "choices":  {
-                                                                "left":  {
-                                                                             "type":  "healing",
-                                                                             "nextRoomId":  "mosscloak-maze-threshold",
-                                                                             "healAmount":  50,
-                                                                             "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                             "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                         },
-                                                                "right":  {
-                                                                              "type":  "combat",
-                                                                              "nextRoomId":  "mosscloak-maze-threshold",
-                                                                              "enemyId":  "mosscloak-octopus",
-                                                                              "message":  "A shift in the current exposes Mosscloak Octopus, which claims the right route through Mosscloak Maze."
-                                                                          },
-                                                                "forward":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "mosscloak-maze-threshold",
-                                                                                "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                "reward":  {
-                                                                                               "min":  167,
-                                                                                               "max":  205
-                                                                                           }
-                                                                            }
-                                                            }
-                                            },
-                  "mosscloak-maze-threshold":  {
-                                                   "prompt":  "Near the heart of Mosscloak Maze, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                "message":  "Beyond the left route, you discover a shrine coffer covered by harmless moss.",
-                                                                                "reward":  {
-                                                                                               "min":  179,
-                                                                                               "max":  217
-                                                                                           }
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "healAmount":  55,
-                                                                                 "message":  "The right route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "mosscloak-octopus",
-                                                                                   "message":  "A shift in the current exposes Mosscloak Octopus, which claims the forward route through Mosscloak Maze."
-                                                                               }
-                                                               }
-                                               },
-                  "boss-antechamber":  {
-                                           "name":  "Green Masquerade",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Green Masquerade."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Green Masquerade. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Green Masquerade: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Green Masquerade. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "ancient-mosscloak-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Ancient Mosscloak reveals itself!"
-             },
-    "completionText":  "Ancient Mosscloak yields, and the currents beyond Green Masquerade open the next route through Whispering Kelp Forest."
+  "id": "mosscloak-maze",
+  "number": 10,
+  "name": "Mosscloak Maze",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "mosscloak-octopus",
+  "recommendedLevel": 13,
+  "introDiscord": "A maze of moss-covered roots closes around the trail. Mosscloak\nOctopuses vanish against nearly any surface, meaning every perfectly\nordinary patch of greenery is now legally suspicious.",
+  "introTwitch": "A maze of moss-covered roots closes around the trail. Mosscloak\nOctopuses vanish against nearly any surface, meaning every perfectly\nordinary patch of greenery is now legally suspicious.",
+  "startRoomId": "mosscloak-maze-approach",
+  "rooms": {
+    "mosscloak-maze-approach": {
+      "prompt": "Three mossy corridors twist ahead. One wall appears to be breathing.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "mosscloak-maze-depths",
+          "enemyId": "mosscloak-octopus",
+          "message": "You inspect a patch of moss.\n\nNormal.\n\nAnother patch.\n\nNormal.\n\nA third patch grows eight arms.\n\nThere it is."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "mosscloak-maze-depths",
+          "message": "One Berry sits beneath Shizuki's note:\n\n'Spent twenty minutes talking to moss.\n\nMoss was Octopus.\n\nOctopus did not correct me.\n\nSocial betrayal.'",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "mosscloak-maze-depths",
+          "message": "An offering basket hides inside a living root. The moss covering it\nslides away when you reach for the Star Candies.\n\nThe moss has eyes.\n\nYou choose not to investigate.",
+          "reward": {
+            "min": 155,
+            "max": 193
+          }
+        }
+      }
+    },
+    "mosscloak-maze-depths": {
+      "prompt": "Living roots divide into three passages covered in nearly identical\ngreen growth.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "mosscloak-maze-threshold",
+          "healAmount": 50,
+          "message": "A moonblossom pool rests beneath Shizuki's inspection sign:\n\n'POOL: real.\nROCK: real.\nMOSS: questionable.\nME: tired.'",
+          "fullHpMessage": "You leave the restorative pool untouched and accept Shizuki's official\nmoss classification."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "mosscloak-maze-threshold",
+          "enemyId": "mosscloak-octopus",
+          "message": "A moss-covered stone shifts aside.\n\nEight arms unfold.\n\nYou are beginning to resent environmental décor."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "mosscloak-maze-threshold",
+          "message": "Broad silver kelp hides a cache of Star Candies.\n\nYou poke the kelp first.\n\nNothing moves.\n\nProgress.",
+          "reward": {
+            "min": 167,
+            "max": 205
+          }
+        }
+      }
+    },
+    "mosscloak-maze-threshold": {
+      "prompt": "Moonlit fronds surround Green Masquerade, where every wall, root, and\nstone wears the same thick emerald moss.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A shrine coffer sits behind a curtain of moss.\n\nThe curtain politely hands you the latch.\n\nIt is an Octopus.\n\nApparently even camouflage creatures can be helpful.",
+          "reward": {
+            "min": 179,
+            "max": 217
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 55,
+          "message": "Restorative sap rests beneath Shizuki's note:\n\n'Medicine real.\n\nBottle real.\n\nTable was Octopus.\n\nStill upset.'",
+          "fullHpMessage": "You leave the medicine untouched. The table incident remains\nemotionally unresolved."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "mosscloak-octopus",
+          "message": "A completely ordinary root blocks the route.\n\nIt becomes an Octopus.\n\nNothing is ordinary anymore."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Green Masquerade",
+      "type": "boss-prompt",
+      "prompt": "Every patch of moss in Green Masquerade changes color simultaneously."
+    }
+  },
+  "bossPromptDiscord": "The walls move.\n\nThen the floor.\n\nThen half the chamber peels itself away from the roots.\n\nWhat looked like an overgrown grove has been hiding one enormous\npresence in plain sight.\n\nUse /yes to enter Green Masquerade or /no to reconsider every piece of\nmoss you have ever trusted.",
+  "bossPromptTwitch": "The walls move.\n\nThen the floor.\n\nThen half the chamber peels itself away from the roots.\n\nWhat looked like an overgrown grove has been hiding one enormous\npresence in plain sight.\n\nUse !yes to enter Green Masquerade or !no to reconsider every piece of\nmoss you have ever trusted.",
+  "bossRetreatText": "You retreat from Green Masquerade.\n\nBehind you, the entire chamber becomes perfectly ordinary greenery\nagain.\n\nAbsolutely not.",
+  "boss": {
+    "enemyId": "ancient-mosscloak-boss",
+    "roomId": "boss",
+    "revealText": "Eight enormous arms unfold from the moss-covered walls.\n\nAncient Mosscloak reveals itself!"
+  },
+  "completionText": "\"The Ancient Mosscloak disappears back into the forest.\n\nYou know it is somewhere nearby.\n\nThe forest looks completely normal.\n\nThis is no longer comforting.\"\n\n\n#################################################################"
 }

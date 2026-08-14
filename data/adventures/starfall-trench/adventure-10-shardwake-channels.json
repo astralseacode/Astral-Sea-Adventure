@@ -1,107 +1,107 @@
 {
-    "id":  "shardwake-channels",
-    "number":  10,
-    "name":  "Shardwake Channels",
-    "regionId":  "starfall-trench",
-    "enemyId":  "shardwake-eel",
-    "recommendedLevel":  7,
-    "introDiscord":  "Shardwake Channels lies ahead, where fractured starstone terraces conceal the territory of Shardwake Eel.",
-    "introTwitch":  "Shardwake Channels lies ahead amid fractured starstone terraces.",
-    "startRoomId":  "shardwake-channels-approach",
-    "rooms":  {
-                  "shardwake-channels-approach":  {
-                                                      "prompt":  "At the edge of Shardwake Channels, fractured starstone terraces divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "shardwake-channels-depths",
-                                                                                   "enemyId":  "shardwake-eel",
-                                                                                   "message":  "A shift in the current exposes Shardwake Eel, which claims the left route through Shardwake Channels."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "empty",
-                                                                                    "nextRoomId":  "shardwake-channels-depths",
-                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Shardwake Channels. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                    "berries":  1
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "shardwake-channels-depths",
-                                                                                      "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                      "reward":  {
-                                                                                                     "min":  114,
-                                                                                                     "max":  152
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "shardwake-channels-depths":  {
-                                                    "prompt":  "Deeper within Shardwake Channels, meteor-lit trenches divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "shardwake-channels-threshold",
-                                                                                 "healAmount":  41,
-                                                                                 "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "shardwake-channels-threshold",
-                                                                                  "enemyId":  "shardwake-eel",
-                                                                                  "message":  "A shift in the current exposes Shardwake Eel, which claims the right route through Shardwake Channels."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "shardwake-channels-threshold",
-                                                                                    "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
-                                                                                    "reward":  {
-                                                                                                   "min":  126,
-                                                                                                   "max":  164
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "shardwake-channels-threshold":  {
-                                                       "prompt":  "Near the heart of Shardwake Channels, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the left route, you discover a star chart coffer buried in luminous silt.",
-                                                                                    "reward":  {
-                                                                                                   "min":  138,
-                                                                                                   "max":  176
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  46,
-                                                                                     "message":  "The right route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "enemyId":  "shardwake-eel",
-                                                                                       "message":  "A shift in the current exposes Shardwake Eel, which claims the forward route through Shardwake Channels."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Splintercurrent Ring",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Splintercurrent Ring."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Splintercurrent Ring. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Splintercurrent Ring: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Splintercurrent Ring. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "riftcoil-eel-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Riftcoil Eel reveals itself!"
-             },
-    "completionText":  "Riftcoil Eel yields, and the currents beyond Splintercurrent Ring open the next route through Starfall Trench."
+  "id": "shardwake-channels",
+  "number": 10,
+  "name": "Shardwake Channels",
+  "regionId": "starfall-trench",
+  "enemyId": "shardwake-eel",
+  "recommendedLevel": 7,
+  "introDiscord": "Fast currents race between razor-thin starstone channels. Shizuki has left several navigation signs here. Their increasing panic suggests the currents won.",
+  "introTwitch": "Fast currents race between razor-thin starstone channels. Shizuki has left several navigation signs here. Their increasing panic suggests the currents won.",
+  "startRoomId": "shardwake-channels-approach",
+  "rooms": {
+    "shardwake-channels-approach": {
+      "prompt": "Three channels split ahead beneath signs reading 'SAFE,' 'SAFER,' and 'I HAVE CHANGED MY MIND.'",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "shardwake-channels-depths",
+          "enemyId": "shardwake-eel",
+          "message": "A Shardwake Eel rockets from the current like a living spear."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "shardwake-channels-depths",
+          "message": "A Berry is tied to Shizuki's fourth replacement sign: \"STOP TAKING MY SIGNS, CURRENT.\"",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "shardwake-channels-depths",
+          "message": "A meteor-iron reliquary spins inside a calm pocket between the racing channels.",
+          "reward": {
+            "min": 114,
+            "max": 152
+          }
+        }
+      }
+    },
+    "shardwake-channels-depths": {
+      "prompt": "Three faster currents collide beneath increasingly crooked trail markers.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "shardwake-channels-threshold",
+          "healAmount": 41,
+          "message": "A tonic is strapped to a rock beneath a note: \"Anything not tied down belongs to the trench now.\"",
+          "fullHpMessage": "The tonic remains securely strapped down. Finally, something here understands commitment."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "shardwake-channels-threshold",
+          "enemyId": "shardwake-eel",
+          "message": "A Shardwake Eel rides the current directly toward you."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "shardwake-channels-threshold",
+          "message": "Star Candies have collected behind a natural cometglass barrier.",
+          "reward": {
+            "min": 126,
+            "max": 164
+          }
+        }
+      }
+    },
+    "shardwake-channels-threshold": {
+      "prompt": "The channels spiral toward Splintercurrent Ring.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A star-chart coffer circles slowly in an eddy.",
+          "reward": {
+            "min": 138,
+            "max": 176
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 46,
+          "message": "Shizuki's bottle reads: \"Emergency current medicine. Side effects: remaining in approximately same location.\"",
+          "fullHpMessage": "You leave it untouched and continue remaining approximately where you intended."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "shardwake-eel",
+          "message": "\"A Shardwake Eel shoots through the final channel. Apparently this is now a race.\"\n\nBOSS:"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Splintercurrent Ring",
+      "type": "boss-prompt",
+      "prompt": "The currents twist into a single violent ring."
+    }
+  },
+  "bossPromptDiscord": "The currents twist into a single violent ring.\n\nSomething enormous coils inside it.\n\nUse /yes to enter Splintercurrent Ring or /no to avoid becoming part of the current's next lap.",
+  "bossPromptTwitch": "The currents twist into a single violent ring.\n\nSomething enormous coils inside it.\n\nUse !yes to enter Splintercurrent Ring or !no to avoid becoming part of the current's next lap.",
+  "bossRetreatText": "You retreat. One of Shizuki's old signs races past you in the current.",
+  "boss": {
+    "enemyId": "riftcoil-eel-boss",
+    "roomId": "boss",
+    "revealText": "A colossal eel uncoils from the ring.\n\nRiftcoil Eel reveals itself!"
+  },
+  "completionText": "\"The current loosens.\n\nA battered sign floats past:\n\n\"I KNEW THIS WOULD HAPPEN.\"\"\n\n\n#################################################################"
 }

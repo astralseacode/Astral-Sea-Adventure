@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "celestial-coral-wyrm",
   "recommendedLevel": 4,
-  "introDiscord": "A spire of celestial coral twists upward through the sea like a frozen comet trail.",
-  "introTwitch": "A spire of celestial coral twists upward through the sea like a frozen comet trail.",
+  "introDiscord": "A tower of celestial coral twists upward like a frozen comet trail. Warm light pulses through the reefstone while long Wyrms circle the spire in spiraling paths.",
+  "introTwitch": "A tower of celestial coral twists upward like a frozen comet trail. Warm light pulses through the reefstone while long Wyrms circle the spire in spiraling paths.",
   "startRoomId": "spiral-reefrise",
   "rooms": {
     "spiral-reefrise": {
-      "prompt": "Spiral reefstone rises around three paths carved into the living tower.",
+      "prompt": "The reef rises in a glowing spiral around three ascending paths. Warm comet-coral pulses beneath your hands while Wyrms coil around the tower outside.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "wyrmcoil-terrace",
-          "message": "Within Celestial Coral Wyrm Spire, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel is wedged onto a ledge halfway up the spiral. The view is spectacular. The drop is also spectacular. Inside are Star Candies.",
           "reward": {
             "min": 60,
             "max": 90
@@ -25,30 +25,30 @@
           "type": "healing",
           "nextRoomId": "wyrmcoil-terrace",
           "healAmount": 40,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Wyrmfire cordial. Warm enough to remind your bones they have duties.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "Shizuki's Wyrmfire cordial reads: \"Warm enough to remind your bones they have duties. Glimmer declined. Glimmer has no bones to motivate.\"",
+          "fullHpMessage": "The Wyrmfire cordial remains sealed. You are already at full health, and your bones require no additional motivation."
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "wyrmcoil-terrace",
           "enemyId": "celestial-coral-wyrm",
-          "message": "The water folds around Celestial Coral Wyrm, revealing the creature as it claims the passage."
+          "message": "A Celestial Coral Wyrm coils around the outer tower, passes you once, then reverses direction and comes back with significantly less peaceful intentions."
         }
       }
     },
     "wyrmcoil-terrace": {
-      "prompt": "The passages carry you deeper into Celestial Coral Wyrm Spire, where a coiled terrace overlooks the Moonlit Reef while three arches lead inward.",
+      "prompt": "A coiled terrace overlooks nearly all of Moonlit Reef. Three arches lead inward while Wyrms weave through the open tower above.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "comet-coral-crown",
           "enemyId": "celestial-coral-wyrm",
-          "message": "The water folds around Celestial Coral Wyrm, revealing the creature as it claims the passage."
+          "message": "A Wyrm is sunning itself in warm comet-coral. Your arrival creates shade. Apparently this is an unforgivable offense."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "comet-coral-crown",
-          "message": "Within Celestial Coral Wyrm Spire, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache is fused halfway into glowing coral. Heat has kept it spotless for centuries—and kept everyone else from touching it. You carefully recover Star Candies.",
           "reward": {
             "min": 70,
             "max": 105
@@ -58,30 +58,30 @@
           "type": "healing",
           "nextRoomId": "comet-coral-crown",
           "healAmount": 40,
-          "message": "Deeper inside Celestial Coral Wyrm Spire, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Do not confuse surviving fire with permission to stop.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Shizuki's note reads: \"Do not confuse surviving fire with permission to stop. Also let bottle cool before drinking. New rule.\"",
+          "fullHpMessage": "Shizuki's cooled remedy remains untouched. At full health, you can obey at least one new rule and leave the bottle alone."
         }
       }
     },
     "comet-coral-crown": {
-      "prompt": "Close to the heart of Celestial Coral Wyrm Spire, comet coral crowns a high chamber where three passages circle the spire.",
+      "prompt": "The spire's highest chamber glows like a captured star. Three passages curve around the crown while Wyrm shadows circle outside.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "An improvised shelter along the route holds one Berry beside names Shizuki preserved for other experiments who might escape after her.",
+          "message": "Shizuki's old shelter contains one Berry beside a list titled 'THINGS I'M DOING AFTER I GET OUT.' Most entries involve food, maps, and 'go somewhere nobody knows me.'",
           "berries": 1
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "celestial-coral-wyrm",
-          "message": "The water folds around Celestial Coral Wyrm, revealing the creature as it claims the passage."
+          "message": "A Wyrm loops around the entire crown and dives through one opening. It emerges from another before you finish turning around."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Celestial Coral Wyrm Spire, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer glows red-hot beneath comet coral. Waiting approximately thirty seconds feels deeply unfair, but eventually you recover Star Candies without cooking yourself.",
           "reward": {
             "min": 80,
             "max": 120
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Ascendant Pinnacle",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The spiral paths narrow onto the spire's highest pinnacle. Celestial coral burns like a captured star while an immense coil circles beyond the crown."
     }
   },
-  "bossPromptDiscord": "You reach Ascendant Pinnacle. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Ascendant Pinnacle: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Ascendant Pinnacle. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The Wyrms circling the Spire abruptly scatter.\n\nHeat surges through every vein of celestial coral.\n\nSomething vast coils around the entire pinnacle.\n\nUse /yes to climb higher or /no to reconsider challenging something that can hug a tower.",
+  "bossPromptTwitch": "The Wyrms circling the Spire abruptly scatter.\n\nHeat surges through every vein of celestial coral.\n\nSomething vast coils around the entire pinnacle.\n\nUse !yes to climb higher or !no to reconsider challenging something that can hug a tower.",
+  "bossRetreatText": "You descend from the Ascendant Pinnacle. The vast coil loosens around the tower, but the celestial coral remains hot beneath your hands.",
   "boss": {
     "enemyId": "celestial-wyrm-ascendant-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Celestial Wyrm Ascendant reveals itself!"
+    "revealText": "An enormous Wyrm rises around the pinnacle in a spiral of stellar light. The Celestial Wyrm Ascendant has claimed the crown!"
   },
-  "completionText": "Celestial Wyrm Ascendant yields to the returning current. Celestial Coral Wyrm Spire settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Ascendant releases the tower and disappears into the upper current. The coral cools to a gentle glow, revealing another path down toward Moonlit Reef."
 }

@@ -5,30 +5,30 @@
   "regionId": "moonlit-reef",
   "enemyId": "starshell-skipper",
   "recommendedLevel": 1,
-  "introDiscord": "Bright shells skip across shallow currents in a shoal mapped by trails of starlight.",
-  "introTwitch": "Bright shells skip across shallow currents in a shoal mapped by trails of starlight.",
+  "introDiscord": "The Lunar Current sweeps into a bright shoal where trails of starlight race across pale sand. Starshells skip over the water in long glowing arcs, and something small ricochets between two reef ridges before disappearing into the shallows. Three routes follow the shifting light.",
+  "introTwitch": "The Lunar Current sweeps into a bright shoal where trails of starlight race across pale sand. Starshells skip over the water in long glowing arcs, and something small ricochets between two reef ridges before disappearing into the shallows. Three routes follow the shifting light.",
   "startRoomId": "cometwash-bank",
   "rooms": {
     "cometwash-bank": {
-      "prompt": "A cometlike wash sweeps over pale sand where three courses slip between reef ridges.",
+      "prompt": "A comet-bright current sweeps across the sand, leaving glowing trails behind every shell it touches. One starshell skips past you once, twice, three times, then vanishes between three reef-lined routes.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "skipping-shoal",
           "enemyId": "starshell-skipper",
-          "message": "The water folds around Starshell Skipper, revealing the creature as it claims the passage."
+          "message": "A glowing shell skips across the sand and rebounds off a reef ridge. Then it rebounds again. On the third bounce, tiny fins unfold from underneath and a Starshell Skipper launches itself directly toward you. Apparently it was not a shell after all."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "skipping-shoal",
           "healAmount": 25,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Starshell broth. Surprisingly edible after midnight.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Beneath a little shelter protected from the racing current, you find one of Shizuki's old camp kits. A medicinal flask is labeled: \"Starshell broth. Surprisingly edible after midnight. Before midnight? Different story.\"",
+          "fullHpMessage": "Shizuki's Starshell broth remains safely sealed. You're already at full health, which means you have no medical reason to test what changes at midnight."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "skipping-shoal",
-          "message": "Within Starshell Skipper Shoals, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer keeps skipping several feet across the sand whenever the cometwash reaches it. You chase it through three increasingly ridiculous bounces before finally pinning it between two rocks and recovering Star Candies.",
           "reward": {
             "min": 25,
             "max": 50
@@ -37,12 +37,12 @@
       }
     },
     "skipping-shoal": {
-      "prompt": "As Starshell Skipper Shoals closes around you, loose starshells circle a broad shoal while three waterways open beneath shifting light.",
+      "prompt": "The passage opens onto a broad sandbar covered in loose starshells. Each pulse of the Lunar Current sends them skipping across the shoal in glittering arcs while three waterways appear and disappear beneath the shifting trails.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "celestial-sandbar",
-          "message": "Within Starshell Skipper Shoals, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel has somehow become part of the skipping pattern. It shoots across the shoal, bounces once off a shell, and lands perfectly upright beside you. Inside are Star Candies. You are choosing to believe that was intentional.",
           "reward": {
             "min": 30,
             "max": 55
@@ -52,30 +52,30 @@
           "type": "combat",
           "nextRoomId": "celestial-sandbar",
           "enemyId": "starshell-skipper",
-          "message": "The water folds around Starshell Skipper, revealing the creature as it claims the passage."
+          "message": "Three starshells skip past in perfect formation. The fourth suddenly changes direction. A Starshell Skipper rebounds off a ridge, spins once in the current, and comes racing back toward you looking extremely pleased with itself."
         },
         "forward": {
           "type": "empty",
           "nextRoomId": "celestial-sandbar",
-          "message": "Shizuki balanced one Berry atop a four-way trail sign in the surrounding passage: \"Choose boldly. Pretend it was intentional.\"",
+          "message": "At a four-way trail sign, Shizuki somehow balanced one Berry on the very top arrow. Every direction has been scratched out and rewritten at least twice. Her final note reads: \"Choose boldly. Pretend it was intentional.\" You take the Berry and decide not to ask which path she actually used.",
           "berries": 1
         }
       }
     },
     "celestial-sandbar": {
-      "prompt": "The final stretch through Starshell Skipper Shoals reveals a celestial sandbar hums below the surface, dividing the current into three uncertain routes.",
+      "prompt": "The final sandbar hums beneath your feet as glowing shell trails race in every direction. Each passing current shifts the sand just enough to move the paths, leaving three routes that refuse to stay exactly where you remember them.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 25,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"A quick sip, then keep moving before the shoal rearranges itself.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Moonlight reveals one of Shizuki's old sleeping spots tucked behind a stable reef ridge. Beside it waits a restorative bottle labeled: \"Quick sip, then keep moving before the shoal rearranges itself. Lost my blanket twice.\"",
+          "fullHpMessage": "The restorative remains beside Shizuki's repeatedly relocated campsite. You're already at full health, so the shoal can rearrange somebody else's belongings today."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Starshell Skipper Shoals, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache lies half-buried beneath the shifting sand. Every pulse of the shoal exposes it for only a few seconds before covering it again. You time the current, dig fast, and recover Star Candies just before the sand sweeps back into place.",
           "reward": {
             "min": 35,
             "max": 60
@@ -85,23 +85,23 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "starshell-skipper",
-          "message": "The water folds around Starshell Skipper, revealing the creature as it claims the passage."
+          "message": "A glowing shape skips across one current, crosses another in midair, bounces off a reef ridge, and lands directly in front of you. The Starshell Skipper pauses as if waiting for applause. When none arrives, it attacks."
         }
       }
     },
     "boss-antechamber": {
       "name": "Wayfinder Anchorage",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The shifting sand gives way to a wide anchorage where hundreds of glowing shell trails intersect. Starshell Skippers circle the chamber in precise arcs, each following a different route without ever colliding. At the center, one enormous starshell rests perfectly still."
     }
   },
-  "bossPromptDiscord": "You reach Wayfinder Anchorage. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Wayfinder Anchorage: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Wayfinder Anchorage. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "One Starshell Skipper stops.\n\nThen another.\n\nAcross the anchorage, every glowing trail goes still at once.\n\nThe enormous shell at the center slowly tilts upward as starlight gathers beneath it. Whatever has been guiding the Skippers through these shifting shoals has noticed you.\n\nUse /yes to approach or /no to retreat before the routes start moving again.",
+  "bossPromptTwitch": "One Starshell Skipper stops.\n\nThen another.\n\nAcross the anchorage, every glowing trail goes still at once.\n\nThe enormous shell at the center slowly tilts upward as starlight gathers beneath it. Whatever has been guiding the Skippers through these shifting shoals has noticed you.\n\nUse !yes to approach or !no to retreat before the routes start moving again.",
+  "bossRetreatText": "You step away from Wayfinder Anchorage. The enormous shell settles back into place, and one by one the Skippers resume their glowing routes as though nothing happened.",
   "boss": {
     "enemyId": "starshell-wayfinder-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Starshell Wayfinder reveals itself!"
+    "revealText": "The great starshell launches from the sand in a brilliant arc of starlight. Fins flare beneath its shell as it skips once across the entire anchorage and lands before you with a wave of glowing sand. The Starshell Wayfinder has taken the field!"
   },
-  "completionText": "Starshell Wayfinder yields to the returning current. Starshell Skipper Shoals settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Starshell Wayfinder makes one final sweeping leap before landing quietly at the center of the anchorage. Around it, the smaller Skippers slow their frantic routes and begin tracing gentler paths through the shoal. One glowing trail stretches beyond the sandbar toward another part of Moonlit Reef. Behind you, a tiny Skipper attempts an especially ambitious jump, clips a shell, and tumbles directly into the sand."
 }

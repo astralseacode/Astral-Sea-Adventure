@@ -1,107 +1,107 @@
 {
-    "id":  "hall-of-other-selves",
-    "number":  10,
-    "name":  "Hall of Other Selves",
-    "regionId":  "astral-nexus",
-    "enemyId":  "echo-of-self-mimic",
-    "recommendedLevel":  50,
-    "introDiscord":  "Hall of Other Selves lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Mirror-Self Mimic.",
-    "introTwitch":  "Hall of Other Selves lies ahead amid floating ocean fragments joined by impossible currents.",
-    "startRoomId":  "hall-of-other-selves-approach",
-    "rooms":  {
-                  "hall-of-other-selves-approach":  {
-                                                        "prompt":  "At the edge of Hall of Other Selves, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "hall-of-other-selves-depths",
-                                                                                     "enemyId":  "echo-of-self-mimic",
-                                                                                     "message":  "A shift in the current exposes Mirror-Self Mimic, which claims the left route through Hall of Other Selves."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "empty",
-                                                                                      "nextRoomId":  "hall-of-other-selves-depths",
-                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Hall of Other Selves. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                      "berries":  1
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "hall-of-other-selves-depths",
-                                                                                        "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                        "reward":  {
-                                                                                                       "min":  343,
-                                                                                                       "max":  381
-                                                                                                   }
-                                                                                    }
-                                                                    }
-                                                    },
-                  "hall-of-other-selves-depths":  {
-                                                      "prompt":  "Deeper within Hall of Other Selves, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "hall-of-other-selves-threshold",
-                                                                                   "healAmount":  93,
-                                                                                   "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "hall-of-other-selves-threshold",
-                                                                                    "enemyId":  "echo-of-self-mimic",
-                                                                                    "message":  "A shift in the current exposes Mirror-Self Mimic, which claims the right route through Hall of Other Selves."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "hall-of-other-selves-threshold",
-                                                                                      "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
-                                                                                      "reward":  {
-                                                                                                     "min":  355,
-                                                                                                     "max":  393
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "hall-of-other-selves-threshold":  {
-                                                         "prompt":  "Near the heart of Hall of Other Selves, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the left route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                      "reward":  {
-                                                                                                     "min":  367,
-                                                                                                     "max":  405
-                                                                                                 }
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  98,
-                                                                                       "message":  "The right route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "combat",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "enemyId":  "echo-of-self-mimic",
-                                                                                         "message":  "A shift in the current exposes Mirror-Self Mimic, which claims the forward route through Hall of Other Selves."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "boss-antechamber":  {
-                                           "name":  "Mirror of Abandoned Paths",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Mirror of Abandoned Paths."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Mirror of Abandoned Paths. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Mirror of Abandoned Paths: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Mirror of Abandoned Paths. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "unchosen-reflection-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Unchosen Reflection reveals itself!"
-             },
-    "completionText":  "Unchosen Reflection yields, and the currents beyond Mirror of Abandoned Paths open the next route through Astral Nexus."
+    "id": "hall-of-other-selves",
+    "number": 10,
+    "name": "Hall of Other Selves",
+    "regionId": "astral-nexus",
+    "enemyId": "echo-of-self-mimic",
+    "recommendedLevel": 50,
+    "introDiscord": "A mirrored hall stretches ahead.\n\nYour reflection waves.\n\nYou did not wave.\n\nShizuki's warning:\n\n'If you meet me:\n\nask something only I know.\n\nActually there are multiple me's.\n\nNever mind.\n\nRUN.'",
+    "introTwitch": "A mirrored hall stretches ahead.\n\nYour reflection waves.\n\nYou did not wave.\n\nShizuki's warning:\n\n'If you meet me:\n\nask something only I know.\n\nActually there are multiple me's.\n\nNever mind.\n\nRUN.'",
+    "startRoomId": "hall-of-other-selves-approach",
+    "rooms": {
+        "hall-of-other-selves-approach": {
+            "prompt": "Three impossible routes open across Hall of Other Selves.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "hall-of-other-selves-depths",
+                    "enemyId": "echo-of-self-mimic",
+                    "message": "A reflection steps out of the glass and copies your stance perfectly."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "hall-of-other-selves-depths",
+                    "message": "One Berry rests beneath a note signed:\n\n'Shizuki.'\n\nBelow it:\n\n'REAL Shizuki.'\n\nBelow that:\n\n'ACTUAL REAL SHIZUKI.'\n\nAdministrative crisis.",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "hall-of-other-selves-depths",
+                    "message": "Three versions of the same coffer exist behind three mirrors.\n\nOnly one bites.\n\nYou choose wisely.",
+                    "reward": {
+                        "min": 343,
+                        "max": 381
+                    }
+                }
+            }
+        },
+        "hall-of-other-selves-depths": {
+            "prompt": "Deeper within Hall of Other Selves, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "hall-of-other-selves-threshold",
+                    "healAmount": 93,
+                    "message": "A reflection of Shizuki's peaceful camp becomes tangible.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "hall-of-other-selves-threshold",
+                    "enemyId": "echo-of-self-mimic",
+                    "message": "A Mirror-Self Mimic becomes an excellent copy of you.\n\nRude."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "hall-of-other-selves-threshold",
+                    "message": "Star Candies rest beside reflections of choices you never made.",
+                    "reward": {
+                        "min": 355,
+                        "max": 393
+                    }
+                }
+            }
+        },
+        "hall-of-other-selves-threshold": {
+            "prompt": "Near Mirror of Abandoned Paths, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A chest contains souvenirs from paths you did not take.",
+                    "reward": {
+                        "min": 367,
+                        "max": 405
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 98,
+                    "message": "A mirror shows you completely rested.\n\nFor once, the Nexus copies the useful version.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "echo-of-self-mimic",
+                    "message": "Your reflection steps forward before you do."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Mirror of Abandoned Paths",
+            "type": "boss-prompt",
+            "prompt": "Mirror of Abandoned Paths shows hundreds of versions of the journey."
+        }
+    },
+    "bossPromptDiscord": "Mirror of Abandoned Paths shows hundreds of versions of the journey.\n\nOne reflection remains when all others disappear.\n\nUse /yes to approach or /no to avoid fighting the version\nof yourself that apparently made different life choices.",
+    "bossPromptTwitch": "Mirror of Abandoned Paths shows hundreds of versions of the journey.\n\nOne reflection remains when all others disappear.\n\nUse !yes to approach or !no to avoid fighting the version\nof yourself that apparently made different life choices.",
+    "bossRetreatText": "You withdraw from Mirror of Abandoned Paths. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "unchosen-reflection-boss",
+        "roomId": "boss",
+        "revealText": "The reflection steps through.\n\nUnchosen Reflection reveals itself!"
+    },
+    "completionText": "The mirrors become ordinary.\n\nOne contains an old message:\n\n'Met alternate me.\n\nShe ALSO gets lost.\n\nUniversal constant confirmed.'"
 }

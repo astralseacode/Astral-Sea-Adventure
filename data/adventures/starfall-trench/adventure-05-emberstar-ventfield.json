@@ -1,107 +1,107 @@
 {
-    "id":  "emberstar-ventfield",
-    "number":  5,
-    "name":  "Emberstar Ventfield",
-    "regionId":  "starfall-trench",
-    "enemyId":  "emberstar-urchin",
-    "recommendedLevel":  6,
-    "introDiscord":  "Emberstar Ventfield lies ahead, where meteor-lit trenches conceal the territory of Emberstar Urchin.",
-    "introTwitch":  "Emberstar Ventfield lies ahead amid meteor-lit trenches.",
-    "startRoomId":  "emberstar-ventfield-approach",
-    "rooms":  {
-                  "emberstar-ventfield-approach":  {
-                                                       "prompt":  "At the edge of Emberstar Ventfield, meteor-lit trenches divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "emberstar-ventfield-depths",
-                                                                                    "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                    "reward":  {
-                                                                                                   "min":  131,
-                                                                                                   "max":  167
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "emberstar-ventfield-depths",
-                                                                                     "enemyId":  "emberstar-urchin",
-                                                                                     "message":  "A shift in the current exposes Emberstar Urchin, which claims the right route through Emberstar Ventfield."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "emberstar-ventfield-depths",
-                                                                                       "healAmount":  52,
-                                                                                       "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "emberstar-ventfield-depths":  {
-                                                     "prompt":  "Deeper within Emberstar Ventfield, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "emberstar-ventfield-threshold",
-                                                                                  "enemyId":  "emberstar-urchin",
-                                                                                  "message":  "A shift in the current exposes Emberstar Urchin, which claims the left route through Emberstar Ventfield."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "emberstar-ventfield-threshold",
-                                                                                   "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
-                                                                                   "reward":  {
-                                                                                                  "min":  143,
-                                                                                                  "max":  179
-                                                                                              }
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "empty",
-                                                                                     "nextRoomId":  "emberstar-ventfield-threshold",
-                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Emberstar Ventfield. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                     "berries":  1
-                                                                                 }
-                                                                 }
-                                                 },
-                  "emberstar-ventfield-threshold":  {
-                                                        "prompt":  "Near the heart of Emberstar Ventfield, fractured starstone terraces divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  57,
-                                                                                     "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "emberstar-urchin",
-                                                                                      "message":  "A shift in the current exposes Emberstar Urchin, which claims the right route through Emberstar Ventfield."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                        "reward":  {
-                                                                                                       "min":  155,
-                                                                                                       "max":  191
-                                                                                                   }
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Ashen Constellation",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Ashen Constellation."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Ashen Constellation. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Ashen Constellation: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Ashen Constellation. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "cinder-crown-urchin-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Cinder-Crown Urchin reveals itself!"
-             },
-    "completionText":  "Cinder-Crown Urchin yields, and the currents beyond Ashen Constellation open the next route through Starfall Trench."
+  "id": "emberstar-ventfield",
+  "number": 5,
+  "name": "Emberstar Ventfield",
+  "regionId": "starfall-trench",
+  "enemyId": "emberstar-urchin",
+  "recommendedLevel": 6,
+  "introDiscord": "\"Blue-white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"\n\n---------------- ROOM 1 ----------------",
+  "introTwitch": "\"Blue-white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"\n\n---------------- ROOM 1 ----------------",
+  "startRoomId": "emberstar-ventfield-approach",
+  "rooms": {
+    "emberstar-ventfield-approach": {
+      "prompt": "Blue fire breathes from cracks across the ventfield. Three routes weave between eruptions while Emberstar Urchins occupy every comfortable patch of warm stone.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "emberstar-ventfield-depths",
+          "message": "A cooled vent has cracked open a cometglass seam full of Star Candies. Several Urchins stare at you like you've opened their emergency snack cupboard.",
+          "reward": {
+            "min": 131,
+            "max": 167
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "emberstar-ventfield-depths",
+          "enemyId": "emberstar-urchin",
+          "message": "An Emberstar Urchin sits directly in the route.\n\nYou approach.\n\nIt raises every glowing spine.\n\nApparently the path is reserved."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "emberstar-ventfield-depths",
+          "healAmount": 52,
+          "message": "Shizuki left a heatproof bottle beside a vent marked with three worried arrows. \"Emberroot tonic. Significantly safer than drinking directly from vent.\"",
+          "fullHpMessage": "\"You leave the tonic alone. Experimenting with Shizuki's definition of 'significantly safer' seems unnecessary.\"\n\n---------------- ROOM 2 ----------------"
+        }
+      }
+    },
+    "emberstar-ventfield-depths": {
+      "prompt": "Deeper inside, eruptions travel across the seabed in glowing sequences. Three routes open while Urchins casually shuffle between warm spots.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "emberstar-ventfield-threshold",
+          "enemyId": "emberstar-urchin",
+          "message": "An Urchin rolls away from its vent.\n\nFor half a second this seems generous.\n\nThe vent erupts beneath you.\n\nThat felt intentional."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "emberstar-ventfield-threshold",
+          "message": "A narrow gap between dormant vents hides an old star-chart coffer. The lid is pleasantly warm. The Star Candies inside thankfully are not.",
+          "reward": {
+            "min": 143,
+            "max": 179
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "emberstar-ventfield-threshold",
+          "message": "\"One Berry rests inside Shizuki's scorched cooking pan.\n\n\"Attempted vent-cooked berries.\n\nResults classified as charcoal.\n\nGlimmer now considers itself a culinary expert.\"\"\n\n---------------- ROOM 3 ----------------",
+          "berries": 1
+        }
+      }
+    },
+    "emberstar-ventfield-threshold": {
+      "prompt": "The innermost ventfield glows almost white. Blue flames burst from the stone in overlapping rhythms around three narrow approaches.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 57,
+          "message": "A tiny shelter contains Shizuki's bottle and three instructions:\n\n\"Hot vent: wait.\nCold vent: cross.\nUrchin sitting on vent: reconsider career.\"",
+          "fullHpMessage": "The bottle remains safely inside the shelter. You can reconsider your career without medicinal assistance."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "emberstar-urchin",
+          "message": "Every nearby Urchin rolls away from this route.\n\nThe stone begins glowing beneath you.\n\nOne Urchin remains directly ahead.\n\nUnfortunately, it may have the tactical advantage."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "\"Several Urchins form a circle around a cooled meteor fragment.\n\nThey move aside.\n\nA Star Candy cache sits underneath.\n\nApparently you interrupted a meeting.\"\n\n---------------- BOSS — ASHEN CONSTELLATION ----------------",
+          "reward": {
+            "min": 155,
+            "max": 191
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Ashen Constellation",
+      "type": "boss-prompt",
+      "prompt": "The vents erupt one after another until blue flames connect into an enormous constellation across the seabed."
+    }
+  },
+  "bossPromptDiscord": "The final vent erupts beneath an enormous crown of glowing spines.\n\nEvery ordinary Emberstar Urchin immediately rolls away.\n\nSomething rises from the blue fire like a tiny, extremely furious sun.\n\nUse /yes to approach the Ashen Constellation or /no to retreat somewhere with fewer opportunities to become soup.",
+  "bossPromptTwitch": "The final vent erupts beneath an enormous crown of glowing spines.\n\nEvery ordinary Emberstar Urchin immediately rolls away.\n\nSomething rises from the blue fire like a tiny, extremely furious sun.\n\nUse !yes to approach the Ashen Constellation or !no to retreat somewhere with fewer opportunities to become soup.",
+  "bossRetreatText": "You back away. Several ordinary Urchins appear impressed by your sudden respect for personal space.",
+  "boss": {
+    "enemyId": "cinder-crown-urchin-boss",
+    "roomId": "boss",
+    "revealText": "The central vent explodes in blue-white fire.\n\nCinder-Crown Urchin awakens!"
+  },
+  "completionText": "\"The Cinder-Crown Urchin retreats into the cooling ventfield.\n\nSeveral ordinary Urchins immediately reclaim the arena like bathers returning to reserved spa chairs.\n\nOne has already taken the warmest spot.\n\nOf course.\"\n\n\n#################################################################"
 }

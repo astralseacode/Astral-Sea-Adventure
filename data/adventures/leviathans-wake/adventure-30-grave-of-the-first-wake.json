@@ -1,0 +1,107 @@
+{
+    "id": "grave-of-the-first-wake",
+    "number": 30,
+    "name": "Grave of the First Wake",
+    "regionId": "leviathans-wake",
+    "enemyId": "firstwake-gravekeeper",
+    "recommendedLevel": 30,
+    "introDiscord": "Beyond the remembering scale, the graveyard changes.\n\nNo wrecks.\n\nNo traveler camps.\n\nNo newer bones.\n\nOnly one skeleton.\n\nIt stretches farther than you can see, half-buried beneath ancient\nsediment while enormous ribs disappear into darkness overhead.\n\nEvery current in Leviathan's Wake begins here.\n\nYou have reached the Grave of the First Wake.",
+    "introTwitch": "Beyond the remembering scale, the graveyard changes.\n\nNo wrecks.\n\nNo traveler camps.\n\nNo newer bones.\n\nOnly one skeleton.\n\nIt stretches farther than you can see, half-buried beneath ancient\nsediment while enormous ribs disappear into darkness overhead.\n\nEvery current in Leviathan's Wake begins here.\n\nYou have reached the Grave of the First Wake.",
+    "startRoomId": "grave-of-the-first-wake-approach",
+    "rooms": {
+        "grave-of-the-first-wake-approach": {
+            "prompt": "Three paths cross beneath the oldest known Leviathan ribs. Their surface\nhas been worn smooth by ages of current, and tiny luminous creatures\ndrift through them like stars inside a ruined sky.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "grave-of-the-first-wake-depths",
+                    "message": "One Berry rests inside Shizuki's final trail cache.\n\nFor once, the pouch contains no ridiculous diagram.\n\nOnly a note:\n\n'We made it.\n\nI don't know how old this place is.\n\nGlimmer has been quiet since we arrived.\n\nMe too.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "grave-of-the-first-wake-depths",
+                    "message": "An ancient offering hollow rests beneath the first rib.\n\nThere is no lock.\n\nNo wreckage.\n\nNo sign anyone owned it.\n\nTravelers from different ages simply left gifts here.\n\nAmong them, you find Star Candies still glowing softly beneath the\nsediment.",
+                    "reward": {
+                        "min": 68,
+                        "max": 112
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "grave-of-the-first-wake-depths",
+                    "enemyId": "firstwake-gravekeeper",
+                    "message": "Light gathers between the ribs.\n\nA Gravekeeper takes shape from old current and fragments of bone—not\nangry, but unwilling to let you pass without proving you belong here."
+                }
+            }
+        },
+        "grave-of-the-first-wake-depths": {
+            "prompt": "The path follows a vertebral column so enormous each section forms its\nown hill. Three routes wind between bones older than every map of the\nAstral Sea.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "grave-of-the-first-wake-threshold",
+                    "enemyId": "firstwake-gravekeeper",
+                    "message": "Another Gravekeeper rises from the ancient current.\n\nBehind it, the enormous skeleton seems to stretch forever."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "grave-of-the-first-wake-threshold",
+                    "healAmount": 0,
+                    "message": "A warm current rises through a hollow in the first spine.\n\nShizuki left her final restorative bottle beside Glimmer's tiny glowing\nmark.\n\nHer note reads:\n\n'We rested here for a long time.\n\nYou should too.\n\nSome places deserve more than rushing through them.'",
+                    "fullHpMessage": "You leave Shizuki's final restorative untouched.\n\nThe warm current is enough."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "grave-of-the-first-wake-threshold",
+                    "message": "A hollow vertebra contains offerings left across centuries:\n\nshells.\n\nold coins.\n\ncarved stars.\n\ntiny charms.\n\nand Star Candies from travelers whose names are long gone.\n\nNobody stole them.\n\nThis place seems to have always been treated differently.",
+                    "reward": {
+                        "min": 80,
+                        "max": 124
+                    }
+                }
+            }
+        },
+        "grave-of-the-first-wake-threshold": {
+            "prompt": "The final three paths enter the immense ribcage.\n\nThe current passing through the bones creates a low sound—not quite the\nLast Leviathan Song, but something older beneath it.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "At the base of the largest rib lies an ancient offering cairn.\n\nSomeone placed a tiny carved Leviathan at its center.\n\nShizuki added nothing to the pile.\n\nHer note explains why:\n\n'Didn't feel right to take anything.\n\nDidn't feel right to change anything either.\n\nSo I just sat here.'",
+                    "reward": {
+                        "min": 92,
+                        "max": 136
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "firstwake-gravekeeper",
+                    "message": "The oldest Gravekeeper forms beneath the rib.\n\nFor an instant, its shape resembles a living Leviathan before shrinking\ninto something the present Astral Sea can hold."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 5,
+                    "message": "A clear current wells from beneath the ancient bones.\n\nBeside it is Shizuki's last message in Leviathan's Wake:\n\n'I thought this place would be scary.\n\nA graveyard full of things this huge?\n\nYeah.\n\nVery scary.\n\nBut I don't think it feels scary anymore.\n\nIt feels quiet.\n\nLike they chose somewhere beautiful to rest.'",
+                    "fullHpMessage": "You leave the water untouched.\n\nNothing else needs to be said."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Cradle of the First Wake",
+            "type": "boss-prompt",
+            "prompt": "The ancient ribs open around an enormous hollow.\n\nEvery current in Leviathan's Wake seems to pass through this chamber\nbefore flowing outward into the graveyard."
+        }
+    },
+    "bossPromptDiscord": "The Cradle of the First Wake begins to glow.\n\nMemories travel along the skeleton.\n\nYou see Moonlit currents from an age before Moonlit Reef had its name.\n\nYou see stars falling into what would someday become Starfall Trench.\n\nYou see forests far smaller than Whispering Kelp Forest.\n\nAnd then you see them.\n\nLeviathans.\n\nHundreds moving across an ancient Astral Sea.\n\nAt the center swims one larger than all the others.\n\nIts image turns toward you.\n\nNot alive.\n\nNot resurrected.\n\nOnly the oldest memory this place still carries.\n\nUse /yes to enter the Cradle of the First Wake or /no to leave the\nfirst grave dreaming a little longer.",
+    "bossPromptTwitch": "The Cradle of the First Wake begins to glow.\n\nMemories travel along the skeleton.\n\nYou see Moonlit currents from an age before Moonlit Reef had its name.\n\nYou see stars falling into what would someday become Starfall Trench.\n\nYou see forests far smaller than Whispering Kelp Forest.\n\nAnd then you see them.\n\nLeviathans.\n\nHundreds moving across an ancient Astral Sea.\n\nAt the center swims one larger than all the others.\n\nIts image turns toward you.\n\nNot alive.\n\nNot resurrected.\n\nOnly the oldest memory this place still carries.\n\nUse !yes to enter the Cradle of the First Wake or !no to leave the\nfirst grave dreaming a little longer.",
+    "bossRetreatText": "You step away from the Cradle.\n\nThe enormous memory continues swimming through an ocean that disappeared\nages ago.\n\nIt does not follow.",
+    "boss": {
+        "enemyId": "first-leviathan-echo-boss",
+        "roomId": "boss",
+        "revealText": "The ancient current fills with starlight.\n\nFor one impossible moment, the entire skeleton is no longer bone.\n\nA colossal Leviathan of memory swims through the chamber, vast enough\nto make every creature you've faced in the Wake seem tiny.\n\nThe First Leviathan Echo awakens!"
+    },
+    "completionText": "The First Leviathan Echo swims once around the Cradle.\n\nThen it dissolves into thousands of points of light.\n\nThey travel outward through the ribs.\n\nAcross the old spine.\n\nPast the remembering scale.\n\nThrough the Wakeheart currents.\n\nAcross the wrecks, gardens, scars, jaws, and countless bones you passed\non the journey here.\n\nFor a moment, every skeleton in Leviathan's Wake glows.\n\nThen the graveyard becomes quiet again.\n\nShizuki's final journal page rests beneath the oldest rib:\n\n'We came here expecting monsters.\n\nInstead we found a place where giants came to rest.\n\nGlimmer says maybe that's why the currents never stopped moving.\n\nMaybe the Wake is just the sea remembering where they used to swim.\n\n...\n\nThere's something beyond the graveyard.\n\nI can see towers in the distance.\n\nActual towers this time.\n\nNot ribs.\n\nProbably.\n\nGlimmer already started going that way.\n\nHEY—WAIT FOR ME!'\n\nFar beyond the First Wake, the dark water gives way to distant stone.\n\nBroken towers.\n\nOld walls.\n\nA crown-shaped silhouette beneath the sea.\n\nThe road toward Sunken King's Throne is open.\n\nLeviathan's Wake is complete."
+}

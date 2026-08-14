@@ -1,242 +1,242 @@
 [
     {
-        "number":  1,
-        "id":  "the-paradox-shoal",
-        "name":  "The Paradox Shoal",
-        "enemyId":  "paradox-minnow",
-        "bossEnemyId":  "contradiction-leviathan-boss",
-        "file":  "adventure-01-the-paradox-shoal.json"
+        "number": 1,
+        "id": "the-paradox-shoal",
+        "name": "The Paradox Shoal",
+        "enemyId": "paradox-minnow",
+        "bossEnemyId": "contradiction-leviathan-boss",
+        "file": "adventure-01-the-paradox-shoal.json"
     },
     {
-        "number":  2,
-        "id":  "impossible-angles",
-        "name":  "Impossible Angles",
-        "enemyId":  "geometry-eel",
-        "bossEnemyId":  "euclidean-coilbreaker-boss",
-        "file":  "adventure-02-impossible-angles.json"
+        "number": 2,
+        "id": "impossible-angles",
+        "name": "Impossible Angles",
+        "enemyId": "geometry-eel",
+        "bossEnemyId": "euclidean-coilbreaker-boss",
+        "file": "adventure-02-impossible-angles.json"
     },
     {
-        "number":  3,
-        "id":  "memoryglass-strand",
-        "name":  "Memoryglass Strand",
-        "enemyId":  "memoryglass-crab",
-        "bossEnemyId":  "recollection-clawlord-boss",
-        "file":  "adventure-03-memoryglass-strand.json"
+        "number": 3,
+        "id": "memoryglass-strand",
+        "name": "Memoryglass Strand",
+        "enemyId": "memoryglass-crab",
+        "bossEnemyId": "recollection-clawlord-boss",
+        "file": "adventure-03-memoryglass-strand.json"
     },
     {
-        "number":  4,
-        "id":  "portal-skip-expanse",
-        "name":  "Portal-Skip Expanse",
-        "enemyId":  "portal-skipping-ray",
-        "bossEnemyId":  "horizonfold-ray-boss",
-        "file":  "adventure-04-portal-skip-expanse.json"
+        "number": 4,
+        "id": "portal-skip-expanse",
+        "name": "Portal-Skip Expanse",
+        "enemyId": "portal-skipping-ray",
+        "bossEnemyId": "horizonfold-ray-boss",
+        "file": "adventure-04-portal-skip-expanse.json"
     },
     {
-        "number":  5,
-        "id":  "clocktide-drift",
-        "name":  "Clocktide Drift",
-        "enemyId":  "clocktide-jelly",
-        "bossEnemyId":  "hourless-medusa-boss",
-        "file":  "adventure-05-clocktide-drift.json"
+        "number": 5,
+        "id": "clocktide-drift",
+        "name": "Clocktide Drift",
+        "enemyId": "clocktide-jelly",
+        "bossEnemyId": "hourless-medusa-boss",
+        "file": "adventure-05-clocktide-drift.json"
     },
     {
-        "number":  6,
-        "id":  "fractured-ocean",
-        "name":  "Fractured Ocean",
-        "enemyId":  "fracturefin-shark",
-        "bossEnemyId":  "reality-bite-apex-boss",
-        "file":  "adventure-06-fractured-ocean.json"
+        "number": 6,
+        "id": "fractured-ocean",
+        "name": "Fractured Ocean",
+        "enemyId": "fracturefin-shark",
+        "bossEnemyId": "reality-bite-apex-boss",
+        "file": "adventure-06-fractured-ocean.json"
     },
     {
-        "number":  7,
-        "id":  "dream-anchor-mooring",
-        "name":  "Dream-Anchor Mooring",
-        "enemyId":  "dream-anchor-turtle",
-        "bossEnemyId":  "waking-anchorback-boss",
-        "file":  "adventure-07-dream-anchor-mooring.json"
+        "number": 7,
+        "id": "dream-anchor-mooring",
+        "name": "Dream-Anchor Mooring",
+        "enemyId": "dream-anchor-turtle",
+        "bossEnemyId": "waking-anchorback-boss",
+        "file": "adventure-07-dream-anchor-mooring.json"
     },
     {
-        "number":  8,
-        "id":  "stars-beneath-the-water",
-        "name":  "Stars Beneath the Water",
-        "enemyId":  "starbelow-angler",
-        "bossEnemyId":  "under-sun-angler-boss",
-        "file":  "adventure-08-stars-beneath-the-water.json"
+        "number": 8,
+        "id": "stars-beneath-the-water",
+        "name": "Stars Beneath the Water",
+        "enemyId": "starbelow-angler",
+        "bossEnemyId": "under-sun-angler-boss",
+        "file": "adventure-08-stars-beneath-the-water.json"
     },
     {
-        "number":  9,
-        "id":  "the-fae-axis",
-        "name":  "The Fae Axis",
-        "enemyId":  "fae-axis-sentinel",
-        "bossEnemyId":  "axis-prime-sentinel-boss",
-        "file":  "adventure-09-the-fae-axis.json"
+        "number": 9,
+        "id": "the-fae-axis",
+        "name": "The Fae Axis",
+        "enemyId": "fae-axis-sentinel",
+        "bossEnemyId": "axis-prime-sentinel-boss",
+        "file": "adventure-09-the-fae-axis.json"
     },
     {
-        "number":  10,
-        "id":  "hall-of-other-selves",
-        "name":  "Hall of Other Selves",
-        "enemyId":  "echo-of-self-mimic",
-        "bossEnemyId":  "unchosen-reflection-boss",
-        "file":  "adventure-10-hall-of-other-selves.json"
+        "number": 10,
+        "id": "hall-of-other-selves",
+        "name": "Hall of Other Selves",
+        "enemyId": "echo-of-self-mimic",
+        "bossEnemyId": "unchosen-reflection-boss",
+        "file": "adventure-10-hall-of-other-selves.json"
     },
     {
-        "number":  11,
-        "id":  "stormscript-tempest",
-        "name":  "Stormscript Tempest",
-        "enemyId":  "stormscript-squid",
-        "bossEnemyId":  "living-equation-krakenet-boss",
-        "file":  "adventure-11-stormscript-tempest.json"
+        "number": 11,
+        "id": "stormscript-tempest",
+        "name": "Stormscript Tempest",
+        "enemyId": "stormscript-squid",
+        "bossEnemyId": "living-equation-krakenet-boss",
+        "file": "adventure-11-stormscript-tempest.json"
     },
     {
-        "number":  12,
-        "id":  "portalroot-network",
-        "name":  "Portalroot Network",
-        "enemyId":  "portalroot-serpent",
-        "bossEnemyId":  "gate-root-serpent-boss",
-        "file":  "adventure-12-portalroot-network.json"
+        "number": 12,
+        "id": "portalroot-network",
+        "name": "Portalroot Network",
+        "enemyId": "portalroot-serpent",
+        "bossEnemyId": "gate-root-serpent-boss",
+        "file": "adventure-12-portalroot-network.json"
     },
     {
-        "number":  13,
-        "id":  "walking-constellations",
-        "name":  "Walking Constellations",
-        "enemyId":  "constellation-automaton",
-        "bossEnemyId":  "zodiac-engine-boss",
-        "file":  "adventure-13-walking-constellations.json"
+        "number": 13,
+        "id": "walking-constellations",
+        "name": "Walking Constellations",
+        "enemyId": "constellation-automaton",
+        "bossEnemyId": "zodiac-engine-boss",
+        "file": "adventure-13-walking-constellations.json"
     },
     {
-        "number":  14,
-        "id":  "the-returning-yesterday",
-        "name":  "The Returning Yesterday",
-        "enemyId":  "yesterdays-revenant",
-        "bossEnemyId":  "tomorrows-ancestor-boss",
-        "file":  "adventure-14-the-returning-yesterday.json"
+        "number": 14,
+        "id": "the-returning-yesterday",
+        "name": "The Returning Yesterday",
+        "enemyId": "yesterdays-revenant",
+        "bossEnemyId": "tomorrows-ancestor-boss",
+        "file": "adventure-14-the-returning-yesterday.json"
     },
     {
-        "number":  15,
-        "id":  "voidflower-garden",
-        "name":  "Voidflower Garden",
-        "enemyId":  "voidflower-mantis",
-        "bossEnemyId":  "nothing-bloom-mantis-boss",
-        "file":  "adventure-15-voidflower-garden.json"
+        "number": 15,
+        "id": "voidflower-garden",
+        "name": "Voidflower Garden",
+        "enemyId": "voidflower-mantis",
+        "bossEnemyId": "nothing-bloom-mantis-boss",
+        "file": "adventure-15-voidflower-garden.json"
     },
     {
-        "number":  16,
-        "id":  "convergent-currents",
-        "name":  "Convergent Currents",
-        "enemyId":  "nexus-current-elemental",
-        "bossEnemyId":  "sixfold-tideheart-boss",
-        "file":  "adventure-16-convergent-currents.json"
+        "number": 16,
+        "id": "convergent-currents",
+        "name": "Convergent Currents",
+        "enemyId": "nexus-current-elemental",
+        "bossEnemyId": "sixfold-tideheart-boss",
+        "file": "adventure-16-convergent-currents.json"
     },
     {
-        "number":  17,
-        "id":  "thoughtform-maze",
-        "name":  "Thoughtform Maze",
-        "enemyId":  "thoughtform-prowler",
-        "bossEnemyId":  "fear-made-huntress-boss",
-        "file":  "adventure-17-thoughtform-maze.json"
+        "number": 17,
+        "id": "thoughtform-maze",
+        "name": "Thoughtform Maze",
+        "enemyId": "thoughtform-prowler",
+        "bossEnemyId": "fear-made-huntress-boss",
+        "file": "adventure-17-thoughtform-maze.json"
     },
     {
-        "number":  18,
-        "id":  "astral-storm-islands",
-        "name":  "Astral Storm Islands",
-        "enemyId":  "astral-storm-roc",
-        "bossEnemyId":  "firmament-roc-boss",
-        "file":  "adventure-18-astral-storm-islands.json"
+        "number": 18,
+        "id": "astral-storm-islands",
+        "name": "Astral Storm Islands",
+        "enemyId": "astral-storm-roc",
+        "bossEnemyId": "firmament-roc-boss",
+        "file": "adventure-18-astral-storm-islands.json"
     },
     {
-        "number":  19,
-        "id":  "phaseclaw-causeway",
-        "name":  "Phaseclaw Causeway",
-        "enemyId":  "phaseclaw-lobster",
-        "bossEnemyId":  "between-state-clawlord-boss",
-        "file":  "adventure-19-phaseclaw-causeway.json"
+        "number": 19,
+        "id": "phaseclaw-causeway",
+        "name": "Phaseclaw Causeway",
+        "enemyId": "phaseclaw-lobster",
+        "bossEnemyId": "between-state-clawlord-boss",
+        "file": "adventure-19-phaseclaw-causeway.json"
     },
     {
-        "number":  20,
-        "id":  "the-memory-reef",
-        "name":  "The Memory Reef",
-        "enemyId":  "memory-reef-warden",
-        "bossEnemyId":  "archive-reef-sovereign-boss",
-        "file":  "adventure-20-the-memory-reef.json"
+        "number": 20,
+        "id": "the-memory-reef",
+        "name": "The Memory Reef",
+        "enemyId": "memory-reef-warden",
+        "bossEnemyId": "archive-reef-sovereign-boss",
+        "file": "adventure-20-the-memory-reef.json"
     },
     {
-        "number":  21,
-        "id":  "gravity-choir",
-        "name":  "Gravity Choir",
-        "enemyId":  "gravity-choir-siren",
-        "bossEnemyId":  "singularity-cantor-boss",
-        "file":  "adventure-21-gravity-choir.json"
+        "number": 21,
+        "id": "gravity-choir",
+        "name": "Gravity Choir",
+        "enemyId": "gravity-choir-siren",
+        "bossEnemyId": "singularity-cantor-boss",
+        "file": "adventure-21-gravity-choir.json"
     },
     {
-        "number":  22,
-        "id":  "foldspace-spiral",
-        "name":  "Foldspace Spiral",
-        "enemyId":  "foldspace-nautilus",
-        "bossEnemyId":  "infinite-chamber-nautilus-boss",
-        "file":  "adventure-22-foldspace-spiral.json"
+        "number": 22,
+        "id": "foldspace-spiral",
+        "name": "Foldspace Spiral",
+        "enemyId": "foldspace-nautilus",
+        "bossEnemyId": "infinite-chamber-nautilus-boss",
+        "file": "adventure-22-foldspace-spiral.json"
     },
     {
-        "number":  23,
-        "id":  "the-unbuilding-ruins",
-        "name":  "The Unbuilding Ruins",
-        "enemyId":  "fae-ruin-architect",
-        "bossEnemyId":  "last-architect-construct-boss",
-        "file":  "adventure-23-the-unbuilding-ruins.json"
+        "number": 23,
+        "id": "the-unbuilding-ruins",
+        "name": "The Unbuilding Ruins",
+        "enemyId": "fae-ruin-architect",
+        "bossEnemyId": "last-architect-construct-boss",
+        "file": "adventure-23-the-unbuilding-ruins.json"
     },
     {
-        "number":  24,
-        "id":  "eventide-threshold",
-        "name":  "Eventide Threshold",
-        "enemyId":  "eventide-behemoth",
-        "bossEnemyId":  "endless-dusk-behemoth-boss",
-        "file":  "adventure-24-eventide-threshold.json"
+        "number": 24,
+        "id": "eventide-threshold",
+        "name": "Eventide Threshold",
+        "enemyId": "eventide-behemoth",
+        "bossEnemyId": "endless-dusk-behemoth-boss",
+        "file": "adventure-24-eventide-threshold.json"
     },
     {
-        "number":  25,
-        "id":  "portal-graveyard",
-        "name":  "Portal Graveyard",
-        "enemyId":  "portal-grave-scavenger",
-        "bossEnemyId":  "dead-gate-collector-boss",
-        "file":  "adventure-25-portal-graveyard.json"
+        "number": 25,
+        "id": "portal-graveyard",
+        "name": "Portal Graveyard",
+        "enemyId": "portal-grave-scavenger",
+        "bossEnemyId": "dead-gate-collector-boss",
+        "file": "adventure-25-portal-graveyard.json"
     },
     {
-        "number":  26,
-        "id":  "the-gnawed-timeline",
-        "name":  "The Gnawed Timeline",
-        "enemyId":  "timeline-eater",
-        "bossEnemyId":  "epoch-devourer-boss",
-        "file":  "adventure-26-the-gnawed-timeline.json"
+        "number": 26,
+        "id": "the-gnawed-timeline",
+        "name": "The Gnawed Timeline",
+        "enemyId": "timeline-eater",
+        "bossEnemyId": "epoch-devourer-boss",
+        "file": "adventure-26-the-gnawed-timeline.json"
     },
     {
-        "number":  27,
-        "id":  "nexus-crown-array",
-        "name":  "Nexus Crown Array",
-        "enemyId":  "nexus-crown-construct",
-        "bossEnemyId":  "convergence-monarch-boss",
-        "file":  "adventure-27-nexus-crown-array.json"
+        "number": 27,
+        "id": "nexus-crown-array",
+        "name": "Nexus Crown Array",
+        "enemyId": "nexus-crown-construct",
+        "bossEnemyId": "convergence-monarch-boss",
+        "file": "adventure-27-nexus-crown-array.json"
     },
     {
-        "number":  28,
-        "id":  "the-first-light-memory",
-        "name":  "The First-Light Memory",
-        "enemyId":  "first-light-remnant",
-        "bossEnemyId":  "dawn-before-the-sea-boss",
-        "file":  "adventure-28-the-first-light-memory.json"
+        "number": 28,
+        "id": "the-first-light-memory",
+        "name": "The First-Light Memory",
+        "enemyId": "first-light-remnant",
+        "bossEnemyId": "dawn-before-the-sea-boss",
+        "file": "adventure-28-the-first-light-memory.json"
     },
     {
-        "number":  29,
-        "id":  "convergence-threshold",
-        "name":  "Convergence Threshold",
-        "enemyId":  "astral-convergence-warden",
-        "bossEnemyId":  "nexus-prime-warden-boss",
-        "file":  "adventure-29-convergence-threshold.json"
+        "number": 29,
+        "id": "convergence-threshold",
+        "name": "Convergence Threshold",
+        "enemyId": "astral-convergence-warden",
+        "bossEnemyId": "nexus-prime-warden-boss",
+        "file": "adventure-29-convergence-threshold.json"
     },
     {
-        "number":  30,
-        "id":  "the-continuance-core",
-        "name":  "The Continuance Core",
-        "enemyId":  "nexus-continuance-grunt",
-        "bossEnemyId":  "nexus-continuance-officer-boss",
-        "file":  "adventure-30-the-continuance-core.json"
+        "number": 30,
+        "id": "heart-of-the-astral-sea",
+        "name": "Heart of the Astral Sea",
+        "enemyId": "astral-heart-echo",
+        "bossEnemyId": "heart-of-the-nexus-boss",
+        "file": "adventure-30-heart-of-the-astral-sea.json"
     }
 ]

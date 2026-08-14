@@ -1,107 +1,107 @@
 {
-    "id":  "dream-anchor-mooring",
-    "number":  7,
-    "name":  "Dream-Anchor Mooring",
-    "regionId":  "astral-nexus",
-    "enemyId":  "dream-anchor-turtle",
-    "recommendedLevel":  50,
-    "introDiscord":  "Dream-Anchor Mooring lies ahead, where floating ocean fragments joined by impossible currents conceal the territory of Dream-Anchor Turtle.",
-    "introTwitch":  "Dream-Anchor Mooring lies ahead amid floating ocean fragments joined by impossible currents.",
-    "startRoomId":  "dream-anchor-mooring-approach",
-    "rooms":  {
-                  "dream-anchor-mooring-approach":  {
-                                                        "prompt":  "At the edge of Dream-Anchor Mooring, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "dream-anchor-mooring-depths",
-                                                                                     "enemyId":  "dream-anchor-turtle",
-                                                                                     "message":  "A shift in the current exposes Dream-Anchor Turtle, which claims the left route through Dream-Anchor Mooring."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "dream-anchor-mooring-depths",
-                                                                                      "message":  "Beyond the right route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                      "reward":  {
-                                                                                                     "min":  379,
-                                                                                                     "max":  416
-                                                                                                 }
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "dream-anchor-mooring-depths",
-                                                                                        "healAmount":  107,
-                                                                                        "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "dream-anchor-mooring-depths":  {
-                                                      "prompt":  "Deeper within Dream-Anchor Mooring, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "dream-anchor-mooring-threshold",
-                                                                                   "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
-                                                                                   "reward":  {
-                                                                                                  "min":  391,
-                                                                                                  "max":  428
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "dream-anchor-mooring-threshold",
-                                                                                    "enemyId":  "dream-anchor-turtle",
-                                                                                    "message":  "A shift in the current exposes Dream-Anchor Turtle, which claims the right route through Dream-Anchor Mooring."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "empty",
-                                                                                      "nextRoomId":  "dream-anchor-mooring-threshold",
-                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Dream-Anchor Mooring. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                      "berries":  1
-                                                                                  }
-                                                                  }
-                                                  },
-                  "dream-anchor-mooring-threshold":  {
-                                                         "prompt":  "Near the heart of Dream-Anchor Mooring, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "healAmount":  112,
-                                                                                      "message":  "The left route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                       "reward":  {
-                                                                                                      "min":  403,
-                                                                                                      "max":  440
-                                                                                                  }
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "combat",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "enemyId":  "dream-anchor-turtle",
-                                                                                         "message":  "A shift in the current exposes Dream-Anchor Turtle, which claims the forward route through Dream-Anchor Mooring."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "boss-antechamber":  {
-                                           "name":  "Harbor of Unmoored Sleep",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Harbor of Unmoored Sleep."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Harbor of Unmoored Sleep. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Harbor of Unmoored Sleep: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Harbor of Unmoored Sleep. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "waking-anchorback-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Waking Anchorback reveals itself!"
-             },
-    "completionText":  "Waking Anchorback yields, and the currents beyond Harbor of Unmoored Sleep open the next route through Astral Nexus."
+    "id": "dream-anchor-mooring",
+    "number": 7,
+    "name": "Dream-Anchor Mooring",
+    "regionId": "astral-nexus",
+    "enemyId": "dream-anchor-turtle",
+    "recommendedLevel": 50,
+    "introDiscord": "Floating anchors hang from nothing.\n\nDream-Anchor Turtles sleep beneath them while entire dreamscapes drift\nfrom their shells.",
+    "introTwitch": "Floating anchors hang from nothing.\n\nDream-Anchor Turtles sleep beneath them while entire dreamscapes drift\nfrom their shells.",
+    "startRoomId": "dream-anchor-mooring-approach",
+    "rooms": {
+        "dream-anchor-mooring-approach": {
+            "prompt": "Three impossible routes open across Dream-Anchor Mooring.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "dream-anchor-mooring-depths",
+                    "enemyId": "dream-anchor-turtle",
+                    "message": "A sleeping Turtle dreams that you are an intruder.\n\nUnfortunately, dream combat still hurts."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "dream-anchor-mooring-depths",
+                    "message": "A treasure chest floats through someone's dream of Moonlit Reef.",
+                    "reward": {
+                        "min": 379,
+                        "max": 416
+                    }
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "dream-anchor-mooring-depths",
+                    "healAmount": 107,
+                    "message": "A soft dream of Shizuki's old campsite settles around you.\n\nHer note:\n\n'Best sleeping spot in Nexus.\n\nDreamed Glimmer learned directions.\n\nObviously unrealistic.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "dream-anchor-mooring-depths": {
+            "prompt": "Deeper within Dream-Anchor Mooring, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "dream-anchor-mooring-threshold",
+                    "message": "Star Candies sit inside a dream picnic.",
+                    "reward": {
+                        "min": 391,
+                        "max": 428
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "dream-anchor-mooring-threshold",
+                    "enemyId": "dream-anchor-turtle",
+                    "message": "A Dream-Anchor Turtle wakes just enough to object."
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "dream-anchor-mooring-threshold",
+                    "message": "One Berry rests under a tiny pillow.\n\nShizuki wrote:\n\n'Emergency dream snack.\n\nDo not eat while dreaming or you wake up hungry twice.'",
+                    "berries": 1
+                }
+            }
+        },
+        "dream-anchor-mooring-threshold": {
+            "prompt": "Near Harbor of Unmoored Sleep, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 112,
+                    "message": "A Dream-Anchor's calm sleep restores you.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A cache floats past inside a dream of somewhere you've never visited.",
+                    "reward": {
+                        "min": 403,
+                        "max": 440
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "dream-anchor-turtle",
+                    "message": "A Turtle pulls its dream back into its shell—and you with it."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Harbor of Unmoored Sleep",
+            "type": "boss-prompt",
+            "prompt": "Every sleeping Turtle wakes simultaneously."
+        }
+    },
+    "bossPromptDiscord": "Every sleeping Turtle wakes simultaneously.\n\nOnly one enormous shell remains dreaming.\n\nUse /yes to enter Harbor of Unmoored Sleep or /no to let\nthe giant nap continue.",
+    "bossPromptTwitch": "Every sleeping Turtle wakes simultaneously.\n\nOnly one enormous shell remains dreaming.\n\nUse !yes to enter Harbor of Unmoored Sleep or !no to let\nthe giant nap continue.",
+    "bossRetreatText": "You withdraw from Harbor of Unmoored Sleep. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "waking-anchorback-boss",
+        "roomId": "boss",
+        "revealText": "The dream collapses as the enormous Turtle wakes.\n\nWaking Anchorback reveals itself!"
+    },
+    "completionText": "\"The Harbor quiets.\n\nShizuki's note has somehow gained one new line:\n\n'Good morning~\n\n...wait WHO wrote that?'"
 }

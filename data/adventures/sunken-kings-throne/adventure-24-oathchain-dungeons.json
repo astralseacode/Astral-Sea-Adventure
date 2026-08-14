@@ -1,107 +1,107 @@
 {
-    "id":  "oathchain-dungeons",
-    "number":  24,
-    "name":  "Oathchain Dungeons",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "oathchain-serpent",
-    "recommendedLevel":  46,
-    "introDiscord":  "Oathchain Dungeons lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Oathchain Serpent.",
-    "introTwitch":  "Oathchain Dungeons lies ahead amid flooded courtyards lined with watchful stone nobility.",
-    "startRoomId":  "oathchain-dungeons-approach",
-    "rooms":  {
-                  "oathchain-dungeons-approach":  {
-                                                      "prompt":  "At the edge of Oathchain Dungeons, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "oathchain-dungeons-depths",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Oathchain Dungeons. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "oathchain-dungeons-depths",
-                                                                                    "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                    "reward":  {
-                                                                                                   "min":  140,
-                                                                                                   "max":  182
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "oathchain-dungeons-depths",
-                                                                                      "enemyId":  "oathchain-serpent",
-                                                                                      "message":  "A shift in the current exposes Oathchain Serpent, which claims the forward route through Oathchain Dungeons."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "oathchain-dungeons-depths":  {
-                                                    "prompt":  "Deeper within Oathchain Dungeons, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "oathchain-dungeons-threshold",
-                                                                                 "enemyId":  "oathchain-serpent",
-                                                                                 "message":  "A shift in the current exposes Oathchain Serpent, which claims the left route through Oathchain Dungeons."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "oathchain-dungeons-threshold",
-                                                                                  "healAmount":  23,
-                                                                                  "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "oathchain-dungeons-threshold",
-                                                                                    "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                    "reward":  {
-                                                                                                   "min":  152,
-                                                                                                   "max":  194
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "oathchain-dungeons-threshold":  {
-                                                       "prompt":  "Near the heart of Oathchain Dungeons, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                    "reward":  {
-                                                                                                   "min":  164,
-                                                                                                   "max":  206
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "enemyId":  "oathchain-serpent",
-                                                                                     "message":  "A shift in the current exposes Oathchain Serpent, which claims the right route through Oathchain Dungeons."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  28,
-                                                                                       "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Chain-Oath Pit",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Chain-Oath Pit."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Chain-Oath Pit. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Chain-Oath Pit: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Chain-Oath Pit. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "high-gaoler-serpent-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. High Gaoler Serpent reveals itself!"
-             },
-    "completionText":  "High Gaoler Serpent yields, and the currents beyond Chain-Oath Pit open the next route through Sunken King\u0027s Throne."
+    "id": "oathchain-dungeons",
+    "number": 24,
+    "name": "Hedge Maze",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "oathchain-serpent",
+    "recommendedLevel": 46,
+    "introDiscord": "Behind the palace lies an enormous royal hedge maze.\n\nDecorative stone arches, fountains, garden statues, and completely\nunhelpful signposts divide the paths.\n\nOathchain Serpents have made the maze their home.\n\nShizuki has made the maze considerably worse.",
+    "introTwitch": "Behind the palace lies an enormous royal hedge maze.\n\nDecorative stone arches, fountains, garden statues, and completely\nunhelpful signposts divide the paths.\n\nOathchain Serpents have made the maze their home.\n\nShizuki has made the maze considerably worse.",
+    "startRoomId": "oathchain-dungeons-approach",
+    "rooms": {
+        "oathchain-dungeons-approach": {
+            "prompt": "Hedge Maze opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "oathchain-dungeons-depths",
+                    "message": "One Berry rests beneath Shizuki's sign:\n\n'EXIT →'\n\nAnother arrow beneath it points left.\n\nAnother points backward.\n\nAnother says:\n\n'Glimmer made this one.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "oathchain-dungeons-depths",
+                    "message": "A hidden garden alcove contains Star Candies.",
+                    "reward": {
+                        "min": 140,
+                        "max": 182
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "oathchain-dungeons-depths",
+                    "enemyId": "oathchain-serpent",
+                    "message": "An Oathchain Serpent emerges through the hedge."
+                }
+            }
+        },
+        "oathchain-dungeons-depths": {
+            "prompt": "Deeper within Hedge Maze, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "oathchain-dungeons-threshold",
+                    "enemyId": "oathchain-serpent",
+                    "message": "A Serpent takes a shortcut directly THROUGH the hedge.\n\nUnfair maze conduct."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "oathchain-dungeons-threshold",
+                    "healAmount": 23,
+                    "message": "A fountain at a dead end contains restorative water.\n\nShizuki wrote:\n\n'Dead end.\n\nExcellent fountain.\n\nTherefore alive end.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "oathchain-dungeons-threshold",
+                    "message": "A gardener's coffer contains Star Candies.",
+                    "reward": {
+                        "min": 152,
+                        "max": 194
+                    }
+                }
+            }
+        },
+        "oathchain-dungeons-threshold": {
+            "prompt": "Near Mazeheart Pavilion, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A tiny pavilion contains Star Candies beneath an old maze prize plaque.",
+                    "reward": {
+                        "min": 164,
+                        "max": 206
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "oathchain-serpent",
+                    "message": "An Oathchain Serpent guards the final turn."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 28,
+                    "message": "Shizuki's restorative:\n\n'Maze status:\n\nlost.\n\nSpirit status:\n\nexcellent.\n\nGlimmer status:\n\nalso lost but pretending otherwise.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Mazeheart Pavilion",
+            "type": "boss-prompt",
+            "prompt": "The hedges open around Mazeheart Pavilion."
+        }
+    },
+    "bossPromptDiscord": "The hedges open around Mazeheart Pavilion.\n\nA massive Serpent coils around the central fountain like it owns the\nentire maze.\n\nIt probably does.\n\nUse /yes to approach or /no to continue being lost\nelsewhere.",
+    "bossPromptTwitch": "The hedges open around Mazeheart Pavilion.\n\nA massive Serpent coils around the central fountain like it owns the\nentire maze.\n\nIt probably does.\n\nUse !yes to approach or !no to continue being lost\nelsewhere.",
+    "bossRetreatText": "You withdraw from Mazeheart Pavilion. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "high-gaoler-serpent-boss",
+        "roomId": "boss",
+        "revealText": "High Gaoler Serpent — now guardian of the Mazeheart — reveals itself!"
+    },
+    "completionText": "The Serpent retreats.\n\nA direct path opens to the palace.\n\nShizuki's map does not contain this path.\n\nNaturally."
 }

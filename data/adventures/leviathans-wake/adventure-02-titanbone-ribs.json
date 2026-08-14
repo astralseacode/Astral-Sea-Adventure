@@ -1,107 +1,107 @@
 {
-    "id":  "titanbone-ribs",
-    "number":  2,
-    "name":  "Titanbone Ribs",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "titanbone-crab",
-    "recommendedLevel":  20,
-    "introDiscord":  "Titanbone Ribs lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Titanbone Crab.",
-    "introTwitch":  "Titanbone Ribs lies ahead amid pressure-scarred trenches beside wrecked hulls.",
-    "startRoomId":  "titanbone-ribs-approach",
-    "rooms":  {
-                  "titanbone-ribs-approach":  {
-                                                  "prompt":  "At the edge of Titanbone Ribs, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "treasure",
-                                                                               "nextRoomId":  "titanbone-ribs-depths",
-                                                                               "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                               "reward":  {
-                                                                                              "min":  258,
-                                                                                              "max":  293
-                                                                                          }
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "healing",
-                                                                                "nextRoomId":  "titanbone-ribs-depths",
-                                                                                "healAmount":  85,
-                                                                                "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "titanbone-ribs-depths",
-                                                                                  "enemyId":  "titanbone-crab",
-                                                                                  "message":  "A shift in the current exposes Titanbone Crab, which claims the forward route through Titanbone Ribs."
-                                                                              }
-                                                              }
-                                              },
-                  "titanbone-ribs-depths":  {
-                                                "prompt":  "Deeper within Titanbone Ribs, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                "choices":  {
-                                                                "left":  {
-                                                                             "type":  "combat",
-                                                                             "nextRoomId":  "titanbone-ribs-threshold",
-                                                                             "enemyId":  "titanbone-crab",
-                                                                             "message":  "A shift in the current exposes Titanbone Crab, which claims the left route through Titanbone Ribs."
-                                                                         },
-                                                                "right":  {
-                                                                              "type":  "empty",
-                                                                              "nextRoomId":  "titanbone-ribs-threshold",
-                                                                              "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Titanbone Ribs. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                              "berries":  1
-                                                                          },
-                                                                "forward":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "titanbone-ribs-threshold",
-                                                                                "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                "reward":  {
-                                                                                               "min":  270,
-                                                                                               "max":  305
-                                                                                           }
-                                                                            }
-                                                            }
-                                            },
-                  "titanbone-ribs-threshold":  {
-                                                   "prompt":  "Near the heart of Titanbone Ribs, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                "message":  "Beyond the left route, you discover a strongbox torn from a century-old wreck.",
-                                                                                "reward":  {
-                                                                                               "min":  282,
-                                                                                               "max":  317
-                                                                                           }
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "enemyId":  "titanbone-crab",
-                                                                                 "message":  "A shift in the current exposes Titanbone Crab, which claims the right route through Titanbone Ribs."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  90,
-                                                                                   "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               }
-                                                               }
-                                               },
-                  "boss-antechamber":  {
-                                           "name":  "Colossal Ribcage",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Colossal Ribcage."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Colossal Ribcage. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Colossal Ribcage: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Colossal Ribcage. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "ossuary-clawking-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Ossuary Clawking reveals itself!"
-             },
-    "completionText":  "Ossuary Clawking yields, and the currents beyond Colossal Ribcage open the next route through Leviathan\u0027s Wake."
+    "id": "titanbone-ribs",
+    "number": 2,
+    "name": "Titanbone Ribs",
+    "regionId": "leviathans-wake",
+    "enemyId": "titanbone-crab",
+    "recommendedLevel": 20,
+    "introDiscord": "The next skeleton makes the ribs behind you look small.\n\nTitanbone arches rise like the frame of a ruined cathedral while Crabs\nhave built homes, pathways, and apparently an entire society across the\nbones.",
+    "introTwitch": "The next skeleton makes the ribs behind you look small.\n\nTitanbone arches rise like the frame of a ruined cathedral while Crabs\nhave built homes, pathways, and apparently an entire society across the\nbones.",
+    "startRoomId": "titanbone-ribs-approach",
+    "rooms": {
+        "titanbone-ribs-approach": {
+            "prompt": "Three paths wind between ribs broad enough to support coral gardens.\nTitanbone Crabs patrol every desirable ledge.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "titanbone-ribs-depths",
+                    "message": "A Crab has piled shells around an old cache lodged beneath the bone.\n\nThe arrangement is surprisingly tasteful.\n\nYou remove the Star Candies.\n\nThe Crab architecture critic has not been consulted.",
+                    "reward": {
+                        "min": 258,
+                        "max": 293
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "titanbone-ribs-depths",
+                    "healAmount": 85,
+                    "message": "A mineral spring rises where coral has grown through a cracked rib.\n\nShizuki's note reads:\n\n'Camped ON rib tonight.\n\nNot beside rib.\n\nON.\n\nThis thing is wider than my campsite.\n\nI am handling this information normally.'",
+                    "fullHpMessage": "You leave the restorative spring untouched.\n\nHandling the scale of the skeleton normally remains optional."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "titanbone-ribs-depths",
+                    "enemyId": "titanbone-crab",
+                    "message": "A Titanbone Crab emerges from a hollow inside the rib itself.\n\nThe Crab lives in the bone.\n\nYou are trying not to think about how many Crab apartments fit in there."
+                }
+            }
+        },
+        "titanbone-ribs-depths": {
+            "prompt": "Deeper inside the skeleton, three routes cross vertebrae and immense\nscales buried among the ribs.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "titanbone-ribs-threshold",
+                    "enemyId": "titanbone-crab",
+                    "message": "A Titanbone Crab raises both claws from atop a vertebra.\n\nIt has claimed the high ground.\n\nUnfortunately, the high ground is a dead Leviathan."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "titanbone-ribs-threshold",
+                    "message": "One Berry sits inside a tiny shell bowl beside Shizuki's sketch:\n\n'Potential home?\n\nPros:\nHuge.\nStrong roof.\nAmazing view.\n\nCons:\nIS SKELETON.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "titanbone-ribs-threshold",
+                    "message": "A navigator's chest is wedged inside a gap between two vertebrae.\n\nThe gap is large enough to contain the chest, you, and several deeply\nuncomfortable anatomical observations.",
+                    "reward": {
+                        "min": 270,
+                        "max": 305
+                    }
+                }
+            }
+        },
+        "titanbone-ribs-threshold": {
+            "prompt": "The Colossal Ribcage surrounds three final routes, its curved bones\nmeeting far overhead.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A wrecked strongbox rests beneath a rib engraved by countless travelers.\n\nShizuki added one tiny mark:\n\n'Shizuki + Glimmer were here.\n\nDid not touch giant skeleton irresponsibly.\n\nMostly.'",
+                    "reward": {
+                        "min": 282,
+                        "max": 317
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "titanbone-crab",
+                    "message": "A Titanbone Crab drops from the rib above.\n\nThere was apparently an upstairs Crab."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 90,
+                    "message": "A calm pocket forms where two ribs overlap.\n\nShizuki's bottle says:\n\n'Excellent resting spot.\n\nPlease ignore fact we are technically sitting inside chest cavity.'",
+                    "fullHpMessage": "You leave the restorative untouched.\n\nThe phrase 'chest cavity' has already done enough."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Colossal Ribcage",
+            "type": "boss-prompt",
+            "prompt": "The ribs ahead curve inward around an enormous hollow."
+        }
+    },
+    "bossPromptDiscord": "The ribs ahead curve inward around an enormous hollow.\n\nHundreds of smaller Titanbone Crabs retreat into cracks in the skeleton.\n\nOne set of claws remains outside.\n\nThey are considerably larger than you.\n\nUse /yes to enter the Colossal Ribcage or /no to respect the apparent\nlandlord.",
+    "bossPromptTwitch": "The ribs ahead curve inward around an enormous hollow.\n\nHundreds of smaller Titanbone Crabs retreat into cracks in the skeleton.\n\nOne set of claws remains outside.\n\nThey are considerably larger than you.\n\nUse !yes to enter the Colossal Ribcage or !no to respect the apparent\nlandlord.",
+    "bossRetreatText": "You back away.\n\nSeveral tiny Crabs immediately return to their bone apartments.",
+    "boss": {
+        "enemyId": "ossuary-clawking-boss",
+        "roomId": "boss",
+        "revealText": "An enormous Crab tears free from beneath the ancient ribs.\n\nOssuary Clawking reveals itself!"
+    },
+    "completionText": "The Ossuary Clawking retreats deep into the skeleton.\n\nThe smaller Crabs cautiously emerge.\n\nOne immediately begins repairing the shell decoration you disturbed.\n\nSorry."
 }

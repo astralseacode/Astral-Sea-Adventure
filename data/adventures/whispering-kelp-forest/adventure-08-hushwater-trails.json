@@ -1,107 +1,107 @@
 {
-    "id":  "hushwater-trails",
-    "number":  8,
-    "name":  "Hushwater Trails",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "hushwater-stagfish",
-    "recommendedLevel":  12,
-    "introDiscord":  "Hushwater Trails lies ahead, where living rootways beneath drifting fae lights conceal the territory of Hushwater Stagfish.",
-    "introTwitch":  "Hushwater Trails lies ahead amid living rootways beneath drifting fae lights.",
-    "startRoomId":  "hushwater-trails-approach",
-    "rooms":  {
-                  "hushwater-trails-approach":  {
-                                                    "prompt":  "At the edge of Hushwater Trails, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "hushwater-trails-depths",
-                                                                                 "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                 "reward":  {
-                                                                                                "min":  165,
-                                                                                                "max":  202
-                                                                                            }
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "hushwater-trails-depths",
-                                                                                  "healAmount":  55,
-                                                                                  "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "hushwater-trails-depths",
-                                                                                    "enemyId":  "hushwater-stagfish",
-                                                                                    "message":  "A shift in the current exposes Hushwater Stagfish, which claims the forward route through Hushwater Trails."
-                                                                                }
-                                                                }
-                                                },
-                  "hushwater-trails-depths":  {
-                                                  "prompt":  "Deeper within Hushwater Trails, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "hushwater-trails-threshold",
-                                                                               "enemyId":  "hushwater-stagfish",
-                                                                               "message":  "A shift in the current exposes Hushwater Stagfish, which claims the left route through Hushwater Trails."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "hushwater-trails-threshold",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Hushwater Trails. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "hushwater-trails-threshold",
-                                                                                  "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                  "reward":  {
-                                                                                                 "min":  177,
-                                                                                                 "max":  214
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "hushwater-trails-threshold":  {
-                                                     "prompt":  "Near the heart of Hushwater Trails, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "message":  "Beyond the left route, you discover an offering basket hidden inside a living root.",
-                                                                                  "reward":  {
-                                                                                                 "min":  189,
-                                                                                                 "max":  226
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "hushwater-stagfish",
-                                                                                   "message":  "A shift in the current exposes Hushwater Stagfish, which claims the right route through Hushwater Trails."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  60,
-                                                                                     "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "Silent Hart Shrine",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Silent Hart Shrine."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Silent Hart Shrine. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Silent Hart Shrine: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Silent Hart Shrine. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "crown-antler-stagfish-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Crown-Antler Stagfish reveals itself!"
-             },
-    "completionText":  "Crown-Antler Stagfish yields, and the currents beyond Silent Hart Shrine open the next route through Whispering Kelp Forest."
+  "id": "hushwater-trails",
+  "number": 8,
+  "name": "Hushwater Trails",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "hushwater-stagfish",
+  "recommendedLevel": 12,
+  "introDiscord": "The forest becomes strangely quiet. Pale Hushwater Stagfish step\nbetween silver roots like deer beneath moonlight, their branching fins\nbarely disturbing the water.",
+  "introTwitch": "The forest becomes strangely quiet. Pale Hushwater Stagfish step\nbetween silver roots like deer beneath moonlight, their branching fins\nbarely disturbing the water.",
+  "startRoomId": "hushwater-trails-approach",
+  "rooms": {
+    "hushwater-trails-approach": {
+      "prompt": "Three trails pass beneath arching roots. Even the drifting Fae lights\nseem subdued here.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "hushwater-trails-depths",
+          "message": "Broad silver kelp hides a small offering bundle. The Star Candies\ninside have been arranged beneath a tiny carved antler symbol.",
+          "reward": {
+            "min": 165,
+            "max": 202
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "hushwater-trails-depths",
+          "healAmount": 55,
+          "message": "A moonblossom pool glows beside Shizuki's handwriting:\n\n'Quiet place.\n\nGlimmer fell asleep on my hood.\n\nI am legally not allowed to move now.'",
+          "fullHpMessage": "You leave the pool untouched and let the silence remain exactly as it\nis."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "hushwater-trails-depths",
+          "enemyId": "hushwater-stagfish",
+          "message": "A Hushwater Stagfish steps into the trail.\n\nFor several breaths, it simply watches.\n\nThen its antlerlike fins lower.\n\nThe warning is graceful, but unmistakable."
+        }
+      }
+    },
+    "hushwater-trails-depths": {
+      "prompt": "Moonlit fronds form a quiet grove around three narrow paths. Pale\nhooflike marks trail across the silt.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "hushwater-trails-threshold",
+          "enemyId": "hushwater-stagfish",
+          "message": "A Stagfish moves between the roots so silently that you notice its\nreflection before the creature itself."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "hushwater-trails-threshold",
+          "message": "One Berry rests beneath Shizuki's folded blanket.\n\nHer note is unusually short:\n\n'Best nap so far.\n\nTen out of ten forest.'",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "hushwater-trails-threshold",
+          "message": "A moss-covered shrine coffer sits beneath a carved hart. Inside are\nStar Candies and several carefully placed silver leaves.",
+          "reward": {
+            "min": 177,
+            "max": 214
+          }
+        }
+      }
+    },
+    "hushwater-trails-threshold": {
+      "prompt": "Towering kelp frames Silent Hart Shrine. Three final routes cross a\nfloor untouched except for branching tracks.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "An offering basket hidden inside a root contains Star Candies. A young\nStagfish watches from the kelp but makes no move to stop you.",
+          "reward": {
+            "min": 189,
+            "max": 226
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "hushwater-stagfish",
+          "message": "A Hushwater Stagfish steps between you and the Shrine, antler fins\nglowing softly beneath the moonlit canopy."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 60,
+          "message": "Restorative sap rests beneath Shizuki's note:\n\n'For whoever comes this far.\n\nDrink quietly.\n\nFeels rude to disturb the place.'",
+          "fullHpMessage": "You leave the sap where it is. Nothing here needs disturbing."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Silent Hart Shrine",
+      "type": "boss-prompt",
+      "prompt": "Every Hushwater Stagfish along the trail bows its head toward the Shrine."
+    }
+  },
+  "bossPromptDiscord": "The current stills around Silent Hart Shrine.\n\nA pair of enormous branching fins rises behind the pale roots, crowned\nin moonlight.\n\nThe smaller Stagfish quietly step aside.\n\nUse /yes to approach the Shrine or /no to leave the silent guardian\nundisturbed.",
+  "bossPromptTwitch": "The current stills around Silent Hart Shrine.\n\nA pair of enormous branching fins rises behind the pale roots, crowned\nin moonlight.\n\nThe smaller Stagfish quietly step aside.\n\nUse !yes to approach the Shrine or !no to leave the silent guardian\nundisturbed.",
+  "bossRetreatText": "You step away. The enormous silhouette remains within the moonlit roots,\nwatching without pursuit.",
+  "boss": {
+    "enemyId": "crown-antler-stagfish-boss",
+    "roomId": "boss",
+    "revealText": "A majestic Stagfish emerges beneath a crown of branching light.\n\nCrown-Antler Stagfish reveals itself!"
+  },
+  "completionText": "\"The Crown-Antler Stagfish retreats into the silver forest.\n\nThe other Stagfish return to the trail.\n\nFor a moment, the whole forest seems to bow with them.\"\n\n\n#################################################################"
 }

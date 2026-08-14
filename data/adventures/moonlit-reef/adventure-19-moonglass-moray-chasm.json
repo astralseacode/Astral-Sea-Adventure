@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "moonglass-moray",
   "recommendedLevel": 3,
-  "introDiscord": "A moonglass chasm cuts through the reef, scattering the Lunar Current into fractured light.",
-  "introTwitch": "A moonglass chasm cuts through the reef, scattering the Lunar Current into fractured light.",
+  "introDiscord": "A moonglass chasm splits the reef open beneath you. Fractured light fills the depths, turning every crack into a possible hiding place—and every possible hiding place into three reflections.",
+  "introTwitch": "A moonglass chasm splits the reef open beneath you. Fractured light fills the depths, turning every crack into a possible hiding place—and every possible hiding place into three reflections.",
   "startRoomId": "fracture-rim",
   "rooms": {
     "fracture-rim": {
-      "prompt": "The fracture rim overlooks three narrow descents between translucent stone.",
+      "prompt": "The fracture rim narrows above a crystal drop, where three ledges descend between mirrored cracks and long shapes move below.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "glassfang-trench",
-          "message": "Within Moonglass Moray Chasm, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel is wedged on a narrow crystal ledge. Every reflection makes the ledge look wider than it is. You trust the least flattering reflection and recover Star Candies.",
           "reward": {
             "min": 45,
             "max": 75
@@ -25,30 +25,30 @@
           "type": "healing",
           "nextRoomId": "glassfang-trench",
           "healAmount": 35,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Shardkelp remedy. Sharp place, soft lesson: survive first.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "Shizuki's Shardkelp remedy reads: \"Sharp place, soft lesson: survive first. Complain afterward.\"",
+          "fullHpMessage": "The Shardkelp remedy remains stoppered. You are already at full health and may proceed directly to complaining."
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "glassfang-trench",
           "enemyId": "moonglass-moray",
-          "message": "The water folds around Moonglass Moray, revealing the creature as it claims the passage."
+          "message": "A long shape appears inside a crack. Then another beside it. Only one reflection opens its mouth. Unfortunately, that is the real Moray."
         }
       }
     },
     "glassfang-trench": {
-      "prompt": "The passages carry you deeper into Moonglass Moray Chasm, where glasslike ridges line a trench where three channels twist beyond the visible depths.",
+      "prompt": "Glasslike ridges form rows of jagged teeth along the trench. Three channels twist deeper while narrow crevices seem to breathe.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "mirrorcrack-gorge",
           "enemyId": "moonglass-moray",
-          "message": "The water folds around Moonglass Moray, revealing the creature as it claims the passage."
+          "message": "A Moonglass Moray shoots from one crevice, misses, and disappears into another before you can turn. Its second attack comes from the reflection you ignored."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "mirrorcrack-gorge",
-          "message": "Within Moonglass Moray Chasm, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache sits behind a ridge that resembles a gigantic glass fang. Inside are Star Candies and several scratches suggesting somebody else tried to open it with their teeth.",
           "reward": {
             "min": 55,
             "max": 85
@@ -58,30 +58,30 @@
           "type": "healing",
           "nextRoomId": "mirrorcrack-gorge",
           "healAmount": 35,
-          "message": "Deeper inside Moonglass Moray Chasm, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Morays dislike sarcasm. Fortunately, I brought medicine.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Shizuki's bottle reads: \"Morays dislike sarcasm. Fortunately I brought medicine, because I did not bring less sarcasm.\"",
+          "fullHpMessage": "Shizuki's sarcasm-compatible medicine remains unused. At full health, you can keep both bottle and commentary ready."
         }
       }
     },
     "mirrorcrack-gorge": {
-      "prompt": "Close to the heart of Moonglass Moray Chasm, mirror cracks illuminate a gorge whose three mouths reflect one another.",
+      "prompt": "Three gorge mouths reflect one another so perfectly that six entrances appear ahead. Something long keeps moving through whichever three you aren't watching.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A snapped tracking charm in the surrounding passage conceals one Berry. Shizuki marked the hiding place: \"One more leash that failed.\"",
+          "message": "A snapped tracking charm conceals one Berry. Shizuki wrote over it: \"Used to track me. Now tracks emergency snacks. Promotion.\"",
           "berries": 1
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moonglass-moray",
-          "message": "The water folds around Moonglass Moray, revealing the creature as it claims the passage."
+          "message": "A Moray emerges halfway from one crack, decides you are too far away, disappears, and somehow bites at you from another wall."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonglass Moray Chasm, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer appears in four reflections but only one shadow. Following the shadow reveals Star Candies.",
           "reward": {
             "min": 60,
             "max": 95
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Shardjaw Depths",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The gorge plunges into a maze of immense mirrored fractures. Every shard reflects the same deep passage—and the same enormous shadow moving within it."
     }
   },
-  "bossPromptDiscord": "You reach Shardjaw Depths. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Shardjaw Depths: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Shardjaw Depths. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The reflections throughout the gorge suddenly become perfectly still.\n\nSomething enormous slides through every mirrored crack at once.\n\nThen one reflection opens a jaw large enough to fill the passage.\n\nUse /yes to descend into Shardjaw Depths or /no to reconsider becoming eel food.",
+  "bossPromptTwitch": "The reflections throughout the gorge suddenly become perfectly still.\n\nSomething enormous slides through every mirrored crack at once.\n\nThen one reflection opens a jaw large enough to fill the passage.\n\nUse !yes to descend into Shardjaw Depths or !no to reconsider becoming eel food.",
+  "bossRetreatText": "You climb away from Shardjaw Depths. The enormous reflection closes its jaws, and the gorge resumes lying about how many paths it contains.",
   "boss": {
     "enemyId": "shardjaw-moray-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Shardjaw Moray reveals itself!"
+    "revealText": "A colossal Moray tears through the mirrored gorge, its jaw filling every reflection. The Shardjaw Moray emerges!"
   },
-  "completionText": "Shardjaw Moray yields to the returning current. Moonglass Moray Chasm settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Shardjaw Moray retreats into the deepest fracture. The false reflections fade, leaving one genuine path forward. It is extremely nice having only one reality again."
 }

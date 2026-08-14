@@ -5,15 +5,15 @@
   "regionId": "moonlit-reef",
   "enemyId": "bubble-nibbler",
   "recommendedLevel": 1,
-  "intro": "A coral burrow waits beneath the moonlit reef.",
+  "intro": "A trail of shimmering bubbles leads toward a coral burrow tucked beneath Moonlit Reef. Tiny bite marks cover the shells around its entrance, and something deeper inside makes an unmistakable nom nom nom sound.",
   "startRoomId": "entrance",
   "rooms": {
     "entrance": {
-      "prompt": "Three passages wind deeper into the hideout.",
+      "prompt": "A trail of suspiciously perfect bubbles disappears into the coral burrow. Tiny bite marks cover the shells around the entrance, and something deeper inside makes an unmistakable nom nom nom sound. Three passages wind farther into the hideout.",
       "choices": {
         "left": {
           "type": "treasure",
-          "message": "You follow shimmering bubbles into a forgotten cache.",
+          "message": "You follow a trail of shimmering bubbles into a tiny storage nook. Someone—or something—has carefully stacked shells around a pouch of Star Candies. The bite marks on the pouch suggest you arrived just in time.",
           "reward": {
             "min": 20,
             "max": 40
@@ -27,14 +27,14 @@
         },
         "forward": {
           "type": "empty",
-          "message": "A bubble-shaped shell cup holds one Berry and a note in Shizuki's handwriting: \"Prize for surviving the bubbles. If they ate the map, improvise.\"",
+          "message": "A bubble-shaped shell cup holds one Berry beside a note in Shizuki's handwriting: \"Emergency snack! NOT FOR THE BUBBLE NIBBLERS. They already ate the first cup. And part of my map. Little criminals.\"",
           "nextRoomId": "inner-crossing",
           "berries": 1
         }
       }
     },
     "inner-crossing": {
-      "prompt": "The passages carry you deeper into Bubble Nibbler Hideout, where three shell-lined tunnels split beneath the reef. Moonlit currents drift through the coral while distant bubbles rise from somewhere deeper inside.",
+      "prompt": "The burrow opens into three shell-lined tunnels. Hundreds of tiny bubbles drift through the water, occasionally carrying things that definitely do not belong in bubbles—a spoon, a button, half a map, and what appears to be somebody's sock.",
       "choices": {
         "left": {
           "type": "combat",
@@ -45,12 +45,12 @@
           "type": "healing",
           "healAmount": 25,
           "nextRoomId": "coral-maze",
-          "message": "Deeper inside Bubble Nibbler Hideout, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Tastes terrible. Works anyway. Try not to ask what the green part is.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Behind a coral shelf, you discover one of Shizuki's abandoned camps. An empty berry pouch, a chewed corner of a map, and one surviving bottle remain. Its label reads: \"Tastes terrible. Works anyway. If you're wondering what the green part is, don't.\"",
+          "fullHpMessage": "Shizuki's suspicious green remedy is still waiting beside the chewed map. Fortunately, being completely healthy gives you an excellent excuse not to drink it."
         },
         "forward": {
           "type": "treasure",
-          "message": "A shell cache opens beneath the current.",
+          "message": "A stream of bubbles leads to a pile of stolen trinkets wedged beneath a shell. Most are completely useless, but buried among the collection is a valuable cache. Apparently Bubble Nibblers have excellent taste in valuables.",
           "reward": {
             "min": 25,
             "max": 45
@@ -60,11 +60,11 @@
       }
     },
     "coral-maze": {
-      "prompt": "Close to the heart of Bubble Nibbler Hideout, the hideout narrows into a maze of coral arches and pale shell fragments. Three passages disappear beyond the moonlit stone.",
+      "prompt": "The tunnels narrow into a twisting coral maze absolutely covered in tiny bite marks. Scraps of shells, maps, ribbons, and other stolen treasures have been tucked into every crevice. Whatever lives here has apparently been collecting things for a very long time.",
       "choices": {
         "left": {
           "type": "treasure",
-          "message": "A pearl-lined hollow conceals the hideout's last cache.",
+          "message": "You discover the hideout's largest stash tucked inside a pearl-lined hollow. Buttons, polished shells, shiny rocks, one completely useless fork—and beneath all of it, a cache of Star Candies.",
           "reward": {
             "min": 30,
             "max": 50
@@ -75,8 +75,8 @@
           "type": "healing",
           "healAmount": 25,
           "nextRoomId": "boss-antechamber",
-          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Second bottle. Less terrible. That is called progress.\"",
-          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
+          "message": "Another weathered Shizuki field kit is wedged high in the coral, apparently placed somewhere the Bubble Nibblers couldn't reach. One bottle remains labeled: \"Second recipe. Less terrible. Still green. Progress!\"",
+          "fullHpMessage": "The second green bottle is still safely tucked away. You are at full health, which means you have once again escaped having to find out what Shizuki put in it."
         },
         "forward": {
           "type": "combat",
@@ -88,16 +88,16 @@
     "boss-antechamber": {
       "name": "Boss Antechamber",
       "type": "boss-prompt",
-      "prompt": "A storm of shimmering bubbles gathers beyond the final coral bend while an unseen ruler stirs."
+      "prompt": "The maze opens into a huge chamber overflowing with stolen junk. Shells. Spoons. Maps. Buttons. Star Candies. At the center sits an enormous bubble-shaped nest. A single gigantic bite mark has been taken out of the coral beside it."
     }
   },
-  "bossPromptDiscord": "A storm of shimmering bubbles gathers beyond the final coral bend. Something powerful rules the hideout.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "A storm of bubbles gathers beyond the coral bend. The hideout's unseen ruler waits ahead. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You step back from the coral bend. The hideout's unseen ruler remains ahead.",
+  "bossPromptDiscord": "A thunderous NOM echoes through the chamber.\n\nThe mountain of stolen treasures begins to shake. Something very large is chewing behind it.\n\nUse /yes to investigate or /no to decide that whatever made that bite mark can keep its snacks.",
+  "bossPromptTwitch": "A thunderous NOM echoes through the chamber.\n\nThe mountain of stolen treasures begins to shake. Something very large is chewing behind it.\n\nUse !yes to investigate or !no to decide that whatever made that bite mark can keep its snacks.",
+  "bossRetreatText": "You quietly back away from the suspiciously moving treasure pile. Another enormous NOM echoes behind you. Whatever lives here can keep the fork.",
   "boss": {
     "enemyId": "bubble-nibbler-boss",
     "roomId": "boss",
-    "revealText": "The bubble storm bursts outward. The Bubble Nibbler Boss lunges from the coral!"
+    "revealText": "The treasure pile EXPLODES into bubbles. An enormous Bubble Nibbler bursts from underneath with a stolen pouch in its mouth. The Bubble Nibbler Boss has apparently decided you are interrupting snack time."
   },
-  "completionText": "The Bubble Nibbler Boss bursts into a harmless cloud of silver bubbles. The hideout falls quiet, and the Moonlit Reef opens a new path."
+  "completionText": "The Bubble Nibbler Boss bursts into a harmless storm of silver bubbles, scattering its stolen collection across the chamber. Among the shells, buttons, spoons, and thoroughly chewed maps, you uncover the path leading deeper into Moonlit Reef. Somewhere behind you, one last tiny Bubble Nibbler steals the useless fork and disappears."
 }

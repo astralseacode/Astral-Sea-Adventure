@@ -5,30 +5,30 @@
   "regionId": "moonlit-reef",
   "enemyId": "constellation-crawler",
   "recommendedLevel": 3,
-  "introDiscord": "A drowned orrery turns under its own magic, mapping constellations across the reef floor.",
-  "introTwitch": "A drowned orrery turns under its own magic, mapping constellations across the reef floor.",
+  "introDiscord": "A drowned orrery turns above the reef floor, its enormous rings still mapping constellations after centuries underwater. Tiny Constellation Crawlers scamper across the machinery, physically moving stars whenever they dislike the arrangement.",
+  "introTwitch": "A drowned orrery turns above the reef floor, its enormous rings still mapping constellations after centuries underwater. Tiny Constellation Crawlers scamper across the machinery, physically moving stars whenever they dislike the arrangement.",
   "startRoomId": "orbit-gate",
   "rooms": {
     "orbit-gate": {
-      "prompt": "Orbiting stones frame a gate where three tracks rotate into the mechanism.",
+      "prompt": "The orrery's outer ring turns around three moving approaches. Glowing stars roll along its tracks while tiny Crawlers drag constellations into personally improved positions.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "starwheel-chamber",
           "healAmount": 35,
-          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Zodiac tonic. The stars suggested patience; I chose a shortcut.\"",
-          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki's Zodiac tonic reads: \"The stars suggested patience. I chose a shortcut. Stars remain judgmental.\"",
+          "fullHpMessage": "The Zodiac tonic remains untouched. You are already at full health, and the stars may practice patience instead."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "starwheel-chamber",
           "enemyId": "constellation-crawler",
-          "message": "The water folds around Constellation Crawler, revealing the creature as it claims the passage."
+          "message": "A Crawler drags one glowing star across the floor, realizes you're standing where it wants the star, and treats this as your problem."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "starwheel-chamber",
-          "message": "Within Constellation Crawler Orrery, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache rotates past once every thirty seconds. You time the mechanism, step aboard, and retrieve Star Candies before it carries the cache away again.",
           "reward": {
             "min": 45,
             "max": 75
@@ -37,12 +37,12 @@
       }
     },
     "starwheel-chamber": {
-      "prompt": "Farther within Constellation Crawler Orrery, a starwheel turns above a chamber whose three exits align and separate with the tide.",
+      "prompt": "A massive starwheel turns overhead. Three exits align and separate with each rotation while Crawlers ride the moving rings like tiny celestial maintenance workers.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "celestial-track",
-          "message": "Within Constellation Crawler Orrery, the left path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer is attached to one rotating spoke. After completing an unnecessary full orbit, you finally reach it and collect Star Candies.",
           "reward": {
             "min": 55,
             "max": 85
@@ -52,30 +52,30 @@
           "type": "healing",
           "nextRoomId": "celestial-track",
           "healAmount": 35,
-          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Drink when destiny becomes overly specific.\"",
-          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
+          "message": "Shizuki's remedy reads: \"Drink when destiny becomes overly specific. Especially if destiny says 'wait here.'\"",
+          "fullHpMessage": "Shizuki's anti-destiny remedy remains sealed. At full health, you have no reason to wait here just because fate suggested it."
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "celestial-track",
           "enemyId": "constellation-crawler",
-          "message": "The water folds around Constellation Crawler, revealing the creature as it claims the passage."
+          "message": "A Crawler changes three stars, watches an entire exit rotate away, then looks extremely pleased with itself. You were using that exit."
         }
       }
     },
     "celestial-track": {
-      "prompt": "With the outer passages behind you, Constellation Crawler Orrery narrows until celestial marks travel along a track that divides into three moving routes.",
+      "prompt": "Glowing constellations race along three moving tracks. Each route appears only when the correct stars align—and the Crawlers keep changing them.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "constellation-crawler",
-          "message": "The water folds around Constellation Crawler, revealing the creature as it claims the passage."
+          "message": "A Crawler steals the glowing marker that was guiding your route and scampers away with it. Catching it becomes less optional when it turns and attacks."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Constellation Crawler Orrery, the right path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel rides the celestial track beneath a tiny constellation shaped like a spoon. You have questions, but Star Candies are a sufficient distraction.",
           "reward": {
             "min": 60,
             "max": 95
@@ -84,7 +84,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "Shizuki placed one Berry on the point labeled \"Possible Exit\" in her corrected constellation chart. \"Fate\" has been crossed out.",
+          "message": "One Berry rests on Shizuki's chart beside 'Possible Exit.' The word 'Fate' has been crossed out and replaced with 'WE'LL SEE.'",
           "berries": 1
         }
       }
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Weaver Meridian",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "All of the orrery's moving tracks converge at one brilliant meridian. Half-woven constellations hang above a central mechanism large enough to rearrange the sky."
     }
   },
-  "bossPromptDiscord": "You reach Weaver Meridian. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Weaver Meridian: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Weaver Meridian. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The entire orrery stops.\n\nEvery Crawler freezes.\n\nThen the constellations begin moving without their help.\n\nAt the center, something enormous is weaving the stars into a new pattern.\n\nUse /yes to enter the Meridian or /no to leave destiny unsupervised.",
+  "bossPromptTwitch": "The entire orrery stops.\n\nEvery Crawler freezes.\n\nThen the constellations begin moving without their help.\n\nAt the center, something enormous is weaving the stars into a new pattern.\n\nUse !yes to enter the Meridian or !no to leave destiny unsupervised.",
+  "bossRetreatText": "You leave Weaver Meridian unsupervised. The constellations continue rearranging themselves while every Crawler watches in offended silence.",
   "boss": {
     "enemyId": "zodiac-weaver-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Zodiac Weaver reveals itself!"
+    "revealText": "The constellations knot together as a vast Crawler descends through the stopped orrery. The Zodiac Weaver takes the Meridian!"
   },
-  "completionText": "Zodiac Weaver yields to the returning current. Constellation Crawler Orrery settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Zodiac Weaver releases the constellation, and the orrery starts turning normally again. The Crawlers immediately rush in to rearrange everything it just fixed."
 }

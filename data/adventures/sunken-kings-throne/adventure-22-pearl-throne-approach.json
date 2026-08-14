@@ -1,107 +1,107 @@
 {
-    "id":  "pearl-throne-approach",
-    "number":  22,
-    "name":  "Pearl-Throne Approach",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "pearl-throne-sentinel",
-    "recommendedLevel":  44,
-    "introDiscord":  "Pearl-Throne Approach lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Pearl-Throne Sentinel.",
-    "introTwitch":  "Pearl-Throne Approach lies ahead amid drowned palace colonnades guarded by broken royal seals.",
-    "startRoomId":  "pearl-throne-approach-approach",
-    "rooms":  {
-                  "pearl-throne-approach-approach":  {
-                                                         "prompt":  "At the edge of Pearl-Throne Approach, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "pearl-throne-approach-depths",
-                                                                                      "enemyId":  "pearl-throne-sentinel",
-                                                                                      "message":  "A shift in the current exposes Pearl-Throne Sentinel, which claims the left route through Pearl-Throne Approach."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "empty",
-                                                                                       "nextRoomId":  "pearl-throne-approach-depths",
-                                                                                       "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Pearl-Throne Approach. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                       "berries":  1
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "pearl-throne-approach-depths",
-                                                                                         "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                         "reward":  {
-                                                                                                        "min":  158,
-                                                                                                        "max":  200
-                                                                                                    }
-                                                                                     }
-                                                                     }
-                                                     },
-                  "pearl-throne-approach-depths":  {
-                                                       "prompt":  "Deeper within Pearl-Throne Approach, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "pearl-throne-approach-threshold",
-                                                                                    "healAmount":  30,
-                                                                                    "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "pearl-throne-approach-threshold",
-                                                                                     "enemyId":  "pearl-throne-sentinel",
-                                                                                     "message":  "A shift in the current exposes Pearl-Throne Sentinel, which claims the right route through Pearl-Throne Approach."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "pearl-throne-approach-threshold",
-                                                                                       "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                       "reward":  {
-                                                                                                      "min":  170,
-                                                                                                      "max":  212
-                                                                                                  }
-                                                                                   }
-                                                                   }
-                                                   },
-                  "pearl-throne-approach-threshold":  {
-                                                          "prompt":  "Near the heart of Pearl-Throne Approach, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                          "choices":  {
-                                                                          "left":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "message":  "Beyond the left route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                       "reward":  {
-                                                                                                      "min":  182,
-                                                                                                      "max":  224
-                                                                                                  }
-                                                                                   },
-                                                                          "right":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "healAmount":  35,
-                                                                                        "message":  "The right route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    },
-                                                                          "forward":  {
-                                                                                          "type":  "combat",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "enemyId":  "pearl-throne-sentinel",
-                                                                                          "message":  "A shift in the current exposes Pearl-Throne Sentinel, which claims the forward route through Pearl-Throne Approach."
-                                                                                      }
-                                                                      }
-                                                      },
-                  "boss-antechamber":  {
-                                           "name":  "Pearlescent Gate",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Pearlescent Gate."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Pearlescent Gate. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Pearlescent Gate: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Pearlescent Gate. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "mother-of-pearl-warden-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Mother-of-Pearl Warden reveals itself!"
-             },
-    "completionText":  "Mother-of-Pearl Warden yields, and the currents beyond Pearlescent Gate open the next route through Sunken King\u0027s Throne."
+    "id": "pearl-throne-approach",
+    "number": 22,
+    "name": "Pearl-Throne Approach",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "pearl-throne-sentinel",
+    "recommendedLevel": 44,
+    "introDiscord": "For the first time, the palace itself becomes visible.\n\nA vast pearl-covered gate rises above the kingdom while ceremonial roads\nconverge beneath it.",
+    "introTwitch": "For the first time, the palace itself becomes visible.\n\nA vast pearl-covered gate rises above the kingdom while ceremonial roads\nconverge beneath it.",
+    "startRoomId": "pearl-throne-approach-approach",
+    "rooms": {
+        "pearl-throne-approach-approach": {
+            "prompt": "Pearl-Throne Approach opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "pearl-throne-approach-depths",
+                    "enemyId": "pearl-throne-sentinel",
+                    "message": "A Pearl-Throne Sentinel guards the palace road."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "pearl-throne-approach-depths",
+                    "message": "One Berry rests beneath Shizuki's sign:\n\n'PALACE FOUND!!!\n\nOnly took—\n\nGlimmer says not to record how long.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "pearl-throne-approach-depths",
+                    "message": "A ceremonial gatehouse coffer contains Star Candies.",
+                    "reward": {
+                        "min": 158,
+                        "max": 200
+                    }
+                }
+            }
+        },
+        "pearl-throne-approach-depths": {
+            "prompt": "Deeper within Pearl-Throne Approach, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "pearl-throne-approach-threshold",
+                    "healAmount": 30,
+                    "message": "A royal visitor fountain restores strength.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "pearl-throne-approach-threshold",
+                    "enemyId": "pearl-throne-sentinel",
+                    "message": "A Sentinel blocks the inner approach."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "pearl-throne-approach-threshold",
+                    "message": "A pearl-lined chest contains Star Candies.",
+                    "reward": {
+                        "min": 170,
+                        "max": 212
+                    }
+                }
+            }
+        },
+        "pearl-throne-approach-threshold": {
+            "prompt": "Near Pearlescent Gate, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A palace guest offering box contains Star Candies.",
+                    "reward": {
+                        "min": 182,
+                        "max": 224
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 35,
+                    "message": "Shizuki's bottle reads:\n\n'Palace preparation potion.\n\nSame potion.\n\nFancier location.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "pearl-throne-sentinel",
+                    "message": "A Pearl-Throne Sentinel guards Pearlescent Gate."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Pearlescent Gate",
+            "type": "boss-prompt",
+            "prompt": "The enormous palace gate begins opening."
+        }
+    },
+    "bossPromptDiscord": "The enormous palace gate begins opening.\n\nA mother-of-pearl figure steps between its doors.\n\nUse /yes to enter the royal palace grounds or /no to remain\na perfectly respectable trespasser outside.",
+    "bossPromptTwitch": "The enormous palace gate begins opening.\n\nA mother-of-pearl figure steps between its doors.\n\nUse !yes to enter the royal palace grounds or !no to remain\na perfectly respectable trespasser outside.",
+    "bossRetreatText": "You withdraw from Pearlescent Gate. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "mother-of-pearl-warden-boss",
+        "roomId": "boss",
+        "revealText": "Mother-of-Pearl Warden reveals itself!"
+    },
+    "completionText": "The Warden yields.\n\nThe palace grounds open.\n\nShizuki's next message:\n\n'WE ARE INSIDE THE CASTLE.\n\nACT NATURAL.'"
 }

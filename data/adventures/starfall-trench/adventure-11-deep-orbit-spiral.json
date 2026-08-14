@@ -1,107 +1,107 @@
 {
-    "id":  "deep-orbit-spiral",
-    "number":  11,
-    "name":  "Deep-Orbit Spiral",
-    "regionId":  "starfall-trench",
-    "enemyId":  "deep-orbit-nautilus",
-    "recommendedLevel":  7,
-    "introDiscord":  "Deep-Orbit Spiral lies ahead, where meteor-lit trenches conceal the territory of Deep-Orbit Nautilus.",
-    "introTwitch":  "Deep-Orbit Spiral lies ahead amid meteor-lit trenches.",
-    "startRoomId":  "deep-orbit-spiral-approach",
-    "rooms":  {
-                  "deep-orbit-spiral-approach":  {
-                                                     "prompt":  "At the edge of Deep-Orbit Spiral, meteor-lit trenches divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "deep-orbit-spiral-depths",
-                                                                                  "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                  "reward":  {
-                                                                                                 "min":  111,
-                                                                                                 "max":  149
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "deep-orbit-spiral-depths",
-                                                                                   "enemyId":  "deep-orbit-nautilus",
-                                                                                   "message":  "A shift in the current exposes Deep-Orbit Nautilus, which claims the right route through Deep-Orbit Spiral."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "deep-orbit-spiral-depths",
-                                                                                     "healAmount":  39,
-                                                                                     "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "deep-orbit-spiral-depths":  {
-                                                   "prompt":  "Deeper within Deep-Orbit Spiral, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "deep-orbit-spiral-threshold",
-                                                                                "enemyId":  "deep-orbit-nautilus",
-                                                                                "message":  "A shift in the current exposes Deep-Orbit Nautilus, which claims the left route through Deep-Orbit Spiral."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "deep-orbit-spiral-threshold",
-                                                                                 "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
-                                                                                 "reward":  {
-                                                                                                "min":  123,
-                                                                                                "max":  161
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "deep-orbit-spiral-threshold",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Deep-Orbit Spiral. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               }
-                                                               }
-                                               },
-                  "deep-orbit-spiral-threshold":  {
-                                                      "prompt":  "Near the heart of Deep-Orbit Spiral, fractured starstone terraces divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  44,
-                                                                                   "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "deep-orbit-nautilus",
-                                                                                    "message":  "A shift in the current exposes Deep-Orbit Nautilus, which claims the right route through Deep-Orbit Spiral."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                      "reward":  {
-                                                                                                     "min":  135,
-                                                                                                     "max":  173
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Celestial Coil",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Celestial Coil."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Celestial Coil. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Celestial Coil: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Celestial Coil. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "periapsis-nautilus-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Starcoil Nautilus reveals itself!"
-             },
-    "completionText":  "Starcoil Nautilus yields, and the currents beyond Celestial Coil open the next route through Starfall Trench."
+  "id": "deep-orbit-spiral",
+  "number": 11,
+  "name": "Deep-Orbit Spiral",
+  "regionId": "starfall-trench",
+  "enemyId": "deep-orbit-nautilus",
+  "recommendedLevel": 7,
+  "introDiscord": "Shells, stones, and several completely ordinary objects orbit a spiraling trench. One of those objects is a spoon.",
+  "introTwitch": "Shells, stones, and several completely ordinary objects orbit a spiraling trench. One of those objects is a spoon.",
+  "startRoomId": "deep-orbit-spiral-approach",
+  "rooms": {
+    "deep-orbit-spiral-approach": {
+      "prompt": "Three paths curve around the spiral while Deep-Orbit Nautilus shells drift in slow celestial arcs.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "deep-orbit-spiral-depths",
+          "message": "A cometglass seam rotates past like a tiny moon.",
+          "reward": {
+            "min": 111,
+            "max": 149
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "deep-orbit-spiral-depths",
+          "enemyId": "deep-orbit-nautilus",
+          "message": "A Nautilus leaves its orbit and intercepts yours."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "deep-orbit-spiral-depths",
+          "healAmount": 39,
+          "message": "Shizuki's tonic is attached to a rope. Beside it: \"Lost spoon. If found, spoon has achieved orbit. Do not interfere.\"",
+          "fullHpMessage": "The medicine remains tied down. The spoon continues its historic journey."
+        }
+      }
+    },
+    "deep-orbit-spiral-depths": {
+      "prompt": "The spiral tightens. Three routes circle a miniature system of floating debris.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "deep-orbit-spiral-threshold",
+          "enemyId": "deep-orbit-nautilus",
+          "message": "A Nautilus adjusts its orbit specifically to collide with you."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "deep-orbit-spiral-threshold",
+          "message": "A star-chart coffer circles a chunk of meteorstone.",
+          "reward": {
+            "min": 123,
+            "max": 161
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "deep-orbit-spiral-threshold",
+          "message": "A Berry floats beside Shizuki's sketch of the orbiting spoon.\n\n\"Day 3. Spoon remains in stable orbit. Science refuses to explain why.\"",
+          "berries": 1
+        }
+      }
+    },
+    "deep-orbit-spiral-threshold": {
+      "prompt": "Celestial Coil lies at the center of the spiral.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 44,
+          "message": "Shizuki's second tonic is labeled: \"For orbital accidents. Not for spoon.\"",
+          "fullHpMessage": "The orbital accident medicine remains untouched."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "deep-orbit-nautilus",
+          "message": "A Deep-Orbit Nautilus spirals directly into your route."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "\"A meteor-iron reliquary rests at the spiral's calm center.\"\n\nBOSS:",
+          "reward": {
+            "min": 135,
+            "max": 173
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Celestial Coil",
+      "type": "boss-prompt",
+      "prompt": "Every orbit shifts at once."
+    }
+  },
+  "bossPromptDiscord": "Every orbit shifts at once.\n\nA massive shell begins circling the Celestial Coil.\n\nThe spoon narrowly survives.\n\nUse /yes to enter the Coil or /no to preserve the spoon's scientific legacy from a safe distance.",
+  "bossPromptTwitch": "Every orbit shifts at once.\n\nA massive shell begins circling the Celestial Coil.\n\nThe spoon narrowly survives.\n\nUse !yes to enter the Coil or !no to preserve the spoon's scientific legacy from a safe distance.",
+  "bossRetreatText": "You retreat.\n\nThe spoon completes another orbit.\n\nMagnificent.",
+  "boss": {
+    "enemyId": "periapsis-nautilus-boss",
+    "roomId": "boss",
+    "revealText": "The enormous shell unfolds from the spiral.\n\nStarcoil Nautilus reveals itself!"
+  },
+  "completionText": "\"The Celestial Coil settles.\n\nThe spoon remains in orbit.\n\nStarfall Trench's greatest mystery continues.\"\n\n\n#################################################################"
 }

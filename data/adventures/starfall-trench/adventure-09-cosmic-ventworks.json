@@ -1,107 +1,107 @@
 {
-    "id":  "cosmic-ventworks",
-    "number":  9,
-    "name":  "Cosmic Ventworks",
-    "regionId":  "starfall-trench",
-    "enemyId":  "cosmic-vent-crab",
-    "recommendedLevel":  6,
-    "introDiscord":  "Cosmic Ventworks lies ahead, where gravity-bent celestial ruins conceal the territory of Starvent Crab.",
-    "introTwitch":  "Cosmic Ventworks lies ahead amid gravity-bent celestial ruins.",
-    "startRoomId":  "cosmic-ventworks-approach",
-    "rooms":  {
-                  "cosmic-ventworks-approach":  {
-                                                    "prompt":  "At the edge of Cosmic Ventworks, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "cosmic-ventworks-depths",
-                                                                                 "healAmount":  43,
-                                                                                 "message":  "The left route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "cosmic-ventworks-depths",
-                                                                                  "enemyId":  "cosmic-vent-crab",
-                                                                                  "message":  "A shift in the current exposes Starvent Crab, which claims the right route through Cosmic Ventworks."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "cosmic-ventworks-depths",
-                                                                                    "message":  "Beyond the forward route, you discover a star chart coffer buried in luminous silt.",
-                                                                                    "reward":  {
-                                                                                                   "min":  117,
-                                                                                                   "max":  154
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "cosmic-ventworks-depths":  {
-                                                  "prompt":  "Deeper within Cosmic Ventworks, fractured starstone terraces divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "empty",
-                                                                               "nextRoomId":  "cosmic-ventworks-threshold",
-                                                                               "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Cosmic Ventworks. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                               "berries":  1
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "cosmic-ventworks-threshold",
-                                                                                "message":  "Beyond the right route, you discover a sealed meteor-iron reliquary.",
-                                                                                "reward":  {
-                                                                                               "min":  129,
-                                                                                               "max":  166
-                                                                                           }
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "cosmic-ventworks-threshold",
-                                                                                  "enemyId":  "cosmic-vent-crab",
-                                                                                  "message":  "A shift in the current exposes Starvent Crab, which claims the forward route through Cosmic Ventworks."
-                                                                              }
-                                                              }
-                                              },
-                  "cosmic-ventworks-threshold":  {
-                                                     "prompt":  "Near the heart of Cosmic Ventworks, meteor-lit trenches divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "enemyId":  "cosmic-vent-crab",
-                                                                                  "message":  "A shift in the current exposes Starvent Crab, which claims the left route through Cosmic Ventworks."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  48,
-                                                                                   "message":  "The right route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
-                                                                                     "reward":  {
-                                                                                                    "min":  141,
-                                                                                                    "max":  178
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "Forge of Blue Fire",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Forge of Blue Fire."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Forge of Blue Fire. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Forge of Blue Fire: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Forge of Blue Fire. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "superheated-ventlord-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Starforge Clawlord reveals itself!"
-             },
-    "completionText":  "Starforge Clawlord yields, and the currents beyond Forge of Blue Fire open the next route through Starfall Trench."
+  "id": "cosmic-ventworks",
+  "number": 9,
+  "name": "Cosmic Ventworks",
+  "regionId": "starfall-trench",
+  "enemyId": "cosmic-vent-crab",
+  "recommendedLevel": 6,
+  "introDiscord": "Ancient vents pump blue fire through the trench while Cosmic Vent Crabs march between them like tiny maintenance workers. One enormous vent has a handwritten sign: 'GERALD. DO NOT ANGER.'",
+  "introTwitch": "Ancient vents pump blue fire through the trench while Cosmic Vent Crabs march between them like tiny maintenance workers. One enormous vent has a handwritten sign: 'GERALD. DO NOT ANGER.'",
+  "startRoomId": "cosmic-ventworks-approach",
+  "rooms": {
+    "cosmic-ventworks-approach": {
+      "prompt": "Three routes wind between hissing vents and extremely busy crabs.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "cosmic-ventworks-depths",
+          "healAmount": 43,
+          "message": "Shizuki left a tonic beside Gerald. \"Gerald is a vent. Glimmer insists Gerald has personality. I am remaining neutral.\"",
+          "fullHpMessage": "You leave the tonic beside Gerald. Gerald continues being a vent."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "cosmic-ventworks-depths",
+          "enemyId": "cosmic-vent-crab",
+          "message": "A Cosmic Vent Crab clacks its claws and refuses to let you pass its workstation."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "cosmic-ventworks-depths",
+          "message": "A star-chart coffer lies beneath a pipe that appears to have been repaired entirely with shells.",
+          "reward": {
+            "min": 117,
+            "max": 154
+          }
+        }
+      }
+    },
+    "cosmic-ventworks-depths": {
+      "prompt": "The Ventworks grow louder. Crabs shuffle between three routes carrying pieces of cometglass.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "cosmic-ventworks-threshold",
+          "message": "A Berry sits beside Gerald's second sign:\n\n\"GERALD UPDATE:\nStill vent.\nStill hot.\nGlimmer says hello.\"",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "cosmic-ventworks-threshold",
+          "message": "A meteor-iron reliquary has been incorporated into a crab's carefully organized scrap pile.",
+          "reward": {
+            "min": 129,
+            "max": 166
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "cosmic-ventworks-threshold",
+          "enemyId": "cosmic-vent-crab",
+          "message": "A Cosmic Vent Crab sees you approaching its scrap pile.\n\nUnion negotiations have failed."
+        }
+      }
+    },
+    "cosmic-ventworks-threshold": {
+      "prompt": "Blue fire illuminates the approach to Forge of Blue Fire.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "cosmic-vent-crab",
+          "message": "A Vent Crab blocks the route while standing heroically in front of a pipe it definitely did not install."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 48,
+          "message": "Shizuki's tonic reads: \"Gerald-approved medicine.\" A smaller note adds: \"Gerald cannot approve things.\"",
+          "fullHpMessage": "You leave Gerald-approved medicine alone. Gerald offers no comment."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "\"A cometglass seam glows behind the machinery.\"\n\nBOSS:",
+          "reward": {
+            "min": 141,
+            "max": 178
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Forge of Blue Fire",
+      "type": "boss-prompt",
+      "prompt": "The ordinary crabs abandon their tools as the entire Ventworks begins glowing blue."
+    }
+  },
+  "bossPromptDiscord": "An enormous claw rises through the Forge of Blue Fire.\n\nGerald remains completely uninvolved.\n\nUse /yes to approach the Forge or /no to remain with the only trustworthy vent in the area.",
+  "bossPromptTwitch": "An enormous claw rises through the Forge of Blue Fire.\n\nGerald remains completely uninvolved.\n\nUse !yes to approach the Forge or !no to remain with the only trustworthy vent in the area.",
+  "bossRetreatText": "You retreat toward Gerald.\n\nGerald remains a vent.\n\nReliable.",
+  "boss": {
+    "enemyId": "superheated-ventlord-boss",
+    "roomId": "boss",
+    "revealText": "Blue fire erupts as an enormous armored crab rises from the machinery.\n\nStarforge Clawlord reveals itself!"
+  },
+  "completionText": "\"The Forge settles.\n\nThe Cosmic Vent Crabs immediately return to work.\n\nGerald survives.\n\nThe important lore has been preserved.\"\n\n\n#################################################################"
 }

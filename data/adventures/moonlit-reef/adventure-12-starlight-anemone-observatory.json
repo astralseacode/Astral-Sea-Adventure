@@ -5,30 +5,30 @@
   "regionId": "moonlit-reef",
   "enemyId": "starlight-anemone",
   "recommendedLevel": 2,
-  "introDiscord": "An observatory of living anemones tracks constellations through the moving sea.",
-  "introTwitch": "An observatory of living anemones tracks constellations through the moving sea.",
+  "introDiscord": "A living observatory rises from the reef, its great anemones turning toward the night sky like telescopes. Constellations ripple across their glowing fronds while several smaller blooms appear to be arguing about a star.",
+  "introTwitch": "A living observatory rises from the reef, its great anemones turning toward the night sky like telescopes. Constellations ripple across their glowing fronds while several smaller blooms appear to be arguing about a star.",
   "startRoomId": "astral-lens",
   "rooms": {
     "astral-lens": {
-      "prompt": "A living lens opens beneath the stars, casting three paths in slow-turning light.",
+      "prompt": "A living lens opens overhead, bending starlight into three paths. Several Anemones swivel toward you at once. You have apparently interrupted observation hours.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "starstem-gallery",
           "enemyId": "starlight-anemone",
-          "message": "The water folds around Starlight Anemone, revealing the creature as it claims the passage."
+          "message": "One Starlight Anemone points a glowing frond toward a constellation. You fail to react appropriately. It points again. You still don't understand. The Anemone has apparently chosen violence as its third teaching method."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "starstem-gallery",
           "healAmount": 30,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Starlight infusion. Made under observation by several judgmental anemones.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Shizuki's infusion waits beneath the lens: \"Made under observation by several judgmental anemones. They gave the brewing technique two stars. Out of what, they refused to say.\"",
+          "fullHpMessage": "The Anemones' two-star infusion remains unused. You are already at full health, though they still seem disappointed."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "starstem-gallery",
-          "message": "Within Starlight Anemone Observatory, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer sits directly beneath a focused beam of starlight. When the constellation above aligns, the lid opens and exposes Star Candies.",
           "reward": {
             "min": 35,
             "max": 60
@@ -37,12 +37,12 @@
       }
     },
     "starstem-gallery": {
-      "prompt": "As Starlight Anemone Observatory closes around you, starstem columns frame a gallery whose three exits shift beneath luminous shadows.",
+      "prompt": "Tall starstem columns project constellations across the gallery floor. Anemones turn the projections whenever you approach, as though correcting your route.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "nightbloom-deck",
-          "message": "Within Starlight Anemone Observatory, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel rests beneath a constellation shaped suspiciously like a Berry. You decide this is obviously a sign and collect Star Candies instead.",
           "reward": {
             "min": 40,
             "max": 70
@@ -52,30 +52,30 @@
           "type": "combat",
           "nextRoomId": "nightbloom-deck",
           "enemyId": "starlight-anemone",
-          "message": "The water folds around Starlight Anemone, revealing the creature as it claims the passage."
+          "message": "A Starlight Anemone has arranged its fronds into a perfect astronomical display. You accidentally step on the projected moon. The Anemone reacts like you just vandalized a masterpiece."
         },
         "forward": {
           "type": "empty",
           "nextRoomId": "nightbloom-deck",
-          "message": "One Berry is tied to Shizuki's star chart in the surrounding passage, exactly where her \"astronomy lesson\" becomes an escape route.",
+          "message": "One Berry is tied to Shizuki's star chart exactly where her 'astronomy lesson' becomes an escape route. Beside it she wrote: \"That star means north. Probably. Teacher disagreed.\"",
           "berries": 1
         }
       }
     },
     "nightbloom-deck": {
-      "prompt": "The final stretch through Starlight Anemone Observatory reveals a nightbloom deck faces the dark above while three corridors descend through the observatory.",
+      "prompt": "The highest deck faces the dark water above. Nightblooms unfold beneath the stars while three corridors descend through a moving field of projected constellations.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 30,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"For anyone climbing higher than common sense recommends.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Shizuki's restorative reads: \"For anyone climbing higher than common sense recommends. Observatory rating: too high. View rating: worth it.\"",
+          "fullHpMessage": "Shizuki's high-altitude restorative remains sealed. At full health, you can enjoy the view without inviting another Observatory rating."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Starlight Anemone Observatory, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache opens only when three anemones point at it simultaneously. After several minutes of waiting for them to agree, you recover Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -85,23 +85,23 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "starlight-anemone",
-          "message": "The water folds around Starlight Anemone, revealing the creature as it claims the passage."
+          "message": "One enormous bloom swivels away from the sky and toward you. A smaller Starlight Anemone follows its gaze and decides you are tonight's astronomical event."
         }
       }
     },
     "boss-antechamber": {
       "name": "Zenith Orrery",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The observatory culminates beneath a living orrery of enormous petals. Every constellation converges on one closed bloom suspended at its center."
     }
   },
-  "bossPromptDiscord": "You reach Zenith Orrery. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Zenith Orrery: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Zenith Orrery. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The stars projected across the chamber suddenly vanish.\n\nEvery Anemone bends toward the central flower.\n\nOne brilliant point of light appears inside it.\n\nThen the petals begin opening.\n\nUse /yes to approach or /no to leave tonight's observation unfinished.",
+  "bossPromptTwitch": "The stars projected across the chamber suddenly vanish.\n\nEvery Anemone bends toward the central flower.\n\nOne brilliant point of light appears inside it.\n\nThen the petals begin opening.\n\nUse !yes to approach or !no to leave tonight's observation unfinished.",
+  "bossRetreatText": "You leave the Zenith Orrery unfinished. The central petals close around their point of light, and the Anemones return to judging the stars.",
   "boss": {
     "enemyId": "zenith-bloom-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Zenith Bloom reveals itself!"
+    "revealText": "The central bloom opens like a living star, enormous luminous fronds sweeping across the orrery. The Zenith Bloom has awakened!"
   },
-  "completionText": "Zenith Bloom yields to the returning current. Starlight Anemone Observatory settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Zenith Bloom folds its fronds and returns to tracking the heavens. The smaller anemones resume their observations. One points at you, then at a newly opened route. You're fairly sure that means 'go.'"
 }

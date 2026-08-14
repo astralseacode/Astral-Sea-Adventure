@@ -1,107 +1,107 @@
 {
-    "id":  "memoryglass-strand",
-    "number":  3,
-    "name":  "Memoryglass Strand",
-    "regionId":  "astral-nexus",
-    "enemyId":  "memoryglass-crab",
-    "recommendedLevel":  50,
-    "introDiscord":  "Memoryglass Strand lies ahead, where fractured realities where memories cast physical shadows conceal the territory of Memoryglass Crab.",
-    "introTwitch":  "Memoryglass Strand lies ahead amid fractured realities where memories cast physical shadows.",
-    "startRoomId":  "memoryglass-strand-approach",
-    "rooms":  {
-                  "memoryglass-strand-approach":  {
-                                                      "prompt":  "At the edge of Memoryglass Strand, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "memoryglass-strand-depths",
-                                                                                   "healAmount":  126,
-                                                                                   "message":  "The left route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "memoryglass-strand-depths",
-                                                                                    "enemyId":  "memoryglass-crab",
-                                                                                    "message":  "A shift in the current exposes Memoryglass Crab, which claims the right route through Memoryglass Strand."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "memoryglass-strand-depths",
-                                                                                      "message":  "Beyond the forward route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                      "reward":  {
-                                                                                                     "min":  426,
-                                                                                                     "max":  461
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "memoryglass-strand-depths":  {
-                                                    "prompt":  "Deeper within Memoryglass Strand, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "empty",
-                                                                                 "nextRoomId":  "memoryglass-strand-threshold",
-                                                                                 "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Memoryglass Strand. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                 "berries":  1
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "memoryglass-strand-threshold",
-                                                                                  "message":  "Beyond the right route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                  "reward":  {
-                                                                                                 "min":  438,
-                                                                                                 "max":  473
-                                                                                             }
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "memoryglass-strand-threshold",
-                                                                                    "enemyId":  "memoryglass-crab",
-                                                                                    "message":  "A shift in the current exposes Memoryglass Crab, which claims the forward route through Memoryglass Strand."
-                                                                                }
-                                                                }
-                                                },
-                  "memoryglass-strand-threshold":  {
-                                                       "prompt":  "Near the heart of Memoryglass Strand, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "memoryglass-crab",
-                                                                                    "message":  "A shift in the current exposes Memoryglass Crab, which claims the left route through Memoryglass Strand."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  131,
-                                                                                     "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "message":  "Beyond the forward route, you discover candies orbiting a stable point in folded space.",
-                                                                                       "reward":  {
-                                                                                                      "min":  450,
-                                                                                                      "max":  485
-                                                                                                  }
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Beach of Borrowed Yesterdays",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Beach of Borrowed Yesterdays."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Beach of Borrowed Yesterdays. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Beach of Borrowed Yesterdays: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Beach of Borrowed Yesterdays. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "recollection-clawlord-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Recollection Clawlord reveals itself!"
-             },
-    "completionText":  "Recollection Clawlord yields, and the currents beyond Beach of Borrowed Yesterdays open the next route through Astral Nexus."
+    "id": "memoryglass-strand",
+    "number": 3,
+    "name": "Memoryglass Strand",
+    "regionId": "astral-nexus",
+    "enemyId": "memoryglass-crab",
+    "recommendedLevel": 50,
+    "introDiscord": "A silver beach appears beneath your feet.\n\nEvery grain of sand reflects a memory instead of your face.\n\nSome belong to you.\n\nMost do not.",
+    "introTwitch": "A silver beach appears beneath your feet.\n\nEvery grain of sand reflects a memory instead of your face.\n\nSome belong to you.\n\nMost do not.",
+    "startRoomId": "memoryglass-strand-approach",
+    "rooms": {
+        "memoryglass-strand-approach": {
+            "prompt": "Three impossible routes open across Memoryglass Strand.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "memoryglass-strand-depths",
+                    "healAmount": 126,
+                    "message": "A patch of memoryglass shows Shizuki sleeping beneath Moonlit Reef's\ncoral.\n\nThe peaceful memory becomes tangible enough to restore you.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "memoryglass-strand-depths",
+                    "enemyId": "memoryglass-crab",
+                    "message": "A Memoryglass Crab crawls from a reflection of a beach that no longer\nexists."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "memoryglass-strand-depths",
+                    "message": "A cache appears inside the reflection before appearing in reality.",
+                    "reward": {
+                        "min": 426,
+                        "max": 461
+                    }
+                }
+            }
+        },
+        "memoryglass-strand-depths": {
+            "prompt": "Deeper within Memoryglass Strand, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "memoryglass-strand-threshold",
+                    "message": "One Berry sits beside a memory of Shizuki and Glimmer arguing over a\nmap.\n\nShizuki's caption:\n\n'Historical evidence Glimmer was wrong.\n\nGlimmer says memory was edited.\n\nSlander.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "memoryglass-strand-threshold",
+                    "message": "A coffer contains objects from three different versions of the same\nafternoon.",
+                    "reward": {
+                        "min": 438,
+                        "max": 473
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "memoryglass-strand-threshold",
+                    "enemyId": "memoryglass-crab",
+                    "message": "A Memoryglass Crab charges across yesterday's shadow."
+                }
+            }
+        },
+        "memoryglass-strand-threshold": {
+            "prompt": "Near Beach of Borrowed Yesterdays, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "memoryglass-crab",
+                    "message": "A Crab crawls out of Shizuki's reflected campsite."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 131,
+                    "message": "A memory of the King’s Festival fountain briefly becomes real and\nrestores you.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "Star Candies glitter inside the reflection of Moonlit Reef.",
+                    "reward": {
+                        "min": 450,
+                        "max": 485
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Beach of Borrowed Yesterdays",
+            "type": "boss-prompt",
+            "prompt": "Beach of Borrowed Yesterdays fills with scenes from places you've\nalready crossed."
+        }
+    },
+    "bossPromptDiscord": "Beach of Borrowed Yesterdays fills with scenes from places you've\nalready crossed.\n\nSomething enormous begins collecting the memories into its claws.\n\nUse /yes to enter or /no to let yesterday remain yesterday.",
+    "bossPromptTwitch": "Beach of Borrowed Yesterdays fills with scenes from places you've\nalready crossed.\n\nSomething enormous begins collecting the memories into its claws.\n\nUse !yes to enter or !no to let yesterday remain yesterday.",
+    "bossRetreatText": "You withdraw from Beach of Borrowed Yesterdays. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "recollection-clawlord-boss",
+        "roomId": "boss",
+        "revealText": "The reflected shoreline shatters.\n\nRecollection Clawlord reveals itself!"
+    },
+    "completionText": "The broken memories settle.\n\nOne remains:\n\nShizuki and Glimmer walking away from the Sunken King's Festival.\n\nThen it fades."
 }

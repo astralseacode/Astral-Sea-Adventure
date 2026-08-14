@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "moon-jelly-wisp",
   "recommendedLevel": 1,
-  "introDiscord": "Translucent arches pulse softly within a grotto suspended between moonlight and deep water.",
-  "introTwitch": "Translucent arches pulse softly within a grotto suspended between moonlight and deep water.",
+  "introDiscord": "The Lunar Current carries you into a glowing grotto where translucent arches pulse like moonlit glass. Slow jelly bells drift overhead, pale lights blink behind curtains of clear water, and three shimmering passages disappear into the blue.",
+  "introTwitch": "The Lunar Current carries you into a glowing grotto where translucent arches pulse like moonlit glass. Slow jelly bells drift overhead, pale lights blink behind curtains of clear water, and three shimmering passages disappear into the blue.",
   "startRoomId": "luminous-threshold",
   "rooms": {
     "luminous-threshold": {
-      "prompt": "Slow bells of light float overhead while three passages shimmer behind curtains of clear water.",
+      "prompt": "Soft bells of light float overhead, their translucent bodies casting rippling shadows across the grotto walls. Every so often, one of the lights blinks out and reappears somewhere else. Three passages shimmer behind curtains of clear water.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "drifting-bell-gallery",
-          "message": "Within Moon Jelly Grotto, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A tiny Fae offering vessel hangs inside the hollow of an abandoned jelly bell. As you reach inside, the bell gives one faint boop and slowly rotates away from you. After an unnecessarily delicate chase, you recover Star Candies from within.",
           "reward": {
             "min": 25,
             "max": 50
@@ -25,30 +25,30 @@
           "type": "combat",
           "nextRoomId": "drifting-bell-gallery",
           "enemyId": "moon-jelly-wisp",
-          "message": "The water folds around Moon Jelly Wisp, revealing the creature as it claims the passage."
+          "message": "One of the drifting lights begins following you. Another joins it. Then a third. Just as you start wondering whether you've made friends, the brightest one crackles with moonlight and darts straight at you. A Moon Jelly Wisp has apparently chosen violence."
         },
         "forward": {
           "type": "healing",
           "nextRoomId": "drifting-bell-gallery",
           "healAmount": 25,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Jellylight cordial. Do not shake unless you enjoy glowing.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "A broken supply case has been converted into a tiny infirmary beneath a crystal arch. Inside sits one of Shizuki's tonics, glowing faintly through the bottle. The label reads: \"Jellylight cordial. Do not shake unless you enjoy glowing. Glimmer shook it. Glimmer enjoyed glowing.\"",
+          "fullHpMessage": "The Jellylight cordial remains safely unshaken in Shizuki's little infirmary. You're already at full health, so there is no medical justification for becoming luminous today."
         }
       }
     },
     "drifting-bell-gallery": {
-      "prompt": "The route winds deeper through Moon Jelly Grotto until the grotto widens beneath hanging crystal fronds, and three routes waver like reflections.",
+      "prompt": "The grotto widens beneath hanging crystal fronds. Dozens of Moon Jellies drift lazily between them like living lanterns, and three routes waver ahead as though reflected on the surface of a dream.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "veiled-grotto",
-          "message": "Inside an overturned jelly bell, you find one Berry beside Shizuki's sketchbook. Every jelly is labeled except \"Pencil Thief.\"",
+          "message": "Inside an overturned jelly bell, you find one Berry tucked beside Shizuki's sketchbook. Every Moon Jelly drawing has a careful label—\"Sleepy,\" \"Glowy,\" \"Probably Friendly,\" \"Definitely Not Friendly\"—except one unfinished sketch marked only: \"PENCIL THIEF.\" The pencil is nowhere to be found.",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "veiled-grotto",
-          "message": "Within Moon Jelly Grotto, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "Moonlight catches on a sealed Moonkeeper cache hidden behind the crystal fronds. A cluster of tiny jellies has gathered around it, repeatedly bumping the lid as though trying to figure out what it does. When you open it, they scatter dramatically and reveal Star Candies inside.",
           "reward": {
             "min": 30,
             "max": 55
@@ -58,30 +58,30 @@
           "type": "combat",
           "nextRoomId": "veiled-grotto",
           "enemyId": "moon-jelly-wisp",
-          "message": "The water folds around Moon Jelly Wisp, revealing the creature as it claims the passage."
+          "message": "A Moon Jelly Wisp drifts directly into your path and freezes. You move left. It moves left. You move right. It moves right. For several seconds this continues like the world's least useful dance before the Wisp flashes brightly and attacks."
         }
       }
     },
     "veiled-grotto": {
-      "prompt": "As Moon Jelly Grotto grows strangely still, silver mist coils around quiet stone as three openings fade in and out of view.",
+      "prompt": "Silver mist coils through the deepest chamber, swallowing the edges of the grotto. Moon Jelly lights fade in and out behind the haze, sometimes appearing much closer than they should. Three openings flicker into view whenever the mist shifts.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moon-jelly-wisp",
-          "message": "The water folds around Moon Jelly Wisp, revealing the creature as it claims the passage."
+          "message": "A pale light appears in the mist ahead. Then beside you. Then behind you. You turn just in time for a Moon Jelly Wisp to burst from the haze in a flash of silver light. Apparently the mist makes an excellent hiding place."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 25,
-          "message": "Deeper inside Moon Jelly Grotto, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"For bruises, bad plans, and encounters with floating furniture.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "You discover one of Shizuki's old camps tucked beneath a stone arch. A blanket is still pinned down beside a restorative bottle labeled: \"For bruises, bad plans, and encounters with floating furniture. Don't ask about the chair.\"",
+          "fullHpMessage": "Shizuki's restorative remains beside the carefully anchored blanket. At full health, you can leave both the medicine and the unexplained chair incident in the past."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moon Jelly Grotto, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer drifts silently through the mist with no visible current carrying it. Each time you approach, a tiny Moon Jelly nudges it farther away. After realizing this is absolutely deliberate, you finally outmaneuver the little menace and recover Star Candies.",
           "reward": {
             "min": 35,
             "max": 60
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Moonbell Cradle",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The silver mist parts into an enormous hidden cradle beneath the reef. Hundreds of Moon Jellies float motionless around a vast translucent bell suspended in the center. Their lights pulse together in one slow, quiet rhythm."
     }
   },
-  "bossPromptDiscord": "You reach Moonbell Cradle. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Moonbell Cradle: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Moonbell Cradle. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "One by one, the smaller Moon Jellies dim.\n\nThe enormous bell at the center of the cradle begins glowing from within, and a deep pulse of moonlight rolls through the chamber. Every Wisp drifts backward as a vast silhouette stirs behind the translucent veil.\n\nUse /yes to approach or /no to leave the cradle undisturbed for now.",
+  "bossPromptTwitch": "One by one, the smaller Moon Jellies dim.\n\nThe enormous bell at the center of the cradle begins glowing from within, and a deep pulse of moonlight rolls through the chamber. Every Wisp drifts backward as a vast silhouette stirs behind the translucent veil.\n\nUse !yes to approach or !no to leave the cradle undisturbed for now.",
+  "bossRetreatText": "You drift back from the Moonbell Cradle. The great bell's glow slowly fades, and the smaller jellies begin lighting up again one by one as the sanctuary settles.",
   "boss": {
     "enemyId": "moonveil-jelly-matriarch-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Moonveil Jelly Matriarch reveals itself!"
+    "revealText": "The great moonbell unfurls in a brilliant wash of silver light. Long translucent tendrils sweep through the chamber as the towering Moonveil Jelly Matriarch emerges from the cradle!"
   },
-  "completionText": "Moonveil Jelly Matriarch yields to the returning current. Moon Jelly Grotto settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Moonveil Jelly Matriarch's light softens, and she slowly drifts back toward the cradle. Around her, the smaller Moon Jellies brighten one by one until the grotto glows like a field of tiny moons. As the silver mist clears, another path through Moonlit Reef appears beyond the crystal arches. Somewhere overhead, one tiny jelly floats past carrying a pencil."
 }

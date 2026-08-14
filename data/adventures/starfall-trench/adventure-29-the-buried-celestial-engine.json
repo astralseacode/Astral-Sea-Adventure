@@ -1,107 +1,107 @@
 {
-    "id":  "the-buried-celestial-engine",
-    "number":  29,
-    "name":  "The Buried Celestial Engine",
-    "regionId":  "starfall-trench",
-    "enemyId":  "celestial-core-keeper",
-    "recommendedLevel":  10,
-    "introDiscord":  "The Buried Celestial Engine lies ahead, where meteor-lit trenches conceal the territory of Celestial Corekeeper.",
-    "introTwitch":  "The Buried Celestial Engine lies ahead amid meteor-lit trenches.",
-    "startRoomId":  "the-buried-celestial-engine-approach",
-    "rooms":  {
-                  "the-buried-celestial-engine-approach":  {
-                                                               "prompt":  "At the edge of The Buried Celestial Engine, meteor-lit trenches divide into three uncertain routes.",
-                                                               "choices":  {
-                                                                               "left":  {
-                                                                                            "type":  "treasure",
-                                                                                            "nextRoomId":  "the-buried-celestial-engine-depths",
-                                                                                            "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                            "reward":  {
-                                                                                                           "min":  48,
-                                                                                                           "max":  92
-                                                                                                       }
-                                                                                        },
-                                                                               "right":  {
-                                                                                             "type":  "combat",
-                                                                                             "nextRoomId":  "the-buried-celestial-engine-depths",
-                                                                                             "enemyId":  "celestial-core-keeper",
-                                                                                             "message":  "A shift in the current exposes Celestial Corekeeper, which claims the right route through The Buried Celestial Engine."
-                                                                                         },
-                                                                               "forward":  {
-                                                                                               "type":  "healing",
-                                                                                               "nextRoomId":  "the-buried-celestial-engine-depths",
-                                                                                               "healAmount":  2,
-                                                                                               "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                               "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                           }
-                                                                           }
-                                                           },
-                  "the-buried-celestial-engine-depths":  {
-                                                             "prompt":  "Deeper within The Buried Celestial Engine, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                             "choices":  {
-                                                                             "left":  {
-                                                                                          "type":  "combat",
-                                                                                          "nextRoomId":  "the-buried-celestial-engine-threshold",
-                                                                                          "enemyId":  "celestial-core-keeper",
-                                                                                          "message":  "A shift in the current exposes Celestial Corekeeper, which claims the left route through The Buried Celestial Engine."
-                                                                                      },
-                                                                             "right":  {
-                                                                                           "type":  "treasure",
-                                                                                           "nextRoomId":  "the-buried-celestial-engine-threshold",
-                                                                                           "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
-                                                                                           "reward":  {
-                                                                                                          "min":  60,
-                                                                                                          "max":  104
-                                                                                                      }
-                                                                                       },
-                                                                             "forward":  {
-                                                                                             "type":  "empty",
-                                                                                             "nextRoomId":  "the-buried-celestial-engine-threshold",
-                                                                                             "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Buried Celestial Engine. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                             "berries":  1
-                                                                                         }
-                                                                         }
-                                                         },
-                  "the-buried-celestial-engine-threshold":  {
-                                                                "prompt":  "Near the heart of The Buried Celestial Engine, fractured starstone terraces divide into three uncertain routes.",
-                                                                "choices":  {
-                                                                                "left":  {
-                                                                                             "type":  "healing",
-                                                                                             "nextRoomId":  "boss-antechamber",
-                                                                                             "healAmount":  7,
-                                                                                             "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                             "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                         },
-                                                                                "right":  {
-                                                                                              "type":  "combat",
-                                                                                              "nextRoomId":  "boss-antechamber",
-                                                                                              "enemyId":  "celestial-core-keeper",
-                                                                                              "message":  "A shift in the current exposes Celestial Corekeeper, which claims the right route through The Buried Celestial Engine."
-                                                                                          },
-                                                                                "forward":  {
-                                                                                                "type":  "treasure",
-                                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                                "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                                "reward":  {
-                                                                                                               "min":  72,
-                                                                                                               "max":  116
-                                                                                                           }
-                                                                                            }
-                                                                            }
-                                                            },
-                  "boss-antechamber":  {
-                                           "name":  "Engine of the Deep Sky",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Engine of the Deep Sky."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Engine of the Deep Sky. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Engine of the Deep Sky: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Engine of the Deep Sky. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "corewake-custodian-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Corewake Custodian reveals itself!"
-             },
-    "completionText":  "Corewake Custodian yields, and the currents beyond Engine of the Deep Sky open the next route through Starfall Trench."
+  "id": "the-buried-celestial-engine",
+  "number": 29,
+  "name": "The Buried Celestial Engine",
+  "regionId": "starfall-trench",
+  "enemyId": "celestial-core-keeper",
+  "recommendedLevel": 10,
+  "introDiscord": "An enormous machine lies buried beneath Starfall Trench. Its rings still turn despite having no obvious fuel, operator, or reason to continue.",
+  "introTwitch": "An enormous machine lies buried beneath Starfall Trench. Its rings still turn despite having no obvious fuel, operator, or reason to continue.",
+  "startRoomId": "the-buried-celestial-engine-approach",
+  "rooms": {
+    "the-buried-celestial-engine-approach": {
+      "prompt": "Three passages enter the ancient engine between slowly rotating celestial mechanisms.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "the-buried-celestial-engine-depths",
+          "message": "Star Candies rest inside a compartment that opens when you approach. Convenient. Suspiciously convenient.",
+          "reward": {
+            "min": 48,
+            "max": 92
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "the-buried-celestial-engine-depths",
+          "enemyId": "celestial-core-keeper",
+          "message": "A Celestial Corekeeper activates and immediately identifies you as unauthorized."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "the-buried-celestial-engine-depths",
+          "healAmount": 2,
+          "message": "Shizuki's tonic sits beside a note:\n\n\"Machine older than map.\n\nStill running.\n\nDid not press anything.\n\nGlimmer pressed something.\"",
+          "fullHpMessage": "You leave the medicine and resolve not to continue Glimmer's engineering methodology."
+        }
+      }
+    },
+    "the-buried-celestial-engine-depths": {
+      "prompt": "The engine hums around three internal routes.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "the-buried-celestial-engine-threshold",
+          "enemyId": "celestial-core-keeper",
+          "message": "A Corekeeper descends from the machinery."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "the-buried-celestial-engine-threshold",
+          "message": "A star-chart coffer is built directly into the engine wall.",
+          "reward": {
+            "min": 60,
+            "max": 104
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "the-buried-celestial-engine-threshold",
+          "message": "A Berry sits beside a control lever.\n\nShizuki wrote:\n\n\"Lever status:\nBefore Glimmer: up.\nAfter Glimmer: down.\nMachine still exists.\nWe are leaving.\"",
+          "berries": 1
+        }
+      }
+    },
+    "the-buried-celestial-engine-threshold": {
+      "prompt": "Three mechanisms converge around the Engine of the Deep Sky.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 7,
+          "message": "Shizuki's bottle reads: \"For ancient-machine-related consequences.\"",
+          "fullHpMessage": "You leave the consequence medicine untouched."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "celestial-core-keeper",
+          "message": "A Corekeeper blocks the final mechanism."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "\"A meteor-iron reliquary opens beneath a rotating celestial ring.\"\n\nBOSS:",
+          "reward": {
+            "min": 72,
+            "max": 116
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Engine of the Deep Sky",
+      "type": "boss-prompt",
+      "prompt": "The engine accelerates."
+    }
+  },
+  "bossPromptDiscord": "The engine accelerates.\n\nAncient rings align around a massive figure hidden at the core.\n\nNobody touches any levers.\n\nUse /yes to enter the Engine of the Deep Sky or /no to follow Shizuki's extremely reasonable decision to leave.",
+  "bossPromptTwitch": "The engine accelerates.\n\nAncient rings align around a massive figure hidden at the core.\n\nNobody touches any levers.\n\nUse !yes to enter the Engine of the Deep Sky or !no to follow Shizuki's extremely reasonable decision to leave.",
+  "bossRetreatText": "You withdraw without touching a single mysterious control.\n\nExcellent restraint.",
+  "boss": {
+    "enemyId": "corewake-custodian-boss",
+    "roomId": "boss",
+    "revealText": "The central rings unlock as an ancient construct awakens.\n\nCorewake Custodian reveals itself!"
+  },
+  "completionText": "\"The Custodian falls silent.\n\nThe Celestial Engine continues turning.\n\nWhatever it was built to do...\n\nit is apparently not finished.\"\n\n\n#################################################################"
 }

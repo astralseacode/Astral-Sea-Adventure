@@ -1,107 +1,107 @@
 {
-    "id":  "gravitic-deadfall",
-    "number":  23,
-    "name":  "Gravitic Deadfall",
-    "regionId":  "starfall-trench",
-    "enemyId":  "gravitic-stonefish",
-    "recommendedLevel":  9,
-    "introDiscord":  "Gravitic Deadfall lies ahead, where meteor-lit trenches conceal the territory of Gravitic Stonefish.",
-    "introTwitch":  "Gravitic Deadfall lies ahead amid meteor-lit trenches.",
-    "startRoomId":  "gravitic-deadfall-approach",
-    "rooms":  {
-                  "gravitic-deadfall-approach":  {
-                                                     "prompt":  "At the edge of Gravitic Deadfall, meteor-lit trenches divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "gravitic-deadfall-depths",
-                                                                                  "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                  "reward":  {
-                                                                                                 "min":  69,
-                                                                                                 "max":  111
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "gravitic-deadfall-depths",
-                                                                                   "enemyId":  "gravitic-stonefish",
-                                                                                   "message":  "A shift in the current exposes Gravitic Stonefish, which claims the right route through Gravitic Deadfall."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "gravitic-deadfall-depths",
-                                                                                     "healAmount":  14,
-                                                                                     "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "gravitic-deadfall-depths":  {
-                                                   "prompt":  "Deeper within Gravitic Deadfall, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "gravitic-deadfall-threshold",
-                                                                                "enemyId":  "gravitic-stonefish",
-                                                                                "message":  "A shift in the current exposes Gravitic Stonefish, which claims the left route through Gravitic Deadfall."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "gravitic-deadfall-threshold",
-                                                                                 "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
-                                                                                 "reward":  {
-                                                                                                "min":  81,
-                                                                                                "max":  123
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "gravitic-deadfall-threshold",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Gravitic Deadfall. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               }
-                                                               }
-                                               },
-                  "gravitic-deadfall-threshold":  {
-                                                      "prompt":  "Near the heart of Gravitic Deadfall, fractured starstone terraces divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  19,
-                                                                                   "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "gravitic-stonefish",
-                                                                                    "message":  "A shift in the current exposes Gravitic Stonefish, which claims the right route through Gravitic Deadfall."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                      "reward":  {
-                                                                                                     "min":  93,
-                                                                                                     "max":  135
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Heavywater Pit",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Heavywater Pit."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Heavywater Pit. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Heavywater Pit: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Heavywater Pit. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "masskeeper-stonefish-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Masskeeper Stonefish reveals itself!"
-             },
-    "completionText":  "Masskeeper Stonefish yields, and the currents beyond Heavywater Pit open the next route through Starfall Trench."
+  "id": "gravitic-deadfall",
+  "number": 23,
+  "name": "Gravitic Deadfall",
+  "regionId": "starfall-trench",
+  "enemyId": "gravitic-stonefish",
+  "recommendedLevel": 9,
+  "introDiscord": "Gravity presses unpredictably across the Deadfall. Shizuki's abandoned camp contains seventeen backpacks tied to one rock. This requires investigation.",
+  "introTwitch": "Gravity presses unpredictably across the Deadfall. Shizuki's abandoned camp contains seventeen backpacks tied to one rock. This requires investigation.",
+  "startRoomId": "gravitic-deadfall-approach",
+  "rooms": {
+    "gravitic-deadfall-approach": {
+      "prompt": "Three routes descend beneath shifting gravitational pressure.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "gravitic-deadfall-depths",
+          "message": "A cometglass seam is compressed beneath heavy gravity.",
+          "reward": {
+            "min": 69,
+            "max": 111
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "gravitic-deadfall-depths",
+          "enemyId": "gravitic-stonefish",
+          "message": "A Gravitic Stonefish increases the weight around you simply by existing rudely."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "gravitic-deadfall-depths",
+          "healAmount": 14,
+          "message": "Shizuki's tonic is strapped beneath several backpacks. \"Pack #8 floated away. We are overcorrecting.\"",
+          "fullHpMessage": "You leave the overcorrection supplies untouched."
+        }
+      }
+    },
+    "gravitic-deadfall-depths": {
+      "prompt": "Gravity changes again across three routes.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "gravitic-deadfall-threshold",
+          "enemyId": "gravitic-stonefish",
+          "message": "A Stonefish makes your equipment suddenly feel several times heavier."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "gravitic-deadfall-threshold",
+          "message": "A star-chart coffer rests beneath a strangely light patch.",
+          "reward": {
+            "min": 81,
+            "max": 123
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "gravitic-deadfall-threshold",
+          "message": "A Berry sits inside Backpack #17.\n\nShizuki wrote:\n\n\"Why seventeen?\n\nBecause sixteen floated away.\"",
+          "berries": 1
+        }
+      }
+    },
+    "gravitic-deadfall-threshold": {
+      "prompt": "Heavywater Pit pulls everything toward its center.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 19,
+          "message": "Shizuki's tonic has been tied down with enough rope to restrain furniture.",
+          "fullHpMessage": "You leave the aggressively secured bottle untouched."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "gravitic-stonefish",
+          "message": "A Gravitic Stonefish waits inside the heavy current."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "\"A meteor-iron reliquary lies at the edge of the pit.\"\n\nBOSS:",
+          "reward": {
+            "min": 93,
+            "max": 135
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Heavywater Pit",
+      "type": "boss-prompt",
+      "prompt": "The pressure doubles."
+    }
+  },
+  "bossPromptDiscord": "The pressure doubles.\n\nEvery loose object slams toward the center.\n\nSomething enormous shifts below.\n\nUse /yes to enter Heavywater Pit or /no to leave while your backpack still weighs approximately one backpack.",
+  "bossPromptTwitch": "The pressure doubles.\n\nEvery loose object slams toward the center.\n\nSomething enormous shifts below.\n\nUse !yes to enter Heavywater Pit or !no to leave while your backpack still weighs approximately one backpack.",
+  "bossRetreatText": "You retreat until gravity becomes merely inconvenient.",
+  "boss": {
+    "enemyId": "masskeeper-stonefish-boss",
+    "roomId": "boss",
+    "revealText": "A colossal Stonefish rises beneath crushing pressure.\n\nMasskeeper Stonefish reveals itself!"
+  },
+  "completionText": "\"The pressure fades.\n\nBackpack #17 remains securely attached.\n\nShizuki would be proud.\"\n\n\n#################################################################"
 }

@@ -5,30 +5,30 @@
   "regionId": "moonlit-reef",
   "enemyId": "star-pearl-guardian",
   "recommendedLevel": 3,
-  "introDiscord": "A reliquary of star pearls preserves Moonkeeper vows beneath celestial coral.",
-  "introTwitch": "A reliquary of star pearls preserves Moonkeeper vows beneath celestial coral.",
+  "introDiscord": "A submerged shrine glows with thousands of star pearls, each carrying a tiny point of captured light. Moonkeeper mosaics line the walls while armored Guardians patrol between the displays.",
+  "introTwitch": "A submerged shrine glows with thousands of star pearls, each carrying a tiny point of captured light. Moonkeeper mosaics line the walls while armored Guardians patrol between the displays.",
   "startRoomId": "luster-gate",
   "rooms": {
     "luster-gate": {
-      "prompt": "Soft luster washes across a gate where three aisles enter the submerged shrine.",
+      "prompt": "Star pearls frame the shrine's luster gate, casting memories across three quiet passages while armored Guardians patrol beneath the mosaics.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "reliquary-nave",
           "enemyId": "star-pearl-guardian",
-          "message": "The water folds around Star Pearl Guardian, revealing the creature as it claims the passage."
+          "message": "A Star Pearl Guardian notices your reflection in one of the shrine pearls before it notices you. Its weapon is already raised when it turns."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "reliquary-nave",
           "healAmount": 35,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Pearlward syrup. Saved for injuries and inconvenient revelations.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Shizuki's Pearlward syrup reads: \"For injuries and inconvenient revelations. Works better on the first one.\"",
+          "fullHpMessage": "The Pearlward syrup remains sealed. You are already at full health, leaving only the inconvenient revelations untreated."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "reliquary-nave",
-          "message": "Within Star Pearl Reliquary, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer has been placed beneath a pearl mosaic depicting travelers leaving offerings. Inside are Star Candies and no instructions about whether taking them counts.",
           "reward": {
             "min": 45,
             "max": 75
@@ -37,12 +37,12 @@
       }
     },
     "reliquary-nave": {
-      "prompt": "As Star Pearl Reliquary closes around you, pearl mosaics cover a long nave whose three branches bear faded symbols.",
+      "prompt": "Pearl mosaics cover the long nave. Each glows when you pass, briefly illuminating scenes of old travelers, celebrations, and ordinary lives.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "pearlshadow-aisle",
-          "message": "Within Star Pearl Reliquary, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel rests beneath a pearl showing someone laughing at an ancient feast. Inside are Star Candies. Apparently sacred history included snacks.",
           "reward": {
             "min": 55,
             "max": 85
@@ -52,30 +52,30 @@
           "type": "combat",
           "nextRoomId": "pearlshadow-aisle",
           "enemyId": "star-pearl-guardian",
-          "message": "The water folds around Star Pearl Guardian, revealing the creature as it claims the passage."
+          "message": "A Guardian steps between you and a pearl display, taps its weapon once against the floor, and waits. The message is surprisingly clear."
         },
         "forward": {
           "type": "empty",
           "nextRoomId": "pearlshadow-aisle",
-          "message": "Inside a sealed journal cover along the route, Shizuki saved one Berry beside a note thanking the humans who called her a person.",
+          "message": "Inside an old journal cover, Shizuki left one Berry beside a simpler note: \"Somebody once gave me a name instead of a number. I like remembering that better.\"",
           "berries": 1
         }
       }
     },
     "pearlshadow-aisle": {
-      "prompt": "The final stretch through Star Pearl Reliquary reveals reflected starlight follows a quiet aisle to three sealed-looking passages.",
+      "prompt": "Reflected starlight follows the final aisle. Pearls glow like tiny moons along the walls while three sealed-looking passages wait ahead.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"Keep one dose hidden where creators never think to look: somewhere joyful.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Shizuki's restorative is hidden inside a box decorated with terrible doodles. \"Keep medicine somewhere joyful. Serious hiding places are too obvious.\"",
+          "fullHpMessage": "Shizuki's joyfully hidden restorative remains unused. At full health, the terrible doodles are medicine enough."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Star Pearl Reliquary, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache opens when a nearby star pearl brightens. Inside are Star Candies beneath a label simply reading 'FOR THE JOURNEY.'",
           "reward": {
             "min": 60,
             "max": 95
@@ -85,23 +85,23 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "star-pearl-guardian",
-          "message": "The water folds around Star Pearl Guardian, revealing the creature as it claims the passage."
+          "message": "A Star Pearl Guardian's armor catches the light of every pearl in the hall until it seems wrapped in constellations. Then it advances."
         }
       }
     },
     "boss-antechamber": {
       "name": "Luminary Vault",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The reliquary ends inside a round vault lit by thousands of star pearls. Their reflections gather around a central dais where the oldest vows are kept."
     }
   },
-  "bossPromptDiscord": "You reach Luminary Vault. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Luminary Vault: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Luminary Vault. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Every star pearl in the reliquary brightens simultaneously.\n\nTheir light gathers above the central vault.\n\nA towering Guardian steps into the glow while the smaller sentries bow their heads.\n\nUse /yes to approach the Luminary or /no to leave the old vows undisturbed.",
+  "bossPromptTwitch": "Every star pearl in the reliquary brightens simultaneously.\n\nTheir light gathers above the central vault.\n\nA towering Guardian steps into the glow while the smaller sentries bow their heads.\n\nUse !yes to approach the Luminary or !no to leave the old vows undisturbed.",
+  "bossRetreatText": "You leave the old vows undisturbed. The gathered pearl-light softens, and the towering Guardian returns to its quiet vigil.",
   "boss": {
     "enemyId": "pearlward-luminary-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Pearlward Luminary reveals itself!"
+    "revealText": "Pearl-light gathers around a towering armored figure as it raises an ancient weapon. The Pearlward Luminary stands before the vault!"
   },
-  "completionText": "Pearlward Luminary yields to the returning current. Star Pearl Reliquary settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Pearlward Luminary lowers its weapon. The reliquary's lights soften, and the pearls return to their quiet glow. One near the exit flashes once as you pass—almost like a farewell."
 }

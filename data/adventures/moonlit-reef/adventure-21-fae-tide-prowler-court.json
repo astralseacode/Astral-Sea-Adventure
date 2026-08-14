@@ -5,23 +5,23 @@
   "regionId": "moonlit-reef",
   "enemyId": "fae-tide-prowler",
   "recommendedLevel": 3,
-  "introDiscord": "A twilight court of Fae stone appears only when the Astral Tide reaches its lowest song.",
-  "introTwitch": "A twilight court of Fae stone appears only when the Astral Tide reaches its lowest song.",
+  "introDiscord": "When the Astral Tide drops low enough, a hidden Fae court appears beneath violet water. Stone masks watch from the walls, music seems to come from empty rooms, and sleek Prowlers move between the columns like invited guests.",
+  "introTwitch": "When the Astral Tide drops low enough, a hidden Fae court appears beneath violet water. Stone masks watch from the walls, music seems to come from empty rooms, and sleek Prowlers move between the columns like invited guests.",
   "startRoomId": "twilight-portico",
   "rooms": {
     "twilight-portico": {
-      "prompt": "A carved portico admits three paths beneath curtains of violet water.",
+      "prompt": "Violet water washes across a masked portico where three formal entrances await. Empty music drifts between the columns while a sleek guest watches from behind stone eyes.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "prowler-gallery",
           "enemyId": "fae-tide-prowler",
-          "message": "The water folds around Fae Tide Prowler, revealing the creature as it claims the passage."
+          "message": "A masked figure bows elegantly from the path. You bow back. It removes the mask. Unfortunately, the thing underneath is a Fae Tide Prowler and apparently that was the opening ceremony."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "prowler-gallery",
-          "message": "Within Fae Tide Prowler Court, the right path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer rests beneath a sign that politely requests 'ONE SECRET FOR ENTRY.' You tell it nothing. The latch opens anyway. Inside are Star Candies. Fae security remains questionable.",
           "reward": {
             "min": 45,
             "max": 75
@@ -31,18 +31,18 @@
           "type": "healing",
           "nextRoomId": "prowler-gallery",
           "healAmount": 35,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Fae-tide cordial. Payment was one secret and a terrible song.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Shizuki's cordial reads: \"Payment was one secret and a terrible song. They liked the song more. I'm offended.\"",
+          "fullHpMessage": "Shizuki's secret-and-song cordial remains unused. You are already at full health, sparing the court another performance."
         }
       }
     },
     "prowler-gallery": {
-      "prompt": "Continuing through Fae Tide Prowler Court, you find fae masks watch a gallery where three corridors pass into deepening twilight.",
+      "prompt": "Hundreds of Fae masks line the gallery. Some smile. Some frown. Several turn their eyes to follow you while three passages fade into twilight.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "fae-mooncourt",
-          "message": "Within Fae Tide Prowler Court, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel sits beneath a mask with an enormous fake mustache drawn on it. You have a strong suspicion about who visited here before. Inside are Star Candies.",
           "reward": {
             "min": 55,
             "max": 85
@@ -51,37 +51,37 @@
         "right": {
           "type": "empty",
           "nextRoomId": "fae-mooncourt",
-          "message": "One Berry weighs down Shizuki's court invitation, folded into a paper boat in the surrounding passage and labeled: \"Authority sinks beautifully.\"",
+          "message": "One Berry weighs down Shizuki's old court invitation, folded into a paper boat. Across the sail she wrote: \"Invitation accepted. Dress code ignored.\"",
           "berries": 1
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "fae-mooncourt",
           "enemyId": "fae-tide-prowler",
-          "message": "The water folds around Fae Tide Prowler, revealing the creature as it claims the passage."
+          "message": "One wall mask disappears. A moment later you notice a Fae Tide Prowler wearing it behind you."
         }
       }
     },
     "fae-mooncourt": {
-      "prompt": "In the depths of Fae Tide Prowler Court, moonlit tiles shift across a court whose three exits carry no heraldry.",
+      "prompt": "Moonlit tiles slide across the inner court, continually rearranging the floor. Three exits carry no signs—only masks displaying three deeply unhelpful expressions.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"For prowler scratches and courtly conversations.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Shizuki's restorative reads: \"For Prowler scratches and courtly conversations. Both leave marks.\"",
+          "fullHpMessage": "The courtly restorative remains sealed. At full health, you can avoid discovering which leaves the deeper mark: Prowlers or conversation."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "fae-tide-prowler",
-          "message": "The water folds around Fae Tide Prowler, revealing the creature as it claims the passage."
+          "message": "A Prowler circles you without attacking, waiting for something. You finally realize it expects another bow. Your etiquette lesson has become extremely high stakes."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Fae Tide Prowler Court, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache has been disguised as a seat at the edge of court. Sitting on it accidentally opens the compartment containing Star Candies.",
           "reward": {
             "min": 60,
             "max": 95
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Nightlord Pavilion",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The inner court ends at a pavilion veiled in violet curtains. Every mask faces its entrance, and every Prowler waits in formal silence."
     }
   },
-  "bossPromptDiscord": "You reach Nightlord Pavilion. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Nightlord Pavilion: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Nightlord Pavilion. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Every mask in the court turns toward the pavilion.\n\nThe violet water darkens.\n\nA tall figure steps through the curtain wearing a mask with no expression at all.\n\nEvery Prowler bows.\n\nUse /yes to approach the Nightlord or /no to excuse yourself from court while etiquette still permits it.",
+  "bossPromptTwitch": "Every mask in the court turns toward the pavilion.\n\nThe violet water darkens.\n\nA tall figure steps through the curtain wearing a mask with no expression at all.\n\nEvery Prowler bows.\n\nUse !yes to approach the Nightlord or !no to excuse yourself from court while etiquette still permits it.",
+  "bossRetreatText": "You excuse yourself from the Nightlord Pavilion. The expressionless mask inclines once, formally accepting your retreat.",
   "boss": {
     "enemyId": "fae-tide-nightlord-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Fae Tide Nightlord reveals itself!"
+    "revealText": "The expressionless mask tilts as a towering Prowler steps through the violet curtain. The Fae Tide Nightlord receives you!"
   },
-  "completionText": "Fae Tide Nightlord yields to the returning current. Fae Tide Prowler Court settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Fae Tide Nightlord gives one final bow and retreats behind the violet curtain. The other Prowlers immediately resume the masquerade. One mask near the exit now wears a fake mustache."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "titanwake-delta",
-    "number":  17,
-    "name":  "Titanwake Delta",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "titanwake-crocodile",
-    "recommendedLevel":  26,
-    "introDiscord":  "Titanwake Delta lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Titanwake Drake.",
-    "introTwitch":  "Titanwake Delta lies ahead amid pressure-scarred trenches beside wrecked hulls.",
-    "startRoomId":  "titanwake-delta-approach",
-    "rooms":  {
-                  "titanwake-delta-approach":  {
-                                                   "prompt":  "At the edge of Titanwake Delta, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "titanwake-delta-depths",
-                                                                                "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                                "reward":  {
-                                                                                               "min":  156,
-                                                                                               "max":  196
-                                                                                           }
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "titanwake-delta-depths",
-                                                                                 "enemyId":  "titanwake-crocodile",
-                                                                                 "message":  "A shift in the current exposes Titanwake Drake, which claims the right route through Titanwake Delta."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "titanwake-delta-depths",
-                                                                                   "healAmount":  39,
-                                                                                   "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               }
-                                                               }
-                                               },
-                  "titanwake-delta-depths":  {
-                                                 "prompt":  "Deeper within Titanwake Delta, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                 "choices":  {
-                                                                 "left":  {
-                                                                              "type":  "combat",
-                                                                              "nextRoomId":  "titanwake-delta-threshold",
-                                                                              "enemyId":  "titanwake-crocodile",
-                                                                              "message":  "A shift in the current exposes Titanwake Drake, which claims the left route through Titanwake Delta."
-                                                                          },
-                                                                 "right":  {
-                                                                               "type":  "treasure",
-                                                                               "nextRoomId":  "titanwake-delta-threshold",
-                                                                               "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                               "reward":  {
-                                                                                              "min":  168,
-                                                                                              "max":  208
-                                                                                          }
-                                                                           },
-                                                                 "forward":  {
-                                                                                 "type":  "empty",
-                                                                                 "nextRoomId":  "titanwake-delta-threshold",
-                                                                                 "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Titanwake Delta. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                 "berries":  1
-                                                                             }
-                                                             }
-                                             },
-                  "titanwake-delta-threshold":  {
-                                                    "prompt":  "Near the heart of Titanwake Delta, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "healAmount":  44,
-                                                                                 "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "enemyId":  "titanwake-crocodile",
-                                                                                  "message":  "A shift in the current exposes Titanwake Drake, which claims the right route through Titanwake Delta."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
-                                                                                    "reward":  {
-                                                                                                   "min":  180,
-                                                                                                   "max":  220
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "boss-antechamber":  {
-                                           "name":  "Flooded Fangbank",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Flooded Fangbank."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Flooded Fangbank. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Flooded Fangbank: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Flooded Fangbank. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "wakejaw-ancient-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Wakejaw Ancient reveals itself!"
-             },
-    "completionText":  "Wakejaw Ancient yields, and the currents beyond Flooded Fangbank open the next route through Leviathan\u0027s Wake."
+    "id": "titanwake-delta",
+    "number": 17,
+    "name": "Titanwake Delta",
+    "regionId": "leviathans-wake",
+    "enemyId": "titanwake-crocodile",
+    "recommendedLevel": 26,
+    "introDiscord": "Ancient wake channels branch across the delta like rivers.\n\nTitanwake Drakes bask between them on Leviathan bones as though this\ngraveyard was built entirely for them.",
+    "introTwitch": "Ancient wake channels branch across the delta like rivers.\n\nTitanwake Drakes bask between them on Leviathan bones as though this\ngraveyard was built entirely for them.",
+    "startRoomId": "titanwake-delta-approach",
+    "rooms": {
+        "titanwake-delta-approach": {
+            "prompt": "Three ancient current channels split across the delta.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "titanwake-delta-depths",
+                    "message": "Star Candies rest beneath a huge scale.",
+                    "reward": {
+                        "min": 156,
+                        "max": 196
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "titanwake-delta-depths",
+                    "enemyId": "titanwake-crocodile",
+                    "message": "A Titanwake Drake slides from a Leviathan rib into the current."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "titanwake-delta-depths",
+                    "healAmount": 39,
+                    "message": "Shizuki's bottle reads:\n\n'Drake sleeping on bridge.\n\nBridge is rib.\n\nAlternate route required.\n\nGlimmer voted climb Drake.\n\nVote rejected.'",
+                    "fullHpMessage": "You leave the restorative and support the veto."
+                }
+            }
+        },
+        "titanwake-delta-depths": {
+            "prompt": "The delta branches around giant bones.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "titanwake-delta-threshold",
+                    "enemyId": "titanwake-crocodile",
+                    "message": "A Drake rises from what looked like an ordinary pile of ancient\nsediment."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "titanwake-delta-threshold",
+                    "message": "A navigator's chest rests along the bank.",
+                    "reward": {
+                        "min": 168,
+                        "max": 208
+                    }
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "titanwake-delta-threshold",
+                    "message": "One Berry lies beside Shizuki's crossing plan:\n\n'Plan A: around Drake.\nPlan B: wait for Drake.\nPlan C: Glimmer's illegal suggestion.'",
+                    "berries": 1
+                }
+            }
+        },
+        "titanwake-delta-threshold": {
+            "prompt": "Flooded Fangbank forms around an enormous jaw half-buried in sediment.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 44,
+                    "message": "A mineral spring bubbles behind the jaw.\n\nShizuki wrote:\n\n'Drake-free rest spot.\n\nChecked twice.'",
+                    "fullHpMessage": "You leave the verified rest spot untouched."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "titanwake-crocodile",
+                    "message": "A Titanwake Drake rises from behind the giant fang.\n\nVerification expired."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A wrecked strongbox lies under the jaw.",
+                    "reward": {
+                        "min": 180,
+                        "max": 220
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Flooded Fangbank",
+            "type": "boss-prompt",
+            "prompt": "The smaller Drakes abandon Fangbank."
+        }
+    },
+    "bossPromptDiscord": "The smaller Drakes abandon Fangbank.\n\nAn enormous scaled shape wakes beneath the ancient jaw.\n\nUse /yes to enter Flooded Fangbank or /no to wait for the local wildlife\nto finish using the Leviathan as furniture.",
+    "bossPromptTwitch": "The smaller Drakes abandon Fangbank.\n\nAn enormous scaled shape wakes beneath the ancient jaw.\n\nUse !yes to enter Flooded Fangbank or !no to wait for the local wildlife\nto finish using the Leviathan as furniture.",
+    "bossRetreatText": "You withdraw.\n\nA smaller Drake immediately reclaims the rib bridge.",
+    "boss": {
+        "enemyId": "wakejaw-ancient-boss",
+        "roomId": "boss",
+        "revealText": "An ancient Drake rises beneath the flooded bones.\n\nWakejaw Ancient reveals itself!"
+    },
+    "completionText": "The Wakejaw returns to the delta.\n\nGlimmer's climbing proposal remains permanently rejected."
 }

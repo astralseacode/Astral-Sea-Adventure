@@ -1,107 +1,107 @@
 {
-    "id":  "whispercap-hollows",
-    "number":  3,
-    "name":  "Whispercap Hollows",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "whispercap-snail",
-    "recommendedLevel":  11,
-    "introDiscord":  "Whispercap Hollows lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Whispercap Snail.",
-    "introTwitch":  "Whispercap Hollows lies ahead amid moonlit fronds curling around forgotten shrines.",
-    "startRoomId":  "whispercap-hollows-approach",
-    "rooms":  {
-                  "whispercap-hollows-approach":  {
-                                                      "prompt":  "At the edge of Whispercap Hollows, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "whispercap-hollows-depths",
-                                                                                   "healAmount":  67,
-                                                                                   "message":  "The left route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "whispercap-hollows-depths",
-                                                                                    "enemyId":  "whispercap-snail",
-                                                                                    "message":  "A shift in the current exposes Whispercap Snail, which claims the right route through Whispercap Hollows."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "whispercap-hollows-depths",
-                                                                                      "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                      "reward":  {
-                                                                                                     "min":  190,
-                                                                                                     "max":  225
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "whispercap-hollows-depths":  {
-                                                    "prompt":  "Deeper within Whispercap Hollows, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "empty",
-                                                                                 "nextRoomId":  "whispercap-hollows-threshold",
-                                                                                 "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Whispercap Hollows. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                 "berries":  1
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "whispercap-hollows-threshold",
-                                                                                  "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
-                                                                                  "reward":  {
-                                                                                                 "min":  202,
-                                                                                                 "max":  237
-                                                                                             }
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "whispercap-hollows-threshold",
-                                                                                    "enemyId":  "whispercap-snail",
-                                                                                    "message":  "A shift in the current exposes Whispercap Snail, which claims the forward route through Whispercap Hollows."
-                                                                                }
-                                                                }
-                                                },
-                  "whispercap-hollows-threshold":  {
-                                                       "prompt":  "Near the heart of Whispercap Hollows, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "whispercap-snail",
-                                                                                    "message":  "A shift in the current exposes Whispercap Snail, which claims the left route through Whispercap Hollows."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  72,
-                                                                                     "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                       "reward":  {
-                                                                                                      "min":  214,
-                                                                                                      "max":  249
-                                                                                                  }
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Listening Mushroom Ring",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Listening Mushroom Ring."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Listening Mushroom Ring. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Listening Mushroom Ring: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Listening Mushroom Ring. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "oracle-shell-snail-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Oracle-Shell Snail reveals itself!"
-             },
-    "completionText":  "Oracle-Shell Snail yields, and the currents beyond Listening Mushroom Ring open the next route through Whispering Kelp Forest."
+  "id": "whispercap-hollows",
+  "number": 3,
+  "name": "Whispercap Hollows",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "whispercap-snail",
+  "recommendedLevel": 11,
+  "introDiscord": "Pale whispercaps cover the hollows ahead, murmuring whenever the\ncurrent touches their caps. Whispercap Snails crawl between them carrying\ntiny fungal gardens on their shells, ensuring the conversation travels.",
+  "introTwitch": "Pale whispercaps cover the hollows ahead, murmuring whenever the\ncurrent touches their caps. Whispercap Snails crawl between them carrying\ntiny fungal gardens on their shells, ensuring the conversation travels.",
+  "startRoomId": "whispercap-hollows-approach",
+  "rooms": {
+    "whispercap-hollows-approach": {
+      "prompt": "Three passages curve through mushroom-covered roots. Every whispercap\nseems to be repeating a different warning, none of them recent.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "whispercap-hollows-depths",
+          "healAmount": 67,
+          "message": "A folded leaf contains restorative sap beneath a mushroom repeatedly\nwhispering:\n\n'Drink carefully.'\n\nShizuki added:\n\n'It has been saying that for three hours. I think it feels important.'",
+          "fullHpMessage": "You leave the sap beneath its extremely dedicated safety officer."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "whispercap-hollows-depths",
+          "enemyId": "whispercap-snail",
+          "message": "A Whispercap Snail crosses the route.\n\nThe mushrooms on its shell whisper:\n\n'Traveler approaching.'\n\nThe Snail stops.\n\nThe mushrooms whisper:\n\n'Conflict likely.'\n\nVery helpful."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "whispercap-hollows-depths",
+          "message": "A moss-covered shrine coffer sits inside a mushroom ring. One cap\nwhispers, 'treasure,' while another insists, 'probably trap.'\n\nIt is treasure.\n\nThe second mushroom seems disappointed.",
+          "reward": {
+            "min": 190,
+            "max": 225
+          }
+        }
+      }
+    },
+    "whispercap-hollows-depths": {
+      "prompt": "The hollows deepen until the whispercaps cover almost every surface.\nThree routes echo with accumulated conversations.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "whispercap-hollows-threshold",
+          "message": "A Berry rests beside Shizuki's field journal.\n\nOne whispercap keeps repeating:\n\n'Glimmer did it.'\n\nShizuki's note says:\n\n'Glimmer absolutely did it.\n\nUnfortunately I forgot what IT was.'",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "whispercap-hollows-threshold",
+          "message": "An offering basket inside a living root contains Star Candies wrapped\nin leaves. A nearby mushroom quietly whispers, 'share.'\n\nYou choose not to debate fungi.",
+          "reward": {
+            "min": 202,
+            "max": 237
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "whispercap-hollows-threshold",
+          "enemyId": "whispercap-snail",
+          "message": "A Whispercap Snail crawls into the route while the mushrooms on its\nshell repeat:\n\n'Wrong way.\nWrong way.\nWrong way.'\n\nYou suspect bias."
+        }
+      }
+    },
+    "whispercap-hollows-threshold": {
+      "prompt": "Living rootways circle the Listening Mushroom Ring. Every whispercap\nhas gone quiet except those facing the final chamber.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "whispercap-snail",
+          "message": "A Snail blocks the route.\n\nIts mushrooms announce:\n\n'Champion arriving.'\n\nYou look behind yourself.\n\nThe mushrooms repeat:\n\n'No. You.'\n\nOh."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 72,
+          "message": "A moonblossom pool glows under a mushroom that whispers:\n\n'Rest.'\n\nShizuki wrote beneath it:\n\n'Finally. One useful mushroom.'",
+          "fullHpMessage": "You leave the restorative pool untouched. The mushroom continues softly\ninsisting you rest anyway."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Broad silver kelp wraps a cache of Star Candies. A whispercap beside\nit repeats an ancient traveler's delighted gasp every time someone\nopens the bundle.",
+          "reward": {
+            "min": 214,
+            "max": 249
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Listening Mushroom Ring",
+      "type": "boss-prompt",
+      "prompt": "The entire mushroom ring falls silent.\n\nA slow scrape comes from the roots beneath it."
+    }
+  },
+  "bossPromptDiscord": "Every whispercap bends toward the center of the Listening Mushroom Ring.\n\nThen they begin repeating one phrase in perfect unison:\n\n'It remembers.'\n\nAn enormous shell rises beneath the mushrooms.\n\nUse /yes to approach the Ring or /no to let the forest oracle continue\nits very slow consultation.",
+  "bossPromptTwitch": "Every whispercap bends toward the center of the Listening Mushroom Ring.\n\nThen they begin repeating one phrase in perfect unison:\n\n'It remembers.'\n\nAn enormous shell rises beneath the mushrooms.\n\nUse !yes to approach the Ring or !no to let the forest oracle continue\nits very slow consultation.",
+  "bossRetreatText": "You retreat through the hollows. Behind you, the whispercaps gradually\nresume decades of unfinished conversations.",
+  "boss": {
+    "enemyId": "oracle-shell-snail-boss",
+    "roomId": "boss",
+    "revealText": "A colossal shell covered in ancient whispercaps rises from the roots.\n\nOracle-Shell Snail reveals itself!"
+  },
+  "completionText": "\"The Oracle-Shell Snail disappears beneath the mushroom ring.\n\nAs you leave, one whispercap repeats something new:\n\n'Traveler returns.'\n\nEventually, perhaps.\"\n\n\n#################################################################"
 }

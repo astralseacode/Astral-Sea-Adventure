@@ -1,107 +1,107 @@
 {
-    "id":  "thronewater-conduits",
-    "number":  9,
-    "name":  "Thronewater Conduits",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "thronewater-eel",
-    "recommendedLevel":  36,
-    "introDiscord":  "Thronewater Conduits lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Thronewater Eel.",
-    "introTwitch":  "Thronewater Conduits lies ahead amid flooded courtyards lined with watchful stone nobility.",
-    "startRoomId":  "thronewater-conduits-approach",
-    "rooms":  {
-                  "thronewater-conduits-approach":  {
-                                                        "prompt":  "At the edge of Thronewater Conduits, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "thronewater-conduits-depths",
-                                                                                     "healAmount":  80,
-                                                                                     "message":  "The left route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "thronewater-conduits-depths",
-                                                                                      "enemyId":  "thronewater-eel",
-                                                                                      "message":  "A shift in the current exposes Thronewater Eel, which claims the right route through Thronewater Conduits."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "thronewater-conduits-depths",
-                                                                                        "message":  "Beyond the forward route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                        "reward":  {
-                                                                                                       "min":  277,
-                                                                                                       "max":  314
-                                                                                                   }
-                                                                                    }
-                                                                    }
-                                                    },
-                  "thronewater-conduits-depths":  {
-                                                      "prompt":  "Deeper within Thronewater Conduits, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "thronewater-conduits-threshold",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Thronewater Conduits. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "thronewater-conduits-threshold",
-                                                                                    "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                    "reward":  {
-                                                                                                   "min":  289,
-                                                                                                   "max":  326
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "thronewater-conduits-threshold",
-                                                                                      "enemyId":  "thronewater-eel",
-                                                                                      "message":  "A shift in the current exposes Thronewater Eel, which claims the forward route through Thronewater Conduits."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "thronewater-conduits-threshold":  {
-                                                         "prompt":  "Near the heart of Thronewater Conduits, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "thronewater-eel",
-                                                                                      "message":  "A shift in the current exposes Thronewater Eel, which claims the left route through Thronewater Conduits."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  85,
-                                                                                       "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                         "reward":  {
-                                                                                                        "min":  301,
-                                                                                                        "max":  338
-                                                                                                    }
-                                                                                     }
-                                                                     }
-                                                     },
-                  "boss-antechamber":  {
-                                           "name":  "Sovereign Cistern",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Sovereign Cistern."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Sovereign Cistern. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Sovereign Cistern: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Sovereign Cistern. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "regent-coil-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Regent Coil reveals itself!"
-             },
-    "completionText":  "Regent Coil yields, and the currents beyond Sovereign Cistern open the next route through Sunken King\u0027s Throne."
+    "id": "thronewater-conduits",
+    "number": 9,
+    "name": "Thronewater Conduits",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "thronewater-eel",
+    "recommendedLevel": 36,
+    "introDiscord": "Hidden waterways carry water beneath the palace.\n\nShizuki appears to have spent a concerning amount of time pretending\nthey were secret royal tunnels.",
+    "introTwitch": "Hidden waterways carry water beneath the palace.\n\nShizuki appears to have spent a concerning amount of time pretending\nthey were secret royal tunnels.",
+    "startRoomId": "thronewater-conduits-approach",
+    "rooms": {
+        "thronewater-conduits-approach": {
+            "prompt": "Thronewater Conduits opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "thronewater-conduits-depths",
+                    "healAmount": 80,
+                    "message": "A cistern contains clear restorative water.\n\nShizuki wrote:\n\n'SECRET TUNNEL DISCOVERED.\n\nTechnically plumbing.\n\nSecret plumbing still secret.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "thronewater-conduits-depths",
+                    "enemyId": "thronewater-eel",
+                    "message": "A Thronewater Eel emerges from the definitely-secret plumbing."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "thronewater-conduits-depths",
+                    "message": "A maintenance chest hides Star Candies.",
+                    "reward": {
+                        "min": 277,
+                        "max": 314
+                    }
+                }
+            }
+        },
+        "thronewater-conduits-depths": {
+            "prompt": "Deeper within Thronewater Conduits, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "thronewater-conduits-threshold",
+                    "message": "One Berry rests on Shizuki's tunnel map.\n\nEvery route says:\n\n'TO PALACE PROBABLY.'\n\nNone are correct.",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "thronewater-conduits-threshold",
+                    "message": "A hidden service alcove contains a small coffer.",
+                    "reward": {
+                        "min": 289,
+                        "max": 326
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "thronewater-conduits-threshold",
+                    "enemyId": "thronewater-eel",
+                    "message": "A Thronewater Eel blocks the narrow conduit."
+                }
+            }
+        },
+        "thronewater-conduits-threshold": {
+            "prompt": "Near Sovereign Cistern, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "thronewater-eel",
+                    "message": "An Eel coils around a royal waterwheel."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 85,
+                    "message": "Shizuki's restorative reads:\n\n'Secret tunnel expedition supplies.\n\nStill plumbing.\n\nRefusing to change title.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "Star Candies glitter beneath Sovereign Cistern.",
+                    "reward": {
+                        "min": 301,
+                        "max": 338
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Sovereign Cistern",
+            "type": "boss-prompt",
+            "prompt": "The royal cistern begins spiraling."
+        }
+    },
+    "bossPromptDiscord": "The royal cistern begins spiraling.\n\nAn enormous coil circles beneath the palace water.\n\nUse /yes to enter or /no to exit through the non-secret\nsecret tunnel.",
+    "bossPromptTwitch": "The royal cistern begins spiraling.\n\nAn enormous coil circles beneath the palace water.\n\nUse !yes to enter or !no to exit through the non-secret\nsecret tunnel.",
+    "bossRetreatText": "You withdraw from Sovereign Cistern. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "regent-coil-boss",
+        "roomId": "boss",
+        "revealText": "Regent Coil reveals itself!"
+    },
+    "completionText": "\"The cistern stills.\n\nA staircase ahead rises toward the palace district.\n\nShizuki's arrow:\n\n'NOT PLUMBING!!!'"
 }

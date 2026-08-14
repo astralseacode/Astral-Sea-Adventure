@@ -1,107 +1,107 @@
 {
-    "id":  "rootcoil-channels",
-    "number":  5,
-    "name":  "Rootcoil Channels",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "rootcoil-eel",
-    "recommendedLevel":  11,
-    "introDiscord":  "Rootcoil Channels lies ahead, where living rootways beneath drifting fae lights conceal the territory of Rootcoil Eel.",
-    "introTwitch":  "Rootcoil Channels lies ahead amid living rootways beneath drifting fae lights.",
-    "startRoomId":  "rootcoil-channels-approach",
-    "rooms":  {
-                  "rootcoil-channels-approach":  {
-                                                     "prompt":  "At the edge of Rootcoil Channels, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "rootcoil-channels-depths",
-                                                                                  "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                  "reward":  {
-                                                                                                 "min":  180,
-                                                                                                 "max":  216
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "rootcoil-channels-depths",
-                                                                                   "enemyId":  "rootcoil-eel",
-                                                                                   "message":  "A shift in the current exposes Rootcoil Eel, which claims the right route through Rootcoil Channels."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "rootcoil-channels-depths",
-                                                                                     "healAmount":  62,
-                                                                                     "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "rootcoil-channels-depths":  {
-                                                   "prompt":  "Deeper within Rootcoil Channels, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "rootcoil-channels-threshold",
-                                                                                "enemyId":  "rootcoil-eel",
-                                                                                "message":  "A shift in the current exposes Rootcoil Eel, which claims the left route through Rootcoil Channels."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "rootcoil-channels-threshold",
-                                                                                 "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
-                                                                                 "reward":  {
-                                                                                                "min":  192,
-                                                                                                "max":  228
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "rootcoil-channels-threshold",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Rootcoil Channels. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               }
-                                                               }
-                                               },
-                  "rootcoil-channels-threshold":  {
-                                                      "prompt":  "Near the heart of Rootcoil Channels, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  67,
-                                                                                   "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "rootcoil-eel",
-                                                                                    "message":  "A shift in the current exposes Rootcoil Eel, which claims the right route through Rootcoil Channels."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                      "reward":  {
-                                                                                                     "min":  204,
-                                                                                                     "max":  240
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Heartroot Spiral",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Heartroot Spiral."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Heartroot Spiral. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Heartroot Spiral: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Heartroot Spiral. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "elder-rootcoil-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Elder Rootcoil reveals itself!"
-             },
-    "completionText":  "Elder Rootcoil yields, and the currents beyond Heartroot Spiral open the next route through Whispering Kelp Forest."
+  "id": "rootcoil-channels",
+  "number": 5,
+  "name": "Rootcoil Channels",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "rootcoil-eel",
+  "recommendedLevel": 11,
+  "introDiscord": "Living roots weave together into tunnels beneath the kelp forest.\nRootcoil Eels slip through openings barely wider than their bodies,\nappearing from roots that should not connect to one another.",
+  "introTwitch": "Living roots weave together into tunnels beneath the kelp forest.\nRootcoil Eels slip through openings barely wider than their bodies,\nappearing from roots that should not connect to one another.",
+  "startRoomId": "rootcoil-channels-approach",
+  "rooms": {
+    "rootcoil-channels-approach": {
+      "prompt": "Three root channels twist ahead. Every few moments the roots flex,\nquietly changing the shape of the passages.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "rootcoil-channels-depths",
+          "message": "Broad silver kelp hides a Star Candy cache inside a hollow root.\nShizuki scratched an arrow toward it, then another arrow pointing in the\nopposite direction, then wrote:\n\n'Root moved. Not my fault.'",
+          "reward": {
+            "min": 180,
+            "max": 216
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "rootcoil-channels-depths",
+          "enemyId": "rootcoil-eel",
+          "message": "A Rootcoil Eel disappears through a hole the width of your wrist.\n\nA second later it emerges from an entirely different wall.\n\nYou would like to see the floor plan."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "rootcoil-channels-depths",
+          "healAmount": 62,
+          "message": "A folded leaf holds restorative sap inside a root alcove. Shizuki's\nnote reads:\n\n'Safe resting nook.\n\nWas on left yesterday.\n\nCurrently forward.\n\nTomorrow's problem.'",
+          "fullHpMessage": "You leave the sap where it is. At full health, you can save your energy\nfor arguing with moving architecture."
+        }
+      }
+    },
+    "rootcoil-channels-depths": {
+      "prompt": "Moonlit fronds hang through the root ceiling as three tunnels coil over,\nunder, and possibly through one another.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "rootcoil-channels-threshold",
+          "enemyId": "rootcoil-eel",
+          "message": "A Rootcoil Eel loops around a living root and disappears.\n\nThe root flexes.\n\nThe Eel emerges directly behind you.\n\nShow-off."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "rootcoil-channels-threshold",
+          "message": "A moss-covered shrine coffer has been completely enclosed by roots.\nOne root politely lifts when you reach for the latch.\n\nYou are choosing to trust this.",
+          "reward": {
+            "min": 192,
+            "max": 228
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "rootcoil-channels-threshold",
+          "message": "One Berry is jammed into the corner of Shizuki's hopelessly outdated\nroot map.\n\nShe wrote:\n\n'MAP STATUS:\nAccurate for eleven minutes.\nNew record.'",
+          "berries": 1
+        }
+      }
+    },
+    "rootcoil-channels-threshold": {
+      "prompt": "Towering kelp gives way to the Heartroot Spiral, where three passages\nwind around one enormous ancient root.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 67,
+          "message": "A tranquil grove pool collects between the roots. Shizuki's note says:\n\n'If route starts rotating, stay in pool until forest finishes whatever\nit is doing.'",
+          "fullHpMessage": "You leave the pool untouched. The roots are currently behaving, which\nfeels temporary."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "rootcoil-eel",
+          "message": "A Rootcoil Eel wraps around the passage itself, blending perfectly with\nthe twisted root until its eyes open."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "An offering basket is tucked inside the Heartroot's bark. Star Candies\nrest beneath a carved symbol that looks remarkably like a smiling Eel.",
+          "reward": {
+            "min": 204,
+            "max": 240
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Heartroot Spiral",
+      "type": "boss-prompt",
+      "prompt": "The enormous central root begins to unwind.\n\nSomething has been curled around it."
+    }
+  },
+  "bossPromptDiscord": "The Heartroot Spiral twists open one layer at a time.\n\nAn immense eel-shaped shadow remains coiled around the oldest root,\nunmoving until every smaller Rootcoil has fled.\n\nThen one ancient eye opens.\n\nUse /yes to enter the Spiral or /no to let the old root keep its equally\nold tenant.",
+  "bossPromptTwitch": "The Heartroot Spiral twists open one layer at a time.\n\nAn immense eel-shaped shadow remains coiled around the oldest root,\nunmoving until every smaller Rootcoil has fled.\n\nThen one ancient eye opens.\n\nUse !yes to enter the Spiral or !no to let the old root keep its equally\nold tenant.",
+  "bossRetreatText": "You back away before the Heartroot finishes unwinding. The enormous\ncoil slowly settles again.",
+  "boss": {
+    "enemyId": "elder-rootcoil-boss",
+    "roomId": "boss",
+    "revealText": "The root parts and an ancient eel uncoils from its center.\n\nElder Rootcoil reveals itself!"
+  },
+  "completionText": "\"The Elder Rootcoil disappears through the ancient root network.\n\nThe passages settle.\n\nFor now.\n\nShizuki's map is already wrong again.\"\n\n\n#################################################################"
 }

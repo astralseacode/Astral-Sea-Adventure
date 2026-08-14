@@ -1,107 +1,107 @@
 {
-    "id":  "crownless-barracks",
-    "number":  7,
-    "name":  "Crownless Barracks",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "crownless-knight",
-    "recommendedLevel":  34,
-    "introDiscord":  "Crownless Barracks lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Crownless Knight.",
-    "introTwitch":  "Crownless Barracks lies ahead amid drowned palace colonnades guarded by broken royal seals.",
-    "startRoomId":  "crownless-barracks-approach",
-    "rooms":  {
-                  "crownless-barracks-approach":  {
-                                                      "prompt":  "At the edge of Crownless Barracks, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "crownless-barracks-depths",
-                                                                                   "enemyId":  "crownless-knight",
-                                                                                   "message":  "A shift in the current exposes Crownless Knight, which claims the left route through Crownless Barracks."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "crownless-barracks-depths",
-                                                                                    "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                    "reward":  {
-                                                                                                   "min":  295,
-                                                                                                   "max":  332
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "crownless-barracks-depths",
-                                                                                      "healAmount":  87,
-                                                                                      "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "crownless-barracks-depths":  {
-                                                    "prompt":  "Deeper within Crownless Barracks, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "crownless-barracks-threshold",
-                                                                                 "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                 "reward":  {
-                                                                                                "min":  307,
-                                                                                                "max":  344
-                                                                                            }
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "crownless-barracks-threshold",
-                                                                                  "enemyId":  "crownless-knight",
-                                                                                  "message":  "A shift in the current exposes Crownless Knight, which claims the right route through Crownless Barracks."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "empty",
-                                                                                    "nextRoomId":  "crownless-barracks-threshold",
-                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Crownless Barracks. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                    "berries":  1
-                                                                                }
-                                                                }
-                                                },
-                  "crownless-barracks-threshold":  {
-                                                       "prompt":  "Near the heart of Crownless Barracks, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  92,
-                                                                                    "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                     "reward":  {
-                                                                                                    "min":  319,
-                                                                                                    "max":  356
-                                                                                                }
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "enemyId":  "crownless-knight",
-                                                                                       "message":  "A shift in the current exposes Crownless Knight, which claims the forward route through Crownless Barracks."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Empty Helm Hall",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Empty Helm Hall."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Empty Helm Hall. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Empty Helm Hall: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Empty Helm Hall. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "helmless-castellan-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Helmless Castellan reveals itself!"
-             },
-    "completionText":  "Helmless Castellan yields, and the currents beyond Empty Helm Hall open the next route through Sunken King\u0027s Throne."
+    "id": "crownless-barracks",
+    "number": 7,
+    "name": "Crownless Barracks",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "crownless-knight",
+    "recommendedLevel": 34,
+    "introDiscord": "The royal barracks remain packed with shields, helmets, practice\nweapons, bunks, and several suits of armor still determined to maintain\nmilitary discipline.",
+    "introTwitch": "The royal barracks remain packed with shields, helmets, practice\nweapons, bunks, and several suits of armor still determined to maintain\nmilitary discipline.",
+    "startRoomId": "crownless-barracks-approach",
+    "rooms": {
+        "crownless-barracks-approach": {
+            "prompt": "Crownless Barracks opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "crownless-barracks-depths",
+                    "enemyId": "crownless-knight",
+                    "message": "A Crownless Knight marches from the training floor."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "crownless-barracks-depths",
+                    "message": "An officer's footlocker contains Star Candies instead of socks.\n\nSuperior military logistics.",
+                    "reward": {
+                        "min": 295,
+                        "max": 332
+                    }
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "crownless-barracks-depths",
+                    "healAmount": 87,
+                    "message": "Shizuki's bottle sits beside a practice dummy:\n\n'Training report:\n\nDummy defeated.\n\nDummy did not fight back.\n\nVictory still valid.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "crownless-barracks-depths": {
+            "prompt": "Deeper within Crownless Barracks, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "crownless-barracks-threshold",
+                    "message": "A weapons rack hides a little lockbox full of Star Candies.",
+                    "reward": {
+                        "min": 307,
+                        "max": 344
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "crownless-barracks-threshold",
+                    "enemyId": "crownless-knight",
+                    "message": "A Crownless Knight challenges you beside the sparring ring."
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "crownless-barracks-threshold",
+                    "message": "One Berry rests beneath a wooden practice sword.\n\nShizuki wrote:\n\n'Knight training lesson one:\n\ndramatic stance.\n\nLesson two:\n\nGlimmer stop laughing.'",
+                    "berries": 1
+                }
+            }
+        },
+        "crownless-barracks-threshold": {
+            "prompt": "Near Empty Helm Hall, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 92,
+                    "message": "An old infirmary cabinet still contains restorative salts.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A ceremonial helmet contains Star Candies.\n\nHelmet snacks.",
+                    "reward": {
+                        "min": 319,
+                        "max": 356
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "crownless-knight",
+                    "message": "A Crownless Knight guards Empty Helm Hall."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Empty Helm Hall",
+            "type": "boss-prompt",
+            "prompt": "Every empty helmet in the Hall turns toward the same armored figure."
+        }
+    },
+    "bossPromptDiscord": "Every empty helmet in the Hall turns toward the same armored figure.\n\nIts own helmet is missing.\n\nSomehow this makes it more intimidating.\n\nUse /yes to enter or /no to postpone graduation from royal\nknight school.",
+    "bossPromptTwitch": "Every empty helmet in the Hall turns toward the same armored figure.\n\nIts own helmet is missing.\n\nSomehow this makes it more intimidating.\n\nUse !yes to enter or !no to postpone graduation from royal\nknight school.",
+    "bossRetreatText": "You withdraw from Empty Helm Hall. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "helmless-castellan-boss",
+        "roomId": "boss",
+        "revealText": "Helmless Castellan reveals itself!"
+    },
+    "completionText": "The Castellan kneels.\n\nShizuki's training report can officially be amended:\n\n'Real knight defeated.\n\nTraining program wildly successful.'"
 }

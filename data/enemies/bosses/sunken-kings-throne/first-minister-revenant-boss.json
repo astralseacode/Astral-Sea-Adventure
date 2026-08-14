@@ -1,20 +1,20 @@
 {
-    "id":  "first-minister-revenant-boss",
-    "name":  "First Minister Revenant",
-    "region":  "sunken-kings-throne",
-    "level":  49,
-    "hp":  563,
-    "damageBonus":  18,
-    "isBoss":  true,
-    "reward":  {
-                   "candies":  {
-                                   "min":  2309,
-                                   "max":  3233
-                               },
-                   "xp":  {
-                              "min":  1324,
-                              "max":  1555
-                          }
-               },
-    "defeatCandyLoss":  295
+    "id": "first-minister-revenant-boss",
+    "name": "Festival Master Revenant",
+    "region": "sunken-kings-throne",
+    "level": 49,
+    "hp": 563,
+    "damageBonus": 18,
+    "isBoss": true,
+    "reward": {
+        "candies": {
+            "min": 2309,
+            "max": 3233
+        },
+        "xp": {
+            "min": 1324,
+            "max": 1555
+        }
+    },
+    "defeatCandyLoss": 295
 }

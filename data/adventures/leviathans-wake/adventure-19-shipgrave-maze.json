@@ -1,107 +1,107 @@
 {
-    "id":  "shipgrave-maze",
-    "number":  19,
-    "name":  "Shipgrave Maze",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "shipgrave-scuttler",
-    "recommendedLevel":  26,
-    "introDiscord":  "Shipgrave Maze lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Shipgrave Scuttler.",
-    "introTwitch":  "Shipgrave Maze lies ahead amid titanic ribs rising through violent crosscurrents.",
-    "startRoomId":  "shipgrave-maze-approach",
-    "rooms":  {
-                  "shipgrave-maze-approach":  {
-                                                  "prompt":  "At the edge of Shipgrave Maze, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "shipgrave-maze-depths",
-                                                                               "enemyId":  "shipgrave-scuttler",
-                                                                               "message":  "A shift in the current exposes Shipgrave Scuttler, which claims the left route through Shipgrave Maze."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "shipgrave-maze-depths",
-                                                                                "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
-                                                                                "reward":  {
-                                                                                               "min":  143,
-                                                                                               "max":  184
-                                                                                           }
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "shipgrave-maze-depths",
-                                                                                  "healAmount":  33,
-                                                                                  "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              }
-                                                              }
-                                              },
-                  "shipgrave-maze-depths":  {
-                                                "prompt":  "Deeper within Shipgrave Maze, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                "choices":  {
-                                                                "left":  {
-                                                                             "type":  "treasure",
-                                                                             "nextRoomId":  "shipgrave-maze-threshold",
-                                                                             "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                             "reward":  {
-                                                                                            "min":  155,
-                                                                                            "max":  196
-                                                                                        }
-                                                                         },
-                                                                "right":  {
-                                                                              "type":  "combat",
-                                                                              "nextRoomId":  "shipgrave-maze-threshold",
-                                                                              "enemyId":  "shipgrave-scuttler",
-                                                                              "message":  "A shift in the current exposes Shipgrave Scuttler, which claims the right route through Shipgrave Maze."
-                                                                          },
-                                                                "forward":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "shipgrave-maze-threshold",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Shipgrave Maze. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            }
-                                                            }
-                                            },
-                  "shipgrave-maze-threshold":  {
-                                                   "prompt":  "Near the heart of Shipgrave Maze, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "healing",
-                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                "healAmount":  38,
-                                                                                "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                 "reward":  {
-                                                                                                "min":  167,
-                                                                                                "max":  208
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "shipgrave-scuttler",
-                                                                                   "message":  "A shift in the current exposes Shipgrave Scuttler, which claims the forward route through Shipgrave Maze."
-                                                                               }
-                                                               }
-                                               },
-                  "boss-antechamber":  {
-                                           "name":  "Admiral\u0027s Ruin",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Admiral\u0027s Ruin."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Admiral\u0027s Ruin. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Admiral\u0027s Ruin: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Admiral\u0027s Ruin. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "fleet-eater-scuttler-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Fleet-Eater Scuttler reveals itself!"
-             },
-    "completionText":  "Fleet-Eater Scuttler yields, and the currents beyond Admiral\u0027s Ruin open the next route through Leviathan\u0027s Wake."
+    "id": "shipgrave-maze",
+    "number": 19,
+    "name": "Shipgrave Maze",
+    "regionId": "leviathans-wake",
+    "enemyId": "shipgrave-scuttler",
+    "recommendedLevel": 26,
+    "introDiscord": "Dozens of wrecks have collected between the skeletons until they form\na maze.\n\nShipgrave Scuttlers know every route.\n\nShizuki did not.",
+    "introTwitch": "Dozens of wrecks have collected between the skeletons until they form\na maze.\n\nShipgrave Scuttlers know every route.\n\nShizuki did not.",
+    "startRoomId": "shipgrave-maze-approach",
+    "rooms": {
+        "shipgrave-maze-approach": {
+            "prompt": "Three corridors twist between hulls.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "shipgrave-maze-depths",
+                    "enemyId": "shipgrave-scuttler",
+                    "message": "A Shipgrave Scuttler crawls across the ceiling of an overturned ship."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "shipgrave-maze-depths",
+                    "message": "A strongbox rests inside a captain's cabin.",
+                    "reward": {
+                        "min": 143,
+                        "max": 184
+                    }
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "shipgrave-maze-depths",
+                    "healAmount": 33,
+                    "message": "Shizuki's bottle reads:\n\n'Ship maze day one.\n\nNot lost.\n\nConducting comprehensive ship inspection.'",
+                    "fullHpMessage": "You leave the medicine and allow the official story to stand."
+                }
+            }
+        },
+        "shipgrave-maze-depths": {
+            "prompt": "The maze becomes several ships deep.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "shipgrave-maze-threshold",
+                    "message": "Star Candies rest beneath an ancient scale protruding through a deck.",
+                    "reward": {
+                        "min": 155,
+                        "max": 196
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "shipgrave-maze-threshold",
+                    "enemyId": "shipgrave-scuttler",
+                    "message": "A Scuttler takes a shortcut through a broken hull."
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "shipgrave-maze-threshold",
+                    "message": "One Berry rests beside Shizuki's updated report:\n\n'Ship maze day two.\n\nInspection extremely comprehensive.\n\nGlimmer has begun laughing.\n\nMorale issue.'",
+                    "berries": 1
+                }
+            }
+        },
+        "shipgrave-maze-threshold": {
+            "prompt": "Admiral's Ruin sits at the center.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 38,
+                    "message": "Shizuki's bottle:\n\n'DAY THREE.\n\nFOUND CENTER.\n\nTherefore navigation success.'",
+                    "fullHpMessage": "You leave the victory medicine untouched."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A navigator's chest rests inside the admiral's wreck.",
+                    "reward": {
+                        "min": 167,
+                        "max": 208
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "shipgrave-scuttler",
+                    "message": "A Scuttler guards the only obvious exit.\n\nOf course."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Admiral's Ruin",
+            "type": "boss-prompt",
+            "prompt": "Every Scuttler abandons the central wreck."
+        }
+    },
+    "bossPromptDiscord": "Every Scuttler abandons the central wreck.\n\nSomething much larger crawls across the outside of Admiral's Ruin.\n\nThe hull groans beneath its weight.\n\nUse /yes to enter the Ruin or /no to resume Shizuki's comprehensive\ninspection somewhere else.",
+    "bossPromptTwitch": "Every Scuttler abandons the central wreck.\n\nSomething much larger crawls across the outside of Admiral's Ruin.\n\nThe hull groans beneath its weight.\n\nUse !yes to enter the Ruin or !no to resume Shizuki's comprehensive\ninspection somewhere else.",
+    "bossRetreatText": "You retreat deeper into the maze.\n\nThis may or may not improve matters.",
+    "boss": {
+        "enemyId": "fleet-eater-scuttler-boss",
+        "roomId": "boss",
+        "revealText": "A colossal Scuttler tears across the wreck.\n\nFleet-Eater Scuttler reveals itself!"
+    },
+    "completionText": "The Fleet-Eater disappears.\n\nA direct exit lies behind it.\n\nShizuki's map has seventeen routes.\n\nNone are this one."
 }

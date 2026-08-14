@@ -1,152 +1,152 @@
 [
     {
-        "encounter":  1,
-        "enemy":  "paradox-minnow",
-        "recommendedLevel":  50
+        "encounter": 1,
+        "enemy": "paradox-minnow",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  2,
-        "enemy":  "geometry-eel",
-        "recommendedLevel":  50
+        "encounter": 2,
+        "enemy": "geometry-eel",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  3,
-        "enemy":  "memoryglass-crab",
-        "recommendedLevel":  50
+        "encounter": 3,
+        "enemy": "memoryglass-crab",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  4,
-        "enemy":  "portal-skipping-ray",
-        "recommendedLevel":  50
+        "encounter": 4,
+        "enemy": "portal-skipping-ray",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  5,
-        "enemy":  "clocktide-jelly",
-        "recommendedLevel":  50
+        "encounter": 5,
+        "enemy": "clocktide-jelly",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  6,
-        "enemy":  "fracturefin-shark",
-        "recommendedLevel":  50
+        "encounter": 6,
+        "enemy": "fracturefin-shark",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  7,
-        "enemy":  "dream-anchor-turtle",
-        "recommendedLevel":  50
+        "encounter": 7,
+        "enemy": "dream-anchor-turtle",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  8,
-        "enemy":  "starbelow-angler",
-        "recommendedLevel":  50
+        "encounter": 8,
+        "enemy": "starbelow-angler",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  9,
-        "enemy":  "fae-axis-sentinel",
-        "recommendedLevel":  50
+        "encounter": 9,
+        "enemy": "fae-axis-sentinel",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  10,
-        "enemy":  "echo-of-self-mimic",
-        "recommendedLevel":  50
+        "encounter": 10,
+        "enemy": "echo-of-self-mimic",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  11,
-        "enemy":  "stormscript-squid",
-        "recommendedLevel":  50
+        "encounter": 11,
+        "enemy": "stormscript-squid",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  12,
-        "enemy":  "portalroot-serpent",
-        "recommendedLevel":  50
+        "encounter": 12,
+        "enemy": "portalroot-serpent",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  13,
-        "enemy":  "constellation-automaton",
-        "recommendedLevel":  50
+        "encounter": 13,
+        "enemy": "constellation-automaton",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  14,
-        "enemy":  "yesterdays-revenant",
-        "recommendedLevel":  50
+        "encounter": 14,
+        "enemy": "yesterdays-revenant",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  15,
-        "enemy":  "voidflower-mantis",
-        "recommendedLevel":  50
+        "encounter": 15,
+        "enemy": "voidflower-mantis",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  16,
-        "enemy":  "nexus-current-elemental",
-        "recommendedLevel":  50
+        "encounter": 16,
+        "enemy": "nexus-current-elemental",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  17,
-        "enemy":  "thoughtform-prowler",
-        "recommendedLevel":  50
+        "encounter": 17,
+        "enemy": "thoughtform-prowler",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  18,
-        "enemy":  "astral-storm-roc",
-        "recommendedLevel":  50
+        "encounter": 18,
+        "enemy": "astral-storm-roc",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  19,
-        "enemy":  "phaseclaw-lobster",
-        "recommendedLevel":  50
+        "encounter": 19,
+        "enemy": "phaseclaw-lobster",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  20,
-        "enemy":  "memory-reef-warden",
-        "recommendedLevel":  50
+        "encounter": 20,
+        "enemy": "memory-reef-warden",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  21,
-        "enemy":  "gravity-choir-siren",
-        "recommendedLevel":  50
+        "encounter": 21,
+        "enemy": "gravity-choir-siren",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  22,
-        "enemy":  "foldspace-nautilus",
-        "recommendedLevel":  50
+        "encounter": 22,
+        "enemy": "foldspace-nautilus",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  23,
-        "enemy":  "fae-ruin-architect",
-        "recommendedLevel":  50
+        "encounter": 23,
+        "enemy": "fae-ruin-architect",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  24,
-        "enemy":  "eventide-behemoth",
-        "recommendedLevel":  50
+        "encounter": 24,
+        "enemy": "eventide-behemoth",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  25,
-        "enemy":  "portal-grave-scavenger",
-        "recommendedLevel":  50
+        "encounter": 25,
+        "enemy": "portal-grave-scavenger",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  26,
-        "enemy":  "timeline-eater",
-        "recommendedLevel":  50
+        "encounter": 26,
+        "enemy": "timeline-eater",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  27,
-        "enemy":  "nexus-crown-construct",
-        "recommendedLevel":  50
+        "encounter": 27,
+        "enemy": "nexus-crown-construct",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  28,
-        "enemy":  "first-light-remnant",
-        "recommendedLevel":  50
+        "encounter": 28,
+        "enemy": "first-light-remnant",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  29,
-        "enemy":  "astral-convergence-warden",
-        "recommendedLevel":  50
+        "encounter": 29,
+        "enemy": "astral-convergence-warden",
+        "recommendedLevel": 50
     },
     {
-        "encounter":  30,
-        "enemy":  "nexus-continuance-grunt",
-        "recommendedLevel":  50
+        "encounter": 30,
+        "enemy": "astral-heart-echo",
+        "recommendedLevel": 50
     }
 ]

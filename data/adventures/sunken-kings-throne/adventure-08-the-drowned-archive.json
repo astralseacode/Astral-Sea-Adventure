@@ -1,107 +1,107 @@
 {
-    "id":  "the-drowned-archive",
-    "number":  8,
-    "name":  "The Drowned Archive",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "royal-archive-wisp",
-    "recommendedLevel":  35,
-    "introDiscord":  "The Drowned Archive lies ahead, where haunted halls beneath drifting banners conceal the territory of Royal Archive Wisp.",
-    "introTwitch":  "The Drowned Archive lies ahead amid haunted halls beneath drifting banners.",
-    "startRoomId":  "the-drowned-archive-approach",
-    "rooms":  {
-                  "the-drowned-archive-approach":  {
-                                                       "prompt":  "At the edge of The Drowned Archive, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "the-drowned-archive-depths",
-                                                                                    "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                    "reward":  {
-                                                                                                   "min":  286,
-                                                                                                   "max":  323
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "the-drowned-archive-depths",
-                                                                                     "healAmount":  83,
-                                                                                     "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "the-drowned-archive-depths",
-                                                                                       "enemyId":  "royal-archive-wisp",
-                                                                                       "message":  "A shift in the current exposes Royal Archive Wisp, which claims the forward route through The Drowned Archive."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "the-drowned-archive-depths":  {
-                                                     "prompt":  "Deeper within The Drowned Archive, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "the-drowned-archive-threshold",
-                                                                                  "enemyId":  "royal-archive-wisp",
-                                                                                  "message":  "A shift in the current exposes Royal Archive Wisp, which claims the left route through The Drowned Archive."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "the-drowned-archive-threshold",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Drowned Archive. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "the-drowned-archive-threshold",
-                                                                                     "message":  "Beyond the forward route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                     "reward":  {
-                                                                                                    "min":  298,
-                                                                                                    "max":  335
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "the-drowned-archive-threshold":  {
-                                                        "prompt":  "Near the heart of The Drowned Archive, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the left route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                     "reward":  {
-                                                                                                    "min":  310,
-                                                                                                    "max":  347
-                                                                                                }
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "royal-archive-wisp",
-                                                                                      "message":  "A shift in the current exposes Royal Archive Wisp, which claims the right route through The Drowned Archive."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "healAmount":  88,
-                                                                                        "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Scriptorium of Bubbles",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Scriptorium of Bubbles."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Scriptorium of Bubbles. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Scriptorium of Bubbles: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Scriptorium of Bubbles. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "grand-archivist-wisp-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Grand Archivist Wisp reveals itself!"
-             },
-    "completionText":  "Grand Archivist Wisp yields, and the currents beyond Scriptorium of Bubbles open the next route through Sunken King\u0027s Throne."
+    "id": "the-drowned-archive",
+    "number": 8,
+    "name": "The Drowned Archive",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "royal-archive-wisp",
+    "recommendedLevel": 35,
+    "introDiscord": "The kingdom's library stretches through flooded halls packed with\nbooks, scroll tubes, maps, floating pages, and Royal Archive Wisps that\ntake overdue materials extremely seriously.",
+    "introTwitch": "The kingdom's library stretches through flooded halls packed with\nbooks, scroll tubes, maps, floating pages, and Royal Archive Wisps that\ntake overdue materials extremely seriously.",
+    "startRoomId": "the-drowned-archive-approach",
+    "rooms": {
+        "the-drowned-archive-approach": {
+            "prompt": "The Drowned Archive opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "the-drowned-archive-depths",
+                    "message": "A sealed bookcase hides Star Candies behind a volume titled:\n\nROYAL FEASTS OF THE THIRD DYNASTY.\n\nShizuki bookmarked the dessert section.",
+                    "reward": {
+                        "min": 286,
+                        "max": 323
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "the-drowned-archive-depths",
+                    "healAmount": 83,
+                    "message": "A reading alcove contains restorative tea salts.\n\nHer review:\n\n'Library tea.\n\nExcellent.\n\nBook tried floating away during sip.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "the-drowned-archive-depths",
+                    "enemyId": "royal-archive-wisp",
+                    "message": "An Archive Wisp sees you touching an unregistered scroll.\n\nLibrary enforcement arrives immediately."
+                }
+            }
+        },
+        "the-drowned-archive-depths": {
+            "prompt": "Deeper within The Drowned Archive, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "the-drowned-archive-threshold",
+                    "enemyId": "royal-archive-wisp",
+                    "message": "A Wisp protects a tower of floating books."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "the-drowned-archive-threshold",
+                    "message": "One Berry marks Shizuki's place in a cookbook.\n\nHer note:\n\n'Recipe says simmer gently.\n\nI do not know how to simmer underwater.\n\nResearch suspended.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "the-drowned-archive-threshold",
+                    "message": "A map cabinet contains Star Candies and several kingdom maps that\nactually make sense.\n\nShizuki's annotations do not.",
+                    "reward": {
+                        "min": 298,
+                        "max": 335
+                    }
+                }
+            }
+        },
+        "the-drowned-archive-threshold": {
+            "prompt": "Near Scriptorium of Bubbles, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A librarian's desk contains a sealed candy tin.",
+                    "reward": {
+                        "min": 310,
+                        "max": 347
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "royal-archive-wisp",
+                    "message": "An Archive Wisp blocks access to restricted shelves."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 88,
+                    "message": "Shizuki left a restorative beside a stack marked:\n\n'Books I definitely intended to put back.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Scriptorium of Bubbles",
+            "type": "boss-prompt",
+            "prompt": "Thousands of pages rise inside the Scriptorium of Bubbles."
+        }
+    },
+    "bossPromptDiscord": "Thousands of pages rise inside the Scriptorium of Bubbles.\n\nThey arrange themselves around one brilliant Wisp wearing a tiny\nspectral librarian's crown.\n\nUse /yes to approach or /no to avoid the world's most\naggressive late fee.",
+    "bossPromptTwitch": "Thousands of pages rise inside the Scriptorium of Bubbles.\n\nThey arrange themselves around one brilliant Wisp wearing a tiny\nspectral librarian's crown.\n\nUse !yes to approach or !no to avoid the world's most\naggressive late fee.",
+    "bossRetreatText": "You withdraw from Scriptorium of Bubbles. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "grand-archivist-wisp-boss",
+        "roomId": "boss",
+        "revealText": "Grand Archivist Wisp reveals itself!"
+    },
+    "completionText": "The pages return to their shelves.\n\nOne cookbook floats open to the berry tart recipe.\n\nShizuki circled it seven times."
 }

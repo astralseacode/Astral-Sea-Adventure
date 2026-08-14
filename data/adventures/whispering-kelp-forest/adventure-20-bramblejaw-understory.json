@@ -1,107 +1,107 @@
 {
-    "id":  "bramblejaw-understory",
-    "number":  20,
-    "name":  "Bramblejaw Understory",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "bramblejaw-turtle",
-    "recommendedLevel":  17,
-    "introDiscord":  "Bramblejaw Understory lies ahead, where living rootways beneath drifting fae lights conceal the territory of Bramblejaw Turtle.",
-    "introTwitch":  "Bramblejaw Understory lies ahead amid living rootways beneath drifting fae lights.",
-    "startRoomId":  "bramblejaw-understory-approach",
-    "rooms":  {
-                  "bramblejaw-understory-approach":  {
-                                                         "prompt":  "At the edge of Bramblejaw Understory, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "bramblejaw-understory-depths",
-                                                                                      "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                      "reward":  {
-                                                                                                     "min":  105,
-                                                                                                     "max":  146
-                                                                                                 }
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "bramblejaw-understory-depths",
-                                                                                       "healAmount":  25,
-                                                                                       "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "combat",
-                                                                                         "nextRoomId":  "bramblejaw-understory-depths",
-                                                                                         "enemyId":  "bramblejaw-turtle",
-                                                                                         "message":  "A shift in the current exposes Bramblejaw Turtle, which claims the forward route through Bramblejaw Understory."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "bramblejaw-understory-depths":  {
-                                                       "prompt":  "Deeper within Bramblejaw Understory, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "bramblejaw-understory-threshold",
-                                                                                    "enemyId":  "bramblejaw-turtle",
-                                                                                    "message":  "A shift in the current exposes Bramblejaw Turtle, which claims the left route through Bramblejaw Understory."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "empty",
-                                                                                     "nextRoomId":  "bramblejaw-understory-threshold",
-                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Bramblejaw Understory. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                     "berries":  1
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "bramblejaw-understory-threshold",
-                                                                                       "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                       "reward":  {
-                                                                                                      "min":  117,
-                                                                                                      "max":  158
-                                                                                                  }
-                                                                                   }
-                                                                   }
-                                                   },
-                  "bramblejaw-understory-threshold":  {
-                                                          "prompt":  "Near the heart of Bramblejaw Understory, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                          "choices":  {
-                                                                          "left":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "message":  "Beyond the left route, you discover an offering basket hidden inside a living root.",
-                                                                                       "reward":  {
-                                                                                                      "min":  129,
-                                                                                                      "max":  170
-                                                                                                  }
-                                                                                   },
-                                                                          "right":  {
-                                                                                        "type":  "combat",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "enemyId":  "bramblejaw-turtle",
-                                                                                        "message":  "A shift in the current exposes Bramblejaw Turtle, which claims the right route through Bramblejaw Understory."
-                                                                                    },
-                                                                          "forward":  {
-                                                                                          "type":  "healing",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "healAmount":  30,
-                                                                                          "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                          "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                      }
-                                                                      }
-                                                      },
-                  "boss-antechamber":  {
-                                           "name":  "Thorned Shell Court",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Thorned Shell Court."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Thorned Shell Court. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Thorned Shell Court: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Thorned Shell Court. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "thicket-shell-ancient-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Thicket-Shell Ancient reveals itself!"
-             },
-    "completionText":  "Thicket-Shell Ancient yields, and the currents beyond Thorned Shell Court open the next route through Whispering Kelp Forest."
+  "id": "bramblejaw-understory",
+  "number": 20,
+  "name": "Bramblejaw Understory",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "bramblejaw-turtle",
+  "recommendedLevel": 17,
+  "introDiscord": "The understory is crowded with slow-moving walls of thorny growth.\nSeveral turn out to be Bramblejaw Turtles carrying entire thickets on\ntheir shells.",
+  "introTwitch": "The understory is crowded with slow-moving walls of thorny growth.\nSeveral turn out to be Bramblejaw Turtles carrying entire thickets on\ntheir shells.",
+  "startRoomId": "bramblejaw-understory-approach",
+  "rooms": {
+    "bramblejaw-understory-approach": {
+      "prompt": "Three low paths pass beneath tangled roots. One patch of brambles is\nslowly walking away.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "bramblejaw-understory-depths",
+          "message": "Broad silver kelp hides a Star Candy cache inside a hollow root. A\nBramblejaw Turtle has been using the root as a scratching post.",
+          "reward": {
+            "min": 105,
+            "max": 146
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "bramblejaw-understory-depths",
+          "healAmount": 25,
+          "message": "A moonblossom pool rests inside a tiny clearing.\n\nShizuki's note:\n\n'Safe spot because turtle cannot fit.\n\nTurtle disagreed for forty minutes.'",
+          "fullHpMessage": "You leave the pool untouched. The nearby scrape marks suggest the\nTurtle's argument was determined."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "bramblejaw-understory-depths",
+          "enemyId": "bramblejaw-turtle",
+          "message": "A moving thicket stops.\n\nA turtle head emerges.\n\nThen the entire hedge turns toward you.\n\nBramblejaw Turtle."
+        }
+      }
+    },
+    "bramblejaw-understory-depths": {
+      "prompt": "Moonlit fronds shade three understory trails divided by wandering\nbramble-shells.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "bramblejaw-understory-threshold",
+          "enemyId": "bramblejaw-turtle",
+          "message": "A Bramblejaw Turtle occupies the path.\n\nYou wait for it to move.\n\nIt moves approximately one inch.\n\nNegotiations may take hours."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "bramblejaw-understory-threshold",
+          "message": "One Berry sits on top of an old bramble-shell scraping.\n\nShizuki wrote:\n\n'Rode turtle for twelve minutes.\n\nTravel distance: seven feet.\n\nExcellent nap though.'",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "bramblejaw-understory-threshold",
+          "message": "A shrine coffer rests beneath a root recently exposed by a passing\nTurtle. Star Candies acquired courtesy of extremely slow landscaping.",
+          "reward": {
+            "min": 117,
+            "max": 158
+          }
+        }
+      }
+    },
+    "bramblejaw-understory-threshold": {
+      "prompt": "Towering kelp surrounds Thorned Shell Court, where three final paths\nwind between ancient shell impressions.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "An offering basket rests inside an abandoned patch of shell-brambles.\nInside are Star Candies and several extremely determined thorns.",
+          "reward": {
+            "min": 129,
+            "max": 170
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "bramblejaw-turtle",
+          "message": "A Bramblejaw Turtle raises itself from the path.\n\nThe entire hedge on its back rises with it.\n\nThere was significantly more Turtle than expected."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 30,
+          "message": "Restorative sap waits beneath Shizuki's note:\n\n'Bramble scratches.\n\nTurtle bruises.\n\nNap stiffness.\n\nCovers all three.'",
+          "fullHpMessage": "You leave the multipurpose Turtle-adventure medicine unused."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Thorned Shell Court",
+      "type": "boss-prompt",
+      "prompt": "The brambles covering the Court begin moving as one enormous mass."
+    }
+  },
+  "bossPromptDiscord": "The 'hill' at the center of Thorned Shell Court slowly rises.\n\nRoots slide away.\n\nAn ancient shell covered in an entire living thicket emerges beneath\nthem.\n\nEvery smaller Bramblejaw Turtle immediately stops moving.\n\nUse /yes to approach the Court or /no to wait several centuries for the\nhill to relocate naturally.",
+  "bossPromptTwitch": "The 'hill' at the center of Thorned Shell Court slowly rises.\n\nRoots slide away.\n\nAn ancient shell covered in an entire living thicket emerges beneath\nthem.\n\nEvery smaller Bramblejaw Turtle immediately stops moving.\n\nUse !yes to approach the Court or !no to wait several centuries for the\nhill to relocate naturally.",
+  "bossRetreatText": "You retreat. The enormous living hill settles slightly, though calling\nit 'stationary' feels optimistic.",
+  "boss": {
+    "enemyId": "thicket-shell-ancient-boss",
+    "roomId": "boss",
+    "revealText": "The thorn-covered shell lifts as an enormous ancient Turtle rises.\n\nThicket-Shell Ancient reveals itself!"
+  },
+  "completionText": "\"The Ancient settles beneath the brambles again.\n\nSeveral smaller Turtles resume crossing the path.\n\nEstimated arrival at the other side:\n\neventually.\"\n\n\n#################################################################"
 }

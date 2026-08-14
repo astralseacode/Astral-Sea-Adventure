@@ -1,107 +1,107 @@
 {
-    "id":  "briarfin-thickets",
-    "number":  7,
-    "name":  "Briarfin Thickets",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "briarfin-prowler",
-    "recommendedLevel":  12,
-    "introDiscord":  "Briarfin Thickets lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Briarfin Prowler.",
-    "introTwitch":  "Briarfin Thickets lies ahead amid towering kelp columns threaded with murmuring currents.",
-    "startRoomId":  "briarfin-thickets-approach",
-    "rooms":  {
-                  "briarfin-thickets-approach":  {
-                                                     "prompt":  "At the edge of Briarfin Thickets, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "briarfin-thickets-depths",
-                                                                                  "enemyId":  "briarfin-prowler",
-                                                                                  "message":  "A shift in the current exposes Briarfin Prowler, which claims the left route through Briarfin Thickets."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "briarfin-thickets-depths",
-                                                                                   "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
-                                                                                   "reward":  {
-                                                                                                  "min":  170,
-                                                                                                  "max":  207
-                                                                                              }
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "briarfin-thickets-depths",
-                                                                                     "healAmount":  57,
-                                                                                     "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "briarfin-thickets-depths":  {
-                                                   "prompt":  "Deeper within Briarfin Thickets, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "briarfin-thickets-threshold",
-                                                                                "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                "reward":  {
-                                                                                               "min":  182,
-                                                                                               "max":  219
-                                                                                           }
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "briarfin-thickets-threshold",
-                                                                                 "enemyId":  "briarfin-prowler",
-                                                                                 "message":  "A shift in the current exposes Briarfin Prowler, which claims the right route through Briarfin Thickets."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "briarfin-thickets-threshold",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Briarfin Thickets. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               }
-                                                               }
-                                               },
-                  "briarfin-thickets-threshold":  {
-                                                      "prompt":  "Near the heart of Briarfin Thickets, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  62,
-                                                                                   "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
-                                                                                    "reward":  {
-                                                                                                   "min":  194,
-                                                                                                   "max":  231
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "briarfin-prowler",
-                                                                                      "message":  "A shift in the current exposes Briarfin Prowler, which claims the forward route through Briarfin Thickets."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Briar Moon Den",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Briar Moon Den."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Briar Moon Den. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Briar Moon Den: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Briar Moon Den. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "thornwake-huntress-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Thornwake Huntress reveals itself!"
-             },
-    "completionText":  "Thornwake Huntress yields, and the currents beyond Briar Moon Den open the next route through Whispering Kelp Forest."
+  "id": "briarfin-thickets",
+  "number": 7,
+  "name": "Briarfin Thickets",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "briarfin-prowler",
+  "recommendedLevel": 12,
+  "introDiscord": "Thorned kelp knots together into a dense thicket ahead. Briarfin\nProwlers slip between the barbs without touching a single one, which\nfeels increasingly insulting the more branches catch on you.",
+  "introTwitch": "Thorned kelp knots together into a dense thicket ahead. Briarfin\nProwlers slip between the barbs without touching a single one, which\nfeels increasingly insulting the more branches catch on you.",
+  "startRoomId": "briarfin-thickets-approach",
+  "rooms": {
+    "briarfin-thickets-approach": {
+      "prompt": "Three thorn-lined routes squeeze between braided briars. Loose straps\nand dignity are equally endangered.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "briarfin-thickets-depths",
+          "enemyId": "briarfin-prowler",
+          "message": "A Briarfin Prowler slips through the thorns without making a sound.\n\nYou take one step after it.\n\nYour sleeve catches immediately.\n\nThe Prowler turns around.\n\nYou are being judged."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "briarfin-thickets-depths",
+          "message": "An offering basket hangs inside a thorn cage. After a careful extraction\noperation, you recover the Star Candies and only slightly redesign your\nclothing.",
+          "reward": {
+            "min": 170,
+            "max": 207
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "briarfin-thickets-depths",
+          "healAmount": 57,
+          "message": "Restorative sap rests inside a folded leaf beside Shizuki's note:\n\n'Briar balm.\n\nFor scratches, snags, and the emotional damage of losing an argument\nwith a shrub.'",
+          "fullHpMessage": "You leave the balm untouched. The thicket has not won yet."
+        }
+      }
+    },
+    "briarfin-thickets-depths": {
+      "prompt": "Living rootways disappear beneath thicker briars. Three passages remain,\nalthough one appears to have grown additional thorns while you watched.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "briarfin-thickets-threshold",
+          "message": "Broad silver kelp wraps a cache protected by a suspiciously thorn-free\ncircle.\n\nShizuki wrote nearby:\n\n'This means either safe spot or plant trap.\n\nWas safe for me.\n\nGood luck.'",
+          "reward": {
+            "min": 182,
+            "max": 219
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "briarfin-thickets-threshold",
+          "enemyId": "briarfin-prowler",
+          "message": "A Briarfin Prowler walks straight through a wall of thorns.\n\nYou attempt to follow the normal path instead.\n\nIt meets you on the other side looking disappointed."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "briarfin-thickets-threshold",
+          "message": "One Berry hangs from a snagged strap from Shizuki's old pack.\n\nHer note reads:\n\n'Forest stole backpack.\n\nRecovered backpack.\n\nForest kept one buckle.\n\nAcceptable losses.'",
+          "berries": 1
+        }
+      }
+    },
+    "briarfin-thickets-threshold": {
+      "prompt": "Moonlit fronds close around Briar Moon Den. Three final paths wind\nthrough thorn arches shaped like claws.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 62,
+          "message": "A moonblossom pool sits inside the only thorn-free pocket in sight.\nShizuki wrote:\n\n'Found safe clearing.\n\nDo not celebrate loudly.\n\nPlants may hear.'",
+          "fullHpMessage": "You leave the pool untouched and celebrate internally."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A moss-covered shrine coffer lies beneath a briar arch. The vines pull\nback slightly when you touch the latch.\n\nSuspiciously polite thorns.",
+          "reward": {
+            "min": 194,
+            "max": 231
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "briarfin-prowler",
+          "message": "A Briarfin Prowler crouches beyond the final wall of briars.\n\nThis time, it waits for YOU to get snagged first.\n\nExperienced hunter."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Briar Moon Den",
+      "type": "boss-prompt",
+      "prompt": "The thorns throughout the Den bend in the same direction as something\nmoves silently behind them."
+    }
+  },
+  "bossPromptDiscord": "The Briar Moon Den falls completely still.\n\nEvery smaller Prowler disappears into the thickets.\n\nThen the briars part without a single thorn breaking.\n\nSomething larger has spent a very long time learning every path through\nthis forest.\n\nUse /yes to enter the Den or /no to avoid becoming the next thing\ncaught in the briars.",
+  "bossPromptTwitch": "The Briar Moon Den falls completely still.\n\nEvery smaller Prowler disappears into the thickets.\n\nThen the briars part without a single thorn breaking.\n\nSomething larger has spent a very long time learning every path through\nthis forest.\n\nUse !yes to enter the Den or !no to avoid becoming the next thing\ncaught in the briars.",
+  "bossRetreatText": "You withdraw through the thickets. The unseen hunter makes no attempt\nto follow.\n\nSomehow that is worse.",
+  "boss": {
+    "enemyId": "thornwake-huntress-boss",
+    "roomId": "boss",
+    "revealText": "The briars sweep aside as a sleek thorn-armored predator lunges from\nthe Den.\n\nThornwake Huntress reveals itself!"
+  },
+  "completionText": "\"The Huntress vanishes into the deepest thicket.\n\nThe briars slowly relax.\n\nA thorn immediately catches your sleeve on the way out.\n\nThe forest demands the final word.\"\n\n\n#################################################################"
 }

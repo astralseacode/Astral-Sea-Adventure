@@ -1,107 +1,107 @@
 {
-    "id":  "fae-lure-lanterns",
-    "number":  9,
-    "name":  "Fae-Lure Lanterns",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "fae-lure-angler",
-    "recommendedLevel":  13,
-    "introDiscord":  "Fae-Lure Lanterns lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Fae-Lure Angler.",
-    "introTwitch":  "Fae-Lure Lanterns lies ahead amid moonlit fronds curling around forgotten shrines.",
-    "startRoomId":  "fae-lure-lanterns-approach",
-    "rooms":  {
-                  "fae-lure-lanterns-approach":  {
-                                                     "prompt":  "At the edge of Fae-Lure Lanterns, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "fae-lure-lanterns-depths",
-                                                                                  "healAmount":  52,
-                                                                                  "message":  "The left route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "fae-lure-lanterns-depths",
-                                                                                   "enemyId":  "fae-lure-angler",
-                                                                                   "message":  "A shift in the current exposes Fae-Lure Angler, which claims the right route through Fae-Lure Lanterns."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "fae-lure-lanterns-depths",
-                                                                                     "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                     "reward":  {
-                                                                                                    "min":  160,
-                                                                                                    "max":  197
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "fae-lure-lanterns-depths":  {
-                                                   "prompt":  "Deeper within Fae-Lure Lanterns, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "fae-lure-lanterns-threshold",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Fae-Lure Lanterns. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "fae-lure-lanterns-threshold",
-                                                                                 "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
-                                                                                 "reward":  {
-                                                                                                "min":  172,
-                                                                                                "max":  209
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "fae-lure-lanterns-threshold",
-                                                                                   "enemyId":  "fae-lure-angler",
-                                                                                   "message":  "A shift in the current exposes Fae-Lure Angler, which claims the forward route through Fae-Lure Lanterns."
-                                                                               }
-                                                               }
-                                               },
-                  "fae-lure-lanterns-threshold":  {
-                                                      "prompt":  "Near the heart of Fae-Lure Lanterns, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "fae-lure-angler",
-                                                                                   "message":  "A shift in the current exposes Fae-Lure Angler, which claims the left route through Fae-Lure Lanterns."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  57,
-                                                                                    "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                      "reward":  {
-                                                                                                     "min":  184,
-                                                                                                     "max":  221
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "False-Light Chapel",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of False-Light Chapel."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter False-Light Chapel. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "False-Light Chapel: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from False-Light Chapel. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "glamourmaw-angler-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Glamourmaw Angler reveals itself!"
-             },
-    "completionText":  "Glamourmaw Angler yields, and the currents beyond False-Light Chapel open the next route through Whispering Kelp Forest."
+  "id": "fae-lure-lanterns",
+  "number": 9,
+  "name": "Fae-Lure Lanterns",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "fae-lure-angler",
+  "recommendedLevel": 13,
+  "introDiscord": "Floating Fae lanterns illuminate the grove ahead. Some lead toward\nsafe paths. Some lead toward treasure. Some are attached to enormous\nteeth. The forest provides no labeling system.",
+  "introTwitch": "Floating Fae lanterns illuminate the grove ahead. Some lead toward\nsafe paths. Some lead toward treasure. Some are attached to enormous\nteeth. The forest provides no labeling system.",
+  "startRoomId": "fae-lure-lanterns-approach",
+  "rooms": {
+    "fae-lure-lanterns-approach": {
+      "prompt": "Three routes are marked by drifting lights: silver, blue, and a very\nfriendly-looking gold.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "fae-lure-lanterns-depths",
+          "healAmount": 52,
+          "message": "Restorative sap rests beneath a genuine Fae lantern. Shizuki added a\nsign:\n\n'REAL LIGHT.\n\nChecked for teeth TWICE.'",
+          "fullHpMessage": "You leave the sap untouched. The lantern continues its successful\ncareer as a non-predatory object."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "fae-lure-lanterns-depths",
+          "enemyId": "fae-lure-angler",
+          "message": "The golden lantern drifts closer.\n\nYou wait.\n\nIt blinks.\n\nLanterns do not blink.\n\nA Fae-Lure Angler lunges from the darkness."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "fae-lure-lanterns-depths",
+          "message": "A moss-covered shrine coffer sits beneath three harmless Fae lights.\nInside are Star Candies and one handwritten tag:\n\n'These lights passed inspection.'",
+          "reward": {
+            "min": 160,
+            "max": 197
+          }
+        }
+      }
+    },
+    "fae-lure-lanterns-depths": {
+      "prompt": "Towering kelp columns hide dozens of floating lanterns. Three routes\nvanish beneath their glow.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "fae-lure-lanterns-threshold",
+          "message": "One Berry rests beneath Shizuki's homemade identification chart:\n\n'FAE LIGHT:\npretty.\n\nANGLER:\npretty + teeth.\n\nThis chart took longer to make than I am proud of.'",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "fae-lure-lanterns-threshold",
+          "message": "An offering basket sits beneath a blue lantern. You stare at the light\nfor an unnecessarily long time before opening the basket.\n\nNo teeth.\n\nStar Candies acquired.",
+          "reward": {
+            "min": 172,
+            "max": 209
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "fae-lure-lanterns-threshold",
+          "enemyId": "fae-lure-angler",
+          "message": "A helpful little lantern begins guiding you down the passage.\n\nHow thoughtful.\n\nIt leads directly to the Angler attached to it."
+        }
+      }
+    },
+    "fae-lure-lanterns-threshold": {
+      "prompt": "Living rootways converge around False-Light Chapel, where three doors\nare each illuminated by a single hovering glow.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "fae-lure-angler",
+          "message": "One lantern casts no shadow.\n\nYou have learned enough.\n\nThe Fae-Lure Angler realizes you have learned enough.\n\nCombat begins."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 57,
+          "message": "A tranquil grove pool glows beneath Shizuki's final inspection notice:\n\n'POOL SAFE.\nLIGHT SAFE.\nROOT SAFE.\nI checked EVERYTHING.\n\nGlimmer checked me.'",
+          "fullHpMessage": "You leave the safe pool safely unused. A rare victory for quality\ncontrol."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Broad silver kelp wraps a Star Candy cache beneath an honest little\nFae lantern.\n\nYou thank it for not possessing a mouth.",
+          "reward": {
+            "min": 184,
+            "max": 221
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "False-Light Chapel",
+      "type": "boss-prompt",
+      "prompt": "Every genuine Fae lantern in the Chapel suddenly goes dark.\n\nOne enormous light remains."
+    }
+  },
+  "bossPromptDiscord": "The last glow floats alone inside False-Light Chapel.\n\nIt brightens.\n\nThen rises.\n\nThen reveals a shadow much larger than the lantern could possibly\nbelong to.\n\nYou have seen this trick before.\n\nNever at this scale.\n\nUse /yes to enter the Chapel or /no to refuse the forest's largest\nfalse advertisement.",
+  "bossPromptTwitch": "The last glow floats alone inside False-Light Chapel.\n\nIt brightens.\n\nThen rises.\n\nThen reveals a shadow much larger than the lantern could possibly\nbelong to.\n\nYou have seen this trick before.\n\nNever at this scale.\n\nUse !yes to enter the Chapel or !no to refuse the forest's largest\nfalse advertisement.",
+  "bossRetreatText": "You withdraw. The enormous lure remains glowing behind you with\noffensively innocent beauty.",
+  "boss": {
+    "enemyId": "glamourmaw-angler-boss",
+    "roomId": "boss",
+    "revealText": "The false lantern swings upward as an enormous jaw emerges beneath it.\n\nGlamourmaw Angler reveals itself!"
+  },
+  "completionText": "\"The Glamourmaw disappears into the dark kelp.\n\nOne genuine Fae lantern relights beside the exit.\n\nYou stare at it.\n\nIt has earned nothing.\"\n\n\n#################################################################"
 }

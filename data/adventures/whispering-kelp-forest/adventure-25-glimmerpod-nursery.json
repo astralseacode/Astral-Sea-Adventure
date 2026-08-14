@@ -1,107 +1,107 @@
 {
-    "id":  "glimmerpod-nursery",
-    "number":  25,
-    "name":  "Glimmerpod Nursery",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "glimmerpod-beetle",
-    "recommendedLevel":  18,
-    "introDiscord":  "Glimmerpod Nursery lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Glimmerpod Beetle.",
-    "introTwitch":  "Glimmerpod Nursery lies ahead amid towering kelp columns threaded with murmuring currents.",
-    "startRoomId":  "glimmerpod-nursery-approach",
-    "rooms":  {
-                  "glimmerpod-nursery-approach":  {
-                                                      "prompt":  "At the edge of Glimmerpod Nursery, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "glimmerpod-nursery-depths",
-                                                                                   "enemyId":  "glimmerpod-beetle",
-                                                                                   "message":  "A shift in the current exposes Glimmerpod Beetle, which claims the left route through Glimmerpod Nursery."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "glimmerpod-nursery-depths",
-                                                                                    "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
-                                                                                    "reward":  {
-                                                                                                   "min":  80,
-                                                                                                   "max":  123
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "glimmerpod-nursery-depths",
-                                                                                      "healAmount":  12,
-                                                                                      "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "glimmerpod-nursery-depths":  {
-                                                    "prompt":  "Deeper within Glimmerpod Nursery, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "glimmerpod-nursery-threshold",
-                                                                                 "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                 "reward":  {
-                                                                                                "min":  92,
-                                                                                                "max":  135
-                                                                                            }
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "glimmerpod-nursery-threshold",
-                                                                                  "enemyId":  "glimmerpod-beetle",
-                                                                                  "message":  "A shift in the current exposes Glimmerpod Beetle, which claims the right route through Glimmerpod Nursery."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "empty",
-                                                                                    "nextRoomId":  "glimmerpod-nursery-threshold",
-                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Glimmerpod Nursery. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                    "berries":  1
-                                                                                }
-                                                                }
-                                                },
-                  "glimmerpod-nursery-threshold":  {
-                                                       "prompt":  "Near the heart of Glimmerpod Nursery, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  17,
-                                                                                    "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
-                                                                                     "reward":  {
-                                                                                                    "min":  104,
-                                                                                                    "max":  147
-                                                                                                }
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "enemyId":  "glimmerpod-beetle",
-                                                                                       "message":  "A shift in the current exposes Glimmerpod Beetle, which claims the forward route through Glimmerpod Nursery."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Emerald Nursery",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Emerald Nursery."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Emerald Nursery. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Emerald Nursery: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Emerald Nursery. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "radiant-podqueen-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Radiant Podqueen reveals itself!"
-             },
-    "completionText":  "Radiant Podqueen yields, and the currents beyond Emerald Nursery open the next route through Whispering Kelp Forest."
+  "id": "glimmerpod-nursery",
+  "number": 25,
+  "name": "Glimmerpod Nursery",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "glimmerpod-beetle",
+  "recommendedLevel": 18,
+  "introDiscord": "Clusters of glowing Glimmerpods cover the nursery roots like tiny\nlantern eggs. Beetles carefully tend them, and several pods pulse with\nthe same soft light as a very familiar Moon Sprite.",
+  "introTwitch": "Clusters of glowing Glimmerpods cover the nursery roots like tiny\nlantern eggs. Beetles carefully tend them, and several pods pulse with\nthe same soft light as a very familiar Moon Sprite.",
+  "startRoomId": "glimmerpod-nursery-approach",
+  "rooms": {
+    "glimmerpod-nursery-approach": {
+      "prompt": "Three routes weave through clusters of glowing pods. Glimmerpod Beetles\ninspect each one with the seriousness of very tiny nurses.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "glimmerpod-nursery-depths",
+          "enemyId": "glimmerpod-beetle",
+          "message": "A Beetle is polishing one glowing pod.\n\nYou step too close.\n\nThe Beetle immediately positions itself between you and the nursery.\n\nProtective parent mode activated."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "glimmerpod-nursery-depths",
+          "message": "An offering basket rests between two open Glimmerpods. Star Candies\ninside glow softly in the reflected green light.",
+          "reward": {
+            "min": 80,
+            "max": 123
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "glimmerpod-nursery-depths",
+          "healAmount": 12,
+          "message": "Restorative sap sits beneath Shizuki's note:\n\n'Glimmer likes the pods.\n\nPods like Glimmer.\n\nBeetles tolerate me.\n\nAcceptable social hierarchy.'",
+          "fullHpMessage": "You leave the restorative sap untouched. The nursery's social order\nremains stable."
+        }
+      }
+    },
+    "glimmerpod-nursery-depths": {
+      "prompt": "Living rootways descend through increasingly dense clusters of\nGlimmerpods.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "glimmerpod-nursery-threshold",
+          "message": "Broad silver kelp wraps a Star Candy cache beside a pod that opens when\nyou approach.\n\nInside the pod:\n\nnothing.\n\nIt just wanted attention.",
+          "reward": {
+            "min": 92,
+            "max": 135
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "glimmerpod-nursery-threshold",
+          "enemyId": "glimmerpod-beetle",
+          "message": "A Glimmerpod Beetle watches you inspect one of the glowing pods.\n\nYou wave.\n\nIt raises its mandibles.\n\nYour diplomatic credentials differ."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "glimmerpod-nursery-threshold",
+          "message": "One Berry rests inside Shizuki's tiny illustrated field guide:\n\n'GLIMMERPOD:\nglows.\n\nGLIMMER:\nglows.\n\nGLIMMERPOD:\nplant.\n\nGLIMMER:\nclaims distinction obvious.'",
+          "berries": 1
+        }
+      }
+    },
+    "glimmerpod-nursery-threshold": {
+      "prompt": "Moonlit fronds surround Emerald Nursery, where three final paths pass\nthrough enormous mature pods.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 17,
+          "message": "A tranquil grove pool rests beneath a huge Glimmerpod.\n\nShizuki wrote:\n\n'Glimmer slept inside one.\n\nCould not retrieve Glimmer for forty minutes.\n\nPod vacation.'",
+          "fullHpMessage": "You leave the restorative pool and respect all future Moon Sprite\nvacation rights."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A moss-covered shrine coffer contains Star Candies and several empty\npod husks arranged like tiny lanterns.",
+          "reward": {
+            "min": 104,
+            "max": 147
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "glimmerpod-beetle",
+          "message": "A Beetle guards one enormous unopened pod.\n\nIt sees you.\n\nIt plants all six legs.\n\nAbsolutely not, apparently."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Emerald Nursery",
+      "type": "boss-prompt",
+      "prompt": "Every Glimmerpod in the Nursery lights at once."
+    }
+  },
+  "bossPromptDiscord": "Green light rolls across Emerald Nursery in waves.\n\nEvery Beetle immediately gathers around one enormous central pod.\n\nThe pod opens.\n\nSomething radiant moves inside while the entire nursery brightens around\nit.\n\nUse /yes to enter Emerald Nursery or /no to leave the glowing family\ngathering undisturbed.",
+  "bossPromptTwitch": "Green light rolls across Emerald Nursery in waves.\n\nEvery Beetle immediately gathers around one enormous central pod.\n\nThe pod opens.\n\nSomething radiant moves inside while the entire nursery brightens around\nit.\n\nUse !yes to enter Emerald Nursery or !no to leave the glowing family\ngathering undisturbed.",
+  "bossRetreatText": "You step away. The Beetles close ranks around the central pod as its\nlight slowly dims.",
+  "boss": {
+    "enemyId": "radiant-podqueen-boss",
+    "roomId": "boss",
+    "revealText": "The enormous pod unfolds as a brilliant armored Beetle rises from its\ncenter.\n\nRadiant Podqueen reveals itself!"
+  },
+  "completionText": "\"The Radiant Podqueen returns to the heart of the Nursery.\n\nThe smaller Beetles resume tending their pods.\n\nOne pod flashes twice.\n\nSomewhere, Glimmer would absolutely flash back.\"\n\n\n#################################################################"
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "wrecknest-passage",
-    "number":  12,
-    "name":  "Wrecknest Passage",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "wrecknest-moray",
-    "recommendedLevel":  24,
-    "introDiscord":  "Wrecknest Passage lies ahead, where immense scales embedded in unstable coral shelves conceal the territory of Wrecknest Moray.",
-    "introTwitch":  "Wrecknest Passage lies ahead amid immense scales embedded in unstable coral shelves.",
-    "startRoomId":  "wrecknest-passage-approach",
-    "rooms":  {
-                  "wrecknest-passage-approach":  {
-                                                     "prompt":  "At the edge of Wrecknest Passage, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "empty",
-                                                                                  "nextRoomId":  "wrecknest-passage-depths",
-                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Wrecknest Passage. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                  "berries":  1
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "wrecknest-passage-depths",
-                                                                                   "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                   "reward":  {
-                                                                                                  "min":  190,
-                                                                                                  "max":  228
-                                                                                              }
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "wrecknest-passage-depths",
-                                                                                     "enemyId":  "wrecknest-moray",
-                                                                                     "message":  "A shift in the current exposes Wrecknest Moray, which claims the forward route through Wrecknest Passage."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "wrecknest-passage-depths":  {
-                                                   "prompt":  "Deeper within Wrecknest Passage, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "wrecknest-passage-threshold",
-                                                                                "enemyId":  "wrecknest-moray",
-                                                                                "message":  "A shift in the current exposes Wrecknest Moray, which claims the left route through Wrecknest Passage."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "wrecknest-passage-threshold",
-                                                                                 "healAmount":  55,
-                                                                                 "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "wrecknest-passage-threshold",
-                                                                                   "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
-                                                                                   "reward":  {
-                                                                                                  "min":  202,
-                                                                                                  "max":  240
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "wrecknest-passage-threshold":  {
-                                                      "prompt":  "Near the heart of Wrecknest Passage, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                                   "reward":  {
-                                                                                                  "min":  214,
-                                                                                                  "max":  252
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "wrecknest-moray",
-                                                                                    "message":  "A shift in the current exposes Wrecknest Moray, which claims the right route through Wrecknest Passage."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "healAmount":  60,
-                                                                                      "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Crushed Fleet Nest",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Crushed Fleet Nest."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Crushed Fleet Nest. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Crushed Fleet Nest: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Crushed Fleet Nest. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "keeljaw-moray-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Keeljaw Moray reveals itself!"
-             },
-    "completionText":  "Keeljaw Moray yields, and the currents beyond Crushed Fleet Nest open the next route through Leviathan\u0027s Wake."
+    "id": "wrecknest-passage",
+    "number": 12,
+    "name": "Wrecknest Passage",
+    "regionId": "leviathans-wake",
+    "enemyId": "wrecknest-moray",
+    "recommendedLevel": 24,
+    "introDiscord": "Seven wrecks have been compressed into one tangled structure between\nthe bones.\n\nWrecknest Morays have decided this is excellent housing.",
+    "introTwitch": "Seven wrecks have been compressed into one tangled structure between\nthe bones.\n\nWrecknest Morays have decided this is excellent housing.",
+    "startRoomId": "wrecknest-passage-approach",
+    "rooms": {
+        "wrecknest-passage-approach": {
+            "prompt": "Three passages enter the fused wreckage.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "wrecknest-passage-depths",
+                    "message": "One Berry rests inside an old captain's drawer.\n\nShizuki wrote:\n\n'Ship #1 connected to Ship #2 connected to Ship #3.\n\nStopped counting.\n\nCalling entire thing Ship.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "wrecknest-passage-depths",
+                    "message": "A navigator's chest survives inside the fused hull.",
+                    "reward": {
+                        "min": 190,
+                        "max": 228
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "wrecknest-passage-depths",
+                    "enemyId": "wrecknest-moray",
+                    "message": "A Wrecknest Moray emerges through three different ship windows before\nchoosing yours."
+                }
+            }
+        },
+        "wrecknest-passage-depths": {
+            "prompt": "Three corridors weave through overlapping decks.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "wrecknest-passage-threshold",
+                    "enemyId": "wrecknest-moray",
+                    "message": "A Moray slips through a cannon port from one ship into another.\n\nExtremely convenient architecture if you're an eel."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "wrecknest-passage-threshold",
+                    "healAmount": 55,
+                    "message": "Shizuki's medicine rests inside an intact cabin:\n\n'Best room in Ship.\n\nDoor closes.\n\nMostly dry-ish.\n\nMoray lives in closet.\n\nDeducting star.'",
+                    "fullHpMessage": "You leave the medicine and definitely do not inspect the closet."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "wrecknest-passage-threshold",
+                    "message": "A strongbox lies beneath two intersecting keels.",
+                    "reward": {
+                        "min": 202,
+                        "max": 240
+                    }
+                }
+            }
+        },
+        "wrecknest-passage-threshold": {
+            "prompt": "Crushed Fleet Nest forms where all the wrecks collapse together.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "Star Candies are trapped beneath a Leviathan scale that somehow joined\nthe pile.",
+                    "reward": {
+                        "min": 214,
+                        "max": 252
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "wrecknest-moray",
+                    "message": "A Wrecknest Moray lunges from what used to be three doors simultaneously."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 60,
+                    "message": "Shizuki's bottle reads:\n\n'Ship rating updated:\n\ntwo stars.\n\nCloset incident.'",
+                    "fullHpMessage": "You leave the medicine.\n\nNo closet details are provided."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Crushed Fleet Nest",
+            "type": "boss-prompt",
+            "prompt": "The fused wreck creaks."
+        }
+    },
+    "bossPromptDiscord": "The fused wreck creaks.\n\nSomething enormous moves through the entire structure without ever\nleaving it.\n\nUse /yes to enter Crushed Fleet Nest or /no to let the world's largest\neel apartment remain occupied.",
+    "bossPromptTwitch": "The fused wreck creaks.\n\nSomething enormous moves through the entire structure without ever\nleaving it.\n\nUse !yes to enter Crushed Fleet Nest or !no to let the world's largest\neel apartment remain occupied.",
+    "bossRetreatText": "You withdraw from Ship.",
+    "boss": {
+        "enemyId": "keeljaw-moray-boss",
+        "roomId": "boss",
+        "revealText": "An enormous Moray tears through the overlapping keels.\n\nKeeljaw Moray reveals itself!"
+    },
+    "completionText": "The Keeljaw disappears back into the wrecknest.\n\nShip survives.\n\nBarely."
 }

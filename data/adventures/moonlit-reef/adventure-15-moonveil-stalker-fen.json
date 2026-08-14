@@ -5,23 +5,23 @@
   "regionId": "moonlit-reef",
   "enemyId": "moonveil-stalker",
   "recommendedLevel": 3,
-  "introDiscord": "Moonlit mist clings to a submerged fen where roots hide beneath dark, glassy water.",
-  "introTwitch": "Moonlit mist clings to a submerged fen where roots hide beneath dark, glassy water.",
+  "introDiscord": "Moonlit mist clings to a submerged fen where black water hides tangled roots. Something moves whenever the fog thickens—and stops whenever you look directly at it.",
+  "introTwitch": "Moonlit mist clings to a submerged fen where black water hides tangled roots. Something moves whenever the fog thickens—and stops whenever you look directly at it.",
   "startRoomId": "mistroot-verge",
   "rooms": {
     "mistroot-verge": {
-      "prompt": "Mistroot tangles border a verge whose three trails sink into silver haze.",
+      "prompt": "Mistroot tangles divide three trails. Each disappears into silver haze, and fresh footprints lead down all three despite nobody being visible.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "shrouded-mere",
           "enemyId": "moonveil-stalker",
-          "message": "The water folds around Moonveil Stalker, revealing the creature as it claims the passage."
+          "message": "Two pale eyes appear inside the fog. They vanish. A branch moves behind you. When the eyes return, the Moonveil Stalker is much closer."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "shrouded-mere",
-          "message": "Within Moonveil Stalker Fen, the right path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer rests beneath reeds surrounded by tracks that deliberately circle it. You recover Star Candies while trying not to wonder what was watching the cache.",
           "reward": {
             "min": 45,
             "max": 75
@@ -31,18 +31,18 @@
           "type": "healing",
           "nextRoomId": "shrouded-mere",
           "healAmount": 35,
-          "message": "Beneath an improvised shelter in the surrounding passage, Shizuki left clean bandages and a medicinal flask. Her note reads: \"Veilmoss cordial. For cuts acquired while becoming untraceable.\"",
-          "fullHpMessage": "You leave the medicinal flask along the route untouched for the next injured wanderer."
+          "message": "Shizuki's Veilmoss cordial reads: \"For cuts acquired while becoming untraceable. Also useful when the thing tracing you has claws.\"",
+          "fullHpMessage": "The Veilmoss cordial remains stoppered. You are already at full health, though the tracks around the shelter are less reassuring."
         }
       }
     },
     "shrouded-mere": {
-      "prompt": "Continuing through Moonveil Stalker Fen, you find a shrouded mere reflects no stars, and three channels pass beneath leaning reeds.",
+      "prompt": "A starless mere reflects nothing—not the sky, not the reeds, not you. Three channels slip beneath leaning roots while ripples appear without visible cause.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "veilwater-crossing",
-          "message": "Within Moonveil Stalker Fen, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel hangs from a root above the black water. Something beneath the surface circles while you retrieve Star Candies.",
           "reward": {
             "min": 55,
             "max": 85
@@ -51,37 +51,37 @@
         "right": {
           "type": "empty",
           "nextRoomId": "veilwater-crossing",
-          "message": "One Berry lies wrapped beneath Shizuki's execution-yard journal fragment in the surrounding passage, packed carefully during an escape measured in heartbeats.",
+          "message": "Beneath a weathered page, Shizuki left one Berry and a much newer note: \"I used to think every shadow behind me was one of them. This one actually was. Run.\"",
           "berries": 1
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "veilwater-crossing",
           "enemyId": "moonveil-stalker",
-          "message": "The water folds around Moonveil Stalker, revealing the creature as it claims the passage."
+          "message": "The water ahead remains perfectly still. Your reflection appears anyway. Then it smiles before you do. A Moonveil Stalker rises behind it."
         }
       }
     },
     "veilwater-crossing": {
-      "prompt": "In the depths of Moonveil Stalker Fen, veilwater drifts over old warning stones at a crossing with three obscured routes.",
+      "prompt": "Old warning stones emerge from the mist. Every inscription says some variation of 'do not follow the lights.' Naturally, three faint lights now mark three different routes.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
-          "message": "Moonlight reveals an old sleeping spot along the route. Beside it, Shizuki's restorative bottle says: \"Drink in shadow. Smile when the hunters pass.\"",
-          "fullHpMessage": "The restorative along the route remains beside Shizuki's old sleeping spot; today you are already well."
+          "message": "Shizuki's restorative reads: \"Drink in shadow. Smile when the hunters pass. Confuses them? No. Makes me feel better? Yes.\"",
+          "fullHpMessage": "Shizuki's shadow-side restorative remains unused. At full health, you can save the intimidating smile for the next hunter."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moonveil-stalker",
-          "message": "The water folds around Moonveil Stalker, revealing the creature as it claims the passage."
+          "message": "A shadow slips behind one warning stone. Then another. By the third stone, the Stalker stops pretending you haven't noticed."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonveil Stalker Fen, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache has been hidden beneath one of the warning stones. Inside are Star Candies and a carved message: \"IF YOU CAN READ THIS, YOU IGNORED THE WARNING.\"",
           "reward": {
             "min": 60,
             "max": 95
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Primeval Fenheart",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The drowned roots knot around a black pool at the fen's center. Mist hangs motionless over the water, and every trail behind you has vanished."
     }
   },
-  "bossPromptDiscord": "You reach Primeval Fenheart. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Primeval Fenheart: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Primeval Fenheart. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The fog stops moving.\n\nNo ripples cross the fen.\n\nEvery distant Stalker vanishes at once.\n\nThen something much larger exhales inside the mist.\n\nUse /yes to enter the Fenheart or /no to retreat while you still know which direction is out.",
+  "bossPromptTwitch": "The fog stops moving.\n\nNo ripples cross the fen.\n\nEvery distant Stalker vanishes at once.\n\nThen something much larger exhales inside the mist.\n\nUse !yes to enter the Fenheart or !no to retreat while you still know which direction is out.",
+  "bossRetreatText": "You retreat from the Fenheart before the larger shape reaches the edge of the fog. The mist closes behind you without a sound.",
   "boss": {
     "enemyId": "veilclaw-prime-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Veilclaw Prime reveals itself!"
+    "revealText": "The fog tears open as a massive clawed silhouette emerges from the drowned roots. Veilclaw Prime has been stalking you the entire way."
   },
-  "completionText": "Veilclaw Prime yields to the returning current. Moonveil Stalker Fen settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "Veilclaw Prime disappears back into the deepest mist. Slowly, ordinary sounds return to the fen. A path clears between the roots. You still feel watched, but at least now that seems normal."
 }

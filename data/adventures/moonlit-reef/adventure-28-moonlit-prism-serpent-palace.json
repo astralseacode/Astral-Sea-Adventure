@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "moonlit-prism-serpent",
   "recommendedLevel": 4,
-  "introDiscord": "A palace of prism coral divides moonlight into colors unknown above the sea.",
-  "introTwitch": "A palace of prism coral divides moonlight into colors unknown above the sea.",
+  "introDiscord": "A palace of prism coral divides moonlight into colors that do not seem to exist anywhere else. Every corridor has six reflections, and long Serpents glide through the light leaving copies of themselves behind.",
+  "introTwitch": "A palace of prism coral divides moonlight into colors that do not seem to exist anywhere else. Every corridor has six reflections, and long Serpents glide through the light leaving copies of themselves behind.",
   "startRoomId": "spectrum-gate",
   "rooms": {
     "spectrum-gate": {
-      "prompt": "The spectrum gate scatters shifting bands across three equally radiant halls.",
+      "prompt": "Prism coral frames three entrances beneath the Spectrum Gate. Each route divides into impossible colors while Serpent afterimages glide through the walls.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "refraction-hall",
-          "message": "Within Moonlit Prism Serpent Palace, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel appears red from one angle, blue from another, and completely invisible from a third. You approach from the fourth and recover Star Candies.",
           "reward": {
             "min": 60,
             "max": 90
@@ -25,30 +25,30 @@
           "type": "combat",
           "nextRoomId": "refraction-hall",
           "enemyId": "moonlit-prism-serpent",
-          "message": "The water folds around Moonlit Prism Serpent, revealing the creature as it claims the passage."
+          "message": "One Prism Serpent enters the hall. Seven Serpents appear in the walls. Only one lunges. Very considerate of the other six."
         },
         "forward": {
           "type": "healing",
           "nextRoomId": "refraction-hall",
           "healAmount": 40,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Prismwater elixir. Every color tastes suspicious in a different way.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "Shizuki's Prismwater elixir reads: \"Every color tastes suspicious in a different way. Purple is lying.\"",
+          "fullHpMessage": "The Prismwater elixir remains untouched. You are already at full health, and purple can keep whatever lie it was preparing."
         }
       }
     },
     "refraction-hall": {
-      "prompt": "The route winds deeper through Moonlit Prism Serpent Palace until refraction pillars multiply every movement around three mirrored passages.",
+      "prompt": "Prism pillars multiply every movement around you. Three passages appear as twenty-one. This seems excessive.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "prismcoil-arcade",
-          "message": "Beneath seven overlapping false routes in the surrounding passage, Shizuki hid one real map and one Berry to keep the true trail supplied.",
+          "message": "Seven overlapping maps lie beneath one Berry. Six are labeled 'DECOY.' The seventh is labeled 'ALSO POSSIBLY DECOY.' Shizuki's confidence remains inspiring.",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "prismcoil-arcade",
-          "message": "Within Moonlit Prism Serpent Palace, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache appears behind three false walls. Walking directly toward the least plausible wall somehow works. Inside: Star Candies.",
           "reward": {
             "min": 70,
             "max": 105
@@ -58,30 +58,30 @@
           "type": "combat",
           "nextRoomId": "prismcoil-arcade",
           "enemyId": "moonlit-prism-serpent",
-          "message": "The water folds around Moonlit Prism Serpent, revealing the creature as it claims the passage."
+          "message": "A Serpent reflection passes left. Another passes right. The real Serpent comes from above because apparently mirrors are merely suggestions."
         }
       }
     },
     "prismcoil-arcade": {
-      "prompt": "As Moonlit Prism Serpent Palace grows strangely still, a prismcoil arcade curves through color as three exits trade places in the light.",
+      "prompt": "The arcade curves through shifting color. Three exits trade places every few seconds while Serpents weave through their own afterimages.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moonlit-prism-serpent",
-          "message": "The water folds around Moonlit Prism Serpent, revealing the creature as it claims the passage."
+          "message": "A Serpent coils through a prism beam and splits into six colored copies. Five disappear when they strike. Guessing which one matters becomes urgent."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
-          "message": "Deeper inside Moonlit Prism Serpent Palace, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"Refraction is useful: one pursuer, seven false Shizukis.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Shizuki's bottle reads: \"Refraction trick: one pursuer, seven false Shizukis. Drawback: seven Shizukis all look equally lost.\"",
+          "fullHpMessage": "Shizuki's refraction remedy remains sealed. At full health, seven equally lost versions of you would only complicate matters."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonlit Prism Serpent Palace, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer repeatedly changes color to match the floor. You finally catch it when it turns an extremely unhelpful neon green and recover Star Candies.",
           "reward": {
             "min": 80,
             "max": 120
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Empress Kaleidoscope",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The Palace opens into a central kaleidoscope where every corridor reflects every other. Countless colored coils turn around one empty patch of floor."
     }
   },
-  "bossPromptDiscord": "You reach Empress Kaleidoscope. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Empress Kaleidoscope: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Empress Kaleidoscope. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Every color in the Palace converges into the central chamber.\n\nThe walls reflect one enormous coil.\n\nThen another.\n\nThen dozens.\n\nOnly one shadow touches the floor.\n\nUse /yes to face the Empress or /no to leave before you have to guess which thirty-foot Serpent is real.",
+  "bossPromptTwitch": "Every color in the Palace converges into the central chamber.\n\nThe walls reflect one enormous coil.\n\nThen another.\n\nThen dozens.\n\nOnly one shadow touches the floor.\n\nUse !yes to face the Empress or !no to leave before you have to guess which thirty-foot Serpent is real.",
+  "bossRetreatText": "You leave Empress Kaleidoscope before choosing among the enormous reflected coils. The Palace immediately adds another false corridor behind you.",
   "boss": {
     "enemyId": "prismatic-coil-empress-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Prismatic Coil Empress reveals itself!"
+    "revealText": "The only coil casting a shadow slides from the kaleidoscope walls. The Prismatic Coil Empress reveals herself!"
   },
-  "completionText": "Prismatic Coil Empress yields to the returning current. Moonlit Prism Serpent Palace settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Prismatic Coil Empress withdraws into the Palace's highest prism. The false corridors collapse back into three real ones. Shizuki's maps remain somehow less accurate."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "lanternvine-tangle",
-    "number":  2,
-    "name":  "Lanternvine Tangle",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "lanternvine-crab",
-    "recommendedLevel":  10,
-    "introDiscord":  "Lanternvine Tangle lies ahead, where living rootways beneath drifting fae lights conceal the territory of Lanternvine Crab.",
-    "introTwitch":  "Lanternvine Tangle lies ahead amid living rootways beneath drifting fae lights.",
-    "startRoomId":  "lanternvine-tangle-approach",
-    "rooms":  {
-                  "lanternvine-tangle-approach":  {
-                                                      "prompt":  "At the edge of Lanternvine Tangle, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "lanternvine-tangle-depths",
-                                                                                   "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                   "reward":  {
-                                                                                                  "min":  195,
-                                                                                                  "max":  230
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "lanternvine-tangle-depths",
-                                                                                    "healAmount":  70,
-                                                                                    "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "lanternvine-tangle-depths",
-                                                                                      "enemyId":  "lanternvine-crab",
-                                                                                      "message":  "A shift in the current exposes Lanternvine Crab, which claims the forward route through Lanternvine Tangle."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "lanternvine-tangle-depths":  {
-                                                    "prompt":  "Deeper within Lanternvine Tangle, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "lanternvine-tangle-threshold",
-                                                                                 "enemyId":  "lanternvine-crab",
-                                                                                 "message":  "A shift in the current exposes Lanternvine Crab, which claims the left route through Lanternvine Tangle."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "empty",
-                                                                                  "nextRoomId":  "lanternvine-tangle-threshold",
-                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Lanternvine Tangle. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                  "berries":  1
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "lanternvine-tangle-threshold",
-                                                                                    "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                    "reward":  {
-                                                                                                   "min":  207,
-                                                                                                   "max":  242
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "lanternvine-tangle-threshold":  {
-                                                       "prompt":  "Near the heart of Lanternvine Tangle, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the left route, you discover an offering basket hidden inside a living root.",
-                                                                                    "reward":  {
-                                                                                                   "min":  219,
-                                                                                                   "max":  254
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "enemyId":  "lanternvine-crab",
-                                                                                     "message":  "A shift in the current exposes Lanternvine Crab, which claims the right route through Lanternvine Tangle."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  75,
-                                                                                       "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Luminous Root Knot",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Luminous Root Knot."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Luminous Root Knot. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Luminous Root Knot: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Luminous Root Knot. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "glowroot-clawlord-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Glowroot Clawlord reveals itself!"
-             },
-    "completionText":  "Glowroot Clawlord yields, and the currents beyond Luminous Root Knot open the next route through Whispering Kelp Forest."
+  "id": "lanternvine-tangle",
+  "number": 2,
+  "name": "Lanternvine Tangle",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "lanternvine-crab",
+  "recommendedLevel": 10,
+  "introDiscord": "Lanternvines knot themselves through the forest ahead, glowing softly\nas they curl around roots, shrines, stones, and anything else that stays\nstill too long. Lanternvine Crabs patrol beneath them wearing stolen\nlights like tiny ceremonial armor.",
+  "introTwitch": "Lanternvines knot themselves through the forest ahead, glowing softly\nas they curl around roots, shrines, stones, and anything else that stays\nstill too long. Lanternvine Crabs patrol beneath them wearing stolen\nlights like tiny ceremonial armor.",
+  "startRoomId": "lanternvine-tangle-approach",
+  "rooms": {
+    "lanternvine-tangle-approach": {
+      "prompt": "Three paths disappear beneath loops of glowing vine. Several tendrils\nslowly reach toward your belongings with suspicious interest.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "lanternvine-tangle-depths",
+          "message": "A cluster of lanternvines has grown around an old offering basket.\nPeeling them back reveals Star Candies—and causes three vines to\nimmediately begin growing back over it.",
+          "reward": {
+            "min": 195,
+            "max": 230
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "lanternvine-tangle-depths",
+          "healAmount": 70,
+          "message": "A moonblossom pool sits beneath a root where Shizuki tied every loose\nstrap on her bag into an enormous knot.\n\nHer note reads:\n\n'Vines learned buckles.\n\nThis is a serious escalation.'",
+          "fullHpMessage": "You leave the restorative pool untouched. You're already healthy, and\nyour buckles currently remain your own business."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "lanternvine-tangle-depths",
+          "enemyId": "lanternvine-crab",
+          "message": "A Lanternvine Crab shuffles into the route wearing six glowing tendrils\nlike a crown.\n\nOne vine reaches for your bag.\n\nThe Crab raises both claws as if this theft is somehow official."
+        }
+      }
+    },
+    "lanternvine-tangle-depths": {
+      "prompt": "The Tangle tightens into a maze of living knots. Three routes remain\nopen mostly because the vines haven't finished closing them yet.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "lanternvine-tangle-threshold",
+          "enemyId": "lanternvine-crab",
+          "message": "A Lanternvine Crab is carefully arranging glowing vines around its\nshell.\n\nYou brush one.\n\nThe Crab freezes.\n\nYou have apparently touched the outfit."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "lanternvine-tangle-threshold",
+          "message": "One Berry dangles from a vine beside Shizuki's note:\n\n'Vine stole Berry.\n\nI stole Berry back.\n\nVine stole glove.\n\nNegotiations ongoing.'",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "lanternvine-tangle-threshold",
+          "message": "A shrine coffer sits inside a luminous root knot. The vines politely\nunwrap themselves just enough for you to claim the Star Candies.\n\nThat was suspiciously cooperative.",
+          "reward": {
+            "min": 207,
+            "max": 242
+          }
+        }
+      }
+    },
+    "lanternvine-tangle-threshold": {
+      "prompt": "The lanternvines converge into an enormous glowing knot around three\nfinal passages. Crab tracks cover every root.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "An offering basket has become completely woven into the roots. Inside\nare Star Candies and one button.\n\nShizuki may have lost the negotiations.",
+          "reward": {
+            "min": 219,
+            "max": 254
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "lanternvine-crab",
+          "message": "A Lanternvine Crab lowers itself from the vines upside down.\n\nIt appears very pleased with this entrance.\n\nYou admit nothing."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 75,
+          "message": "Restorative sap sits inside a folded leaf with Shizuki's warning:\n\n'Drink first.\n\nUntangle yourself second.\n\nTrying both simultaneously caused incident.'",
+          "fullHpMessage": "You leave the sap untouched. At full health, you can devote your full\nattention to not becoming part of the landscaping."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Luminous Root Knot",
+      "type": "boss-prompt",
+      "prompt": "Every lanternvine in the chamber begins tightening toward one enormous\nroot knot. Smaller Crabs hurriedly abandon their decorations."
+    }
+  },
+  "bossPromptDiscord": "The vines pull apart just enough to reveal two enormous claws hidden\ninside the Luminous Root Knot.\n\nEvery stolen lantern flares at once.\n\nSomething has apparently been collecting the brightest vines for a very\nlong time.\n\nUse /yes to approach the Luminous Root Knot or /no to let the local\ngardener keep its decorations.",
+  "bossPromptTwitch": "The vines pull apart just enough to reveal two enormous claws hidden\ninside the Luminous Root Knot.\n\nEvery stolen lantern flares at once.\n\nSomething has apparently been collecting the brightest vines for a very\nlong time.\n\nUse !yes to approach the Luminous Root Knot or !no to let the local\ngardener keep its decorations.",
+  "bossRetreatText": "You back away from the glowing knot. The vines slowly close again,\nhiding the enormous claws inside.",
+  "boss": {
+    "enemyId": "glowroot-clawlord-boss",
+    "roomId": "boss",
+    "revealText": "The root knot tears apart as a massive lantern-covered Crab emerges.\n\nGlowroot Clawlord reveals itself!"
+  },
+  "completionText": "\"The Glowroot Clawlord retreats beneath the roots.\n\nThe ordinary Crabs immediately begin collecting the loose lanternvines\nfrom the battlefield.\n\nFashion never rests.\"\n\n\n#################################################################"
 }

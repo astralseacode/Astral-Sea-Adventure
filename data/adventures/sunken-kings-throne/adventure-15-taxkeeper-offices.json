@@ -1,107 +1,107 @@
 {
-    "id":  "taxkeeper-offices",
-    "number":  15,
-    "name":  "Taxkeeper Offices",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "taxkeeper-octopus",
-    "recommendedLevel":  40,
-    "introDiscord":  "Taxkeeper Offices lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Tithekeeper Octopus.",
-    "introTwitch":  "Taxkeeper Offices lies ahead amid flooded courtyards lined with watchful stone nobility.",
-    "startRoomId":  "taxkeeper-offices-approach",
-    "rooms":  {
-                  "taxkeeper-offices-approach":  {
-                                                     "prompt":  "At the edge of Taxkeeper Offices, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "taxkeeper-offices-depths",
-                                                                                  "healAmount":  57,
-                                                                                  "message":  "The left route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "taxkeeper-offices-depths",
-                                                                                   "enemyId":  "taxkeeper-octopus",
-                                                                                   "message":  "A shift in the current exposes Tithekeeper Octopus, which claims the right route through Taxkeeper Offices."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "taxkeeper-offices-depths",
-                                                                                     "message":  "Beyond the forward route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                     "reward":  {
-                                                                                                    "min":  222,
-                                                                                                    "max":  261
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "taxkeeper-offices-depths":  {
-                                                   "prompt":  "Deeper within Taxkeeper Offices, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "taxkeeper-offices-threshold",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Taxkeeper Offices. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "taxkeeper-offices-threshold",
-                                                                                 "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                 "reward":  {
-                                                                                                "min":  234,
-                                                                                                "max":  273
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "taxkeeper-offices-threshold",
-                                                                                   "enemyId":  "taxkeeper-octopus",
-                                                                                   "message":  "A shift in the current exposes Tithekeeper Octopus, which claims the forward route through Taxkeeper Offices."
-                                                                               }
-                                                               }
-                                               },
-                  "taxkeeper-offices-threshold":  {
-                                                      "prompt":  "Near the heart of Taxkeeper Offices, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "taxkeeper-octopus",
-                                                                                   "message":  "A shift in the current exposes Tithekeeper Octopus, which claims the left route through Taxkeeper Offices."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  62,
-                                                                                    "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                      "reward":  {
-                                                                                                     "min":  246,
-                                                                                                     "max":  285
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Treasury Reckoning",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Treasury Reckoning."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Treasury Reckoning. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Treasury Reckoning: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Treasury Reckoning. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "exchequer-krakenet-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Exchequer Krakenet reveals itself!"
-             },
-    "completionText":  "Exchequer Krakenet yields, and the currents beyond Treasury Reckoning open the next route through Sunken King\u0027s Throne."
+    "id": "taxkeeper-offices",
+    "number": 15,
+    "name": "Castle Kitchens",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "taxkeeper-octopus",
+    "recommendedLevel": 40,
+    "introDiscord": "Beyond the chapel lies an enormous royal kitchen.\n\nCopper pots hang from the ceiling, ovens line the walls, banquet carts\nfloat between preparation tables, and several Octopuses have made\nthemselves suspiciously comfortable among the cookware.\n\nShizuki appears to have attempted cooking here.\n\nThere are scorch marks underwater.\n\nDo not ask.",
+    "introTwitch": "Beyond the chapel lies an enormous royal kitchen.\n\nCopper pots hang from the ceiling, ovens line the walls, banquet carts\nfloat between preparation tables, and several Octopuses have made\nthemselves suspiciously comfortable among the cookware.\n\nShizuki appears to have attempted cooking here.\n\nThere are scorch marks underwater.\n\nDo not ask.",
+    "startRoomId": "taxkeeper-offices-approach",
+    "rooms": {
+        "taxkeeper-offices-approach": {
+            "prompt": "Castle Kitchens opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "taxkeeper-offices-depths",
+                    "healAmount": 57,
+                    "message": "A pantry still contains preserved restorative herbs.\n\nShizuki labeled the jar:\n\n'Cooking ingredient.\n\nAlso medicine.\n\nToday we choose medicine.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "taxkeeper-offices-depths",
+                    "enemyId": "taxkeeper-octopus",
+                    "message": "An Octopus rises from inside an enormous soup pot wearing the lid like\na helmet."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "taxkeeper-offices-depths",
+                    "message": "A royal dessert cabinet contains Star Candies.\n\nFinally.\n\nThe important archive.",
+                    "reward": {
+                        "min": 222,
+                        "max": 261
+                    }
+                }
+            }
+        },
+        "taxkeeper-offices-depths": {
+            "prompt": "Deeper within Castle Kitchens, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "taxkeeper-offices-threshold",
+                    "message": "One Berry rests alone in Shizuki's ruined cooking pan.\n\nHer note:\n\n'ROYAL BERRY STEW — ATTEMPT ONE.\n\nIngredients:\nBerry.\n\nInstructions:\nunknown.\n\nResult:\nstill Berry.\n\nCooking successful.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "taxkeeper-offices-threshold",
+                    "message": "A banquet preparation chest contains preserved Star Candies.",
+                    "reward": {
+                        "min": 234,
+                        "max": 273
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "taxkeeper-offices-threshold",
+                    "enemyId": "taxkeeper-octopus",
+                    "message": "An Octopus has claimed an entire rack of cookware.\n\nIt is holding eight utensils.\n\nYou have two hands.\n\nUnfair."
+                }
+            }
+        },
+        "taxkeeper-offices-threshold": {
+            "prompt": "Near Grand Banquet Kitchen, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "taxkeeper-octopus",
+                    "message": "Another Octopus emerges wearing a chef's bowl."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 62,
+                    "message": "Shizuki's restorative bottle reads:\n\n'Cooking accident medicine.\n\nQuantity produced suggests pattern.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A royal dessert trolley still contains sealed Star Candies.",
+                    "reward": {
+                        "min": 246,
+                        "max": 285
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Grand Banquet Kitchen",
+            "type": "boss-prompt",
+            "prompt": "The grand kitchen doors slam open."
+        }
+    },
+    "bossPromptDiscord": "The grand kitchen doors slam open.\n\nPots, pans, ladles, plates, and serving trays begin moving all at once.\n\nAt the center, an enormous Octopus rises from the royal cauldron holding\neight pieces of cookware like ceremonial weapons.\n\nUse /yes to enter the Grand Banquet Kitchen or /no to\nrespect the head chef.",
+    "bossPromptTwitch": "The grand kitchen doors slam open.\n\nPots, pans, ladles, plates, and serving trays begin moving all at once.\n\nAt the center, an enormous Octopus rises from the royal cauldron holding\neight pieces of cookware like ceremonial weapons.\n\nUse !yes to enter the Grand Banquet Kitchen or !no to\nrespect the head chef.",
+    "bossRetreatText": "You withdraw from Grand Banquet Kitchen. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "exchequer-krakenet-boss",
+        "roomId": "boss",
+        "revealText": "Royal Master-Chef Krakenet reveals itself!"
+    },
+    "completionText": "The kitchen settles.\n\nShizuki's final recipe remains pinned to the wall:\n\n'Cooking Is Not Alchemy.\n\nApparently.\n\nStill investigating.'"
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "abysslung-expanse",
-    "number":  15,
-    "name":  "Abysslung Expanse",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "abysslung-manta",
-    "recommendedLevel":  25,
-    "introDiscord":  "Abysslung Expanse lies ahead, where immense scales embedded in unstable coral shelves conceal the territory of Abysslung Manta.",
-    "introTwitch":  "Abysslung Expanse lies ahead amid immense scales embedded in unstable coral shelves.",
-    "startRoomId":  "abysslung-expanse-approach",
-    "rooms":  {
-                  "abysslung-expanse-approach":  {
-                                                     "prompt":  "At the edge of Abysslung Expanse, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "abysslung-expanse-depths",
-                                                                                  "healAmount":  46,
-                                                                                  "message":  "The left route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "abysslung-expanse-depths",
-                                                                                   "enemyId":  "abysslung-manta",
-                                                                                   "message":  "A shift in the current exposes Abysslung Manta, which claims the right route through Abysslung Expanse."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "abysslung-expanse-depths",
-                                                                                     "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                     "reward":  {
-                                                                                                    "min":  170,
-                                                                                                    "max":  209
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "abysslung-expanse-depths":  {
-                                                   "prompt":  "Deeper within Abysslung Expanse, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "abysslung-expanse-threshold",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Abysslung Expanse. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "abysslung-expanse-threshold",
-                                                                                 "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
-                                                                                 "reward":  {
-                                                                                                "min":  182,
-                                                                                                "max":  221
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "abysslung-expanse-threshold",
-                                                                                   "enemyId":  "abysslung-manta",
-                                                                                   "message":  "A shift in the current exposes Abysslung Manta, which claims the forward route through Abysslung Expanse."
-                                                                               }
-                                                               }
-                                               },
-                  "abysslung-expanse-threshold":  {
-                                                      "prompt":  "Near the heart of Abysslung Expanse, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "abysslung-manta",
-                                                                                   "message":  "A shift in the current exposes Abysslung Manta, which claims the left route through Abysslung Expanse."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  51,
-                                                                                    "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
-                                                                                      "reward":  {
-                                                                                                     "min":  194,
-                                                                                                     "max":  233
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Voidspan",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Voidspan."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Voidspan. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Voidspan: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Voidspan. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "gravewing-manta-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Gravewing Manta reveals itself!"
-             },
-    "completionText":  "Gravewing Manta yields, and the currents beyond Voidspan open the next route through Leviathan\u0027s Wake."
+    "id": "abysslung-expanse",
+    "number": 15,
+    "name": "Abysslung Expanse",
+    "regionId": "leviathans-wake",
+    "enemyId": "abysslung-manta",
+    "recommendedLevel": 25,
+    "introDiscord": "The graveyard opens into a vast dark expanse.\n\nLeviathan skeletons hang over the abyss while Abysslung Mantas glide\nbetween them like birds between ruined towers.",
+    "introTwitch": "The graveyard opens into a vast dark expanse.\n\nLeviathan skeletons hang over the abyss while Abysslung Mantas glide\nbetween them like birds between ruined towers.",
+    "startRoomId": "abysslung-expanse-approach",
+    "rooms": {
+        "abysslung-expanse-approach": {
+            "prompt": "Three narrow routes cross the immense open water.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "abysslung-expanse-depths",
+                    "healAmount": 46,
+                    "message": "A calm pocket rests behind a hanging rib.\n\nShizuki wrote:\n\n'Looked down.\n\nCould not see bottom.\n\nWill not be doing that repeatedly.\n\nUpdate:\n\ndid it repeatedly.'",
+                    "fullHpMessage": "You leave the restorative untouched."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "abysslung-expanse-depths",
+                    "enemyId": "abysslung-manta",
+                    "message": "An Abysslung Manta rises silently from below."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "abysslung-expanse-depths",
+                    "message": "A navigator's chest hangs from wreckage caught in the bones.",
+                    "reward": {
+                        "min": 170,
+                        "max": 209
+                    }
+                }
+            }
+        },
+        "abysslung-expanse-depths": {
+            "prompt": "Skeletons fade into darkness around three paths.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "abysslung-expanse-threshold",
+                    "message": "One Berry rests beside Shizuki's observation log:\n\n'Glimmer dropped pebble.\n\nWaited.\n\nDid not hear bottom.\n\nGlimmer would like second pebble.\n\nRequest denied.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "abysslung-expanse-threshold",
+                    "message": "A wrecked strongbox rests behind a rib.",
+                    "reward": {
+                        "min": 182,
+                        "max": 221
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "abysslung-expanse-threshold",
+                    "enemyId": "abysslung-manta",
+                    "message": "An Abysslung Manta passes beneath you.\n\nThen turns upward."
+                }
+            }
+        },
+        "abysslung-expanse-threshold": {
+            "prompt": "Voidspan crosses between two enormous skeletons.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "abysslung-manta",
+                    "message": "A Manta rises from the darkness with almost no warning."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 51,
+                    "message": "Shizuki's medicine reads:\n\n'For abyss-related injuries.\n\nDoes not treat abyss-related anxiety.'",
+                    "fullHpMessage": "You leave the medicine.\n\nThe second condition remains untreated."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "Star Candies rest inside a wreck caught between two ribs.",
+                    "reward": {
+                        "min": 194,
+                        "max": 233
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Voidspan",
+            "type": "boss-prompt",
+            "prompt": "The smaller Mantas vanish below."
+        }
+    },
+    "bossPromptDiscord": "The smaller Mantas vanish below.\n\nSomething enormous spreads its wings beneath Voidspan.\n\nFor several seconds it blocks what little light reaches the abyss.\n\nUse /yes to cross Voidspan or /no to stay somewhere the darkness has\nfewer wings.",
+    "bossPromptTwitch": "The smaller Mantas vanish below.\n\nSomething enormous spreads its wings beneath Voidspan.\n\nFor several seconds it blocks what little light reaches the abyss.\n\nUse !yes to cross Voidspan or !no to stay somewhere the darkness has\nfewer wings.",
+    "bossRetreatText": "You retreat toward solid bone.\n\nThat sentence should not be comforting.",
+    "boss": {
+        "enemyId": "gravewing-manta-boss",
+        "roomId": "boss",
+        "revealText": "An enormous dark Manta rises from the abyss.\n\nGravewing Manta reveals itself!"
+    },
+    "completionText": "The Gravewing sinks into the darkness.\n\nGlimmer's hypothetical second pebble remains denied."
 }

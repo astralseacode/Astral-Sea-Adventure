@@ -1,107 +1,107 @@
 {
-    "id":  "regal-fang-canal",
-    "number":  16,
-    "name":  "Regal Fang Canal",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "regal-fang-moray",
-    "recommendedLevel":  40,
-    "introDiscord":  "Regal Fang Canal lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Regal Fang Moray.",
-    "introTwitch":  "Regal Fang Canal lies ahead amid drowned palace colonnades guarded by broken royal seals.",
-    "startRoomId":  "regal-fang-canal-approach",
-    "rooms":  {
-                  "regal-fang-canal-approach":  {
-                                                    "prompt":  "At the edge of Regal Fang Canal, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "regal-fang-canal-depths",
-                                                                                 "enemyId":  "regal-fang-moray",
-                                                                                 "message":  "A shift in the current exposes Regal Fang Moray, which claims the left route through Regal Fang Canal."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "empty",
-                                                                                  "nextRoomId":  "regal-fang-canal-depths",
-                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Regal Fang Canal. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                  "berries":  1
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "regal-fang-canal-depths",
-                                                                                    "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                    "reward":  {
-                                                                                                   "min":  213,
-                                                                                                   "max":  253
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "regal-fang-canal-depths":  {
-                                                  "prompt":  "Deeper within Regal Fang Canal, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "healing",
-                                                                               "nextRoomId":  "regal-fang-canal-threshold",
-                                                                               "healAmount":  53,
-                                                                               "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                               "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "regal-fang-canal-threshold",
-                                                                                "enemyId":  "regal-fang-moray",
-                                                                                "message":  "A shift in the current exposes Regal Fang Moray, which claims the right route through Regal Fang Canal."
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "regal-fang-canal-threshold",
-                                                                                  "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                  "reward":  {
-                                                                                                 "min":  225,
-                                                                                                 "max":  265
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "regal-fang-canal-threshold":  {
-                                                     "prompt":  "Near the heart of Regal Fang Canal, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "message":  "Beyond the left route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                  "reward":  {
-                                                                                                 "min":  237,
-                                                                                                 "max":  277
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  58,
-                                                                                   "message":  "The right route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "enemyId":  "regal-fang-moray",
-                                                                                     "message":  "A shift in the current exposes Regal Fang Moray, which claims the forward route through Regal Fang Canal."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "King\u0027s Hunting Canal",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of King\u0027s Hunting Canal."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter King\u0027s Hunting Canal. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "King\u0027s Hunting Canal: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from King\u0027s Hunting Canal. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "crown-fang-moray-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Crown-Fang Moray reveals itself!"
-             },
-    "completionText":  "Crown-Fang Moray yields, and the currents beyond King\u0027s Hunting Canal open the next route through Sunken King\u0027s Throne."
+    "id": "regal-fang-canal",
+    "number": 16,
+    "name": "Regal Fang Canal",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "regal-fang-moray",
+    "recommendedLevel": 40,
+    "introDiscord": "A narrow royal canal passes beneath old hunting lodges and decorative\nbridges.\n\nRegal Fang Morays have inherited the king's private waterways.",
+    "introTwitch": "A narrow royal canal passes beneath old hunting lodges and decorative\nbridges.\n\nRegal Fang Morays have inherited the king's private waterways.",
+    "startRoomId": "regal-fang-canal-approach",
+    "rooms": {
+        "regal-fang-canal-approach": {
+            "prompt": "Regal Fang Canal opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "regal-fang-canal-depths",
+                    "enemyId": "regal-fang-moray",
+                    "message": "A Regal Fang Moray emerges beneath a bridge."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "regal-fang-canal-depths",
+                    "message": "One Berry rests beside Shizuki's little fishing rod.\n\n'Fishing attempt:\n\nMoray tried catching ME.\n\nSport cancelled.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "regal-fang-canal-depths",
+                    "message": "A hunting lodge chest contains Star Candies.",
+                    "reward": {
+                        "min": 213,
+                        "max": 253
+                    }
+                }
+            }
+        },
+        "regal-fang-canal-depths": {
+            "prompt": "Deeper within Regal Fang Canal, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "regal-fang-canal-threshold",
+                    "healAmount": 53,
+                    "message": "An old lodge cabinet contains restorative supplies.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "regal-fang-canal-threshold",
+                    "enemyId": "regal-fang-moray",
+                    "message": "A Moray circles beneath the canal."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "regal-fang-canal-threshold",
+                    "message": "A royal tackle chest contains Star Candies instead of bait.",
+                    "reward": {
+                        "min": 225,
+                        "max": 265
+                    }
+                }
+            }
+        },
+        "regal-fang-canal-threshold": {
+            "prompt": "Near King's Hunting Canal, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A bridge alcove hides a decorative coffer.",
+                    "reward": {
+                        "min": 237,
+                        "max": 277
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 58,
+                    "message": "Shizuki's bottle says:\n\n'Fishing recovery.\n\nNo fish acquired.\n\nOne boot lost.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "regal-fang-moray",
+                    "message": "A Regal Fang Moray guards King's Hunting Canal."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "King's Hunting Canal",
+            "type": "boss-prompt",
+            "prompt": "The canal ripples beneath a crown-shaped bridge."
+        }
+    },
+    "bossPromptDiscord": "The canal ripples beneath a crown-shaped bridge.\n\nOne enormous jaw passes underneath.\n\nUse /yes to continue the royal fishing expedition or /no\nto preserve your remaining footwear.",
+    "bossPromptTwitch": "The canal ripples beneath a crown-shaped bridge.\n\nOne enormous jaw passes underneath.\n\nUse !yes to continue the royal fishing expedition or !no\nto preserve your remaining footwear.",
+    "bossRetreatText": "You withdraw from King's Hunting Canal. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "crown-fang-moray-boss",
+        "roomId": "boss",
+        "revealText": "Crown-Fang Moray reveals itself!"
+    },
+    "completionText": "The Crown-Fang retreats beneath the bridge.\n\nShizuki's missing boot is not recovered.\n\nThe case grows cold."
 }

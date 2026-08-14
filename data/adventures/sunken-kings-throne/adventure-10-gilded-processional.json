@@ -1,107 +1,107 @@
 {
-    "id":  "gilded-processional",
-    "number":  10,
-    "name":  "Gilded Processional",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "gilded-armorfish",
-    "recommendedLevel":  36,
-    "introDiscord":  "Gilded Processional lies ahead, where drowned palace colonnades guarded by broken royal seals conceal the territory of Gilded Platefin.",
-    "introTwitch":  "Gilded Processional lies ahead amid drowned palace colonnades guarded by broken royal seals.",
-    "startRoomId":  "gilded-processional-approach",
-    "rooms":  {
-                  "gilded-processional-approach":  {
-                                                       "prompt":  "At the edge of Gilded Processional, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "gilded-processional-depths",
-                                                                                    "enemyId":  "gilded-armorfish",
-                                                                                    "message":  "A shift in the current exposes Gilded Platefin, which claims the left route through Gilded Processional."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "empty",
-                                                                                     "nextRoomId":  "gilded-processional-depths",
-                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Gilded Processional. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                     "berries":  1
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "gilded-processional-depths",
-                                                                                       "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                       "reward":  {
-                                                                                                      "min":  268,
-                                                                                                      "max":  306
-                                                                                                  }
-                                                                                   }
-                                                                   }
-                                                   },
-                  "gilded-processional-depths":  {
-                                                     "prompt":  "Deeper within Gilded Processional, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "gilded-processional-threshold",
-                                                                                  "healAmount":  76,
-                                                                                  "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "gilded-processional-threshold",
-                                                                                   "enemyId":  "gilded-armorfish",
-                                                                                   "message":  "A shift in the current exposes Gilded Platefin, which claims the right route through Gilded Processional."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "gilded-processional-threshold",
-                                                                                     "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                     "reward":  {
-                                                                                                    "min":  280,
-                                                                                                    "max":  318
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "gilded-processional-threshold":  {
-                                                        "prompt":  "Near the heart of Gilded Processional, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the left route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                     "reward":  {
-                                                                                                    "min":  292,
-                                                                                                    "max":  330
-                                                                                                }
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "healAmount":  81,
-                                                                                      "message":  "The right route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "combat",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "enemyId":  "gilded-armorfish",
-                                                                                        "message":  "A shift in the current exposes Gilded Platefin, which claims the forward route through Gilded Processional."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Golden Review Court",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Golden Review Court."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Golden Review Court. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Golden Review Court: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Golden Review Court. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "auric-platefish-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Auric Platefish reveals itself!"
-             },
-    "completionText":  "Auric Platefish yields, and the currents beyond Golden Review Court open the next route through Sunken King\u0027s Throne."
+    "id": "gilded-processional",
+    "number": 10,
+    "name": "Gilded Processional",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "gilded-armorfish",
+    "recommendedLevel": 36,
+    "introDiscord": "A grand processional road stretches between golden statues.\n\nGilded Platefish weave through discarded ceremonial armor like they're\nparticipating in their own parade.",
+    "introTwitch": "A grand processional road stretches between golden statues.\n\nGilded Platefish weave through discarded ceremonial armor like they're\nparticipating in their own parade.",
+    "startRoomId": "gilded-processional-approach",
+    "rooms": {
+        "gilded-processional-approach": {
+            "prompt": "Gilded Processional opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "gilded-processional-depths",
+                    "enemyId": "gilded-armorfish",
+                    "message": "A Gilded Platefin charges down the parade route wearing a piece of\nceremonial armor."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "gilded-processional-depths",
+                    "message": "One Berry rests inside a crown-shaped parade float.\n\nShizuki wrote:\n\n'Declared myself parade queen.\n\nAttendance:\n\nGlimmer.\n\nThree fish.\n\nExcellent turnout.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "gilded-processional-depths",
+                    "message": "A ceremonial parade chest contains Star Candies.",
+                    "reward": {
+                        "min": 268,
+                        "max": 306
+                    }
+                }
+            }
+        },
+        "gilded-processional-depths": {
+            "prompt": "Deeper within Gilded Processional, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "gilded-processional-threshold",
+                    "healAmount": 76,
+                    "message": "A royal reviewing stand contains restorative refreshments.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "gilded-processional-threshold",
+                    "enemyId": "gilded-armorfish",
+                    "message": "A Platefin crosses the processional route."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "gilded-processional-threshold",
+                    "message": "A gilded offering box contains Star Candies.",
+                    "reward": {
+                        "min": 280,
+                        "max": 318
+                    }
+                }
+            }
+        },
+        "gilded-processional-threshold": {
+            "prompt": "Near Golden Review Court, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A parade marshal's chest survives beneath fallen bunting.",
+                    "reward": {
+                        "min": 292,
+                        "max": 330
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 81,
+                    "message": "Shizuki's bottle:\n\n'Parade queen recovery.\n\nBeing royalty exhausting.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "gilded-armorfish",
+                    "message": "A Gilded Platefin patrols Golden Review Court."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Golden Review Court",
+            "type": "boss-prompt",
+            "prompt": "The golden reviewing platform lights up."
+        }
+    },
+    "bossPromptDiscord": "The golden reviewing platform lights up.\n\nOne enormous armored fish takes position in front of the royal seats.\n\nUse /yes to continue the parade or /no to abdicate as\nparade royalty.",
+    "bossPromptTwitch": "The golden reviewing platform lights up.\n\nOne enormous armored fish takes position in front of the royal seats.\n\nUse !yes to continue the parade or !no to abdicate as\nparade royalty.",
+    "bossRetreatText": "You withdraw from Golden Review Court. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "auric-platefish-boss",
+        "roomId": "boss",
+        "revealText": "Auric Platefish reveals itself!"
+    },
+    "completionText": "The parade route opens.\n\nShizuki's float remains lodged in a fountain.\n\nA monument to leadership."
 }

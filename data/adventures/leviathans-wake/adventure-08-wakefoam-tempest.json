@@ -1,107 +1,107 @@
 {
-    "id":  "wakefoam-tempest",
-    "number":  8,
-    "name":  "Wakefoam Tempest",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "wakefoam-medusa",
-    "recommendedLevel":  22,
-    "introDiscord":  "Wakefoam Tempest lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Wakefoam Medusa.",
-    "introTwitch":  "Wakefoam Tempest lies ahead amid pressure-scarred trenches beside wrecked hulls.",
-    "startRoomId":  "wakefoam-tempest-approach",
-    "rooms":  {
-                  "wakefoam-tempest-approach":  {
-                                                    "prompt":  "At the edge of Wakefoam Tempest, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "wakefoam-tempest-depths",
-                                                                                 "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                                 "reward":  {
-                                                                                                "min":  217,
-                                                                                                "max":  254
-                                                                                            }
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "wakefoam-tempest-depths",
-                                                                                  "healAmount":  67,
-                                                                                  "message":  "The right route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "wakefoam-tempest-depths",
-                                                                                    "enemyId":  "wakefoam-medusa",
-                                                                                    "message":  "A shift in the current exposes Wakefoam Medusa, which claims the forward route through Wakefoam Tempest."
-                                                                                }
-                                                                }
-                                                },
-                  "wakefoam-tempest-depths":  {
-                                                  "prompt":  "Deeper within Wakefoam Tempest, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "wakefoam-tempest-threshold",
-                                                                               "enemyId":  "wakefoam-medusa",
-                                                                               "message":  "A shift in the current exposes Wakefoam Medusa, which claims the left route through Wakefoam Tempest."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "wakefoam-tempest-threshold",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Wakefoam Tempest. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "wakefoam-tempest-threshold",
-                                                                                  "message":  "Beyond the forward route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                  "reward":  {
-                                                                                                 "min":  229,
-                                                                                                 "max":  266
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "wakefoam-tempest-threshold":  {
-                                                     "prompt":  "Near the heart of Wakefoam Tempest, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "message":  "Beyond the left route, you discover a strongbox torn from a century-old wreck.",
-                                                                                  "reward":  {
-                                                                                                 "min":  241,
-                                                                                                 "max":  278
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "wakefoam-medusa",
-                                                                                   "message":  "A shift in the current exposes Wakefoam Medusa, which claims the right route through Wakefoam Tempest."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  72,
-                                                                                     "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "Foaming Thunderwell",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Foaming Thunderwell."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Foaming Thunderwell. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Foaming Thunderwell: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Foaming Thunderwell. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "stormbell-medusa-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Stormbell Medusa reveals itself!"
-             },
-    "completionText":  "Stormbell Medusa yields, and the currents beyond Foaming Thunderwell open the next route through Leviathan\u0027s Wake."
+    "id": "wakefoam-tempest",
+    "number": 8,
+    "name": "Wakefoam Tempest",
+    "regionId": "leviathans-wake",
+    "enemyId": "wakefoam-medusa",
+    "recommendedLevel": 22,
+    "introDiscord": "Foaming currents erupt through the Leviathan graveyard like underwater\nstorms.\n\nWakefoam Medusas drift through them like living storm clouds.",
+    "introTwitch": "Foaming currents erupt through the Leviathan graveyard like underwater\nstorms.\n\nWakefoam Medusas drift through them like living storm clouds.",
+    "startRoomId": "wakefoam-tempest-approach",
+    "rooms": {
+        "wakefoam-tempest-approach": {
+            "prompt": "Three routes vanish beneath rolling curtains of white wakefoam.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "wakefoam-tempest-depths",
+                    "message": "Star Candies have collected beneath a scale where the foam cannot reach.",
+                    "reward": {
+                        "min": 217,
+                        "max": 254
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "wakefoam-tempest-depths",
+                    "healAmount": 67,
+                    "message": "Shizuki's restorative bottle sits beneath a rib:\n\n'Foam looks soft.\n\nFoam is NOT soft.\n\nScientific discovery achieved face-first.'",
+                    "fullHpMessage": "You leave the medicine untouched and benefit from previous research."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "wakefoam-tempest-depths",
+                    "enemyId": "wakefoam-medusa",
+                    "message": "A Wakefoam Medusa descends through the white current like a thundercloud\nwith tentacles."
+                }
+            }
+        },
+        "wakefoam-tempest-depths": {
+            "prompt": "The storm grows louder as three paths cross between enormous bones.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "wakefoam-tempest-threshold",
+                    "enemyId": "wakefoam-medusa",
+                    "message": "A Medusa flashes inside the foam.\n\nOne heartbeat later, it emerges directly ahead."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "wakefoam-tempest-threshold",
+                    "message": "One Berry rests inside Shizuki's waterproof hood.\n\n'Attempted foam hat.\n\nGlimmer said no.\n\nGlimmer was correct.\n\nRecording this reluctantly.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "wakefoam-tempest-threshold",
+                    "message": "A navigator's chest glints beneath the storm.",
+                    "reward": {
+                        "min": 229,
+                        "max": 266
+                    }
+                }
+            }
+        },
+        "wakefoam-tempest-threshold": {
+            "prompt": "Foaming Thunderwell churns where an ancient ribcage traps the current.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A wrecked strongbox spins inside a small eddy.",
+                    "reward": {
+                        "min": 241,
+                        "max": 278
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "wakefoam-medusa",
+                    "message": "A Wakefoam Medusa drops from the foam overhead.\n\nWeather has become hostile."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 72,
+                    "message": "Shizuki's bottle reads:\n\n'Storm medicine.\n\nAlso pride medicine.\n\nPride not included.'",
+                    "fullHpMessage": "You leave both physical and theoretical medicine behind."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Foaming Thunderwell",
+            "type": "boss-prompt",
+            "prompt": "Every Wakefoam Medusa rises out of Thunderwell."
+        }
+    },
+    "bossPromptDiscord": "Every Wakefoam Medusa rises out of Thunderwell.\n\nOne enormous bell-shaped shadow remains beneath the storm.\n\nUse /yes to enter Foaming Thunderwell or /no to wait for weather that\ncontains fewer tentacles.",
+    "bossPromptTwitch": "Every Wakefoam Medusa rises out of Thunderwell.\n\nOne enormous bell-shaped shadow remains beneath the storm.\n\nUse !yes to enter Foaming Thunderwell or !no to wait for weather that\ncontains fewer tentacles.",
+    "bossRetreatText": "You retreat beyond the storm current.",
+    "boss": {
+        "enemyId": "stormbell-medusa-boss",
+        "roomId": "boss",
+        "revealText": "The wakefoam flashes white as an enormous Medusa descends.\n\nStormbell Medusa reveals itself!"
+    },
+    "completionText": "The Stormbell rises through the foam.\n\nThe ancient bones emerge from the calming current like ruined towers."
 }

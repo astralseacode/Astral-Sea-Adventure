@@ -1,0 +1,107 @@
+{
+    "id": "the-kings-festival",
+    "number": 30,
+    "name": "The King's Festival",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "festival-crown-guardian",
+    "recommendedLevel": 50,
+    "introDiscord": "The throne doors open.\n\nYou expect a dark throne room.\n\nInstead—\n\nlanterns ignite.\n\nHundreds.\n\nRoyal banners unfurl from the ceiling.\n\nOld festival mechanisms wake throughout the palace.\n\nMusic echoes through halls that have been silent for centuries.\n\nThe final chamber is not a tomb.\n\nIt is a celebration.\n\nThe kingdom's last preserved festival has begun.",
+    "introTwitch": "The throne doors open.\n\nYou expect a dark throne room.\n\nInstead—\n\nlanterns ignite.\n\nHundreds.\n\nRoyal banners unfurl from the ceiling.\n\nOld festival mechanisms wake throughout the palace.\n\nMusic echoes through halls that have been silent for centuries.\n\nThe final chamber is not a tomb.\n\nIt is a celebration.\n\nThe kingdom's last preserved festival has begun.",
+    "startRoomId": "the-kings-festival-hall",
+    "rooms": {
+        "the-kings-festival-hall": {
+            "prompt": "The King's Festival opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "the-kings-festival-court",
+                    "message": "One Berry rests on the grandest table in the entire palace.\n\nA place card beside it reads:\n\nHER ROYAL MAJESTY\nSHIZUKI OF HOUSE BERRY\n\nBelow it, in smaller handwriting:\n\n'I made the card myself.\n\nRoyal appointment remains pending.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "the-kings-festival-court",
+                    "message": "The royal festival prize table still holds Star Candies beneath ribbons,\ntiny crowns, carved toys, and faded medals from games played centuries\nago.",
+                    "reward": {
+                        "min": 85,
+                        "max": 129
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "the-kings-festival-court",
+                    "enemyId": "festival-crown-guardian",
+                    "message": "A Festival Crown Guardian steps beneath the lanterns.\n\nIts armor is polished.\n\nIts crown is crooked.\n\nFor some reason, that makes it considerably more charming."
+                }
+            }
+        },
+        "the-kings-festival-court": {
+            "prompt": "Deeper within The King's Festival, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "the-kings-festival-throne",
+                    "enemyId": "festival-crown-guardian",
+                    "message": "A Crown Guardian steps from beneath the royal banners and raises its\nceremonial weapon."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "the-kings-festival-throne",
+                    "healAmount": 0,
+                    "message": "A festival fountain still flows beside Shizuki and Glimmer's old camp.\n\nHer note reads:\n\n'WE FOUND THE THRONE.\n\nCelebrated by immediately leaving throne room to try festival games.\n\nPriorities.'",
+                    "fullHpMessage": "You leave the fountain untouched.\n\nYou're already ready for the final celebration."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "the-kings-festival-throne",
+                    "message": "A royal prize coffer opens beneath a festival arch.\n\nInside are Star Candies and one tiny paper crown.\n\nShizuki's handwriting:\n\n'Wear it.\n\nTrust me.'",
+                    "reward": {
+                        "min": 97,
+                        "max": 141
+                    }
+                }
+            }
+        },
+        "the-kings-festival-throne": {
+            "prompt": "Near The Festival Throne, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "An old royal gift chest contains Star Candies and tokens from every\ndistrict you crossed:\n\na garden ribbon.\n\na tournament medal.\n\na theater mask.\n\na tiny animal carving.\n\na festival bell.\n\nThe kingdom fits inside one little box.",
+                    "reward": {
+                        "min": 109,
+                        "max": 153
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "festival-crown-guardian",
+                    "message": "The final Crown Guardian steps before the throne.\n\nIt raises its weapon.\n\nThen performs an elaborate ceremonial bow.\n\nYou bow back.\n\nThe duel begins.\n\nRoyal manners maintained."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 5,
+                    "message": "Beside the throne rests Shizuki's last restorative bottle in Sunken\nKing's Throne.\n\nHer final kingdom note reads:\n\n'If you're reading this, you made it.\n\nWe explored the markets.\n\nGot lost in the palace.\n\nWent shopping.\n\nDanced badly.\n\nInvaded a kitchen.\n\nNamed several animals.\n\nCheated at festival games.\n\nGlimmer cheated MORE.\n\nAnd yes—\n\nI found the throne.\n\nEventually.\n\nRest up.\n\nThe best part is next.'",
+                    "fullHpMessage": "You leave Shizuki's final restorative beside the throne.\n\nYou're already ready."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "The Festival Throne",
+            "type": "boss-prompt",
+            "prompt": "The palace bells ring.\n\nEvery lantern in Sunken King's Throne ignites at once.\n\nThe celebration freezes.\n\nA figure appears before the throne.\n\nNot flesh.\n\nNot a Revenant.\n\nA memory preserved by the palace itself.\n\nA crown settles upon its head."
+        }
+    },
+    "bossPromptDiscord": "The Festival Throne shines beneath a thousand lanterns.\n\nA royal memory takes shape at its foot.\n\nFor one moment, the kingdom around you is no longer ruined.\n\nThe markets are full.\n\nThe gardens bloom.\n\nThe ballroom dances.\n\nThe tournament stands cheer.\n\nThe theater curtains rise.\n\nFestival Street glows.\n\nAnd upon the throne sits the king whose kingdom you've spent this entire\njourney getting to know.\n\nThe memory stands.\n\nRaises a ceremonial weapon.\n\nThen bows.\n\nOne final royal challenge.\n\nUse /yes to accept the King's Festival or /no to let the celebration\nwait a little longer.",
+    "bossPromptTwitch": "The Festival Throne shines beneath a thousand lanterns.\n\nA royal memory takes shape at its foot.\n\nFor one moment, the kingdom around you is no longer ruined.\n\nThe markets are full.\n\nThe gardens bloom.\n\nThe ballroom dances.\n\nThe tournament stands cheer.\n\nThe theater curtains rise.\n\nFestival Street glows.\n\nAnd upon the throne sits the king whose kingdom you've spent this entire\njourney getting to know.\n\nThe memory stands.\n\nRaises a ceremonial weapon.\n\nThen bows.\n\nOne final royal challenge.\n\nUse !yes to accept the King's Festival or !no to let the celebration\nwait a little longer.",
+    "bossRetreatText": "You step back from the Festival Throne.\n\nThe royal memory lowers its weapon.\n\nThe lanterns remain lit.\n\nThe celebration will wait.",
+    "boss": {
+        "enemyId": "memory-of-the-sunken-king-boss",
+        "roomId": "boss",
+        "revealText": "The palace bells ring again.\n\nMoonlight pours through the broken ceiling.\n\nThe royal memory raises its crown as festival banners sweep through the\nthrone room.\n\nThe Memory of the Sunken King reveals itself!"
+    },
+    "completionText": "The final strike lands.\n\nThe Sunken King's memory lowers its weapon.\n\nFor one long moment, nothing happens.\n\nThen—\n\nit laughs.\n\nNot mockingly.\n\nNot bitterly.\n\nJoyfully.\n\nThe memory returns its weapon to its side and bows.\n\nEvery lantern in the kingdom bursts into light.\n\nThe palace changes around you.\n\nNot permanently.\n\nJust a memory.\n\nBut for a few impossible moments, Sunken King's Throne lives again.\n\nYou see Crownmarket Square filled with merchants.\n\nThe fountains running.\n\nRoyal horses crossing the stables.\n\nJousting crowds cheering.\n\nServants carrying ridiculous amounts of food from the kitchens.\n\nMusicians tuning inside the theater.\n\nChildren racing through the hedge maze.\n\nGuests crowding the banquet hall.\n\nFestival Street blazing with lanterns.\n\nA kingdom.\n\nNot records.\n\nNot laws.\n\nNot treaties.\n\nPeople.\n\nThen the memory begins fading.\n\nThe market empties.\n\nThe banners grow still.\n\nThe palace returns to the sea.\n\nBut the festival lanterns remain.\n\nOne final journal page rests on the throne.\n\nShizuki's handwriting:\n\n'Best kingdom ever.\n\nOfficial review:\n\nMarkets: ★★★★★\nGardens: ★★★★★\nBallroom: ★★★★★\nKitchen: dangerous but ★★★★★\nJousting: I won so ★★★★★\nFestival: ★★★★★★★★★★★\n\nGlimmer says that's too many stars.\n\nGlimmer is wrong.\n\n...\n\nWe thought this was the end of the road.\n\nIt isn't.\n\nThere's something strange past the palace.\n\nThe current doesn't feel like the others.\n\nIt feels like...\n\neverywhere.\n\nGlimmer already went through.\n\nObviously.\n\nSo I guess we're going too~\n\nHEY! WAIT FOR ME!'\n\nBehind the throne, a passage opens.\n\nNot stone.\n\nNot coral.\n\nNot root.\n\nA doorway filled with stars.\n\nThrough it, you can glimpse places that should not exist beside one\nanother:\n\nMoonlit Reef.\n\nStarfall Trench.\n\nWhispering Kelp Forest.\n\nLeviathan's Wake.\n\nThe Sunken Kingdom.\n\nAll reflected in the same impossible water.\n\nThe route to the Astral Nexus is open.\n\nSunken King's Throne is complete."
+}

@@ -1,107 +1,107 @@
 {
-    "id":  "currentbreaker-run",
-    "number":  5,
-    "name":  "Currentbreaker Run",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "currentbreaker-shark",
-    "recommendedLevel":  21,
-    "introDiscord":  "Currentbreaker Run lies ahead, where pressure-scarred trenches beside wrecked hulls conceal the territory of Currentbreaker Shark.",
-    "introTwitch":  "Currentbreaker Run lies ahead amid pressure-scarred trenches beside wrecked hulls.",
-    "startRoomId":  "currentbreaker-run-approach",
-    "rooms":  {
-                  "currentbreaker-run-approach":  {
-                                                      "prompt":  "At the edge of Currentbreaker Run, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "currentbreaker-run-depths",
-                                                                                   "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                                   "reward":  {
-                                                                                                  "min":  238,
-                                                                                                  "max":  274
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "currentbreaker-run-depths",
-                                                                                    "enemyId":  "currentbreaker-shark",
-                                                                                    "message":  "A shift in the current exposes Currentbreaker Shark, which claims the right route through Currentbreaker Run."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "currentbreaker-run-depths",
-                                                                                      "healAmount":  76,
-                                                                                      "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "currentbreaker-run-depths":  {
-                                                    "prompt":  "Deeper within Currentbreaker Run, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "currentbreaker-run-threshold",
-                                                                                 "enemyId":  "currentbreaker-shark",
-                                                                                 "message":  "A shift in the current exposes Currentbreaker Shark, which claims the left route through Currentbreaker Run."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "currentbreaker-run-threshold",
-                                                                                  "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                  "reward":  {
-                                                                                                 "min":  250,
-                                                                                                 "max":  286
-                                                                                             }
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "empty",
-                                                                                    "nextRoomId":  "currentbreaker-run-threshold",
-                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Currentbreaker Run. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                    "berries":  1
-                                                                                }
-                                                                }
-                                                },
-                  "currentbreaker-run-threshold":  {
-                                                       "prompt":  "Near the heart of Currentbreaker Run, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  81,
-                                                                                    "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "enemyId":  "currentbreaker-shark",
-                                                                                     "message":  "A shift in the current exposes Currentbreaker Shark, which claims the right route through Currentbreaker Run."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
-                                                                                       "reward":  {
-                                                                                                      "min":  262,
-                                                                                                      "max":  298
-                                                                                                  }
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Breaker Crown",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Breaker Crown."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Breaker Crown. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Breaker Crown: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Breaker Crown. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "maelstrom-apex-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Maelstrom Apex reveals itself!"
-             },
-    "completionText":  "Maelstrom Apex yields, and the currents beyond Breaker Crown open the next route through Leviathan\u0027s Wake."
+    "id": "currentbreaker-run",
+    "number": 5,
+    "name": "Currentbreaker Run",
+    "regionId": "leviathans-wake",
+    "enemyId": "currentbreaker-shark",
+    "recommendedLevel": 21,
+    "introDiscord": "A permanent current races along the groove once carved by a passing\nLeviathan.\n\nCurrentbreaker Sharks ride the ancient wake like it was built for them.\n\nTechnically, it was.",
+    "introTwitch": "A permanent current races along the groove once carved by a passing\nLeviathan.\n\nCurrentbreaker Sharks ride the ancient wake like it was built for them.\n\nTechnically, it was.",
+    "startRoomId": "currentbreaker-run-approach",
+    "rooms": {
+        "currentbreaker-run-approach": {
+            "prompt": "Three paths cut through a wake current strong enough to bend wreckage.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "currentbreaker-run-depths",
+                    "message": "Star Candies are pinned beneath a scale by the current.",
+                    "reward": {
+                        "min": 238,
+                        "max": 274
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "currentbreaker-run-depths",
+                    "enemyId": "currentbreaker-shark",
+                    "message": "A Currentbreaker Shark launches through the ancient wake.\n\nIt appears to have found the express lane."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "currentbreaker-run-depths",
+                    "healAmount": 76,
+                    "message": "Behind a rib, Shizuki left a restorative bottle:\n\n'Current tried to take backpack.\n\nI won.\n\nCurrent has one sock.\n\nAcceptable casualty.'",
+                    "fullHpMessage": "You leave the bottle untouched and keep your socks secured."
+                }
+            }
+        },
+        "currentbreaker-run-depths": {
+            "prompt": "The current accelerates into three racing lanes.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "currentbreaker-run-threshold",
+                    "enemyId": "currentbreaker-shark",
+                    "message": "A Currentbreaker Shark overtakes you.\n\nThen loops around.\n\nShow-off."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "currentbreaker-run-threshold",
+                    "message": "A navigator's chest rests inside a rare calm pocket.",
+                    "reward": {
+                        "min": 250,
+                        "max": 286
+                    }
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "currentbreaker-run-threshold",
+                    "message": "One Berry is tied to a rock with excessive rope.\n\nShizuki wrote:\n\n'Anything not tied down belongs to current.\n\nBerry is now secured.\n\nThis may be excessive.'",
+                    "berries": 1
+                }
+            }
+        },
+        "currentbreaker-run-threshold": {
+            "prompt": "Breaker Crown rises where multiple ancient wake currents collide.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 81,
+                    "message": "A mineral spring bubbles behind the largest bone.\n\nShizuki labeled it:\n\n'Current recovery.\n\nSock remains missing.'",
+                    "fullHpMessage": "You leave the restorative untouched.\n\nThe sock memorial continues."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "currentbreaker-shark",
+                    "message": "A Currentbreaker Shark uses the colliding wakes to change direction\nalmost instantly."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A wrecked strongbox has been pushed here by centuries of current.",
+                    "reward": {
+                        "min": 262,
+                        "max": 298
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Breaker Crown",
+            "type": "boss-prompt",
+            "prompt": "Every Currentbreaker Shark abandons Breaker Crown."
+        }
+    },
+    "bossPromptDiscord": "Every Currentbreaker Shark abandons Breaker Crown.\n\nThe ancient wake begins circling one enormous fin.\n\nUse /yes to enter Breaker Crown or /no to leave professional current\nsurfing to the professionals.",
+    "bossPromptTwitch": "Every Currentbreaker Shark abandons Breaker Crown.\n\nThe ancient wake begins circling one enormous fin.\n\nUse !yes to enter Breaker Crown or !no to leave professional current\nsurfing to the professionals.",
+    "bossRetreatText": "You retreat from the racing wake.\n\nYour remaining socks survive.",
+    "boss": {
+        "enemyId": "maelstrom-apex-boss",
+        "roomId": "boss",
+        "revealText": "A massive Shark tears through the converging currents.\n\nMaelstrom Apex reveals itself!"
+    },
+    "completionText": "The Maelstrom Apex disappears down the ancient wake.\n\nThe current keeps racing along a path carved by a Leviathan long gone."
 }

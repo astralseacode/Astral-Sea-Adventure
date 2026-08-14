@@ -1,107 +1,107 @@
 {
-    "id":  "eventide-threshold",
-    "number":  24,
-    "name":  "Eventide Threshold",
-    "regionId":  "astral-nexus",
-    "enemyId":  "eventide-behemoth",
-    "recommendedLevel":  50,
-    "introDiscord":  "Eventide Threshold lies ahead, where fractured realities where memories cast physical shadows conceal the territory of Eventide Behemoth.",
-    "introTwitch":  "Eventide Threshold lies ahead amid fractured realities where memories cast physical shadows.",
-    "startRoomId":  "eventide-threshold-approach",
-    "rooms":  {
-                  "eventide-threshold-approach":  {
-                                                      "prompt":  "At the edge of Eventide Threshold, fractured realities where memories cast physical shadows divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "eventide-threshold-depths",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Eventide Threshold. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "eventide-threshold-depths",
-                                                                                    "message":  "Beyond the right route, you discover a construct cache labeled in an alphabet you briefly remember.",
-                                                                                    "reward":  {
-                                                                                                   "min":  176,
-                                                                                                   "max":  218
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "eventide-threshold-depths",
-                                                                                      "enemyId":  "eventide-behemoth",
-                                                                                      "message":  "A shift in the current exposes Eventide Behemoth, which claims the forward route through Eventide Threshold."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "eventide-threshold-depths":  {
-                                                    "prompt":  "Deeper within Eventide Threshold, floating ocean fragments joined by impossible currents divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "eventide-threshold-threshold",
-                                                                                 "enemyId":  "eventide-behemoth",
-                                                                                 "message":  "A shift in the current exposes Eventide Behemoth, which claims the left route through Eventide Threshold."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "eventide-threshold-threshold",
-                                                                                  "healAmount":  28,
-                                                                                  "message":  "The right route reaches a memory of perfect rest made briefly tangible, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "eventide-threshold-threshold",
-                                                                                    "message":  "Beyond the forward route, you discover a coffer arriving repeatedly from three different futures.",
-                                                                                    "reward":  {
-                                                                                                   "min":  188,
-                                                                                                   "max":  230
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "eventide-threshold-threshold":  {
-                                                       "prompt":  "Near the heart of Eventide Threshold, fae arches opening onto incompatible skies divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the left route, you discover candies orbiting a stable point in folded space.",
-                                                                                    "reward":  {
-                                                                                                   "min":  200,
-                                                                                                   "max":  242
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "enemyId":  "eventide-behemoth",
-                                                                                     "message":  "A shift in the current exposes Eventide Behemoth, which claims the right route through Eventide Threshold."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  33,
-                                                                                       "message":  "The forward route reaches a still moment where several restorative currents converge, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Boundary Without Dawn",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Boundary Without Dawn."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Boundary Without Dawn. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Boundary Without Dawn: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Boundary Without Dawn. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "endless-dusk-behemoth-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Endless Dusk Behemoth reveals itself!"
-             },
-    "completionText":  "Endless Dusk Behemoth yields, and the currents beyond Boundary Without Dawn open the next route through Astral Nexus."
+    "id": "eventide-threshold",
+    "number": 24,
+    "name": "Eventide Threshold",
+    "regionId": "astral-nexus",
+    "enemyId": "eventide-behemoth",
+    "recommendedLevel": 50,
+    "introDiscord": "The light changes.\n\nNot darker.\n\nNot brighter.\n\nPermanent sunset.\n\nEvery direction ends in the same violet horizon.",
+    "introTwitch": "The light changes.\n\nNot darker.\n\nNot brighter.\n\nPermanent sunset.\n\nEvery direction ends in the same violet horizon.",
+    "startRoomId": "eventide-threshold-approach",
+    "rooms": {
+        "eventide-threshold-approach": {
+            "prompt": "Three impossible routes open across Eventide Threshold.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "eventide-threshold-depths",
+                    "message": "One Berry rests beneath Shizuki's note:\n\n'Sunset has lasted eleven hours.\n\nBeginning to suspect sun is decorative.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "eventide-threshold-depths",
+                    "message": "A cache glows beneath endless dusk.",
+                    "reward": {
+                        "min": 176,
+                        "max": 218
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "eventide-threshold-depths",
+                    "enemyId": "eventide-behemoth",
+                    "message": "An Eventide Behemoth emerges from the horizon itself."
+                }
+            }
+        },
+        "eventide-threshold-depths": {
+            "prompt": "Deeper within Eventide Threshold, three paths bend through the unstable Nexus.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "eventide-threshold-threshold",
+                    "enemyId": "eventide-behemoth",
+                    "message": "A Behemoth walks through a sunset that should be miles away."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "eventide-threshold-threshold",
+                    "healAmount": 28,
+                    "message": "A warm twilight current restores you.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "eventide-threshold-threshold",
+                    "message": "Star Candies shine like the first stars of evening.\n\nExcept evening never finishes.",
+                    "reward": {
+                        "min": 188,
+                        "max": 230
+                    }
+                }
+            }
+        },
+        "eventide-threshold-threshold": {
+            "prompt": "Near Boundary Without Dawn, three final routes cross the edge of reality.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A coffer rests at the edge of the unmoving horizon.",
+                    "reward": {
+                        "min": 200,
+                        "max": 242
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "eventide-behemoth",
+                    "message": "An Eventide Behemoth steps from its own sunset-shadow."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 33,
+                    "message": "Shizuki's old resting place glows under permanent twilight.",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Boundary Without Dawn",
+            "type": "boss-prompt",
+            "prompt": "Boundary Without Dawn darkens by one impossible shade."
+        }
+    },
+    "bossPromptDiscord": "Boundary Without Dawn darkens by one impossible shade.\n\nSomething enormous moves where night should begin.\n\nUse /yes to enter or /no to continue waiting for morning.",
+    "bossPromptTwitch": "Boundary Without Dawn darkens by one impossible shade.\n\nSomething enormous moves where night should begin.\n\nUse !yes to enter or !no to continue waiting for morning.",
+    "bossRetreatText": "You withdraw from Boundary Without Dawn. The impossible guardian will wait.",
+    "boss": {
+        "enemyId": "endless-dusk-behemoth-boss",
+        "roomId": "boss",
+        "revealText": "The horizon rises on four massive limbs.\n\nEndless Dusk Behemoth reveals itself!"
+    },
+    "completionText": "The creature fades.\n\nFar ahead, for the first time, you see one star beyond the horizon.\n\nThere is more."
 }

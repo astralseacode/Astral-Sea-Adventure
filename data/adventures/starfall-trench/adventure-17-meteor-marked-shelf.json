@@ -1,107 +1,107 @@
 {
-    "id":  "meteor-marked-shelf",
-    "number":  17,
-    "name":  "Meteor-Marked Shelf",
-    "regionId":  "starfall-trench",
-    "enemyId":  "meteor-marked-lobster",
-    "recommendedLevel":  8,
-    "introDiscord":  "Meteor-Marked Shelf lies ahead, where meteor-lit trenches conceal the territory of Meteor-Marked Lobster.",
-    "introTwitch":  "Meteor-Marked Shelf lies ahead amid meteor-lit trenches.",
-    "startRoomId":  "meteor-marked-shelf-approach",
-    "rooms":  {
-                  "meteor-marked-shelf-approach":  {
-                                                       "prompt":  "At the edge of Meteor-Marked Shelf, meteor-lit trenches divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "meteor-marked-shelf-depths",
-                                                                                    "message":  "Beyond the left route, you discover candies fused into a comet-glass seam.",
-                                                                                    "reward":  {
-                                                                                                   "min":  90,
-                                                                                                   "max":  130
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "meteor-marked-shelf-depths",
-                                                                                     "enemyId":  "meteor-marked-lobster",
-                                                                                     "message":  "A shift in the current exposes Meteor-Marked Lobster, which claims the right route through Meteor-Marked Shelf."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "meteor-marked-shelf-depths",
-                                                                                       "healAmount":  27,
-                                                                                       "message":  "The forward route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "meteor-marked-shelf-depths":  {
-                                                     "prompt":  "Deeper within Meteor-Marked Shelf, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "meteor-marked-shelf-threshold",
-                                                                                  "enemyId":  "meteor-marked-lobster",
-                                                                                  "message":  "A shift in the current exposes Meteor-Marked Lobster, which claims the left route through Meteor-Marked Shelf."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "meteor-marked-shelf-threshold",
-                                                                                   "message":  "Beyond the right route, you discover a star chart coffer buried in luminous silt.",
-                                                                                   "reward":  {
-                                                                                                  "min":  102,
-                                                                                                  "max":  142
-                                                                                              }
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "empty",
-                                                                                     "nextRoomId":  "meteor-marked-shelf-threshold",
-                                                                                     "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Meteor-Marked Shelf. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                     "berries":  1
-                                                                                 }
-                                                                 }
-                                                 },
-                  "meteor-marked-shelf-threshold":  {
-                                                        "prompt":  "Near the heart of Meteor-Marked Shelf, fractured starstone terraces divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "healAmount":  32,
-                                                                                     "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "enemyId":  "meteor-marked-lobster",
-                                                                                      "message":  "A shift in the current exposes Meteor-Marked Lobster, which claims the right route through Meteor-Marked Shelf."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                        "reward":  {
-                                                                                                       "min":  114,
-                                                                                                       "max":  154
-                                                                                                   }
-                                                                                    }
-                                                                    }
-                                                    },
-                  "boss-antechamber":  {
-                                           "name":  "Craterclaw Arena",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Craterclaw Arena."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Craterclaw Arena. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Craterclaw Arena: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Craterclaw Arena. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "impactclaw-tyrant-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Impactclaw Tyrant reveals itself!"
-             },
-    "completionText":  "Impactclaw Tyrant yields, and the currents beyond Craterclaw Arena open the next route through Starfall Trench."
+  "id": "meteor-marked-shelf",
+  "number": 17,
+  "name": "Meteor-Marked Shelf",
+  "regionId": "starfall-trench",
+  "enemyId": "meteor-marked-lobster",
+  "recommendedLevel": 8,
+  "introDiscord": "Meteor-Marked Lobsters occupy every desirable piece of the shelf and enforce an extremely simple property law: if a lobster is standing on it, it belongs to the lobster.",
+  "introTwitch": "Meteor-Marked Lobsters occupy every desirable piece of the shelf and enforce an extremely simple property law: if a lobster is standing on it, it belongs to the lobster.",
+  "startRoomId": "meteor-marked-shelf-approach",
+  "rooms": {
+    "meteor-marked-shelf-approach": {
+      "prompt": "Three shelf paths wind between suspiciously territorial crustaceans.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "meteor-marked-shelf-depths",
+          "message": "A cometglass seam lies just outside one lobster's property line.",
+          "reward": {
+            "min": 90,
+            "max": 130
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "meteor-marked-shelf-depths",
+          "enemyId": "meteor-marked-lobster",
+          "message": "A Meteor-Marked Lobster plants both claws on the path.\n\nProperty dispute."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "meteor-marked-shelf-depths",
+          "healAmount": 27,
+          "message": "Shizuki's tonic reads: \"Local law: lobster owns rock. I appealed. Lobster denied appeal.\"",
+          "fullHpMessage": "You leave the tonic and respect local jurisprudence."
+        }
+      }
+    },
+    "meteor-marked-shelf-depths": {
+      "prompt": "Three routes cross increasingly elaborate lobster territories.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "meteor-marked-shelf-threshold",
+          "enemyId": "meteor-marked-lobster",
+          "message": "A lobster has constructed a border using pebbles.\n\nYou crossed it.\n\nInternational incident."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "meteor-marked-shelf-threshold",
+          "message": "A star-chart coffer sits inside an apparently abandoned territory.",
+          "reward": {
+            "min": 102,
+            "max": 142
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "meteor-marked-shelf-threshold",
+          "message": "A Berry rests beside Shizuki's legal document:\n\n\"I hereby claim this one tiny rock.\n\nSigned, Shizuki.\n\nCOUNTERCLAIM: claw marks.\"",
+          "berries": 1
+        }
+      }
+    },
+    "meteor-marked-shelf-threshold": {
+      "prompt": "Craterclaw Arena lies beyond three heavily defended shelf paths.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 32,
+          "message": "Shizuki's bottle is stored inside neutral territory.",
+          "fullHpMessage": "You leave the neutral-zone medicine untouched."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "meteor-marked-lobster",
+          "message": "A lobster raises both claws.\n\nNegotiations have concluded."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "\"A meteor-iron reliquary rests beneath a disputed meteor fragment.\"\n\nBOSS:",
+          "reward": {
+            "min": 114,
+            "max": 154
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Craterclaw Arena",
+      "type": "boss-prompt",
+      "prompt": "Every ordinary lobster retreats from the arena."
+    }
+  },
+  "bossPromptDiscord": "Every ordinary lobster retreats from the arena.\n\nA colossal claw strikes the center stone.\n\nUse /yes to enter Craterclaw Arena or /no to respect the local ruler's extremely aggressive zoning policy.",
+  "bossPromptTwitch": "Every ordinary lobster retreats from the arena.\n\nA colossal claw strikes the center stone.\n\nUse !yes to enter Craterclaw Arena or !no to respect the local ruler's extremely aggressive zoning policy.",
+  "bossRetreatText": "You withdraw across the property line.",
+  "boss": {
+    "enemyId": "impactclaw-tyrant-boss",
+    "roomId": "boss",
+    "revealText": "An enormous armored lobster rises from the crater.\n\nImpactclaw Tyrant reveals itself!"
+  },
+  "completionText": "\"The Tyrant retreats.\n\nThe ordinary lobsters immediately begin redistributing territory.\n\nYour tiny rock has already been annexed.\"\n\n\n#################################################################"
 }

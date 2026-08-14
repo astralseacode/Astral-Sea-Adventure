@@ -1,107 +1,107 @@
 {
-    "id":  "tectonic-shelf",
-    "number":  13,
-    "name":  "Tectonic Shelf",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "tectonic-barnacle",
-    "recommendedLevel":  24,
-    "introDiscord":  "Tectonic Shelf lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Tectonic Barnacle.",
-    "introTwitch":  "Tectonic Shelf lies ahead amid titanic ribs rising through violent crosscurrents.",
-    "startRoomId":  "tectonic-shelf-approach",
-    "rooms":  {
-                  "tectonic-shelf-approach":  {
-                                                  "prompt":  "At the edge of Tectonic Shelf, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "combat",
-                                                                               "nextRoomId":  "tectonic-shelf-depths",
-                                                                               "enemyId":  "tectonic-barnacle",
-                                                                               "message":  "A shift in the current exposes Tectonic Barnacle, which claims the left route through Tectonic Shelf."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "tectonic-shelf-depths",
-                                                                                "message":  "Beyond the right route, you discover a strongbox torn from a century-old wreck.",
-                                                                                "reward":  {
-                                                                                               "min":  183,
-                                                                                               "max":  222
-                                                                                           }
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "healing",
-                                                                                  "nextRoomId":  "tectonic-shelf-depths",
-                                                                                  "healAmount":  52,
-                                                                                  "message":  "The forward route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                  "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                              }
-                                                              }
-                                              },
-                  "tectonic-shelf-depths":  {
-                                                "prompt":  "Deeper within Tectonic Shelf, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                "choices":  {
-                                                                "left":  {
-                                                                             "type":  "treasure",
-                                                                             "nextRoomId":  "tectonic-shelf-threshold",
-                                                                             "message":  "Beyond the left route, you discover candies trapped beneath a leviathan scale.",
-                                                                             "reward":  {
-                                                                                            "min":  195,
-                                                                                            "max":  234
-                                                                                        }
-                                                                         },
-                                                                "right":  {
-                                                                              "type":  "combat",
-                                                                              "nextRoomId":  "tectonic-shelf-threshold",
-                                                                              "enemyId":  "tectonic-barnacle",
-                                                                              "message":  "A shift in the current exposes Tectonic Barnacle, which claims the right route through Tectonic Shelf."
-                                                                          },
-                                                                "forward":  {
-                                                                                "type":  "empty",
-                                                                                "nextRoomId":  "tectonic-shelf-threshold",
-                                                                                "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Tectonic Shelf. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                "berries":  1
-                                                                            }
-                                                            }
-                                            },
-                  "tectonic-shelf-threshold":  {
-                                                   "prompt":  "Near the heart of Tectonic Shelf, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "healing",
-                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                "healAmount":  57,
-                                                                                "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "message":  "Beyond the right route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                 "reward":  {
-                                                                                                "min":  207,
-                                                                                                "max":  246
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "enemyId":  "tectonic-barnacle",
-                                                                                   "message":  "A shift in the current exposes Tectonic Barnacle, which claims the forward route through Tectonic Shelf."
-                                                                               }
-                                                               }
-                                               },
-                  "boss-antechamber":  {
-                                           "name":  "Moving Bedrock",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Moving Bedrock."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Moving Bedrock. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Moving Bedrock: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Moving Bedrock. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "quake-crown-barnacle-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Quake-Crown Barnacle reveals itself!"
-             },
-    "completionText":  "Quake-Crown Barnacle yields, and the currents beyond Moving Bedrock open the next route through Leviathan\u0027s Wake."
+    "id": "tectonic-shelf",
+    "number": 13,
+    "name": "Tectonic Shelf",
+    "regionId": "leviathans-wake",
+    "enemyId": "tectonic-barnacle",
+    "recommendedLevel": 24,
+    "introDiscord": "A Leviathan skeleton lies beneath so much sediment that an entire shelf\nhas grown across its back.\n\nThe Barnacles here have mistaken ancient bones for geological features.\n\nFair.",
+    "introTwitch": "A Leviathan skeleton lies beneath so much sediment that an entire shelf\nhas grown across its back.\n\nThe Barnacles here have mistaken ancient bones for geological features.\n\nFair.",
+    "startRoomId": "tectonic-shelf-approach",
+    "rooms": {
+        "tectonic-shelf-approach": {
+            "prompt": "Three routes cross what appears to be ordinary bedrock.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "tectonic-shelf-depths",
+                    "enemyId": "tectonic-barnacle",
+                    "message": "A Tectonic Barnacle opens.\n\nThe 'boulder' beside it opens too.\n\nGeology becomes combat."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "tectonic-shelf-depths",
+                    "message": "A wrecked strongbox rests inside a crack.",
+                    "reward": {
+                        "min": 183,
+                        "max": 222
+                    }
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "tectonic-shelf-depths",
+                    "healAmount": 52,
+                    "message": "Shizuki's note beside a spring reads:\n\n'Standing on Leviathan.\n\nThought was mountain.\n\nDifference is upsetting.'",
+                    "fullHpMessage": "You leave the spring and continue standing on former wildlife."
+                }
+            }
+        },
+        "tectonic-shelf-depths": {
+            "prompt": "The shelf trembles beneath three paths.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "tectonic-shelf-threshold",
+                    "message": "Star Candies sit beneath the edge of a buried scale.",
+                    "reward": {
+                        "min": 195,
+                        "max": 234
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "tectonic-shelf-threshold",
+                    "enemyId": "tectonic-barnacle",
+                    "message": "A Barnacle clamps open from the seabed."
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "tectonic-shelf-threshold",
+                    "message": "One Berry rests beside Shizuki's sign:\n\n'NOT ROCK.\n\nI checked.\n\nWell.\n\nEventually.'",
+                    "berries": 1
+                }
+            }
+        },
+        "tectonic-shelf-threshold": {
+            "prompt": "Moving Bedrock rises ahead.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 57,
+                    "message": "A mineral pool rests inside an old fracture.\n\nShizuki wrote:\n\n'If ground moves:\n\nremain calm.\n\nIf ground has mouth:\n\ndifferent problem.'",
+                    "fullHpMessage": "You leave the medicine."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A navigator's chest rests beneath compacted sediment.",
+                    "reward": {
+                        "min": 207,
+                        "max": 246
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "tectonic-barnacle",
+                    "message": "A Tectonic Barnacle opens directly beneath the route.\n\nDifferent problem."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Moving Bedrock",
+            "type": "boss-prompt",
+            "prompt": "The shelf begins lifting."
+        }
+    },
+    "bossPromptDiscord": "The shelf begins lifting.\n\nNot shaking.\n\nLifting.\n\nAn enormous crown of stone-covered plates opens at its center.\n\nUse /yes to approach Moving Bedrock or /no to stop trusting geology.",
+    "bossPromptTwitch": "The shelf begins lifting.\n\nNot shaking.\n\nLifting.\n\nAn enormous crown of stone-covered plates opens at its center.\n\nUse !yes to approach Moving Bedrock or !no to stop trusting geology.",
+    "bossRetreatText": "You retreat onto different questionable geology.",
+    "boss": {
+        "enemyId": "quake-crown-barnacle-boss",
+        "roomId": "boss",
+        "revealText": "The stone shell splits wide.\n\nQuake-Crown Barnacle reveals itself!"
+    },
+    "completionText": "The shelf settles.\n\nNothing moves.\n\nYou trust nothing."
 }

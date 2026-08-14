@@ -1,107 +1,107 @@
 {
-    "id":  "the-borrowed-grove",
-    "number":  26,
-    "name":  "The Borrowed Grove",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "ancient-grove-mimic",
-    "recommendedLevel":  19,
-    "introDiscord":  "The Borrowed Grove lies ahead, where living rootways beneath drifting fae lights conceal the territory of Ancient Grove Mimic.",
-    "introTwitch":  "The Borrowed Grove lies ahead amid living rootways beneath drifting fae lights.",
-    "startRoomId":  "the-borrowed-grove-approach",
-    "rooms":  {
-                  "the-borrowed-grove-approach":  {
-                                                      "prompt":  "At the edge of The Borrowed Grove, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "the-borrowed-grove-depths",
-                                                                                   "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                   "reward":  {
-                                                                                                  "min":  75,
-                                                                                                  "max":  118
-                                                                                              }
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "the-borrowed-grove-depths",
-                                                                                    "healAmount":  10,
-                                                                                    "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "the-borrowed-grove-depths",
-                                                                                      "enemyId":  "ancient-grove-mimic",
-                                                                                      "message":  "A shift in the current exposes Ancient Grove Mimic, which claims the forward route through The Borrowed Grove."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "the-borrowed-grove-depths":  {
-                                                    "prompt":  "Deeper within The Borrowed Grove, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "combat",
-                                                                                 "nextRoomId":  "the-borrowed-grove-threshold",
-                                                                                 "enemyId":  "ancient-grove-mimic",
-                                                                                 "message":  "A shift in the current exposes Ancient Grove Mimic, which claims the left route through The Borrowed Grove."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "empty",
-                                                                                  "nextRoomId":  "the-borrowed-grove-threshold",
-                                                                                  "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Borrowed Grove. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                  "berries":  1
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "the-borrowed-grove-threshold",
-                                                                                    "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                    "reward":  {
-                                                                                                   "min":  87,
-                                                                                                   "max":  130
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "the-borrowed-grove-threshold":  {
-                                                       "prompt":  "Near the heart of The Borrowed Grove, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "message":  "Beyond the left route, you discover an offering basket hidden inside a living root.",
-                                                                                    "reward":  {
-                                                                                                   "min":  99,
-                                                                                                   "max":  142
-                                                                                               }
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "enemyId":  "ancient-grove-mimic",
-                                                                                     "message":  "A shift in the current exposes Ancient Grove Mimic, which claims the right route through The Borrowed Grove."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  15,
-                                                                                       "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Imitation Heartwood",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Imitation Heartwood."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Imitation Heartwood. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Imitation Heartwood: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Imitation Heartwood. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "many-faced-grove-mimic-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Many-Faced Grove Mimic reveals itself!"
-             },
-    "completionText":  "Many-Faced Grove Mimic yields, and the currents beyond Imitation Heartwood open the next route through Whispering Kelp Forest."
+  "id": "the-borrowed-grove",
+  "number": 26,
+  "name": "The Borrowed Grove",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "ancient-grove-mimic",
+  "recommendedLevel": 19,
+  "introDiscord": "The grove looks familiar.\n\nToo familiar.\n\nRoots repeat in identical patterns, the same stone appears three times,\nand one of Shizuki's old trail signs has somehow reproduced.",
+  "introTwitch": "The grove looks familiar.\n\nToo familiar.\n\nRoots repeat in identical patterns, the same stone appears three times,\nand one of Shizuki's old trail signs has somehow reproduced.",
+  "startRoomId": "the-borrowed-grove-approach",
+  "rooms": {
+    "the-borrowed-grove-approach": {
+      "prompt": "Three paths pass through scenery that repeats with unsettling\nprecision.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "the-borrowed-grove-depths",
+          "message": "Broad silver kelp wraps a Star Candy cache.\n\nFive feet away is an identical bundle.\n\nThe second bundle has teeth.\n\nYou select the first.",
+          "reward": {
+            "min": 75,
+            "max": 118
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "the-borrowed-grove-depths",
+          "healAmount": 10,
+          "message": "A moonblossom pool rests beside two identical Shizuki notes.\n\nOne reads:\n\n'REAL MEDICINE.'\n\nThe other reads:\n\n'REAL MEDICIN.'\n\nThe typo saves lives.",
+          "fullHpMessage": "You leave the real medicine untouched and continue appreciating the\nMimic's imperfect spelling."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "the-borrowed-grove-depths",
+          "enemyId": "ancient-grove-mimic",
+          "message": "A perfect copy of a tree opens its eyes.\n\nAncient Grove Mimic.\n\nTree privileges revoked."
+        }
+      }
+    },
+    "the-borrowed-grove-depths": {
+      "prompt": "Moonlit fronds surround three nearly identical routes. Every landmark\nappears at least twice.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "the-borrowed-grove-threshold",
+          "enemyId": "ancient-grove-mimic",
+          "message": "A root ahead looks exactly like the previous root.\n\nBecause it IS the previous root's Mimic.\n\nThis forest has become aggressively derivative."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "the-borrowed-grove-threshold",
+          "message": "One Berry sits beneath two copies of Shizuki's note.\n\nThe real one says:\n\n'Found Mimic copying my handwriting.\n\nI feel artistically threatened.'\n\nThe fake says:\n\n'I feel artly threated.'\n\nNeeds practice.",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "the-borrowed-grove-threshold",
+          "message": "A shrine coffer rests beside an identical fake coffer.\n\nYou choose the one with a latch instead of gums.\n\nExperience pays off.",
+          "reward": {
+            "min": 87,
+            "max": 130
+          }
+        }
+      }
+    },
+    "the-borrowed-grove-threshold": {
+      "prompt": "Towering kelp closes around Imitation Heartwood. Three routes look\nidentical down to the same drifting leaves.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "An offering basket contains Star Candies.\n\nA second offering basket watches you open it.\n\nYou politely ignore the second basket.",
+          "reward": {
+            "min": 99,
+            "max": 142
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "ancient-grove-mimic",
+          "message": "Shizuki's trail sign points toward a root.\n\nThe sign blinks.\n\nThe sign is a Mimic.\n\nThis is getting ridiculous."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 15,
+          "message": "Restorative sap waits beside Shizuki's final authentication method:\n\n'REAL NOTE HAS STAR DOODLE.'\n\nThere are four notes.\n\nEvery one now has a star doodle.\n\nThe Mimics learned.",
+          "fullHpMessage": "You leave the restorative sap untouched and accept that the document\nverification system has collapsed."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Imitation Heartwood",
+      "type": "boss-prompt",
+      "prompt": "Every duplicated object in the Grove begins moving toward the same\ntree."
+    }
+  },
+  "bossPromptDiscord": "The copies merge.\n\nFake roots, fake stones, fake shrines, fake signs, and fragments of\nborrowed scenery flow into Imitation Heartwood.\n\nThe enormous tree changes shape again and again, unable—or unwilling—to\nchoose one form.\n\nUse /yes to enter Imitation Heartwood or /no to leave before it starts\ncopying you.",
+  "bossPromptTwitch": "The copies merge.\n\nFake roots, fake stones, fake shrines, fake signs, and fragments of\nborrowed scenery flow into Imitation Heartwood.\n\nThe enormous tree changes shape again and again, unable—or unwilling—to\nchoose one form.\n\nUse !yes to enter Imitation Heartwood or !no to leave before it starts\ncopying you.",
+  "bossRetreatText": "You retreat quickly.\n\nFor several seconds, another version of you appears in the moss behind\nyou.\n\nThen disappears.\n\nAbsolutely not.",
+  "boss": {
+    "enemyId": "many-faced-grove-mimic-boss",
+    "roomId": "boss",
+    "revealText": "The Heartwood tears itself free, cycling through dozens of copied forms.\n\nMany-Faced Grove Mimic reveals itself!"
+  },
+  "completionText": "\"The Many-Faced Mimic collapses back into ordinary roots.\n\nThe duplicate scenery fades.\n\nOne fake Shizuki sign remains.\n\nIt reads:\n\n'GUD LUCK.'\n\nKeep practicing.\"\n\n\n#################################################################"
 }

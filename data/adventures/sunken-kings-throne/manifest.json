@@ -1,242 +1,242 @@
 [
     {
-        "number":  1,
-        "id":  "the-fallen-banner-way",
-        "name":  "The Fallen Banner Way",
-        "enemyId":  "drowned-banner-guard",
-        "bossEnemyId":  "standard-bearer-revenant-boss",
-        "file":  "adventure-01-the-fallen-banner-way.json"
+        "number": 1,
+        "id": "the-fallen-banner-way",
+        "name": "The Fallen Banner Way",
+        "enemyId": "drowned-banner-guard",
+        "bossEnemyId": "standard-bearer-revenant-boss",
+        "file": "adventure-01-the-fallen-banner-way.json"
     },
     {
-        "number":  2,
-        "id":  "crowncoin-vaults",
-        "name":  "Crowncoin Vaults",
-        "enemyId":  "crowncoin-mimic",
-        "bossEnemyId":  "royal-treasury-maw-boss",
-        "file":  "adventure-02-crowncoin-vaults.json"
+        "number": 2,
+        "id": "crowncoin-vaults",
+        "name": "Crowncoin Vaults",
+        "enemyId": "crowncoin-mimic",
+        "bossEnemyId": "royal-treasury-maw-boss",
+        "file": "adventure-02-crowncoin-vaults.json"
     },
     {
-        "number":  3,
-        "id":  "palace-aqueducts",
-        "name":  "Palace Aqueducts",
-        "enemyId":  "palace-lamprey",
-        "bossEnemyId":  "crimson-court-lamprey-boss",
-        "file":  "adventure-03-palace-aqueducts.json"
+        "number": 3,
+        "id": "palace-aqueducts",
+        "name": "Palace Aqueducts",
+        "enemyId": "palace-lamprey",
+        "bossEnemyId": "crimson-court-lamprey-boss",
+        "file": "adventure-03-palace-aqueducts.json"
     },
     {
-        "number":  4,
-        "id":  "sealbound-galleries",
-        "name":  "Sealbound Galleries",
-        "enemyId":  "sealbound-squire",
-        "bossEnemyId":  "oath-sealed-knight-boss",
-        "file":  "adventure-04-sealbound-galleries.json"
+        "number": 4,
+        "id": "sealbound-galleries",
+        "name": "Sealbound Galleries",
+        "enemyId": "sealbound-squire",
+        "bossEnemyId": "oath-sealed-knight-boss",
+        "file": "adventure-04-sealbound-galleries.json"
     },
     {
-        "number":  5,
-        "id":  "the-mourning-promenade",
-        "name":  "The Mourning Promenade",
-        "enemyId":  "mourning-courtesan",
-        "bossEnemyId":  "last-dance-courtesan-boss",
-        "file":  "adventure-05-the-mourning-promenade.json"
+        "number": 5,
+        "id": "the-mourning-promenade",
+        "name": "The Mourning Promenade",
+        "enemyId": "mourning-courtesan",
+        "bossEnemyId": "last-dance-courtesan-boss",
+        "file": "adventure-05-the-mourning-promenade.json"
     },
     {
-        "number":  6,
-        "id":  "scepter-gardens",
-        "name":  "Scepter Gardens",
-        "enemyId":  "scepter-crab",
-        "bossEnemyId":  "regalia-clawlord-boss",
-        "file":  "adventure-06-scepter-gardens.json"
+        "number": 6,
+        "id": "scepter-gardens",
+        "name": "Scepter Gardens",
+        "enemyId": "scepter-crab",
+        "bossEnemyId": "regalia-clawlord-boss",
+        "file": "adventure-06-scepter-gardens.json"
     },
     {
-        "number":  7,
-        "id":  "crownless-barracks",
-        "name":  "Crownless Barracks",
-        "enemyId":  "crownless-knight",
-        "bossEnemyId":  "helmless-castellan-boss",
-        "file":  "adventure-07-crownless-barracks.json"
+        "number": 7,
+        "id": "crownless-barracks",
+        "name": "Crownless Barracks",
+        "enemyId": "crownless-knight",
+        "bossEnemyId": "helmless-castellan-boss",
+        "file": "adventure-07-crownless-barracks.json"
     },
     {
-        "number":  8,
-        "id":  "the-drowned-archive",
-        "name":  "The Drowned Archive",
-        "enemyId":  "royal-archive-wisp",
-        "bossEnemyId":  "grand-archivist-wisp-boss",
-        "file":  "adventure-08-the-drowned-archive.json"
+        "number": 8,
+        "id": "the-drowned-archive",
+        "name": "The Drowned Archive",
+        "enemyId": "royal-archive-wisp",
+        "bossEnemyId": "grand-archivist-wisp-boss",
+        "file": "adventure-08-the-drowned-archive.json"
     },
     {
-        "number":  9,
-        "id":  "thronewater-conduits",
-        "name":  "Thronewater Conduits",
-        "enemyId":  "thronewater-eel",
-        "bossEnemyId":  "regent-coil-boss",
-        "file":  "adventure-09-thronewater-conduits.json"
+        "number": 9,
+        "id": "thronewater-conduits",
+        "name": "Thronewater Conduits",
+        "enemyId": "thronewater-eel",
+        "bossEnemyId": "regent-coil-boss",
+        "file": "adventure-09-thronewater-conduits.json"
     },
     {
-        "number":  10,
-        "id":  "gilded-processional",
-        "name":  "Gilded Processional",
-        "enemyId":  "gilded-armorfish",
-        "bossEnemyId":  "auric-platefish-boss",
-        "file":  "adventure-10-gilded-processional.json"
+        "number": 10,
+        "id": "gilded-processional",
+        "name": "Gilded Processional",
+        "enemyId": "gilded-armorfish",
+        "bossEnemyId": "auric-platefish-boss",
+        "file": "adventure-10-gilded-processional.json"
     },
     {
-        "number":  11,
-        "id":  "sepulcher-cloisters",
-        "name":  "Sepulcher Cloisters",
-        "enemyId":  "sepulcher-manta",
-        "bossEnemyId":  "funeral-wing-manta-boss",
-        "file":  "adventure-11-sepulcher-cloisters.json"
+        "number": 11,
+        "id": "sepulcher-cloisters",
+        "name": "Sepulcher Cloisters",
+        "enemyId": "sepulcher-manta",
+        "bossEnemyId": "funeral-wing-manta-boss",
+        "file": "adventure-11-sepulcher-cloisters.json"
     },
     {
-        "number":  12,
-        "id":  "the-walking-statuary",
-        "name":  "The Walking Statuary",
-        "enemyId":  "broken-statue-walker",
-        "bossEnemyId":  "marble-tyrant-boss",
-        "file":  "adventure-12-the-walking-statuary.json"
+        "number": 12,
+        "id": "the-walking-statuary",
+        "name": "The Walking Statuary",
+        "enemyId": "broken-statue-walker",
+        "bossEnemyId": "marble-tyrant-boss",
+        "file": "adventure-12-the-walking-statuary.json"
     },
     {
-        "number":  13,
-        "id":  "dynasty-coral-halls",
-        "name":  "Dynasty Coral Halls",
-        "enemyId":  "dynasty-coral-golem",
-        "bossEnemyId":  "ancestral-reef-golem-boss",
-        "file":  "adventure-13-dynasty-coral-halls.json"
+        "number": 13,
+        "id": "dynasty-coral-halls",
+        "name": "Dynasty Coral Halls",
+        "enemyId": "dynasty-coral-golem",
+        "bossEnemyId": "ancestral-reef-golem-boss",
+        "file": "adventure-13-dynasty-coral-halls.json"
     },
     {
-        "number":  14,
-        "id":  "chalice-chapel",
-        "name":  "Chalice Chapel",
-        "enemyId":  "chalice-jelly",
-        "bossEnemyId":  "sacramental-medusa-boss",
-        "file":  "adventure-14-chalice-chapel.json"
+        "number": 14,
+        "id": "chalice-chapel",
+        "name": "Chalice Chapel",
+        "enemyId": "chalice-jelly",
+        "bossEnemyId": "sacramental-medusa-boss",
+        "file": "adventure-14-chalice-chapel.json"
     },
     {
-        "number":  15,
-        "id":  "taxkeeper-offices",
-        "name":  "Taxkeeper Offices",
-        "enemyId":  "taxkeeper-octopus",
-        "bossEnemyId":  "exchequer-krakenet-boss",
-        "file":  "adventure-15-taxkeeper-offices.json"
+        "number": 15,
+        "id": "taxkeeper-offices",
+        "name": "Castle Kitchens",
+        "enemyId": "taxkeeper-octopus",
+        "bossEnemyId": "exchequer-krakenet-boss",
+        "file": "adventure-15-taxkeeper-offices.json"
     },
     {
-        "number":  16,
-        "id":  "regal-fang-canal",
-        "name":  "Regal Fang Canal",
-        "enemyId":  "regal-fang-moray",
-        "bossEnemyId":  "crown-fang-moray-boss",
-        "file":  "adventure-16-regal-fang-canal.json"
+        "number": 16,
+        "id": "regal-fang-canal",
+        "name": "Regal Fang Canal",
+        "enemyId": "regal-fang-moray",
+        "bossEnemyId": "crown-fang-moray-boss",
+        "file": "adventure-16-regal-fang-canal.json"
     },
     {
-        "number":  17,
-        "id":  "the-silent-heraldry",
-        "name":  "The Silent Heraldry",
-        "enemyId":  "haunted-herald",
-        "bossEnemyId":  "last-royal-herald-boss",
-        "file":  "adventure-17-the-silent-heraldry.json"
+        "number": 17,
+        "id": "the-silent-heraldry",
+        "name": "The Silent Heraldry",
+        "enemyId": "haunted-herald",
+        "bossEnemyId": "last-royal-herald-boss",
+        "file": "adventure-17-the-silent-heraldry.json"
     },
     {
-        "number":  18,
-        "id":  "sealbreaker-vault",
-        "name":  "Sealbreaker Vault",
-        "enemyId":  "sealbreaker-lobster",
-        "bossEnemyId":  "grand-sealbreaker-boss",
-        "file":  "adventure-18-sealbreaker-vault.json"
+        "number": 18,
+        "id": "sealbreaker-vault",
+        "name": "Sealbreaker Vault",
+        "enemyId": "sealbreaker-lobster",
+        "bossEnemyId": "grand-sealbreaker-boss",
+        "file": "adventure-18-sealbreaker-vault.json"
     },
     {
-        "number":  19,
-        "id":  "drowned-lists",
-        "name":  "Drowned Lists",
-        "enemyId":  "drowned-duelist",
-        "bossEnemyId":  "champion-of-the-last-court-boss",
-        "file":  "adventure-19-drowned-lists.json"
+        "number": 19,
+        "id": "drowned-lists",
+        "name": "Royal Jousting Grounds",
+        "enemyId": "drowned-duelist",
+        "bossEnemyId": "champion-of-the-last-court-boss",
+        "file": "adventure-19-drowned-lists.json"
     },
     {
-        "number":  20,
-        "id":  "crownshadow-arcade",
-        "name":  "Crownshadow Arcade",
-        "enemyId":  "crownshadow-stalker",
-        "bossEnemyId":  "umbral-chamberlain-boss",
-        "file":  "adventure-20-crownshadow-arcade.json"
+        "number": 20,
+        "id": "crownshadow-arcade",
+        "name": "Crownshadow Arcade",
+        "enemyId": "crownshadow-stalker",
+        "bossEnemyId": "umbral-chamberlain-boss",
+        "file": "adventure-20-crownshadow-arcade.json"
     },
     {
-        "number":  21,
-        "id":  "the-ruined-menagerie",
-        "name":  "The Ruined Menagerie",
-        "enemyId":  "royal-menagerie-beast",
-        "bossEnemyId":  "kings-chimera-boss",
-        "file":  "adventure-21-the-ruined-menagerie.json"
+        "number": 21,
+        "id": "the-ruined-menagerie",
+        "name": "The Ruined Menagerie",
+        "enemyId": "royal-menagerie-beast",
+        "bossEnemyId": "kings-chimera-boss",
+        "file": "adventure-21-the-ruined-menagerie.json"
     },
     {
-        "number":  22,
-        "id":  "pearl-throne-approach",
-        "name":  "Pearl-Throne Approach",
-        "enemyId":  "pearl-throne-sentinel",
-        "bossEnemyId":  "mother-of-pearl-warden-boss",
-        "file":  "adventure-22-pearl-throne-approach.json"
+        "number": 22,
+        "id": "pearl-throne-approach",
+        "name": "Pearl-Throne Approach",
+        "enemyId": "pearl-throne-sentinel",
+        "bossEnemyId": "mother-of-pearl-warden-boss",
+        "file": "adventure-22-pearl-throne-approach.json"
     },
     {
-        "number":  23,
-        "id":  "the-usurpers-passage",
-        "name":  "The Usurper\u0027s Passage",
-        "enemyId":  "usurpers-bladefish",
-        "bossEnemyId":  "regicide-bladefish-boss",
-        "file":  "adventure-23-the-usurpers-passage.json"
+        "number": 23,
+        "id": "the-usurpers-passage",
+        "name": "The Royal Theater",
+        "enemyId": "usurpers-bladefish",
+        "bossEnemyId": "regicide-bladefish-boss",
+        "file": "adventure-23-the-usurpers-passage.json"
     },
     {
-        "number":  24,
-        "id":  "oathchain-dungeons",
-        "name":  "Oathchain Dungeons",
-        "enemyId":  "oathchain-serpent",
-        "bossEnemyId":  "high-gaoler-serpent-boss",
-        "file":  "adventure-24-oathchain-dungeons.json"
+        "number": 24,
+        "id": "oathchain-dungeons",
+        "name": "Hedge Maze",
+        "enemyId": "oathchain-serpent",
+        "bossEnemyId": "high-gaoler-serpent-boss",
+        "file": "adventure-24-oathchain-dungeons.json"
     },
     {
-        "number":  25,
-        "id":  "the-forgotten-princes-wing",
-        "name":  "The Forgotten Prince\u0027s Wing",
-        "enemyId":  "forgotten-prince-revenant",
-        "bossEnemyId":  "unremembered-heir-boss",
-        "file":  "adventure-25-the-forgotten-princes-wing.json"
+        "number": 25,
+        "id": "the-forgotten-princes-wing",
+        "name": "The Forgotten Prince's Wing",
+        "enemyId": "forgotten-prince-revenant",
+        "bossEnemyId": "unremembered-heir-boss",
+        "file": "adventure-25-the-forgotten-princes-wing.json"
     },
     {
-        "number":  26,
-        "id":  "the-queens-tear",
-        "name":  "The Queen\u0027s Tear",
-        "enemyId":  "queens-tear-elemental",
-        "bossEnemyId":  "sorrow-tide-queen-boss",
-        "file":  "adventure-26-the-queens-tear.json"
+        "number": 26,
+        "id": "the-queens-tear",
+        "name": "The Queen's Tear",
+        "enemyId": "queens-tear-elemental",
+        "bossEnemyId": "sorrow-tide-queen-boss",
+        "file": "adventure-26-the-queens-tear.json"
     },
     {
-        "number":  27,
-        "id":  "the-seven-royal-seals",
-        "name":  "The Seven Royal Seals",
-        "enemyId":  "royal-seal-construct",
-        "bossEnemyId":  "covenant-engine-boss",
-        "file":  "adventure-27-the-seven-royal-seals.json"
+        "number": 27,
+        "id": "the-seven-royal-seals",
+        "name": "Royal Banquet Hall",
+        "enemyId": "royal-seal-construct",
+        "bossEnemyId": "covenant-engine-boss",
+        "file": "adventure-27-the-seven-royal-seals.json"
     },
     {
-        "number":  28,
-        "id":  "the-council-in-silence",
-        "name":  "The Council in Silence",
-        "enemyId":  "drowned-councilor",
-        "bossEnemyId":  "first-minister-revenant-boss",
-        "file":  "adventure-28-the-council-in-silence.json"
+        "number": 28,
+        "id": "the-council-in-silence",
+        "name": "Sunken Festival Street",
+        "enemyId": "drowned-councilor",
+        "bossEnemyId": "first-minister-revenant-boss",
+        "file": "adventure-28-the-council-in-silence.json"
     },
     {
-        "number":  29,
-        "id":  "thronebound-causeway",
-        "name":  "Thronebound Causeway",
-        "enemyId":  "thronebound-colossus",
-        "bossEnemyId":  "kingdoms-last-colossus-boss",
-        "file":  "adventure-29-thronebound-causeway.json"
+        "number": 29,
+        "id": "thronebound-causeway",
+        "name": "Thronebound Causeway",
+        "enemyId": "thronebound-colossus",
+        "bossEnemyId": "kingdoms-last-colossus-boss",
+        "file": "adventure-29-thronebound-causeway.json"
     },
     {
-        "number":  30,
-        "id":  "the-crown-compact-embassy",
-        "name":  "The Crown Compact Embassy",
-        "enemyId":  "crown-compact-grunt",
-        "bossEnemyId":  "crown-compact-officer-boss",
-        "file":  "adventure-30-the-crown-compact-embassy.json"
+        "number": 30,
+        "id": "the-kings-festival",
+        "name": "The King's Festival",
+        "enemyId": "festival-crown-guardian",
+        "bossEnemyId": "memory-of-the-sunken-king-boss",
+        "file": "adventure-30-the-kings-festival.json"
     }
 ]

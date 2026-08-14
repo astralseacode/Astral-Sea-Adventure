@@ -1,107 +1,107 @@
 {
-    "id":  "titan-scar-threshold",
-    "number":  28,
-    "name":  "Titan-Scar Threshold",
-    "regionId":  "leviathans-wake",
-    "enemyId":  "titan-scar-guardian",
-    "recommendedLevel":  29,
-    "introDiscord":  "Titan-Scar Threshold lies ahead, where titanic ribs rising through violent crosscurrents conceal the territory of Titan-Scar Guardian.",
-    "introTwitch":  "Titan-Scar Threshold lies ahead amid titanic ribs rising through violent crosscurrents.",
-    "startRoomId":  "titan-scar-threshold-approach",
-    "rooms":  {
-                  "titan-scar-threshold-approach":  {
-                                                        "prompt":  "At the edge of Titan-Scar Threshold, titanic ribs rising through violent crosscurrents divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "titan-scar-threshold-depths",
-                                                                                     "enemyId":  "titan-scar-guardian",
-                                                                                     "message":  "A shift in the current exposes Titan-Scar Guardian, which claims the left route through Titan-Scar Threshold."
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "empty",
-                                                                                      "nextRoomId":  "titan-scar-threshold-depths",
-                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Titan-Scar Threshold. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                      "berries":  1
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "treasure",
-                                                                                        "nextRoomId":  "titan-scar-threshold-depths",
-                                                                                        "message":  "Beyond the forward route, you discover a strongbox torn from a century-old wreck.",
-                                                                                        "reward":  {
-                                                                                                       "min":  82,
-                                                                                                       "max":  126
-                                                                                                   }
-                                                                                    }
-                                                                    }
-                                                    },
-                  "titan-scar-threshold-depths":  {
-                                                      "prompt":  "Deeper within Titan-Scar Threshold, pressure-scarred trenches beside wrecked hulls divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "titan-scar-threshold-threshold",
-                                                                                   "healAmount":  6,
-                                                                                   "message":  "The left route reaches mineral-rich water rising through a titan scar, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "titan-scar-threshold-threshold",
-                                                                                    "enemyId":  "titan-scar-guardian",
-                                                                                    "message":  "A shift in the current exposes Titan-Scar Guardian, which claims the right route through Titan-Scar Threshold."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "titan-scar-threshold-threshold",
-                                                                                      "message":  "Beyond the forward route, you discover candies trapped beneath a leviathan scale.",
-                                                                                      "reward":  {
-                                                                                                     "min":  94,
-                                                                                                     "max":  138
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "titan-scar-threshold-threshold":  {
-                                                         "prompt":  "Near the heart of Titan-Scar Threshold, immense scales embedded in unstable coral shelves divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the left route, you discover a pressure-sealed navigator\u0027s chest.",
-                                                                                      "reward":  {
-                                                                                                     "min":  106,
-                                                                                                     "max":  150
-                                                                                                 }
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "healing",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "healAmount":  11,
-                                                                                       "message":  "The right route reaches a calm pocket sheltered by a colossal rib, restoring your strength.",
-                                                                                       "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "combat",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "enemyId":  "titan-scar-guardian",
-                                                                                         "message":  "A shift in the current exposes Titan-Scar Guardian, which claims the forward route through Titan-Scar Threshold."
-                                                                                     }
-                                                                     }
-                                                     },
-                  "boss-antechamber":  {
-                                           "name":  "Leviathan Seal",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Leviathan Seal."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Leviathan Seal. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Leviathan Seal: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Leviathan Seal. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "scarbound-warden-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Scarbound Warden reveals itself!"
-             },
-    "completionText":  "Scarbound Warden yields, and the currents beyond Leviathan Seal open the next route through Leviathan\u0027s Wake."
+    "id": "titan-scar-threshold",
+    "number": 28,
+    "name": "Titan-Scar Threshold",
+    "regionId": "leviathans-wake",
+    "enemyId": "titan-scar-guardian",
+    "recommendedLevel": 29,
+    "introDiscord": "The oldest graves lie beyond a natural gate formed by two enormous\nLeviathan skeletons.\n\nAncient Guardians still patrol the threshold.",
+    "introTwitch": "The oldest graves lie beyond a natural gate formed by two enormous\nLeviathan skeletons.\n\nAncient Guardians still patrol the threshold.",
+    "startRoomId": "titan-scar-threshold-approach",
+    "rooms": {
+        "titan-scar-threshold-approach": {
+            "prompt": "Three routes cross beneath the titanic bone gate.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "titan-scar-threshold-depths",
+                    "enemyId": "titan-scar-guardian",
+                    "message": "A Titan-Scar Guardian awakens beneath carvings worn almost smooth by\ntime."
+                },
+                "right": {
+                    "type": "empty",
+                    "nextRoomId": "titan-scar-threshold-depths",
+                    "message": "One Berry sits beside Shizuki's note:\n\n'This feels like entrance to something older.\n\nGlimmer stopped wandering ahead.\n\nThat is how I know it's serious.'",
+                    "berries": 1
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "titan-scar-threshold-depths",
+                    "message": "A strongbox rests beneath the ancient gate.",
+                    "reward": {
+                        "min": 82,
+                        "max": 126
+                    }
+                }
+            }
+        },
+        "titan-scar-threshold-depths": {
+            "prompt": "The threshold narrows between enormous scars.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "titan-scar-threshold-threshold",
+                    "healAmount": 6,
+                    "message": "A mineral pool rests beneath an old marker.\n\nShizuki wrote:\n\n'Rest here.\n\nNo joke.\n\nWhatever is beyond this gate deserves attention.'",
+                    "fullHpMessage": "You leave the pool untouched."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "titan-scar-threshold-threshold",
+                    "enemyId": "titan-scar-guardian",
+                    "message": "A Guardian steps from the scarred stone."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "titan-scar-threshold-threshold",
+                    "message": "Star Candies rest inside a hollow scale.",
+                    "reward": {
+                        "min": 94,
+                        "max": 138
+                    }
+                }
+            }
+        },
+        "titan-scar-threshold-threshold": {
+            "prompt": "Leviathan Seal closes around three final approaches.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A navigator's chest rests beneath weathered carvings of enormous\nswimming forms.",
+                    "reward": {
+                        "min": 106,
+                        "max": 150
+                    }
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 11,
+                    "message": "Shizuki's final bottle sits beside a small Glimmer doodle.\n\n'Ready when you are.'",
+                    "fullHpMessage": "You leave the bottle."
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "titan-scar-guardian",
+                    "message": "A Titan-Scar Guardian blocks the Seal."
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Leviathan Seal",
+            "type": "boss-prompt",
+            "prompt": "The ancient carvings around Leviathan Seal begin glowing."
+        }
+    },
+    "bossPromptDiscord": "The ancient carvings around Leviathan Seal begin glowing.\n\nA towering guardian rises beneath images of creatures far larger than\nanything still alive in the Wake.\n\nUse /yes to cross the Leviathan Seal or /no to leave the oldest graves\nunopened.",
+    "bossPromptTwitch": "The ancient carvings around Leviathan Seal begin glowing.\n\nA towering guardian rises beneath images of creatures far larger than\nanything still alive in the Wake.\n\nUse !yes to cross the Leviathan Seal or !no to leave the oldest graves\nunopened.",
+    "bossRetreatText": "You step away from the ancient threshold.",
+    "boss": {
+        "enemyId": "scarbound-warden-boss",
+        "roomId": "boss",
+        "revealText": "The scarred guardian raises its weapon.\n\nScarbound Warden reveals itself!"
+    },
+    "completionText": "The Warden falls silent.\n\nThe Seal opens.\n\nBeyond it lies one scale.\n\nLarger than any you have seen.\n\nAnd unlike the others...\n\nit still glows."
 }

@@ -1,107 +1,107 @@
 {
-    "id":  "echo-bark-trunks",
-    "number":  21,
-    "name":  "Echo-Bark Trunks",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "echo-bark-woodfish",
-    "recommendedLevel":  17,
-    "introDiscord":  "Echo-Bark Trunks lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Echo-Bark Woodfish.",
-    "introTwitch":  "Echo-Bark Trunks lies ahead amid moonlit fronds curling around forgotten shrines.",
-    "startRoomId":  "echo-bark-trunks-approach",
-    "rooms":  {
-                  "echo-bark-trunks-approach":  {
-                                                    "prompt":  "At the edge of Echo-Bark Trunks, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "echo-bark-trunks-depths",
-                                                                                 "healAmount":  22,
-                                                                                 "message":  "The left route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "echo-bark-trunks-depths",
-                                                                                  "enemyId":  "echo-bark-woodfish",
-                                                                                  "message":  "A shift in the current exposes Echo-Bark Woodfish, which claims the right route through Echo-Bark Trunks."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "echo-bark-trunks-depths",
-                                                                                    "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                    "reward":  {
-                                                                                                   "min":  100,
-                                                                                                   "max":  141
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "echo-bark-trunks-depths":  {
-                                                  "prompt":  "Deeper within Echo-Bark Trunks, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "empty",
-                                                                               "nextRoomId":  "echo-bark-trunks-threshold",
-                                                                               "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Echo-Bark Trunks. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                               "berries":  1
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "echo-bark-trunks-threshold",
-                                                                                "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
-                                                                                "reward":  {
-                                                                                               "min":  112,
-                                                                                               "max":  153
-                                                                                           }
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "echo-bark-trunks-threshold",
-                                                                                  "enemyId":  "echo-bark-woodfish",
-                                                                                  "message":  "A shift in the current exposes Echo-Bark Woodfish, which claims the forward route through Echo-Bark Trunks."
-                                                                              }
-                                                              }
-                                              },
-                  "echo-bark-trunks-threshold":  {
-                                                     "prompt":  "Near the heart of Echo-Bark Trunks, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "enemyId":  "echo-bark-woodfish",
-                                                                                  "message":  "A shift in the current exposes Echo-Bark Woodfish, which claims the left route through Echo-Bark Trunks."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  27,
-                                                                                   "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                     "reward":  {
-                                                                                                    "min":  124,
-                                                                                                    "max":  165
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "Hollow Song Chamber",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Hollow Song Chamber."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Hollow Song Chamber. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Hollow Song Chamber: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Hollow Song Chamber. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "resonant-timberfish-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Resonant Timberfish reveals itself!"
-             },
-    "completionText":  "Resonant Timberfish yields, and the currents beyond Hollow Song Chamber open the next route through Whispering Kelp Forest."
+  "id": "echo-bark-trunks",
+  "number": 21,
+  "name": "Echo-Bark Trunks",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "echo-bark-woodfish",
+  "recommendedLevel": 17,
+  "introDiscord": "Hollow echo-bark trunks rise between the kelp like drowned trees. Every\ntap, laugh, footstep, and bubble returns seconds later from somewhere\nelse in the forest.",
+  "introTwitch": "Hollow echo-bark trunks rise between the kelp like drowned trees. Every\ntap, laugh, footstep, and bubble returns seconds later from somewhere\nelse in the forest.",
+  "startRoomId": "echo-bark-trunks-approach",
+  "rooms": {
+    "echo-bark-trunks-approach": {
+      "prompt": "Three routes pass between enormous hollow trunks. Your last footstep\nechoes from a direction you never walked.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "echo-bark-trunks-depths",
+          "healAmount": 22,
+          "message": "Restorative sap rests inside a hollow trunk.\n\nShizuki scratched:\n\n'HELLO!'\n\nThe forest immediately echoes:\n\n'Hello... hello... hello...'\n\nBelow it:\n\n'Regret.'",
+          "fullHpMessage": "You leave the sap untouched and wisely avoid contributing new material\nto the echo system."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "echo-bark-trunks-depths",
+          "enemyId": "echo-bark-woodfish",
+          "message": "A knocking sound comes from inside one trunk.\n\nKnock knock.\n\nYou wait.\n\nKnock knock.\n\nAn Echo-Bark Woodfish shoots from the hollow.\n\nWorst joke setup."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "echo-bark-trunks-depths",
+          "message": "A shrine coffer sits inside an open trunk. Star Candies rattle inside,\nand every tiny clink echoes through the forest.",
+          "reward": {
+            "min": 100,
+            "max": 141
+          }
+        }
+      }
+    },
+    "echo-bark-trunks-depths": {
+      "prompt": "Towering kelp surrounds three passages lined with hollow echo-bark.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "echo-bark-trunks-threshold",
+          "message": "One Berry rests beside Shizuki's experiment log:\n\n'Yelled BERRIES into tree.\n\nTree yelled BERRIES back.\n\nConducted seventeen additional tests.\n\nResults consistent.'",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "echo-bark-trunks-threshold",
+          "message": "An offering basket rests beneath a trunk repeating the distant sound\nof laughter from some long-gone traveler.",
+          "reward": {
+            "min": 112,
+            "max": 153
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "echo-bark-trunks-threshold",
+          "enemyId": "echo-bark-woodfish",
+          "message": "A Woodfish imitates the sound of a Berry pouch opening from inside the\ntrunk.\n\nClever.\n\nManipulative.\n\nEffective."
+        }
+      }
+    },
+    "echo-bark-trunks-threshold": {
+      "prompt": "Living roots approach Hollow Song Chamber, where three enormous trunks\nresonate with one another.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "echo-bark-woodfish",
+          "message": "A Woodfish knocks from one trunk.\n\nAnother trunk answers.\n\nThen a third.\n\nThe actual Woodfish emerges from the fourth trunk you did not notice."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 27,
+          "message": "A moonblossom pool rests beside Shizuki's final echo test:\n\n'I shouted HELLO.\n\nSomething very far away answered.\n\nTest concluded.'",
+          "fullHpMessage": "You leave the pool untouched and absolutely do not repeat the test."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Broad silver kelp hides a cache inside a resonant trunk. The Star\nCandies ring like tiny bells when removed.",
+          "reward": {
+            "min": 124,
+            "max": 165
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Hollow Song Chamber",
+      "type": "boss-prompt",
+      "prompt": "Every hollow trunk in the chamber produces the same deep knock."
+    }
+  },
+  "bossPromptDiscord": "One knock rolls through Hollow Song Chamber.\n\nThen another.\n\nEvery echo-bark trunk answers in perfect rhythm.\n\nSomething enormous moves inside the interconnected hollows.\n\nUse /yes to enter the Chamber or /no to leave before whatever is knocking\nexpects an answer.",
+  "bossPromptTwitch": "One knock rolls through Hollow Song Chamber.\n\nThen another.\n\nEvery echo-bark trunk answers in perfect rhythm.\n\nSomething enormous moves inside the interconnected hollows.\n\nUse !yes to enter the Chamber or !no to leave before whatever is knocking\nexpects an answer.",
+  "bossRetreatText": "You retreat. One final knock echoes behind you.\n\nYou do not answer.",
+  "boss": {
+    "enemyId": "resonant-timberfish-boss",
+    "roomId": "boss",
+    "revealText": "The oldest trunk splits open as a massive Woodfish surges from the\nheartwood.\n\nResonant Timberfish reveals itself!"
+  },
+  "completionText": "\"The Resonant Timberfish disappears into the hollow forest.\n\nThe echoes slowly fade.\n\nThen, from very far away:\n\n'BERRIES.'\n\nShizuki's experiment survived.\"\n\n\n#################################################################"
 }

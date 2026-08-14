@@ -5,30 +5,30 @@
   "regionId": "moonlit-reef",
   "enemyId": "crescent-claw-crab",
   "recommendedLevel": 2,
-  "introDiscord": "A crescent-shaped citadel rises from the reef, its shellwork sharpened by centuries of tide.",
-  "introTwitch": "A crescent-shaped citadel rises from the reef, its shellwork sharpened by centuries of tide.",
+  "introDiscord": "A crescent-shaped citadel rises from the reef, its coral battlements sharpened by centuries of tide. Armored Crescent Claw Crabs patrol the walls with the seriousness of soldiers defending the entire Astral Sea.",
+  "introTwitch": "A crescent-shaped citadel rises from the reef, its coral battlements sharpened by centuries of tide. Armored Crescent Claw Crabs patrol the walls with the seriousness of soldiers defending the entire Astral Sea.",
   "startRoomId": "crescent-gate",
   "rooms": {
     "crescent-gate": {
-      "prompt": "A moon-carved gate opens upon three approaches beneath curving coral battlements.",
+      "prompt": "A moon-carved gate opens beneath curving battlements. Three approaches lead inward while crab guards inspect shells, shadows, and occasionally each other.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "talon-arcade",
           "healAmount": 30,
-          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Crescent balm. Useful after walls attempt diplomacy.\"",
-          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki's Crescent balm reads: \"Useful after walls attempt diplomacy. Wall won round one. I won the argument.\"",
+          "fullHpMessage": "The Crescent balm remains unused. You are already at full health, so the wall may keep its narrow victory."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "talon-arcade",
           "enemyId": "crescent-claw-crab",
-          "message": "The water folds around Crescent Claw Crab, revealing the creature as it claims the passage."
+          "message": "A Crescent Claw Crab lowers a tiny shell barrier across the path. You step around it. The crab stares at the barrier, stares at you, and takes this personally."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "talon-arcade",
-          "message": "Within Crescent Claw Citadel, the forward path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache has been incorporated into the fortification as structural support. Removing Star Candies causes absolutely nothing to collapse. Excellent engineering.",
           "reward": {
             "min": 35,
             "max": 60
@@ -37,12 +37,12 @@
       }
     },
     "talon-arcade": {
-      "prompt": "Farther within Crescent Claw Citadel, talon motifs cross an arcade whose three corridors vanish around separate bends.",
+      "prompt": "Talon motifs line an arcade filled with miniature barricades. Every few feet, another crab has constructed a defensive position against something that probably never happened.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "moonclaw-court",
-          "message": "Within Crescent Claw Citadel, the left path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer sits behind five increasingly unnecessary barricades. After navigating all five, you discover Star Candies and a sixth barricade inside the coffer.",
           "reward": {
             "min": 40,
             "max": 70
@@ -52,30 +52,30 @@
           "type": "healing",
           "nextRoomId": "moonclaw-court",
           "healAmount": 30,
-          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"If guards designed the gate, there is always another hinge.\"",
-          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
+          "message": "Shizuki's cache says: \"If guards designed the gate, there is always another hinge. If crabs designed it, there are apparently fourteen.\"",
+          "fullHpMessage": "Shizuki's fourteen-hinge remedy remains untouched. At full health, you can leave the citadel's engineering problems to the crabs."
         },
         "forward": {
           "type": "combat",
           "nextRoomId": "moonclaw-court",
           "enemyId": "crescent-claw-crab",
-          "message": "The water folds around Crescent Claw Crab, revealing the creature as it claims the passage."
+          "message": "A Crescent Claw Crab is overseeing construction of a tiny wall. You accidentally approach from the side the wall does not protect. The crab realizes the tactical flaw and blames you."
         }
       }
     },
     "moonclaw-court": {
-      "prompt": "With the outer passages behind you, Crescent Claw Citadel narrows until a pale court lies beneath the citadel crown, offering three silent ways onward.",
+      "prompt": "The inner court is divided by defensive lines, observation posts, and one extremely dramatic empty throne platform. Three routes lead deeper.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "crescent-claw-crab",
-          "message": "The water folds around Crescent Claw Crab, revealing the creature as it claims the passage."
+          "message": "A crab commander points one claw forward. Two smaller crabs immediately retreat. Apparently you have been promoted to 'problem.'"
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Crescent Claw Citadel, the right path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel has been captured and placed beneath guard. The guards are currently distracted fortifying another guard post. You recover Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -84,7 +84,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "Shizuki fixed one Berry to a filed shackle pin in the surrounding passage. Beneath it she carved: \"Their first mistake was teaching me mechanisms.\"",
+          "message": "One Berry is fixed to a filed shackle pin beside Shizuki's carving: \"Their first mistake was teaching me mechanisms. Their second was assuming I'd use them correctly.\"",
           "berries": 1
         }
       }
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Regent Thronepool",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The thronepool fills the citadel's highest court, ringed by crescent battlements and ranks of armored crabs. Every defensive line points toward the massive shell throne at its center."
     }
   },
-  "bossPromptDiscord": "You reach Regent Thronepool. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Regent Thronepool: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Regent Thronepool. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Shell horns sound across the citadel.\n\nEvery Crescent Claw guard raises its claws in salute.\n\nFrom the thronepool, a massive armored crab advances beneath a crescent-shaped crown.\n\nUse /yes to challenge the Regent or /no to make a tactical retreat that the crabs will absolutely call cowardice.",
+  "bossPromptTwitch": "Shell horns sound across the citadel.\n\nEvery Crescent Claw guard raises its claws in salute.\n\nFrom the thronepool, a massive armored crab advances beneath a crescent-shaped crown.\n\nUse !yes to challenge the Regent or !no to make a tactical retreat that the crabs will absolutely call cowardice.",
+  "bossRetreatText": "You make a tactical retreat from Regent Thronepool. Shell horns announce your departure with entirely unnecessary enthusiasm.",
   "boss": {
     "enemyId": "crescent-claw-regent-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Crescent Claw Regent reveals itself!"
+    "revealText": "The thronepool erupts as a massive armored crab advances beneath its crescent crown. The Crescent Claw Regent has entered the court!"
   },
-  "completionText": "Crescent Claw Regent yields to the returning current. Crescent Claw Citadel settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Crescent Claw Regent lowers its claws. Around the court, the other crabs slowly dismantle their barricades... then immediately begin rebuilding them somewhere else. A new route opens beyond the citadel."
 }

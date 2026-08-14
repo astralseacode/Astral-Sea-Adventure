@@ -1,107 +1,107 @@
 {
-    "id":  "thornsong-vale",
-    "number":  27,
-    "name":  "Thornsong Vale",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "thornsong-siren",
-    "recommendedLevel":  19,
-    "introDiscord":  "Thornsong Vale lies ahead, where moonlit fronds curling around forgotten shrines conceal the territory of Thornsong Siren.",
-    "introTwitch":  "Thornsong Vale lies ahead amid moonlit fronds curling around forgotten shrines.",
-    "startRoomId":  "thornsong-vale-approach",
-    "rooms":  {
-                  "thornsong-vale-approach":  {
-                                                  "prompt":  "At the edge of Thornsong Vale, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "healing",
-                                                                               "nextRoomId":  "thornsong-vale-depths",
-                                                                               "healAmount":  7,
-                                                                               "message":  "The left route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                               "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "thornsong-vale-depths",
-                                                                                "enemyId":  "thornsong-siren",
-                                                                                "message":  "A shift in the current exposes Thornsong Siren, which claims the right route through Thornsong Vale."
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "thornsong-vale-depths",
-                                                                                  "message":  "Beyond the forward route, you discover a shrine coffer covered by harmless moss.",
-                                                                                  "reward":  {
-                                                                                                 "min":  70,
-                                                                                                 "max":  113
-                                                                                             }
-                                                                              }
-                                                              }
-                                              },
-                  "thornsong-vale-depths":  {
-                                                "prompt":  "Deeper within Thornsong Vale, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                "choices":  {
-                                                                "left":  {
-                                                                             "type":  "empty",
-                                                                             "nextRoomId":  "thornsong-vale-threshold",
-                                                                             "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Thornsong Vale. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                             "berries":  1
-                                                                         },
-                                                                "right":  {
-                                                                              "type":  "treasure",
-                                                                              "nextRoomId":  "thornsong-vale-threshold",
-                                                                              "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
-                                                                              "reward":  {
-                                                                                             "min":  82,
-                                                                                             "max":  125
-                                                                                         }
-                                                                          },
-                                                                "forward":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "thornsong-vale-threshold",
-                                                                                "enemyId":  "thornsong-siren",
-                                                                                "message":  "A shift in the current exposes Thornsong Siren, which claims the forward route through Thornsong Vale."
-                                                                            }
-                                                            }
-                                            },
-                  "thornsong-vale-threshold":  {
-                                                   "prompt":  "Near the heart of Thornsong Vale, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "boss-antechamber",
-                                                                                "enemyId":  "thornsong-siren",
-                                                                                "message":  "A shift in the current exposes Thornsong Siren, which claims the left route through Thornsong Vale."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "boss-antechamber",
-                                                                                 "healAmount":  12,
-                                                                                 "message":  "The right route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "treasure",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "message":  "Beyond the forward route, you discover candies wrapped in broad silver kelp.",
-                                                                                   "reward":  {
-                                                                                                  "min":  94,
-                                                                                                  "max":  137
-                                                                                              }
-                                                                               }
-                                                               }
-                                               },
-                  "boss-antechamber":  {
-                                           "name":  "Rose-Tide Amphitheater",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Rose-Tide Amphitheater."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Rose-Tide Amphitheater. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Rose-Tide Amphitheater: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Rose-Tide Amphitheater. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "briar-chorus-siren-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Briar-Chorus Siren reveals itself!"
-             },
-    "completionText":  "Briar-Chorus Siren yields, and the currents beyond Rose-Tide Amphitheater open the next route through Whispering Kelp Forest."
+  "id": "thornsong-vale",
+  "number": 27,
+  "name": "Thornsong Vale",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "thornsong-siren",
+  "recommendedLevel": 19,
+  "introDiscord": "Thorned vines stretch across the Vale like instrument strings. Each\ncurrent plucks a different note while Thornsong Sirens sing through the\nbriars, turning the forest into a beautiful and extremely dangerous\nconcert.",
+  "introTwitch": "Thorned vines stretch across the Vale like instrument strings. Each\ncurrent plucks a different note while Thornsong Sirens sing through the\nbriars, turning the forest into a beautiful and extremely dangerous\nconcert.",
+  "startRoomId": "thornsong-vale-approach",
+  "rooms": {
+    "thornsong-vale-approach": {
+      "prompt": "Three paths cross beneath thorn-vines humming in different keys.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "thornsong-vale-depths",
+          "healAmount": 7,
+          "message": "Restorative sap rests beneath Shizuki's note:\n\n'Concert medicine.\n\nWhy does forest require concert medicine?\n\nYou will understand.'",
+          "fullHpMessage": "You leave the concert medicine untouched.\n\nYou do not yet understand.\n\nThis feels temporary."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "thornsong-vale-depths",
+          "enemyId": "thornsong-siren",
+          "message": "A beautiful voice calls from beyond the thorns.\n\nYou follow it for approximately three steps before noticing the Siren\nattached to the voice.\n\nAnd the thorns."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "thornsong-vale-depths",
+          "message": "A moss-covered shrine coffer rests beneath vines playing a delicate\nmelody. Inside are Star Candies and one thorn that immediately catches\nyour sleeve.",
+          "reward": {
+            "min": 70,
+            "max": 113
+          }
+        }
+      }
+    },
+    "thornsong-vale-depths": {
+      "prompt": "Towering kelp surrounds three passages where the music grows louder and\nthe briars grow thicker.",
+      "choices": {
+        "left": {
+          "type": "empty",
+          "nextRoomId": "thornsong-vale-threshold",
+          "message": "One Berry rests beside Shizuki's review:\n\n'Beautiful song.\nExcellent voice.\nTerrible seating.\nAudience nearly eaten.\n★★★☆☆'",
+          "berries": 1
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "thornsong-vale-threshold",
+          "message": "An offering basket hangs among the thornstrings. Star Candies inside\nrattle in time with the music.",
+          "reward": {
+            "min": 82,
+            "max": 125
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "thornsong-vale-threshold",
+          "enemyId": "thornsong-siren",
+          "message": "A Thornsong Siren harmonizes perfectly with the vines.\n\nThen the vines bend around the path.\n\nThe stage has become interactive."
+        }
+      }
+    },
+    "thornsong-vale-threshold": {
+      "prompt": "Living rootways descend toward Rose-Tide Amphitheater. Three approaches\nare lined with thornstrings tuned to the same haunting melody.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "thornsong-siren",
+          "message": "A Siren waits beneath a curtain of briars.\n\nYou recognize the opening melody.\n\nApparently this is the reprise."
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 12,
+          "message": "A moonblossom pool rests beneath Shizuki's revised review:\n\n'Second performance.\nStill beautiful.\nBrought medicine.\n★★★★☆.'",
+          "fullHpMessage": "You leave the pool untouched. Prepared critics are healthy critics."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "Broad silver kelp wraps a Star Candy bundle beneath a thorn arch shaped\nlike a theater curtain.",
+          "reward": {
+            "min": 94,
+            "max": 137
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Rose-Tide Amphitheater",
+      "type": "boss-prompt",
+      "prompt": "Every thornstring in the Amphitheater plays the same opening chord."
+    }
+  },
+  "bossPromptDiscord": "The Rose-Tide Amphitheater fills with one impossible voice.\n\nThe smaller Sirens fall silent.\n\nThorned vines tighten across the stage as a figure rises behind them,\nconducting the entire Vale with a single note.\n\nUse /yes to stay for the final performance or /no to leave before the\naudience participation becomes mandatory.",
+  "bossPromptTwitch": "The Rose-Tide Amphitheater fills with one impossible voice.\n\nThe smaller Sirens fall silent.\n\nThorned vines tighten across the stage as a figure rises behind them,\nconducting the entire Vale with a single note.\n\nUse !yes to stay for the final performance or !no to leave before the\naudience participation becomes mandatory.",
+  "bossRetreatText": "You retreat from the Amphitheater. The final song continues without\nyou.",
+  "boss": {
+    "enemyId": "briar-chorus-siren-boss",
+    "roomId": "boss",
+    "revealText": "The briars sweep apart as an ancient Siren rises at center stage.\n\nBriar-Chorus Siren reveals itself!"
+  },
+  "completionText": "\"The Briar-Chorus Siren's final note fades.\n\nThe thornstrings answer with one quiet closing chord.\n\nShizuki's imaginary review:\n\nFive stars.\n\nStill terrible seating.\"\n\n\n#################################################################"
 }

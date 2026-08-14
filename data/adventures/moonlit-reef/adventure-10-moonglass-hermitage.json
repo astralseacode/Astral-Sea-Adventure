@@ -5,17 +5,17 @@
   "regionId": "moonlit-reef",
   "enemyId": "moonglass-hermit",
   "recommendedLevel": 2,
-  "introDiscord": "A solitary hermitage of moonglass rests where reef pilgrims once listened to the Astral Tide.",
-  "introTwitch": "A solitary hermitage of moonglass rests where reef pilgrims once listened to the Astral Tide.",
+  "introDiscord": "A quiet moonglass hermitage rests beneath dark water, its mirrored halls once used by pilgrims seeking answers from the Astral Tide. Your reflection enters a moment after you do.",
+  "introTwitch": "A quiet moonglass hermitage rests beneath dark water, its mirrored halls once used by pilgrims seeking answers from the Astral Tide. Your reflection enters a moment after you do.",
   "startRoomId": "pilgrim-mirror",
   "rooms": {
     "pilgrim-mirror": {
-      "prompt": "A mirrorlike landing reflects three corridors beneath an unbroken ceiling of dark water.",
+      "prompt": "A mirrorlike landing reflects three corridors perfectly. Your reflection studies them too. Then it briefly looks toward a fourth corridor that doesn't exist.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "silent-cloister",
-          "message": "Within Moonglass Hermitage, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae offering vessel appears in a reflection but not in the room itself. You reach behind the mirror on principle and somehow find the real vessel containing Star Candies.",
           "reward": {
             "min": 35,
             "max": 60
@@ -25,30 +25,30 @@
           "type": "combat",
           "nextRoomId": "silent-cloister",
           "enemyId": "moonglass-hermit",
-          "message": "The water folds around Moonglass Hermit, revealing the creature as it claims the passage."
+          "message": "A figure in the glass copies your movements until you notice one detail: it has a shell. A Moonglass Hermit steps out from behind the reflection and blocks the path."
         },
         "forward": {
           "type": "healing",
           "nextRoomId": "silent-cloister",
           "healAmount": 30,
-          "message": "Someone converted a broken supply case in the surrounding passage into a tiny infirmary. Shizuki's handwriting identifies the tonic: \"Moonglass elixir. Sip carefully; the cup has opinions.\"",
-          "fullHpMessage": "Nothing in Shizuki's improvised infirmary along the route is needed, which feels like its own victory."
+          "message": "Shizuki's little infirmary contains a Moonglass elixir and a cup positioned suspiciously far away. Her note reads: \"Sip carefully. The cup has opinions. It preferred Glimmer.\"",
+          "fullHpMessage": "The Moonglass elixir remains beside its opinionated cup. You are already at full health, so neither gets a vote today."
         }
       }
     },
     "silent-cloister": {
-      "prompt": "The route winds deeper through Moonglass Hermitage until silent cells surround a cloister where three walks continue through dim glass arches.",
+      "prompt": "Silent cells surround a glass cloister. Reflections move between them even when the rooms themselves are empty, and three walks continue beneath dim arches.",
       "choices": {
         "left": {
           "type": "empty",
           "nextRoomId": "shardlight-walk",
-          "message": "A polished shard in the surrounding passage reflects one Berry hidden behind it. Shizuki scratched: \"Still free. Still difficult to catch.\"",
+          "message": "A polished shard reflects one Berry hidden behind it. Shizuki scratched into the frame: \"Still free. Still difficult to catch. Reflection keeps cheating at hide-and-seek.\"",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "shardlight-walk",
-          "message": "Within Moonglass Hermitage, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache appears in every pane of glass at once. Only one reflection shows the latch open. Following that reflection leads you to the real cache and Star Candies.",
           "reward": {
             "min": 40,
             "max": 70
@@ -58,30 +58,30 @@
           "type": "combat",
           "nextRoomId": "shardlight-walk",
           "enemyId": "moonglass-hermit",
-          "message": "The water folds around Moonglass Hermit, revealing the creature as it claims the passage."
+          "message": "A Moonglass Hermit sits silently beside the path. Its reflection stands before it does. The actual Hermit follows a second later and advances."
         }
       }
     },
     "shardlight-walk": {
-      "prompt": "As Moonglass Hermitage grows strangely still, broken reflections travel along a shardlit hall as three doorways wait without markings.",
+      "prompt": "Broken reflections race along a long shardlit hall. Three unmarked doors wait ahead, and each reflection insists you chose a different one.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moonglass-hermit",
-          "message": "The water folds around Moonglass Hermit, revealing the creature as it claims the passage."
+          "message": "You pass what looks like an empty glass panel. Your reflection suddenly ducks. That warning arrives exactly one second before a Moonglass Hermit lunges from the opposite side."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 30,
-          "message": "Deeper inside Moonglass Hermitage, you discover one of Shizuki's abandoned camps. A stoppered bottle rests beside a note: \"A hermit taught me this. I taught him how to pick a lock.\"",
-          "fullHpMessage": "The bottle along the route is still there, but thankfully you do not need Shizuki's remedy today."
+          "message": "Shizuki's old camp contains a stoppered bottle beside the note: \"A hermit taught me this recipe. I taught him how to pick a lock. Cultural exchange!\"",
+          "fullHpMessage": "Shizuki's cultural-exchange remedy remains stoppered. At full health, you can leave the Hermit's lockpicking lesson in the past."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Moonglass Hermitage, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer has been hidden where several broken mirrors overlap. You follow the only reflection that is smiling and uncover Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Elder Reflection Hall",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The final hall contains one enormous mirror without a single crack. Nothing reflects in it—until an ancient shape slowly appears behind you."
     }
   },
-  "bossPromptDiscord": "You reach Elder Reflection Hall. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Elder Reflection Hall: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Elder Reflection Hall. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "Your reflection disappears.\n\nThen every mirror in the hall shows the same elderly figure approaching from a different direction.\n\nOnly one of them casts a shadow.\n\nUse /yes to face the Elder Reflection or /no to leave before the mirrors decide which version is real.",
+  "bossPromptTwitch": "Your reflection disappears.\n\nThen every mirror in the hall shows the same elderly figure approaching from a different direction.\n\nOnly one of them casts a shadow.\n\nUse !yes to face the Elder Reflection or !no to leave before the mirrors decide which version is real.",
+  "bossRetreatText": "You step away from Elder Reflection Hall. The ancient figure recedes from every mirror, though your reflection watches a moment longer.",
   "boss": {
     "enemyId": "moonglass-elder-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Moonglass Elder reveals itself!"
+    "revealText": "The central mirror ripples like water as an ancient shell-clad figure steps through. The Moonglass Elder raises its staff, and every reflection moves with it!"
   },
-  "completionText": "Moonglass Elder yields to the returning current. Moonglass Hermitage settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Moonglass Elder lowers its guard and returns to the mirror. Your reflection reappears—slightly late, but yours again. As you leave, it gives you a tiny wave you definitely did not make."
 }

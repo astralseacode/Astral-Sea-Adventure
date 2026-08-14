@@ -1,107 +1,107 @@
 {
-    "id":  "the-singing-vines",
-    "number":  11,
-    "name":  "The Singing Vines",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "singing-vine-serpent",
-    "recommendedLevel":  13,
-    "introDiscord":  "The Singing Vines lies ahead, where living rootways beneath drifting fae lights conceal the territory of Singing Vine Serpent.",
-    "introTwitch":  "The Singing Vines lies ahead amid living rootways beneath drifting fae lights.",
-    "startRoomId":  "the-singing-vines-approach",
-    "rooms":  {
-                  "the-singing-vines-approach":  {
-                                                     "prompt":  "At the edge of The Singing Vines, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "treasure",
-                                                                                  "nextRoomId":  "the-singing-vines-depths",
-                                                                                  "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                  "reward":  {
-                                                                                                 "min":  150,
-                                                                                                 "max":  188
-                                                                                             }
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "the-singing-vines-depths",
-                                                                                   "enemyId":  "singing-vine-serpent",
-                                                                                   "message":  "A shift in the current exposes Singing Vine Serpent, which claims the right route through The Singing Vines."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "healing",
-                                                                                     "nextRoomId":  "the-singing-vines-depths",
-                                                                                     "healAmount":  47,
-                                                                                     "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                     "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                 }
-                                                                 }
-                                                 },
-                  "the-singing-vines-depths":  {
-                                                   "prompt":  "Deeper within The Singing Vines, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                   "choices":  {
-                                                                   "left":  {
-                                                                                "type":  "combat",
-                                                                                "nextRoomId":  "the-singing-vines-threshold",
-                                                                                "enemyId":  "singing-vine-serpent",
-                                                                                "message":  "A shift in the current exposes Singing Vine Serpent, which claims the left route through The Singing Vines."
-                                                                            },
-                                                                   "right":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "the-singing-vines-threshold",
-                                                                                 "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
-                                                                                 "reward":  {
-                                                                                                "min":  162,
-                                                                                                "max":  200
-                                                                                            }
-                                                                             },
-                                                                   "forward":  {
-                                                                                   "type":  "empty",
-                                                                                   "nextRoomId":  "the-singing-vines-threshold",
-                                                                                   "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of The Singing Vines. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                   "berries":  1
-                                                                               }
-                                                               }
-                                               },
-                  "the-singing-vines-threshold":  {
-                                                      "prompt":  "Near the heart of The Singing Vines, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  52,
-                                                                                   "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "combat",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "enemyId":  "singing-vine-serpent",
-                                                                                    "message":  "A shift in the current exposes Singing Vine Serpent, which claims the right route through The Singing Vines."
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "treasure",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "message":  "Beyond the forward route, you discover an offering basket hidden inside a living root.",
-                                                                                      "reward":  {
-                                                                                                     "min":  174,
-                                                                                                     "max":  212
-                                                                                                 }
-                                                                                  }
-                                                                  }
-                                                  },
-                  "boss-antechamber":  {
-                                           "name":  "Resonant Arbor",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Resonant Arbor."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Resonant Arbor. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Resonant Arbor: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Resonant Arbor. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "canticle-serpent-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Canticle Serpent reveals itself!"
-             },
-    "completionText":  "Canticle Serpent yields, and the currents beyond Resonant Arbor open the next route through Whispering Kelp Forest."
+  "id": "the-singing-vines",
+  "number": 11,
+  "name": "The Singing Vines",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "singing-vine-serpent",
+  "recommendedLevel": 13,
+  "introDiscord": "Long silver vines hum whenever the current moves through them. Some\nrepeat old melodies. Others improvise. Somewhere among the vines, a\nSerpent has learned harmony.",
+  "introTwitch": "Long silver vines hum whenever the current moves through them. Some\nrepeat old melodies. Others improvise. Somewhere among the vines, a\nSerpent has learned harmony.",
+  "startRoomId": "the-singing-vines-approach",
+  "rooms": {
+    "the-singing-vines-approach": {
+      "prompt": "Three rootways pass beneath curtains of humming vines. Each route sings\na different melody.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "the-singing-vines-depths",
+          "message": "Broad kelp wraps a Star Candy cache beneath vines playing a gentle\nthree-note refrain. Opening the bundle adds an accidental fourth note.",
+          "reward": {
+            "min": 150,
+            "max": 188
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "the-singing-vines-depths",
+          "enemyId": "singing-vine-serpent",
+          "message": "One vine sings slightly off-key.\n\nThen it opens its eyes.\n\nThat explains the artistic disagreement."
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "the-singing-vines-depths",
+          "healAmount": 47,
+          "message": "Restorative sap rests beneath Shizuki's note:\n\n'Tried singing with vines.\n\nVines copied me.\n\nGlimmer copied vines.\n\nI have been outnumbered musically.'",
+          "fullHpMessage": "You leave the sap untouched. The vines continue performing without\nrequiring another vocalist."
+        }
+      }
+    },
+    "the-singing-vines-depths": {
+      "prompt": "The melodies overlap as three passages twist through a natural\nunderwater concert hall.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "the-singing-vines-threshold",
+          "enemyId": "singing-vine-serpent",
+          "message": "A smooth harmony follows you between the roots.\n\nOne note gets louder.\n\nAnd closer.\n\nA Singing Vine Serpent uncoils from the melody."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "the-singing-vines-threshold",
+          "message": "A moss-covered shrine coffer opens beneath vines playing what sounds\nsuspiciously like a victory song.\n\nPremature, but encouraging.",
+          "reward": {
+            "min": 162,
+            "max": 200
+          }
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "the-singing-vines-threshold",
+          "message": "One Berry rests beside Shizuki's handwritten lyrics:\n\n'Berries berries berries~\n\nGlimmer says I need second verse.\n\nI disagree.'",
+          "berries": 1
+        }
+      }
+    },
+    "the-singing-vines-threshold": {
+      "prompt": "Towering kelp forms Resonant Arbor. Three final routes hum in perfect\nthree-part harmony.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 52,
+          "message": "A moonblossom pool sits beneath a vine humming softly enough to feel\nlike a lullaby.\n\nShizuki wrote:\n\n'Excellent nap vine.\nFive stars.'",
+          "fullHpMessage": "You leave the restorative pool untouched and allow the five-star nap\nvine to continue its work."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "singing-vine-serpent",
+          "message": "A Singing Vine Serpent answers the Arbor's harmony with one long note.\n\nThen it moves into the path.\n\nSoloist detected."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "An offering basket has been woven directly into the singing vines.\nInside are Star Candies that gently rattle in rhythm.",
+          "reward": {
+            "min": 174,
+            "max": 212
+          }
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Resonant Arbor",
+      "type": "boss-prompt",
+      "prompt": "Every vine in the Arbor stops singing.\n\nOne deeper melody remains."
+    }
+  },
+  "bossPromptDiscord": "The Resonant Arbor answers with a single low note.\n\nThe roots vibrate.\n\nThe vines bend.\n\nA much larger harmony begins moving through the chamber from somewhere\nyou cannot see.\n\nUse /yes to enter the Arbor or /no to leave the final performance for\nanother night.",
+  "bossPromptTwitch": "The Resonant Arbor answers with a single low note.\n\nThe roots vibrate.\n\nThe vines bend.\n\nA much larger harmony begins moving through the chamber from somewhere\nyou cannot see.\n\nUse !yes to enter the Arbor or !no to leave the final performance for\nanother night.",
+  "bossRetreatText": "You retreat from the Arbor. The hidden melody continues behind you,\npatiently holding the final note.",
+  "boss": {
+    "enemyId": "canticle-serpent-boss",
+    "roomId": "boss",
+    "revealText": "The vines split apart as an enormous Serpent coils through the singing\nroots.\n\nCanticle Serpent reveals itself!"
+  },
+  "completionText": "\"The Canticle Serpent disappears beneath the Arbor.\n\nThe vines resume their music.\n\nFor several seconds, they play Shizuki's berry song.\n\nOh no.\"\n\n\n#################################################################"
 }

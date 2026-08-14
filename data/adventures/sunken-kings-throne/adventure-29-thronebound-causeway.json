@@ -1,107 +1,107 @@
 {
-    "id":  "thronebound-causeway",
-    "number":  29,
-    "name":  "Thronebound Causeway",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "thronebound-colossus",
-    "recommendedLevel":  49,
-    "introDiscord":  "Thronebound Causeway lies ahead, where haunted halls beneath drifting banners conceal the territory of Thronebound Colossus.",
-    "introTwitch":  "Thronebound Causeway lies ahead amid haunted halls beneath drifting banners.",
-    "startRoomId":  "thronebound-causeway-approach",
-    "rooms":  {
-                  "thronebound-causeway-approach":  {
-                                                        "prompt":  "At the edge of Thronebound Causeway, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                        "choices":  {
-                                                                        "left":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "thronebound-causeway-depths",
-                                                                                     "message":  "Beyond the left route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                     "reward":  {
-                                                                                                    "min":  94,
-                                                                                                    "max":  138
-                                                                                                }
-                                                                                 },
-                                                                        "right":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "thronebound-causeway-depths",
-                                                                                      "enemyId":  "thronebound-colossus",
-                                                                                      "message":  "A shift in the current exposes Thronebound Colossus, which claims the right route through Thronebound Causeway."
-                                                                                  },
-                                                                        "forward":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "thronebound-causeway-depths",
-                                                                                        "healAmount":  4,
-                                                                                        "message":  "The forward route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    }
-                                                                    }
-                                                    },
-                  "thronebound-causeway-depths":  {
-                                                      "prompt":  "Deeper within Thronebound Causeway, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "thronebound-causeway-threshold",
-                                                                                   "enemyId":  "thronebound-colossus",
-                                                                                   "message":  "A shift in the current exposes Thronebound Colossus, which claims the left route through Thronebound Causeway."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "thronebound-causeway-threshold",
-                                                                                    "message":  "Beyond the right route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                    "reward":  {
-                                                                                                   "min":  106,
-                                                                                                   "max":  150
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "empty",
-                                                                                      "nextRoomId":  "thronebound-causeway-threshold",
-                                                                                      "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Thronebound Causeway. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                      "berries":  1
-                                                                                  }
-                                                                  }
-                                                  },
-                  "thronebound-causeway-threshold":  {
-                                                         "prompt":  "Near the heart of Thronebound Causeway, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "boss-antechamber",
-                                                                                      "healAmount":  9,
-                                                                                      "message":  "The left route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "enemyId":  "thronebound-colossus",
-                                                                                       "message":  "A shift in the current exposes Thronebound Colossus, which claims the right route through Thronebound Causeway."
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "boss-antechamber",
-                                                                                         "message":  "Beyond the forward route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                         "reward":  {
-                                                                                                        "min":  118,
-                                                                                                        "max":  162
-                                                                                                    }
-                                                                                     }
-                                                                     }
-                                                     },
-                  "boss-antechamber":  {
-                                           "name":  "Crownward Colonnade",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Crownward Colonnade."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Crownward Colonnade. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Crownward Colonnade: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Crownward Colonnade. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "kingdoms-last-colossus-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Kingdom\u0027s Last Colossus reveals itself!"
-             },
-    "completionText":  "Kingdom\u0027s Last Colossus yields, and the currents beyond Crownward Colonnade open the next route through Sunken King\u0027s Throne."
+    "id": "thronebound-causeway",
+    "number": 29,
+    "name": "Thronebound Causeway",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "thronebound-colossus",
+    "recommendedLevel": 49,
+    "introDiscord": "The festival street ends at the longest road in the kingdom.\n\nA vast causeway stretches straight toward the royal throne complex.\n\nEvery place you've explored is visible behind you.",
+    "introTwitch": "The festival street ends at the longest road in the kingdom.\n\nA vast causeway stretches straight toward the royal throne complex.\n\nEvery place you've explored is visible behind you.",
+    "startRoomId": "thronebound-causeway-approach",
+    "rooms": {
+        "thronebound-causeway-approach": {
+            "prompt": "Thronebound Causeway opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "treasure",
+                    "nextRoomId": "thronebound-causeway-depths",
+                    "message": "A ceremonial pilgrim chest contains Star Candies.",
+                    "reward": {
+                        "min": 94,
+                        "max": 138
+                    }
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "thronebound-causeway-depths",
+                    "enemyId": "thronebound-colossus",
+                    "message": "A Thronebound Colossus rises from the causeway."
+                },
+                "forward": {
+                    "type": "healing",
+                    "nextRoomId": "thronebound-causeway-depths",
+                    "healAmount": 4,
+                    "message": "A royal rest pavilion still contains restorative water.\n\nShizuki wrote:\n\n'THRONE THIS WAY.\n\nI am approximately 83% sure.\n\nGlimmer says 100%.\n\nGlimmer has become dangerously confident.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                }
+            }
+        },
+        "thronebound-causeway-depths": {
+            "prompt": "Deeper within Thronebound Causeway, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "thronebound-causeway-threshold",
+                    "enemyId": "thronebound-colossus",
+                    "message": "A Colossus guards the central bridge."
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "thronebound-causeway-threshold",
+                    "message": "A royal processional coffer contains Star Candies.",
+                    "reward": {
+                        "min": 106,
+                        "max": 150
+                    }
+                },
+                "forward": {
+                    "type": "empty",
+                    "nextRoomId": "thronebound-causeway-threshold",
+                    "message": "One Berry rests beneath Shizuki's final kingdom map.\n\nFor once, there is exactly one arrow.\n\n'THRONE →'\n\nUnderneath:\n\n'SEE?\n\nI CAN MAKE GOOD MAP.'",
+                    "berries": 1
+                }
+            }
+        },
+        "thronebound-causeway-threshold": {
+            "prompt": "Near Crownward Colonnade, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 9,
+                    "message": "A final causeway fountain restores strength.\n\nShizuki wrote:\n\n'Last rest stop.\n\nNext door better contain throne after all this.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "thronebound-colossus",
+                    "message": "A Thronebound Colossus blocks Crownward Colonnade."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "A ceremonial chest contains Star Candies beside the palace seal.",
+                    "reward": {
+                        "min": 118,
+                        "max": 162
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Crownward Colonnade",
+            "type": "boss-prompt",
+            "prompt": "The throne complex rises ahead."
+        }
+    },
+    "bossPromptDiscord": "The throne complex rises ahead.\n\nOne enormous guardian stands alone beneath Crownward Colonnade.\n\nBehind it, the final palace doors remain closed.\n\nUse /yes to approach the throne complex or /no to give\nShizuki more time to emotionally prepare for being correct about a map.",
+    "bossPromptTwitch": "The throne complex rises ahead.\n\nOne enormous guardian stands alone beneath Crownward Colonnade.\n\nBehind it, the final palace doors remain closed.\n\nUse !yes to approach the throne complex or !no to give\nShizuki more time to emotionally prepare for being correct about a map.",
+    "bossRetreatText": "You withdraw from Crownward Colonnade. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "kingdoms-last-colossus-boss",
+        "roomId": "boss",
+        "revealText": "Kingdom's Last Colossus reveals itself!"
+    },
+    "completionText": "The Colossus kneels.\n\nThe palace doors finally open.\n\nShizuki's writing appears on the frame:\n\n'I WAS RIGHT.\n\nTHRONE.\n\nRIGHT THERE.\n\nEVERYONE WRITE THIS DOWN.'"
 }

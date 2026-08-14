@@ -1,107 +1,107 @@
 {
-    "id":  "palace-aqueducts",
-    "number":  3,
-    "name":  "Palace Aqueducts",
-    "regionId":  "sunken-kings-throne",
-    "enemyId":  "palace-lamprey",
-    "recommendedLevel":  31,
-    "introDiscord":  "Palace Aqueducts lies ahead, where flooded courtyards lined with watchful stone nobility conceal the territory of Palace Lamprey.",
-    "introTwitch":  "Palace Aqueducts lies ahead amid flooded courtyards lined with watchful stone nobility.",
-    "startRoomId":  "palace-aqueducts-approach",
-    "rooms":  {
-                  "palace-aqueducts-approach":  {
-                                                    "prompt":  "At the edge of Palace Aqueducts, flooded courtyards lined with watchful stone nobility divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "healing",
-                                                                                 "nextRoomId":  "palace-aqueducts-depths",
-                                                                                 "healAmount":  102,
-                                                                                 "message":  "The left route reaches clear water lingering in a consecrated font, restoring your strength.",
-                                                                                 "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "palace-aqueducts-depths",
-                                                                                  "enemyId":  "palace-lamprey",
-                                                                                  "message":  "A shift in the current exposes Palace Lamprey, which claims the right route through Palace Aqueducts."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "palace-aqueducts-depths",
-                                                                                    "message":  "Beyond the forward route, you discover a guard stipend locked beneath fallen heraldry.",
-                                                                                    "reward":  {
-                                                                                                   "min":  332,
-                                                                                                   "max":  367
-                                                                                               }
-                                                                                }
-                                                                }
-                                                },
-                  "palace-aqueducts-depths":  {
-                                                  "prompt":  "Deeper within Palace Aqueducts, drowned palace colonnades guarded by broken royal seals divide into three uncertain routes.",
-                                                  "choices":  {
-                                                                  "left":  {
-                                                                               "type":  "empty",
-                                                                               "nextRoomId":  "palace-aqueducts-threshold",
-                                                                               "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Palace Aqueducts. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                               "berries":  1
-                                                                           },
-                                                                  "right":  {
-                                                                                "type":  "treasure",
-                                                                                "nextRoomId":  "palace-aqueducts-threshold",
-                                                                                "message":  "Beyond the right route, you discover a modest coffer overlooked by the ruined treasury.",
-                                                                                "reward":  {
-                                                                                               "min":  344,
-                                                                                               "max":  379
-                                                                                           }
-                                                                            },
-                                                                  "forward":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "palace-aqueducts-threshold",
-                                                                                  "enemyId":  "palace-lamprey",
-                                                                                  "message":  "A shift in the current exposes Palace Lamprey, which claims the forward route through Palace Aqueducts."
-                                                                              }
-                                                              }
-                                              },
-                  "palace-aqueducts-threshold":  {
-                                                     "prompt":  "Near the heart of Palace Aqueducts, haunted halls beneath drifting banners divide into three uncertain routes.",
-                                                     "choices":  {
-                                                                     "left":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "boss-antechamber",
-                                                                                  "enemyId":  "palace-lamprey",
-                                                                                  "message":  "A shift in the current exposes Palace Lamprey, which claims the left route through Palace Aqueducts."
-                                                                              },
-                                                                     "right":  {
-                                                                                   "type":  "healing",
-                                                                                   "nextRoomId":  "boss-antechamber",
-                                                                                   "healAmount":  107,
-                                                                                   "message":  "The right route reaches restorative royal salts stored in an intact cabinet, restoring your strength.",
-                                                                                   "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                               },
-                                                                     "forward":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the forward route, you discover candies sealed inside a ceremonial chalice.",
-                                                                                     "reward":  {
-                                                                                                    "min":  356,
-                                                                                                    "max":  391
-                                                                                                }
-                                                                                 }
-                                                                 }
-                                                 },
-                  "boss-antechamber":  {
-                                           "name":  "Royal Bloodwell",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Royal Bloodwell."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Royal Bloodwell. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Royal Bloodwell: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Royal Bloodwell. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "crimson-court-lamprey-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Crimson Court Lamprey reveals itself!"
-             },
-    "completionText":  "Crimson Court Lamprey yields, and the currents beyond Royal Bloodwell open the next route through Sunken King\u0027s Throne."
+    "id": "palace-aqueducts",
+    "number": 3,
+    "name": "Palace Aqueducts",
+    "regionId": "sunken-kings-throne",
+    "enemyId": "palace-lamprey",
+    "recommendedLevel": 31,
+    "introDiscord": "Elegant aqueducts carry clear water between palace courtyards.\n\nShizuki appears to have treated the entire royal water system as an\namusement park.",
+    "introTwitch": "Elegant aqueducts carry clear water between palace courtyards.\n\nShizuki appears to have treated the entire royal water system as an\namusement park.",
+    "startRoomId": "palace-aqueducts-approach",
+    "rooms": {
+        "palace-aqueducts-approach": {
+            "prompt": "Palace Aqueducts opens into three routes through the drowned kingdom.",
+            "choices": {
+                "left": {
+                    "type": "healing",
+                    "nextRoomId": "palace-aqueducts-depths",
+                    "healAmount": 102,
+                    "message": "A crystal fountain pours into an old bath channel.\n\nShizuki wrote:\n\n'Royal water slide candidate #1.\n\nToo shallow.\n\nResearch continues.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "right": {
+                    "type": "combat",
+                    "nextRoomId": "palace-aqueducts-depths",
+                    "enemyId": "palace-lamprey",
+                    "message": "A Palace Lamprey shoots from the aqueduct.\n\nApparently something already lives in the slide."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "palace-aqueducts-depths",
+                    "message": "An old maintenance alcove hides a royal service coffer filled with\nStar Candies.",
+                    "reward": {
+                        "min": 332,
+                        "max": 367
+                    }
+                }
+            }
+        },
+        "palace-aqueducts-depths": {
+            "prompt": "Deeper within Palace Aqueducts, three paths wind through the abandoned royal district.",
+            "choices": {
+                "left": {
+                    "type": "empty",
+                    "nextRoomId": "palace-aqueducts-threshold",
+                    "message": "One Berry rests inside a little floating cup.\n\nShizuki's note:\n\n'Water slide candidate #4.\n\nGlimmer completed route in six seconds.\n\nGlimmer can fly.\n\nRESULT INVALID.'",
+                    "berries": 1
+                },
+                "right": {
+                    "type": "treasure",
+                    "nextRoomId": "palace-aqueducts-threshold",
+                    "message": "A tiled basin conceals a waterproof palace coffer.",
+                    "reward": {
+                        "min": 344,
+                        "max": 379
+                    }
+                },
+                "forward": {
+                    "type": "combat",
+                    "nextRoomId": "palace-aqueducts-threshold",
+                    "enemyId": "palace-lamprey",
+                    "message": "A Palace Lamprey races down the aqueduct directly toward you.\n\nWater attraction officially closed."
+                }
+            }
+        },
+        "palace-aqueducts-threshold": {
+            "prompt": "Near Royal Bloodwell, three final approaches lead onward.",
+            "choices": {
+                "left": {
+                    "type": "combat",
+                    "nextRoomId": "boss-antechamber",
+                    "enemyId": "palace-lamprey",
+                    "message": "A Lamprey coils inside an ornate fountain basin."
+                },
+                "right": {
+                    "type": "healing",
+                    "nextRoomId": "boss-antechamber",
+                    "healAmount": 107,
+                    "message": "Restorative mineral water bubbles beneath a royal lion spout.\n\nShizuki rated it:\n\n'Water slide: 2/10.\n\nHealing fountain: 9/10.\n\nLion: excellent.'",
+                    "fullHpMessage": "You leave the restorative untouched. You're already at full health."
+                },
+                "forward": {
+                    "type": "treasure",
+                    "nextRoomId": "boss-antechamber",
+                    "message": "Star Candies glitter beneath the palace waterwheel.",
+                    "reward": {
+                        "min": 356,
+                        "max": 391
+                    }
+                }
+            }
+        },
+        "boss-antechamber": {
+            "name": "Royal Bloodwell",
+            "type": "boss-prompt",
+            "prompt": "The aqueducts empty into Royal Bloodwell."
+        }
+    },
+    "bossPromptDiscord": "The aqueducts empty into Royal Bloodwell.\n\nSomething enormous circles beneath the red palace stone.\n\nUse /yes to enter the Bloodwell, or /no to retire from\nroyal water-slide research.",
+    "bossPromptTwitch": "The aqueducts empty into Royal Bloodwell.\n\nSomething enormous circles beneath the red palace stone.\n\nUse !yes to enter the Bloodwell, or !no to retire from\nroyal water-slide research.",
+    "bossRetreatText": "You withdraw from Royal Bloodwell. The royal challenge will wait.",
+    "boss": {
+        "enemyId": "crimson-court-lamprey-boss",
+        "roomId": "boss",
+        "revealText": "An enormous Lamprey erupts through the fountain channels.\n\nCrimson Court Lamprey reveals itself!"
+    },
+    "completionText": "The palace water begins flowing normally again.\n\nShizuki's final aqueduct note:\n\n'Slide project cancelled.\n\nGlimmer refuses to accept ruling.'"
 }

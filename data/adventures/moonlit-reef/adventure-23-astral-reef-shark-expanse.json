@@ -5,24 +5,24 @@
   "regionId": "moonlit-reef",
   "enemyId": "astral-reef-shark",
   "recommendedLevel": 4,
-  "introDiscord": "An open expanse stretches beyond the reef wall, crossed by fast currents and distant silhouettes.",
-  "introTwitch": "An open expanse stretches beyond the reef wall, crossed by fast currents and distant silhouettes.",
+  "introDiscord": "The sheltering coral abruptly ends. Beyond it stretches open blue water crossed by fast currents and distant fins. Three routes leave the safety of the reef, and none provide much cover.",
+  "introTwitch": "The sheltering coral abruptly ends. Beyond it stretches open blue water crossed by fast currents and distant fins. Three routes leave the safety of the reef, and none provide much cover.",
   "startRoomId": "bluewater-margin",
   "rooms": {
     "bluewater-margin": {
-      "prompt": "Bluewater surrounds a narrow margin where three courses leave the sheltering coral.",
+      "prompt": "The bluewater margin marks the last shelter before open ocean. Three exposed currents leave the coral wall while distant fins repeatedly cross their paths.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "predator-meridian",
           "healAmount": 40,
-          "message": "Shizuki wedged a weathered field kit into the coral along the route. Its surviving bottle is labeled: \"Bluewater tonic. Shark tested, elf approved, bottle mildly bitten.\"",
-          "fullHpMessage": "Shizuki's field kit along the route can remain closed; you have no wounds for it to mend."
+          "message": "Shizuki's Bluewater tonic reads: \"Shark tested, elf approved, bottle mildly bitten. Tester unavailable for comment.\"",
+          "fullHpMessage": "The mildly bitten Bluewater tonic remains unused. You are already at full health; the absent tester may keep its silence."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "predator-meridian",
-          "message": "Within Astral Reef Shark Expanse, the right path from the current passage reveals a hidden Moonkeeper cache.",
+          "message": "A Moonkeeper cache rests just beyond the coral wall. Retrieving Star Candies requires entering open water for approximately twelve very long seconds.",
           "reward": {
             "min": 60,
             "max": 90
@@ -32,30 +32,30 @@
           "type": "combat",
           "nextRoomId": "predator-meridian",
           "enemyId": "astral-reef-shark",
-          "message": "The water folds around Astral Reef Shark, revealing the creature as it claims the passage."
+          "message": "A fin cuts across your route. It disappears. Another appears farther away. The Astral Reef Shark is not lost. It is measuring you."
         }
       }
     },
     "predator-meridian": {
-      "prompt": "Beyond the outer passages of Astral Reef Shark Expanse, a meridian of pale stones points toward three routes across the exposed sea.",
+      "prompt": "Pale stones mark an old crossing through exposed water. Three routes extend from it while shadows repeatedly pass beyond the edge of sight.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "open-reef-run",
           "enemyId": "astral-reef-shark",
-          "message": "The water folds around Astral Reef Shark, revealing the creature as it claims the passage."
+          "message": "An Astral Reef Shark approaches slowly, turns aside at the last second, then circles back faster. The first pass was a warning."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "open-reef-run",
           "healAmount": 40,
-          "message": "A careful survival cache waits farther along the route, signed with Shizuki's crooked arrow mark. The remedy bears a warning: \"Take a breath. Fear is useful; panic has poor navigation.\"",
-          "fullHpMessage": "The remedy in the surrounding passage stays in its cache. For once, preparation is all you need."
+          "message": "Shizuki's cache reads: \"Take a breath. Fear is useful; panic has poor navigation. Also sharks can tell when you swim like an idiot. Allegedly.\"",
+          "fullHpMessage": "Shizuki's breathing-point cache remains closed. At full health, you can focus on navigating without swimming like an idiot."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "open-reef-run",
-          "message": "Within Astral Reef Shark Expanse, the forward path from the current passage reveals a hidden moon-shell coffer.",
+          "message": "A moon-shell coffer lies between two marker stones. You retrieve Star Candies during the narrow gap between circling fins.",
           "reward": {
             "min": 70,
             "max": 105
@@ -64,12 +64,12 @@
       }
     },
     "open-reef-run": {
-      "prompt": "Near the innermost reaches of Astral Reef Shark Expanse, the open reef run widens around three channels beneath a restless surface.",
+      "prompt": "The final channel leaves almost no shelter. Three currents cross beneath the restless surface while every distant silhouette has enough room to approach from anywhere.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Within Astral Reef Shark Expanse, the left path from the current passage reveals a hidden Fae offering vessel.",
+          "message": "A Fae vessel drifts directly in the open. You recover Star Candies while experiencing the deeply unpleasant sensation of being the most visible object in the ocean.",
           "reward": {
             "min": 80,
             "max": 120
@@ -79,12 +79,12 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "astral-reef-shark",
-          "message": "The water folds around Astral Reef Shark, revealing the creature as it claims the passage."
+          "message": "An Astral Reef Shark appears beneath you instead of ahead. It has learned from the previous encounters. Wonderful."
         },
         "forward": {
           "type": "empty",
           "nextRoomId": "boss-antechamber",
-          "message": "A shark-crossing diagram in the surrounding passage has one Berry knotted at its safest breathing point. Shizuki's route follows the predator everyone else avoided.",
+          "message": "One Berry is tied to Shizuki's shark-crossing diagram beside the safest breathing point. Her route follows directly behind the predator everyone else avoided. \"Can't surprise me if I'm following it. Strategy.\"",
           "berries": 1
         }
       }
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Apex Gyre",
       "type": "boss-prompt",
-      "prompt": "A powerful presence shifts beyond the final threshold while the surrounding reef falls still."
+      "prompt": "The currents spiral into a broad gyre beyond the final reef marker. Smaller fins circle its edge, leaving the center conspicuously empty."
     }
   },
-  "bossPromptDiscord": "You reach Apex Gyre. The water tightens around an unseen guardian whose presence fills the chamber.\nUse /yes to continue or /no to retreat for now.",
-  "bossPromptTwitch": "Apex Gyre: An unseen guardian stirs beyond the threshold. Use !yes to continue or !no to retreat.",
-  "bossRetreatText": "You withdraw from Apex Gyre. The hidden guardian remains beyond the threshold.",
+  "bossPromptDiscord": "The smaller fins disappear.\n\nOne enormous wake begins circling the entire gyre.\n\nEach lap draws closer.\n\nUse /yes to face the Astral Reef Apex or /no to return to the coral before the next circle closes.",
+  "bossPromptTwitch": "The smaller fins disappear.\n\nOne enormous wake begins circling the entire gyre.\n\nEach lap draws closer.\n\nUse !yes to face the Astral Reef Apex or !no to return to the coral before the next circle closes.",
+  "bossRetreatText": "You return toward the coral as the enormous wake completes another circle behind you.",
   "boss": {
     "enemyId": "astral-reef-apex-boss",
     "roomId": "boss",
-    "revealText": "The chamber answers with a surge of reef magic. Astral Reef Apex reveals itself!"
+    "revealText": "The circling wake breaks as an enormous shark surges through the gyre. The Astral Reef Apex closes in!"
   },
-  "completionText": "Astral Reef Apex yields to the returning current. Astral Reef Shark Expanse settles into a quieter rhythm, and another route through the Moonlit Reef becomes clear."
+  "completionText": "The Astral Reef Apex turns away and vanishes into open blue. The smaller sharks remain distant long enough for you to cross. You do not waste the opportunity."
 }

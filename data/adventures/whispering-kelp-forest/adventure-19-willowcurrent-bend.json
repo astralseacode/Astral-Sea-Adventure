@@ -1,107 +1,107 @@
 {
-    "id":  "willowcurrent-bend",
-    "number":  19,
-    "name":  "Willowcurrent Bend",
-    "regionId":  "whispering-kelp-forest",
-    "enemyId":  "willowcurrent-nymph",
-    "recommendedLevel":  16,
-    "introDiscord":  "Willowcurrent Bend lies ahead, where towering kelp columns threaded with murmuring currents conceal the territory of Willowcurrent Nymph.",
-    "introTwitch":  "Willowcurrent Bend lies ahead amid towering kelp columns threaded with murmuring currents.",
-    "startRoomId":  "willowcurrent-bend-approach",
-    "rooms":  {
-                  "willowcurrent-bend-approach":  {
-                                                      "prompt":  "At the edge of Willowcurrent Bend, towering kelp columns threaded with murmuring currents divide into three uncertain routes.",
-                                                      "choices":  {
-                                                                      "left":  {
-                                                                                   "type":  "combat",
-                                                                                   "nextRoomId":  "willowcurrent-bend-depths",
-                                                                                   "enemyId":  "willowcurrent-nymph",
-                                                                                   "message":  "A shift in the current exposes Willowcurrent Nymph, which claims the left route through Willowcurrent Bend."
-                                                                               },
-                                                                      "right":  {
-                                                                                    "type":  "treasure",
-                                                                                    "nextRoomId":  "willowcurrent-bend-depths",
-                                                                                    "message":  "Beyond the right route, you discover an offering basket hidden inside a living root.",
-                                                                                    "reward":  {
-                                                                                                   "min":  110,
-                                                                                                   "max":  151
-                                                                                               }
-                                                                                },
-                                                                      "forward":  {
-                                                                                      "type":  "healing",
-                                                                                      "nextRoomId":  "willowcurrent-bend-depths",
-                                                                                      "healAmount":  27,
-                                                                                      "message":  "The forward route reaches restorative sap gathered in a folded leaf, restoring your strength.",
-                                                                                      "fullHpMessage":  "The restorative refuge along the forward route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                  }
-                                                                  }
-                                                  },
-                  "willowcurrent-bend-depths":  {
-                                                    "prompt":  "Deeper within Willowcurrent Bend, living rootways beneath drifting fae lights divide into three uncertain routes.",
-                                                    "choices":  {
-                                                                    "left":  {
-                                                                                 "type":  "treasure",
-                                                                                 "nextRoomId":  "willowcurrent-bend-threshold",
-                                                                                 "message":  "Beyond the left route, you discover candies wrapped in broad silver kelp.",
-                                                                                 "reward":  {
-                                                                                                "min":  122,
-                                                                                                "max":  163
-                                                                                            }
-                                                                             },
-                                                                    "right":  {
-                                                                                  "type":  "combat",
-                                                                                  "nextRoomId":  "willowcurrent-bend-threshold",
-                                                                                  "enemyId":  "willowcurrent-nymph",
-                                                                                  "message":  "A shift in the current exposes Willowcurrent Nymph, which claims the right route through Willowcurrent Bend."
-                                                                              },
-                                                                    "forward":  {
-                                                                                    "type":  "empty",
-                                                                                    "nextRoomId":  "willowcurrent-bend-threshold",
-                                                                                    "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Willowcurrent Bend. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                    "berries":  1
-                                                                                }
-                                                                }
-                                                },
-                  "willowcurrent-bend-threshold":  {
-                                                       "prompt":  "Near the heart of Willowcurrent Bend, moonlit fronds curling around forgotten shrines divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "boss-antechamber",
-                                                                                    "healAmount":  32,
-                                                                                    "message":  "The left route reaches a tranquil grove pool scented with moonblossom, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "treasure",
-                                                                                     "nextRoomId":  "boss-antechamber",
-                                                                                     "message":  "Beyond the right route, you discover a shrine coffer covered by harmless moss.",
-                                                                                     "reward":  {
-                                                                                                    "min":  134,
-                                                                                                    "max":  175
-                                                                                                }
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "combat",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "enemyId":  "willowcurrent-nymph",
-                                                                                       "message":  "A shift in the current exposes Willowcurrent Nymph, which claims the forward route through Willowcurrent Bend."
-                                                                                   }
-                                                                   }
-                                                   },
-                  "boss-antechamber":  {
-                                           "name":  "Drowned Willow Shrine",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Drowned Willow Shrine."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Drowned Willow Shrine. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Drowned Willow Shrine: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Drowned Willow Shrine. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "weeping-current-nymph-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Weeping Current Nymph reveals itself!"
-             },
-    "completionText":  "Weeping Current Nymph yields, and the currents beyond Drowned Willow Shrine open the next route through Whispering Kelp Forest."
+  "id": "willowcurrent-bend",
+  "number": 19,
+  "name": "Willowcurrent Bend",
+  "regionId": "whispering-kelp-forest",
+  "enemyId": "willowcurrent-nymph",
+  "recommendedLevel": 16,
+  "introDiscord": "Long willowkelp branches bend beneath a slow silver current. Willowcurrent\nNymphs move through them like dancers, turning the water with every\ngesture.",
+  "introTwitch": "Long willowkelp branches bend beneath a slow silver current. Willowcurrent\nNymphs move through them like dancers, turning the water with every\ngesture.",
+  "startRoomId": "willowcurrent-bend-approach",
+  "rooms": {
+    "willowcurrent-bend-approach": {
+      "prompt": "Three paths curve beneath trailing willow fronds. Each bends gently\ntoward a different current.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "willowcurrent-bend-depths",
+          "enemyId": "willowcurrent-nymph",
+          "message": "A Willowcurrent Nymph traces one hand through the water.\n\nThe current bends.\n\nThe fronds bend.\n\nYou bend slightly too.\n\nThe Nymph seems satisfied and attacks."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "willowcurrent-bend-depths",
+          "message": "An offering basket rests beneath long willow leaves. Inside are Star\nCandies polished smooth by the slow current.",
+          "reward": {
+            "min": 110,
+            "max": 151
+          }
+        },
+        "forward": {
+          "type": "healing",
+          "nextRoomId": "willowcurrent-bend-depths",
+          "healAmount": 27,
+          "message": "Restorative sap sits beneath Shizuki's note:\n\n'Water here keeps moving my hair dramatically.\n\nExcellent location.\n\nMedicine also good.'",
+          "fullHpMessage": "You leave the restorative sap untouched and enjoy the complimentary\ndramatic hair current."
+        }
+      }
+    },
+    "willowcurrent-bend-depths": {
+      "prompt": "Living rootways follow the bending current into three graceful arcs.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "willowcurrent-bend-threshold",
+          "message": "Broad silver kelp wraps a cache caught in the curve of a willow root.\nInside are Star Candies and a tiny ribbon flowing permanently sideways.",
+          "reward": {
+            "min": 122,
+            "max": 163
+          }
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "willowcurrent-bend-threshold",
+          "enemyId": "willowcurrent-nymph",
+          "message": "A Nymph redirects the current across your path with one elegant motion.\n\nYou are beginning to suspect the forest has professional choreographers."
+        },
+        "forward": {
+          "type": "empty",
+          "nextRoomId": "willowcurrent-bend-threshold",
+          "message": "One Berry rests beneath Shizuki's sketch of herself standing\ndramatically beneath the willow fronds.\n\nCaption:\n\n'Looked mysterious for approximately eight seconds.\n\nGlimmer ruined atmosphere by sitting on head.'",
+          "berries": 1
+        }
+      }
+    },
+    "willowcurrent-bend-threshold": {
+      "prompt": "Moonlit fronds bow toward Drowned Willow Shrine as three streams weave\nthrough the roots.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 32,
+          "message": "A tranquil grove pool sits where the three currents briefly calm.\n\nShizuki wrote:\n\n'Rest here.\n\nHair drama resumes after this point.'",
+          "fullHpMessage": "You leave the pool untouched and prepare for continued atmospheric\nhairstyling."
+        },
+        "right": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A moss-covered shrine coffer rests beneath a willow arch. Star Candies\ninside catch the moving light like tiny droplets.",
+          "reward": {
+            "min": 134,
+            "max": 175
+          }
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "willowcurrent-nymph",
+          "message": "A Willowcurrent Nymph steps into the current.\n\nThe entire path curves around it.\n\nApparently the route belongs to the dancer now."
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Drowned Willow Shrine",
+      "type": "boss-prompt",
+      "prompt": "Every willow branch in the Shrine bends toward a single figure beneath\nthe roots."
+    }
+  },
+  "bossPromptDiscord": "The silver current slows.\n\nA graceful silhouette rises beneath the hanging willowkelp, and every\nsmaller Nymph stops moving.\n\nWater gathers around the figure like a long flowing veil.\n\nUse /yes to enter Drowned Willow Shrine or /no to leave the ancient\ncurrent undisturbed.",
+  "bossPromptTwitch": "The silver current slows.\n\nA graceful silhouette rises beneath the hanging willowkelp, and every\nsmaller Nymph stops moving.\n\nWater gathers around the figure like a long flowing veil.\n\nUse !yes to enter Drowned Willow Shrine or !no to leave the ancient\ncurrent undisturbed.",
+  "bossRetreatText": "You step away. The willow current resumes its slow path through the\nforest.",
+  "boss": {
+    "enemyId": "weeping-current-nymph-boss",
+    "roomId": "boss",
+    "revealText": "The hanging fronds part as a powerful Nymph rises within a spiral of\nsilver water.\n\nWeeping Current Nymph reveals itself!"
+  },
+  "completionText": "\"The Weeping Current Nymph dissolves back into the willow stream.\n\nThe branches straighten slightly.\n\nThen one current catches your hair.\n\nAtmosphere restored.\"\n\n\n#################################################################"
 }

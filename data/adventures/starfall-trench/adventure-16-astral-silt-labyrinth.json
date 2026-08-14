@@ -1,107 +1,107 @@
 {
-    "id":  "astral-silt-labyrinth",
-    "number":  16,
-    "name":  "Astral Silt Labyrinth",
-    "regionId":  "starfall-trench",
-    "enemyId":  "astral-silt-stalker",
-    "recommendedLevel":  8,
-    "introDiscord":  "Astral Silt Labyrinth lies ahead, where fractured starstone terraces conceal the territory of Astral Silt Stalker.",
-    "introTwitch":  "Astral Silt Labyrinth lies ahead amid fractured starstone terraces.",
-    "startRoomId":  "astral-silt-labyrinth-approach",
-    "rooms":  {
-                  "astral-silt-labyrinth-approach":  {
-                                                         "prompt":  "At the edge of Astral Silt Labyrinth, fractured starstone terraces divide into three uncertain routes.",
-                                                         "choices":  {
-                                                                         "left":  {
-                                                                                      "type":  "combat",
-                                                                                      "nextRoomId":  "astral-silt-labyrinth-depths",
-                                                                                      "enemyId":  "astral-silt-stalker",
-                                                                                      "message":  "A shift in the current exposes Astral Silt Stalker, which claims the left route through Astral Silt Labyrinth."
-                                                                                  },
-                                                                         "right":  {
-                                                                                       "type":  "empty",
-                                                                                       "nextRoomId":  "astral-silt-labyrinth-depths",
-                                                                                       "message":  "You find one of Shizuki\u0027s old trail caches beside a doodled map of Astral Silt Labyrinth. A note says: \"If you\u0027re reading this, the sensible route was probably somewhere else. This one has a Berry, though. You\u0027ve got this.\"",
-                                                                                       "berries":  1
-                                                                                   },
-                                                                         "forward":  {
-                                                                                         "type":  "treasure",
-                                                                                         "nextRoomId":  "astral-silt-labyrinth-depths",
-                                                                                         "message":  "Beyond the forward route, you discover a sealed meteor-iron reliquary.",
-                                                                                         "reward":  {
-                                                                                                        "min":  93,
-                                                                                                        "max":  133
-                                                                                                    }
-                                                                                     }
-                                                                     }
-                                                     },
-                  "astral-silt-labyrinth-depths":  {
-                                                       "prompt":  "Deeper within Astral Silt Labyrinth, meteor-lit trenches divide into three uncertain routes.",
-                                                       "choices":  {
-                                                                       "left":  {
-                                                                                    "type":  "healing",
-                                                                                    "nextRoomId":  "astral-silt-labyrinth-threshold",
-                                                                                    "healAmount":  29,
-                                                                                    "message":  "The left route reaches a pool calmed by orbiting star fragments, restoring your strength.",
-                                                                                    "fullHpMessage":  "The restorative refuge along the left route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                },
-                                                                       "right":  {
-                                                                                     "type":  "combat",
-                                                                                     "nextRoomId":  "astral-silt-labyrinth-threshold",
-                                                                                     "enemyId":  "astral-silt-stalker",
-                                                                                     "message":  "A shift in the current exposes Astral Silt Stalker, which claims the right route through Astral Silt Labyrinth."
-                                                                                 },
-                                                                       "forward":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "astral-silt-labyrinth-threshold",
-                                                                                       "message":  "Beyond the forward route, you discover candies fused into a comet-glass seam.",
-                                                                                       "reward":  {
-                                                                                                      "min":  105,
-                                                                                                      "max":  145
-                                                                                                  }
-                                                                                   }
-                                                                   }
-                                                   },
-                  "astral-silt-labyrinth-threshold":  {
-                                                          "prompt":  "Near the heart of Astral Silt Labyrinth, gravity-bent celestial ruins divide into three uncertain routes.",
-                                                          "choices":  {
-                                                                          "left":  {
-                                                                                       "type":  "treasure",
-                                                                                       "nextRoomId":  "boss-antechamber",
-                                                                                       "message":  "Beyond the left route, you discover a star chart coffer buried in luminous silt.",
-                                                                                       "reward":  {
-                                                                                                      "min":  117,
-                                                                                                      "max":  157
-                                                                                                  }
-                                                                                   },
-                                                                          "right":  {
-                                                                                        "type":  "healing",
-                                                                                        "nextRoomId":  "boss-antechamber",
-                                                                                        "healAmount":  34,
-                                                                                        "message":  "The right route reaches warm light leaking from a dormant cosmic vent, restoring your strength.",
-                                                                                        "fullHpMessage":  "The restorative refuge along the right route remains peaceful; you need no healing, but the discovery still teaches you something."
-                                                                                    },
-                                                                          "forward":  {
-                                                                                          "type":  "combat",
-                                                                                          "nextRoomId":  "boss-antechamber",
-                                                                                          "enemyId":  "astral-silt-stalker",
-                                                                                          "message":  "A shift in the current exposes Astral Silt Stalker, which claims the forward route through Astral Silt Labyrinth."
-                                                                                      }
-                                                                      }
-                                                      },
-                  "boss-antechamber":  {
-                                           "name":  "Buried Starlight Court",
-                                           "type":  "boss-prompt",
-                                           "prompt":  "A powerful guardian disturbs the water beyond the final threshold of Buried Starlight Court."
-                                       }
-              },
-    "bossPromptDiscord":  "You enter Buried Starlight Court. A vast silhouette moves behind the chamber\u0027s last veil.\n\nA powerful guardian blocks the way. Its identity remains concealed.\nUse /yes to continue or /no to retreat for now.",
-    "bossPromptTwitch":  "Buried Starlight Court: A concealed guardian blocks the way. Use !yes to continue or !no to retreat.",
-    "bossRetreatText":  "You withdraw from Buried Starlight Court. The hidden guardian remains beyond the threshold.",
-    "boss":  {
-                 "enemyId":  "siltveil-ambusher-boss",
-                 "roomId":  "boss",
-                 "revealText":  "The chamber\u0027s veil breaks. Siltveil Ambusher reveals itself!"
-             },
-    "completionText":  "Siltveil Ambusher yields, and the currents beyond Buried Starlight Court open the next route through Starfall Trench."
+  "id": "astral-silt-labyrinth",
+  "number": 16,
+  "name": "Astral Silt Labyrinth",
+  "regionId": "starfall-trench",
+  "enemyId": "astral-silt-stalker",
+  "recommendedLevel": 8,
+  "introDiscord": "Celestial silt shifts constantly across the labyrinth, erasing paths almost as quickly as they are mapped. Shizuki tried anyway.",
+  "introTwitch": "Celestial silt shifts constantly across the labyrinth, erasing paths almost as quickly as they are mapped. Shizuki tried anyway.",
+  "startRoomId": "astral-silt-labyrinth-approach",
+  "rooms": {
+    "astral-silt-labyrinth-approach": {
+      "prompt": "Three passages emerge from shifting silver silt.",
+      "choices": {
+        "left": {
+          "type": "combat",
+          "nextRoomId": "astral-silt-labyrinth-depths",
+          "enemyId": "astral-silt-stalker",
+          "message": "An Astral Silt Stalker rises from a path that looked empty approximately one second ago."
+        },
+        "right": {
+          "type": "empty",
+          "nextRoomId": "astral-silt-labyrinth-depths",
+          "message": "A Berry rests beside a badly smudged map.\n\nShizuki wrote: \"Map version 8. Current accuracy: emotionally supportive.\"",
+          "berries": 1
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "astral-silt-labyrinth-depths",
+          "message": "A meteor-iron reliquary protrudes from the silt.",
+          "reward": {
+            "min": 93,
+            "max": 133
+          }
+        }
+      }
+    },
+    "astral-silt-labyrinth-depths": {
+      "prompt": "The labyrinth rearranges behind you.",
+      "choices": {
+        "left": {
+          "type": "healing",
+          "nextRoomId": "astral-silt-labyrinth-threshold",
+          "healAmount": 29,
+          "message": "Shizuki's tonic sits beneath an arrow that has been crossed out seven times.",
+          "fullHpMessage": "You leave the tonic. The arrow now points at a wall."
+        },
+        "right": {
+          "type": "combat",
+          "nextRoomId": "astral-silt-labyrinth-threshold",
+          "enemyId": "astral-silt-stalker",
+          "message": "A Silt Stalker erupts from beneath the path."
+        },
+        "forward": {
+          "type": "treasure",
+          "nextRoomId": "astral-silt-labyrinth-threshold",
+          "message": "A cometglass seam emerges briefly from the moving silt.",
+          "reward": {
+            "min": 105,
+            "max": 145
+          }
+        }
+      }
+    },
+    "astral-silt-labyrinth-threshold": {
+      "prompt": "Three routes converge on Buried Starlight Court.",
+      "choices": {
+        "left": {
+          "type": "treasure",
+          "nextRoomId": "boss-antechamber",
+          "message": "A star-chart coffer lies half buried beneath silver sediment.",
+          "reward": {
+            "min": 117,
+            "max": 157
+          }
+        },
+        "right": {
+          "type": "healing",
+          "nextRoomId": "boss-antechamber",
+          "healAmount": 34,
+          "message": "Shizuki's bottle reads: \"If lost: pick direction confidently. Confidence does not help, but feels better.\"",
+          "fullHpMessage": "You continue confidently."
+        },
+        "forward": {
+          "type": "combat",
+          "nextRoomId": "boss-antechamber",
+          "enemyId": "astral-silt-stalker",
+          "message": "\"A Stalker rises directly from Shizuki's 'SAFE PROBABLY' marker.\"\n\nBOSS:"
+        }
+      }
+    },
+    "boss-antechamber": {
+      "name": "Buried Starlight Court",
+      "type": "boss-prompt",
+      "prompt": "The entire labyrinth becomes still."
+    }
+  },
+  "bossPromptDiscord": "The entire labyrinth becomes still.\n\nSomething enormous moves beneath the silt.\n\nUse /yes to enter Buried Starlight Court or /no to leave before the floor remembers it is alive.",
+  "bossPromptTwitch": "The entire labyrinth becomes still.\n\nSomething enormous moves beneath the silt.\n\nUse !yes to enter Buried Starlight Court or !no to leave before the floor remembers it is alive.",
+  "bossRetreatText": "You retreat. The labyrinth immediately rearranges behind you.",
+  "boss": {
+    "enemyId": "siltveil-ambusher-boss",
+    "roomId": "boss",
+    "revealText": "The silt erupts upward.\n\nSiltveil Ambusher reveals itself!"
+  },
+  "completionText": "\"The Court settles.\n\nShizuki's map remains inaccurate.\n\nTradition preserved.\"\n\n\n#################################################################"
 }
