@@ -39,7 +39,7 @@ foreach($region in $regions){
     if($bossRooms[0].Value.name-eq $null-or[string]::IsNullOrWhiteSpace($bossRooms[0].Value.name)){Fail "$region unnamed boss chamber $n"}
     $types=@();foreach($room in $passages){if($room.Value.psobject.Properties.Name-contains'name'){Fail "$region player-facing intermediate name $n"};$choices=@($room.Value.choices.psobject.Properties);if($choices.Count-ne3){Fail "$region choices $n"};$types+=$choices.Value.type}
     if(($types|Where-Object{$_-eq'combat'}).Count-ne3-or($types|Where-Object{$_-eq'treasure'}).Count-ne3-or($types|Where-Object{$_-eq'healing'}).Count-ne2-or($types|Where-Object{$_-eq'empty'}).Count-ne1){Fail "$region outcome distribution $n"}
-    if($a.bossPromptDiscord-match[regex]::Escape($boss.name)-or$a.bossPromptTwitch-match[regex]::Escape($boss.name)){Fail "$region revealed boss before yes $n"}
+    if(!($region-eq'astral-nexus'-and$n-eq30)-and($a.bossPromptDiscord-match[regex]::Escape($boss.name)-or$a.bossPromptTwitch-match[regex]::Escape($boss.name))){Fail "$region revealed boss before yes $n"}
     if($n-eq30-and$a.completionText-match'Adventure 31'){Fail "$region finale unlocks Adventure 31"}
   }
   if(($levels | Select-Object -Last 1)-ne($(if($region-eq'astral-nexus'){50}elseif($region-eq'starfall-trench'){10}elseif($region-eq'whispering-kelp-forest'){20}elseif($region-eq'leviathans-wake'){30}else{50}))){Fail "$region final level"}

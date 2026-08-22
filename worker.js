@@ -2726,26 +2726,16 @@ function formatCombatStatus(
   platform = "twitch",
 ) {
   const resourceCaps = getPlayerResourceCaps(progress);
-  const activeEffects = formatActiveEffects(progress, platform);
 
   if (platform === "discord") {
-    return [
-      ...(activeEffects ? [activeEffects] : []),
-      formatDiscordCombatHud(combatState, progress),
-    ];
+    return [formatDiscordCombatHud(combatState, progress)];
   }
 
-  const status = [
+  return [
     `HP ${combatState.playerHp}/${combatState.playerMaxHp} | ` +
       `MP ${progress.mana}/${resourceCaps.mana} | ` +
-      `Enemy HP ${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
+      `Enemy ${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
   ];
-
-  if (activeEffects) {
-    status.push(activeEffects);
-  }
-
-  return status;
 }
 
 function formatDiscordCombatHud(combatState, progress) {
@@ -2753,7 +2743,7 @@ function formatDiscordCombatHud(combatState, progress) {
 
   return `HP ${combatState.playerHp}/${combatState.playerMaxHp} | ` +
     `MP ${progress.mana}/${resourceCaps.mana} | ` +
-    `Enemy HP ${combatState.enemy.hp}/${combatState.enemy.maxHp}`;
+    `Enemy ${combatState.enemy.hp}/${combatState.enemy.maxHp}`;
 }
 
 function appendDiscordCombatHud(message, combatState, progress) {
@@ -2842,8 +2832,11 @@ async function performCastUnlocked(
     const activeEffect = getStatusEffect(progress, spell.effectId);
 
     if (activeEffect) {
-      const message = `${randomChoice(spell.recastScenes)}\n\n` +
-        `Elf Blessing Remaining: ${formatEffectRemaining(activeEffect)}`;
+      const recastScene = randomChoice(spell.recastScenes);
+      const message = currentCombatState
+        ? recastScene
+        : `${recastScene}\n\n` +
+          `Elf Blessing Remaining: ${formatEffectRemaining(activeEffect)}`;
       return {
         message: currentCombatState && platform === "discord"
           ? appendDiscordCombatHud(message, currentCombatState, progress)
@@ -2885,10 +2878,15 @@ async function performCastUnlocked(
       updatedProgress,
       platform,
     );
+    const effectDetails = currentCombatState ? "" : activeEffects;
 
     const message = platform === "discord"
-        ? `${scene}\n\n${activeEffects}`
-        : `${scene.split("\n")[0]} ${activeEffects}`;
+        ? effectDetails
+          ? `${scene}\n\n${effectDetails}`
+          : scene
+        : effectDetails
+          ? `${scene.split("\n")[0]} ${effectDetails}`
+          : scene.split("\n")[0];
     return {
       message: currentCombatState && platform === "discord"
         ? appendDiscordCombatHud(message, currentCombatState, updatedProgress)
