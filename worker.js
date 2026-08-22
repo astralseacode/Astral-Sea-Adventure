@@ -6808,11 +6808,23 @@ async function performRegionCompletion(
   ).size;
   const totalAdventures = manifest.length;
 
-  const completedNotes = getOwnedNoteNumbers(
+  const collectedNotes = getOwnedNoteNumbers(
     progress,
     region.id,
     metadata.noteCount,
-  ).length;
+  );
+  const completedNotes = collectedNotes.length;
+  const collectedNoteSet = new Set(collectedNotes);
+  const missingNotes = Array.from(
+    { length: metadata.noteCount },
+    (_, index) => index + 1,
+  ).filter((number) => !collectedNoteSet.has(number));
+  const collectedText = collectedNotes.length
+    ? formatNumberRanges(collectedNotes)
+    : "None";
+  const missingText = missingNotes.length
+    ? formatNumberRanges(missingNotes)
+    : "None — chapter complete!";
 
   const totalObjectives =
     totalAdventures + metadata.noteCount;
@@ -6837,9 +6849,11 @@ async function performRegionCompletion(
     totalNotes: metadata.noteCount,
     completionPercent,
     message:
-      `${region.name} Completion\n` +
+      `${region.name} Completion ` +
       `Adventures: ${completedAdventures}/${totalAdventures} | ` +
       `Travel Notes: ${completedNotes}/${metadata.noteCount} | ` +
+      `Collected: ${collectedText} | ` +
+      `Missing: ${missingText} | ` +
       `Completion: ${completionPercent}%`,
   };
 }
