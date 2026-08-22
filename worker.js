@@ -261,6 +261,7 @@ const SPELL_FILES = {
   elf_blessing: "elf-blessing.json",
   "star-spark": "starspark.json",
   jelly: "jellyfish.json",
+  mend: "mend.json",
   moonbeam: "moonbeam.json",
 };
 const DATA_CACHE = new Map();
@@ -583,6 +584,7 @@ const DISCORD_COMMANDS = [
           { name: "Elf Blessing", value: "elf_blessing" },
           { name: "Star", value: "star" },
           { name: "Jelly", value: "jelly" },
+          { name: "Mend", value: "mend" },
           { name: "Moonbeam", value: "moonbeam" },
         ],
       },
@@ -1101,7 +1103,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -2719,6 +2721,11 @@ async function resolvePlayerCombatAction(
     };
   }
 
+  const mendMessage = triggerMendHealing(combatState);
+  if (mendMessage) {
+    messageParts.push(mendMessage);
+  }
+
   combatState.round += 1;
   combatState.updatedAt = Math.floor(Date.now() / 1000);
   await savePlayerProgress(env, backpackKey, {
@@ -2734,6 +2741,33 @@ async function resolvePlayerCombatAction(
   return {
     message: formatCombatMessageParts(messageParts, platform),
   };
+}
+
+function triggerMendHealing(combatState) {
+  const mend = combatState.mend;
+  if (!mend) return "";
+
+  const healedAmount = Math.max(
+    0,
+    Math.min(
+      mend.healingPerTrigger,
+      combatState.playerMaxHp - combatState.playerHp,
+    ),
+  );
+  combatState.playerHp += healedAmount;
+  mend.remainingTriggers -= 1;
+  const isFinalTrigger = mend.remainingTriggers === 0;
+
+  if (isFinalTrigger) {
+    delete combatState.mend;
+  }
+
+  if (healedAmount === 0) {
+    return "Mend finds nothing to heal.";
+  }
+
+  return `Mend restores ${healedAmount} HP.` +
+    (isFinalTrigger ? " The last Fae light fades away." : "");
 }
 
 function formatCombatStatus(
@@ -2802,6 +2836,7 @@ async function performCastUnlocked(
   const starSparkCommand = platform === "discord"
     ? "/cast star"
     : "!cast star";
+  const mendCommand = platform === "discord" ? "/cast mend" : "!cast mend";
   const blessingCommand = platform === "discord"
     ? "/cast spell:Elf Blessing"
     : "!cast elf blessing";
@@ -2814,7 +2849,7 @@ async function performCastUnlocked(
       message:
         `Use ${blessingCommand} for Elf Blessing, ${jellyCommand} ` +
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
-        `${moonbeamCommand} for Moonbeam.`,
+        `${mendCommand} for Mend, or ${moonbeamCommand} for Moonbeam.`,
     };
   }
 
@@ -2829,7 +2864,8 @@ async function performCastUnlocked(
     return {
       message:
         `You haven't learned that spell. Use ${blessingCommand}, ` +
-        `${starSparkCommand}, ${jellyCommand}, or ${moonbeamCommand}.`,
+        `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
+        `${moonbeamCommand}.`,
     };
   }
 
@@ -2845,6 +2881,83 @@ async function performCastUnlocked(
       message: currentCombatState && platform === "discord"
         ? appendDiscordCombatHud(message, currentCombatState, progress)
         : message,
+    };
+  }
+
+  if (spell.type === "healing-support" && spell.id === "mend") {
+    if (!currentCombatState) {
+      return {
+        message:
+          "Mend can only be woven during a fight. Start or continue an " +
+          "Adventure battle first.",
+      };
+    }
+
+    if (currentCombatState.mend) {
+      return {
+        message:
+          "The Fae magic is already mending your wounds. Give it a moment—it's working on it.",
+      };
+    }
+
+    if (progress.mana < spell.manaCost) {
+      const message = `You don't have enough Mana to cast ${spell.name}.`;
+      return {
+        message: platform === "discord"
+          ? appendDiscordCombatHud(message, currentCombatState, progress)
+          : message,
+      };
+    }
+
+    const naturalRoll = randomInteger(1, spell.damage.sides);
+    const tier = spell.healingTiers.find(
+      (entry) => naturalRoll <= entry.naturalMaximum,
+    );
+    const criticalFlavor =
+      naturalRoll === spell.damage.sides &&
+      Math.random() < spell.criticalFlavorChance
+        ? randomChoice(spell.criticalFlavor)
+        : null;
+    const originalCombatState = structuredClone(currentCombatState);
+    const updatedProgress = {
+      ...progress,
+      mana: progress.mana - spell.manaCost,
+    };
+    currentCombatState.mend = {
+      naturalRoll,
+      tierId: tier.id,
+      displayName: tier.displayName,
+      healingPerTrigger: tier.healingPerTrigger,
+      remainingTriggers: spell.triggerCount,
+    };
+
+    try {
+      await savePlayerProgress(env, backpackKey, updatedProgress);
+      await saveCombatState(env, backpackKey, currentCombatState);
+    } catch (error) {
+      try {
+        await Promise.all([
+          savePlayerProgress(env, backpackKey, progress),
+          saveCombatState(env, backpackKey, originalCombatState),
+        ]);
+      } catch (rollbackError) {
+        console.error("Mend cast rollback failed:", rollbackError);
+      }
+      throw error;
+    }
+
+    const castParts = [
+      tier.narration,
+      ...(criticalFlavor ? [criticalFlavor] : []),
+      `Mend Roll: ${naturalRoll} → ${tier.displayName}`,
+      `${tier.healingPerTrigger} HP × ${spell.triggerCount} triggers`,
+    ];
+    const hud = formatDiscordCombatHud(currentCombatState, updatedProgress);
+
+    return {
+      message: platform === "discord"
+        ? `${castParts.join("\n\n")}\n\n${hud}`
+        : `${castParts.join(" | ")} | ${hud}`,
     };
   }
 
@@ -5715,6 +5828,24 @@ function validateEnemyDefinition(enemy, expectedEnemyId) {
   };
 }
 
+function isValidMendState(mend) {
+  return Boolean(
+    mend &&
+    Number.isSafeInteger(mend.naturalRoll) &&
+    mend.naturalRoll >= 1 &&
+    mend.naturalRoll <= 12 &&
+    typeof mend.tierId === "string" &&
+    mend.tierId.trim() &&
+    typeof mend.displayName === "string" &&
+    mend.displayName.trim() &&
+    Number.isSafeInteger(mend.healingPerTrigger) &&
+    mend.healingPerTrigger > 0 &&
+    Number.isSafeInteger(mend.remainingTriggers) &&
+    mend.remainingTriggers >= 1 &&
+    mend.remainingTriggers <= 3
+  );
+}
+
 function isValidCombatState(combatState) {
   const enemy = combatState?.enemy;
 
@@ -5749,6 +5880,10 @@ function isValidCombatState(combatState) {
     (
       enemy.astralCharge === undefined ||
       getAstralCharge(enemy) !== null
+    ) &&
+    (
+      combatState.mend === undefined ||
+      isValidMendState(combatState.mend)
     ) &&
     isValidIntegerRange(enemy.reward?.candies) &&
     isValidIntegerRange(enemy.reward?.xp, 1) &&
@@ -6642,7 +6777,7 @@ function validateSpellDefinition(spell, expectedId) {
     !isPositiveInteger(spell.requiredLevel) ||
     !Number.isFinite(Number(spell.manaCost)) ||
     Number(spell.manaCost) < 0 ||
-    !["offensive", "timed-support"].includes(spell.type)
+    !["offensive", "timed-support", "healing-support"].includes(spell.type)
   ) {
     throw new Error(`Invalid spell definition for ${expectedId}.`);
   }
@@ -6669,6 +6804,31 @@ function validateSpellDefinition(spell, expectedId) {
       !isTextArray(spell.recastScenes)
     ) {
       throw new Error(`Invalid timed support spell definition for ${expectedId}.`);
+    }
+  }
+
+  if (spell.type === "healing-support") {
+    if (
+      spell.id !== "mend" ||
+      Number(spell.damage?.dice) !== 1 ||
+      Number(spell.damage?.sides) !== 12 ||
+      Number(spell.triggerCount) !== 3 ||
+      !Array.isArray(spell.healingTiers) ||
+      spell.healingTiers.length !== 4 ||
+      spell.healingTiers.some(
+        (tier) =>
+          typeof tier.id !== "string" ||
+          typeof tier.displayName !== "string" ||
+          !isPositiveInteger(tier.naturalMaximum) ||
+          !isPositiveInteger(tier.healingPerTrigger) ||
+          typeof tier.narration !== "string" ||
+          !tier.narration.trim(),
+      ) ||
+      Number(spell.criticalFlavorChance) !== 0.25 ||
+      !isTextArray(spell.criticalFlavor) ||
+      spell.criticalFlavor.length !== 5
+    ) {
+      throw new Error("Invalid Mend content data.");
     }
   }
 

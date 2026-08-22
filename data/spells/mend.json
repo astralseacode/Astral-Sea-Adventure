@@ -1,0 +1,52 @@
+{
+  "id": "mend",
+  "name": "Mend",
+  "aliases": ["mend"],
+  "requiredLevel": 4,
+  "manaCost": 20,
+  "type": "healing-support",
+  "description": "Cast Mend at Level 4 for 20 Mana. Fae light restores HP after the next three surviving enemy responses.",
+  "damage": {
+    "dice": 1,
+    "sides": 12
+  },
+  "triggerCount": 3,
+  "healingTiers": [
+    {
+      "id": "weak",
+      "displayName": "Weak Mend",
+      "naturalMaximum": 3,
+      "healingPerTrigger": 10,
+      "narration": "A few tiny wisps of Fae light gather around your wounds and begin patching you up. There aren't many of them, but they seem very determined."
+    },
+    {
+      "id": "gentle",
+      "displayName": "Gentle Mend",
+      "naturalMaximum": 7,
+      "healingPerTrigger": 15,
+      "narration": "Soft Fae light wraps around you as tiny glowing leaves settle over your wounds. They seem comfortable there. Apparently they're staying awhile."
+    },
+    {
+      "id": "strong",
+      "displayName": "Strong Mend",
+      "naturalMaximum": 11,
+      "healingPerTrigger": 20,
+      "narration": "A swirl of Fae light rushes around you as glowing leaves begin carefully mending your wounds. One gives you a reassuring little pat. You're not sure how a leaf did that."
+    },
+    {
+      "id": "perfect",
+      "displayName": "Perfect Mend",
+      "naturalMaximum": 12,
+      "healingPerTrigger": 25,
+      "narration": "Fae light bursts around you as a tiny garden of glowing leaves springs to life, immediately getting to work on your wounds. One leaf appears to be supervising the others. It is taking this responsibility extremely seriously."
+    }
+  ],
+  "criticalFlavorChance": 0.25,
+  "criticalFlavor": [
+    "The supervising leaf silently judges your injuries. Somehow, you feel responsible for them.",
+    "Two of the leaves begin arguing over the same wound. Healing continues despite workplace tensions.",
+    "One leaf finishes early and starts following you around. Apparently you've been assigned emotional support foliage.",
+    "A tiny leaf gives you another reassuring pat. Okay. They can definitely do that.",
+    "The supervising leaf turns toward the enemy. You have never seen a leaf look this disappointed."
+  ]
+}
