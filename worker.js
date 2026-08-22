@@ -304,6 +304,15 @@ const REGIONS = [
   },
 ];
 
+const REGION_COMPLETION_COMMANDS = {
+  moonlit: "moonlit-reef",
+  starfall: "starfall-trench",
+  whispering: "whispering-kelp-forest",
+  leviathan: "leviathans-wake",
+  sunken: "sunken-kings-throne",
+  astral: "astral-nexus",
+};
+
 const TITLES = [
   {
     level: 1,
@@ -506,11 +515,6 @@ const DAILY_BLESSINGS = [
 ];
 
 const DISCORD_COMMANDS = [
-  {
-    name: "combat",
-    description: "Learn how combat moved to Adventures.",
-    type: 1,
-  },
   {
     name: "adventure",
     description: "View, begin, or resume an Astral Sea Adventure",
@@ -725,12 +729,12 @@ const DISCORD_COMMANDS = [
       },
     ],
   },
-  {
-    name: "moonlitreef",
+  ...Object.entries(REGION_COMPLETION_COMMANDS).map(([name, regionId]) => ({
+    name,
     description:
-      "View your Moonlit Reef exploration and Travel Note completion.",
+      `View your ${getRegionById(regionId).name} Adventure and Travel Note completion.`,
     type: 1,
-  },
+  })),
   {
     name: "journal",
     description: "View your Travel Journal progress.",
@@ -864,11 +868,6 @@ async function handleTwitchRequest(url, env) {
   }
 
   switch (action) {
-    case "combat":
-      return textResponse(
-        "Combat has become Adventures! Use !adventure or !adventure <number>.",
-      );
-
     case "adventure":
       return textResponse(
         (
@@ -1044,13 +1043,18 @@ async function handleTwitchRequest(url, env) {
         ).message,
       );
 
-    case "moonlitreef":
+    case "moonlit":
+    case "starfall":
+    case "whispering":
+    case "leviathan":
+    case "sunken":
+    case "astral":
       return textResponse(
         (
           await performRegionCompletion(
             env,
             backpackKey,
-            REGIONS[0],
+            getRegionById(REGION_COMPLETION_COMMANDS[action]),
           )
         ).message,
       );
@@ -1095,7 +1099,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. !cast jelly - Cast Jellyfish for 10 Mana. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. !cast jelly - Cast Jellyfish for 10 Mana. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -1203,11 +1207,6 @@ async function handleDiscordInteraction(request, env) {
 
   try {
     switch (commandName) {
-      case "combat":
-        return discordMessage(
-          "Combat has become Adventures!\nUse /adventure to view your Adventures, then choose the number option to begin one.",
-        );
-
       case "adventure": {
         const adventureNumber = getDiscordIntegerOption(
           interaction,
@@ -1398,13 +1397,18 @@ async function handleDiscordInteraction(request, env) {
           true,
         );
 
-      case "moonlitreef":
+      case "moonlit":
+      case "starfall":
+      case "whispering":
+      case "leviathan":
+      case "sunken":
+      case "astral":
         return discordMessage(
           (
             await performRegionCompletion(
               env,
               backpackKey,
-              REGIONS[0],
+              getRegionById(REGION_COMPLETION_COMMANDS[commandName]),
             )
           ).message,
           true,
@@ -1444,7 +1448,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
-          "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
+          "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
     }
@@ -6786,36 +6790,23 @@ async function performRegionCompletion(
   backpackKey,
   region,
 ) {
-  const [progress, logs, metadata] = await Promise.all([
+  const [progress, manifest, metadata] = await Promise.all([
     getPlayerProgress(
       env,
       backpackKey,
     ),
-    loadRegionLogs(region),
+    getAdventureManifest(region.id),
     getRegionMetadata(region.id),
   ]);
 
-  const validExploreCodes = [
-    ...new Set(
-      logs
-        .map((log) =>
-          String(log.code || "").trim(),
-        )
-        .filter(Boolean),
-    ),
-  ];
+  if (levelFromXp(progress.xp) < metadata.levelRequirement) {
+    return { message: `${metadata.name} has not been unlocked yet.` };
+  }
 
-  const discoveredCodes = new Set(
-    progress.discoveries?.[region.name] || [],
-  );
-
-  const completedExplores =
-    validExploreCodes.filter(
-      (code) => discoveredCodes.has(code),
-    ).length;
-
-  const totalExplores =
-    validExploreCodes.length;
+  const completedAdventures = new Set(
+    progress.completedAdventures?.[region.id] || [],
+  ).size;
+  const totalAdventures = manifest.length;
 
   const completedNotes = getOwnedNoteNumbers(
     progress,
@@ -6824,10 +6815,10 @@ async function performRegionCompletion(
   ).length;
 
   const totalObjectives =
-    totalExplores + metadata.noteCount;
+    totalAdventures + metadata.noteCount;
 
   const completedObjectives =
-    completedExplores + completedNotes;
+    completedAdventures + completedNotes;
 
   const completionPercent =
     totalObjectives > 0
@@ -6840,14 +6831,14 @@ async function performRegionCompletion(
       : 0;
 
   return {
-    completedExplores,
-    totalExplores,
+    completedAdventures,
+    totalAdventures,
     completedNotes,
     totalNotes: metadata.noteCount,
     completionPercent,
     message:
       `${region.name} Completion\n` +
-      `Explores: ${completedExplores}/${totalExplores} | ` +
+      `Adventures: ${completedAdventures}/${totalAdventures} | ` +
       `Travel Notes: ${completedNotes}/${metadata.noteCount} | ` +
       `Completion: ${completionPercent}%`,
   };
