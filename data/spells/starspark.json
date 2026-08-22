@@ -1,0 +1,59 @@
+{
+  "id": "star-spark",
+  "name": "Star Spark",
+  "aliases": ["star"],
+  "requiredLevel": 2,
+  "manaCost": 10,
+  "type": "offensive",
+  "description": "Cast Star Spark at Level 2 for 10 Mana. Critical casts leave behind an Astral Charge that empowers your next offensive spell.",
+  "damage": {
+    "dice": 1,
+    "sides": 12
+  },
+  "criticalThreshold": 12,
+  "criticalDamage": 18,
+  "astralCharge": {
+    "manaReduction": 0.5,
+    "damageIncrease": 0.15,
+    "stackable": false
+  },
+  "narrationTiers": [
+    {
+      "id": "weak",
+      "displayName": "Weak Cast",
+      "naturalMaximum": 3,
+      "narration": "A tiny spark of starlight sputters from your fingertips and reluctantly bumps into your foe. It tried its best."
+    },
+    {
+      "id": "steady",
+      "displayName": "Steady Cast",
+      "naturalMaximum": 7,
+      "narration": "A bright little star zips through the water, circles your foe once for seemingly no reason, then bonks them directly on the head."
+    },
+    {
+      "id": "strong",
+      "displayName": "Strong Cast",
+      "naturalMaximum": 10,
+      "narration": "A sparkling star shoots forward with surprising confidence, zigzags dramatically through the water, and smacks your foe in a burst of Astral glitter."
+    },
+    {
+      "id": "excellent",
+      "displayName": "Excellent Cast",
+      "naturalMaximum": 11,
+      "narration": "The spark launches like a tiny comet, streaking across the battlefield before bursting against your foe in a shower of stars. That seemed significantly more powerful than something that small had any right to be."
+    },
+    {
+      "id": "critical",
+      "displayName": "Critical Cast",
+      "narration": "The little star suddenly erupts with Astral energy and slams into your foe. When the light clears, a glowing Astral Charge is stuck directly to the enemy's forehead. They do not look pleased about this."
+    }
+  ],
+  "criticalFlavorChance": 0.25,
+  "criticalFlavor": [
+    "The Astral Charge makes a tiny *ding!* as it attaches itself. Nobody knows why.",
+    "Your foe tries to shake the Astral Charge off. It stubbornly remains attached.",
+    "The Astral Charge has chosen the forehead. Negotiations have failed.",
+    "Your foe stares at the glowing star attached to their forehead. You stare back. This is awkward.",
+    "The Astral Charge sparkles triumphantly. Your foe appears personally offended."
+  ]
+}

@@ -259,6 +259,7 @@ const STAT_SHIZUKI_RESPONSES = Object.fromEntries(
 );
 const SPELL_FILES = {
   elf_blessing: "elf-blessing.json",
+  "star-spark": "starspark.json",
   jelly: "jellyfish.json",
   moonbeam: "moonbeam.json",
 };
@@ -580,6 +581,7 @@ const DISCORD_COMMANDS = [
         required: true,
         choices: [
           { name: "Elf Blessing", value: "elf_blessing" },
+          { name: "Star", value: "star" },
           { name: "Jelly", value: "jelly" },
           { name: "Moonbeam", value: "moonbeam" },
         ],
@@ -1099,7 +1101,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. !cast jelly - Cast Jellyfish for 10 Mana. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
+        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
   }
@@ -2638,6 +2640,16 @@ async function resolvePlayerCombatAction(
     combatState.enemy.hp - action.damage,
   );
 
+  if (action.consumeAstralCharge) {
+    delete combatState.enemy.astralCharge;
+  }
+  if (action.applyAstralCharge && combatState.enemy.hp > 0) {
+    combatState.enemy.astralCharge = {
+      manaReduction: action.astralCharge.manaReduction,
+      damageIncrease: action.astralCharge.damageIncrease,
+    };
+  }
+
   const messageParts = [action.message];
 
   if (combatState.enemy.hp === 0) {
@@ -2787,6 +2799,9 @@ async function performCastUnlocked(
   const spellInputValue = String(spellInput || "").trim().toLowerCase();
   const jellyCommand =
     platform === "discord" ? "/cast spell:Jelly" : "!cast jelly";
+  const starSparkCommand = platform === "discord"
+    ? "/cast star"
+    : "!cast star";
   const blessingCommand = platform === "discord"
     ? "/cast spell:Elf Blessing"
     : "!cast elf blessing";
@@ -2798,7 +2813,8 @@ async function performCastUnlocked(
     return {
       message:
         `Use ${blessingCommand} for Elf Blessing, ${jellyCommand} ` +
-        `for Jellyfish, or ${moonbeamCommand} for Moonbeam.`,
+        `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
+        `${moonbeamCommand} for Moonbeam.`,
     };
   }
 
@@ -2813,7 +2829,7 @@ async function performCastUnlocked(
     return {
       message:
         `You haven't learned that spell. Use ${blessingCommand}, ` +
-        `${jellyCommand}, or ${moonbeamCommand}.`,
+        `${starSparkCommand}, ${jellyCommand}, or ${moonbeamCommand}.`,
     };
   }
 
@@ -2917,7 +2933,12 @@ async function performCastUnlocked(
     };
   }
 
-  if (progress.mana < spell.manaCost) {
+  const astralCharge = getAstralCharge(combatState.enemy);
+  const manaCost = astralCharge
+    ? Math.round(spell.manaCost * (1 - astralCharge.manaReduction))
+    : spell.manaCost;
+
+  if (progress.mana < manaCost) {
     const message = `You don't have enough Mana to cast ${spell.name}.`;
     return {
       message: platform === "discord"
@@ -2948,15 +2969,32 @@ async function performCastUnlocked(
   resolvedSpellRoll.baseDamage ??= resolvedSpellRoll.damage;
   resolvedSpellRoll.strengthBonus = strengthBonus;
   resolvedSpellRoll.damage += strengthBonus;
-  const castMessage = formatSpellCastMessage(
+  if (astralCharge) {
+    resolvedSpellRoll.damage = applyPercentageDamageIncrease(
+      resolvedSpellRoll.damage,
+      astralCharge.damageIncrease,
+    );
+  }
+  resolvedSpellRoll.appliesAstralCharge =
+    spell.id === "star-spark" &&
+    resolvedSpellRoll.isCritical &&
+    combatState.enemy.hp > resolvedSpellRoll.damage;
+  let castMessage = formatSpellCastMessage(
     spell,
     resolvedSpellRoll,
     triggeredRoll,
     platform,
   );
+  if (astralCharge) {
+    const chargeMessage =
+      "Astral Charge bursts! Your spell surges with borrowed starlight!";
+    castMessage = platform === "discord"
+      ? `${chargeMessage}\n\n${castMessage}`
+      : `${chargeMessage} | ${castMessage}`;
+  }
   const updatedProgress = {
     ...progress,
-    mana: progress.mana - spell.manaCost,
+    mana: progress.mana - manaCost,
     statusEffects: triggeredRoll.statusEffects,
   };
 
@@ -2972,6 +3010,9 @@ async function performCastUnlocked(
         damage: resolvedSpellRoll.damage,
         message: castMessage,
         victoryMessage: castMessage,
+        consumeAstralCharge: Boolean(astralCharge),
+        applyAstralCharge: resolvedSpellRoll.appliesAstralCharge,
+        astralCharge: spell.astralCharge,
       },
       platform,
     );
@@ -3048,6 +3089,12 @@ function resolveSpellRoll(spell, spellRoll, finalTotal) {
     finalTotal,
     isCritical,
     damage: isCritical ? spell.criticalDamage : spellRoll.total,
+    criticalFlavor:
+      spell.id === "star-spark" &&
+      isCritical &&
+      Math.random() < spell.criticalFlavorChance
+        ? randomChoice(spell.criticalFlavor)
+        : null,
   };
 }
 
@@ -3057,6 +3104,15 @@ function formatSpellCastMessage(
   effectResult,
   platform = "twitch",
 ) {
+  if (spell.id === "star-spark") {
+    return formatStarSparkCastMessage(
+      spell,
+      spellRoll,
+      effectResult,
+      platform,
+    );
+  }
+
   if (spell.id === "moonbeam") {
     return formatMoonbeamCastMessage(spell, spellRoll, effectResult, platform);
   }
@@ -3087,6 +3143,43 @@ function formatSpellCastMessage(
       effectResult.modifierDetails,
       spellRoll.damage,
     )}`;
+}
+
+function formatStarSparkCastMessage(
+  spell,
+  spellRoll,
+  effectResult,
+  platform,
+) {
+  const tier = spellRoll.isCritical
+    ? spell.narrationTiers.find((entry) => entry.id === "critical")
+    : spell.narrationTiers.find(
+        (entry) =>
+          entry.id !== "critical" &&
+          spellRoll.total <= entry.naturalMaximum,
+      ) || spell.narrationTiers.filter(
+        (entry) => entry.id !== "critical",
+      ).at(-1);
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  const details = [
+    tier.narration,
+    ...(spellRoll.criticalFlavor ? [spellRoll.criticalFlavor] : []),
+    ...(spellRoll.appliesAstralCharge
+      ? [
+          "Astral Charge applied! Your next offensive spell costs 50% less " +
+            "Mana and deals 15% more damage.",
+        ]
+      : []),
+    formatCompactCombatRoll(
+      effectResult.naturalRoll,
+      effectResult.finalTotal,
+      effectResult.modifierDetails,
+      spellRoll.damage,
+      spellRoll.isCritical,
+    ),
+  ];
+
+  return details.join(separator);
 }
 
 function getMoonbeamCastTier(spell, { naturalKeptRoll, finalRoll, isCritical }) {
@@ -5509,14 +5602,21 @@ function formatPlayerAttackResolution(
     )}`;
 }
 
-function formatCompactCombatRoll(naturalRoll, finalTotal, modifierDetails, damage) {
+function formatCompactCombatRoll(
+  naturalRoll,
+  finalTotal,
+  modifierDetails,
+  damage,
+  isCritical = false,
+) {
   const modifiers = modifierDetails.map((detail) => {
     const name = detail.name === "Fae Affinity" ? "Fae" : detail.name;
     const sign = detail.value >= 0 ? "+" : "-";
     return `${sign}${Math.abs(detail.value)} ${name}`;
   }).join("");
 
-  return `Roll ${finalTotal} (${naturalRoll}${modifiers}) → ${damage} dmg`;
+  return `Roll ${finalTotal} (${naturalRoll}${modifiers}) → ` +
+    `${isCritical ? "Critical Hit! " : ""}${damage} dmg`;
 }
 
 function getCombatRollResult(roll) {
@@ -5646,6 +5746,10 @@ function isValidCombatState(combatState) {
     enemy.hp > 0 &&
     enemy.hp <= enemy.maxHp &&
     enemy.maxHp > 0 &&
+    (
+      enemy.astralCharge === undefined ||
+      getAstralCharge(enemy) !== null
+    ) &&
     isValidIntegerRange(enemy.reward?.candies) &&
     isValidIntegerRange(enemy.reward?.xp, 1) &&
     Number.isSafeInteger(enemy.defeatCandyLoss) &&
@@ -6032,6 +6136,28 @@ function getArmorReduction(progress) {
 
 function getFaeSpellRollBonus(progress) {
   return normalizePlayerStats(progress?.stats).fae;
+}
+
+function getAstralCharge(enemy) {
+  const charge = enemy?.astralCharge;
+  const manaReduction = Number(charge?.manaReduction);
+  const damageIncrease = Number(charge?.damageIncrease);
+
+  return charge &&
+      typeof charge === "object" &&
+      !Array.isArray(charge) &&
+      Number.isFinite(manaReduction) &&
+      manaReduction >= 0 &&
+      manaReduction <= 1 &&
+      Number.isFinite(damageIncrease) &&
+      damageIncrease >= 0
+    ? { manaReduction, damageIncrease }
+    : null;
+}
+
+function applyPercentageDamageIncrease(damage, increase) {
+  const percentage = Math.round(Number(increase) * 100);
+  return Math.floor((damage * (100 + percentage) + 50) / 100);
 }
 
 function applyLuckToCandyReward(baseReward, progress) {
@@ -6553,6 +6679,21 @@ function validateSpellDefinition(spell, expectedId) {
     !spell.criticalText.trim()
   )) {
     throw new Error("Invalid Jellyfish narration data.");
+  }
+
+  if (expectedId === "star-spark" && (
+    !Array.isArray(spell.narrationTiers) ||
+    spell.narrationTiers.length !== 5 ||
+    Number(spell.astralCharge?.manaReduction) !== 0.5 ||
+    Number(spell.astralCharge?.damageIncrease) !== 0.15 ||
+    spell.astralCharge?.stackable !== false ||
+    !Number.isFinite(Number(spell.criticalFlavorChance)) ||
+    Number(spell.criticalFlavorChance) < 0 ||
+    Number(spell.criticalFlavorChance) > 1 ||
+    !isTextArray(spell.criticalFlavor) ||
+    spell.criticalFlavor.length !== 5
+  )) {
+    throw new Error("Invalid Star Spark content data.");
   }
 
   if (expectedId === "moonbeam" && (
