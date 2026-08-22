@@ -582,7 +582,7 @@ const DISCORD_COMMANDS = [
         required: true,
         choices: [
           { name: "Elf Blessing", value: "elf_blessing" },
-          { name: "Star", value: "star" },
+          { name: "Star Spark", value: "star" },
           { name: "Jelly", value: "jelly" },
           { name: "Mend", value: "mend" },
           { name: "Moonbeam", value: "moonbeam" },
