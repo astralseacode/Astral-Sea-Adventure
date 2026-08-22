@@ -2736,21 +2736,9 @@ function formatCombatStatus(
   }
 
   const status = [
-    formatCombatResource(
-      "HP",
-      `${combatState.playerHp}/${combatState.playerMaxHp}`,
-      platform,
-    ),
-    formatCombatResource(
-      "Mana",
-      `${progress.mana}/${resourceCaps.mana}`,
-      platform,
-    ),
-    formatCombatResource(
-      "Enemy HP",
-      `${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
-      platform,
-    ),
+    `HP ${combatState.playerHp}/${combatState.playerMaxHp} | ` +
+      `MP ${progress.mana}/${resourceCaps.mana} | ` +
+      `Enemy HP ${combatState.enemy.hp}/${combatState.enemy.maxHp}`,
   ];
 
   if (activeEffects) {
@@ -2760,19 +2748,12 @@ function formatCombatStatus(
   return status;
 }
 
-function formatCombatResource(label, value, platform = "twitch") {
-  return platform === "discord"
-    ? `**${label}:** **${value}**`
-    : `${label}: ${value}`;
-}
-
 function formatDiscordCombatHud(combatState, progress) {
   const resourceCaps = getPlayerResourceCaps(progress);
 
-  return "━━━━━━━━━━━━━━━━━━━━\n\n" +
-    `❤️ **HP:** **${combatState.playerHp}/${combatState.playerMaxHp}**\n` +
-    `🔷 **Mana:** **${progress.mana}/${resourceCaps.mana}**\n` +
-    `👾 **Enemy HP:** **${combatState.enemy.hp}/${combatState.enemy.maxHp}**`;
+  return `HP ${combatState.playerHp}/${combatState.playerMaxHp} | ` +
+    `MP ${progress.mana}/${resourceCaps.mana} | ` +
+    `Enemy HP ${combatState.enemy.hp}/${combatState.enemy.maxHp}`;
 }
 
 function appendDiscordCombatHud(message, combatState, progress) {
@@ -3087,7 +3068,6 @@ function formatSpellCastMessage(
     ? spell.criticalText
     : personality.followUp;
   const separator = platform === "discord" ? "\n\n" : " | ";
-  const modifierText = formatOffensiveModifier(effectResult);
   const resultText = spellRoll.isCritical
     ? `${separator}Result: Critical Hit!`
     : "";
@@ -3096,14 +3076,15 @@ function formatSpellCastMessage(
       "guiding your spell."
     : "";
 
-  const damageText = spellRoll.strengthBonus > 0
-    ? `${spellRoll.baseDamage} base + ${spellRoll.strengthBonus} Strength = ${spellRoll.damage}`
-    : spellRoll.damage;
   return `You throw a ${personality.adjective} ${spell.name}. ${followUp}` +
-    `${separator}Spell Roll: ${effectResult.naturalRoll}${modifierText}` +
     resultText +
-    `${separator}Damage: ${damageText}` +
-    fadeText;
+    fadeText +
+    `${separator}${formatCompactCombatRoll(
+      effectResult.naturalRoll,
+      effectResult.finalTotal,
+      effectResult.modifierDetails,
+      spellRoll.damage,
+    )}`;
 }
 
 function getMoonbeamCastTier(spell, { naturalKeptRoll, finalRoll, isCritical }) {
@@ -5492,7 +5473,7 @@ function formatCombatRollMessage(attacker, roll, result) {
         ? " — Critical Miss!"
         : "";
 
-  return `${attacker} rolled ${roll} → ${result.damage} dmg${specialText}`;
+  return `${attacker} ${roll} → ${result.damage} dmg${specialText}`;
 }
 
 function formatPlayerAttackResolution(
@@ -5502,7 +5483,6 @@ function formatPlayerAttackResolution(
   platform = "twitch",
 ) {
   const separator = platform === "discord" ? "\n\n" : " | ";
-  const modifierText = formatOffensiveModifier(effectResult);
   const fadeText = effectResult.consumed.length > 0
     ? `${separator}${effectResult.consumed.join(" and ")} fades after ` +
       "guiding your strike."
@@ -5513,30 +5493,28 @@ function formatPlayerAttackResolution(
       : result.category === "Critical Miss"
         ? "Critical Miss"
         : `${result.category} Hit`;
-  const rollLabel = effectResult.modifier !== 0
-    ? `Roll: ${naturalRoll}${modifierText}`
-    : `You rolled ${naturalRoll}`;
-
-  const damageText = result.strengthBonus > 0
-    ? `${result.baseDamage} base + ${result.strengthBonus} Strength = ${result.damage}`
-    : result.damage;
-  return `You attack!${separator}${rollLabel}` +
-    `${separator}Result: ${resultName}` +
-    `${separator}Damage: ${damageText}` +
-    fadeText;
+  const resultText = result.category === "Critical" ||
+      result.category === "Critical Miss"
+    ? `${separator}Result: ${resultName}`
+    : "";
+  return `You attack!${resultText}` +
+    fadeText +
+    `${separator}${formatCompactCombatRoll(
+      naturalRoll,
+      effectResult.finalTotal,
+      effectResult.modifierDetails,
+      result.damage,
+    )}`;
 }
 
-function formatOffensiveModifier(effectResult) {
-  if (effectResult.modifier === 0) {
-    return "";
-  }
+function formatCompactCombatRoll(naturalRoll, finalTotal, modifierDetails, damage) {
+  const modifiers = modifierDetails.map((detail) => {
+    const name = detail.name === "Fae Affinity" ? "Fae" : detail.name;
+    const sign = detail.value >= 0 ? "+" : "-";
+    return `${sign}${Math.abs(detail.value)} ${name}`;
+  }).join("");
 
-  const details = effectResult.modifierDetails.map((detail) =>
-    `${detail.value >= 0 ? "+" : "-"}${Math.abs(detail.value)} ${detail.name}`,
-  ).join(" ");
-
-  return ` ${details} = ` +
-    effectResult.finalTotal;
+  return `Roll ${finalTotal} (${naturalRoll}${modifiers}) → ${damage} dmg`;
 }
 
 function getCombatRollResult(roll) {
