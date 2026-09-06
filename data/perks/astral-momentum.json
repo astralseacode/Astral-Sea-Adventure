@@ -1,0 +1,22 @@
+{
+  "id": "astral-momentum",
+  "name": "Astral Momentum",
+  "requiredLevel": 9,
+  "type": "passive",
+  "description": "Once per battle, landing a natural 20 with a normal Attack or Moonbeam restores 10 Mana.",
+  "effect": {
+    "trigger": "natural-perfect-hit",
+    "naturalRoll": 20,
+    "eligibleActions": ["attack", "moonbeam"],
+    "manaRestore": 10,
+    "usesPerBattle": 1
+  },
+  "activationLines": [
+    "Astral Momentum activates! Your perfect strike sends Astral energy rushing back through you, restoring 10 Mana.",
+    "Astral Momentum activates! Your strike lands perfectly. The Astral Sea apparently approves and refunds you 10 Mana.",
+    "Astral Momentum activates! A tiny spark shoots off your foe, circles around, and dives straight back into you. That's 10 Mana back. Apparently it knows where it belongs.",
+    "Astral Momentum activates! Your perfect hit leaves behind a trail of starlight that rushes back into you, restoring 10 Mana. Very efficient. Suspiciously efficient.",
+    "Astral Momentum activates! Your perfect hit sends a spark of Astral energy bouncing back toward you. It bonks you directly on the forehead and restores 10 Mana. Helpful. Could've aimed better."
+  ],
+  "fullManaLine": "Astral Momentum activates, but your Mana is already full."
+}

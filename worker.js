@@ -270,6 +270,7 @@ const MASTERY_FILES = {
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
+  "astral-momentum": "astral-momentum.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1114,6 +1115,7 @@ async function handleTwitchRequest(url, env) {
         "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
         "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
         "Level 8 — Bubble — !cast bubble prepares protection without ending your normal action. " +
+        "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1466,6 +1468,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
           "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
           "Level 8 — Bubble — /cast bubble prepares protection without ending your normal action. " +
+          "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2627,6 +2630,8 @@ async function performAttackUnlocked(
         damage: playerAttack.damage,
         message: actionMessage,
         victoryMessage: actionMessage,
+        momentumAction: "attack",
+        momentumNaturalRoll: playerRoll,
       },
       platform,
     );
@@ -2679,7 +2684,46 @@ async function resolvePlayerCombatAction(
     };
   }
 
+  let progress = await getPlayerProgress(env, backpackKey);
+  let momentumMessage = "";
+  const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  const astralMomentum = activePerks.find(
+    (perk) => perk.effect.trigger === "natural-perfect-hit",
+  );
+  if (
+    astralMomentum &&
+    !combatState.perkUses?.[astralMomentum.id] &&
+    astralMomentum.effect.eligibleActions.includes(action.momentumAction) &&
+    action.momentumNaturalRoll === astralMomentum.effect.naturalRoll
+  ) {
+    const maximumMana = getPlayerResourceCaps(progress).mana;
+    const restoredMana = Math.min(
+      astralMomentum.effect.manaRestore,
+      Math.max(0, maximumMana - progress.mana),
+    );
+    combatState.perkUses = {
+      ...(combatState.perkUses || {}),
+      [astralMomentum.id]: 1,
+    };
+    if (restoredMana > 0) {
+      progress = {
+        ...progress,
+        mana: progress.mana + restoredMana,
+      };
+      await savePlayerProgress(env, backpackKey, progress);
+      momentumMessage = randomChoice(astralMomentum.activationLines).replace(
+        "10 Mana",
+        `${restoredMana} Mana`,
+      );
+    } else {
+      momentumMessage = astralMomentum.fullManaLine;
+    }
+  }
+
   const messageParts = [action.message];
+  if (momentumMessage) {
+    messageParts.push(momentumMessage);
+  }
 
   if (combatState.enemy.hp === 0) {
     const victory = await resolveCombatVictory(
@@ -2698,7 +2742,6 @@ async function resolvePlayerCombatAction(
     };
   }
 
-  const progress = await getPlayerProgress(env, backpackKey);
   const enemyRoll = randomInteger(1, 20);
   const enemyAttack = getCombatRollResult(enemyRoll);
   const rawEnemyDamage = enemyAttack.damage === 0
@@ -3290,6 +3333,10 @@ async function performCastUnlocked(
           damageUses: starSparkMastery?.effect.damageUses || 1,
           manaDiscountUses: starSparkMastery?.effect.manaDiscountUses || 1,
         },
+        momentumAction: spell.id === "moonbeam" ? "moonbeam" : null,
+        momentumNaturalRoll: spell.id === "moonbeam"
+          ? spellRoll.keptRoll
+          : null,
       },
       platform,
     );
@@ -7152,16 +7199,34 @@ function validatePerkDefinition(perk, expectedId) {
     Number(perk.requiredLevel) < 1 ||
     typeof perk.description !== "string" ||
     !perk.description.trim() ||
-    perk.effect?.trigger !== "post-enemy-damage" ||
-    Number(perk.effect.hpThresholdPercent) !== 25 ||
-    Number(perk.effect.manaRestore) !== 10 ||
-    Number(perk.effect.usesPerBattle) !== 1 ||
     !Array.isArray(perk.activationLines) ||
     perk.activationLines.length !== 5 ||
     perk.activationLines.some((line) =>
       typeof line !== "string" || !line.trim())
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
+  }
+
+  const effect = perk.effect;
+  const validResilience = expectedId === "astral-resilience" &&
+    effect?.trigger === "post-enemy-damage" &&
+    Number(effect.hpThresholdPercent) === 25 &&
+    Number(effect.manaRestore) === 10 &&
+    Number(effect.usesPerBattle) === 1;
+  const validMomentum = expectedId === "astral-momentum" &&
+    effect?.trigger === "natural-perfect-hit" &&
+    Number(effect.naturalRoll) === 20 &&
+    Array.isArray(effect.eligibleActions) &&
+    effect.eligibleActions.length === 2 &&
+    effect.eligibleActions.includes("attack") &&
+    effect.eligibleActions.includes("moonbeam") &&
+    Number(effect.manaRestore) === 10 &&
+    Number(effect.usesPerBattle) === 1 &&
+    typeof perk.fullManaLine === "string" &&
+    perk.fullManaLine.trim();
+
+  if (!validResilience && !validMomentum) {
+    throw new Error(`Invalid perk effect for ${expectedId}.`);
   }
 
   return perk;
