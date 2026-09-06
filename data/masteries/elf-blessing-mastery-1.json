@@ -1,0 +1,13 @@
+{
+  "id": "elf-blessing-mastery-1",
+  "name": "Elf Blessing Mastery I",
+  "spellId": "elf_blessing",
+  "requiredLevel": 13,
+  "tier": 1,
+  "description": "Elf Blessing's offensive roll bonus increases from +2 to +3, and its duration increases from 30 minutes to 60 minutes.",
+  "effect": {
+    "id": "elf-blessing-upgrade",
+    "offensiveRollModifier": 3,
+    "durationMs": 3600000
+  }
+}

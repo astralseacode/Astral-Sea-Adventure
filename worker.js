@@ -269,6 +269,7 @@ const SPELL_FILES = {
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
   "jellyfish-mastery-1": "jellyfish-mastery-1.json",
+  "elf-blessing-mastery-1": "elf-blessing-mastery-1.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
@@ -1123,6 +1124,7 @@ async function handleTwitchRequest(url, env) {
         "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
         "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
         "Level 12 — Astral Echo — !cast astral echo stores power for your next offensive spell without ending your normal action. " +
+        "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1479,6 +1481,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
           "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
           "Level 12 — Astral Echo — /cast Astral Echo stores power for your next offensive spell without ending your normal action. " +
+          "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3063,6 +3066,10 @@ async function performCastUnlocked(
     (mastery) => mastery.spellId === "jelly" &&
       mastery.effect.id === "jellyfish-moods",
   );
+  const elfBlessingMastery = activeMasteries.find(
+    (mastery) => mastery.spellId === "elf_blessing" &&
+      mastery.effect.id === "elf-blessing-upgrade",
+  );
   const currentCombatState = await getCombatState(env, backpackKey);
 
   if (playerLevel < spell.requiredLevel) {
@@ -3335,7 +3342,7 @@ async function performCastUnlocked(
       mana: progress.mana - spell.manaCost,
       statusEffects: addStatusEffect(
         progress,
-        createElfBlessingEffect(spell),
+        createElfBlessingEffect(spell, elfBlessingMastery),
       ),
     };
 
@@ -6829,7 +6836,11 @@ function formatStatPointAward(pointsEarned, unspent, platform) {
     `Choose ${commands}. Unspent Stat Points: ${unspent}`;
 }
 
-function normalizeStatusEffects(statusEffects, now = Date.now()) {
+function normalizeStatusEffects(
+  statusEffects,
+  now = Date.now(),
+  activeMasteries = [],
+) {
   if (
     !statusEffects ||
     typeof statusEffects !== "object" ||
@@ -6870,12 +6881,25 @@ function normalizeStatusEffects(statusEffects, now = Date.now()) {
     );
 
     const isElfBlessing = effectId === "elf_blessing";
+    const elfBlessingMastery = isElfBlessing
+      ? activeMasteries.find((mastery) =>
+          mastery.spellId === "elf_blessing" &&
+          mastery.effect.id === "elf-blessing-upgrade")
+      : null;
 
     if (isElfBlessing && durationType === "charges") {
       durationType = "time";
       startedAt = now;
       expiresAt = now + LEGACY_ELF_BLESSING_DURATION_MS;
       remainingCharges = 0;
+    }
+
+    if (
+      elfBlessingMastery &&
+      durationType === "time" &&
+      expiresAt > now
+    ) {
+      expiresAt = startedAt + elfBlessingMastery.effect.durationMs;
     }
 
     if (
@@ -6893,7 +6917,9 @@ function normalizeStatusEffects(statusEffects, now = Date.now()) {
           ? "Elf Blessing"
           : String(effect.displayName || effectId).trim() || effectId,
       description: isElfBlessing
-        ? String(effect.description || "+2 to offensive rolls").trim()
+        ? elfBlessingMastery
+          ? `+${elfBlessingMastery.effect.offensiveRollModifier} to offensive rolls`
+          : String(effect.description || "+2 to offensive rolls").trim()
         : String(effect.description || "").trim(),
       category: String(effect.category || "neutral").trim(),
       source: String(effect.source || "unknown").trim(),
@@ -6906,13 +6932,13 @@ function normalizeStatusEffects(statusEffects, now = Date.now()) {
         ? OFFENSIVE_ROLL_TRIGGER
         : String(effect.trigger || "").trim(),
       modifiers: {
-        attackRoll: Number.isSafeInteger(
-          Number(effect.modifiers?.attackRoll),
-        )
-          ? Number(effect.modifiers.attackRoll)
-          : isElfBlessing
-            ? 2
-            : 0,
+        attackRoll: elfBlessingMastery
+          ? elfBlessingMastery.effect.offensiveRollModifier
+          : Number.isSafeInteger(Number(effect.modifiers?.attackRoll))
+            ? Number(effect.modifiers.attackRoll)
+            : isElfBlessing
+              ? 2
+              : 0,
       },
       createdAt: Math.max(
         0,
@@ -6947,20 +6973,22 @@ function removeStatusEffect(progress, effectId) {
   return statusEffects;
 }
 
-function createElfBlessingEffect(spell, now = Date.now()) {
+function createElfBlessingEffect(spell, mastery = null, now = Date.now()) {
+  const modifier = mastery?.effect.offensiveRollModifier || spell.modifier;
+  const durationMs = mastery?.effect.durationMs || spell.durationMs;
   return {
     id: "elf_blessing",
     displayName: "Elf Blessing",
-    description: `+${spell.modifier} to offensive rolls`,
+    description: `+${modifier} to offensive rolls`,
     category: "buff",
     source: "spell",
     visibility: "public",
     durationType: "time",
     startedAt: now,
-    expiresAt: now + spell.durationMs,
+    expiresAt: now + durationMs,
     trigger: OFFENSIVE_ROLL_TRIGGER,
     modifiers: {
-      attackRoll: spell.modifier,
+      attackRoll: modifier,
     },
     createdAt: now,
   };
@@ -7462,8 +7490,17 @@ function validateMasteryDefinition(mastery, expectedId) {
       Number(mood.amount) > 0 &&
       typeof mood.activationLine === "string" &&
       mood.activationLine.trim());
+  const validElfBlessingMastery =
+    expectedId === "elf-blessing-mastery-1" &&
+    effect?.id === "elf-blessing-upgrade" &&
+    Number(effect.offensiveRollModifier) === 3 &&
+    Number(effect.durationMs) === 3600000;
 
-  if (!validStarSparkMastery && !validJellyfishMastery) {
+  if (
+    !validStarSparkMastery &&
+    !validJellyfishMastery &&
+    !validElfBlessingMastery
+  ) {
     throw new Error(`Invalid mastery effect for ${expectedId}.`);
   }
 
@@ -8189,7 +8226,12 @@ async function getPlayerProgress(
       Math.floor(Number(parsed.lastLongRestAt) || 0),
     );
     const temporaryResourceCap = Math.max(resourceCaps.hp, resourceCaps.mana);
-    const statusEffects = normalizeStatusEffects(parsed.statusEffects);
+    const activeMasteries = await getActiveMasteries(currentLevel);
+    const statusEffects = normalizeStatusEffects(
+      parsed.statusEffects,
+      Date.now(),
+      activeMasteries,
+    );
     const hasSavedRegion = Object.prototype.hasOwnProperty.call(
       parsed,
       "currentRegion",
@@ -8455,6 +8497,9 @@ async function savePlayerProgress(
   }
   const resourceCaps = getPlayerResourceCaps(resourceContext);
   const temporaryResourceCap = Math.max(resourceCaps.hp, resourceCaps.mana);
+  const activeMasteries = await getActiveMasteries(
+    levelFromXp(Number(progress.xp) || 0),
+  );
 
   const safeProgress = {
     xp: Math.max(
@@ -8484,7 +8529,11 @@ async function savePlayerProgress(
     stats,
     unspentStatPoints: Math.max(0, Math.floor(Number(progress.unspentStatPoints) || 0)),
     statPointsGrantedThroughLevel: Math.max(1, Math.floor(Number(progress.statPointsGrantedThroughLevel) || levelFromXp(Number(progress.xp) || 0))),
-    statusEffects: normalizeStatusEffects(progress.statusEffects),
+    statusEffects: normalizeStatusEffects(
+      progress.statusEffects,
+      Date.now(),
+      activeMasteries,
+    ),
     discoveries: safeDiscoveries,
     notes: safeNotes,
     combatProgress: safeCombatProgress,
