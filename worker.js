@@ -275,6 +275,7 @@ const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
   "astral-momentum": "astral-momentum.json",
   "astral-harvest": "astral-harvest.json",
+  "astral-aftershock": "astral-aftershock.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1125,6 +1126,7 @@ async function handleTwitchRequest(url, env) {
         "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
         "Level 12 — Astral Echo — !cast astral echo stores power for your next offensive spell without ending your normal action. " +
         "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
+        "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1482,6 +1484,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
           "Level 12 — Astral Echo — /cast Astral Echo stores power for your next offensive spell without ending your normal action. " +
           "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
+          "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2682,6 +2685,12 @@ async function resolvePlayerCombatAction(
     );
     delete combatState.astralEcho;
   }
+  if (action.aftershockDamage > 0) {
+    combatState.enemy.hp = Math.max(
+      0,
+      combatState.enemy.hp - action.aftershockDamage,
+    );
+  }
 
   if (action.consumeAstralCharge) {
     const currentCharge = getAstralCharge(combatState.enemy);
@@ -3058,6 +3067,7 @@ async function performCastUnlocked(
   const progress = await getPlayerProgress(env, backpackKey);
   const playerLevel = levelFromXp(progress.xp);
   const activeMasteries = await getActiveMasteries(playerLevel);
+  const activePerks = await getActivePerks(playerLevel);
   const starSparkMastery = activeMasteries.find(
     (mastery) => mastery.spellId === "star-spark" &&
       mastery.effect.id === "astral-charge",
@@ -3454,6 +3464,15 @@ async function performCastUnlocked(
         astralEcho.damagePercent,
       )
     : 0;
+  const astralAftershock = activePerks.find(
+    (perk) => perk.effect.trigger === "critical-offensive-spell",
+  );
+  const aftershockDamage =
+    spell.type === "offensive" &&
+    resolvedSpellRoll.isCritical &&
+    astralAftershock
+      ? astralAftershock.effect.bonusDamage
+      : 0;
   resolvedSpellRoll.appliesAstralCharge =
     spell.id === "star-spark" &&
     resolvedSpellRoll.isCritical &&
@@ -3484,6 +3503,11 @@ async function performCastUnlocked(
       ? `${castMessage}\n\n${echoMessage}`
       : `${castMessage} | ${echoMessage}`;
   }
+  if (aftershockDamage > 0) {
+    castMessage = platform === "discord"
+      ? `${castMessage}\n\n${astralAftershock.activationLine}`
+      : `${castMessage} | ${astralAftershock.activationLine}`;
+  }
   const updatedProgress = {
     ...progress,
     mana: progress.mana - manaCost,
@@ -3501,6 +3525,7 @@ async function performCastUnlocked(
         roll: triggeredRoll.finalTotal,
         damage: resolvedSpellRoll.damage,
         echoDamage,
+        aftershockDamage,
         message: castMessage,
         victoryMessage: castMessage,
         consumeAstralCharge: Boolean(astralCharge),
@@ -7556,8 +7581,19 @@ function validatePerkDefinition(perk, expectedId) {
     Number(effect.manaRestore) === 20 &&
     hasSingleActivationLine &&
     !hasActivationLines;
+  const validAftershock = expectedId === "astral-aftershock" &&
+    effect?.trigger === "critical-offensive-spell" &&
+    Number(effect.bonusDamage) === 5 &&
+    perk.activationLine === "Astral Aftershock activates! +5 damage." &&
+    hasSingleActivationLine &&
+    !hasActivationLines;
 
-  if (!validResilience && !validMomentum && !validHarvest) {
+  if (
+    !validResilience &&
+    !validMomentum &&
+    !validHarvest &&
+    !validAftershock
+  ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }
 

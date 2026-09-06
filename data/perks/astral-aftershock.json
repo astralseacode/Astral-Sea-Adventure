@@ -1,0 +1,12 @@
+{
+  "id": "astral-aftershock",
+  "name": "Astral Aftershock",
+  "requiredLevel": 14,
+  "type": "passive",
+  "description": "Critical hits from offensive spells trigger an Astral Aftershock that deals 5 additional damage.",
+  "effect": {
+    "trigger": "critical-offensive-spell",
+    "bonusDamage": 5
+  },
+  "activationLine": "Astral Aftershock activates! +5 damage."
+}
