@@ -264,6 +264,7 @@ const SPELL_FILES = {
   mend: "mend.json",
   moonbeam: "moonbeam.json",
   bubble: "bubble.json",
+  "astral-echo": "astral-echo.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -597,6 +598,7 @@ const DISCORD_COMMANDS = [
           { name: "Mend", value: "mend" },
           { name: "Moonbeam", value: "moonbeam" },
           { name: "Bubble", value: "bubble" },
+          { name: "Astral Echo", value: "astral-echo" },
         ],
       },
     ],
@@ -1120,6 +1122,7 @@ async function handleTwitchRequest(url, env) {
         "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
         "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
         "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
+        "Level 12 — Astral Echo — !cast astral echo stores power for your next offensive spell without ending your normal action. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1475,6 +1478,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
           "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
           "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
+          "Level 12 — Astral Echo — /cast Astral Echo stores power for your next offensive spell without ending your normal action. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2668,6 +2672,13 @@ async function resolvePlayerCombatAction(
     0,
     combatState.enemy.hp - action.damage,
   );
+  if (action.consumeAstralEcho) {
+    combatState.enemy.hp = Math.max(
+      0,
+      combatState.enemy.hp - action.echoDamage,
+    );
+    delete combatState.astralEcho;
+  }
 
   if (action.consumeAstralCharge) {
     const currentCharge = getAstralCharge(combatState.enemy);
@@ -3011,6 +3022,9 @@ async function performCastUnlocked(
   const bubbleCommand = platform === "discord"
     ? "/cast spell:Bubble"
     : "!cast bubble";
+  const astralEchoCommand = platform === "discord"
+    ? "/cast spell:Astral Echo"
+    : "!cast astral echo";
 
   if (!spellInputValue) {
     return {
@@ -3018,7 +3032,7 @@ async function performCastUnlocked(
         `Use ${blessingCommand} for Elf Blessing, ${jellyCommand} ` +
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
         `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, or ` +
-        `${bubbleCommand} for Bubble.`,
+        `${bubbleCommand} for Bubble, or ${astralEchoCommand} for Astral Echo.`,
     };
   }
 
@@ -3034,7 +3048,7 @@ async function performCastUnlocked(
       message:
         `You haven't learned that spell. Use ${blessingCommand}, ` +
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
-        `${moonbeamCommand}, or ${bubbleCommand}.`,
+        `${moonbeamCommand}, ${bubbleCommand}, or ${astralEchoCommand}.`,
     };
   }
 
@@ -3059,6 +3073,79 @@ async function performCastUnlocked(
       message: currentCombatState && platform === "discord"
         ? appendDiscordCombatHud(message, currentCombatState, progress)
         : message,
+    };
+  }
+
+  if (spell.type === "pre-action-support" && spell.id === "astral-echo") {
+    if (!currentCombatState) {
+      return {
+        message:
+          "Astral Echo can only be cast during a fight. Start or continue an " +
+          "Adventure battle first.",
+      };
+    }
+
+    if (currentCombatState.astralEcho) {
+      const message =
+        "Your Astral Echo is already storing power. Cast an offensive spell to release it first.";
+      return {
+        message: platform === "discord"
+          ? appendDiscordCombatHud(message, currentCombatState, progress)
+          : message,
+      };
+    }
+
+    if (progress.mana < spell.manaCost) {
+      const message = `You don't have enough Mana to cast ${spell.name}.`;
+      return {
+        message: platform === "discord"
+          ? appendDiscordCombatHud(message, currentCombatState, progress)
+          : message,
+      };
+    }
+
+    const naturalRoll = randomInteger(1, spell.damage.sides);
+    const tier = spell.echoTiers.find(
+      (entry) => naturalRoll === entry.naturalRoll,
+    );
+    const originalCombatState = structuredClone(currentCombatState);
+    const updatedProgress = {
+      ...progress,
+      mana: progress.mana - spell.manaCost,
+    };
+    currentCombatState.astralEcho = {
+      naturalRoll,
+      tierId: tier.id,
+      displayName: tier.displayName,
+      damagePercent: tier.damagePercent,
+    };
+
+    try {
+      await savePlayerProgress(env, backpackKey, updatedProgress);
+      await saveCombatState(env, backpackKey, currentCombatState);
+    } catch (error) {
+      try {
+        await Promise.all([
+          savePlayerProgress(env, backpackKey, progress),
+          saveCombatState(env, backpackKey, originalCombatState),
+        ]);
+      } catch (rollbackError) {
+        console.error("Astral Echo cast rollback failed:", rollbackError);
+      }
+      throw error;
+    }
+
+    const castParts = [
+      tier.narration,
+      `Astral Echo Roll: ${naturalRoll} → ${tier.displayName}`,
+      `Echo Power: ${Math.round(tier.damagePercent * 100)}%`,
+      "Your Astral Echo is stored. Your turn continues.",
+    ];
+    const hud = formatDiscordCombatHud(currentCombatState, updatedProgress);
+    return {
+      message: platform === "discord"
+        ? `${castParts.join("\n\n")}\n\n${hud}`
+        : `${castParts.join(" | ")} | ${hud}`,
     };
   }
 
@@ -3353,6 +3440,13 @@ async function performCastUnlocked(
       astralCharge.damageIncrease,
     );
   }
+  const astralEcho = getAstralEcho(combatState);
+  const echoDamage = astralEcho
+    ? applyPercentageOfDamage(
+        resolvedSpellRoll.damage,
+        astralEcho.damagePercent,
+      )
+    : 0;
   resolvedSpellRoll.appliesAstralCharge =
     spell.id === "star-spark" &&
     resolvedSpellRoll.isCritical &&
@@ -3371,6 +3465,18 @@ async function performCastUnlocked(
       ? `${chargeMessage}\n\n${castMessage}`
       : `${chargeMessage} | ${castMessage}`;
   }
+  if (astralEcho) {
+    const astralEchoSpell = spellDefinitions.find(
+      (definition) => definition.id === "astral-echo",
+    );
+    const echoMessage = astralEchoSpell.activationLine.replace(
+      "{echoDamage}",
+      String(echoDamage),
+    );
+    castMessage = platform === "discord"
+      ? `${castMessage}\n\n${echoMessage}`
+      : `${castMessage} | ${echoMessage}`;
+  }
   const updatedProgress = {
     ...progress,
     mana: progress.mana - manaCost,
@@ -3387,6 +3493,7 @@ async function performCastUnlocked(
       {
         roll: triggeredRoll.finalTotal,
         damage: resolvedSpellRoll.damage,
+        echoDamage,
         message: castMessage,
         victoryMessage: castMessage,
         consumeAstralCharge: Boolean(astralCharge),
@@ -3401,6 +3508,7 @@ async function performCastUnlocked(
           ? spellRoll.keptRoll
           : null,
         jellyfishMasteryEffect,
+        consumeAstralEcho: Boolean(astralEcho),
       },
       platform,
     );
@@ -6174,6 +6282,24 @@ function isValidBubbleState(bubble) {
   );
 }
 
+function getAstralEcho(combatState) {
+  const echo = combatState?.astralEcho;
+  const damagePercent = Number(echo?.damagePercent);
+  return echo &&
+      Number.isSafeInteger(echo.naturalRoll) &&
+      echo.naturalRoll >= 1 &&
+      echo.naturalRoll <= 4 &&
+      typeof echo.tierId === "string" &&
+      echo.tierId.trim() &&
+      typeof echo.displayName === "string" &&
+      echo.displayName.trim() &&
+      Number.isFinite(damagePercent) &&
+      damagePercent > 0 &&
+      damagePercent <= 1
+    ? { ...echo, damagePercent }
+    : null;
+}
+
 function isValidCombatState(combatState) {
   const enemy = combatState?.enemy;
 
@@ -6216,6 +6342,10 @@ function isValidCombatState(combatState) {
     (
       combatState.bubble === undefined ||
       isValidBubbleState(combatState.bubble)
+    ) &&
+    (
+      combatState.astralEcho === undefined ||
+      getAstralEcho(combatState) !== null
     ) &&
     (
       combatState.perkUses === undefined ||
@@ -6650,6 +6780,11 @@ function getAstralCharge(enemy) {
 function applyPercentageDamageIncrease(damage, increase) {
   const percentage = Math.round(Number(increase) * 100);
   return Math.floor((damage * (100 + percentage) + 50) / 100);
+}
+
+function applyPercentageOfDamage(damage, percent) {
+  const percentage = Math.round(Number(percent) * 100);
+  return Math.floor((damage * percentage + 50) / 100);
 }
 
 function applyLuckToCandyReward(baseReward, progress) {
@@ -7139,6 +7274,7 @@ function validateSpellDefinition(spell, expectedId) {
       "timed-support",
       "healing-support",
       "defensive",
+      "pre-action-support",
     ].includes(spell.type)
   ) {
     throw new Error(`Invalid spell definition for ${expectedId}.`);
@@ -7215,6 +7351,29 @@ function validateSpellDefinition(spell, expectedId) {
       spell.criticalFlavor.length !== 5
     ) {
       throw new Error("Invalid Bubble content data.");
+    }
+  }
+
+  if (spell.type === "pre-action-support") {
+    if (
+      spell.id !== "astral-echo" ||
+      Number(spell.damage?.dice) !== 1 ||
+      Number(spell.damage?.sides) !== 4 ||
+      !Array.isArray(spell.echoTiers) ||
+      spell.echoTiers.length !== 4 ||
+      spell.echoTiers.some((tier) =>
+        typeof tier.id !== "string" ||
+        typeof tier.displayName !== "string" ||
+        !isPositiveInteger(tier.naturalRoll) ||
+        !Number.isFinite(Number(tier.damagePercent)) ||
+        Number(tier.damagePercent) <= 0 ||
+        Number(tier.damagePercent) > 1 ||
+        typeof tier.narration !== "string" ||
+        !tier.narration.trim()) ||
+      typeof spell.activationLine !== "string" ||
+      !spell.activationLine.includes("{echoDamage}")
+    ) {
+      throw new Error("Invalid Astral Echo content data.");
     }
   }
 

@@ -1,0 +1,44 @@
+{
+  "id": "astral-echo",
+  "name": "Astral Echo",
+  "aliases": ["astral echo", "echo"],
+  "requiredLevel": 12,
+  "manaCost": 25,
+  "type": "pre-action-support",
+  "description": "Store an Astral Echo that makes your next offensive spell strike again for a percentage of its final damage without ending your normal action.",
+  "damage": {
+    "dice": 1,
+    "sides": 4
+  },
+  "echoTiers": [
+    {
+      "id": "faint",
+      "displayName": "Faint Echo",
+      "naturalRoll": 1,
+      "damagePercent": 0.3,
+      "narration": "Astral light gathers around you in a faint, wavering rhythm. A Faint Echo has been stored at 30% power."
+    },
+    {
+      "id": "resonant",
+      "displayName": "Resonant Echo",
+      "naturalRoll": 2,
+      "damagePercent": 0.35,
+      "narration": "Astral energy circles around you, settling into a steady rhythm. A Resonant Echo has been stored at 35% power."
+    },
+    {
+      "id": "powerful",
+      "displayName": "Powerful Echo",
+      "naturalRoll": 3,
+      "damagePercent": 0.4,
+      "narration": "Astral light surges around you as the surrounding sea begins to hum. A Powerful Echo has been stored at 40% power."
+    },
+    {
+      "id": "perfect",
+      "displayName": "Perfect Echo",
+      "naturalRoll": 4,
+      "damagePercent": 0.5,
+      "narration": "The Astral Sea suddenly resonates around you as brilliant starlight gathers into a perfect rhythm. A Perfect Echo has been stored at 50% power."
+    }
+  ],
+  "activationLine": "Astral Echo activates! Your spell echoes through the Astral Sea and strikes again for {echoDamage} damage."
+}
