@@ -264,6 +264,9 @@ const SPELL_FILES = {
   mend: "mend.json",
   moonbeam: "moonbeam.json",
 };
+const MASTERY_FILES = {
+  "starspark-mastery-1": "starspark-mastery-1.json",
+};
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
 
@@ -1103,6 +1106,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
+        "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1452,6 +1456,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
+          "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -1924,6 +1929,7 @@ async function performAdventureDirectionUnlocked(
       xpProgression.progress.unspentStatPoints,
       platform,
     ));
+    messageParts.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
   }
   if (endingTitle !== startingTitle) {
     messageParts.push(`Title Earned: ${endingTitle}`);
@@ -2643,12 +2649,23 @@ async function resolvePlayerCombatAction(
   );
 
   if (action.consumeAstralCharge) {
-    delete combatState.enemy.astralCharge;
+    const currentCharge = getAstralCharge(combatState.enemy);
+    if (currentCharge && currentCharge.remainingDamageUses > 1) {
+      combatState.enemy.astralCharge = {
+        ...currentCharge,
+        remainingDamageUses: currentCharge.remainingDamageUses - 1,
+        manaDiscountAvailable: false,
+      };
+    } else {
+      delete combatState.enemy.astralCharge;
+    }
   }
   if (action.applyAstralCharge && combatState.enemy.hp > 0) {
     combatState.enemy.astralCharge = {
       manaReduction: action.astralCharge.manaReduction,
       damageIncrease: action.astralCharge.damageIncrease,
+      remainingDamageUses: action.astralCharge.damageUses,
+      manaDiscountAvailable: action.astralCharge.manaDiscountUses > 0,
     };
   }
 
@@ -2871,6 +2888,11 @@ async function performCastUnlocked(
 
   const progress = await getPlayerProgress(env, backpackKey);
   const playerLevel = levelFromXp(progress.xp);
+  const activeMasteries = await getActiveMasteries(playerLevel);
+  const starSparkMastery = activeMasteries.find(
+    (mastery) => mastery.spellId === "star-spark" &&
+      mastery.effect.id === "astral-charge",
+  );
   const currentCombatState = await getCombatState(env, backpackKey);
 
   if (playerLevel < spell.requiredLevel) {
@@ -3047,7 +3069,7 @@ async function performCastUnlocked(
   }
 
   const astralCharge = getAstralCharge(combatState.enemy);
-  const manaCost = astralCharge
+  const manaCost = astralCharge?.manaDiscountAvailable
     ? Math.round(spell.manaCost * (1 - astralCharge.manaReduction))
     : spell.manaCost;
 
@@ -3092,6 +3114,7 @@ async function performCastUnlocked(
     spell.id === "star-spark" &&
     resolvedSpellRoll.isCritical &&
     combatState.enemy.hp > resolvedSpellRoll.damage;
+  resolvedSpellRoll.astralChargeDamageUses = starSparkMastery?.effect.damageUses || 1;
   let castMessage = formatSpellCastMessage(
     spell,
     resolvedSpellRoll,
@@ -3125,7 +3148,11 @@ async function performCastUnlocked(
         victoryMessage: castMessage,
         consumeAstralCharge: Boolean(astralCharge),
         applyAstralCharge: resolvedSpellRoll.appliesAstralCharge,
-        astralCharge: spell.astralCharge,
+        astralCharge: {
+          ...spell.astralCharge,
+          damageUses: starSparkMastery?.effect.damageUses || 1,
+          manaDiscountUses: starSparkMastery?.effect.manaDiscountUses || 1,
+        },
       },
       platform,
     );
@@ -3279,8 +3306,9 @@ function formatStarSparkCastMessage(
     ...(spellRoll.criticalFlavor ? [spellRoll.criticalFlavor] : []),
     ...(spellRoll.appliesAstralCharge
       ? [
-          "Astral Charge applied! Your next offensive spell costs 50% less " +
-            "Mana and deals 15% more damage.",
+          spellRoll.astralChargeDamageUses > 1
+            ? "Astral Charge applied! Your next two offensive spells deal 15% more damage; the first also costs 50% less Mana."
+            : "Astral Charge applied! Your next offensive spell costs 50% less Mana and deals 15% more damage.",
         ]
       : []),
     formatCompactCombatRoll(
@@ -3638,6 +3666,7 @@ async function resolveCombatVictory(
       xpProgression.progress.unspentStatPoints,
       platform,
     ));
+    messageParts.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
   }
 
   if (endingTitle !== startingTitle) {
@@ -3932,6 +3961,7 @@ async function performExploreUnlocked(
       xpProgression.progress.unspentStatPoints,
       platform,
     ));
+    messageLines.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
   }
 
   if (endingTitle !== startingTitle) {
@@ -6278,6 +6308,13 @@ function getAstralCharge(enemy) {
   const manaReduction = Number(charge?.manaReduction);
   const damageIncrease = Number(charge?.damageIncrease);
 
+  const remainingDamageUses = charge?.remainingDamageUses === undefined
+    ? 1
+    : Number(charge.remainingDamageUses);
+  const manaDiscountAvailable = charge?.manaDiscountAvailable === undefined
+    ? true
+    : charge.manaDiscountAvailable;
+
   return charge &&
       typeof charge === "object" &&
       !Array.isArray(charge) &&
@@ -6285,8 +6322,16 @@ function getAstralCharge(enemy) {
       manaReduction >= 0 &&
       manaReduction <= 1 &&
       Number.isFinite(damageIncrease) &&
-      damageIncrease >= 0
-    ? { manaReduction, damageIncrease }
+      damageIncrease >= 0 &&
+      Number.isSafeInteger(remainingDamageUses) &&
+      remainingDamageUses >= 1 &&
+      typeof manaDiscountAvailable === "boolean"
+    ? {
+        manaReduction,
+        damageIncrease,
+        remainingDamageUses,
+        manaDiscountAvailable,
+      }
     : null;
 }
 
@@ -6872,6 +6917,33 @@ function validateSpellDefinition(spell, expectedId) {
   return spell;
 }
 
+function validateMasteryDefinition(mastery, expectedId) {
+  if (
+    !mastery ||
+    mastery.id !== expectedId ||
+    typeof mastery.name !== "string" ||
+    !mastery.name.trim() ||
+    typeof mastery.spellId !== "string" ||
+    !SPELL_FILES[mastery.spellId] ||
+    !Number.isSafeInteger(Number(mastery.requiredLevel)) ||
+    Number(mastery.requiredLevel) < 1 ||
+    !Number.isSafeInteger(Number(mastery.tier)) ||
+    Number(mastery.tier) < 1 ||
+    typeof mastery.description !== "string" ||
+    !mastery.description.trim() ||
+    mastery.effect?.id !== "astral-charge" ||
+    !Number.isSafeInteger(Number(mastery.effect.damageUses)) ||
+    Number(mastery.effect.damageUses) < 1 ||
+    !Number.isSafeInteger(Number(mastery.effect.manaDiscountUses)) ||
+    Number(mastery.effect.manaDiscountUses) < 0 ||
+    Number(mastery.effect.manaDiscountUses) > Number(mastery.effect.damageUses)
+  ) {
+    throw new Error(`Invalid mastery definition for ${expectedId}.`);
+  }
+
+  return mastery;
+}
+
 async function getSpellDefinition(spellId) {
   const file = SPELL_FILES[spellId];
   if (!file) return null;
@@ -6887,6 +6959,40 @@ async function getSpellDefinitions() {
   return Promise.all(
     Object.keys(SPELL_FILES).map((spellId) => getSpellDefinition(spellId)),
   );
+}
+
+async function getMasteryDefinition(masteryId) {
+  const file = MASTERY_FILES[masteryId];
+  if (!file) return null;
+
+  const mastery = await fetchCachedJson(
+    `mastery:${masteryId}`,
+    `${GITHUB_DATA_BASE}/masteries/${file}`,
+  );
+  return validateMasteryDefinition(mastery, masteryId);
+}
+
+async function getMasteryDefinitions() {
+  return Promise.all(
+    Object.keys(MASTERY_FILES).map((masteryId) =>
+      getMasteryDefinition(masteryId)),
+  );
+}
+
+async function getActiveMasteries(playerLevel) {
+  const level = Number(playerLevel);
+  const masteries = await getMasteryDefinitions();
+  return masteries.filter((mastery) => level >= mastery.requiredLevel);
+}
+
+async function formatMasteryUnlocks(startingLevel, endingLevel) {
+  const masteries = await getMasteryDefinitions();
+  return masteries
+    .filter((mastery) =>
+      mastery.requiredLevel > startingLevel &&
+      mastery.requiredLevel <= endingLevel)
+    .map((mastery) =>
+      `Mastery Unlocked: ${mastery.name} — ${mastery.description}`);
 }
 
 async function getRegionMetadata(regionId) {

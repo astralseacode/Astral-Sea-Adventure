@@ -1,0 +1,13 @@
+{
+  "id": "starspark-mastery-1",
+  "name": "Star Spark Mastery I",
+  "spellId": "star-spark",
+  "requiredLevel": 6,
+  "tier": 1,
+  "description": "Astral Charge now empowers two offensive spell casts. The first receives 50% Mana reduction and +15% damage. The second receives +15% damage.",
+  "effect": {
+    "id": "astral-charge",
+    "damageUses": 2,
+    "manaDiscountUses": 1
+  }
+}
