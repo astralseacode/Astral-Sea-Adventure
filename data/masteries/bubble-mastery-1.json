@@ -1,0 +1,13 @@
+{
+  "id": "bubble-mastery-1",
+  "name": "Bubble Mastery I",
+  "spellId": "bubble",
+  "requiredLevel": 16,
+  "tier": 1,
+  "description": "When Bubble absorbs damage and pops, restore 10 Mana and gain +2 to your next offensive roll.",
+  "effect": {
+    "id": "bubble-rebound",
+    "manaRestore": 10,
+    "offensiveRollModifier": 2
+  }
+}

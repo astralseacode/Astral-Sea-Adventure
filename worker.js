@@ -271,12 +271,14 @@ const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
   "jellyfish-mastery-1": "jellyfish-mastery-1.json",
   "elf-blessing-mastery-1": "elf-blessing-mastery-1.json",
+  "bubble-mastery-1": "bubble-mastery-1.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
   "astral-momentum": "astral-momentum.json",
   "astral-harvest": "astral-harvest.json",
   "astral-aftershock": "astral-aftershock.json",
+  "fae-intervention": "fae-intervention.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1130,6 +1132,8 @@ async function handleTwitchRequest(url, env) {
         "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
         "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
         "Level 15 — Falling Star — !cast falling star uses Power and Accuracy for volatile heavy damage. " +
+        "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
+        "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1489,6 +1493,8 @@ async function handleDiscordInteraction(request, env) {
           "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
           "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
           "Level 15 — Falling Star — /cast Falling Star uses Power and Accuracy for volatile heavy damage. " +
+          "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
+          "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2609,6 +2615,7 @@ async function performAttackUnlocked(
     progress,
     OFFENSIVE_ROLL_TRIGGER,
     playerRoll,
+    combatState,
   );
   const basePlayerAttack = playerRoll === 1
     ? getCombatRollResult(playerRoll)
@@ -2720,6 +2727,7 @@ async function resolvePlayerCombatAction(
   let progress = await getPlayerProgress(env, backpackKey);
   let momentumMessage = "";
   const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  const activeMasteries = await getActiveMasteries(levelFromXp(progress.xp));
   const astralMomentum = activePerks.find(
     (perk) => perk.effect.trigger === "natural-perfect-hit",
   );
@@ -2832,6 +2840,7 @@ async function resolvePlayerCombatAction(
     ? 0
     : Math.max(1, rawEnemyDamage - armorReduction);
   let bubbleMessage = "";
+  let bubbleMasteryMessage = "";
   if (combatState.bubble && enemyDamage > 0) {
     const absorbedDamage = Math.min(
       combatState.bubble.protection,
@@ -2844,6 +2853,30 @@ async function resolvePlayerCombatAction(
       String(absorbedDamage),
     );
     delete combatState.bubble;
+    const bubbleMastery = activeMasteries.find(
+      (mastery) => mastery.spellId === "bubble" &&
+        mastery.effect.id === "bubble-rebound",
+    );
+    if (bubbleMastery && absorbedDamage > 0) {
+      const maximumMana = getPlayerResourceCaps(progress).mana;
+      const restoredMana = Math.min(
+        bubbleMastery.effect.manaRestore,
+        Math.max(0, maximumMana - progress.mana),
+      );
+      progress = {
+        ...progress,
+        mana: progress.mana + restoredMana,
+      };
+      combatState.astralRebound = {
+        offensiveRollModifier:
+          bubbleMastery.effect.offensiveRollModifier,
+      };
+      bubbleMasteryMessage = restoredMana > 0
+        ? "Bubble Mastery activates! The Bubble pops with an extremely offended *boing*. " +
+          `You recover ${restoredMana} Mana and gain +2 to your next offensive roll.`
+        : "Bubble Mastery activates! Your Mana is already full, but the extremely offended Bubble still grants +2 to your next offensive roll.";
+      await savePlayerProgress(env, backpackKey, progress);
+    }
   }
   combatState.playerHp = Math.max(
     0,
@@ -2865,6 +2898,25 @@ async function resolvePlayerCombatAction(
   }
   if (bubbleMessage) {
     messageParts.push(bubbleMessage);
+  }
+  if (bubbleMasteryMessage) {
+    messageParts.push(bubbleMasteryMessage);
+  }
+
+  const faeIntervention = activePerks.find(
+    (perk) => perk.effect.trigger === "lethal-enemy-damage",
+  );
+  if (
+    combatState.playerHp === 0 &&
+    faeIntervention &&
+    !combatState.perkUses?.[faeIntervention.id]
+  ) {
+    combatState.playerHp = faeIntervention.effect.survivalHp;
+    combatState.perkUses = {
+      ...(combatState.perkUses || {}),
+      [faeIntervention.id]: 1,
+    };
+    messageParts.push(randomChoice(faeIntervention.activationLines));
   }
 
   if (combatState.playerHp === 0) {
@@ -3435,6 +3487,7 @@ async function performCastUnlocked(
     progress,
     OFFENSIVE_ROLL_TRIGGER,
     spellRoll.total,
+    combatState,
   );
   const faeBonus = getFaeSpellRollBonus(progress);
   if (faeBonus > 0) {
@@ -6441,6 +6494,15 @@ function getAstralEcho(combatState) {
     : null;
 }
 
+function isValidAstralRebound(rebound) {
+  return Boolean(
+    rebound &&
+    typeof rebound === "object" &&
+    !Array.isArray(rebound) &&
+    Number(rebound.offensiveRollModifier) === 2
+  );
+}
+
 function isValidCombatState(combatState) {
   const enemy = combatState?.enemy;
 
@@ -6487,6 +6549,10 @@ function isValidCombatState(combatState) {
     (
       combatState.astralEcho === undefined ||
       getAstralEcho(combatState) !== null
+    ) &&
+    (
+      combatState.astralRebound === undefined ||
+      isValidAstralRebound(combatState.astralRebound)
     ) &&
     (
       combatState.perkUses === undefined ||
@@ -7132,6 +7198,7 @@ function consumeTriggeredStatusEffects(
   progress,
   trigger,
   naturalRoll,
+  combatState = null,
 ) {
   const statusEffects = normalizeStatusEffects(progress.statusEffects);
   const applied = [];
@@ -7159,6 +7226,17 @@ function consumeTriggeredStatusEffects(
         delete statusEffects[effectId];
       }
     }
+  }
+
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.astralRebound) {
+    const reboundModifier = combatState.astralRebound.offensiveRollModifier;
+    modifier += reboundModifier;
+    applied.push("Astral Rebound");
+    modifierDetails.push({
+      name: "Astral Rebound",
+      value: reboundModifier,
+    });
+    delete combatState.astralRebound;
   }
 
   return {
@@ -7654,11 +7732,16 @@ function validateMasteryDefinition(mastery, expectedId) {
     effect?.id === "elf-blessing-upgrade" &&
     Number(effect.offensiveRollModifier) === 3 &&
     Number(effect.durationMs) === 3600000;
+  const validBubbleMastery = expectedId === "bubble-mastery-1" &&
+    effect?.id === "bubble-rebound" &&
+    Number(effect.manaRestore) === 10 &&
+    Number(effect.offensiveRollModifier) === 2;
 
   if (
     !validStarSparkMastery &&
     !validJellyfishMastery &&
-    !validElfBlessingMastery
+    !validElfBlessingMastery &&
+    !validBubbleMastery
   ) {
     throw new Error(`Invalid mastery effect for ${expectedId}.`);
   }
@@ -7669,7 +7752,7 @@ function validateMasteryDefinition(mastery, expectedId) {
 function validatePerkDefinition(perk, expectedId) {
   const hasActivationLines =
     Array.isArray(perk?.activationLines) &&
-    perk.activationLines.length === 5 &&
+    perk.activationLines.length > 0 &&
     perk.activationLines.every((line) =>
       typeof line === "string" && line.trim());
   const hasSingleActivationLine =
@@ -7693,12 +7776,14 @@ function validatePerkDefinition(perk, expectedId) {
   const effect = perk.effect;
   const validResilience = expectedId === "astral-resilience" &&
     hasActivationLines &&
+    perk.activationLines.length === 5 &&
     effect?.trigger === "post-enemy-damage" &&
     Number(effect.hpThresholdPercent) === 25 &&
     Number(effect.manaRestore) === 10 &&
     Number(effect.usesPerBattle) === 1;
   const validMomentum = expectedId === "astral-momentum" &&
     hasActivationLines &&
+    perk.activationLines.length === 5 &&
     effect?.trigger === "natural-perfect-hit" &&
     Number(effect.naturalRoll) === 20 &&
     Array.isArray(effect.eligibleActions) &&
@@ -7721,12 +7806,19 @@ function validatePerkDefinition(perk, expectedId) {
     perk.activationLine === "Astral Aftershock activates! +5 damage." &&
     hasSingleActivationLine &&
     !hasActivationLines;
+  const validFaeIntervention = expectedId === "fae-intervention" &&
+    effect?.trigger === "lethal-enemy-damage" &&
+    Number(effect.survivalHp) === 1 &&
+    Number(effect.usesPerBattle) === 1 &&
+    hasActivationLines &&
+    perk.activationLines.length === 8;
 
   if (
     !validResilience &&
     !validMomentum &&
     !validHarvest &&
-    !validAftershock
+    !validAftershock &&
+    !validFaeIntervention
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }

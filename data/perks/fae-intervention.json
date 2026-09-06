@@ -1,0 +1,22 @@
+{
+  "id": "fae-intervention",
+  "name": "Fae Intervention",
+  "requiredLevel": 17,
+  "type": "passive",
+  "description": "Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP.",
+  "effect": {
+    "trigger": "lethal-enemy-damage",
+    "survivalHp": 1,
+    "usesPerBattle": 1
+  },
+  "activationLines": [
+    "Fae Intervention activates! A swarm of glowing leaves catches you at the last possible second. Several immediately begin checking your injuries. One appears to be panicking. You survive with 1 HP.",
+    "Fae Intervention activates! The Fae leaves rush in and stubbornly refuse to let you fall. One starts frantically patching you up while another seems to be yelling at the enemy. You survive with 1 HP.",
+    "Fae Intervention activates! A tiny glowing leaf grabs onto you. Then another. Then several more. Apparently they've collectively decided you're not dying today. You survive with 1 HP.",
+    "Fae Intervention activates! The supervising leaf suddenly appears and takes one look at your condition. It is *furious*. The other leaves immediately scramble into action. You survive with 1 HP.",
+    "Fae Intervention activates! The Fae leaves catch you before you fall. One checks your injuries, freezes, and immediately starts waving for the others. You survive with 1 HP.",
+    "Fae Intervention activates! Several glowing leaves desperately hold you upright while the supervising leaf begins pointing at your wounds like this is somehow everyone's fault. You survive with 1 HP.",
+    "Fae Intervention activates! The Fae medical team has reviewed your current condition and unanimously determined that it is *unacceptable*. You survive with 1 HP.",
+    "Fae Intervention activates! One tiny leaf gently pats you. Another pats you. Soon the entire Fae medical team is patting you with increasing concern. You're not sure this is helping, but somehow you survive with 1 HP."
+  ]
+}
