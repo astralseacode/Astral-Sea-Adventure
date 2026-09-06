@@ -1,0 +1,58 @@
+{
+  "id": "bubble",
+  "name": "Bubble",
+  "aliases": ["bubble"],
+  "requiredLevel": 8,
+  "manaCost": 15,
+  "type": "defensive",
+  "description": "Cast Bubble at Level 8 for 15 Mana to prepare protection against the next damaging enemy attack without ending your normal action.",
+  "damage": {
+    "dice": 1,
+    "sides": 12
+  },
+  "protectionTiers": [
+    {
+      "id": "suspicious",
+      "displayName": "Suspicious Bubble",
+      "naturalMaximum": 3,
+      "protection": 5,
+      "narration": "You summon a protective bubble around yourself. It wobbles concerningly. You're pretty sure protective bubbles aren't supposed to do that."
+    },
+    {
+      "id": "decent",
+      "displayName": "Decent Bubble",
+      "naturalMaximum": 7,
+      "protection": 10,
+      "narration": "A shimmering bubble pops into existence around you. You poke the inside wall. It makes a surprisingly reassuring *boing*."
+    },
+    {
+      "id": "sturdy",
+      "displayName": "Sturdy Bubble",
+      "naturalMaximum": 11,
+      "protection": 15,
+      "narration": "Astral light swirls around you and forms a remarkably sturdy bubble. It gives an encouraging little *boing*, apparently very confident in its new job."
+    },
+    {
+      "id": "magnificent",
+      "displayName": "Magnificent Bubble",
+      "naturalMaximum": 12,
+      "protection": 25,
+      "narration": "An enormous shimmering bubble snaps into place around you with majestic Astral brilliance. It is flawless. It is radiant. You have never felt safer inside something so incredibly poppable."
+    }
+  ],
+  "activationLines": [
+    "Bubble activates! Your foe strikes the bubble. It responds with a deeply offended *boing*, absorbs {absorbedDamage} damage, and pops.",
+    "Bubble activates! The bubble bravely absorbs {absorbedDamage} damage before giving one final determined *boing*. It did its job.",
+    "Bubble activates! Your foe hits the bubble for absolutely no good reason. It absorbs {absorbedDamage} damage before popping in protest.",
+    "Bubble activates! The bubble absorbs {absorbedDamage} damage, gives your foe one last accusatory *boing*, and pops. It clearly expected an apology.",
+    "Bubble activates! Your foe strikes the bubble. It absorbs {absorbedDamage} damage, wobbles dramatically, and pops. Somehow, you get the impression it took that personally."
+  ],
+  "criticalFlavorChance": 0.25,
+  "criticalFlavor": [
+    "The bubble gives you a confident little *boing*. It has trained its entire life for this moment. Approximately three seconds.",
+    "The bubble shimmers proudly. You suspect compliments would only make this worse.",
+    "A tiny sparkle circles the bubble like a medal. The bubble seems to accept this honor.",
+    "The bubble wobbles majestically. Somehow, it has already developed an ego.",
+    "For one glorious moment, you and the bubble feel unstoppable. Mostly the bubble."
+  ]
+}

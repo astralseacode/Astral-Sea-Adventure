@@ -263,6 +263,7 @@ const SPELL_FILES = {
   jelly: "jellyfish.json",
   mend: "mend.json",
   moonbeam: "moonbeam.json",
+  bubble: "bubble.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -592,6 +593,7 @@ const DISCORD_COMMANDS = [
           { name: "Jelly", value: "jelly" },
           { name: "Mend", value: "mend" },
           { name: "Moonbeam", value: "moonbeam" },
+          { name: "Bubble", value: "bubble" },
         ],
       },
     ],
@@ -1111,6 +1113,7 @@ async function handleTwitchRequest(url, env) {
       return textResponse(
         "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
         "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
+        "Level 8 — Bubble — !cast bubble prepares protection without ending your normal action. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1462,6 +1465,7 @@ async function handleDiscordInteraction(request, env) {
         return discordMessage(
           "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
           "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
+          "Level 8 — Bubble — /cast bubble prepares protection without ending your normal action. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2703,9 +2707,23 @@ async function resolvePlayerCombatAction(
   const armorReduction = rawEnemyDamage > 0
     ? Math.min(getArmorReduction(progress), Math.max(0, rawEnemyDamage - 1))
     : 0;
-  const enemyDamage = rawEnemyDamage === 0
+  let enemyDamage = rawEnemyDamage === 0
     ? 0
     : Math.max(1, rawEnemyDamage - armorReduction);
+  let bubbleMessage = "";
+  if (combatState.bubble && enemyDamage > 0) {
+    const absorbedDamage = Math.min(
+      combatState.bubble.protection,
+      Math.max(0, enemyDamage - 1),
+    );
+    enemyDamage -= absorbedDamage;
+    const bubbleSpell = await getSpellDefinition("bubble");
+    bubbleMessage = randomChoice(bubbleSpell.activationLines).replace(
+      "{absorbedDamage}",
+      String(absorbedDamage),
+    );
+    delete combatState.bubble;
+  }
   combatState.playerHp = Math.max(
     0,
     combatState.playerHp - enemyDamage,
@@ -2717,12 +2735,15 @@ async function resolvePlayerCombatAction(
       enemyRoll,
       {
         ...enemyAttack,
-        damage: rawEnemyDamage,
+        damage: bubbleMessage ? enemyDamage : rawEnemyDamage,
       },
     ),
   );
   if (armorReduction > 0) {
     messageParts.push(`Armor -${armorReduction} | You take ${enemyDamage} dmg`);
+  }
+  if (bubbleMessage) {
+    messageParts.push(bubbleMessage);
   }
 
   if (combatState.playerHp === 0) {
@@ -2893,13 +2914,17 @@ async function performCastUnlocked(
   const moonbeamCommand = platform === "discord"
     ? "/cast spell:Moonbeam"
     : "!cast moonbeam";
+  const bubbleCommand = platform === "discord"
+    ? "/cast spell:Bubble"
+    : "!cast bubble";
 
   if (!spellInputValue) {
     return {
       message:
         `Use ${blessingCommand} for Elf Blessing, ${jellyCommand} ` +
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
-        `${mendCommand} for Mend, or ${moonbeamCommand} for Moonbeam.`,
+        `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, or ` +
+        `${bubbleCommand} for Bubble.`,
     };
   }
 
@@ -2915,7 +2940,7 @@ async function performCastUnlocked(
       message:
         `You haven't learned that spell. Use ${blessingCommand}, ` +
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
-        `${moonbeamCommand}.`,
+        `${moonbeamCommand}, or ${bubbleCommand}.`,
     };
   }
 
@@ -2936,6 +2961,85 @@ async function performCastUnlocked(
       message: currentCombatState && platform === "discord"
         ? appendDiscordCombatHud(message, currentCombatState, progress)
         : message,
+    };
+  }
+
+  if (spell.type === "defensive" && spell.id === "bubble") {
+    if (!currentCombatState) {
+      return {
+        message:
+          "Bubble can only be cast during a fight. Start or continue an " +
+          "Adventure battle first.",
+      };
+    }
+
+    if (currentCombatState.bubble) {
+      const message =
+        "Your Bubble is already active. It gives an impatient little *boing*. Apparently one Bubble is enough.";
+      return {
+        message: platform === "discord"
+          ? appendDiscordCombatHud(message, currentCombatState, progress)
+          : message,
+      };
+    }
+
+    if (progress.mana < spell.manaCost) {
+      const message = `You don't have enough Mana to cast ${spell.name}.`;
+      return {
+        message: platform === "discord"
+          ? appendDiscordCombatHud(message, currentCombatState, progress)
+          : message,
+      };
+    }
+
+    const naturalRoll = randomInteger(1, spell.damage.sides);
+    const tier = spell.protectionTiers.find(
+      (entry) => naturalRoll <= entry.naturalMaximum,
+    );
+    const rareFlavor =
+      naturalRoll === spell.damage.sides &&
+      Math.random() < spell.criticalFlavorChance
+        ? randomChoice(spell.criticalFlavor)
+        : null;
+    const originalCombatState = structuredClone(currentCombatState);
+    const updatedProgress = {
+      ...progress,
+      mana: progress.mana - spell.manaCost,
+    };
+    currentCombatState.bubble = {
+      naturalRoll,
+      tierId: tier.id,
+      displayName: tier.displayName,
+      protection: tier.protection,
+    };
+
+    try {
+      await savePlayerProgress(env, backpackKey, updatedProgress);
+      await saveCombatState(env, backpackKey, currentCombatState);
+    } catch (error) {
+      try {
+        await Promise.all([
+          savePlayerProgress(env, backpackKey, progress),
+          saveCombatState(env, backpackKey, originalCombatState),
+        ]);
+      } catch (rollbackError) {
+        console.error("Bubble cast rollback failed:", rollbackError);
+      }
+      throw error;
+    }
+
+    const castParts = [
+      tier.narration,
+      ...(rareFlavor ? [rareFlavor] : []),
+      `Bubble Roll: ${naturalRoll} → ${tier.displayName}`,
+      `Protection: ${tier.protection} damage`,
+      "Your Bubble is ready. Your turn continues.",
+    ];
+    const hud = formatDiscordCombatHud(currentCombatState, updatedProgress);
+    return {
+      message: platform === "discord"
+        ? `${castParts.join("\n\n")}\n\n${hud}`
+        : `${castParts.join(" | ")} | ${hud}`,
     };
   }
 
@@ -5911,6 +6015,21 @@ function isValidMendState(mend) {
   );
 }
 
+function isValidBubbleState(bubble) {
+  return Boolean(
+    bubble &&
+    Number.isSafeInteger(bubble.naturalRoll) &&
+    bubble.naturalRoll >= 1 &&
+    bubble.naturalRoll <= 12 &&
+    typeof bubble.tierId === "string" &&
+    bubble.tierId.trim() &&
+    typeof bubble.displayName === "string" &&
+    bubble.displayName.trim() &&
+    Number.isSafeInteger(bubble.protection) &&
+    bubble.protection > 0
+  );
+}
+
 function isValidCombatState(combatState) {
   const enemy = combatState?.enemy;
 
@@ -5949,6 +6068,10 @@ function isValidCombatState(combatState) {
     (
       combatState.mend === undefined ||
       isValidMendState(combatState.mend)
+    ) &&
+    (
+      combatState.bubble === undefined ||
+      isValidBubbleState(combatState.bubble)
     ) &&
     (
       combatState.perkUses === undefined ||
@@ -6867,7 +6990,12 @@ function validateSpellDefinition(spell, expectedId) {
     !isPositiveInteger(spell.requiredLevel) ||
     !Number.isFinite(Number(spell.manaCost)) ||
     Number(spell.manaCost) < 0 ||
-    !["offensive", "timed-support", "healing-support"].includes(spell.type)
+    ![
+      "offensive",
+      "timed-support",
+      "healing-support",
+      "defensive",
+    ].includes(spell.type)
   ) {
     throw new Error(`Invalid spell definition for ${expectedId}.`);
   }
@@ -6919,6 +7047,30 @@ function validateSpellDefinition(spell, expectedId) {
       spell.criticalFlavor.length !== 5
     ) {
       throw new Error("Invalid Mend content data.");
+    }
+  }
+
+  if (spell.type === "defensive") {
+    if (
+      spell.id !== "bubble" ||
+      Number(spell.damage?.dice) !== 1 ||
+      Number(spell.damage?.sides) !== 12 ||
+      !Array.isArray(spell.protectionTiers) ||
+      spell.protectionTiers.length !== 4 ||
+      spell.protectionTiers.some((tier) =>
+        typeof tier.id !== "string" ||
+        typeof tier.displayName !== "string" ||
+        !isPositiveInteger(tier.naturalMaximum) ||
+        !isPositiveInteger(tier.protection) ||
+        typeof tier.narration !== "string" ||
+        !tier.narration.trim()) ||
+      !isTextArray(spell.activationLines) ||
+      spell.activationLines.length !== 5 ||
+      Number(spell.criticalFlavorChance) !== 0.25 ||
+      !isTextArray(spell.criticalFlavor) ||
+      spell.criticalFlavor.length !== 5
+    ) {
+      throw new Error("Invalid Bubble content data.");
     }
   }
 
