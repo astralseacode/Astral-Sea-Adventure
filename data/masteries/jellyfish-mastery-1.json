@@ -1,0 +1,48 @@
+{
+  "id": "jellyfish-mastery-1",
+  "name": "Jellyfish Mastery I",
+  "spellId": "jelly",
+  "requiredLevel": 10,
+  "tier": 1,
+  "description": "Jellyfish moods now grant an additional effect. Sad restores Mana, Sleepy restores HP, Curious awards Star Candies, Confident deals bonus damage, and Dedicated deals even more bonus damage.",
+  "effect": {
+    "id": "jellyfish-moods",
+    "moods": [
+      {
+        "id": "sad",
+        "naturalMaximum": 4,
+        "effectType": "restore-mana",
+        "amount": 20,
+        "activationLine": "Jellyfish Mastery activates! The Jellyfish looks devastated by its performance. You tell it that it did a wonderful job. It perks up immediately and somehow gives you 20 Mana. Apparently encouragement is a renewable resource."
+      },
+      {
+        "id": "sleepy",
+        "naturalMaximum": 8,
+        "effectType": "restore-hp",
+        "amount": 20,
+        "activationLine": "Jellyfish Mastery activates! The Jellyfish yawns, floats over, and falls asleep directly on your head. You recover 20 HP. You're not entirely sure this is medicine."
+      },
+      {
+        "id": "curious",
+        "naturalMaximum": 13,
+        "effectType": "award-candies",
+        "amount": 50,
+        "activationLine": "Jellyfish Mastery activates! The Jellyfish wanders off to investigate something shiny and returns with 50 Star Candies. You decide not to ask where it found them."
+      },
+      {
+        "id": "confident",
+        "naturalMaximum": 17,
+        "effectType": "bonus-damage",
+        "amount": 5,
+        "activationLine": "Jellyfish Mastery activates! The Jellyfish looks extremely pleased with itself and immediately goes back for another bonk. +5 damage."
+      },
+      {
+        "id": "dedicated",
+        "naturalMaximum": 24,
+        "effectType": "bonus-damage",
+        "amount": 8,
+        "activationLine": "Jellyfish Mastery activates! The Jellyfish looks at you. It looks at your foe. It gives a tiny, determined wobble and charges back in. +8 damage."
+      }
+    ]
+  }
+}

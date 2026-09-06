@@ -267,6 +267,7 @@ const SPELL_FILES = {
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
+  "jellyfish-mastery-1": "jellyfish-mastery-1.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
@@ -1116,6 +1117,7 @@ async function handleTwitchRequest(url, env) {
         "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
         "Level 8 — Bubble — !cast bubble prepares protection without ending your normal action. " +
         "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
+        "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1469,6 +1471,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
           "Level 8 — Bubble — /cast bubble prepares protection without ending your normal action. " +
           "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
+          "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2720,7 +2723,52 @@ async function resolvePlayerCombatAction(
     }
   }
 
+  let jellyfishMasteryMessage = "";
+  const jellyfishEffect = action.jellyfishMasteryEffect;
+  if (jellyfishEffect) {
+    if (jellyfishEffect.effectType === "restore-mana") {
+      const maximumMana = getPlayerResourceCaps(progress).mana;
+      const restoredMana = Math.min(
+        jellyfishEffect.amount,
+        Math.max(0, maximumMana - progress.mana),
+      );
+      if (restoredMana > 0) {
+        progress = { ...progress, mana: progress.mana + restoredMana };
+        await savePlayerProgress(env, backpackKey, progress);
+        jellyfishMasteryMessage = jellyfishEffect.activationLine.replace(
+          "20 Mana",
+          `${restoredMana} Mana`,
+        );
+      } else {
+        jellyfishMasteryMessage =
+          "Jellyfish Mastery activates! The Jellyfish looks devastated by its performance. You tell it that it did a wonderful job. It perks up immediately, but your Mana is already full. Apparently encouragement is a renewable resource.";
+      }
+    } else if (jellyfishEffect.effectType === "restore-hp") {
+      const restoredHp = Math.min(
+        jellyfishEffect.amount,
+        Math.max(0, combatState.playerMaxHp - combatState.playerHp),
+      );
+      combatState.playerHp += restoredHp;
+      jellyfishMasteryMessage = restoredHp > 0
+        ? jellyfishEffect.activationLine.replace("20 HP", `${restoredHp} HP`)
+        : "Jellyfish Mastery activates! The Jellyfish yawns, floats over, and falls asleep directly on your head. Your HP is already full. You're not entirely sure this is medicine.";
+    } else if (jellyfishEffect.effectType === "award-candies") {
+      const currentTotal = await getBackpackTotal(env, backpackKey);
+      await saveBackpackTotal(
+        env,
+        backpackKey,
+        currentTotal + jellyfishEffect.amount,
+      );
+      jellyfishMasteryMessage = jellyfishEffect.activationLine;
+    } else if (jellyfishEffect.effectType === "bonus-damage") {
+      jellyfishMasteryMessage = jellyfishEffect.activationLine;
+    }
+  }
+
   const messageParts = [action.message];
+  if (jellyfishMasteryMessage) {
+    messageParts.push(jellyfishMasteryMessage);
+  }
   if (momentumMessage) {
     messageParts.push(momentumMessage);
   }
@@ -2733,7 +2781,7 @@ async function resolvePlayerCombatAction(
       action.roll,
       action.damage,
       platform,
-      action.victoryMessage || action.message,
+      formatCombatMessageParts(messageParts, platform),
     );
 
     return {
@@ -2993,6 +3041,10 @@ async function performCastUnlocked(
   const starSparkMastery = activeMasteries.find(
     (mastery) => mastery.spellId === "star-spark" &&
       mastery.effect.id === "astral-charge",
+  );
+  const jellyfishMastery = activeMasteries.find(
+    (mastery) => mastery.spellId === "jelly" &&
+      mastery.effect.id === "jellyfish-moods",
   );
   const currentCombatState = await getCombatState(env, backpackKey);
 
@@ -3284,6 +3336,14 @@ async function performCastUnlocked(
   resolvedSpellRoll.baseDamage ??= resolvedSpellRoll.damage;
   resolvedSpellRoll.strengthBonus = strengthBonus;
   resolvedSpellRoll.damage += strengthBonus;
+  const jellyfishMasteryEffect = spell.id === "jelly" && jellyfishMastery
+    ? jellyfishMastery.effect.moods.find(
+        (mood) => spellRoll.total <= mood.naturalMaximum,
+      )
+    : null;
+  if (jellyfishMasteryEffect?.effectType === "bonus-damage") {
+    resolvedSpellRoll.damage += jellyfishMasteryEffect.amount;
+  }
   if (astralCharge) {
     resolvedSpellRoll.damage = applyPercentageDamageIncrease(
       resolvedSpellRoll.damage,
@@ -3337,6 +3397,7 @@ async function performCastUnlocked(
         momentumNaturalRoll: spell.id === "moonbeam"
           ? spellRoll.keptRoll
           : null,
+        jellyfishMasteryEffect,
       },
       platform,
     );
@@ -7174,15 +7235,41 @@ function validateMasteryDefinition(mastery, expectedId) {
     !Number.isSafeInteger(Number(mastery.tier)) ||
     Number(mastery.tier) < 1 ||
     typeof mastery.description !== "string" ||
-    !mastery.description.trim() ||
-    mastery.effect?.id !== "astral-charge" ||
-    !Number.isSafeInteger(Number(mastery.effect.damageUses)) ||
-    Number(mastery.effect.damageUses) < 1 ||
-    !Number.isSafeInteger(Number(mastery.effect.manaDiscountUses)) ||
-    Number(mastery.effect.manaDiscountUses) < 0 ||
-    Number(mastery.effect.manaDiscountUses) > Number(mastery.effect.damageUses)
+    !mastery.description.trim()
   ) {
     throw new Error(`Invalid mastery definition for ${expectedId}.`);
+  }
+
+  const effect = mastery.effect;
+  const validStarSparkMastery = expectedId === "starspark-mastery-1" &&
+    effect?.id === "astral-charge" &&
+    Number.isSafeInteger(Number(effect.damageUses)) &&
+    Number(effect.damageUses) >= 1 &&
+    Number.isSafeInteger(Number(effect.manaDiscountUses)) &&
+    Number(effect.manaDiscountUses) >= 0 &&
+    Number(effect.manaDiscountUses) <= Number(effect.damageUses);
+  const jellyfishEffectTypes = [
+    "restore-mana",
+    "restore-hp",
+    "award-candies",
+    "bonus-damage",
+  ];
+  const validJellyfishMastery = expectedId === "jellyfish-mastery-1" &&
+    effect?.id === "jellyfish-moods" &&
+    Array.isArray(effect.moods) &&
+    effect.moods.length === 5 &&
+    effect.moods.every((mood) =>
+      typeof mood.id === "string" && mood.id.trim() &&
+      Number.isSafeInteger(Number(mood.naturalMaximum)) &&
+      Number(mood.naturalMaximum) >= 3 &&
+      jellyfishEffectTypes.includes(mood.effectType) &&
+      Number.isSafeInteger(Number(mood.amount)) &&
+      Number(mood.amount) > 0 &&
+      typeof mood.activationLine === "string" &&
+      mood.activationLine.trim());
+
+  if (!validStarSparkMastery && !validJellyfishMastery) {
+    throw new Error(`Invalid mastery effect for ${expectedId}.`);
   }
 
   return mastery;
