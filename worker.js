@@ -272,6 +272,7 @@ const MASTERY_FILES = {
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
   "astral-momentum": "astral-momentum.json",
+  "astral-harvest": "astral-harvest.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1118,6 +1119,7 @@ async function handleTwitchRequest(url, env) {
         "Level 8 — Bubble — !cast bubble prepares protection without ending your normal action. " +
         "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
         "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
+        "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1472,6 +1474,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 8 — Bubble — /cast bubble prepares protection without ending your normal action. " +
           "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
           "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
+          "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3811,10 +3814,42 @@ async function resolveCombatVictory(
   platform = "twitch",
   playerActionMessage = null,
 ) {
-  const [currentTotal, progress] = await Promise.all([
+  let [currentTotal, progress] = await Promise.all([
     getBackpackTotal(env, backpackKey),
     getPlayerProgress(env, backpackKey),
   ]);
+  let astralHarvestMessage = "";
+  const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  const astralHarvest = activePerks.find(
+    (perk) => perk.effect.trigger === "enemy-defeated",
+  );
+  if (astralHarvest) {
+    const resourceCaps = getPlayerResourceCaps(progress);
+    const hpGained = Math.min(
+      astralHarvest.effect.hpRestore,
+      Math.max(0, combatState.playerMaxHp - combatState.playerHp),
+    );
+    const manaGained = Math.min(
+      astralHarvest.effect.manaRestore,
+      Math.max(0, resourceCaps.mana - progress.mana),
+    );
+    combatState.playerHp += hpGained;
+    progress = {
+      ...progress,
+      mana: progress.mana + manaGained,
+    };
+    const gains = [
+      ...(hpGained > 0 ? [`+${hpGained} HP`] : []),
+      ...(manaGained > 0 ? [`+${manaGained} Mana`] : []),
+    ];
+    if (gains.length > 0) {
+      astralHarvestMessage = hpGained > 0 && manaGained > 0
+        ? astralHarvest.activationLine
+            .replace("{hpGained}", String(hpGained))
+            .replace("{manaGained}", String(manaGained))
+        : `Astral Harvest activates! You gain ${gains[0]}.`;
+    }
+  }
   const baseCandyReward = randomInteger(
     combatState.enemy.reward.candies.min,
     combatState.enemy.reward.candies.max,
@@ -3890,6 +3925,7 @@ async function resolveCombatVictory(
     `${combatState.enemy.name} defeated!`,
     playerActionMessage ||
       `You rolled ${playerRoll} for ${playerDamage} dmg`,
+    ...(astralHarvestMessage ? [astralHarvestMessage] : []),
     ...(platform === "discord"
       ? []
       : [`Mana: ${progress.mana}/${getPlayerResourceCaps(progress).mana}`]),
@@ -7276,6 +7312,14 @@ function validateMasteryDefinition(mastery, expectedId) {
 }
 
 function validatePerkDefinition(perk, expectedId) {
+  const hasActivationLines =
+    Array.isArray(perk?.activationLines) &&
+    perk.activationLines.length === 5 &&
+    perk.activationLines.every((line) =>
+      typeof line === "string" && line.trim());
+  const hasSingleActivationLine =
+    typeof perk?.activationLine === "string" &&
+    perk.activationLine.trim();
   if (
     !perk ||
     perk.id !== expectedId ||
@@ -7286,21 +7330,20 @@ function validatePerkDefinition(perk, expectedId) {
     Number(perk.requiredLevel) < 1 ||
     typeof perk.description !== "string" ||
     !perk.description.trim() ||
-    !Array.isArray(perk.activationLines) ||
-    perk.activationLines.length !== 5 ||
-    perk.activationLines.some((line) =>
-      typeof line !== "string" || !line.trim())
+    (!hasActivationLines && !hasSingleActivationLine)
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
   }
 
   const effect = perk.effect;
   const validResilience = expectedId === "astral-resilience" &&
+    hasActivationLines &&
     effect?.trigger === "post-enemy-damage" &&
     Number(effect.hpThresholdPercent) === 25 &&
     Number(effect.manaRestore) === 10 &&
     Number(effect.usesPerBattle) === 1;
   const validMomentum = expectedId === "astral-momentum" &&
+    hasActivationLines &&
     effect?.trigger === "natural-perfect-hit" &&
     Number(effect.naturalRoll) === 20 &&
     Array.isArray(effect.eligibleActions) &&
@@ -7311,8 +7354,14 @@ function validatePerkDefinition(perk, expectedId) {
     Number(effect.usesPerBattle) === 1 &&
     typeof perk.fullManaLine === "string" &&
     perk.fullManaLine.trim();
+  const validHarvest = expectedId === "astral-harvest" &&
+    effect?.trigger === "enemy-defeated" &&
+    Number(effect.hpRestore) === 15 &&
+    Number(effect.manaRestore) === 20 &&
+    hasSingleActivationLine &&
+    !hasActivationLines;
 
-  if (!validResilience && !validMomentum) {
+  if (!validResilience && !validMomentum && !validHarvest) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }
 

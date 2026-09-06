@@ -1,0 +1,13 @@
+{
+  "id": "astral-harvest",
+  "name": "Astral Harvest",
+  "requiredLevel": 11,
+  "type": "passive",
+  "description": "Defeating an enemy restores 15 HP and 20 Mana.",
+  "effect": {
+    "trigger": "enemy-defeated",
+    "hpRestore": 15,
+    "manaRestore": 20
+  },
+  "activationLine": "Astral Harvest activates! You gain +{hpGained} HP and +{manaGained} Mana."
+}
