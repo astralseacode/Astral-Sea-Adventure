@@ -1,0 +1,30 @@
+{
+  "id": "mend-mastery-1",
+  "name": "Mend Mastery I",
+  "spellId": "mend",
+  "requiredLevel": 18,
+  "tier": 1,
+  "description": "Mend now rolls 2d12 and keeps the highest roll. The supervising leaf improves Mend's healing to 7 HP for Weak, 10 HP for Gentle, 12 HP for Strong, and 18 HP for Perfect per trigger.",
+  "effect": {
+    "id": "mend-upgrade",
+    "roll": {
+      "dice": 2,
+      "sides": 12,
+      "keepHighest": true
+    },
+    "healingPerTrigger": {
+      "weak": 7,
+      "gentle": 10,
+      "strong": 12,
+      "perfect": 18
+    }
+  },
+  "flavor": [
+    "The supervising leaf arrives carrying what appears to be a tiny clipboard. Nobody knows where it got one. The Fae medical team immediately becomes significantly more organized.",
+    "The supervising leaf inspects your injuries, turns toward the other leaves, and begins furiously pointing. Somehow, healing efficiency improves immediately.",
+    "The supervising leaf has arrived. Several other leaves immediately stand up straighter. You didn't know leaves could do that.",
+    "The supervising leaf gives your injuries a long, disappointed look before assigning the other leaves to their positions. Apparently this is a coordinated operation now.",
+    "One leaf attempts to begin healing early. The supervising leaf gently pushes it back into formation. There are procedures now.",
+    "The supervising leaf produces a tiny clipboard and begins taking notes. You are becoming increasingly concerned about where it keeps getting office supplies."
+  ]
+}

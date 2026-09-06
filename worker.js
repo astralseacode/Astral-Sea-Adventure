@@ -272,6 +272,7 @@ const MASTERY_FILES = {
   "jellyfish-mastery-1": "jellyfish-mastery-1.json",
   "elf-blessing-mastery-1": "elf-blessing-mastery-1.json",
   "bubble-mastery-1": "bubble-mastery-1.json",
+  "mend-mastery-1": "mend-mastery-1.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
@@ -1134,6 +1135,7 @@ async function handleTwitchRequest(url, env) {
         "Level 15 — Falling Star — !cast falling star uses Power and Accuracy for volatile heavy damage. " +
         "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
         "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
+        "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1495,6 +1497,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 15 — Falling Star — /cast Falling Star uses Power and Accuracy for volatile heavy damage. " +
           "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
           "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
+          "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3141,6 +3144,10 @@ async function performCastUnlocked(
     (mastery) => mastery.spellId === "elf_blessing" &&
       mastery.effect.id === "elf-blessing-upgrade",
   );
+  const mendMastery = activeMasteries.find(
+    (mastery) => mastery.spellId === "mend" &&
+      mastery.effect.id === "mend-upgrade",
+  );
   const currentCombatState = await getCombatState(env, backpackKey);
 
   if (playerLevel < spell.requiredLevel) {
@@ -3331,10 +3338,21 @@ async function performCastUnlocked(
       };
     }
 
-    const naturalRoll = randomInteger(1, spell.damage.sides);
+    const naturalRolls = mendMastery
+      ? Array.from(
+          { length: mendMastery.effect.roll.dice },
+          () => randomInteger(1, mendMastery.effect.roll.sides),
+        )
+      : [randomInteger(1, spell.damage.sides)];
+    const naturalRoll = mendMastery
+      ? Math.max(...naturalRolls)
+      : naturalRolls[0];
     const tier = spell.healingTiers.find(
       (entry) => naturalRoll <= entry.naturalMaximum,
     );
+    const healingPerTrigger = mendMastery
+      ? mendMastery.effect.healingPerTrigger[tier.id]
+      : tier.healingPerTrigger;
     const criticalFlavor =
       naturalRoll === spell.damage.sides &&
       Math.random() < spell.criticalFlavorChance
@@ -3349,7 +3367,7 @@ async function performCastUnlocked(
       naturalRoll,
       tierId: tier.id,
       displayName: tier.displayName,
-      healingPerTrigger: tier.healingPerTrigger,
+      healingPerTrigger,
       remainingTriggers: spell.triggerCount,
     };
 
@@ -3369,10 +3387,13 @@ async function performCastUnlocked(
     }
 
     const castParts = [
+      ...(mendMastery ? [randomChoice(mendMastery.flavor)] : []),
       tier.narration,
       ...(criticalFlavor ? [criticalFlavor] : []),
-      `Mend Roll: ${naturalRoll} → ${tier.displayName}`,
-      `${tier.healingPerTrigger} HP × ${spell.triggerCount} triggers`,
+      mendMastery
+        ? `Mend Rolls: ${naturalRolls.join(", ")} → Keep ${naturalRoll} → ${tier.displayName}`
+        : `Mend Roll: ${naturalRoll} → ${tier.displayName}`,
+      `${healingPerTrigger} HP × ${spell.triggerCount} triggers`,
     ];
     const hud = formatDiscordCombatHud(currentCombatState, updatedProgress);
 
@@ -7736,12 +7757,27 @@ function validateMasteryDefinition(mastery, expectedId) {
     effect?.id === "bubble-rebound" &&
     Number(effect.manaRestore) === 10 &&
     Number(effect.offensiveRollModifier) === 2;
+  const mendHealing = effect?.healingPerTrigger;
+  const validMendMastery = expectedId === "mend-mastery-1" &&
+    effect?.id === "mend-upgrade" &&
+    Number(effect.roll?.dice) === 2 &&
+    Number(effect.roll?.sides) === 12 &&
+    effect.roll?.keepHighest === true &&
+    Number(mendHealing?.weak) === 7 &&
+    Number(mendHealing?.gentle) === 10 &&
+    Number(mendHealing?.strong) === 12 &&
+    Number(mendHealing?.perfect) === 18 &&
+    Array.isArray(mastery.flavor) &&
+    mastery.flavor.length === 6 &&
+    mastery.flavor.every((line) =>
+      typeof line === "string" && line.trim());
 
   if (
     !validStarSparkMastery &&
     !validJellyfishMastery &&
     !validElfBlessingMastery &&
-    !validBubbleMastery
+    !validBubbleMastery &&
+    !validMendMastery
   ) {
     throw new Error(`Invalid mastery effect for ${expectedId}.`);
   }
