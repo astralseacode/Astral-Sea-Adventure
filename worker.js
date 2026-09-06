@@ -267,6 +267,9 @@ const SPELL_FILES = {
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
 };
+const PERK_FILES = {
+  "astral-resilience": "astral-resilience.json",
+};
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
 
@@ -1107,6 +1110,7 @@ async function handleTwitchRequest(url, env) {
     default:
       return textResponse(
         "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
+        "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1457,6 +1461,7 @@ async function handleDiscordInteraction(request, env) {
       default:
         return discordMessage(
           "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
+          "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -1930,6 +1935,7 @@ async function performAdventureDirectionUnlocked(
       platform,
     ));
     messageParts.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
+    messageParts.push(...await formatPerkUnlocks(startingLevel, endingLevel));
   }
   if (endingTitle !== startingTitle) {
     messageParts.push(`Title Earned: ${endingTitle}`);
@@ -2738,6 +2744,33 @@ async function resolvePlayerCombatAction(
     };
   }
 
+  let updatedProgress = progress;
+  const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  const astralResilience = activePerks.find(
+    (perk) => perk.effect.trigger === "post-enemy-damage",
+  );
+  if (
+    astralResilience &&
+    !combatState.perkUses?.[astralResilience.id] &&
+    combatState.playerHp <
+      combatState.playerMaxHp *
+        (astralResilience.effect.hpThresholdPercent / 100)
+  ) {
+    const maximumMana = getPlayerResourceCaps(progress).mana;
+    updatedProgress = {
+      ...progress,
+      mana: Math.min(
+        maximumMana,
+        progress.mana + astralResilience.effect.manaRestore,
+      ),
+    };
+    combatState.perkUses = {
+      ...(combatState.perkUses || {}),
+      [astralResilience.id]: 1,
+    };
+    messageParts.push(randomChoice(astralResilience.activationLines));
+  }
+
   const mendMessage = triggerMendHealing(combatState);
   if (mendMessage) {
     messageParts.push(mendMessage);
@@ -2746,13 +2779,13 @@ async function resolvePlayerCombatAction(
   combatState.round += 1;
   combatState.updatedAt = Math.floor(Date.now() / 1000);
   await savePlayerProgress(env, backpackKey, {
-    ...progress,
+    ...updatedProgress,
     hp: combatState.playerHp,
   });
   await saveCombatState(env, backpackKey, combatState);
 
   messageParts.push(
-    ...formatCombatStatus(combatState, progress, platform),
+    ...formatCombatStatus(combatState, updatedProgress, platform),
   );
 
   return {
@@ -3667,6 +3700,7 @@ async function resolveCombatVictory(
       platform,
     ));
     messageParts.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
+    messageParts.push(...await formatPerkUnlocks(startingLevel, endingLevel));
   }
 
   if (endingTitle !== startingTitle) {
@@ -3962,6 +3996,7 @@ async function performExploreUnlocked(
       platform,
     ));
     messageLines.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
+    messageLines.push(...await formatPerkUnlocks(startingLevel, endingLevel));
   }
 
   if (endingTitle !== startingTitle) {
@@ -5915,6 +5950,16 @@ function isValidCombatState(combatState) {
       combatState.mend === undefined ||
       isValidMendState(combatState.mend)
     ) &&
+    (
+      combatState.perkUses === undefined ||
+      (
+        combatState.perkUses &&
+        typeof combatState.perkUses === "object" &&
+        !Array.isArray(combatState.perkUses) &&
+        Object.entries(combatState.perkUses).every(([perkId, uses]) =>
+          PERK_FILES[perkId] && Number.isSafeInteger(uses) && uses >= 1)
+      )
+    ) &&
     isValidIntegerRange(enemy.reward?.candies) &&
     isValidIntegerRange(enemy.reward?.xp, 1) &&
     Number.isSafeInteger(enemy.defeatCandyLoss) &&
@@ -6944,6 +6989,32 @@ function validateMasteryDefinition(mastery, expectedId) {
   return mastery;
 }
 
+function validatePerkDefinition(perk, expectedId) {
+  if (
+    !perk ||
+    perk.id !== expectedId ||
+    typeof perk.name !== "string" ||
+    !perk.name.trim() ||
+    perk.type !== "passive" ||
+    !Number.isSafeInteger(Number(perk.requiredLevel)) ||
+    Number(perk.requiredLevel) < 1 ||
+    typeof perk.description !== "string" ||
+    !perk.description.trim() ||
+    perk.effect?.trigger !== "post-enemy-damage" ||
+    Number(perk.effect.hpThresholdPercent) !== 25 ||
+    Number(perk.effect.manaRestore) !== 10 ||
+    Number(perk.effect.usesPerBattle) !== 1 ||
+    !Array.isArray(perk.activationLines) ||
+    perk.activationLines.length !== 5 ||
+    perk.activationLines.some((line) =>
+      typeof line !== "string" || !line.trim())
+  ) {
+    throw new Error(`Invalid perk definition for ${expectedId}.`);
+  }
+
+  return perk;
+}
+
 async function getSpellDefinition(spellId) {
   const file = SPELL_FILES[spellId];
   if (!file) return null;
@@ -6993,6 +7064,38 @@ async function formatMasteryUnlocks(startingLevel, endingLevel) {
       mastery.requiredLevel <= endingLevel)
     .map((mastery) =>
       `Mastery Unlocked: ${mastery.name} — ${mastery.description}`);
+}
+
+async function getPerkDefinition(perkId) {
+  const file = PERK_FILES[perkId];
+  if (!file) return null;
+
+  const perk = await fetchCachedJson(
+    `perk:${perkId}`,
+    `${GITHUB_DATA_BASE}/perks/${file}`,
+  );
+  return validatePerkDefinition(perk, perkId);
+}
+
+async function getPerkDefinitions() {
+  return Promise.all(
+    Object.keys(PERK_FILES).map((perkId) => getPerkDefinition(perkId)),
+  );
+}
+
+async function getActivePerks(playerLevel) {
+  const level = Number(playerLevel);
+  const perks = await getPerkDefinitions();
+  return perks.filter((perk) => level >= perk.requiredLevel);
+}
+
+async function formatPerkUnlocks(startingLevel, endingLevel) {
+  const perks = await getPerkDefinitions();
+  return perks
+    .filter((perk) =>
+      perk.requiredLevel > startingLevel &&
+      perk.requiredLevel <= endingLevel)
+    .map((perk) => `Perk Unlocked: ${perk.name} — ${perk.description}`);
 }
 
 async function getRegionMetadata(regionId) {

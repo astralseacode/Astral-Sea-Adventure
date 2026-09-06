@@ -1,0 +1,20 @@
+{
+  "id": "astral-resilience",
+  "name": "Astral Resilience",
+  "requiredLevel": 7,
+  "type": "passive",
+  "description": "Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana.",
+  "effect": {
+    "trigger": "post-enemy-damage",
+    "hpThresholdPercent": 25,
+    "manaRestore": 10,
+    "usesPerBattle": 1
+  },
+  "activationLines": [
+    "Astral Resilience activates! A faint Astral glow steadies you as you recover 10 Mana.",
+    "Astral Resilience activates! Starlight flickers around you, answering your determination with 10 restored Mana.",
+    "Astral Resilience activates! A stubborn spark of Astral energy refuses to let you falter, restoring 10 Mana.",
+    "Astral Resilience activates! The stars seem to notice you're having a rough time and quietly return 10 Mana.",
+    "Astral Resilience activates! A tiny burst of starlight gathers around you as 10 Mana returns."
+  ]
+}
