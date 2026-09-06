@@ -1,0 +1,78 @@
+{
+  "id": "falling-star",
+  "name": "Falling Star",
+  "aliases": ["falling star", "falling", "star"],
+  "requiredLevel": 15,
+  "manaCost": 30,
+  "type": "offensive",
+  "description": "Summon a volatile Falling Star with a natural 3d10 Power roll and a modified 1d20 Accuracy roll.",
+  "power": { "dice": 3, "sides": 10 },
+  "accuracy": { "dice": 1, "sides": 20 },
+  "glancingPenalty": 5,
+  "criticalBonus": 27,
+  "powerTiers": [
+    { "id": "low", "naturalMaximum": 10 },
+    { "id": "medium", "naturalMaximum": 18 },
+    { "id": "high", "naturalMaximum": 30 }
+  ],
+  "narrationPools": [
+    { "powerTier": "low", "outcome": "miss", "lines": [
+      "You summon a Falling Star. A tiny speck of light appears overhead, completely misses your foe, and disappears into the distance. Nobody says anything.",
+      "A very small star descends from above and misses spectacularly. Somehow, the lack of damage feels secondary to the embarrassment."
+    ] },
+    { "powerTier": "medium", "outcome": "miss", "lines": [
+      "A respectable Falling Star streaks through the sea with impressive confidence and terrible aim. It explodes harmlessly nearby, as if hoping nobody noticed.",
+      "You summon a perfectly decent star and send it sailing past your foe. The star did its part. Your aim has declined to comment."
+    ] },
+    { "powerTier": "high", "outcome": "miss", "lines": [
+      "A colossal star tears through the Astral Sea with terrifying force... several feet to your foe's left. The resulting explosion is incredible. Your aim was not.",
+      "The sea erupts as an enormous star crashes down with enough power to annihilate almost anything. Unfortunately, your foe wasn't standing over there.",
+      "You summon what may genuinely be the most terrifying star you've ever created. It misses. You would prefer if nobody discussed this."
+    ] },
+    { "powerTier": "low", "outcome": "glancing", "lines": [
+      "A tiny star wobbles toward your foe and barely clips them on the way past. Technically, that counts.",
+      "A suspiciously unimpressive star grazes your foe before drifting away. You briefly consider pretending that was intentional."
+    ] },
+    { "powerTier": "medium", "outcome": "glancing", "lines": [
+      "A decently powerful star descends at a deeply mediocre angle, clipping your foe before crashing nearby. It worked, which feels generous.",
+      "Your Falling Star carries respectable force and only a passing interest in Accuracy. It grazes your foe, then exits dramatically."
+    ] },
+    { "powerTier": "high", "outcome": "glancing", "lines": [
+      "An enormous star screams toward your foe with terrifying force... and clips them on the edge before exploding somewhere behind them. Close enough?",
+      "A devastating star tears through the battlefield and barely grazes your foe. Somewhere, astronomy itself seems disappointed."
+    ] },
+    { "powerTier": "low", "outcome": "direct", "lines": [
+      "A tiny star descends directly onto your foe's head with impeccable accuracy. It wasn't very powerful, but the aim was honestly incredible.",
+      "You summon an absolutely pathetic little star and land it perfectly. You're not sure whether to be proud."
+    ] },
+    { "powerTier": "medium", "outcome": "direct", "lines": [
+      "A solid Falling Star drops cleanly onto your foe and bursts in a bright flash. That worked. No cosmic embarrassment required.",
+      "Your star arrives with respectable power, respectable aim, and absolutely no complications. A suspiciously competent performance."
+    ] },
+    { "powerTier": "high", "outcome": "direct", "lines": [
+      "A massive star crashes directly into your foe and erupts in a violent burst of Astral light. No tricks. No complications. You simply hit them with a star.",
+      "A huge Falling Star descends exactly where intended and detonates with frightening force. Operating heavy Astral objects appears to be going alarmingly well."
+    ] },
+    { "powerTier": "low", "outcome": "critical", "lines": [
+      "You perfectly aimed... a really crappy star.",
+      "Your aim was flawless. Your star was not. Somehow, this still counts as a critical.",
+      "A tiny star strikes the exact perfect spot with incredible precision. If only you had remembered to summon a better star."
+    ] },
+    { "powerTier": "medium", "outcome": "critical", "lines": [
+      "Your Falling Star strikes with perfect precision, bursting against your foe in a brilliant explosion of Astral light. Okay. That one was actually pretty good.",
+      "The star crashes directly into its target and erupts in a shower of brilliant light. For once, everything went according to plan."
+    ] },
+    { "powerTier": "high", "outcome": "critical", "lines": [
+      "The Astral Sea erupts with light as a colossal star tears through the water and crashes directly into your foe. The explosion sends starlight across the battlefield. You briefly wonder if that was excessive. It was.",
+      "An enormous star appears overhead. Your foe looks at the star. Then at you. Then back at the star. There is just enough time for regret.",
+      "You summon an absolutely enormous Falling Star and, against all reasonable expectations, aim it perfectly. The resulting explosion suggests you should probably not be trusted with astronomy."
+    ] }
+  ],
+  "naturalTwentyFlavorChance": 0.25,
+  "naturalTwentyFlavor": [
+    "The star lands with impossible precision. Somewhere in the Astral Sea, a Jellyfish gives you an approving wobble.",
+    "For once, the universe, the star, and your aim are all cooperating. This feels suspicious."
+  ],
+  "highPowerNaturalOneFlavorChance": 0.25,
+  "highPowerNaturalOneFlavor": "You rolled enough Power to ruin someone's entire afternoon. Unfortunately, it was not your foe's afternoon."
+}

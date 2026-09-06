@@ -265,6 +265,7 @@ const SPELL_FILES = {
   moonbeam: "moonbeam.json",
   bubble: "bubble.json",
   "astral-echo": "astral-echo.json",
+  "falling-star": "falling-star.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -601,6 +602,7 @@ const DISCORD_COMMANDS = [
           { name: "Moonbeam", value: "moonbeam" },
           { name: "Bubble", value: "bubble" },
           { name: "Astral Echo", value: "astral-echo" },
+          { name: "Falling Star", value: "falling-star" },
         ],
       },
     ],
@@ -1127,6 +1129,7 @@ async function handleTwitchRequest(url, env) {
         "Level 12 — Astral Echo — !cast astral echo stores power for your next offensive spell without ending your normal action. " +
         "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
         "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
+        "Level 15 — Falling Star — !cast falling star uses Power and Accuracy for volatile heavy damage. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1485,6 +1488,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 12 — Astral Echo — /cast Astral Echo stores power for your next offensive spell without ending your normal action. " +
           "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
           "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
+          "Level 15 — Falling Star — /cast Falling Star uses Power and Accuracy for volatile heavy damage. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3037,6 +3041,9 @@ async function performCastUnlocked(
   const astralEchoCommand = platform === "discord"
     ? "/cast spell:Astral Echo"
     : "!cast astral echo";
+  const fallingStarCommand = platform === "discord"
+    ? "/cast spell:Falling Star"
+    : "!cast falling star";
 
   if (!spellInputValue) {
     return {
@@ -3044,7 +3051,8 @@ async function performCastUnlocked(
         `Use ${blessingCommand} for Elf Blessing, ${jellyCommand} ` +
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
         `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, or ` +
-        `${bubbleCommand} for Bubble, or ${astralEchoCommand} for Astral Echo.`,
+        `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
+        `${fallingStarCommand} for Falling Star.`,
     };
   }
 
@@ -3060,7 +3068,8 @@ async function performCastUnlocked(
       message:
         `You haven't learned that spell. Use ${blessingCommand}, ` +
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
-        `${moonbeamCommand}, ${bubbleCommand}, or ${astralEchoCommand}.`,
+        `${moonbeamCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
+        `${fallingStarCommand}.`,
     };
   }
 
@@ -3439,7 +3448,10 @@ async function performCastUnlocked(
     spellRoll,
     triggeredRoll.finalTotal,
   );
-  const strengthBonus = getStrengthDamageBonus(progress);
+  const strengthBonus = spell.id === "falling-star" &&
+      resolvedSpellRoll.damage === 0
+    ? 0
+    : getStrengthDamageBonus(progress);
   resolvedSpellRoll.baseDamage ??= resolvedSpellRoll.damage;
   resolvedSpellRoll.strengthBonus = strengthBonus;
   resolvedSpellRoll.damage += strengthBonus;
@@ -3556,6 +3568,24 @@ async function performCastUnlocked(
 }
 
 function rollSpellDamage(spell) {
+  if (spell.id === "falling-star") {
+    const powerRolls = Array.from(
+      { length: spell.power.dice },
+      () => randomInteger(1, spell.power.sides),
+    );
+    const powerTotal = powerRolls.reduce((sum, roll) => sum + roll, 0);
+    const accuracyRoll = randomInteger(1, spell.accuracy.sides);
+    return {
+      rolls: [accuracyRoll],
+      total: accuracyRoll,
+      powerRolls,
+      powerTotal,
+      accuracyRoll,
+      isCritical: false,
+      damage: 0,
+    };
+  }
+
   if (spell.id === "moonbeam") {
     const rolls = Array.from(
       { length: spell.damage.dice },
@@ -3589,6 +3619,31 @@ function rollSpellDamage(spell) {
 }
 
 function resolveSpellRoll(spell, spellRoll, finalTotal) {
+  if (spell.id === "falling-star") {
+    const outcome = spellRoll.accuracyRoll === 1
+      ? "miss"
+      : finalTotal <= 9
+        ? "glancing"
+        : finalTotal <= 19
+          ? "direct"
+          : "critical";
+    const damage = outcome === "miss"
+      ? 0
+      : outcome === "glancing"
+        ? Math.max(1, spellRoll.powerTotal - spell.glancingPenalty)
+        : outcome === "critical"
+          ? spellRoll.powerTotal + spell.criticalBonus
+          : spellRoll.powerTotal;
+    return {
+      ...spellRoll,
+      finalTotal,
+      outcome,
+      isCritical: outcome === "critical",
+      damage,
+      baseDamage: damage,
+    };
+  }
+
   if (spell.id === "moonbeam") {
     const isCritical = finalTotal >= spell.criticalThreshold;
     const attackResult = getCombatRollResult(finalTotal);
@@ -3632,6 +3687,15 @@ function formatSpellCastMessage(
   effectResult,
   platform = "twitch",
 ) {
+  if (spell.id === "falling-star") {
+    return formatFallingStarCastMessage(
+      spell,
+      spellRoll,
+      effectResult,
+      platform,
+    );
+  }
+
   if (spell.id === "star-spark") {
     return formatStarSparkCastMessage(
       spell,
@@ -3671,6 +3735,51 @@ function formatSpellCastMessage(
       effectResult.modifierDetails,
       spellRoll.damage,
     )}`;
+}
+
+function formatFallingStarCastMessage(
+  spell,
+  spellRoll,
+  effectResult,
+  platform,
+) {
+  const powerTier = spell.powerTiers.find(
+    (tier) => spellRoll.powerTotal <= tier.naturalMaximum,
+  );
+  const narrationPool = spell.narrationPools.find(
+    (pool) =>
+      pool.powerTier === powerTier.id &&
+      pool.outcome === spellRoll.outcome,
+  );
+  const modifiers = effectResult.modifierDetails.map((detail) => {
+    const name = detail.name === "Fae Affinity" ? "Fae" : detail.name;
+    const sign = detail.value >= 0 ? "+" : "-";
+    return `${sign}${Math.abs(detail.value)} ${name}`;
+  }).join("");
+  const accuracyText = modifiers
+    ? `${spellRoll.finalTotal} (${spellRoll.accuracyRoll}${modifiers})`
+    : String(spellRoll.accuracyRoll);
+  const outcomeName = {
+    miss: "Miss",
+    glancing: "Glancing Hit",
+    direct: "Direct Hit",
+    critical: "Critical Hit",
+  }[spellRoll.outcome];
+  const rareFlavor = spellRoll.accuracyRoll === 20 &&
+      Math.random() < spell.naturalTwentyFlavorChance
+    ? randomChoice(spell.naturalTwentyFlavor)
+    : powerTier.id === "high" &&
+        spellRoll.accuracyRoll === 1 &&
+        Math.random() < spell.highPowerNaturalOneFlavorChance
+      ? spell.highPowerNaturalOneFlavor
+      : null;
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  return [
+    randomChoice(narrationPool.lines),
+    ...(rareFlavor ? [rareFlavor] : []),
+    `Power ${spellRoll.powerTotal} (${spellRoll.powerRolls.join("+")}) | ` +
+      `Accuracy ${accuracyText} → ${outcomeName} | ${spellRoll.damage} dmg`,
+  ].join(separator);
 }
 
 function formatStarSparkCastMessage(
@@ -7334,13 +7443,13 @@ function validateSpellDefinition(spell, expectedId) {
   }
 
   if (spell.type === "offensive") {
-    if (
+    if (spell.id !== "falling-star" && (
       !isPositiveInteger(spell.damage?.dice) ||
       !isPositiveInteger(spell.damage?.sides) ||
       !isPositiveInteger(spell.criticalThreshold) ||
       !Number.isFinite(Number(spell.criticalDamage)) ||
       Number(spell.criticalDamage) < 0
-    ) {
+    )) {
       throw new Error(`Invalid offensive spell definition for ${expectedId}.`);
     }
   }
@@ -7465,6 +7574,31 @@ function validateSpellDefinition(spell, expectedId) {
     !isTextArray(spell.criticalFlavor)
   )) {
     throw new Error("Invalid Moonbeam content data.");
+  }
+
+  if (expectedId === "falling-star" && (
+    Number(spell.power?.dice) !== 3 ||
+    Number(spell.power?.sides) !== 10 ||
+    Number(spell.accuracy?.dice) !== 1 ||
+    Number(spell.accuracy?.sides) !== 20 ||
+    Number(spell.glancingPenalty) !== 5 ||
+    Number(spell.criticalBonus) !== 27 ||
+    !Array.isArray(spell.powerTiers) ||
+    spell.powerTiers.length !== 3 ||
+    !Array.isArray(spell.narrationPools) ||
+    spell.narrationPools.length !== 12 ||
+    spell.narrationPools.some((pool) =>
+      !["low", "medium", "high"].includes(pool.powerTier) ||
+      !["miss", "glancing", "direct", "critical"].includes(pool.outcome) ||
+      !isTextArray(pool.lines)) ||
+    Number(spell.naturalTwentyFlavorChance) !== 0.25 ||
+    !isTextArray(spell.naturalTwentyFlavor) ||
+    spell.naturalTwentyFlavor.length !== 2 ||
+    Number(spell.highPowerNaturalOneFlavorChance) !== 0.25 ||
+    typeof spell.highPowerNaturalOneFlavor !== "string" ||
+    !spell.highPowerNaturalOneFlavor.trim()
+  )) {
+    throw new Error("Invalid Falling Star content data.");
   }
 
   return spell;
