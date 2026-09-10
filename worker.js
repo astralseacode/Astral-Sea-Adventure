@@ -271,6 +271,7 @@ const SPELL_FILES = {
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
   "jellyfish-mastery-1": "jellyfish-mastery-1.json",
+  "jellyfish-mastery-2": "jellyfish-mastery-2.json",
   "elf-blessing-mastery-1": "elf-blessing-mastery-1.json",
   "bubble-mastery-1": "bubble-mastery-1.json",
   "mend-mastery-1": "mend-mastery-1.json",
@@ -1141,6 +1142,7 @@ async function handleTwitchRequest(url, env) {
         "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
         "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
         "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
+        "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1505,6 +1507,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
           "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
           "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
+          "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2778,21 +2781,23 @@ async function resolvePlayerCombatAction(
   let jellyfishMasteryMessage = "";
   const jellyfishEffect = action.jellyfishMasteryEffect;
   if (jellyfishEffect) {
-    if (jellyfishEffect.effectType === "restore-mana") {
+    const manaRestore = jellyfishEffect.effectType === "restore-mana"
+      ? jellyfishEffect.amount : (jellyfishEffect.manaRestore || 0);
+    if (manaRestore > 0) {
       const maximumMana = getPlayerResourceCaps(progress).mana;
       const restoredMana = Math.min(
-        jellyfishEffect.amount,
+        manaRestore,
         Math.max(0, maximumMana - progress.mana),
       );
       if (restoredMana > 0) {
         progress = { ...progress, mana: progress.mana + restoredMana };
         await savePlayerProgress(env, backpackKey, progress);
         jellyfishMasteryMessage = jellyfishEffect.activationLine.replace(
-          "20 Mana",
+          `${manaRestore} Mana`,
           `${restoredMana} Mana`,
         );
       } else {
-        jellyfishMasteryMessage =
+        jellyfishMasteryMessage = jellyfishEffect.fullManaLine ||
           "Jellyfish Mastery activates! The Jellyfish looks devastated by its performance. You tell it that it did a wonderful job. It perks up immediately, but your Mana is already full. Apparently encouragement is a renewable resource.";
       }
     } else if (jellyfishEffect.effectType === "restore-hp") {
@@ -2803,7 +2808,7 @@ async function resolvePlayerCombatAction(
       combatState.playerHp += restoredHp;
       jellyfishMasteryMessage = restoredHp > 0
         ? jellyfishEffect.activationLine.replace("20 HP", `${restoredHp} HP`)
-        : "Jellyfish Mastery activates! The Jellyfish yawns, floats over, and falls asleep directly on your head. Your HP is already full. You're not entirely sure this is medicine.";
+        : jellyfishEffect.fullHpLine || "Jellyfish Mastery activates! The Jellyfish yawns, floats over, and falls asleep directly on your head. Your HP is already full. You're not entirely sure this is medicine.";
     } else if (jellyfishEffect.effectType === "award-candies") {
       const currentTotal = await getBackpackTotal(env, backpackKey);
       await saveBackpackTotal(
@@ -2814,6 +2819,21 @@ async function resolvePlayerCombatAction(
       jellyfishMasteryMessage = jellyfishEffect.activationLine;
     } else if (jellyfishEffect.effectType === "bonus-damage") {
       jellyfishMasteryMessage = jellyfishEffect.activationLine;
+    }
+    // The current roll has already resolved; these bonuses belong to later rolls/hits.
+    if (jellyfishEffect.offensiveRollModifier) {
+      combatState.jellyfishResolve = {
+        offensiveRollModifier: jellyfishEffect.offensiveRollModifier,
+      };
+    }
+    if (jellyfishEffect.damageReduction) {
+      combatState.jellyfishSleepyGuard = {
+        damageReduction: jellyfishEffect.damageReduction,
+      };
+    }
+    if (jellyfishEffect.berries) {
+      progress = { ...progress, berries: progress.berries + jellyfishEffect.berries };
+      await savePlayerProgress(env, backpackKey, progress);
     }
   }
 
@@ -2904,6 +2924,17 @@ async function resolvePlayerCombatAction(
       await savePlayerProgress(env, backpackKey, progress);
     }
   }
+  let sleepyGuardMessage = "";
+  if (combatState.jellyfishSleepyGuard && enemyDamage > 0) {
+    const reduction = Math.min(
+      combatState.jellyfishSleepyGuard.damageReduction,
+      Math.max(0, enemyDamage - 1),
+    );
+    enemyDamage -= reduction;
+    delete combatState.jellyfishSleepyGuard;
+    sleepyGuardMessage =
+      `Jellyfish Sleepy Guard reduces the hit by ${reduction}. You take ${enemyDamage} dmg.`;
+  }
   combatState.playerHp = Math.max(
     0,
     combatState.playerHp - enemyDamage,
@@ -2915,7 +2946,7 @@ async function resolvePlayerCombatAction(
       enemyRoll,
       {
         ...enemyAttack,
-        damage: bubbleMessage ? enemyDamage : rawEnemyDamage,
+        damage: bubbleMessage || sleepyGuardMessage ? enemyDamage : rawEnemyDamage,
       },
     ),
   );
@@ -2927,6 +2958,9 @@ async function resolvePlayerCombatAction(
   }
   if (bubbleMasteryMessage) {
     messageParts.push(bubbleMasteryMessage);
+  }
+  if (sleepyGuardMessage) {
+    messageParts.push(sleepyGuardMessage);
   }
 
   const faeIntervention = activePerks.find(
@@ -3161,10 +3195,10 @@ async function performCastUnlocked(
     (mastery) => mastery.spellId === "star-spark" &&
       mastery.effect.id === "astral-charge",
   );
-  const jellyfishMastery = activeMasteries.find(
+  const jellyfishMastery = activeMasteries.filter(
     (mastery) => mastery.spellId === "jelly" &&
       mastery.effect.id === "jellyfish-moods",
-  );
+  ).sort((left, right) => right.tier - left.tier)[0];
   const elfBlessingMastery = activeMasteries.find(
     (mastery) => mastery.spellId === "elf_blessing" &&
       mastery.effect.id === "elf-blessing-upgrade",
@@ -6797,6 +6831,20 @@ function isValidCombatState(combatState) {
       isValidAstralCuriosityBonus(combatState.astralCuriosity)
     ) &&
     (
+      combatState.jellyfishResolve === undefined ||
+      (
+        combatState.jellyfishResolve &&
+        combatState.jellyfishResolve.offensiveRollModifier === 1
+      )
+    ) &&
+    (
+      combatState.jellyfishSleepyGuard === undefined ||
+      (
+        combatState.jellyfishSleepyGuard &&
+        combatState.jellyfishSleepyGuard.damageReduction === 5
+      )
+    ) &&
+    (
       combatState.leviathansWake === undefined ||
       isValidLeviathansWake(combatState.leviathansWake)
     ) &&
@@ -7598,6 +7646,13 @@ function consumeTriggeredStatusEffects(
     });
     delete combatState.astralCuriosity;
   }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.jellyfishResolve) {
+    const resolveModifier = combatState.jellyfishResolve.offensiveRollModifier;
+    modifier += resolveModifier;
+    applied.push("Jellyfish Resolve");
+    modifierDetails.push({ name: "Jellyfish Resolve", value: resolveModifier });
+    delete combatState.jellyfishResolve;
+  }
 
   return {
     naturalRoll,
@@ -8112,6 +8167,31 @@ function validateMasteryDefinition(mastery, expectedId) {
       Number(mood.amount) > 0 &&
       typeof mood.activationLine === "string" &&
       mood.activationLine.trim());
+  const jellyfishTierTwoMoods = [
+    ["sad", 4, "restore-mana", 20, 1, 0, 0, 0],
+    ["sleepy", 8, "restore-hp", 20, 0, 5, 0, 0],
+    ["curious", 13, "award-candies", 50, 0, 0, 1, 0],
+    ["confident", 17, "bonus-damage", 8, 0, 0, 0, 5],
+    ["dedicated", 24, "bonus-damage", 12, 0, 0, 0, 0],
+  ];
+  const validJellyfishMasteryII = expectedId === "jellyfish-mastery-2" &&
+    mastery.spellId === "jelly" && mastery.requiredLevel === 21 && mastery.tier === 2 &&
+    effect?.id === "jellyfish-moods" && Array.isArray(effect.moods) &&
+    effect.moods.length === jellyfishTierTwoMoods.length &&
+    effect.moods.every((mood, index) => {
+      const expected = jellyfishTierTwoMoods[index];
+      return mood.id === expected[0] && mood.naturalMaximum === expected[1] &&
+        mood.effectType === expected[2] && mood.amount === expected[3] &&
+        (mood.offensiveRollModifier ?? 0) === expected[4] &&
+        (mood.damageReduction ?? 0) === expected[5] &&
+        (mood.berries ?? 0) === expected[6] &&
+        (mood.manaRestore ?? 0) === expected[7] &&
+        typeof mood.activationLine === "string" && mood.activationLine.trim() &&
+        (!["sad", "confident"].includes(mood.id) ||
+          (typeof mood.fullManaLine === "string" && mood.fullManaLine.trim())) &&
+        (mood.id !== "sleepy" ||
+          (typeof mood.fullHpLine === "string" && mood.fullHpLine.trim()));
+    });
   const validElfBlessingMastery =
     expectedId === "elf-blessing-mastery-1" &&
     effect?.id === "elf-blessing-upgrade" &&
@@ -8139,6 +8219,7 @@ function validateMasteryDefinition(mastery, expectedId) {
   if (
     !validStarSparkMastery &&
     !validJellyfishMastery &&
+    !validJellyfishMasteryII &&
     !validElfBlessingMastery &&
     !validBubbleMastery &&
     !validMendMastery

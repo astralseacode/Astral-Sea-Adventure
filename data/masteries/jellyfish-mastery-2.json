@@ -1,0 +1,55 @@
+{
+  "id": "jellyfish-mastery-2",
+  "name": "Jellyfish Mastery II",
+  "spellId": "jelly",
+  "requiredLevel": 21,
+  "tier": 2,
+  "description": "Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage.",
+  "effect": {
+    "id": "jellyfish-moods",
+    "moods": [
+      {
+        "id": "sad",
+        "naturalMaximum": 4,
+        "effectType": "restore-mana",
+        "amount": 20,
+        "offensiveRollModifier": 1,
+        "activationLine": "Jellyfish Mastery II activates! The Jellyfish looks absolutely devastated by its performance. You reassure it again. It immediately becomes emotionally unstoppable. You recover 20 Mana and gain +1 to your next offensive roll.",
+        "fullManaLine": "Jellyfish Mastery II activates! The Jellyfish looks absolutely devastated by its performance. You reassure it again. It immediately becomes emotionally unstoppable. Your Mana is already full, and you gain +1 to your next offensive roll."
+      },
+      {
+        "id": "sleepy",
+        "naturalMaximum": 8,
+        "effectType": "restore-hp",
+        "amount": 20,
+        "damageReduction": 5,
+        "activationLine": "Jellyfish Mastery II activates! The Jellyfish falls asleep directly on your head again. This time, nobody has the heart to move it. Apparently you have acquired protective headwear. You recover 20 HP, and the next enemy hit deals 5 less damage.",
+        "fullHpLine": "Jellyfish Mastery II activates! The Jellyfish falls asleep directly on your head again. This time, nobody has the heart to move it. Apparently you have acquired protective headwear. Your HP is already full, and the next enemy hit deals 5 less damage."
+      },
+      {
+        "id": "curious",
+        "naturalMaximum": 13,
+        "effectType": "award-candies",
+        "amount": 50,
+        "berries": 1,
+        "activationLine": "Jellyfish Mastery II activates! The Jellyfish wanders off to investigate something shiny and returns with 50 Star Candies and a Berry. You have stopped asking where it finds these things."
+      },
+      {
+        "id": "confident",
+        "naturalMaximum": 17,
+        "effectType": "bonus-damage",
+        "amount": 8,
+        "manaRestore": 5,
+        "activationLine": "Jellyfish Mastery II activates! The Jellyfish looks extremely pleased with itself and immediately goes back for another bonk. Apparently confidence is metabolically efficient. +8 damage and you recover 5 Mana.",
+        "fullManaLine": "Jellyfish Mastery II activates! The Jellyfish looks extremely pleased with itself and immediately goes back for another bonk. Apparently confidence is metabolically efficient. +8 damage. Your Mana is already full."
+      },
+      {
+        "id": "dedicated",
+        "naturalMaximum": 24,
+        "effectType": "bonus-damage",
+        "amount": 12,
+        "activationLine": "Jellyfish Mastery II activates! The Jellyfish looks at you. It looks at your foe. It gives a tiny, determined wobble and charges back in with the confidence of something that has done this far too many times. +12 damage."
+      }
+    ]
+  }
+}

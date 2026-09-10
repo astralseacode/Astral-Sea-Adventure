@@ -324,4 +324,7 @@ async function main() {
   console.log(`${passed} test groups passed (all local; no network or live KV).`);
 }
 
-main().catch(error => { console.error(error); process.exitCode = 1; });
+module.exports = { fixture };
+if (require.main === module) {
+  main().catch(error => { console.error(error); process.exitCode = 1; });
+}
