@@ -280,6 +280,7 @@ const PERK_FILES = {
   "astral-harvest": "astral-harvest.json",
   "astral-aftershock": "astral-aftershock.json",
   "fae-intervention": "fae-intervention.json",
+  "astral-curiosity": "astral-curiosity.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1136,6 +1137,7 @@ async function handleTwitchRequest(url, env) {
         "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
         "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
         "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
+        "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1498,6 +1500,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
           "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
           "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
+          "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2806,7 +2809,19 @@ async function resolvePlayerCombatAction(
     }
   }
 
+  const curiosityResult = await resolveAstralCuriosity(
+    env,
+    backpackKey,
+    combatState,
+    progress,
+    action.curiosityDice,
+  );
+  progress = curiosityResult.progress;
+
   const messageParts = [action.message];
+  if (curiosityResult.message) {
+    messageParts.push(curiosityResult.message);
+  }
   if (jellyfishMasteryMessage) {
     messageParts.push(jellyfishMasteryMessage);
   }
@@ -2942,7 +2957,6 @@ async function resolvePlayerCombatAction(
   }
 
   let updatedProgress = progress;
-  const activePerks = await getActivePerks(levelFromXp(progress.xp));
   const astralResilience = activePerks.find(
     (perk) => perk.effect.trigger === "post-enemy-damage",
   );
@@ -3347,6 +3361,20 @@ async function performCastUnlocked(
     const naturalRoll = mendMastery
       ? Math.max(...naturalRolls)
       : naturalRolls[0];
+    const originalCombatState = structuredClone(currentCombatState);
+    const paidProgress = {
+      ...progress,
+      mana: progress.mana - spell.manaCost,
+    };
+    const curiosityResult = mendMastery
+      ? await resolveAstralCuriosity(
+          env,
+          backpackKey,
+          currentCombatState,
+          paidProgress,
+          naturalRolls,
+        )
+      : { progress: paidProgress, message: "" };
     const tier = spell.healingTiers.find(
       (entry) => naturalRoll <= entry.naturalMaximum,
     );
@@ -3358,11 +3386,7 @@ async function performCastUnlocked(
       Math.random() < spell.criticalFlavorChance
         ? randomChoice(spell.criticalFlavor)
         : null;
-    const originalCombatState = structuredClone(currentCombatState);
-    const updatedProgress = {
-      ...progress,
-      mana: progress.mana - spell.manaCost,
-    };
+    const updatedProgress = curiosityResult.progress;
     currentCombatState.mend = {
       naturalRoll,
       tierId: tier.id,
@@ -3387,6 +3411,7 @@ async function performCastUnlocked(
     }
 
     const castParts = [
+      ...(curiosityResult.message ? [curiosityResult.message] : []),
       ...(mendMastery ? [randomChoice(mendMastery.flavor)] : []),
       tier.narration,
       ...(criticalFlavor ? [criticalFlavor] : []),
@@ -3627,6 +3652,9 @@ async function performCastUnlocked(
           : null,
         jellyfishMasteryEffect,
         consumeAstralEcho: Boolean(astralEcho),
+        curiosityDice: spell.id === "falling-star"
+          ? spellRoll.powerRolls
+          : spellRoll.rolls,
       },
       platform,
     );
@@ -6524,6 +6552,15 @@ function isValidAstralRebound(rebound) {
   );
 }
 
+function isValidAstralCuriosityBonus(bonus) {
+  return Boolean(
+    bonus &&
+    typeof bonus === "object" &&
+    !Array.isArray(bonus) &&
+    Number(bonus.offensiveRollModifier) === 1
+  );
+}
+
 function isValidCombatState(combatState) {
   const enemy = combatState?.enemy;
 
@@ -6574,6 +6611,10 @@ function isValidCombatState(combatState) {
     (
       combatState.astralRebound === undefined ||
       isValidAstralRebound(combatState.astralRebound)
+    ) &&
+    (
+      combatState.astralCuriosity === undefined ||
+      isValidAstralCuriosityBonus(combatState.astralCuriosity)
     ) &&
     (
       combatState.perkUses === undefined ||
@@ -7015,6 +7056,109 @@ function applyPercentageOfDamage(damage, percent) {
   return Math.floor((damage * percentage + 50) / 100);
 }
 
+function detectNaturalDiceMatch(dice) {
+  if (!Array.isArray(dice) || dice.length < 2) return null;
+  const counts = new Map();
+  for (const die of dice) {
+    if (!Number.isSafeInteger(die)) return null;
+    counts.set(die, (counts.get(die) || 0) + 1);
+  }
+  if (dice.length === 3 && counts.size === 1) return "triple";
+  return [...counts.values()].some((count) => count >= 2)
+    ? "double"
+    : null;
+}
+
+async function resolveAstralCuriosity(
+  env,
+  backpackKey,
+  combatState,
+  progress,
+  naturalDice,
+) {
+  const match = detectNaturalDiceMatch(naturalDice);
+  if (!match) return { progress, message: "" };
+  const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  const curiosity = activePerks.find(
+    (perk) => perk.effect.trigger === "matching-natural-dice",
+  );
+  if (!curiosity) return { progress, message: "" };
+  if (match === "double" && combatState.perkUses?.[curiosity.id]) {
+    return { progress, message: "" };
+  }
+
+  let updatedProgress = progress;
+  let hpRestored = 0;
+  let manaRestored = 0;
+  let candiesAwarded = 0;
+  let grantsOffensiveRoll = false;
+  let message = "";
+
+  if (match === "triple") {
+    const rewards = curiosity.effect.tripleRewards;
+    hpRestored = Math.min(
+      rewards.hpRestore,
+      Math.max(0, combatState.playerMaxHp - combatState.playerHp),
+    );
+    manaRestored = Math.min(
+      rewards.manaRestore,
+      Math.max(0, getPlayerResourceCaps(progress).mana - progress.mana),
+    );
+    candiesAwarded = rewards.candies;
+    grantsOffensiveRoll = true;
+    message = randomChoice(curiosity.tripleLines)
+      .replace("10 HP", `${hpRestored} HP`)
+      .replace("10 Mana", `${manaRestored} Mana`);
+  } else {
+    combatState.perkUses = {
+      ...(combatState.perkUses || {}),
+      [curiosity.id]: 1,
+    };
+    const outcome = randomChoice(curiosity.effect.doubleOutcomes);
+    message = outcome.line;
+    if (outcome.effectType === "restore-hp") {
+      hpRestored = Math.min(
+        outcome.amount,
+        Math.max(0, combatState.playerMaxHp - combatState.playerHp),
+      );
+      message = hpRestored > 0
+        ? message.replace("10 HP", `${hpRestored} HP`)
+        : "Astral Curiosity activates! The matching dice shimmer as a suspiciously familiar Fae light wraps around you. Somewhere very far away, you get the distinct impression Shizuki is pleased with herself. Your HP is already full.";
+    } else if (outcome.effectType === "restore-mana") {
+      manaRestored = Math.min(
+        outcome.amount,
+        Math.max(0, getPlayerResourceCaps(progress).mana - progress.mana),
+      );
+      message = manaRestored > 0
+        ? message.replace("10 Mana", `${manaRestored} Mana`)
+        : "Astral Curiosity activates! The matching dice sparkle and Astral energy suddenly rushes back into you. For just a moment, you swear you hear someone quietly say, *“You're welcome~”* Your Mana is already full.";
+    } else if (outcome.effectType === "award-candies") {
+      candiesAwarded = outcome.amount;
+    } else if (outcome.effectType === "offensive-roll") {
+      grantsOffensiveRoll = true;
+    }
+  }
+
+  combatState.playerHp += hpRestored;
+  if (manaRestored > 0) {
+    updatedProgress = {
+      ...updatedProgress,
+      mana: updatedProgress.mana + manaRestored,
+    };
+    await savePlayerProgress(env, backpackKey, updatedProgress);
+  }
+  if (candiesAwarded > 0) {
+    const currentTotal = await getBackpackTotal(env, backpackKey);
+    await saveBackpackTotal(env, backpackKey, currentTotal + candiesAwarded);
+  }
+  if (grantsOffensiveRoll) {
+    combatState.astralCuriosity = {
+      offensiveRollModifier: curiosity.effect.offensiveRollModifier,
+    };
+  }
+  return { progress: updatedProgress, message };
+}
+
 function applyLuckToCandyReward(baseReward, progress) {
   const rank = normalizePlayerStats(progress?.stats).luck;
   const total = Math.max(baseReward, Math.floor(baseReward * (1 + rank * 0.02)));
@@ -7258,6 +7402,17 @@ function consumeTriggeredStatusEffects(
       value: reboundModifier,
     });
     delete combatState.astralRebound;
+  }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.astralCuriosity) {
+    const curiosityModifier =
+      combatState.astralCuriosity.offensiveRollModifier;
+    modifier += curiosityModifier;
+    applied.push("Astral Curiosity");
+    modifierDetails.push({
+      name: "Astral Curiosity",
+      value: curiosityModifier,
+    });
+    delete combatState.astralCuriosity;
   }
 
   return {
@@ -7794,6 +7949,11 @@ function validatePerkDefinition(perk, expectedId) {
   const hasSingleActivationLine =
     typeof perk?.activationLine === "string" &&
     perk.activationLine.trim();
+  const hasCuriosityPresentation =
+    Array.isArray(perk?.tripleLines) &&
+    perk.tripleLines.length === 3 &&
+    perk.tripleLines.every((line) =>
+      typeof line === "string" && line.trim());
   if (
     !perk ||
     perk.id !== expectedId ||
@@ -7804,7 +7964,9 @@ function validatePerkDefinition(perk, expectedId) {
     Number(perk.requiredLevel) < 1 ||
     typeof perk.description !== "string" ||
     !perk.description.trim() ||
-    (!hasActivationLines && !hasSingleActivationLine)
+    (!hasActivationLines &&
+      !hasSingleActivationLine &&
+      !hasCuriosityPresentation)
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
   }
@@ -7848,13 +8010,34 @@ function validatePerkDefinition(perk, expectedId) {
     Number(effect.usesPerBattle) === 1 &&
     hasActivationLines &&
     perk.activationLines.length === 8;
+  const doubleOutcomes = effect?.doubleOutcomes;
+  const tripleRewards = effect?.tripleRewards;
+  const validAstralCuriosity = expectedId === "astral-curiosity" &&
+    effect?.trigger === "matching-natural-dice" &&
+    Number(effect.doubleUsesPerBattle) === 1 &&
+    Number(effect.offensiveRollModifier) === 1 &&
+    Array.isArray(doubleOutcomes) &&
+    doubleOutcomes.length === 5 &&
+    doubleOutcomes.every((outcome) =>
+      typeof outcome.id === "string" && outcome.id.trim() &&
+      ["restore-hp", "restore-mana", "award-candies", "offensive-roll", "none"]
+        .includes(outcome.effectType) &&
+      Number.isSafeInteger(Number(outcome.amount)) &&
+      Number(outcome.amount) >= 0 &&
+      typeof outcome.line === "string" && outcome.line.trim()) &&
+    Number(tripleRewards?.hpRestore) === 10 &&
+    Number(tripleRewards?.manaRestore) === 10 &&
+    Number(tripleRewards?.candies) === 100 &&
+    Number(tripleRewards?.offensiveRollModifier) === 1 &&
+    hasCuriosityPresentation;
 
   if (
     !validResilience &&
     !validMomentum &&
     !validHarvest &&
     !validAftershock &&
-    !validFaeIntervention
+    !validFaeIntervention &&
+    !validAstralCuriosity
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }

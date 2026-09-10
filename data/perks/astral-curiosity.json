@@ -1,0 +1,55 @@
+{
+  "id": "astral-curiosity",
+  "name": "Astral Curiosity",
+  "requiredLevel": 19,
+  "type": "passive",
+  "description": "Matching natural dice can attract Astral Curiosity. Doubles cause a random Astral Oddity once per battle, while triples trigger a much stronger reward.",
+  "effect": {
+    "trigger": "matching-natural-dice",
+    "doubleUsesPerBattle": 1,
+    "offensiveRollModifier": 1,
+    "doubleOutcomes": [
+      {
+        "id": "restore-hp",
+        "effectType": "restore-hp",
+        "amount": 10,
+        "line": "Astral Curiosity activates! The matching dice shimmer as a suspiciously familiar Fae light wraps around you. Somewhere very far away, you get the distinct impression Shizuki is pleased with herself. You recover 10 HP."
+      },
+      {
+        "id": "restore-mana",
+        "effectType": "restore-mana",
+        "amount": 10,
+        "line": "Astral Curiosity activates! The matching dice sparkle and Astral energy suddenly rushes back into you. For just a moment, you swear you hear someone quietly say, *“You're welcome~”* You recover 10 Mana."
+      },
+      {
+        "id": "award-candies",
+        "effectType": "award-candies",
+        "amount": 100,
+        "line": "Astral Curiosity activates! The matching dice flash brightly. A tiny shower of Star Candies immediately falls out of absolutely nowhere. You look up. There is nothing there. You gain 100 Star Candies."
+      },
+      {
+        "id": "offensive-roll",
+        "effectType": "offensive-roll",
+        "amount": 1,
+        "line": "Astral Curiosity activates! The matching dice glow as a tiny star circles around you before settling overhead. It feels strangely encouraging. Your next offensive roll gains +1."
+      },
+      {
+        "id": "neat-roll",
+        "effectType": "none",
+        "amount": 0,
+        "line": "Astral Curiosity activates! The matching dice flash brilliantly. A tiny handwritten note appears beside you. It simply says, *“Neat roll.”* There is no signature. Nothing else happens."
+      }
+    ],
+    "tripleRewards": {
+      "hpRestore": 10,
+      "manaRestore": 10,
+      "candies": 100,
+      "offensiveRollModifier": 1
+    }
+  },
+  "tripleLines": [
+    "Astral Curiosity activates! All three dice freeze on the same number. The Astral Sea goes strangely quiet.\n\nA moment later, Fae light surrounds you, Astral energy rushes back into your body, and 100 Star Candies fall directly onto your head.\n\nSomewhere in the distance, you hear a very familiar giggle.\n\nYou recover 10 HP and 10 Mana, gain 100 Star Candies, and gain +1 to your next offensive roll.",
+    "Astral Curiosity activates! All three dice match. A tiny note immediately floats down from above.\n\n*“Okay, THAT was cool. — S”*\n\nBefore you can question it, 100 Star Candies rain down around you as Astral energy surges through you.\n\nYou recover 10 HP and 10 Mana, gain 100 Star Candies, and gain +1 to your next offensive roll.",
+    "Astral Curiosity activates! All three dice match.\n\nNothing happens.\n\n...\n\nStill nothing.\n\n...\n\nA frankly unreasonable amount of Star Candies suddenly falls from above while Fae light and Astral energy explode around you. Somewhere far away, someone is laughing.\n\nYou recover 10 HP and 10 Mana, gain 100 Star Candies, and gain +1 to your next offensive roll."
+  ]
+}
