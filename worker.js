@@ -266,6 +266,7 @@ const SPELL_FILES = {
   bubble: "bubble.json",
   "astral-echo": "astral-echo.json",
   "falling-star": "falling-star.json",
+  "leviathans-wake": "leviathans-wake.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -607,6 +608,7 @@ const DISCORD_COMMANDS = [
           { name: "Bubble", value: "bubble" },
           { name: "Astral Echo", value: "astral-echo" },
           { name: "Falling Star", value: "falling-star" },
+          { name: "Leviathan's Wake", value: "leviathans-wake" },
         ],
       },
     ],
@@ -1138,6 +1140,7 @@ async function handleTwitchRequest(url, env) {
         "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
         "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
         "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
+        "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1501,6 +1504,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
           "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
           "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
+          "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2615,8 +2619,12 @@ async function performAttackUnlocked(
     };
   }
 
-  const playerRoll = randomInteger(1, 20);
   const progress = await getPlayerProgress(env, backpackKey);
+  const turnStart = await advanceLeviathansWake(
+    env, backpackKey, combatState, progress, platform,
+  );
+  if (turnStart.victory) return turnStart.victory;
+  const playerRoll = randomInteger(1, 20);
   const triggeredRoll = consumeTriggeredStatusEffects(
     progress,
     OFFENSIVE_ROLL_TRIGGER,
@@ -2661,7 +2669,7 @@ async function performAttackUnlocked(
       {
         roll: triggeredRoll.finalTotal,
         damage: playerAttack.damage,
-        message: actionMessage,
+        message: turnStart.message ? `${turnStart.message}\n\n${actionMessage}` : actionMessage,
         victoryMessage: actionMessage,
         momentumAction: "attack",
         momentumNaturalRoll: playerRoll,
@@ -3113,6 +3121,9 @@ async function performCastUnlocked(
   const fallingStarCommand = platform === "discord"
     ? "/cast spell:Falling Star"
     : "!cast falling star";
+  const wakeCommand = platform === "discord"
+    ? "/cast spell:Leviathan's Wake"
+    : "!cast wake";
 
   if (!spellInputValue) {
     return {
@@ -3121,7 +3132,7 @@ async function performCastUnlocked(
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
         `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, or ` +
         `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
-        `${fallingStarCommand} for Falling Star.`,
+        `${fallingStarCommand} for Falling Star, or ${wakeCommand} for Leviathan's Wake.`,
     };
   }
 
@@ -3138,7 +3149,7 @@ async function performCastUnlocked(
         `You haven't learned that spell. Use ${blessingCommand}, ` +
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
         `${moonbeamCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
-        `${fallingStarCommand}.`,
+        `${fallingStarCommand}, or ${wakeCommand}.`,
     };
   }
 
@@ -3514,6 +3525,14 @@ async function performCastUnlocked(
     };
   }
 
+  if (spell.id === "leviathans-wake" && combatState.leviathansWake) {
+    return {
+      message: platform === "discord"
+        ? appendDiscordCombatHud(spell.duplicateCastLine, combatState, progress)
+        : spell.duplicateCastLine,
+    };
+  }
+
   const astralCharge = getAstralCharge(combatState.enemy);
   const manaCost = astralCharge?.manaDiscountAvailable
     ? Math.round(spell.manaCost * (1 - astralCharge.manaReduction))
@@ -3526,6 +3545,20 @@ async function performCastUnlocked(
         ? appendDiscordCombatHud(message, combatState, progress)
         : message,
     };
+  }
+
+  // Only a validated, turn-consuming action advances a pending Wake.
+  // Resolve before rolling, consuming modifiers, or paying for this action.
+  const turnStart = await advanceLeviathansWake(
+    env, backpackKey, combatState, progress, platform,
+  );
+  if (turnStart.victory) return turnStart.victory;
+
+  if (spell.id === "leviathans-wake") {
+    return castLeviathansWake(
+      env, backpackKey, combatState, progress, spell, activePerks,
+      astralCharge, manaCost, platform,
+    );
   }
 
   const spellRoll = rollSpellDamage(spell);
@@ -3637,7 +3670,7 @@ async function performCastUnlocked(
         damage: resolvedSpellRoll.damage,
         echoDamage,
         aftershockDamage,
-        message: castMessage,
+        message: turnStart.message ? `${turnStart.message}\n\n${castMessage}` : castMessage,
         victoryMessage: castMessage,
         consumeAstralCharge: Boolean(astralCharge),
         applyAstralCharge: resolvedSpellRoll.appliesAstralCharge,
@@ -3667,6 +3700,135 @@ async function performCastUnlocked(
 
     throw error;
   }
+}
+
+async function castLeviathansWake(
+  env, backpackKey, combatState, progress, spell, activePerks,
+  astralCharge, manaCost, platform,
+) {
+  const naturalRoll = randomInteger(1, spell.damage.sides);
+  const triggeredRoll = consumeTriggeredStatusEffects(
+    progress, OFFENSIVE_ROLL_TRIGGER, naturalRoll, combatState,
+  );
+  const faeBonus = getFaeSpellRollBonus(progress);
+  if (faeBonus > 0) {
+    triggeredRoll.modifier += faeBonus;
+    triggeredRoll.finalTotal += faeBonus;
+    triggeredRoll.modifierDetails.unshift({ name: "Fae", value: faeBonus });
+  }
+  // Modifiers are consumed normally, but never change the natural creature tier.
+  const creature = spell.creatureTiers.find(
+    (tier) => naturalRoll <= tier.naturalMaximum,
+  );
+  const critical = naturalRoll === 20;
+  const astralEcho = getAstralEcho(combatState);
+  const aftershock = activePerks.find(
+    (perk) => perk.effect.trigger === "critical-offensive-spell",
+  );
+  combatState.leviathansWake = {
+    naturalRoll,
+    finalRoll: triggeredRoll.finalTotal,
+    creatureId: creature.id,
+    stage: 1,
+    baseDamage: creature.baseDamage,
+    critical,
+    astralChargeSnapshot: astralCharge
+      ? { damageIncrease: astralCharge.damageIncrease }
+      : null,
+    astralEchoSnapshot: astralEcho
+      ? { damagePercent: astralEcho.damagePercent }
+      : null,
+    aftershockDamage: critical && aftershock ? aftershock.effect.bonusDamage : 0,
+  };
+  const modifiers = triggeredRoll.modifierDetails.map(
+    ({ name, value }) => ` ${value >= 0 ? "+" : ""}${value} ${name}`,
+  ).join("");
+  const message = `${creature.cast}\n\n` +
+    `${spell.name} Roll: ${naturalRoll}${modifiers} → ${triggeredRoll.finalTotal}`;
+  const updatedProgress = {
+    ...progress,
+    mana: progress.mana - manaCost,
+    statusEffects: triggeredRoll.statusEffects,
+  };
+  await savePlayerProgress(env, backpackKey, updatedProgress);
+  try {
+    // Commit Charge/Echo now through the shared consumption rules. Damage waits.
+    return await resolvePlayerCombatAction(env, backpackKey, combatState, {
+      roll: triggeredRoll.finalTotal,
+      damage: 0,
+      echoDamage: 0,
+      message,
+      consumeAstralCharge: Boolean(astralCharge),
+      consumeAstralEcho: Boolean(astralEcho),
+    }, platform);
+  } catch (error) {
+    try {
+      await savePlayerProgress(env, backpackKey, progress);
+    } catch (rollbackError) {
+      console.error("Leviathan's Wake Mana rollback failed:", rollbackError);
+    }
+    throw error;
+  }
+}
+
+async function advanceLeviathansWake(
+  env, backpackKey, combatState, progress, platform,
+) {
+  const wake = combatState.leviathansWake;
+  if (!wake) return { message: "" };
+  const spell = await getSpellDefinition("leviathans-wake");
+  const creature = spell.creatureTiers.find((tier) => tier.id === wake.creatureId);
+  if (wake.stage === 1) {
+    wake.stage = 2;
+    return { message: creature.warning };
+  }
+
+  const strength = getStrengthDamageBonus(progress);
+  let primaryDamage = wake.baseDamage + strength;
+  if (wake.astralChargeSnapshot) {
+    primaryDamage = applyPercentageDamageIncrease(
+      primaryDamage, wake.astralChargeSnapshot.damageIncrease,
+    );
+  }
+  const echoDamage = wake.astralEchoSnapshot
+    ? applyPercentageOfDamage(primaryDamage, wake.astralEchoSnapshot.damagePercent)
+    : 0;
+  const aftershock = wake.aftershockDamage > 0
+    ? await getPerkDefinition("astral-aftershock")
+    : null;
+  const parts = [creature.arrival];
+  if (wake.critical && Math.random() < spell.ancientFlavorChance) {
+    parts.push(spell.ancientFlavor);
+  }
+  // One cosmetic check; the combined case never falls through to individual eggs.
+  const egg = combatState.bubble && combatState.mend ? "combined"
+    : combatState.bubble ? "bubble" : combatState.mend ? "mend" : null;
+  if (egg && Math.random() < spell.easterEggChance) {
+    parts.push(spell.easterEggs[egg]);
+  }
+  parts.push(`${spell.name}: ${wake.baseDamage} +${strength} Strength` +
+    `${wake.astralChargeSnapshot ? " + Astral Charge" : ""} → ${primaryDamage} dmg`);
+  combatState.enemy.hp = Math.max(0, combatState.enemy.hp - primaryDamage);
+  if (wake.astralEchoSnapshot) {
+    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - echoDamage);
+    parts.push(spell.echoActivationLine.replace("{echoDamage}", String(echoDamage)));
+  }
+  if (aftershock) {
+    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - wake.aftershockDamage);
+    parts.push(aftershock.activationLine);
+  }
+  delete combatState.leviathansWake;
+  const message = parts.join("\n\n");
+  if (combatState.enemy.hp === 0) {
+    return {
+      victory: await resolveCombatVictory(
+        env, backpackKey, combatState, wake.finalRoll,
+        primaryDamage + echoDamage + wake.aftershockDamage, platform, message,
+      ),
+    };
+  }
+  // The caller still executes its normal action and saves the resulting turn.
+  return { message };
 }
 
 function rollSpellDamage(spell) {
@@ -6561,6 +6723,24 @@ function isValidAstralCuriosityBonus(bonus) {
   );
 }
 
+function isValidLeviathansWake(wake) {
+  const validFraction = (value) =>
+    typeof value === "number" && Number.isFinite(value) && value > 0 && value <= 1;
+  return Boolean(
+    wake && typeof wake === "object" && !Array.isArray(wake) &&
+    Number.isSafeInteger(wake.naturalRoll) && wake.naturalRoll >= 1 && wake.naturalRoll <= 20 &&
+    Number.isSafeInteger(wake.finalRoll) && wake.finalRoll >= wake.naturalRoll &&
+    ["wakefin", "astral-manta", "deepwake-serpent", "leviathan", "ancient-one"].includes(wake.creatureId) &&
+    [1, 2].includes(wake.stage) &&
+    Number.isSafeInteger(wake.baseDamage) && wake.baseDamage > 0 &&
+    wake.critical === (wake.naturalRoll === 20) &&
+    (wake.astralChargeSnapshot === null || validFraction(wake.astralChargeSnapshot?.damageIncrease)) &&
+    (wake.astralEchoSnapshot === null || validFraction(wake.astralEchoSnapshot?.damagePercent)) &&
+    Number.isSafeInteger(wake.aftershockDamage) &&
+    (wake.aftershockDamage === 0 || (wake.critical && wake.aftershockDamage === 5))
+  );
+}
+
 function isValidCombatState(combatState) {
   const enemy = combatState?.enemy;
 
@@ -6615,6 +6795,10 @@ function isValidCombatState(combatState) {
     (
       combatState.astralCuriosity === undefined ||
       isValidAstralCuriosityBonus(combatState.astralCuriosity)
+    ) &&
+    (
+      combatState.leviathansWake === undefined ||
+      isValidLeviathansWake(combatState.leviathansWake)
     ) &&
     (
       combatState.perkUses === undefined ||
@@ -7853,6 +8037,31 @@ function validateSpellDefinition(spell, expectedId) {
     !spell.highPowerNaturalOneFlavor.trim()
   )) {
     throw new Error("Invalid Falling Star content data.");
+  }
+
+  if (expectedId === "leviathans-wake") {
+    const tiers = [
+      ["wakefin", 1, 12], ["astral-manta", 7, 22],
+      ["deepwake-serpent", 13, 30], ["leviathan", 19, 40], ["ancient-one", 20, 55],
+    ];
+    if (
+      spell.type !== "offensive" || spell.mechanic !== "delayed-wake" ||
+      spell.requiredLevel !== 20 || spell.manaCost !== 30 ||
+      spell.damage?.dice !== 1 || spell.damage?.sides !== 20 ||
+      spell.criticalThreshold !== 20 || spell.criticalDamage !== 55 ||
+      !Array.isArray(spell.creatureTiers) || spell.creatureTiers.length !== tiers.length ||
+      spell.creatureTiers.some((tier, index) =>
+        tier.id !== tiers[index][0] || tier.naturalMaximum !== tiers[index][1] ||
+        tier.baseDamage !== tiers[index][2] ||
+        !isTextArray([tier.displayName, tier.cast, tier.warning, tier.arrival])) ||
+      spell.ancientFlavorChance !== 0.25 || spell.easterEggChance !== 0.25 ||
+      !isTextArray([
+        spell.duplicateCastLine, spell.ancientFlavor, spell.echoActivationLine,
+        spell.easterEggs?.bubble, spell.easterEggs?.mend, spell.easterEggs?.combined,
+      ]) || !spell.echoActivationLine.includes("{echoDamage}")
+    ) {
+      throw new Error("Invalid Leviathan's Wake content data.");
+    }
   }
 
   return spell;

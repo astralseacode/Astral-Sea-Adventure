@@ -1,0 +1,70 @@
+{
+  "id": "leviathans-wake",
+  "name": "Leviathan's Wake",
+  "aliases": ["leviathan's wake", "leviathans wake", "leviathan", "wake"],
+  "requiredLevel": 20,
+  "manaCost": 30,
+  "type": "offensive",
+  "mechanic": "delayed-wake",
+  "description": "Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll.",
+  "damage": { "dice": 1, "sides": 20 },
+  "criticalThreshold": 20,
+  "criticalDamage": 55,
+  "creatureTiers": [
+    {
+      "id": "wakefin",
+      "displayName": "Wakefin",
+      "naturalMaximum": 1,
+      "baseDamage": 12,
+      "cast": "You reach into the depths and call upon Leviathan's Wake.\n\nSomething answers almost immediately.\n\nUnfortunately, it sounds very small.",
+      "warning": "A tiny shadow darts beneath the battlefield at alarming speed.\n\nThe water begins rippling.\n\nYou are increasingly concerned that this may not, in fact, be a Leviathan.",
+      "arrival": "A determined little Wakefin rockets past your foe with all the confidence of something several thousand times larger.\n\nIts wake splashes directly into them.\n\nIt looks extremely proud of itself."
+    },
+    {
+      "id": "astral-manta",
+      "displayName": "Astral Manta",
+      "naturalMaximum": 7,
+      "baseDamage": 22,
+      "cast": "You call into the distant depths.\n\nA broad shadow slowly begins circling beneath the battlefield.",
+      "warning": "The shadow glides closer.\n\nShimmering fins briefly break through the Astral light before vanishing below again.\n\nWhatever is coming appears to be taking the scenic route.",
+      "arrival": "An enormous Astral Manta sweeps beneath your foe.\n\nIts wings push a rolling wall of water upward, crashing into them in a burst of starlight."
+    },
+    {
+      "id": "deepwake-serpent",
+      "displayName": "Deepwake Serpent",
+      "naturalMaximum": 13,
+      "baseDamage": 30,
+      "cast": "Your call sinks into the depths.\n\nSomething long begins moving far below.",
+      "warning": "The water twists around the battlefield as a massive shape coils somewhere underneath you.\n\nYou briefly reconsider whether summoning unknown sea monsters was a responsible magical discipline.",
+      "arrival": "A colossal Deepwake Serpent tears through the water beneath your foe.\n\nIts passing sends a violent surge crashing across the battlefield."
+    },
+    {
+      "id": "leviathan",
+      "displayName": "Leviathan",
+      "naturalMaximum": 19,
+      "baseDamage": 40,
+      "cast": "Your magic reaches into the depths.\n\nFor several seconds, nothing answers.\n\nThen the entire sea shifts.",
+      "warning": "The water grows strangely still.\n\nFar beneath the battlefield, an enormous silhouette passes through the darkness.\n\nYou cannot see where it begins.\n\nYou cannot see where it ends.",
+      "arrival": "The Leviathan passes beneath you.\n\nIt never even looks upward.\n\nThe wake left behind crashes into your foe with enough force to shake the entire battlefield."
+    },
+    {
+      "id": "ancient-one",
+      "displayName": "The Ancient One",
+      "naturalMaximum": 20,
+      "baseDamage": 55,
+      "cast": "You call upon Leviathan's Wake.\n\nThe spell answers.\n\nThen something else answers too.",
+      "warning": "The Astral Sea falls completely silent.\n\nSomewhere impossibly far below, a single enormous eye opens.\n\nYou suddenly get the feeling that this spell may have reached much farther than intended.",
+      "arrival": "Something vast moves beneath the battlefield.\n\nYou never see its full shape.\n\nYou only see the wake.\n\nThe resulting wall of water crashes into your foe with terrifying force.\n\nFar below, the eye slowly closes."
+    }
+  ],
+  "duplicateCastLine": "The depths are already answering your call. Maybe don't summon a second enormous sea creature until the first one gets here.",
+  "echoActivationLine": "Astral Echo activates! The wake echoes through the Astral Sea and strikes again for {echoDamage} damage.",
+  "ancientFlavorChance": 0.25,
+  "ancientFlavor": "You decide not to do that again.\n\nYou will absolutely do that again.",
+  "easterEggChance": 0.25,
+  "easterEggs": {
+    "bubble": "The wake crashes across the battlefield.\n\nYour Bubble is swept backward, spins three full times, and gives a deeply alarmed *boing*.\n\nSomehow, it remains intact.",
+    "mend": "The wake tears across the battlefield.\n\nSeveral Fae leaves go flying.\n\nThe supervising leaf does not move an inch.\n\nYou have no idea how.",
+    "combined": "Your Bubble spins violently through the wake as several Fae leaves cling to the outside.\n\nThe supervising leaf remains perfectly composed.\n\nApparently somebody here has done this before."
+  }
+}
