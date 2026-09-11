@@ -1,0 +1,42 @@
+{
+  "id": "evocation",
+  "name": "Evocation",
+  "aliases": [
+    "evo",
+    "evocate"
+  ],
+  "requiredLevel": 5,
+  "manaCost": 0,
+  "type": "mana-recovery",
+  "description": "Completely restores Mana at the cost of your turn; 7 combat turn cooldown.",
+  "cooldownTurns": 7,
+  "fullManaLine": "You reach for the feelings and memories of Shizuki. The Astral light answers, takes one look at your completely full Mana, and quietly fades away.",
+  "successLines": [
+    "For a moment, you remember a place you've never been. Shizuki was probably there.",
+    "A distant giggle echoes through the Astral Sea. Your Mana returns. Your questions do not get answered.",
+    "For just a moment, the Astral Sea feels strangely familiar.",
+    "You remember Shizuki saying something encouraging. Unfortunately, you cannot remember what it was.",
+    "A faint memory of white hair drifts through your thoughts before disappearing into starlight.",
+    "A familiar warmth fills your chest. So does an unreasonable amount of Mana.",
+    "For a heartbeat, you hear the distant sound of someone saying, \"You'll probably need this.\"",
+    "Somewhere far away, you could swear you hear Shizuki humming. The sound disappears as quickly as it came.",
+    "You remember the first time the Astral Sea stretched out before you. Somehow, it feels even larger in your memory.",
+    "A memory of shimmering currents passes through your mind. You follow them for a moment and return feeling strangely refreshed.",
+    "You remember a Jellyfish looking at you with absolute determination. You're still not entirely sure how something without a face managed that.",
+    "You remember the soft glow of Moonlit Reef. For a moment, the same light seems to shimmer around you.",
+    "You remember the first creature you ever fought in the Astral Sea. You'd like to think you've gotten better since then.",
+    "You remember finding a Berry when you desperately needed one. This is somehow almost as comforting.",
+    "You remember watching starlight ripple across the water. The memory ripples through you now.",
+    "You remember one of your journeys through the Astral Sea. Not the important parts, apparently. Mostly the part where you got lost.",
+    "A memory of distant bells drifts through your thoughts. You don't remember where you heard them, but the Astral Sea seems to.",
+    "You remember standing somewhere quiet between adventures, listening to the currents pass by. For a moment, you're there again.",
+    "You remember the supervising leaf staring at you over its clipboard. Somehow, this inspires you to keep going.",
+    "You remember the tiny Fae rushing to patch you up after a particularly questionable decision. There were a lot of leaves involved.",
+    "You remember an Astral Charge stubbornly attached to someone's forehead. Some memories are more useful than others.",
+    "You remember the rush of discovering somewhere new. That same excitement flickers through you again.",
+    "You remember collecting a Travel Note and wondering who had been there before you. The thought still follows you.",
+    "You remember a moment when the journey felt impossible. Then you remember that you kept going anyway.",
+    "A dozen little memories of the Astral Sea surface all at once: glowing reefs, strange creatures, distant stars, and at least one extremely bad decision.",
+    "You let your journey through the Astral Sea wash over you. Every strange encounter, every discovery, and every memory becomes Astral light."
+  ]
+}

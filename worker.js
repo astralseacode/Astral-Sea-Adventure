@@ -263,6 +263,7 @@ const SPELL_FILES = {
   jelly: "jellyfish.json",
   mend: "mend.json",
   moonbeam: "moonbeam.json",
+  evocation: "evocation.json",
   bubble: "bubble.json",
   "astral-echo": "astral-echo.json",
   "falling-star": "falling-star.json",
@@ -615,6 +616,7 @@ const DISCORD_COMMANDS = [
           { name: "Jelly", value: "jelly" },
           { name: "Mend", value: "mend" },
           { name: "Moonbeam", value: "moonbeam" },
+          { name: "Evocation", value: "evocation" },
           { name: "Bubble", value: "bubble" },
           { name: "Astral Echo", value: "astral-echo" },
           { name: "Falling Star", value: "falling-star" },
@@ -1136,6 +1138,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
+        "Level 5 — Evocation — /cast evocation / !cast evocation completely restores Mana at the cost of your turn; 7 combat turn cooldown. " +
         "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
         "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
         "Level 8 — Bubble — !cast bubble prepares protection without ending your normal action. " +
@@ -1524,6 +1527,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
+          "Level 5 — Evocation — /cast evocation / !cast evocation completely restores Mana at the cost of your turn; 7 combat turn cooldown. " +
           "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
           "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
           "Level 8 — Bubble — /cast bubble prepares protection without ending your normal action. " +
@@ -3178,6 +3182,7 @@ async function performCastUnlocked(
   const moonbeamCommand = platform === "discord"
     ? "/cast spell:Moonbeam"
     : "!cast moonbeam";
+  const evocationCommand = platform === "discord" ? "/cast evocation" : "!cast evocation";
   const bubbleCommand = platform === "discord"
     ? "/cast spell:Bubble"
     : "!cast bubble";
@@ -3196,7 +3201,7 @@ async function performCastUnlocked(
       message:
         `Use ${blessingCommand} for Elf Blessing, ${jellyCommand} ` +
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
-        `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, or ` +
+        `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, ${evocationCommand} for Evocation, or ` +
         `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
         `${fallingStarCommand} for Falling Star, or ${wakeCommand} for Leviathan's Wake.`,
     };
@@ -3214,7 +3219,7 @@ async function performCastUnlocked(
       message:
         `You haven't learned that spell. Use ${blessingCommand}, ` +
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
-        `${moonbeamCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
+        `${moonbeamCommand}, ${evocationCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
         `${fallingStarCommand}, or ${wakeCommand}.`,
     };
   }
@@ -3591,6 +3596,36 @@ async function performCastUnlocked(
     };
   }
 
+  if (spell.id === "evocation") {
+    const maximumMana = getPlayerResourceCaps(progress).mana;
+    if (progress.mana === maximumMana) return { message: spell.fullManaLine };
+    if (progress.evocationCooldownTurns > 0) {
+      return { message: `Evocation is unavailable: ${progress.evocationCooldownTurns} combat turns remaining.` };
+    }
+    const updatedProgress = {
+      ...progress, mana: maximumMana, evocationCooldownTurns: spell.cooldownTurns,
+    };
+    const castMessage = `${randomChoice(spell.successLines)}\n\n` +
+      `Mana fully restored: ${maximumMana}/${maximumMana}. Turn consumed. Evocation cooldown: 7 combat turns.`;
+    await savePlayerProgress(env, backpackKey, updatedProgress);
+    try {
+      const turnStart = await advanceLeviathansWake(
+        env, backpackKey, combatState, updatedProgress, platform, false,
+      );
+      if (turnStart.victory) return {
+        ...turnStart.victory,
+        message: [castMessage, turnStart.victory.message].join(platform === "discord" ? "\n\n" : " | "),
+      };
+      return await resolvePlayerCombatAction(env, backpackKey, combatState, {
+        damage: 0,
+        message: [turnStart.message, castMessage].filter(Boolean).join(platform === "discord" ? "\n\n" : " | "),
+      }, platform);
+    } catch (error) {
+      await savePlayerProgress(env, backpackKey, progress);
+      throw error;
+    }
+  }
+
   if (spell.id === "leviathans-wake" && combatState.leviathansWake) {
     return {
       message: platform === "discord"
@@ -3838,8 +3873,14 @@ async function castLeviathansWake(
 }
 
 async function advanceLeviathansWake(
-  env, backpackKey, combatState, progress, platform,
+  env, backpackKey, combatState, progress, platform, advanceCooldown = true,
 ) {
+  // Only validated Attack and turn-consuming casts reach this hook. Persist
+  // before Wake can end the encounter. Evocation skips its own casting turn.
+  if (advanceCooldown && progress.evocationCooldownTurns > 0) {
+    progress.evocationCooldownTurns -= 1;
+    await savePlayerProgress(env, backpackKey, progress);
+  }
   const wake = combatState.leviathansWake;
   if (!wake) return { message: "" };
   const spell = await getSpellDefinition("leviathans-wake");
@@ -7962,10 +8003,17 @@ function validateSpellDefinition(spell, expectedId) {
       "healing-support",
       "defensive",
       "pre-action-support",
+      "mana-recovery",
     ].includes(spell.type)
   ) {
     throw new Error(`Invalid spell definition for ${expectedId}.`);
   }
+
+  if (spell.type === "mana-recovery" && (
+    spell.id !== "evocation" || spell.requiredLevel !== 5 || spell.manaCost !== 0 ||
+    spell.cooldownTurns !== 7 || !isTextArray(spell.successLines) ||
+    spell.successLines.length !== 26 || typeof spell.fullManaLine !== "string"
+  )) throw new Error("Invalid Evocation content data.");
 
   if (spell.type === "offensive") {
     if (spell.id !== "falling-star" && (
@@ -8913,6 +8961,10 @@ async function saveSharedRestCooldown(
   );
 }
 
+function normalizeEvocationCooldown(value) {
+  return Number.isSafeInteger(value) && value >= 0 ? Math.min(7, value) : 0;
+}
+
 function createEmptyProgress() {
   const progress = {
     xp: 0,
@@ -8921,6 +8973,7 @@ function createEmptyProgress() {
     maxHp: PLAYER_COMBAT_MAX_HP,
     mana: PLAYER_MAX_MANA,
     maxMana: PLAYER_MAX_MANA,
+    evocationCooldownTurns: 0,
     lastRestAt: 0,
     lastLongRestAt: 0,
     restBufferType: null,
@@ -9134,6 +9187,7 @@ async function getPlayerProgress(
     }
 
     const normalizedProgress = {
+      evocationCooldownTurns: normalizeEvocationCooldown(parsed.evocationCooldownTurns),
       xp,
       berries,
       hp,
@@ -9305,6 +9359,7 @@ async function savePlayerProgress(
   );
 
   const safeProgress = {
+    evocationCooldownTurns: normalizeEvocationCooldown(progress.evocationCooldownTurns),
     xp: Math.max(
       0,
       Math.floor(
