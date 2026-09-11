@@ -4144,10 +4144,12 @@ function formatFallingStarCastMessage(
         Math.random() < spell.highPowerNaturalOneFlavorChance
       ? spell.highPowerNaturalOneFlavor
       : null;
+  // Rare outcome flavor replaces the primary line, rather than adding a second
+  // narration. Keep the usual selection draw so downstream RNG is unchanged.
+  const narration = randomChoice(narrationPool.lines);
   const separator = platform === "discord" ? "\n\n" : " | ";
   return [
-    randomChoice(narrationPool.lines),
-    ...(rareFlavor ? [rareFlavor] : []),
+    rareFlavor || narration,
     `Power ${spellRoll.powerTotal} (${spellRoll.powerRolls.join("+")}) | ` +
       `Accuracy ${accuracyText} → ${outcomeName} | ${spellRoll.damage} dmg`,
   ].join(separator);
