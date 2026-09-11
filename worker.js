@@ -363,6 +363,9 @@ const TITLES = [
 ];
 
 const DISCORD_API_BASE = "https://discord.com/api/v10";
+// TEMPORARY DEVELOPMENT COMMAND
+// REMOVE /devlevel AND DEV_USER_ID BEFORE FULL RELEASE
+const DEV_USER_ID = "715083178834133043";
 const DISCORD_DAILY_COOLDOWN_SECONDS = 23 * 60 * 60;
 const DAILY_REWARD = 250;
 
@@ -537,6 +540,12 @@ const DAILY_BLESSINGS = [
 ];
 
 const DISCORD_COMMANDS = [
+  // TEMPORARY DEVELOPMENT COMMAND: REMOVE BEFORE FULL RELEASE
+  {
+    name: "devlevel",
+    description: "Temporary development-only Level 50 override.",
+    type: 1,
+  },
   {
     name: "adventure",
     description: "View, begin, or resume an Astral Sea Adventure",
@@ -1233,6 +1242,29 @@ async function handleDiscordInteraction(request, env) {
   const userId =
     interaction.member?.user?.id ||
     interaction.user?.id;
+
+  // TEMPORARY DEVELOPMENT COMMAND
+  // REMOVE /devlevel AND DEV_USER_ID BEFORE FULL RELEASE
+  // Check the signed interaction identity before any player reads or writes,
+  // including the normal shop-session cleanup below.
+  if (commandName === "devlevel") {
+    if (userId !== DEV_USER_ID) {
+      return discordMessage("This command is only available in development.", true);
+    }
+    try {
+      const backpackKey = `backpack:discord:${userId}`;
+      const progress = await getPlayerProgress(env, backpackKey);
+      const xp = totalXpForLevel(50);
+      await savePlayerProgress(env, backpackKey, { ...progress, xp });
+      return discordMessage(
+        `Development override applied. Your character is now Level 50 (${xp} XP).`,
+        true,
+      );
+    } catch (error) {
+      console.error("Discord /devlevel error:", error);
+      return discordMessage("The development override could not be applied. Please try again later.", true);
+    }
+  }
 
   if (!userId || !/^\d{5,30}$/.test(userId)) {
     return discordMessage(
