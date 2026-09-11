@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "ancient-grove-mimic",
   "recommendedLevel": 19,
-  "introDiscord": "The grove looks familiar.\n\nToo familiar.\n\nRoots repeat in identical patterns, the same stone appears three times,\nand one of Shizuki's old trail signs has somehow reproduced.",
-  "introTwitch": "The grove looks familiar.\n\nToo familiar.\n\nRoots repeat in identical patterns, the same stone appears three times,\nand one of Shizuki's old trail signs has somehow reproduced.",
+  "introDiscord": "The grove looks familiar.\n\nToo familiar.\n\nRoots repeat in identical patterns, the same stone appears three times, and one of Shizuki's old trail signs has somehow reproduced.",
+  "introTwitch": "The grove looks familiar.\n\nToo familiar.\n\nRoots repeat in identical patterns, the same stone appears three times, and one of Shizuki's old trail signs has somehow reproduced.",
   "startRoomId": "the-borrowed-grove-approach",
   "rooms": {
     "the-borrowed-grove-approach": {
-      "prompt": "Three paths pass through scenery that repeats with unsettling\nprecision.",
+      "prompt": "Three paths pass through scenery that repeats with unsettling precision.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -26,7 +26,7 @@
           "nextRoomId": "the-borrowed-grove-depths",
           "healAmount": 10,
           "message": "A moonblossom pool rests beside two identical Shizuki notes.\n\nOne reads:\n\n'REAL MEDICINE.'\n\nThe other reads:\n\n'REAL MEDICIN.'\n\nThe typo saves lives.",
-          "fullHpMessage": "You leave the real medicine untouched and continue appreciating the\nMimic's imperfect spelling."
+          "fullHpMessage": "You leave the real medicine untouched and continue appreciating the Mimic's imperfect spelling."
         },
         "forward": {
           "type": "combat",
@@ -37,7 +37,7 @@
       }
     },
     "the-borrowed-grove-depths": {
-      "prompt": "Moonlit fronds surround three nearly identical routes. Every landmark\nappears at least twice.",
+      "prompt": "Moonlit fronds surround three nearly identical routes. Every landmark appears at least twice.",
       "choices": {
         "left": {
           "type": "combat",
@@ -63,7 +63,7 @@
       }
     },
     "the-borrowed-grove-threshold": {
-      "prompt": "Towering kelp closes around Imitation Heartwood. Three routes look\nidentical down to the same drifting leaves.",
+      "prompt": "Towering kelp closes around Imitation Heartwood. Three routes look identical down to the same drifting leaves.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -85,23 +85,23 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 15,
           "message": "Restorative sap waits beside Shizuki's final authentication method:\n\n'REAL NOTE HAS STAR DOODLE.'\n\nThere are four notes.\n\nEvery one now has a star doodle.\n\nThe Mimics learned.",
-          "fullHpMessage": "You leave the restorative sap untouched and accept that the document\nverification system has collapsed."
+          "fullHpMessage": "You leave the restorative sap untouched and accept that the document verification system has collapsed."
         }
       }
     },
     "boss-antechamber": {
       "name": "Imitation Heartwood",
       "type": "boss-prompt",
-      "prompt": "Every duplicated object in the Grove begins moving toward the same\ntree."
+      "prompt": "Every duplicated object in the Grove begins moving toward the same tree."
     }
   },
-  "bossPromptDiscord": "The copies merge.\n\nFake roots, fake stones, fake shrines, fake signs, and fragments of\nborrowed scenery flow into Imitation Heartwood.\n\nThe enormous tree changes shape again and again, unable—or unwilling—to\nchoose one form.\n\nUse /yes to enter Imitation Heartwood or /no to leave before it starts\ncopying you.",
-  "bossPromptTwitch": "The copies merge.\n\nFake roots, fake stones, fake shrines, fake signs, and fragments of\nborrowed scenery flow into Imitation Heartwood.\n\nThe enormous tree changes shape again and again, unable—or unwilling—to\nchoose one form.\n\nUse !yes to enter Imitation Heartwood or !no to leave before it starts\ncopying you.",
-  "bossRetreatText": "You retreat quickly.\n\nFor several seconds, another version of you appears in the moss behind\nyou.\n\nThen disappears.\n\nAbsolutely not.",
+  "bossPromptDiscord": "The copies merge.\n\nFake roots, fake stones, fake shrines, fake signs, and fragments of borrowed scenery flow into Imitation Heartwood.\n\nThe enormous tree changes shape again and again, unable—or unwilling—to choose one form.\n\nUse /yes to enter Imitation Heartwood or /no to leave before it starts copying you.",
+  "bossPromptTwitch": "The copies merge.\n\nFake roots, fake stones, fake shrines, fake signs, and fragments of borrowed scenery flow into Imitation Heartwood.\n\nThe enormous tree changes shape again and again, unable—or unwilling—to choose one form.\n\nUse !yes to enter Imitation Heartwood or !no to leave before it starts copying you.",
+  "bossRetreatText": "You retreat quickly.\n\nFor several seconds, another version of you appears in the moss behind you.\n\nThen disappears.\n\nAbsolutely not.",
   "boss": {
     "enemyId": "many-faced-grove-mimic-boss",
     "roomId": "boss",
-    "revealText": "The Heartwood tears itself free, cycling through dozens of copied forms.\n\nMany-Faced Grove Mimic reveals itself!"
+    "revealText": "The Heartwood tears itself free, cycling through dozens of copied forms.\n\nMany Faced Grove Mimic reveals itself!"
   },
-  "completionText": "\"The Many-Faced Mimic collapses back into ordinary roots.\n\nThe duplicate scenery fades.\n\nOne fake Shizuki sign remains.\n\nIt reads:\n\n'GUD LUCK.'\n\nKeep practicing.\"\n\n\n#################################################################"
+  "completionText": "\"The Many Faced Mimic collapses back into ordinary roots.\n\nThe duplicate scenery fades.\n\nOne fake Shizuki sign remains.\n\nIt reads:\n\n'GUD LUCK.'\n\nKeep practicing.\"\n\n#################################################################"
 }

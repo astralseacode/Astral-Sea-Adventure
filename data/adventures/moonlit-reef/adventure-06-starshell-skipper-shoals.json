@@ -10,7 +10,7 @@
   "startRoomId": "cometwash-bank",
   "rooms": {
     "cometwash-bank": {
-      "prompt": "A comet-bright current sweeps across the sand, leaving glowing trails behind every shell it touches. One starshell skips past you once, twice, three times, then vanishes between three reef-lined routes.",
+      "prompt": "A comet bright current sweeps across the sand, leaving glowing trails behind every shell it touches. One starshell skips past you once, twice, three times, then vanishes between three reef lined routes.",
       "choices": {
         "left": {
           "type": "combat",
@@ -28,7 +28,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "skipping-shoal",
-          "message": "A moon-shell coffer keeps skipping several feet across the sand whenever the cometwash reaches it. You chase it through three increasingly ridiculous bounces before finally pinning it between two rocks and recovering Star Candies.",
+          "message": "A moon shell coffer keeps skipping several feet across the sand whenever the cometwash reaches it. You chase it through three increasingly ridiculous bounces before finally pinning it between two rocks and recovering Star Candies.",
           "reward": {
             "min": 25,
             "max": 50
@@ -75,7 +75,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A Moonkeeper cache lies half-buried beneath the shifting sand. Every pulse of the shoal exposes it for only a few seconds before covering it again. You time the current, dig fast, and recover Star Candies just before the sand sweeps back into place.",
+          "message": "A Moonkeeper cache lies half buried beneath the shifting sand. Every pulse of the shoal exposes it for only a few seconds before covering it again. You time the current, dig fast, and recover Star Candies just before the sand sweeps back into place.",
           "reward": {
             "min": 35,
             "max": 60

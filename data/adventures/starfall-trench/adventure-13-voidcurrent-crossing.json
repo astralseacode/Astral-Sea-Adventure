@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "voidcurrent-crossing-depths",
-          "message": "A meteor-iron reliquary hangs motionless in open water.",
+          "message": "A meteor iron reliquary hangs motionless in open water.",
           "reward": {
             "min": 104,
             "max": 143
@@ -75,7 +75,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer floats perfectly still.",
+          "message": "A star chart coffer floats perfectly still.",
           "reward": {
             "min": 128,
             "max": 167
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "A vast Skate unfolds across the motionless water.\n\nEventide Skate reveals itself!"
   },
-  "completionText": "\"The Expanse settles.\n\nOne tiny Glimmer arrow illuminates the correct exit.\n\nIt knew all along.\n\nProbably.\"\n\n\n#################################################################"
+  "completionText": "\"The Expanse settles.\n\nOne tiny Glimmer arrow illuminates the correct exit.\n\nIt knew all along.\n\nProbably.\"\n\n#################################################################"
 }

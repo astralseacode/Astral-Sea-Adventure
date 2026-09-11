@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "palace-lamprey",
     "recommendedLevel": 31,
-    "introDiscord": "Elegant aqueducts carry clear water between palace courtyards.\n\nShizuki appears to have treated the entire royal water system as an\namusement park.",
-    "introTwitch": "Elegant aqueducts carry clear water between palace courtyards.\n\nShizuki appears to have treated the entire royal water system as an\namusement park.",
+    "introDiscord": "Elegant aqueducts carry clear water between palace courtyards.\n\nShizuki appears to have treated the entire royal water system as an amusement park.",
+    "introTwitch": "Elegant aqueducts carry clear water between palace courtyards.\n\nShizuki appears to have treated the entire royal water system as an amusement park.",
     "startRoomId": "palace-aqueducts-approach",
     "rooms": {
         "palace-aqueducts-approach": {
@@ -28,7 +28,7 @@
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "palace-aqueducts-depths",
-                    "message": "An old maintenance alcove hides a royal service coffer filled with\nStar Candies.",
+                    "message": "An old maintenance alcove hides a royal service coffer filled with Star Candies.",
                     "reward": {
                         "min": 332,
                         "max": 367
@@ -95,8 +95,8 @@
             "prompt": "The aqueducts empty into Royal Bloodwell."
         }
     },
-    "bossPromptDiscord": "The aqueducts empty into Royal Bloodwell.\n\nSomething enormous circles beneath the red palace stone.\n\nUse /yes to enter the Bloodwell, or /no to retire from\nroyal water-slide research.",
-    "bossPromptTwitch": "The aqueducts empty into Royal Bloodwell.\n\nSomething enormous circles beneath the red palace stone.\n\nUse !yes to enter the Bloodwell, or !no to retire from\nroyal water-slide research.",
+    "bossPromptDiscord": "The aqueducts empty into Royal Bloodwell.\n\nSomething enormous circles beneath the red palace stone.\n\nUse /yes to enter the Bloodwell, or /no to retire from royal water-slide research.",
+    "bossPromptTwitch": "The aqueducts empty into Royal Bloodwell.\n\nSomething enormous circles beneath the red palace stone.\n\nUse !yes to enter the Bloodwell, or !no to retire from royal water-slide research.",
     "bossRetreatText": "You withdraw from Royal Bloodwell. The royal challenge will wait.",
     "boss": {
         "enemyId": "crimson-court-lamprey-boss",

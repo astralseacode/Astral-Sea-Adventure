@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "portalroot-serpent",
     "recommendedLevel": 50,
-    "introDiscord": "Living roots stretch through portals without ever crossing the space\nbetween them.\n\nSome disappear into Moonlit Reef.\n\nOthers into Whispering Kelp Forest.\n\nSomewhere, a root exits into a place you don't recognize.",
-    "introTwitch": "Living roots stretch through portals without ever crossing the space\nbetween them.\n\nSome disappear into Moonlit Reef.\n\nOthers into Whispering Kelp Forest.\n\nSomewhere, a root exits into a place you don't recognize.",
+    "introDiscord": "Living roots stretch through portals without ever crossing the space between them.\n\nSome disappear into Moonlit Reef. Others into Whispering Kelp Forest.\n\nSomewhere, a root exits into a place you don't recognize.",
+    "introTwitch": "Living roots stretch through portals without ever crossing the space between them.\n\nSome disappear into Moonlit Reef. Others into Whispering Kelp Forest.\n\nSomewhere, a root exits into a place you don't recognize.",
     "startRoomId": "portalroot-network-approach",
     "rooms": {
         "portalroot-network-approach": {
@@ -48,7 +48,7 @@
                     "type": "healing",
                     "nextRoomId": "portalroot-network-threshold",
                     "healAmount": 84,
-                    "message": "A root connected to Whispering Kelp Forest carries familiar restorative\nFae magic.",
+                    "message": "A root connected to Whispering Kelp Forest carries familiar restorative Fae magic.",
                     "fullHpMessage": "You leave the restorative untouched. You're already at full health."
                 },
                 "forward": {
@@ -92,16 +92,16 @@
         "boss-antechamber": {
             "name": "Worldtree Junction",
             "type": "boss-prompt",
-            "prompt": "Worldtree Junction gathers hundreds of portalroots into one enormous\nliving knot."
+            "prompt": "Worldtree Junction gathers hundreds of portalroots into one enormous living knot."
         }
     },
-    "bossPromptDiscord": "Worldtree Junction gathers hundreds of portalroots into one enormous\nliving knot.\n\nSomething ancient moves inside.\n\nUse /yes to approach or /no to avoid discovering what uses\ninterdimensional roots as tunnels.",
-    "bossPromptTwitch": "Worldtree Junction gathers hundreds of portalroots into one enormous\nliving knot.\n\nSomething ancient moves inside.\n\nUse !yes to approach or !no to avoid discovering what uses\ninterdimensional roots as tunnels.",
+    "bossPromptDiscord": "Worldtree Junction gathers hundreds of portalroots into one enormous living knot.\n\nSomething ancient moves inside.\n\nUse /yes to approach or /no to avoid discovering what uses interdimensional roots as tunnels.",
+    "bossPromptTwitch": "Worldtree Junction gathers hundreds of portalroots into one enormous living knot.\n\nSomething ancient moves inside.\n\nUse !yes to approach or !no to avoid discovering what uses interdimensional roots as tunnels.",
     "bossRetreatText": "You withdraw from Worldtree Junction. The impossible guardian will wait.",
     "boss": {
         "enemyId": "gate-root-serpent-boss",
         "roomId": "boss",
-        "revealText": "Roots split apart around an immense Serpent.\n\nGate-Root Serpent reveals itself!"
+        "revealText": "Roots split apart around an immense Serpent.\n\nGate Root Serpent reveals itself!"
     },
     "completionText": "The roots settle.\n\nOne tiny new shoot points somewhere beyond the known regions.\n\nShizuki circled it.\n\nNo label."
 }

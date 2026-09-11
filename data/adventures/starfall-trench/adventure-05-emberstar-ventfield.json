@@ -5,8 +5,8 @@
   "regionId": "starfall-trench",
   "enemyId": "emberstar-urchin",
   "recommendedLevel": 6,
-  "introDiscord": "\"Blue-white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"\n\n---------------- ROOM 1 ----------------",
-  "introTwitch": "\"Blue-white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"\n\n---------------- ROOM 1 ----------------",
+  "introDiscord": "\"Blue white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"\n\n---------------- ROOM 1 ----------------",
+  "introTwitch": "\"Blue white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"\n\n---------------- ROOM 1 ----------------",
   "startRoomId": "emberstar-ventfield-approach",
   "rooms": {
     "emberstar-ventfield-approach": {
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "emberstar-ventfield-threshold",
-          "message": "A narrow gap between dormant vents hides an old star-chart coffer. The lid is pleasantly warm. The Star Candies inside thankfully are not.",
+          "message": "A narrow gap between dormant vents hides an old star chart coffer. The lid is pleasantly warm. The Star Candies inside thankfully are not.",
           "reward": {
             "min": 143,
             "max": 179
@@ -57,7 +57,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "emberstar-ventfield-threshold",
-          "message": "\"One Berry rests inside Shizuki's scorched cooking pan.\n\n\"Attempted vent-cooked berries.\n\nResults classified as charcoal.\n\nGlimmer now considers itself a culinary expert.\"\"\n\n---------------- ROOM 3 ----------------",
+          "message": "\"One Berry rests inside Shizuki's scorched cooking pan.\n\n\"Attempted vent cooked berries.\n\nResults classified as charcoal.\n\nGlimmer now considers itself a culinary expert.\"\"\n\n---------------- ROOM 3 ----------------",
           "berries": 1
         }
       }
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "cinder-crown-urchin-boss",
     "roomId": "boss",
-    "revealText": "The central vent explodes in blue-white fire.\n\nCinder-Crown Urchin awakens!"
+    "revealText": "The central vent explodes in blue white fire.\n\nCinder Crown Urchin awakens!"
   },
-  "completionText": "\"The Cinder-Crown Urchin retreats into the cooling ventfield.\n\nSeveral ordinary Urchins immediately reclaim the arena like bathers returning to reserved spa chairs.\n\nOne has already taken the warmest spot.\n\nOf course.\"\n\n\n#################################################################"
+  "completionText": "\"The Cinder Crown Urchin retreats into the cooling ventfield.\n\nSeveral ordinary Urchins immediately reclaim the arena like bathers returning to reserved spa chairs.\n\nOne has already taken the warmest spot.\n\nOf course.\"\n\n#################################################################"
 }

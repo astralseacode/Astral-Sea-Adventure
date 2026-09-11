@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "willowcurrent-nymph",
   "recommendedLevel": 16,
-  "introDiscord": "Long willowkelp branches bend beneath a slow silver current. Willowcurrent\nNymphs move through them like dancers, turning the water with every\ngesture.",
-  "introTwitch": "Long willowkelp branches bend beneath a slow silver current. Willowcurrent\nNymphs move through them like dancers, turning the water with every\ngesture.",
+  "introDiscord": "Long willowkelp branches bend beneath a slow silver current. Willowcurrent Nymphs move through them like dancers, turning the water with every gesture.",
+  "introTwitch": "Long willowkelp branches bend beneath a slow silver current. Willowcurrent Nymphs move through them like dancers, turning the water with every gesture.",
   "startRoomId": "willowcurrent-bend-approach",
   "rooms": {
     "willowcurrent-bend-approach": {
-      "prompt": "Three paths curve beneath trailing willow fronds. Each bends gently\ntoward a different current.",
+      "prompt": "Three paths curve beneath trailing willow fronds. Each bends gently toward a different current.",
       "choices": {
         "left": {
           "type": "combat",
@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "willowcurrent-bend-depths",
-          "message": "An offering basket rests beneath long willow leaves. Inside are Star\nCandies polished smooth by the slow current.",
+          "message": "An offering basket rests beneath long willow leaves. Inside are Star Candies polished smooth by the slow current.",
           "reward": {
             "min": 110,
             "max": 151
@@ -32,7 +32,7 @@
           "nextRoomId": "willowcurrent-bend-depths",
           "healAmount": 27,
           "message": "Restorative sap sits beneath Shizuki's note:\n\n'Water here keeps moving my hair dramatically.\n\nExcellent location.\n\nMedicine also good.'",
-          "fullHpMessage": "You leave the restorative sap untouched and enjoy the complimentary\ndramatic hair current."
+          "fullHpMessage": "You leave the restorative sap untouched and enjoy the complimentary dramatic hair current."
         }
       }
     },
@@ -42,7 +42,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "willowcurrent-bend-threshold",
-          "message": "Broad silver kelp wraps a cache caught in the curve of a willow root.\nInside are Star Candies and a tiny ribbon flowing permanently sideways.",
+          "message": "Broad silver kelp wraps a cache caught in the curve of a willow root. Inside are Star Candies and a tiny ribbon flowing permanently sideways.",
           "reward": {
             "min": 122,
             "max": 163
@@ -57,25 +57,25 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "willowcurrent-bend-threshold",
-          "message": "One Berry rests beneath Shizuki's sketch of herself standing\ndramatically beneath the willow fronds.\n\nCaption:\n\n'Looked mysterious for approximately eight seconds.\n\nGlimmer ruined atmosphere by sitting on head.'",
+          "message": "One Berry rests beneath Shizuki's sketch of herself standing dramatically beneath the willow fronds.\n\nCaption:\n\n'Looked mysterious for approximately eight seconds.\n\nGlimmer ruined atmosphere by sitting on head.'",
           "berries": 1
         }
       }
     },
     "willowcurrent-bend-threshold": {
-      "prompt": "Moonlit fronds bow toward Drowned Willow Shrine as three streams weave\nthrough the roots.",
+      "prompt": "Moonlit fronds bow toward Drowned Willow Shrine as three streams weave through the roots.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 32,
           "message": "A tranquil grove pool sits where the three currents briefly calm.\n\nShizuki wrote:\n\n'Rest here.\n\nHair drama resumes after this point.'",
-          "fullHpMessage": "You leave the pool untouched and prepare for continued atmospheric\nhairstyling."
+          "fullHpMessage": "You leave the pool untouched and prepare for continued atmospheric hairstyling."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moss-covered shrine coffer rests beneath a willow arch. Star Candies\ninside catch the moving light like tiny droplets.",
+          "message": "A moss covered shrine coffer rests beneath a willow arch. Star Candies inside catch the moving light like tiny droplets.",
           "reward": {
             "min": 134,
             "max": 175
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Drowned Willow Shrine",
       "type": "boss-prompt",
-      "prompt": "Every willow branch in the Shrine bends toward a single figure beneath\nthe roots."
+      "prompt": "Every willow branch in the Shrine bends toward a single figure beneath the roots."
     }
   },
-  "bossPromptDiscord": "The silver current slows.\n\nA graceful silhouette rises beneath the hanging willowkelp, and every\nsmaller Nymph stops moving.\n\nWater gathers around the figure like a long flowing veil.\n\nUse /yes to enter Drowned Willow Shrine or /no to leave the ancient\ncurrent undisturbed.",
-  "bossPromptTwitch": "The silver current slows.\n\nA graceful silhouette rises beneath the hanging willowkelp, and every\nsmaller Nymph stops moving.\n\nWater gathers around the figure like a long flowing veil.\n\nUse !yes to enter Drowned Willow Shrine or !no to leave the ancient\ncurrent undisturbed.",
-  "bossRetreatText": "You step away. The willow current resumes its slow path through the\nforest.",
+  "bossPromptDiscord": "The silver current slows.\n\nA graceful silhouette rises beneath the hanging willowkelp, and every smaller Nymph stops moving.\n\nWater gathers around the figure like a long flowing veil.\n\nUse /yes to enter Drowned Willow Shrine or /no to leave the ancient current undisturbed.",
+  "bossPromptTwitch": "The silver current slows.\n\nA graceful silhouette rises beneath the hanging willowkelp, and every smaller Nymph stops moving.\n\nWater gathers around the figure like a long flowing veil.\n\nUse !yes to enter Drowned Willow Shrine or !no to leave the ancient current undisturbed.",
+  "bossRetreatText": "You step away. The willow current resumes its slow path through the forest.",
   "boss": {
     "enemyId": "weeping-current-nymph-boss",
     "roomId": "boss",
-    "revealText": "The hanging fronds part as a powerful Nymph rises within a spiral of\nsilver water.\n\nWeeping Current Nymph reveals itself!"
+    "revealText": "The hanging fronds part as a powerful Nymph rises within a spiral of silver water.\n\nWeeping Current Nymph reveals itself!"
   },
-  "completionText": "\"The Weeping Current Nymph dissolves back into the willow stream.\n\nThe branches straighten slightly.\n\nThen one current catches your hair.\n\nAtmosphere restored.\"\n\n\n#################################################################"
+  "completionText": "\"The Weeping Current Nymph dissolves back into the willow stream.\n\nThe branches straighten slightly.\n\nThen one current catches your hair.\n\nAtmosphere restored.\"\n\n#################################################################"
 }

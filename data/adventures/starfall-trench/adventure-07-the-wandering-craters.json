@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "the-wandering-craters-depths",
-          "message": "A meteor-iron reliquary sits inside an abandoned crater. The crater is already beginning to move again.",
+          "message": "A meteor iron reliquary sits inside an abandoned crater. The crater is already beginning to move again.",
           "reward": {
             "min": 124,
             "max": 161
@@ -75,7 +75,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer has been carried here by one of the wandering pits.",
+          "message": "A star chart coffer has been carried here by one of the wandering pits.",
           "reward": {
             "min": 148,
             "max": 185
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "crater-throne-hermit-boss",
     "roomId": "boss",
-    "revealText": "The central crater shifts and its colossal inhabitant rises.\n\nCrater-Throne Hermit reveals itself!"
+    "revealText": "The central crater shifts and its colossal inhabitant rises.\n\nCrater Throne Hermit reveals itself!"
   },
-  "completionText": "\"The Crater-Throne Hermit settles.\n\nThe wandering craters resume their journeys.\n\nPebble is nowhere to be seen.\n\nSafe travels, Pebble.\"\n\n\n#################################################################"
+  "completionText": "\"The Crater Throne Hermit settles.\n\nThe wandering craters resume their journeys.\n\nPebble is nowhere to be seen.\n\nSafe travels, Pebble.\"\n\n#################################################################"
 }

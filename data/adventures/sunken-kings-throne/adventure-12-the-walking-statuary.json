@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "broken-statue-walker",
     "recommendedLevel": 38,
-    "introDiscord": "A sculpture garden fills the palace courtyard.\n\nMost statues remain exactly where statues belong.\n\nSeveral do not.",
-    "introTwitch": "A sculpture garden fills the palace courtyard.\n\nMost statues remain exactly where statues belong.\n\nSeveral do not.",
+    "introDiscord": "A sculpture garden fills the palace courtyard. Most statues remain exactly where statues belong.\n\nSeveral do not.",
+    "introTwitch": "A sculpture garden fills the palace courtyard. Most statues remain exactly where statues belong.\n\nSeveral do not.",
     "startRoomId": "the-walking-statuary-approach",
     "rooms": {
         "the-walking-statuary-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Every statue in Sculptor's Tribunal turns toward the central pedestal."
         }
     },
-    "bossPromptDiscord": "Every statue in Sculptor's Tribunal turns toward the central pedestal.\n\nThe largest statue steps down.\n\nUse /yes to face the collection's masterpiece or /no to\nleave art criticism to professionals.",
-    "bossPromptTwitch": "Every statue in Sculptor's Tribunal turns toward the central pedestal.\n\nThe largest statue steps down.\n\nUse !yes to face the collection's masterpiece or !no to\nleave art criticism to professionals.",
+    "bossPromptDiscord": "Every statue in Sculptor's Tribunal turns toward the central pedestal.\n\nThe largest statue steps down.\n\nUse /yes to face the collection's masterpiece or /no to leave art criticism to professionals.",
+    "bossPromptTwitch": "Every statue in Sculptor's Tribunal turns toward the central pedestal.\n\nThe largest statue steps down.\n\nUse !yes to face the collection's masterpiece or !no to leave art criticism to professionals.",
     "bossRetreatText": "You withdraw from Sculptor's Tribunal. The royal challenge will wait.",
     "boss": {
         "enemyId": "marble-tyrant-boss",

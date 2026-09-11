@@ -1,22 +1,22 @@
 {
     "id": "portal-skip-expanse",
     "number": 4,
-    "name": "Portal-Skip Expanse",
+    "name": "Portal Skip Expanse",
     "regionId": "astral-nexus",
     "enemyId": "portal-skipping-ray",
     "recommendedLevel": 50,
-    "introDiscord": "Portals float everywhere.\n\nSome are doors.\nSome are circles.\nOne is shaped suspiciously like a window.\n\nShizuki's warning:\n\n'DO NOT PLAY PORTAL TAG WITH GLIMMER.\n\nGLIMMER CHEATS.'",
-    "introTwitch": "Portals float everywhere.\n\nSome are doors.\nSome are circles.\nOne is shaped suspiciously like a window.\n\nShizuki's warning:\n\n'DO NOT PLAY PORTAL TAG WITH GLIMMER.\n\nGLIMMER CHEATS.'",
+    "introDiscord": "Portals float everywhere. Some are doors.\nSome are circles.\nOne is shaped suspiciously like a window.\n\nShizuki's warning:\n\n'DO NOT PLAY PORTAL TAG WITH GLIMMER.\n\nGLIMMER CHEATS.'",
+    "introTwitch": "Portals float everywhere. Some are doors.\nSome are circles.\nOne is shaped suspiciously like a window.\n\nShizuki's warning:\n\n'DO NOT PLAY PORTAL TAG WITH GLIMMER.\n\nGLIMMER CHEATS.'",
     "startRoomId": "portal-skip-expanse-approach",
     "rooms": {
         "portal-skip-expanse-approach": {
-            "prompt": "Three impossible routes open across Portal-Skip Expanse.",
+            "prompt": "Three impossible routes open across Portal Skip Expanse.",
             "choices": {
                 "left": {
                     "type": "combat",
                     "nextRoomId": "portal-skip-expanse-depths",
                     "enemyId": "portal-skipping-ray",
-                    "message": "A Portal-Skipping Ray dives into a portal the size of a plate and exits\nfrom one the size of a building."
+                    "message": "A Portal Skipping Ray dives into a portal the size of a plate and exits from one the size of a building."
                 },
                 "right": {
                     "type": "empty",
@@ -36,7 +36,7 @@
             }
         },
         "portal-skip-expanse-depths": {
-            "prompt": "Deeper within Portal-Skip Expanse, three paths bend through the unstable Nexus.",
+            "prompt": "Deeper within Portal Skip Expanse, three paths bend through the unstable Nexus.",
             "choices": {
                 "left": {
                     "type": "healing",
@@ -63,7 +63,7 @@
             }
         },
         "portal-skip-expanse-threshold": {
-            "prompt": "Near Many-Exit Vault, three final routes cross the edge of reality.",
+            "prompt": "Near Many Exit Vault, three final routes cross the edge of reality.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -85,19 +85,19 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "portal-skipping-ray",
-                    "message": "A Portal-Skipping Ray appears from a portal behind its own tail."
+                    "message": "A Portal Skipping Ray appears from a portal behind its own tail."
                 }
             }
         },
         "boss-antechamber": {
-            "name": "Many-Exit Vault",
+            "name": "Many Exit Vault",
             "type": "boss-prompt",
-            "prompt": "Many-Exit Vault opens every door simultaneously."
+            "prompt": "Many Exit Vault opens every door simultaneously."
         }
     },
-    "bossPromptDiscord": "Many-Exit Vault opens every door simultaneously.\n\nBehind each one is the same enormous shadow.\n\nUse /yes to enter or /no to decline whichever exit is\npretending to be an entrance.",
-    "bossPromptTwitch": "Many-Exit Vault opens every door simultaneously.\n\nBehind each one is the same enormous shadow.\n\nUse !yes to enter or !no to decline whichever exit is\npretending to be an entrance.",
-    "bossRetreatText": "You withdraw from Many-Exit Vault. The impossible guardian will wait.",
+    "bossPromptDiscord": "Many Exit Vault opens every door simultaneously.\n\nBehind each one is the same enormous shadow.\n\nUse /yes to enter or /no to decline whichever exit is pretending to be an entrance.",
+    "bossPromptTwitch": "Many Exit Vault opens every door simultaneously.\n\nBehind each one is the same enormous shadow.\n\nUse !yes to enter or !no to decline whichever exit is pretending to be an entrance.",
+    "bossRetreatText": "You withdraw from Many Exit Vault. The impossible guardian will wait.",
     "boss": {
         "enemyId": "horizonfold-ray-boss",
         "roomId": "boss",

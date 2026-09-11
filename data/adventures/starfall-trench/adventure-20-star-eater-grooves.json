@@ -1,12 +1,12 @@
 {
   "id": "star-eater-grooves",
   "number": 20,
-  "name": "Star-Eater Grooves",
+  "name": "Star Eater Grooves",
   "regionId": "starfall-trench",
   "enemyId": "star-eater-slug",
   "recommendedLevel": 8,
-  "introDiscord": "Smooth trails cut across the starstone where Star-Eater Slugs have slowly consumed anything luminous in their path. Shizuki called them 'cosmic lawnmowers.'",
-  "introTwitch": "Smooth trails cut across the starstone where Star-Eater Slugs have slowly consumed anything luminous in their path. Shizuki called them 'cosmic lawnmowers.'",
+  "introDiscord": "Smooth trails cut across the starstone where Star Eater Slugs have slowly consumed anything luminous in their path. Shizuki called them 'cosmic lawnmowers.'",
+  "introTwitch": "Smooth trails cut across the starstone where Star Eater Slugs have slowly consumed anything luminous in their path. Shizuki called them 'cosmic lawnmowers.'",
   "startRoomId": "star-eater-grooves-approach",
   "rooms": {
     "star-eater-grooves-approach": {
@@ -32,7 +32,7 @@
           "type": "combat",
           "nextRoomId": "star-eater-grooves-depths",
           "enemyId": "star-eater-slug",
-          "message": "A Star-Eater Slug slowly turns toward you.\n\nVery slowly.\n\nMenacingly slowly."
+          "message": "A Star Eater Slug slowly turns toward you.\n\nVery slowly.\n\nMenacingly slowly."
         }
       }
     },
@@ -43,7 +43,7 @@
           "type": "combat",
           "nextRoomId": "star-eater-grooves-threshold",
           "enemyId": "star-eater-slug",
-          "message": "A Star-Eater Slug occupies the entire route.\n\nIt is not fast.\n\nIt is extremely committed."
+          "message": "A Star Eater Slug occupies the entire route.\n\nIt is not fast.\n\nIt is extremely committed."
         },
         "right": {
           "type": "empty",
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "star-eater-grooves-threshold",
-          "message": "A star-chart coffer survived behind a ridge.",
+          "message": "A star chart coffer survived behind a ridge.",
           "reward": {
             "min": 91,
             "max": 132
@@ -68,7 +68,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A meteor-iron reliquary rests inside an untouched pocket.",
+          "message": "A meteor iron reliquary rests inside an untouched pocket.",
           "reward": {
             "min": 103,
             "max": 144
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "A colossal luminous Slug rises from the gnawed starstone.\n\nConstellation Devourer reveals itself!"
   },
-  "completionText": "\"The Devourer retreats.\n\nSeveral tiny Star-Eater Slugs immediately begin cleaning up the battlefield.\n\nEfficient.\"\n\n\n#################################################################"
+  "completionText": "\"The Devourer retreats.\n\nSeveral tiny Star Eater Slugs immediately begin cleaning up the battlefield.\n\nEfficient.\"\n\n#################################################################"
 }

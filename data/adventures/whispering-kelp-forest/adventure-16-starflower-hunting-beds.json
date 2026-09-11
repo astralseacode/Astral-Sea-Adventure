@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "predatory-starflower",
   "recommendedLevel": 15,
-  "introDiscord": "Fields of star-shaped flowers glow beneath the canopy. Small creatures\ndrift toward their light—and occasionally disappear between the petals.\nStarmaw Blossoms have perfected looking beautiful right up until lunch.",
-  "introTwitch": "Fields of star-shaped flowers glow beneath the canopy. Small creatures\ndrift toward their light—and occasionally disappear between the petals.\nStarmaw Blossoms have perfected looking beautiful right up until lunch.",
+  "introDiscord": "Fields of star shaped flowers glow beneath the canopy. Small creatures drift toward their light—and occasionally disappear between the petals. Starmaw Blossoms have perfected looking beautiful right up until lunch.",
+  "introTwitch": "Fields of star shaped flowers glow beneath the canopy. Small creatures drift toward their light—and occasionally disappear between the petals. Starmaw Blossoms have perfected looking beautiful right up until lunch.",
   "startRoomId": "starflower-hunting-beds-approach",
   "rooms": {
     "starflower-hunting-beds-approach": {
-      "prompt": "Three paths wind through glowing starflowers. Several blossoms appear\nto be watching you despite having no visible eyes.",
+      "prompt": "Three paths wind through glowing starflowers. Several blossoms appear to be watching you despite having no visible eyes.",
       "choices": {
         "left": {
           "type": "combat",
@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "starflower-hunting-beds-depths",
-          "message": "An offering basket sits between harmless blossoms. You poke every flower\nbefore recovering the Star Candies.\n\nCompletely reasonable behavior.",
+          "message": "An offering basket sits between harmless blossoms. You poke every flower before recovering the Star Candies.\n\nCompletely reasonable behavior.",
           "reward": {
             "min": 125,
             "max": 165
@@ -36,14 +36,14 @@
       }
     },
     "starflower-hunting-beds-depths": {
-      "prompt": "Living rootways pass through denser flowerbeds where glowing pollen\ndrifts across three passages.",
+      "prompt": "Living rootways pass through denser flowerbeds where glowing pollen drifts across three passages.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "starflower-hunting-beds-threshold",
           "healAmount": 35,
           "message": "A moonblossom pool rests inside a ring of harmless flowers.\n\nShizuki wrote:\n\n'Checked all twelve.\n\nNo teeth.\n\nI deserve recognition for thoroughness.'",
-          "fullHpMessage": "You leave the pool untouched. Shizuki's botanical inspection remains\nvalid."
+          "fullHpMessage": "You leave the pool untouched. Shizuki's botanical inspection remains valid."
         },
         "right": {
           "type": "combat",
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "starflower-hunting-beds-threshold",
-          "message": "Broad silver kelp hides Star Candies beneath a giant starflower leaf.\nThe nearby blossoms remain suspiciously innocent.",
+          "message": "Broad silver kelp hides Star Candies beneath a giant starflower leaf. The nearby blossoms remain suspiciously innocent.",
           "reward": {
             "min": 137,
             "max": 177
@@ -63,7 +63,7 @@
       }
     },
     "starflower-hunting-beds-threshold": {
-      "prompt": "Moonlit fronds circle Pollenmoon Pit. Three final paths cross through\nflowers large enough to swallow a traveler.",
+      "prompt": "Moonlit fronds circle Pollenmoon Pit. Three final paths cross through flowers large enough to swallow a traveler.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -79,7 +79,7 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 40,
           "message": "Restorative sap waits beside Shizuki's note:\n\n'Plant bite medicine.\n\nThe fact this exists says enough.'",
-          "fullHpMessage": "You leave the plant-bite medicine untouched and continue respecting\npersonal space."
+          "fullHpMessage": "You leave the plant-bite medicine untouched and continue respecting personal space."
         },
         "forward": {
           "type": "combat",
@@ -95,13 +95,13 @@
       "prompt": "Every Starmaw Blossom around the Pit suddenly closes."
     }
   },
-  "bossPromptDiscord": "The glowing pollen stops drifting.\n\nAt the center of Pollenmoon Pit, one enormous flower remains open.\n\nIts petals slowly turn toward you.\n\nThen another layer of petals unfolds.\n\nThen another.\n\nUse /yes to approach the Pit or /no to leave the world's least\ntrustworthy flower alone.",
-  "bossPromptTwitch": "The glowing pollen stops drifting.\n\nAt the center of Pollenmoon Pit, one enormous flower remains open.\n\nIts petals slowly turn toward you.\n\nThen another layer of petals unfolds.\n\nThen another.\n\nUse !yes to approach the Pit or !no to leave the world's least\ntrustworthy flower alone.",
-  "bossRetreatText": "You retreat from the flowerbed. Several ordinary Starmaws reopen as if\nnothing happened.",
+  "bossPromptDiscord": "The glowing pollen stops drifting.\n\nAt the center of Pollenmoon Pit, one enormous flower remains open.\n\nIts petals slowly turn toward you.\n\nThen another layer of petals unfolds.\n\nThen another.\n\nUse /yes to approach the Pit or /no to leave the world's least trustworthy flower alone.",
+  "bossPromptTwitch": "The glowing pollen stops drifting.\n\nAt the center of Pollenmoon Pit, one enormous flower remains open.\n\nIts petals slowly turn toward you.\n\nThen another layer of petals unfolds.\n\nThen another.\n\nUse !yes to approach the Pit or !no to leave the world's least trustworthy flower alone.",
+  "bossRetreatText": "You retreat from the flowerbed. Several ordinary Starmaws reopen as if nothing happened.",
   "boss": {
     "enemyId": "devouring-starflower-boss",
     "roomId": "boss",
     "revealText": "The central blossom tears open into a massive ring of teeth.\n\nDevouring Starflower reveals itself!"
   },
-  "completionText": "\"The Devouring Starflower folds back into the Pit.\n\nThe surrounding flowers reopen peacefully.\n\nYou trust none of them.\"\n\n\n#################################################################"
+  "completionText": "\"The Devouring Starflower folds back into the Pit.\n\nThe surrounding flowers reopen peacefully.\n\nYou trust none of them.\"\n\n#################################################################"
 }

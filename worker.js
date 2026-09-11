@@ -79,7 +79,7 @@ const SHOP_INSUFFICIENT_MESSAGES = [
   (shortfall) =>
     `"The Berry says no. It has very strict financial standards. You need ${shortfall} more Star Candies."`,
   (shortfall) =>
-    `"I could lower the price, but then this suspicious rock-based business would collapse. You need ${shortfall} more."`,
+    `"I could lower the price, but then this suspicious rock based business would collapse. You need ${shortfall} more."`,
 ];
 const SHOP_SESSION_TTL_MS = 10 * 60 * 1000;
 const SHOP_OUTSIDE_MESSAGES = [
@@ -89,7 +89,7 @@ const SHOP_OUTSIDE_MESSAGES = [
     "attempting to throw money at strangers.\"",
   (shopCommand) =>
     "There is no merchant here. There isn't even a convincing " +
-    `merchant-shaped rock. Use ${shopCommand} to find the Shop again.`,
+    `merchant shaped rock. Use ${shopCommand} to find the Shop again.`,
   (shopCommand) =>
     "You hold out your Star Candies expectantly. Nothing happens. Somewhere " +
     "in the distance, a familiar elf shouts, \"You have to come to the Shop first!\" " +

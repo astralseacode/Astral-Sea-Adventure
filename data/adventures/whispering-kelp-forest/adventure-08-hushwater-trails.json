@@ -5,17 +5,17 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "hushwater-stagfish",
   "recommendedLevel": 12,
-  "introDiscord": "The forest becomes strangely quiet. Pale Hushwater Stagfish step\nbetween silver roots like deer beneath moonlight, their branching fins\nbarely disturbing the water.",
-  "introTwitch": "The forest becomes strangely quiet. Pale Hushwater Stagfish step\nbetween silver roots like deer beneath moonlight, their branching fins\nbarely disturbing the water.",
+  "introDiscord": "The forest becomes strangely quiet. Pale Hushwater Stagfish step between silver roots like deer beneath moonlight, their branching fins barely disturbing the water.",
+  "introTwitch": "The forest becomes strangely quiet. Pale Hushwater Stagfish step between silver roots like deer beneath moonlight, their branching fins barely disturbing the water.",
   "startRoomId": "hushwater-trails-approach",
   "rooms": {
     "hushwater-trails-approach": {
-      "prompt": "Three trails pass beneath arching roots. Even the drifting Fae lights\nseem subdued here.",
+      "prompt": "Three trails pass beneath arching roots. Even the drifting Fae lights seem subdued here.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "hushwater-trails-depths",
-          "message": "Broad silver kelp hides a small offering bundle. The Star Candies\ninside have been arranged beneath a tiny carved antler symbol.",
+          "message": "Broad silver kelp hides a small offering bundle. The Star Candies inside have been arranged beneath a tiny carved antler symbol.",
           "reward": {
             "min": 165,
             "max": 202
@@ -26,7 +26,7 @@
           "nextRoomId": "hushwater-trails-depths",
           "healAmount": 55,
           "message": "A moonblossom pool glows beside Shizuki's handwriting:\n\n'Quiet place.\n\nGlimmer fell asleep on my hood.\n\nI am legally not allowed to move now.'",
-          "fullHpMessage": "You leave the pool untouched and let the silence remain exactly as it\nis."
+          "fullHpMessage": "You leave the pool untouched and let the silence remain exactly as it is."
         },
         "forward": {
           "type": "combat",
@@ -37,13 +37,13 @@
       }
     },
     "hushwater-trails-depths": {
-      "prompt": "Moonlit fronds form a quiet grove around three narrow paths. Pale\nhooflike marks trail across the silt.",
+      "prompt": "Moonlit fronds form a quiet grove around three narrow paths. Pale hooflike marks trail across the silt.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "hushwater-trails-threshold",
           "enemyId": "hushwater-stagfish",
-          "message": "A Stagfish moves between the roots so silently that you notice its\nreflection before the creature itself."
+          "message": "A Stagfish moves between the roots so silently that you notice its reflection before the creature itself."
         },
         "right": {
           "type": "empty",
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "hushwater-trails-threshold",
-          "message": "A moss-covered shrine coffer sits beneath a carved hart. Inside are\nStar Candies and several carefully placed silver leaves.",
+          "message": "A moss covered shrine coffer sits beneath a carved hart. Inside are Star Candies and several carefully placed silver leaves.",
           "reward": {
             "min": 177,
             "max": 214
@@ -63,12 +63,12 @@
       }
     },
     "hushwater-trails-threshold": {
-      "prompt": "Towering kelp frames Silent Hart Shrine. Three final routes cross a\nfloor untouched except for branching tracks.",
+      "prompt": "Towering kelp frames Silent Hart Shrine. Three final routes cross a floor untouched except for branching tracks.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "An offering basket hidden inside a root contains Star Candies. A young\nStagfish watches from the kelp but makes no move to stop you.",
+          "message": "An offering basket hidden inside a root contains Star Candies. A young Stagfish watches from the kelp but makes no move to stop you.",
           "reward": {
             "min": 189,
             "max": 226
@@ -78,7 +78,7 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "hushwater-stagfish",
-          "message": "A Hushwater Stagfish steps between you and the Shrine, antler fins\nglowing softly beneath the moonlit canopy."
+          "message": "A Hushwater Stagfish steps between you and the Shrine, antler fins glowing softly beneath the moonlit canopy."
         },
         "forward": {
           "type": "healing",
@@ -95,13 +95,13 @@
       "prompt": "Every Hushwater Stagfish along the trail bows its head toward the Shrine."
     }
   },
-  "bossPromptDiscord": "The current stills around Silent Hart Shrine.\n\nA pair of enormous branching fins rises behind the pale roots, crowned\nin moonlight.\n\nThe smaller Stagfish quietly step aside.\n\nUse /yes to approach the Shrine or /no to leave the silent guardian\nundisturbed.",
-  "bossPromptTwitch": "The current stills around Silent Hart Shrine.\n\nA pair of enormous branching fins rises behind the pale roots, crowned\nin moonlight.\n\nThe smaller Stagfish quietly step aside.\n\nUse !yes to approach the Shrine or !no to leave the silent guardian\nundisturbed.",
-  "bossRetreatText": "You step away. The enormous silhouette remains within the moonlit roots,\nwatching without pursuit.",
+  "bossPromptDiscord": "The current stills around Silent Hart Shrine.\n\nA pair of enormous branching fins rises behind the pale roots, crowned in moonlight.\n\nThe smaller Stagfish quietly step aside.\n\nUse /yes to approach the Shrine or /no to leave the silent guardian undisturbed.",
+  "bossPromptTwitch": "The current stills around Silent Hart Shrine.\n\nA pair of enormous branching fins rises behind the pale roots, crowned in moonlight.\n\nThe smaller Stagfish quietly step aside.\n\nUse !yes to approach the Shrine or !no to leave the silent guardian undisturbed.",
+  "bossRetreatText": "You step away. The enormous silhouette remains within the moonlit roots, watching without pursuit.",
   "boss": {
     "enemyId": "crown-antler-stagfish-boss",
     "roomId": "boss",
-    "revealText": "A majestic Stagfish emerges beneath a crown of branching light.\n\nCrown-Antler Stagfish reveals itself!"
+    "revealText": "A majestic Stagfish emerges beneath a crown of branching light.\n\nCrown Antler Stagfish reveals itself!"
   },
-  "completionText": "\"The Crown-Antler Stagfish retreats into the silver forest.\n\nThe other Stagfish return to the trail.\n\nFor a moment, the whole forest seems to bow with them.\"\n\n\n#################################################################"
+  "completionText": "\"The Crown Antler Stagfish retreats into the silver forest.\n\nThe other Stagfish return to the trail.\n\nFor a moment, the whole forest seems to bow with them.\"\n\n#################################################################"
 }

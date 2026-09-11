@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "lanterns-below-the-falling-sky-depths",
-          "message": "A meteor-iron container lies wedged beneath fallen starstone. Several Lanternfish are staring at it but seem disappointed by its complete lack of edibility.",
+          "message": "A meteor iron container lies wedged beneath fallen starstone. Several Lanternfish are staring at it but seem disappointed by its complete lack of edibility.",
           "reward": {
             "min": 145,
             "max": 180
@@ -57,7 +57,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "lanterns-below-the-falling-sky-threshold",
-          "message": "\"A Berry sits beneath Shizuki's abandoned star chart. Every Lanternfish-shaped mark has been aggressively circled.\n\nA note reads: \"New navigation rule: if the constellation bites you, it is not a constellation.\"\"\n\n---------------- ROOM 3 — THRESHOLD ----------------",
+          "message": "\"A Berry sits beneath Shizuki's abandoned star chart. Every Lanternfish shaped mark has been aggressively circled.\n\nA note reads: \"New navigation rule: if the constellation bites you, it is not a constellation.\"\"\n\n---------------- ROOM 3 — THRESHOLD ----------------",
           "berries": 1
         }
       }
@@ -75,7 +75,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A buried star-chart coffer opens beneath the luminous silt. Someone has drawn tiny angry faces beside every Lanternfish symbol.",
+          "message": "A buried star chart coffer opens beneath the luminous silt. Someone has drawn tiny angry faces beside every Lanternfish symbol.",
           "reward": {
             "min": 169,
             "max": 204
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "meteor-lure-angler-boss",
     "roomId": "boss",
-    "revealText": "The brilliant lure swings aside and an enormous jaw surges from the darkness.\n\nMeteor-Lure Angler reveals itself!"
+    "revealText": "The brilliant lure swings aside and an enormous jaw surges from the darkness.\n\nMeteor Lure Angler reveals itself!"
   },
-  "completionText": "\"The Meteor-Lure Angler disappears into the dark.\n\nThe remaining Lanternfish return to the water above like tiny stars.\n\nYou still don't trust any of them.\"\n\n\n#################################################################"
+  "completionText": "\"The Meteor Lure Angler disappears into the dark.\n\nThe remaining Lanternfish return to the water above like tiny stars.\n\nYou still don't trust any of them.\"\n\n#################################################################"
 }

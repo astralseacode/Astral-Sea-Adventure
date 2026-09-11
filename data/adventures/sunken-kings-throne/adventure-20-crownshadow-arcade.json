@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "crownshadow-stalker",
     "recommendedLevel": 43,
-    "introDiscord": "A covered shopping arcade winds beneath the palace.\n\nOld boutiques, cafés, jewelry stalls, and tailoring shops sit beneath\nshadowed arches.\n\nShizuki clearly had the time of her life.",
-    "introTwitch": "A covered shopping arcade winds beneath the palace.\n\nOld boutiques, cafés, jewelry stalls, and tailoring shops sit beneath\nshadowed arches.\n\nShizuki clearly had the time of her life.",
+    "introDiscord": "A covered shopping arcade winds beneath the palace. Old boutiques, cafés, jewelry stalls, and tailoring shops sit beneath shadowed arches.\n\nShizuki clearly had the time of her life.",
+    "introTwitch": "A covered shopping arcade winds beneath the palace. Old boutiques, cafés, jewelry stalls, and tailoring shops sit beneath shadowed arches.\n\nShizuki clearly had the time of her life.",
     "startRoomId": "crownshadow-arcade-approach",
     "rooms": {
         "crownshadow-arcade-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The arcade lights dim."
         }
     },
-    "bossPromptDiscord": "The arcade lights dim.\n\nAt the far end, one shadowed chamberlain steps from an abandoned royal\nboutique.\n\nUse /yes to enter Shadowed Audience or /no to continue\nwindow shopping.",
-    "bossPromptTwitch": "The arcade lights dim.\n\nAt the far end, one shadowed chamberlain steps from an abandoned royal\nboutique.\n\nUse !yes to enter Shadowed Audience or !no to continue\nwindow shopping.",
+    "bossPromptDiscord": "The arcade lights dim.\n\nAt the far end, one shadowed chamberlain steps from an abandoned royal boutique.\n\nUse /yes to enter Shadowed Audience or /no to continue window shopping.",
+    "bossPromptTwitch": "The arcade lights dim.\n\nAt the far end, one shadowed chamberlain steps from an abandoned royal boutique.\n\nUse !yes to enter Shadowed Audience or !no to continue window shopping.",
     "bossRetreatText": "You withdraw from Shadowed Audience. The royal challenge will wait.",
     "boss": {
         "enemyId": "umbral-chamberlain-boss",

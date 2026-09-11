@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "wakefoam-medusa",
     "recommendedLevel": 22,
-    "introDiscord": "Foaming currents erupt through the Leviathan graveyard like underwater\nstorms.\n\nWakefoam Medusas drift through them like living storm clouds.",
-    "introTwitch": "Foaming currents erupt through the Leviathan graveyard like underwater\nstorms.\n\nWakefoam Medusas drift through them like living storm clouds.",
+    "introDiscord": "Foaming currents erupt through the Leviathan graveyard like underwater storms. Wakefoam Medusas drift through them like living storm clouds.",
+    "introTwitch": "Foaming currents erupt through the Leviathan graveyard like underwater storms. Wakefoam Medusas drift through them like living storm clouds.",
     "startRoomId": "wakefoam-tempest-approach",
     "rooms": {
         "wakefoam-tempest-approach": {
@@ -32,7 +32,7 @@
                     "type": "combat",
                     "nextRoomId": "wakefoam-tempest-depths",
                     "enemyId": "wakefoam-medusa",
-                    "message": "A Wakefoam Medusa descends through the white current like a thundercloud\nwith tentacles."
+                    "message": "A Wakefoam Medusa descends through the white current like a thundercloud with tentacles."
                 }
             }
         },
@@ -95,8 +95,8 @@
             "prompt": "Every Wakefoam Medusa rises out of Thunderwell."
         }
     },
-    "bossPromptDiscord": "Every Wakefoam Medusa rises out of Thunderwell.\n\nOne enormous bell-shaped shadow remains beneath the storm.\n\nUse /yes to enter Foaming Thunderwell or /no to wait for weather that\ncontains fewer tentacles.",
-    "bossPromptTwitch": "Every Wakefoam Medusa rises out of Thunderwell.\n\nOne enormous bell-shaped shadow remains beneath the storm.\n\nUse !yes to enter Foaming Thunderwell or !no to wait for weather that\ncontains fewer tentacles.",
+    "bossPromptDiscord": "Every Wakefoam Medusa rises out of Thunderwell.\n\nOne enormous bell shaped shadow remains beneath the storm.\n\nUse /yes to enter Foaming Thunderwell or /no to wait for weather that contains fewer tentacles.",
+    "bossPromptTwitch": "Every Wakefoam Medusa rises out of Thunderwell.\n\nOne enormous bell shaped shadow remains beneath the storm.\n\nUse !yes to enter Foaming Thunderwell or !no to wait for weather that contains fewer tentacles.",
     "bossRetreatText": "You retreat beyond the storm current.",
     "boss": {
         "enemyId": "stormbell-medusa-boss",

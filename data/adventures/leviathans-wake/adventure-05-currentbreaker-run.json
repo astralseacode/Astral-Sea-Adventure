@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "currentbreaker-shark",
     "recommendedLevel": 21,
-    "introDiscord": "A permanent current races along the groove once carved by a passing\nLeviathan.\n\nCurrentbreaker Sharks ride the ancient wake like it was built for them.\n\nTechnically, it was.",
-    "introTwitch": "A permanent current races along the groove once carved by a passing\nLeviathan.\n\nCurrentbreaker Sharks ride the ancient wake like it was built for them.\n\nTechnically, it was.",
+    "introDiscord": "A permanent current races along the groove once carved by a passing Leviathan. Currentbreaker Sharks ride the ancient wake like it was built for them.\n\nTechnically, it was.",
+    "introTwitch": "A permanent current races along the groove once carved by a passing Leviathan. Currentbreaker Sharks ride the ancient wake like it was built for them.\n\nTechnically, it was.",
     "startRoomId": "currentbreaker-run-approach",
     "rooms": {
         "currentbreaker-run-approach": {
@@ -76,7 +76,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "currentbreaker-shark",
-                    "message": "A Currentbreaker Shark uses the colliding wakes to change direction\nalmost instantly."
+                    "message": "A Currentbreaker Shark uses the colliding wakes to change direction almost instantly."
                 },
                 "forward": {
                     "type": "treasure",
@@ -95,8 +95,8 @@
             "prompt": "Every Currentbreaker Shark abandons Breaker Crown."
         }
     },
-    "bossPromptDiscord": "Every Currentbreaker Shark abandons Breaker Crown.\n\nThe ancient wake begins circling one enormous fin.\n\nUse /yes to enter Breaker Crown or /no to leave professional current\nsurfing to the professionals.",
-    "bossPromptTwitch": "Every Currentbreaker Shark abandons Breaker Crown.\n\nThe ancient wake begins circling one enormous fin.\n\nUse !yes to enter Breaker Crown or !no to leave professional current\nsurfing to the professionals.",
+    "bossPromptDiscord": "Every Currentbreaker Shark abandons Breaker Crown.\n\nThe ancient wake begins circling one enormous fin.\n\nUse /yes to enter Breaker Crown or /no to leave professional current surfing to the professionals.",
+    "bossPromptTwitch": "Every Currentbreaker Shark abandons Breaker Crown.\n\nThe ancient wake begins circling one enormous fin.\n\nUse !yes to enter Breaker Crown or !no to leave professional current surfing to the professionals.",
     "bossRetreatText": "You retreat from the racing wake.\n\nYour remaining socks survive.",
     "boss": {
         "enemyId": "maelstrom-apex-boss",

@@ -5,8 +5,8 @@
   "regionId": "moonlit-reef",
   "enemyId": "moon-puff",
   "recommendedLevel": 1,
-  "introDiscord": "The Lunar Current rises toward a coral aerie wrapped in enchanted sea-foam. Puffy white shapes drift between weightless branches, little nests cling to every ledge, and something overhead releases the tiniest, sleepiest snore.",
-  "introTwitch": "The Lunar Current rises toward a coral aerie wrapped in enchanted sea-foam. Puffy white shapes drift between weightless branches, little nests cling to every ledge, and something overhead releases the tiniest, sleepiest snore.",
+  "introDiscord": "The Lunar Current rises toward a coral aerie wrapped in enchanted sea foam. Puffy white shapes drift between weightless branches, little nests cling to every ledge, and something overhead releases the tiniest, sleepiest snore.",
+  "introTwitch": "The Lunar Current rises toward a coral aerie wrapped in enchanted sea foam. Puffy white shapes drift between weightless branches, little nests cling to every ledge, and something overhead releases the tiniest, sleepiest snore.",
   "startRoomId": "cloudcoral-rise",
   "rooms": {
     "cloudcoral-rise": {
@@ -25,7 +25,7 @@
           "type": "healing",
           "nextRoomId": "drowsing-terrace",
           "healAmount": 25,
-          "message": "Beneath a foam-covered ledge, you find Shizuki's old field kit being used as part of a Moon Puff nest. The surviving bottle reads: \"Cloudmint draught. May cause naps, so run first. Learned that order the hard way.\"",
+          "message": "Beneath a foam covered ledge, you find Shizuki's old field kit being used as part of a Moon Puff nest. The surviving bottle reads: \"Cloudmint draught. May cause naps, so run first. Learned that order the hard way.\"",
           "fullHpMessage": "The Cloudmint draught can stay inside its extremely fluffy new home. You're already healthy, and waking the Moon Puff sleeping on the lid seems medically unnecessary."
         },
         "forward": {
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer hangs from a nest by a ribbon of foam. Inside are Star Candies and what appears to be a small collection of stolen buttons. Shizuki's trade partner may have been doing very well for itself.",
+          "message": "A moon shell coffer hangs from a nest by a ribbon of foam. Inside are Star Candies and what appears to be a small collection of stolen buttons. Shizuki's trade partner may have been doing very well for itself.",
           "reward": {
             "min": 35,
             "max": 60
@@ -92,7 +92,7 @@
     "boss-antechamber": {
       "name": "Quietstorm Nest",
       "type": "boss-prompt",
-      "prompt": "The loft opens into a vast nest suspended inside a slow-turning cloud. Dozens of Moon Puffs are sleeping around its edges. In the center, one enormous mound of silver-white fluff rises and falls with each deep breath."
+      "prompt": "The loft opens into a vast nest suspended inside a slow turning cloud. Dozens of Moon Puffs are sleeping around its edges. In the center, one enormous mound of silver white fluff rises and falls with each deep breath."
     }
   },
   "bossPromptDiscord": "A tremendous yawn rolls through Quietstorm Nest.\n\nThe surrounding foam begins circling like a tiny storm as every smaller Moon Puff hurriedly relocates to a safer branch.\n\nThe enormous pile of fluff in the center opens two glowing eyes.\n\nUse /yes to approach or /no to let the giant Puff finish its nap.",

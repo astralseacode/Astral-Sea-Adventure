@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "kelpweave-spider",
   "recommendedLevel": 16,
-  "introDiscord": "Sheets of kelp-silk stretch between the roots like tapestries.\nKelpweave Spiders move across them with impossible grace, turning the\nforest into equal parts gallery and web.",
-  "introTwitch": "Sheets of kelp-silk stretch between the roots like tapestries.\nKelpweave Spiders move across them with impossible grace, turning the\nforest into equal parts gallery and web.",
+  "introDiscord": "Sheets of kelp silk stretch between the roots like tapestries. Kelpweave Spiders move across them with impossible grace, turning the forest into equal parts gallery and web.",
+  "introTwitch": "Sheets of kelp silk stretch between the roots like tapestries. Kelpweave Spiders move across them with impossible grace, turning the forest into equal parts gallery and web.",
   "startRoomId": "kelpweave-galleries-approach",
   "rooms": {
     "kelpweave-galleries-approach": {
-      "prompt": "Three routes pass beneath woven scenes of moons, fish, travelers, and\nseveral suspiciously accurate depictions of people getting stuck.",
+      "prompt": "Three routes pass beneath woven scenes of moons, fish, travelers, and several suspiciously accurate depictions of people getting stuck.",
       "choices": {
         "left": {
           "type": "empty",
@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "kelpweave-galleries-depths",
-          "message": "A shrine coffer has been wrapped in decorative kelp-silk. Opening it\nreveals Star Candies beneath a beautifully woven lid.\n\nFive-star packaging.",
+          "message": "A shrine coffer has been wrapped in decorative kelp silk. Opening it reveals Star Candies beneath a beautifully woven lid.\n\nFive-star packaging.",
           "reward": {
             "min": 115,
             "max": 155
@@ -36,25 +36,25 @@
       }
     },
     "kelpweave-galleries-depths": {
-      "prompt": "Towering kelp columns support three gallery walks suspended on woven\nbridges.",
+      "prompt": "Towering kelp columns support three gallery walks suspended on woven bridges.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "kelpweave-galleries-threshold",
           "enemyId": "kelpweave-spider",
-          "message": "A Kelpweave Spider races across a thread too thin to see.\n\nYou notice the web only when the Spider is already standing in front of\nyou."
+          "message": "A Kelpweave Spider races across a thread too thin to see. You notice the web only when the Spider is already standing in front of you."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "kelpweave-galleries-threshold",
           "healAmount": 30,
           "message": "A moonblossom pool rests beneath a little silk canopy.\n\nShizuki wrote:\n\n'Spider built roof over my camp.\n\nDid not ask.\n\nStill grateful.'",
-          "fullHpMessage": "You leave the pool untouched beneath Shizuki's professionally installed\nspider roof."
+          "fullHpMessage": "You leave the pool untouched beneath Shizuki's professionally installed spider roof."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "kelpweave-galleries-threshold",
-          "message": "An offering basket has been woven into the gallery wall. Inside are\nStar Candies surrounded by a silk border shaped like tiny stars.",
+          "message": "An offering basket has been woven into the gallery wall. Inside are Star Candies surrounded by a silk border shaped like tiny stars.",
           "reward": {
             "min": 127,
             "max": 167
@@ -63,12 +63,12 @@
       }
     },
     "kelpweave-galleries-threshold": {
-      "prompt": "Living roots converge on Tide-Silk Rotunda. Three final approaches hang\nbetween enormous layered tapestries.",
+      "prompt": "Living roots converge on Tide Silk Rotunda. Three final approaches hang between enormous layered tapestries.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Broad silver kelp hides a Star Candy bundle behind an unfinished\ntapestry.\n\nThe missing section appears to be shaped exactly like you.\n\nUnsettling artistic process.",
+          "message": "Broad silver kelp hides a Star Candy bundle behind an unfinished tapestry.\n\nThe missing section appears to be shaped exactly like you.\n\nUnsettling artistic process.",
           "reward": {
             "min": 139,
             "max": 179
@@ -85,23 +85,23 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 35,
           "message": "Restorative sap sits beneath Shizuki's note:\n\n'For web-related falls.\n\nThere were several.\n\nNo further questions.'",
-          "fullHpMessage": "You leave the fall medicine untouched and avoid reviewing Shizuki's\nincident history."
+          "fullHpMessage": "You leave the fall medicine untouched and avoid reviewing Shizuki's incident history."
         }
       }
     },
     "boss-antechamber": {
-      "name": "Tide-Silk Rotunda",
+      "name": "Tide Silk Rotunda",
       "type": "boss-prompt",
       "prompt": "Every woven bridge in the Rotunda tightens simultaneously."
     }
   },
-  "bossPromptDiscord": "The enormous tapestries pull upward like curtains.\n\nAt their center hangs a web spanning the entire Tide-Silk Rotunda.\n\nSomething vast moves across it without making a single strand tremble.\n\nUse /yes to enter the Rotunda or /no to leave the master weaver's\ngallery untouched.",
-  "bossPromptTwitch": "The enormous tapestries pull upward like curtains.\n\nAt their center hangs a web spanning the entire Tide-Silk Rotunda.\n\nSomething vast moves across it without making a single strand tremble.\n\nUse !yes to enter the Rotunda or !no to leave the master weaver's\ngallery untouched.",
-  "bossRetreatText": "You withdraw beneath the hanging tapestries. The enormous web remains\nperfectly still behind you.",
+  "bossPromptDiscord": "The enormous tapestries pull upward like curtains.\n\nAt their center hangs a web spanning the entire Tide Silk Rotunda.\n\nSomething vast moves across it without making a single strand tremble.\n\nUse /yes to enter the Rotunda or /no to leave the master weaver's gallery untouched.",
+  "bossPromptTwitch": "The enormous tapestries pull upward like curtains.\n\nAt their center hangs a web spanning the entire Tide Silk Rotunda.\n\nSomething vast moves across it without making a single strand tremble.\n\nUse !yes to enter the Rotunda or !no to leave the master weaver's gallery untouched.",
+  "bossRetreatText": "You withdraw beneath the hanging tapestries. The enormous web remains perfectly still behind you.",
   "boss": {
     "enemyId": "grand-loom-spider-boss",
     "roomId": "boss",
-    "revealText": "Silver threads snap taut as a colossal Spider descends into the\nRotunda.\n\nMoonloom Weaver reveals itself!"
+    "revealText": "Silver threads snap taut as a colossal Spider descends into the Rotunda.\n\nMoonloom Weaver reveals itself!"
   },
-  "completionText": "\"The Moonloom Weaver retreats into the highest web.\n\nThe smaller Spiders immediately begin repairing the gallery.\n\nOne is already weaving the battle.\n\nYour likeness is questionable.\"\n\n\n#################################################################"
+  "completionText": "\"The Moonloom Weaver retreats into the highest web.\n\nThe smaller Spiders immediately begin repairing the gallery.\n\nOne is already weaving the battle.\n\nYour likeness is questionable.\"\n\n#################################################################"
 }

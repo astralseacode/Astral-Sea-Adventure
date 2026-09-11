@@ -42,7 +42,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "celestial-track",
-          "message": "A moon-shell coffer is attached to one rotating spoke. After completing an unnecessary full orbit, you finally reach it and collect Star Candies.",
+          "message": "A moon shell coffer is attached to one rotating spoke. After completing an unnecessary full orbit, you finally reach it and collect Star Candies.",
           "reward": {
             "min": 55,
             "max": 85
@@ -92,7 +92,7 @@
     "boss-antechamber": {
       "name": "Weaver Meridian",
       "type": "boss-prompt",
-      "prompt": "All of the orrery's moving tracks converge at one brilliant meridian. Half-woven constellations hang above a central mechanism large enough to rearrange the sky."
+      "prompt": "All of the orrery's moving tracks converge at one brilliant meridian. Half woven constellations hang above a central mechanism large enough to rearrange the sky."
     }
   },
   "bossPromptDiscord": "The entire orrery stops.\n\nEvery Crawler freezes.\n\nThen the constellations begin moving without their help.\n\nAt the center, something enormous is weaving the stars into a new pattern.\n\nUse /yes to enter the Meridian or /no to leave destiny unsupervised.",

@@ -5,8 +5,8 @@
   "regionId": "moonlit-reef",
   "enemyId": "moonreef-sovereign",
   "recommendedLevel": 5,
-  "introDiscord": "At Moonlit Reef's farthest boundary, the Astral Tide and Lunar Current meet beneath a royal reef of towering coral. Old Moonkeeper banners drift above monumental roads leading toward a crown-shaped silhouette.",
-  "introTwitch": "At Moonlit Reef's farthest boundary, the Astral Tide and Lunar Current meet beneath a royal reef of towering coral. Old Moonkeeper banners drift above monumental roads leading toward a crown-shaped silhouette.",
+  "introDiscord": "At Moonlit Reef's farthest boundary, the Astral Tide and Lunar Current meet beneath a royal reef of towering coral. Old Moonkeeper banners drift above monumental roads leading toward a crown shaped silhouette.",
+  "introTwitch": "At Moonlit Reef's farthest boundary, the Astral Tide and Lunar Current meet beneath a royal reef of towering coral. Old Moonkeeper banners drift above monumental roads leading toward a crown shaped silhouette.",
   "startRoomId": "sovereign-approach",
   "rooms": {
     "sovereign-approach": {
@@ -55,7 +55,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "last-moonkeeper-way",
-          "message": "A moon-shell coffer sits beneath one broken standard. Opening it releases Star Candies and a tiny puff of ceremonial glitter. The ancient Moonkeepers had style.",
+          "message": "A moon shell coffer sits beneath one broken standard. Opening it releases Star Candies and a tiny puff of ceremonial glitter. The ancient Moonkeepers had style.",
           "reward": {
             "min": 105,
             "max": 150

@@ -144,7 +144,7 @@
                        "max":  230
                    },
         "xp":  35,
-        "message":  "Briar-like kelp plucks a harmless trinket from your bag and passes it from vine to vine. The chase winds through half the trail before the briars return it with theatrical innocence beside {reward} Star Candies and a Travel Note.",
+        "message":  "Briar like kelp plucks a harmless trinket from your bag and passes it from vine to vine. The chase winds through half the trail before the briars return it with theatrical innocence beside {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-07",
@@ -182,7 +182,7 @@
         "region":  "Whispering Kelp Forest",
         "rarity":  "uncommon",
         "weight":  45,
-        "title":  "Fae-Lure Lights",
+        "title":  "Fae Lure Lights",
         "reward":  {
                        "min":  215,
                        "max":  295
@@ -210,7 +210,7 @@
                        "max":  240
                    },
         "xp":  37,
-        "message":  "A moss-covered lump looks exactly like buried treasure. It contains one damp pebble. A second, even more suspicious lump nearby proves far more honest, unfolding to reveal {reward} Star Candies and a carefully wrapped Travel Note.",
+        "message":  "A moss covered lump looks exactly like buried treasure. It contains one damp pebble. A second, even more suspicious lump nearby proves far more honest, unfolding to reveal {reward} Star Candies and a carefully wrapped Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-10",
@@ -446,13 +446,13 @@
         "region":  "Whispering Kelp Forest",
         "rarity":  "uncommon",
         "weight":  35,
-        "title":  "Echo-Bark Stand",
+        "title":  "Echo Bark Stand",
         "reward":  {
                        "min":  215,
                        "max":  295
                    },
         "xp":  60,
-        "message":  "Echo-Bark repeats every sound it has heard. From deep in the old voices comes Shizuki saying, \"Don\u0027t repeat that.\" The entire grove immediately choruses, \"Don\u0027t repeat that.\" Their delighted echoes converge around {reward} Star Candies and an old Travel Note.",
+        "message":  "Echo Bark repeats every sound it has heard. From deep in the old voices comes Shizuki saying, \"Don\u0027t repeat that.\" The entire grove immediately choruses, \"Don\u0027t repeat that.\" Their delighted echoes converge around {reward} Star Candies and an old Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-21",
@@ -622,13 +622,13 @@
         "region":  "Whispering Kelp Forest",
         "rarity":  "rare",
         "weight":  10,
-        "title":  "Memory-Kelp Pool",
+        "title":  "Memory Kelp Pool",
         "reward":  {
                        "min":  360,
                        "max":  450
                    },
         "xp":  90,
-        "message":  "Memory-kelp fills the pool with hazy impressions of earlier travelers. A familiar white-haired elf repeatedly passes the same tree until her old reflection stops, stares at it, and realizes she has walked in circles. The memory fades, leaving {reward} Star Candies and her Travel Note behind.",
+        "message":  "Memory kelp fills the pool with hazy impressions of earlier travelers. A familiar white haired elf repeatedly passes the same tree until her old reflection stops, stares at it, and realizes she has walked in circles. The memory fades, leaving {reward} Star Candies and her Travel Note behind.",
         "itemDrops":  [
                           {
                               "id":  "whispering-kelp-forest-note-29",

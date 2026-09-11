@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "aurora-under-the-trench-depths",
-          "message": "A star-chart coffer glows beneath the aurora.",
+          "message": "A star chart coffer glows beneath the aurora.",
           "reward": {
             "min": 86,
             "max": 126
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "aurora-under-the-trench-threshold",
-          "message": "A meteor-iron reliquary hangs behind a ribbon of green light.",
+          "message": "A meteor iron reliquary hangs behind a ribbon of green light.",
           "reward": {
             "min": 98,
             "max": 138
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "polar-flare-wisp-boss",
     "roomId": "boss",
-    "revealText": "The aurora condenses into a blazing form.\n\nPolar-Flare Wisp reveals itself!"
+    "revealText": "The aurora condenses into a blazing form.\n\nPolar Flare Wisp reveals itself!"
   },
-  "completionText": "\"The aurora spreads peacefully across the trench again.\n\nShizuki's abandoned board remains nearby.\n\nDo not.\"\n\n\n#################################################################"
+  "completionText": "\"The aurora spreads peacefully across the trench again.\n\nShizuki's abandoned board remains nearby.\n\nDo not.\"\n\n#################################################################"
 }

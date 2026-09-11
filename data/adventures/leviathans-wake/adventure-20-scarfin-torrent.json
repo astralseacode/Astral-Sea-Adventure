@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "scarfin-barracuda",
     "recommendedLevel": 27,
-    "introDiscord": "A torrent rushes through old bite scars carved into Leviathan bone.\n\nScarfin Barracudas use the channels like racing lanes.",
-    "introTwitch": "A torrent rushes through old bite scars carved into Leviathan bone.\n\nScarfin Barracudas use the channels like racing lanes.",
+    "introDiscord": "A torrent rushes through old bite scars carved into Leviathan bone. Scarfin Barracudas use the channels like racing lanes.",
+    "introTwitch": "A torrent rushes through old bite scars carved into Leviathan bone. Scarfin Barracudas use the channels like racing lanes.",
     "startRoomId": "scarfin-torrent-approach",
     "rooms": {
         "scarfin-torrent-approach": {
@@ -63,7 +63,7 @@
             }
         },
         "scarfin-torrent-threshold": {
-            "prompt": "Bloodless Rapids churn around three bone-lined lanes.",
+            "prompt": "Bloodless Rapids churn around three bone lined lanes.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -95,8 +95,8 @@
             "prompt": "The rapids clear."
         }
     },
-    "bossPromptDiscord": "The rapids clear.\n\nA single enormous scarred Barracuda enters the course.\n\nUse /yes to enter Bloodless Rapids or /no to honor Shizuki's sensible\nretirement decision.",
-    "bossPromptTwitch": "The rapids clear.\n\nA single enormous scarred Barracuda enters the course.\n\nUse !yes to enter Bloodless Rapids or !no to honor Shizuki's sensible\nretirement decision.",
+    "bossPromptDiscord": "The rapids clear.\n\nA single enormous scarred Barracuda enters the course.\n\nUse /yes to enter Bloodless Rapids or /no to honor Shizuki's sensible retirement decision.",
+    "bossPromptTwitch": "The rapids clear.\n\nA single enormous scarred Barracuda enters the course.\n\nUse !yes to enter Bloodless Rapids or !no to honor Shizuki's sensible retirement decision.",
     "bossRetreatText": "You retire undefeated by technicality.",
     "boss": {
         "enemyId": "rendwake-barracuda-boss",

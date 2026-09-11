@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "riptide-hammerhead",
     "recommendedLevel": 23,
-    "introDiscord": "A violent riptide threads through ribs and wrecks ahead. Riptide\nHammerheads use the narrow channels like an obstacle course.",
-    "introTwitch": "A violent riptide threads through ribs and wrecks ahead. Riptide\nHammerheads use the narrow channels like an obstacle course.",
+    "introDiscord": "A violent riptide threads through ribs and wrecks ahead. Riptide Hammerheads use the narrow channels like an obstacle course.",
+    "introTwitch": "A violent riptide threads through ribs and wrecks ahead. Riptide Hammerheads use the narrow channels like an obstacle course.",
     "startRoomId": "riptide-gauntlet-approach",
     "rooms": {
         "riptide-gauntlet-approach": {
@@ -25,7 +25,7 @@
                     "type": "combat",
                     "nextRoomId": "riptide-gauntlet-depths",
                     "enemyId": "riptide-hammerhead",
-                    "message": "A Hammerhead shoots around the wreck and nearly clips the rib beside\nyou.\n\nExcellent turning radius.\n\nTerrible manners."
+                    "message": "A Hammerhead shoots around the wreck and nearly clips the rib beside you.\n\nExcellent turning radius.\n\nTerrible manners."
                 },
                 "forward": {
                     "type": "healing",
@@ -76,7 +76,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "riptide-hammerhead",
-                    "message": "A Hammerhead powers directly against the current before turning toward\nyou."
+                    "message": "A Hammerhead powers directly against the current before turning toward you."
                 },
                 "forward": {
                     "type": "treasure",
@@ -95,8 +95,8 @@
             "prompt": "Every ordinary Hammerhead clears the Gauntlet."
         }
     },
-    "bossPromptDiscord": "Every ordinary Hammerhead clears the Gauntlet.\n\nSomething enormous begins driving straight through the strongest\ncurrent.\n\nUse /yes to enter Hammer Current or /no to retire from Shizuki's\nunofficial obstacle course.",
-    "bossPromptTwitch": "Every ordinary Hammerhead clears the Gauntlet.\n\nSomething enormous begins driving straight through the strongest\ncurrent.\n\nUse !yes to enter Hammer Current or !no to retire from Shizuki's\nunofficial obstacle course.",
+    "bossPromptDiscord": "Every ordinary Hammerhead clears the Gauntlet.\n\nSomething enormous begins driving straight through the strongest current.\n\nUse /yes to enter Hammer Current or /no to retire from Shizuki's unofficial obstacle course.",
+    "bossPromptTwitch": "Every ordinary Hammerhead clears the Gauntlet.\n\nSomething enormous begins driving straight through the strongest current.\n\nUse !yes to enter Hammer Current or !no to retire from Shizuki's unofficial obstacle course.",
     "bossRetreatText": "You leave the course with dignity mostly intact.",
     "boss": {
         "enemyId": "breakerhead-patriarch-boss",

@@ -95,8 +95,8 @@
             "prompt": "The last royal seal cracks."
         }
     },
-    "bossPromptDiscord": "The last royal seal cracks.\n\nSomething enormous pushes through from inside the reliquary.\n\nUse /yes to investigate or /no to leave the locksmith\nunion alone.",
-    "bossPromptTwitch": "The last royal seal cracks.\n\nSomething enormous pushes through from inside the reliquary.\n\nUse !yes to investigate or !no to leave the locksmith\nunion alone.",
+    "bossPromptDiscord": "The last royal seal cracks.\n\nSomething enormous pushes through from inside the reliquary.\n\nUse /yes to investigate or /no to leave the locksmith union alone.",
+    "bossPromptTwitch": "The last royal seal cracks.\n\nSomething enormous pushes through from inside the reliquary.\n\nUse !yes to investigate or !no to leave the locksmith union alone.",
     "bossRetreatText": "You withdraw from Forbidden Reliquary. The royal challenge will wait.",
     "boss": {
         "enemyId": "grand-sealbreaker-boss",

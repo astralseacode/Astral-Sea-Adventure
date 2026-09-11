@@ -1,16 +1,16 @@
 {
     "id": "bone-crown-march",
     "number": 26,
-    "name": "Bone-Crown March",
+    "name": "Bone Crown March",
     "regionId": "leviathans-wake",
     "enemyId": "bone-crown-behemoth",
     "recommendedLevel": 29,
-    "introDiscord": "Skeletons stand so densely ahead that their overlapping spines resemble\ncrowns.\n\nBone-Crown Behemoths march between them like living monuments among\ndead giants.",
-    "introTwitch": "Skeletons stand so densely ahead that their overlapping spines resemble\ncrowns.\n\nBone-Crown Behemoths march between them like living monuments among\ndead giants.",
+    "introDiscord": "Skeletons stand so densely ahead that their overlapping spines resemble crowns. Bone Crown Behemoths march between them like living monuments among dead giants.",
+    "introTwitch": "Skeletons stand so densely ahead that their overlapping spines resemble crowns. Bone Crown Behemoths march between them like living monuments among dead giants.",
     "startRoomId": "bone-crown-march-approach",
     "rooms": {
         "bone-crown-march-approach": {
-            "prompt": "Three routes cross beneath enormous crown-shaped bones.",
+            "prompt": "Three routes cross beneath enormous crown shaped bones.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -32,7 +32,7 @@
                     "type": "combat",
                     "nextRoomId": "bone-crown-march-depths",
                     "enemyId": "bone-crown-behemoth",
-                    "message": "A Bone-Crown Behemoth steps between two towering skeletons."
+                    "message": "A Bone Crown Behemoth steps between two towering skeletons."
                 }
             }
         },
@@ -78,7 +78,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "bone-crown-behemoth",
-                    "message": "A Bone-Crown Behemoth guards the deepest skeleton."
+                    "message": "A Bone Crown Behemoth guards the deepest skeleton."
                 },
                 "forward": {
                     "type": "healing",
@@ -92,11 +92,11 @@
         "boss-antechamber": {
             "name": "Crowned Skeleton Deep",
             "type": "boss-prompt",
-            "prompt": "The Bone-Crown Behemoths kneel."
+            "prompt": "The Bone Crown Behemoths kneel."
         }
     },
-    "bossPromptDiscord": "The Bone-Crown Behemoths kneel.\n\nBehind them, an enormous silhouette rises beneath the crownlike skeleton\nof a Leviathan.\n\nUse /yes to enter Crowned Skeleton Deep or /no to conclude the royal\ntour before meeting local nobility.",
-    "bossPromptTwitch": "The Bone-Crown Behemoths kneel.\n\nBehind them, an enormous silhouette rises beneath the crownlike skeleton\nof a Leviathan.\n\nUse !yes to enter Crowned Skeleton Deep or !no to conclude the royal\ntour before meeting local nobility.",
+    "bossPromptDiscord": "The Bone Crown Behemoths kneel.\n\nBehind them, an enormous silhouette rises beneath the crownlike skeleton of a Leviathan.\n\nUse /yes to enter Crowned Skeleton Deep or /no to conclude the royal tour before meeting local nobility.",
+    "bossPromptTwitch": "The Bone Crown Behemoths kneel.\n\nBehind them, an enormous silhouette rises beneath the crownlike skeleton of a Leviathan.\n\nUse !yes to enter Crowned Skeleton Deep or !no to conclude the royal tour before meeting local nobility.",
     "bossRetreatText": "You withdraw from court.",
     "boss": {
         "enemyId": "ossuary-behemoth-boss",

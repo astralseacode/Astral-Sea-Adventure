@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "memoryglass-crab",
     "recommendedLevel": 50,
-    "introDiscord": "A silver beach appears beneath your feet.\n\nEvery grain of sand reflects a memory instead of your face.\n\nSome belong to you.\n\nMost do not.",
-    "introTwitch": "A silver beach appears beneath your feet.\n\nEvery grain of sand reflects a memory instead of your face.\n\nSome belong to you.\n\nMost do not.",
+    "introDiscord": "A silver beach appears beneath your feet. Every grain of sand reflects a memory instead of your face.\n\nSome belong to you.\n\nMost do not.",
+    "introTwitch": "A silver beach appears beneath your feet. Every grain of sand reflects a memory instead of your face.\n\nSome belong to you.\n\nMost do not.",
     "startRoomId": "memoryglass-strand-approach",
     "rooms": {
         "memoryglass-strand-approach": {
@@ -16,14 +16,14 @@
                     "type": "healing",
                     "nextRoomId": "memoryglass-strand-depths",
                     "healAmount": 126,
-                    "message": "A patch of memoryglass shows Shizuki sleeping beneath Moonlit Reef's\ncoral.\n\nThe peaceful memory becomes tangible enough to restore you.",
+                    "message": "A patch of memoryglass shows Shizuki sleeping beneath Moonlit Reef's coral. The peaceful memory becomes tangible enough to restore you.",
                     "fullHpMessage": "You leave the restorative untouched. You're already at full health."
                 },
                 "right": {
                     "type": "combat",
                     "nextRoomId": "memoryglass-strand-depths",
                     "enemyId": "memoryglass-crab",
-                    "message": "A Memoryglass Crab crawls from a reflection of a beach that no longer\nexists."
+                    "message": "A Memoryglass Crab crawls from a reflection of a beach that no longer exists."
                 },
                 "forward": {
                     "type": "treasure",
@@ -42,13 +42,13 @@
                 "left": {
                     "type": "empty",
                     "nextRoomId": "memoryglass-strand-threshold",
-                    "message": "One Berry sits beside a memory of Shizuki and Glimmer arguing over a\nmap.\n\nShizuki's caption:\n\n'Historical evidence Glimmer was wrong.\n\nGlimmer says memory was edited.\n\nSlander.'",
+                    "message": "One Berry sits beside a memory of Shizuki and Glimmer arguing over a map.\n\nShizuki's caption:\n\n'Historical evidence Glimmer was wrong.\n\nGlimmer says memory was edited.\n\nSlander.'",
                     "berries": 1
                 },
                 "right": {
                     "type": "treasure",
                     "nextRoomId": "memoryglass-strand-threshold",
-                    "message": "A coffer contains objects from three different versions of the same\nafternoon.",
+                    "message": "A coffer contains objects from three different versions of the same afternoon.",
                     "reward": {
                         "min": 438,
                         "max": 473
@@ -75,7 +75,7 @@
                     "type": "healing",
                     "nextRoomId": "boss-antechamber",
                     "healAmount": 131,
-                    "message": "A memory of the King’s Festival fountain briefly becomes real and\nrestores you.",
+                    "message": "A memory of the King’s Festival fountain briefly becomes real and restores you.",
                     "fullHpMessage": "You leave the restorative untouched. You're already at full health."
                 },
                 "forward": {
@@ -92,11 +92,11 @@
         "boss-antechamber": {
             "name": "Beach of Borrowed Yesterdays",
             "type": "boss-prompt",
-            "prompt": "Beach of Borrowed Yesterdays fills with scenes from places you've\nalready crossed."
+            "prompt": "Beach of Borrowed Yesterdays fills with scenes from places you've already crossed."
         }
     },
-    "bossPromptDiscord": "Beach of Borrowed Yesterdays fills with scenes from places you've\nalready crossed.\n\nSomething enormous begins collecting the memories into its claws.\n\nUse /yes to enter or /no to let yesterday remain yesterday.",
-    "bossPromptTwitch": "Beach of Borrowed Yesterdays fills with scenes from places you've\nalready crossed.\n\nSomething enormous begins collecting the memories into its claws.\n\nUse !yes to enter or !no to let yesterday remain yesterday.",
+    "bossPromptDiscord": "Beach of Borrowed Yesterdays fills with scenes from places you've already crossed.\n\nSomething enormous begins collecting the memories into its claws.\n\nUse /yes to enter or /no to let yesterday remain yesterday.",
+    "bossPromptTwitch": "Beach of Borrowed Yesterdays fills with scenes from places you've already crossed.\n\nSomething enormous begins collecting the memories into its claws.\n\nUse !yes to enter or !no to let yesterday remain yesterday.",
     "bossRetreatText": "You withdraw from Beach of Borrowed Yesterdays. The impossible guardian will wait.",
     "boss": {
         "enemyId": "recollection-clawlord-boss",

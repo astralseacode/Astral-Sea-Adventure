@@ -27,14 +27,14 @@
         },
         "forward": {
           "type": "empty",
-          "message": "A bubble-shaped shell cup holds one Berry beside a note in Shizuki's handwriting: \"Emergency snack! NOT FOR THE BUBBLE NIBBLERS. They already ate the first cup. And part of my map. Little criminals.\"",
+          "message": "A bubble shaped shell cup holds one Berry beside a note in Shizuki's handwriting: \"Emergency snack! NOT FOR THE BUBBLE NIBBLERS. They already ate the first cup. And part of my map. Little criminals.\"",
           "nextRoomId": "inner-crossing",
           "berries": 1
         }
       }
     },
     "inner-crossing": {
-      "prompt": "The burrow opens into three shell-lined tunnels. Hundreds of tiny bubbles drift through the water, occasionally carrying things that definitely do not belong in bubbles—a spoon, a button, half a map, and what appears to be somebody's sock.",
+      "prompt": "The burrow opens into three shell lined tunnels. Hundreds of tiny bubbles drift through the water, occasionally carrying things that definitely do not belong in bubbles—a spoon, a button, half a map, and what appears to be somebody's sock.",
       "choices": {
         "left": {
           "type": "combat",
@@ -64,7 +64,7 @@
       "choices": {
         "left": {
           "type": "treasure",
-          "message": "You discover the hideout's largest stash tucked inside a pearl-lined hollow. Buttons, polished shells, shiny rocks, one completely useless fork—and beneath all of it, a cache of Star Candies.",
+          "message": "You discover the hideout's largest stash tucked inside a pearl lined hollow. Buttons, polished shells, shiny rocks, one completely useless fork—and beneath all of it, a cache of Star Candies.",
           "reward": {
             "min": 30,
             "max": 50
@@ -88,7 +88,7 @@
     "boss-antechamber": {
       "name": "Boss Antechamber",
       "type": "boss-prompt",
-      "prompt": "The maze opens into a huge chamber overflowing with stolen junk. Shells. Spoons. Maps. Buttons. Star Candies. At the center sits an enormous bubble-shaped nest. A single gigantic bite mark has been taken out of the coral beside it."
+      "prompt": "The maze opens into a huge chamber overflowing with stolen junk. Shells. Spoons. Maps. Buttons. Star Candies. At the center sits an enormous bubble shaped nest. A single gigantic bite mark has been taken out of the coral beside it."
     }
   },
   "bossPromptDiscord": "A thunderous NOM echoes through the chamber.\n\nThe mountain of stolen treasures begins to shake. Something very large is chewing behind it.\n\nUse /yes to investigate or /no to decide that whatever made that bite mark can keep its snacks.",

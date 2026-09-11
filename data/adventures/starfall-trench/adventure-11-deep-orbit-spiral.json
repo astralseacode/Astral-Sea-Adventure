@@ -1,7 +1,7 @@
 {
   "id": "deep-orbit-spiral",
   "number": 11,
-  "name": "Deep-Orbit Spiral",
+  "name": "Deep Orbit Spiral",
   "regionId": "starfall-trench",
   "enemyId": "deep-orbit-nautilus",
   "recommendedLevel": 7,
@@ -10,7 +10,7 @@
   "startRoomId": "deep-orbit-spiral-approach",
   "rooms": {
     "deep-orbit-spiral-approach": {
-      "prompt": "Three paths curve around the spiral while Deep-Orbit Nautilus shells drift in slow celestial arcs.",
+      "prompt": "Three paths curve around the spiral while Deep Orbit Nautilus shells drift in slow celestial arcs.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "deep-orbit-spiral-threshold",
-          "message": "A star-chart coffer circles a chunk of meteorstone.",
+          "message": "A star chart coffer circles a chunk of meteorstone.",
           "reward": {
             "min": 123,
             "max": 161
@@ -76,12 +76,12 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "deep-orbit-nautilus",
-          "message": "A Deep-Orbit Nautilus spirals directly into your route."
+          "message": "A Deep Orbit Nautilus spirals directly into your route."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "\"A meteor-iron reliquary rests at the spiral's calm center.\"\n\nBOSS:",
+          "message": "\"A meteor iron reliquary rests at the spiral's calm center.\"\n\nBOSS:",
           "reward": {
             "min": 135,
             "max": 173
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The enormous shell unfolds from the spiral.\n\nStarcoil Nautilus reveals itself!"
   },
-  "completionText": "\"The Celestial Coil settles.\n\nThe spoon remains in orbit.\n\nStarfall Trench's greatest mystery continues.\"\n\n\n#################################################################"
+  "completionText": "\"The Celestial Coil settles.\n\nThe spoon remains in orbit.\n\nStarfall Trench's greatest mystery continues.\"\n\n#################################################################"
 }

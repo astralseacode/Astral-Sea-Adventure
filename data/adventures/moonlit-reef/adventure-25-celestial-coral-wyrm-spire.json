@@ -10,7 +10,7 @@
   "startRoomId": "spiral-reefrise",
   "rooms": {
     "spiral-reefrise": {
-      "prompt": "The reef rises in a glowing spiral around three ascending paths. Warm comet-coral pulses beneath your hands while Wyrms coil around the tower outside.",
+      "prompt": "The reef rises in a glowing spiral around three ascending paths. Warm comet coral pulses beneath your hands while Wyrms coil around the tower outside.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -43,7 +43,7 @@
           "type": "combat",
           "nextRoomId": "comet-coral-crown",
           "enemyId": "celestial-coral-wyrm",
-          "message": "A Wyrm is sunning itself in warm comet-coral. Your arrival creates shade. Apparently this is an unforgivable offense."
+          "message": "A Wyrm is sunning itself in warm comet coral. Your arrival creates shade. Apparently this is an unforgivable offense."
         },
         "right": {
           "type": "treasure",
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer glows red-hot beneath comet coral. Waiting approximately thirty seconds feels deeply unfair, but eventually you recover Star Candies without cooking yourself.",
+          "message": "A moon shell coffer glows red-hot beneath comet coral. Waiting approximately thirty seconds feels deeply unfair, but eventually you recover Star Candies without cooking yourself.",
           "reward": {
             "min": 80,
             "max": 120

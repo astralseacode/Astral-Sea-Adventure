@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "fracturefin-shark",
     "recommendedLevel": 50,
-    "introDiscord": "The ocean ahead is physically broken into floating slabs.\n\nWater ends at clean edges and continues several feet away.\n\nFish cross the gaps anyway.",
-    "introTwitch": "The ocean ahead is physically broken into floating slabs.\n\nWater ends at clean edges and continues several feet away.\n\nFish cross the gaps anyway.",
+    "introDiscord": "The ocean ahead is physically broken into floating slabs. Water ends at clean edges and continues several feet away.\n\nFish cross the gaps anyway.",
+    "introTwitch": "The ocean ahead is physically broken into floating slabs. Water ends at clean edges and continues several feet away.\n\nFish cross the gaps anyway.",
     "startRoomId": "fractured-ocean-approach",
     "rooms": {
         "fractured-ocean-approach": {
@@ -95,13 +95,13 @@
             "prompt": "Splitwater Arena breaks into dozens of disconnected pieces."
         }
     },
-    "bossPromptDiscord": "Splitwater Arena breaks into dozens of disconnected pieces.\n\nSomething enormous begins swimming through ALL of them.\n\nUse /yes to continue or /no to choose an ocean that is\nassembled correctly.",
-    "bossPromptTwitch": "Splitwater Arena breaks into dozens of disconnected pieces.\n\nSomething enormous begins swimming through ALL of them.\n\nUse !yes to continue or !no to choose an ocean that is\nassembled correctly.",
+    "bossPromptDiscord": "Splitwater Arena breaks into dozens of disconnected pieces.\n\nSomething enormous begins swimming through ALL of them.\n\nUse /yes to continue or /no to choose an ocean that is assembled correctly.",
+    "bossPromptTwitch": "Splitwater Arena breaks into dozens of disconnected pieces.\n\nSomething enormous begins swimming through ALL of them.\n\nUse !yes to continue or !no to choose an ocean that is assembled correctly.",
     "bossRetreatText": "You withdraw from Splitwater Arena. The impossible guardian will wait.",
     "boss": {
         "enemyId": "reality-bite-apex-boss",
         "roomId": "boss",
-        "revealText": "A massive jaw bites through the boundary.\n\nReality-Bite Apex reveals itself!"
+        "revealText": "A massive jaw bites through the boundary.\n\nReality Bite Apex reveals itself!"
     },
     "completionText": "The broken ocean settles.\n\nIt is still broken.\n\nApparently that counts."
 }

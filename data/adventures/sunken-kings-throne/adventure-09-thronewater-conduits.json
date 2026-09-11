@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "thronewater-eel",
     "recommendedLevel": 36,
-    "introDiscord": "Hidden waterways carry water beneath the palace.\n\nShizuki appears to have spent a concerning amount of time pretending\nthey were secret royal tunnels.",
-    "introTwitch": "Hidden waterways carry water beneath the palace.\n\nShizuki appears to have spent a concerning amount of time pretending\nthey were secret royal tunnels.",
+    "introDiscord": "Hidden waterways carry water beneath the palace.\n\nShizuki appears to have spent a concerning amount of time pretending they were secret royal tunnels.",
+    "introTwitch": "Hidden waterways carry water beneath the palace.\n\nShizuki appears to have spent a concerning amount of time pretending they were secret royal tunnels.",
     "startRoomId": "thronewater-conduits-approach",
     "rooms": {
         "thronewater-conduits-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The royal cistern begins spiraling."
         }
     },
-    "bossPromptDiscord": "The royal cistern begins spiraling.\n\nAn enormous coil circles beneath the palace water.\n\nUse /yes to enter or /no to exit through the non-secret\nsecret tunnel.",
-    "bossPromptTwitch": "The royal cistern begins spiraling.\n\nAn enormous coil circles beneath the palace water.\n\nUse !yes to enter or !no to exit through the non-secret\nsecret tunnel.",
+    "bossPromptDiscord": "The royal cistern begins spiraling.\n\nAn enormous coil circles beneath the palace water.\n\nUse /yes to enter or /no to exit through the non-secret secret tunnel.",
+    "bossPromptTwitch": "The royal cistern begins spiraling.\n\nAn enormous coil circles beneath the palace water.\n\nUse !yes to enter or !no to exit through the non-secret secret tunnel.",
     "bossRetreatText": "You withdraw from Sovereign Cistern. The royal challenge will wait.",
     "boss": {
         "enemyId": "regent-coil-boss",

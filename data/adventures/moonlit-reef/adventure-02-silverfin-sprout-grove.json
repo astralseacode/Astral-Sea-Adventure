@@ -14,7 +14,7 @@
       "choices": {
         "left": {
           "type": "treasure",
-          "message": "Beneath a curtain of silver leaves, you discover an old moon-shell offering bowl tangled in the roots. Most of its contents have long since scattered, but several curious little sprouts seem to have pushed some Star Candies into a neat pile inside it. You're not entirely sure whether this is an offering or their idea of decorating.",
+          "message": "Beneath a curtain of silver leaves, you discover an old moon shell offering bowl tangled in the roots. Most of its contents have long since scattered, but several curious little sprouts seem to have pushed some Star Candies into a neat pile inside it. You're not entirely sure whether this is an offering or their idea of decorating.",
           "reward": {
             "min": 25,
             "max": 45

@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "hullsplitter-lobster",
     "recommendedLevel": 22,
-    "introDiscord": "Ships lie crushed between Leviathan bones as though someone scattered\ntoys across the seabed.\n\nHullsplitter Lobsters have converted the wrecks into homes.\n\nAnd apparently demolition projects.",
-    "introTwitch": "Ships lie crushed between Leviathan bones as though someone scattered\ntoys across the seabed.\n\nHullsplitter Lobsters have converted the wrecks into homes.\n\nAnd apparently demolition projects.",
+    "introDiscord": "Ships lie crushed between Leviathan bones as though someone scattered toys across the seabed. Hullsplitter Lobsters have converted the wrecks into homes.\n\nAnd apparently demolition projects.",
+    "introTwitch": "Ships lie crushed between Leviathan bones as though someone scattered toys across the seabed. Hullsplitter Lobsters have converted the wrecks into homes.\n\nAnd apparently demolition projects.",
     "startRoomId": "hullsplitter-graveyard-approach",
     "rooms": {
         "hullsplitter-graveyard-approach": {
@@ -32,17 +32,17 @@
                     "nextRoomId": "hullsplitter-graveyard-depths",
                     "healAmount": 70,
                     "message": "Shizuki's camp rests inside an overturned hull.\n\nHer note:\n\n'Sleeping in ship tonight.\n\nShip technically inside skeleton.\n\nTrying not to rank weirdness anymore.'",
-                    "fullHpMessage": "You leave the restorative supplies inside Shizuki's extremely nested\ncampsite."
+                    "fullHpMessage": "You leave the restorative supplies inside Shizuki's extremely nested campsite."
                 }
             }
         },
         "hullsplitter-graveyard-depths": {
-            "prompt": "The wrecks overlap until three narrow passages form between broken\nkeels.",
+            "prompt": "The wrecks overlap until three narrow passages form between broken keels.",
             "choices": {
                 "left": {
                     "type": "treasure",
                     "nextRoomId": "hullsplitter-graveyard-threshold",
-                    "message": "Star Candies are trapped beneath a Leviathan scale that crashed through\nthe ship deck.",
+                    "message": "Star Candies are trapped beneath a Leviathan scale that crashed through the ship deck.",
                     "reward": {
                         "min": 236,
                         "max": 273
@@ -75,7 +75,7 @@
                 "right": {
                     "type": "treasure",
                     "nextRoomId": "boss-antechamber",
-                    "message": "A pressure-sealed navigator's chest lies beneath a mast.",
+                    "message": "A pressure sealed navigator's chest lies beneath a mast.",
                     "reward": {
                         "min": 248,
                         "max": 285
@@ -95,8 +95,8 @@
             "prompt": "An enormous wreck shifts inside Keelbreak Arena."
         }
     },
-    "bossPromptDiscord": "An enormous wreck shifts inside Keelbreak Arena.\n\nA claw punches through the hull from the inside.\n\nThen another.\n\nUse /yes to enter the Arena or /no to leave the demolition crew to its\nwork.",
-    "bossPromptTwitch": "An enormous wreck shifts inside Keelbreak Arena.\n\nA claw punches through the hull from the inside.\n\nThen another.\n\nUse !yes to enter the Arena or !no to leave the demolition crew to its\nwork.",
+    "bossPromptDiscord": "An enormous wreck shifts inside Keelbreak Arena.\n\nA claw punches through the hull from the inside.\n\nThen another.\n\nUse /yes to enter the Arena or /no to leave the demolition crew to its work.",
+    "bossPromptTwitch": "An enormous wreck shifts inside Keelbreak Arena.\n\nA claw punches through the hull from the inside.\n\nThen another.\n\nUse !yes to enter the Arena or !no to leave the demolition crew to its work.",
     "bossRetreatText": "You retreat.\n\nAnother section of ship collapses behind you.",
     "boss": {
         "enemyId": "dreadclaw-hullsplitter-boss",

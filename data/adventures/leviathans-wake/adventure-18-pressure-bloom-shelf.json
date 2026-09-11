@@ -5,12 +5,12 @@
     "regionId": "leviathans-wake",
     "enemyId": "pressure-bloom-anemone",
     "recommendedLevel": 26,
-    "introDiscord": "Pressure Bloom Anemones cover the bones in enormous glowing flowers.\n\nThe graveyard has grown a garden.",
-    "introTwitch": "Pressure Bloom Anemones cover the bones in enormous glowing flowers.\n\nThe graveyard has grown a garden.",
+    "introDiscord": "Pressure Bloom Anemones cover the bones in enormous glowing flowers. The graveyard has grown a garden.",
+    "introTwitch": "Pressure Bloom Anemones cover the bones in enormous glowing flowers. The graveyard has grown a garden.",
     "startRoomId": "pressure-bloom-shelf-approach",
     "rooms": {
         "pressure-bloom-shelf-approach": {
-            "prompt": "Three paths cross a field of blossoms growing directly from ancient\nLeviathan remains.",
+            "prompt": "Three paths cross a field of blossoms growing directly from ancient Leviathan remains.",
             "choices": {
                 "left": {
                     "type": "empty",
@@ -63,7 +63,7 @@
             }
         },
         "pressure-bloom-shelf-threshold": {
-            "prompt": "Compressed Garden forms where enormous bones trap the water under\nintense pressure.",
+            "prompt": "Compressed Garden forms where enormous bones trap the water under intense pressure.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -95,8 +95,8 @@
             "prompt": "Every smaller bloom closes."
         }
     },
-    "bossPromptDiscord": "Every smaller bloom closes.\n\nOne enormous flower remains open at the center of Compressed Garden.\n\nIts petals begin turning toward you.\n\nUse /yes to enter the Garden or /no to enjoy the flowers from the\ntraditional non-biting distance.",
-    "bossPromptTwitch": "Every smaller bloom closes.\n\nOne enormous flower remains open at the center of Compressed Garden.\n\nIts petals begin turning toward you.\n\nUse !yes to enter the Garden or !no to enjoy the flowers from the\ntraditional non-biting distance.",
+    "bossPromptDiscord": "Every smaller bloom closes.\n\nOne enormous flower remains open at the center of Compressed Garden.\n\nIts petals begin turning toward you.\n\nUse /yes to enter the Garden or /no to enjoy the flowers from the traditional non-biting distance.",
+    "bossPromptTwitch": "Every smaller bloom closes.\n\nOne enormous flower remains open at the center of Compressed Garden.\n\nIts petals begin turning toward you.\n\nUse !yes to enter the Garden or !no to enjoy the flowers from the traditional non-biting distance.",
     "bossRetreatText": "You leave the flowerbed.",
     "boss": {
         "enemyId": "crushpetal-sovereign-boss",

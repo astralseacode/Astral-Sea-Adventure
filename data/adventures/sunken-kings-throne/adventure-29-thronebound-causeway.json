@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "thronebound-colossus",
     "recommendedLevel": 49,
-    "introDiscord": "The festival street ends at the longest road in the kingdom.\n\nA vast causeway stretches straight toward the royal throne complex.\n\nEvery place you've explored is visible behind you.",
-    "introTwitch": "The festival street ends at the longest road in the kingdom.\n\nA vast causeway stretches straight toward the royal throne complex.\n\nEvery place you've explored is visible behind you.",
+    "introDiscord": "The festival street ends at the longest road in the kingdom. A vast causeway stretches straight toward the royal throne complex. Every place you've explored is visible behind you.",
+    "introTwitch": "The festival street ends at the longest road in the kingdom. A vast causeway stretches straight toward the royal throne complex. Every place you've explored is visible behind you.",
     "startRoomId": "thronebound-causeway-approach",
     "rooms": {
         "thronebound-causeway-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The throne complex rises ahead."
         }
     },
-    "bossPromptDiscord": "The throne complex rises ahead.\n\nOne enormous guardian stands alone beneath Crownward Colonnade.\n\nBehind it, the final palace doors remain closed.\n\nUse /yes to approach the throne complex or /no to give\nShizuki more time to emotionally prepare for being correct about a map.",
-    "bossPromptTwitch": "The throne complex rises ahead.\n\nOne enormous guardian stands alone beneath Crownward Colonnade.\n\nBehind it, the final palace doors remain closed.\n\nUse !yes to approach the throne complex or !no to give\nShizuki more time to emotionally prepare for being correct about a map.",
+    "bossPromptDiscord": "The throne complex rises ahead.\n\nOne enormous guardian stands alone beneath Crownward Colonnade.\n\nBehind it, the final palace doors remain closed.\n\nUse /yes to approach the throne complex or /no to give Shizuki more time to emotionally prepare for being correct about a map.",
+    "bossPromptTwitch": "The throne complex rises ahead.\n\nOne enormous guardian stands alone beneath Crownward Colonnade.\n\nBehind it, the final palace doors remain closed.\n\nUse !yes to approach the throne complex or !no to give Shizuki more time to emotionally prepare for being correct about a map.",
     "bossRetreatText": "You withdraw from Crownward Colonnade. The royal challenge will wait.",
     "boss": {
         "enemyId": "kingdoms-last-colossus-boss",

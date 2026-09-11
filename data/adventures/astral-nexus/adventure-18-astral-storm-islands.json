@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "astral-storm-roc",
     "recommendedLevel": 50,
-    "introDiscord": "Floating islands hang inside an underwater thunderstorm.\n\nLightning travels between stars instead of clouds.\n\nAstral Storm Rocs fly through water as though it were open sky.",
-    "introTwitch": "Floating islands hang inside an underwater thunderstorm.\n\nLightning travels between stars instead of clouds.\n\nAstral Storm Rocs fly through water as though it were open sky.",
+    "introDiscord": "Floating islands hang inside an underwater thunderstorm. Lightning travels between stars instead of clouds. Astral Storm Rocs fly through water as though it were open sky.",
+    "introTwitch": "Floating islands hang inside an underwater thunderstorm. Lightning travels between stars instead of clouds. Astral Storm Rocs fly through water as though it were open sky.",
     "startRoomId": "astral-storm-islands-approach",
     "rooms": {
         "astral-storm-islands-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Eye of the Drowned Sky goes completely still."
         }
     },
-    "bossPromptDiscord": "Eye of the Drowned Sky goes completely still.\n\nAn enormous wing passes over every floating island at once.\n\nUse /yes to enter or /no to allow weather to remain\nsomeone else's problem.",
-    "bossPromptTwitch": "Eye of the Drowned Sky goes completely still.\n\nAn enormous wing passes over every floating island at once.\n\nUse !yes to enter or !no to allow weather to remain\nsomeone else's problem.",
+    "bossPromptDiscord": "Eye of the Drowned Sky goes completely still.\n\nAn enormous wing passes over every floating island at once.\n\nUse /yes to enter or /no to allow weather to remain someone else's problem.",
+    "bossPromptTwitch": "Eye of the Drowned Sky goes completely still.\n\nAn enormous wing passes over every floating island at once.\n\nUse !yes to enter or !no to allow weather to remain someone else's problem.",
     "bossRetreatText": "You withdraw from Eye of the Drowned Sky. The impossible guardian will wait.",
     "boss": {
         "enemyId": "firmament-roc-boss",

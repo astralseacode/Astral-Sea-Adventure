@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "sighing-reed-hunter",
   "recommendedLevel": 18,
-  "introDiscord": "Long silver reeds cover a marsh where every passing current produces a\nsoft humanlike sigh. Sighing Reed Hunters move between them, hidden by\nthe sound of a forest that always seems to be breathing.",
-  "introTwitch": "Long silver reeds cover a marsh where every passing current produces a\nsoft humanlike sigh. Sighing Reed Hunters move between them, hidden by\nthe sound of a forest that always seems to be breathing.",
+  "introDiscord": "Long silver reeds cover a marsh where every passing current produces a soft humanlike sigh. Sighing Reed Hunters move between them, hidden by the sound of a forest that always seems to be breathing.",
+  "introTwitch": "Long silver reeds cover a marsh where every passing current produces a soft humanlike sigh. Sighing Reed Hunters move between them, hidden by the sound of a forest that always seems to be breathing.",
   "startRoomId": "sighing-reed-marsh-approach",
   "rooms": {
     "sighing-reed-marsh-approach": {
-      "prompt": "Three marsh trails disappear beneath tall reeds. Somewhere ahead, a\nslow exhale does not match your breathing.",
+      "prompt": "Three marsh trails disappear beneath tall reeds. Somewhere ahead, a slow exhale does not match your breathing.",
       "choices": {
         "left": {
           "type": "empty",
@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "sighing-reed-marsh-depths",
-          "message": "A shrine coffer lies beneath bent reeds. Star Candies inside barely\nmake a sound beneath the constant sighing marsh.",
+          "message": "A shrine coffer lies beneath bent reeds. Star Candies inside barely make a sound beneath the constant sighing marsh.",
           "reward": {
             "min": 85,
             "max": 127
@@ -36,7 +36,7 @@
       }
     },
     "sighing-reed-marsh-depths": {
-      "prompt": "Towering kelp fades behind a denser marsh. Three routes vanish beneath\nreeds tall enough to hide nearly anything.",
+      "prompt": "Towering kelp fades behind a denser marsh. Three routes vanish beneath reeds tall enough to hide nearly anything.",
       "choices": {
         "left": {
           "type": "combat",
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "sighing-reed-marsh-threshold",
-          "message": "An offering basket is tied above the marsh floor. Inside are Star\nCandies and several little reed whistles.\n\nDo not.",
+          "message": "An offering basket is tied above the marsh floor. Inside are Star Candies and several little reed whistles.\n\nDo not.",
           "reward": {
             "min": 97,
             "max": 139
@@ -63,12 +63,12 @@
       }
     },
     "sighing-reed-marsh-threshold": {
-      "prompt": "Living roots lead toward Breathless Fen. The reeds surrounding the\nthree final routes have stopped sighing.",
+      "prompt": "Living roots lead toward Breathless Fen. The reeds surrounding the three final routes have stopped sighing.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Broad silver kelp wraps a Star Candy cache beneath perfectly still\nreeds.\n\nThe silence makes opening it feel much louder than it is.",
+          "message": "Broad silver kelp wraps a Star Candy cache beneath perfectly still reeds.\n\nThe silence makes opening it feel much louder than it is.",
           "reward": {
             "min": 109,
             "max": 151
@@ -95,13 +95,13 @@
       "prompt": "Every reed in the marsh goes completely silent."
     }
   },
-  "bossPromptDiscord": "No sighs.\n\nNo current.\n\nNo copied breathing.\n\nBreathless Fen becomes so still that the absence of sound feels louder\nthan the marsh itself.\n\nThen a tall silhouette rises behind the reeds wearing a crown of silver\nstalks.\n\nUse /yes to enter the Fen or /no to retreat before the marsh exhales\nagain.",
-  "bossPromptTwitch": "No sighs.\n\nNo current.\n\nNo copied breathing.\n\nBreathless Fen becomes so still that the absence of sound feels louder\nthan the marsh itself.\n\nThen a tall silhouette rises behind the reeds wearing a crown of silver\nstalks.\n\nUse !yes to enter the Fen or !no to retreat before the marsh exhales\nagain.",
-  "bossRetreatText": "You back away from Breathless Fen. The reeds remain perfectly still\nuntil you are far enough away.\n\nThen one long sigh follows you out.",
+  "bossPromptDiscord": "No sighs.\n\nNo current.\n\nNo copied breathing.\n\nBreathless Fen becomes so still that the absence of sound feels louder than the marsh itself.\n\nThen a tall silhouette rises behind the reeds wearing a crown of silver stalks.\n\nUse /yes to enter the Fen or /no to retreat before the marsh exhales again.",
+  "bossPromptTwitch": "No sighs.\n\nNo current.\n\nNo copied breathing.\n\nBreathless Fen becomes so still that the absence of sound feels louder than the marsh itself.\n\nThen a tall silhouette rises behind the reeds wearing a crown of silver stalks.\n\nUse !yes to enter the Fen or !no to retreat before the marsh exhales again.",
+  "bossRetreatText": "You back away from Breathless Fen. The reeds remain perfectly still until you are far enough away.\n\nThen one long sigh follows you out.",
   "boss": {
     "enemyId": "reed-crowned-hunter-boss",
     "roomId": "boss",
-    "revealText": "The silver reeds explode outward as a towering predator emerges.\n\nReed-Crowned Hunter reveals itself!"
+    "revealText": "The silver reeds explode outward as a towering predator emerges.\n\nReed Crowned Hunter reveals itself!"
   },
-  "completionText": "\"The Reed-Crowned Hunter disappears into the marsh.\n\nThe reeds begin sighing again.\n\nThis time, the sound feels almost peaceful.\"\n\n\n#################################################################"
+  "completionText": "\"The Reed Crowned Hunter disappears into the marsh.\n\nThe reeds begin sighing again.\n\nThis time, the sound feels almost peaceful.\"\n\n#################################################################"
 }

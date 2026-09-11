@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "haunted-herald",
     "recommendedLevel": 41,
-    "introDiscord": "Royal announcement halls line the next district.\n\nAncient Heralds still stand on balconies waiting to proclaim news to a\npopulation that left centuries ago.",
-    "introTwitch": "Royal announcement halls line the next district.\n\nAncient Heralds still stand on balconies waiting to proclaim news to a\npopulation that left centuries ago.",
+    "introDiscord": "Royal announcement halls line the next district. Ancient Heralds still stand on balconies waiting to proclaim news to a population that left centuries ago.",
+    "introTwitch": "Royal announcement halls line the next district. Ancient Heralds still stand on balconies waiting to proclaim news to a population that left centuries ago.",
     "startRoomId": "the-silent-heraldry-approach",
     "rooms": {
         "the-silent-heraldry-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The old proclamation bells ring."
         }
     },
-    "bossPromptDiscord": "The old proclamation bells ring.\n\nOne final Herald takes the central balcony.\n\nUse /yes to hear the kingdom's last announcement or /no to\ncontinue ignoring unauthorized royal decrees.",
-    "bossPromptTwitch": "The old proclamation bells ring.\n\nOne final Herald takes the central balcony.\n\nUse !yes to hear the kingdom's last announcement or !no to\ncontinue ignoring unauthorized royal decrees.",
+    "bossPromptDiscord": "The old proclamation bells ring.\n\nOne final Herald takes the central balcony.\n\nUse /yes to hear the kingdom's last announcement or /no to continue ignoring unauthorized royal decrees.",
+    "bossPromptTwitch": "The old proclamation bells ring.\n\nOne final Herald takes the central balcony.\n\nUse !yes to hear the kingdom's last announcement or !no to continue ignoring unauthorized royal decrees.",
     "bossRetreatText": "You withdraw from Proclamation Hall. The royal challenge will wait.",
     "boss": {
         "enemyId": "last-royal-herald-boss",

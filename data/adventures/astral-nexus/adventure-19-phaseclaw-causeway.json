@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "phaseclaw-lobster",
     "recommendedLevel": 50,
-    "introDiscord": "A stone causeway flickers between solid and transparent.\n\nPhaseclaw Lobsters occasionally flicker with it.",
-    "introTwitch": "A stone causeway flickers between solid and transparent.\n\nPhaseclaw Lobsters occasionally flicker with it.",
+    "introDiscord": "A stone causeway flickers between solid and transparent. Phaseclaw Lobsters occasionally flicker with it.",
+    "introTwitch": "A stone causeway flickers between solid and transparent. Phaseclaw Lobsters occasionally flicker with it.",
     "startRoomId": "phaseclaw-causeway-approach",
     "rooms": {
         "phaseclaw-causeway-approach": {
@@ -63,7 +63,7 @@
             }
         },
         "phaseclaw-causeway-threshold": {
-            "prompt": "Near Half-Real Arena, three final routes cross the edge of reality.",
+            "prompt": "Near Half Real Arena, three final routes cross the edge of reality.",
             "choices": {
                 "left": {
                     "type": "healing",
@@ -90,18 +90,18 @@
             }
         },
         "boss-antechamber": {
-            "name": "Half-Real Arena",
+            "name": "Half Real Arena",
             "type": "boss-prompt",
-            "prompt": "Half-Real Arena flickers."
+            "prompt": "Half Real Arena flickers."
         }
     },
-    "bossPromptDiscord": "Half-Real Arena flickers.\n\nThe guardian inside alternates between present, absent, and deeply\ninconvenient.\n\nUse /yes to enter or /no to wait until reality finishes\nloading.",
-    "bossPromptTwitch": "Half-Real Arena flickers.\n\nThe guardian inside alternates between present, absent, and deeply\ninconvenient.\n\nUse !yes to enter or !no to wait until reality finishes\nloading.",
-    "bossRetreatText": "You withdraw from Half-Real Arena. The impossible guardian will wait.",
+    "bossPromptDiscord": "Half Real Arena flickers.\n\nThe guardian inside alternates between present, absent, and deeply inconvenient.\n\nUse /yes to enter or /no to wait until reality finishes loading.",
+    "bossPromptTwitch": "Half Real Arena flickers.\n\nThe guardian inside alternates between present, absent, and deeply inconvenient.\n\nUse !yes to enter or !no to wait until reality finishes loading.",
+    "bossRetreatText": "You withdraw from Half Real Arena. The impossible guardian will wait.",
     "boss": {
         "enemyId": "between-state-clawlord-boss",
         "roomId": "boss",
-        "revealText": "The creature stabilizes just enough to attack.\n\nBetween-State Clawlord reveals itself!"
+        "revealText": "The creature stabilizes just enough to attack.\n\nBetween State Clawlord reveals itself!"
     },
     "completionText": "The Causeway becomes solid.\n\nShizuki wrote:\n\n'FINALLY.'\n\nThen the word phases out."
 }

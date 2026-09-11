@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer drifts silently through the mist with no visible current carrying it. Each time you approach, a tiny Moon Jelly nudges it farther away. After realizing this is absolutely deliberate, you finally outmaneuver the little menace and recover Star Candies.",
+          "message": "A moon shell coffer drifts silently through the mist with no visible current carrying it. Each time you approach, a tiny Moon Jelly nudges it farther away. After realizing this is absolutely deliberate, you finally outmaneuver the little menace and recover Star Candies.",
           "reward": {
             "min": 35,
             "max": 60

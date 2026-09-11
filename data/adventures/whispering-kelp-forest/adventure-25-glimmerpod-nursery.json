@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "glimmerpod-beetle",
   "recommendedLevel": 18,
-  "introDiscord": "Clusters of glowing Glimmerpods cover the nursery roots like tiny\nlantern eggs. Beetles carefully tend them, and several pods pulse with\nthe same soft light as a very familiar Moon Sprite.",
-  "introTwitch": "Clusters of glowing Glimmerpods cover the nursery roots like tiny\nlantern eggs. Beetles carefully tend them, and several pods pulse with\nthe same soft light as a very familiar Moon Sprite.",
+  "introDiscord": "Clusters of glowing Glimmerpods cover the nursery roots like tiny lantern eggs. Beetles carefully tend them, and several pods pulse with the same soft light as a very familiar Moon Sprite.",
+  "introTwitch": "Clusters of glowing Glimmerpods cover the nursery roots like tiny lantern eggs. Beetles carefully tend them, and several pods pulse with the same soft light as a very familiar Moon Sprite.",
   "startRoomId": "glimmerpod-nursery-approach",
   "rooms": {
     "glimmerpod-nursery-approach": {
-      "prompt": "Three routes weave through clusters of glowing pods. Glimmerpod Beetles\ninspect each one with the seriousness of very tiny nurses.",
+      "prompt": "Three routes weave through clusters of glowing pods. Glimmerpod Beetles inspect each one with the seriousness of very tiny nurses.",
       "choices": {
         "left": {
           "type": "combat",
@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "glimmerpod-nursery-depths",
-          "message": "An offering basket rests between two open Glimmerpods. Star Candies\ninside glow softly in the reflected green light.",
+          "message": "An offering basket rests between two open Glimmerpods. Star Candies inside glow softly in the reflected green light.",
           "reward": {
             "min": 80,
             "max": 123
@@ -32,17 +32,17 @@
           "nextRoomId": "glimmerpod-nursery-depths",
           "healAmount": 12,
           "message": "Restorative sap sits beneath Shizuki's note:\n\n'Glimmer likes the pods.\n\nPods like Glimmer.\n\nBeetles tolerate me.\n\nAcceptable social hierarchy.'",
-          "fullHpMessage": "You leave the restorative sap untouched. The nursery's social order\nremains stable."
+          "fullHpMessage": "You leave the restorative sap untouched. The nursery's social order remains stable."
         }
       }
     },
     "glimmerpod-nursery-depths": {
-      "prompt": "Living rootways descend through increasingly dense clusters of\nGlimmerpods.",
+      "prompt": "Living rootways descend through increasingly dense clusters of Glimmerpods.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "glimmerpod-nursery-threshold",
-          "message": "Broad silver kelp wraps a Star Candy cache beside a pod that opens when\nyou approach.\n\nInside the pod:\n\nnothing.\n\nIt just wanted attention.",
+          "message": "Broad silver kelp wraps a Star Candy cache beside a pod that opens when you approach.\n\nInside the pod:\n\nnothing.\n\nIt just wanted attention.",
           "reward": {
             "min": 92,
             "max": 135
@@ -63,19 +63,19 @@
       }
     },
     "glimmerpod-nursery-threshold": {
-      "prompt": "Moonlit fronds surround Emerald Nursery, where three final paths pass\nthrough enormous mature pods.",
+      "prompt": "Moonlit fronds surround Emerald Nursery, where three final paths pass through enormous mature pods.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 17,
           "message": "A tranquil grove pool rests beneath a huge Glimmerpod.\n\nShizuki wrote:\n\n'Glimmer slept inside one.\n\nCould not retrieve Glimmer for forty minutes.\n\nPod vacation.'",
-          "fullHpMessage": "You leave the restorative pool and respect all future Moon Sprite\nvacation rights."
+          "fullHpMessage": "You leave the restorative pool and respect all future Moon Sprite vacation rights."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moss-covered shrine coffer contains Star Candies and several empty\npod husks arranged like tiny lanterns.",
+          "message": "A moss covered shrine coffer contains Star Candies and several empty pod husks arranged like tiny lanterns.",
           "reward": {
             "min": 104,
             "max": 147
@@ -95,13 +95,13 @@
       "prompt": "Every Glimmerpod in the Nursery lights at once."
     }
   },
-  "bossPromptDiscord": "Green light rolls across Emerald Nursery in waves.\n\nEvery Beetle immediately gathers around one enormous central pod.\n\nThe pod opens.\n\nSomething radiant moves inside while the entire nursery brightens around\nit.\n\nUse /yes to enter Emerald Nursery or /no to leave the glowing family\ngathering undisturbed.",
-  "bossPromptTwitch": "Green light rolls across Emerald Nursery in waves.\n\nEvery Beetle immediately gathers around one enormous central pod.\n\nThe pod opens.\n\nSomething radiant moves inside while the entire nursery brightens around\nit.\n\nUse !yes to enter Emerald Nursery or !no to leave the glowing family\ngathering undisturbed.",
-  "bossRetreatText": "You step away. The Beetles close ranks around the central pod as its\nlight slowly dims.",
+  "bossPromptDiscord": "Green light rolls across Emerald Nursery in waves.\n\nEvery Beetle immediately gathers around one enormous central pod.\n\nThe pod opens.\n\nSomething radiant moves inside while the entire nursery brightens around it.\n\nUse /yes to enter Emerald Nursery or /no to leave the glowing family gathering undisturbed.",
+  "bossPromptTwitch": "Green light rolls across Emerald Nursery in waves.\n\nEvery Beetle immediately gathers around one enormous central pod.\n\nThe pod opens.\n\nSomething radiant moves inside while the entire nursery brightens around it.\n\nUse !yes to enter Emerald Nursery or !no to leave the glowing family gathering undisturbed.",
+  "bossRetreatText": "You step away. The Beetles close ranks around the central pod as its light slowly dims.",
   "boss": {
     "enemyId": "radiant-podqueen-boss",
     "roomId": "boss",
-    "revealText": "The enormous pod unfolds as a brilliant armored Beetle rises from its\ncenter.\n\nRadiant Podqueen reveals itself!"
+    "revealText": "The enormous pod unfolds as a brilliant armored Beetle rises from its center.\n\nRadiant Podqueen reveals itself!"
   },
-  "completionText": "\"The Radiant Podqueen returns to the heart of the Nursery.\n\nThe smaller Beetles resume tending their pods.\n\nOne pod flashes twice.\n\nSomewhere, Glimmer would absolutely flash back.\"\n\n\n#################################################################"
+  "completionText": "\"The Radiant Podqueen returns to the heart of the Nursery.\n\nThe smaller Beetles resume tending their pods.\n\nOne pod flashes twice.\n\nSomewhere, Glimmer would absolutely flash back.\"\n\n#################################################################"
 }

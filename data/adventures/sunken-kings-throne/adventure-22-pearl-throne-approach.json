@@ -1,22 +1,22 @@
 {
     "id": "pearl-throne-approach",
     "number": 22,
-    "name": "Pearl-Throne Approach",
+    "name": "Pearl Throne Approach",
     "regionId": "sunken-kings-throne",
     "enemyId": "pearl-throne-sentinel",
     "recommendedLevel": 44,
-    "introDiscord": "For the first time, the palace itself becomes visible.\n\nA vast pearl-covered gate rises above the kingdom while ceremonial roads\nconverge beneath it.",
-    "introTwitch": "For the first time, the palace itself becomes visible.\n\nA vast pearl-covered gate rises above the kingdom while ceremonial roads\nconverge beneath it.",
+    "introDiscord": "For the first time, the palace itself becomes visible. A vast pearl covered gate rises above the kingdom while ceremonial roads converge beneath it.",
+    "introTwitch": "For the first time, the palace itself becomes visible. A vast pearl covered gate rises above the kingdom while ceremonial roads converge beneath it.",
     "startRoomId": "pearl-throne-approach-approach",
     "rooms": {
         "pearl-throne-approach-approach": {
-            "prompt": "Pearl-Throne Approach opens into three routes through the drowned kingdom.",
+            "prompt": "Pearl Throne Approach opens into three routes through the drowned kingdom.",
             "choices": {
                 "left": {
                     "type": "combat",
                     "nextRoomId": "pearl-throne-approach-depths",
                     "enemyId": "pearl-throne-sentinel",
-                    "message": "A Pearl-Throne Sentinel guards the palace road."
+                    "message": "A Pearl Throne Sentinel guards the palace road."
                 },
                 "right": {
                     "type": "empty",
@@ -36,7 +36,7 @@
             }
         },
         "pearl-throne-approach-depths": {
-            "prompt": "Deeper within Pearl-Throne Approach, three paths wind through the abandoned royal district.",
+            "prompt": "Deeper within Pearl Throne Approach, three paths wind through the abandoned royal district.",
             "choices": {
                 "left": {
                     "type": "healing",
@@ -54,7 +54,7 @@
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "pearl-throne-approach-threshold",
-                    "message": "A pearl-lined chest contains Star Candies.",
+                    "message": "A pearl lined chest contains Star Candies.",
                     "reward": {
                         "min": 170,
                         "max": 212
@@ -85,7 +85,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "pearl-throne-sentinel",
-                    "message": "A Pearl-Throne Sentinel guards Pearlescent Gate."
+                    "message": "A Pearl Throne Sentinel guards Pearlescent Gate."
                 }
             }
         },
@@ -95,13 +95,13 @@
             "prompt": "The enormous palace gate begins opening."
         }
     },
-    "bossPromptDiscord": "The enormous palace gate begins opening.\n\nA mother-of-pearl figure steps between its doors.\n\nUse /yes to enter the royal palace grounds or /no to remain\na perfectly respectable trespasser outside.",
-    "bossPromptTwitch": "The enormous palace gate begins opening.\n\nA mother-of-pearl figure steps between its doors.\n\nUse !yes to enter the royal palace grounds or !no to remain\na perfectly respectable trespasser outside.",
+    "bossPromptDiscord": "The enormous palace gate begins opening.\n\nA mother of pearl figure steps between its doors.\n\nUse /yes to enter the royal palace grounds or /no to remain a perfectly respectable trespasser outside.",
+    "bossPromptTwitch": "The enormous palace gate begins opening.\n\nA mother of pearl figure steps between its doors.\n\nUse !yes to enter the royal palace grounds or !no to remain a perfectly respectable trespasser outside.",
     "bossRetreatText": "You withdraw from Pearlescent Gate. The royal challenge will wait.",
     "boss": {
         "enemyId": "mother-of-pearl-warden-boss",
         "roomId": "boss",
-        "revealText": "Mother-of-Pearl Warden reveals itself!"
+        "revealText": "Mother of Pearl Warden reveals itself!"
     },
     "completionText": "The Warden yields.\n\nThe palace grounds open.\n\nShizuki's next message:\n\n'WE ARE INSIDE THE CASTLE.\n\nACT NATURAL.'"
 }

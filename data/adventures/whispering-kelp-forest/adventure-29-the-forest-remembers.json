@@ -5,17 +5,17 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "memory-kelp-oracle",
   "recommendedLevel": 20,
-  "introDiscord": "The oldest kelp no longer whispers random words.\n\nIt remembers scenes.\n\nFaint images move through the leaves: travelers resting, creatures\npassing, storms long gone, and somewhere among them, a white-haired elf\nand a tiny Moon Sprite wandering these same paths.",
-  "introTwitch": "The oldest kelp no longer whispers random words.\n\nIt remembers scenes.\n\nFaint images move through the leaves: travelers resting, creatures\npassing, storms long gone, and somewhere among them, a white-haired elf\nand a tiny Moon Sprite wandering these same paths.",
+  "introDiscord": "The oldest kelp no longer whispers random words.\n\nIt remembers scenes.\n\nFaint images move through the leaves: travelers resting, creatures passing, storms long gone, and somewhere among them, a white haired elf and a tiny Moon Sprite wandering these same paths.",
+  "introTwitch": "The oldest kelp no longer whispers random words.\n\nIt remembers scenes.\n\nFaint images move through the leaves: travelers resting, creatures passing, storms long gone, and somewhere among them, a white haired elf and a tiny Moon Sprite wandering these same paths.",
   "startRoomId": "the-forest-remembers-approach",
   "rooms": {
     "the-forest-remembers-approach": {
-      "prompt": "Three rootways pass through curtains of memory-kelp. Each leaf briefly\nshows something that happened here years before.",
+      "prompt": "Three rootways pass through curtains of memory kelp. Each leaf briefly shows something that happened here years before.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "the-forest-remembers-depths",
-          "message": "Broad silver kelp folds around a Star Candy cache.\n\nWhen you reach for it, the nearby leaves replay Shizuki finding the same\nhiding place.\n\nShe looks delighted.\n\nThen immediately forgets where she put it.",
+          "message": "Broad silver kelp folds around a Star Candy cache.\n\nWhen you reach for it, the nearby leaves replay Shizuki finding the same hiding place.\n\nShe looks delighted.\n\nThen immediately forgets where she put it.",
           "reward": {
             "min": 60,
             "max": 104
@@ -25,30 +25,30 @@
           "type": "combat",
           "nextRoomId": "the-forest-remembers-depths",
           "enemyId": "memory-kelp-oracle",
-          "message": "A Memory-Kelp Oracle glides between the leaves.\n\nAround it, old images of the forest overlap until past and present become\ndifficult to separate.\n\nThen the Oracle turns toward you."
+          "message": "A Memory Kelp Oracle glides between the leaves.\n\nAround it, old images of the forest overlap until past and present become difficult to separate.\n\nThen the Oracle turns toward you."
         },
         "forward": {
           "type": "healing",
           "nextRoomId": "the-forest-remembers-depths",
           "healAmount": 2,
-          "message": "Fresh restorative sap rests beneath a memory of Shizuki treating an old\ninjury in the same spot.\n\nHer later note reads:\n\n'Came back.\n\nPool still here.\n\nI was less lost this time.\n\nTechnically.'",
-          "fullHpMessage": "You leave the restorative sap untouched. The memory fades, but the pool\nremains."
+          "message": "Fresh restorative sap rests beneath a memory of Shizuki treating an old injury in the same spot.\n\nHer later note reads:\n\n'Came back.\n\nPool still here.\n\nI was less lost this time.\n\nTechnically.'",
+          "fullHpMessage": "You leave the restorative sap untouched. The memory fades, but the pool remains."
         }
       }
     },
     "the-forest-remembers-depths": {
-      "prompt": "Moonlit fronds display longer memories now. Three paths wind through\nscenes from different years layered over one another.",
+      "prompt": "Moonlit fronds display longer memories now. Three paths wind through scenes from different years layered over one another.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "the-forest-remembers-threshold",
           "enemyId": "memory-kelp-oracle",
-          "message": "A Memory-Kelp Oracle passes through an image of Shizuki laughing with\nGlimmer.\n\nThe memory scatters into green light.\n\nThe Oracle emerges from it."
+          "message": "A Memory Kelp Oracle passes through an image of Shizuki laughing with Glimmer.\n\nThe memory scatters into green light.\n\nThe Oracle emerges from it."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "the-forest-remembers-threshold",
-          "message": "A moss-covered shrine coffer contains Star Candies.\n\nThe surrounding kelp remembers dozens of travelers finding the same\nshrine across generations.",
+          "message": "A moss covered shrine coffer contains Star Candies.\n\nThe surrounding kelp remembers dozens of travelers finding the same shrine across generations.",
           "reward": {
             "min": 72,
             "max": 116
@@ -63,25 +63,25 @@
       }
     },
     "the-forest-remembers-threshold": {
-      "prompt": "Towering kelp parts around Recollection Grove. Three final paths pass\nthrough memories of Murmurleaf Paths, the lanternvines, the moonblossom\ngarden, the auroras of old Fae lights, and countless travelers who came\nbefore.",
+      "prompt": "Towering kelp parts around Recollection Grove. Three final paths pass through memories of Murmurleaf Paths, the lanternvines, the moonblossom garden, the auroras of old Fae lights, and countless travelers who came before.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 7,
-          "message": "A moonblossom pool reflects Shizuki and Glimmer sitting beside it years\nago.\n\nHer note reads:\n\n'If you made it this far, rest.\n\nThe forest isn't going anywhere.\n\nProbably.'",
-          "fullHpMessage": "You leave the pool untouched. The old image of Shizuki and Glimmer\nfades gently from the water."
+          "message": "A moonblossom pool reflects Shizuki and Glimmer sitting beside it years ago.\n\nHer note reads:\n\n'If you made it this far, rest.\n\nThe forest isn't going anywhere.\n\nProbably.'",
+          "fullHpMessage": "You leave the pool untouched. The old image of Shizuki and Glimmer fades gently from the water."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "memory-kelp-oracle",
-          "message": "A Memory-Kelp Oracle waits among overlapping scenes of the forest.\n\nEvery memory goes still when it notices you."
+          "message": "A Memory Kelp Oracle waits among overlapping scenes of the forest.\n\nEvery memory goes still when it notices you."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "An offering basket rests at the center of several remembered journeys.\nInside are Star Candies beneath a simple carving:\n\n'For whoever comes next.'",
+          "message": "An offering basket rests at the center of several remembered journeys. Inside are Star Candies beneath a simple carving:\n\n'For whoever comes next.'",
           "reward": {
             "min": 84,
             "max": 128
@@ -95,13 +95,13 @@
       "prompt": "Every memory in the Grove turns toward the same ancient kelp tree."
     }
   },
-  "bossPromptDiscord": "Recollection Grove fills with scenes from across Whispering Kelp\nForest.\n\nThe Murmurleaf whispers.\n\nLanternvines glow.\n\nMoonmoths drift.\n\nThe ancient roots rise.\n\nThen all of the memories gather around one figure standing quietly\nbeneath the oldest leaves.\n\nUse /yes to approach the Keeper of the Grove or /no to leave the forest's\nmemories undisturbed.",
-  "bossPromptTwitch": "Recollection Grove fills with scenes from across Whispering Kelp\nForest.\n\nThe Murmurleaf whispers.\n\nLanternvines glow.\n\nMoonmoths drift.\n\nThe ancient roots rise.\n\nThen all of the memories gather around one figure standing quietly\nbeneath the oldest leaves.\n\nUse !yes to approach the Keeper of the Grove or !no to leave the forest's\nmemories undisturbed.",
-  "bossRetreatText": "You step away from Recollection Grove. The memories slowly return to\ntheir leaves.",
+  "bossPromptDiscord": "Recollection Grove fills with scenes from across Whispering Kelp Forest.\n\nThe Murmurleaf whispers.\n\nLanternvines glow.\n\nMoonmoths drift.\n\nThe ancient roots rise.\n\nThen all of the memories gather around one figure standing quietly beneath the oldest leaves.\n\nUse /yes to approach the Keeper of the Grove or /no to leave the forest's memories undisturbed.",
+  "bossPromptTwitch": "Recollection Grove fills with scenes from across Whispering Kelp Forest.\n\nThe Murmurleaf whispers.\n\nLanternvines glow.\n\nMoonmoths drift.\n\nThe ancient roots rise.\n\nThen all of the memories gather around one figure standing quietly beneath the oldest leaves.\n\nUse !yes to approach the Keeper of the Grove or !no to leave the forest's memories undisturbed.",
+  "bossRetreatText": "You step away from Recollection Grove. The memories slowly return to their leaves.",
   "boss": {
     "enemyId": "keeper-of-green-memories-boss",
     "roomId": "boss",
-    "revealText": "Green light gathers around an ancient Oracle as countless remembered\nscenes orbit its body.\n\nKeeper of Green Memories reveals itself!"
+    "revealText": "Green light gathers around an ancient Oracle as countless remembered scenes orbit its body.\n\nKeeper of Green Memories reveals itself!"
   },
-  "completionText": "\"The Keeper returns to the oldest kelp.\n\nThe memories settle.\n\nBut before the final image fades, the forest shows Shizuki and Glimmer\nleaving through a part of the grove that looks nothing like the ancient\nroots around it.\n\nStraight walls.\n\nArtificial light.\n\nA pursuit marker half-buried beneath moss.\n\nSomething else has been hiding inside the forest.\"\n\n\n#################################################################"
+  "completionText": "\"The Keeper returns to the oldest kelp.\n\nThe memories settle.\n\nBut before the final image fades, the forest shows Shizuki and Glimmer leaving through a part of the grove that looks nothing like the ancient roots around it.\n\nStraight walls.\n\nArtificial light.\n\nA pursuit marker half buried beneath moss.\n\nSomething else has been hiding inside the forest.\"\n\n#################################################################"
 }

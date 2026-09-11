@@ -49,7 +49,7 @@
                     "type": "combat",
                     "nextRoomId": "hall-of-other-selves-threshold",
                     "enemyId": "echo-of-self-mimic",
-                    "message": "A Mirror-Self Mimic becomes an excellent copy of you.\n\nRude."
+                    "message": "A Mirror Self Mimic becomes an excellent copy of you.\n\nRude."
                 },
                 "forward": {
                     "type": "treasure",
@@ -95,8 +95,8 @@
             "prompt": "Mirror of Abandoned Paths shows hundreds of versions of the journey."
         }
     },
-    "bossPromptDiscord": "Mirror of Abandoned Paths shows hundreds of versions of the journey.\n\nOne reflection remains when all others disappear.\n\nUse /yes to approach or /no to avoid fighting the version\nof yourself that apparently made different life choices.",
-    "bossPromptTwitch": "Mirror of Abandoned Paths shows hundreds of versions of the journey.\n\nOne reflection remains when all others disappear.\n\nUse !yes to approach or !no to avoid fighting the version\nof yourself that apparently made different life choices.",
+    "bossPromptDiscord": "Mirror of Abandoned Paths shows hundreds of versions of the journey.\n\nOne reflection remains when all others disappear.\n\nUse /yes to approach or /no to avoid fighting the version of yourself that apparently made different life choices.",
+    "bossPromptTwitch": "Mirror of Abandoned Paths shows hundreds of versions of the journey.\n\nOne reflection remains when all others disappear.\n\nUse !yes to approach or !no to avoid fighting the version of yourself that apparently made different life choices.",
     "bossRetreatText": "You withdraw from Mirror of Abandoned Paths. The impossible guardian will wait.",
     "boss": {
         "enemyId": "unchosen-reflection-boss",

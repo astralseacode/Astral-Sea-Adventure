@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "craterback-descent-threshold",
-          "message": "\"A star-chart coffer sits at the bottom of a perfectly circular impact pit. Something has repeatedly rolled around it without figuring out how lids work.\"\n\n---------------- ROOM 3 — THRESHOLD ----------------",
+          "message": "\"A star chart coffer sits at the bottom of a perfectly circular impact pit. Something has repeatedly rolled around it without figuring out how lids work.\"\n\n---------------- ROOM 3 — THRESHOLD ----------------",
           "reward": {
             "min": 154,
             "max": 189
@@ -63,12 +63,12 @@
       }
     },
     "craterback-descent-threshold": {
-      "prompt": "The final descent enters Impact-Shell Hollow. Three paths curve through enormous shell impressions pressed deep into the starstone.",
+      "prompt": "The final descent enters Impact Shell Hollow. Three paths curve through enormous shell impressions pressed deep into the starstone.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A meteor-iron reliquary rests beneath an abandoned shell. The interior is completely intact despite several suspicious dents.",
+          "message": "A meteor iron reliquary rests beneath an abandoned shell. The interior is completely intact despite several suspicious dents.",
           "reward": {
             "min": 166,
             "max": 201
@@ -85,23 +85,23 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 63,
           "message": "Shizuki's second emergency bottle rests behind a crater wall. The note reads: \"For when gravity wins. Gravity wins often here.\"",
-          "fullHpMessage": "\"You leave Shizuki's emergency bottle untouched. Gravity has not defeated you today.\"\n\n---------------- BOSS — IMPACT-SHELL HOLLOW ----------------"
+          "fullHpMessage": "\"You leave Shizuki's emergency bottle untouched. Gravity has not defeated you today.\"\n\n---------------- BOSS — IMPACT SHELL HOLLOW ----------------"
         }
       }
     },
     "boss-antechamber": {
-      "name": "Impact-Shell Hollow",
+      "name": "Impact Shell Hollow",
       "type": "boss-prompt",
       "prompt": "The smaller Isopods abruptly roll away from the hollow. A colossal armored shape shifts beneath the largest crater."
     }
   },
-  "bossPromptDiscord": "The entire hollow trembles.\n\nA shell larger than a wagon slowly rises from the crater floor.\n\nEvery nearby Craterback Isopod immediately stops racing.\n\nUse /yes to enter Impact-Shell Hollow or /no to retreat while everyone is briefly behaving.",
-  "bossPromptTwitch": "The entire hollow trembles.\n\nA shell larger than a wagon slowly rises from the crater floor.\n\nEvery nearby Craterback Isopod immediately stops racing.\n\nUse !yes to enter Impact-Shell Hollow or !no to retreat while everyone is briefly behaving.",
+  "bossPromptDiscord": "The entire hollow trembles.\n\nA shell larger than a wagon slowly rises from the crater floor.\n\nEvery nearby Craterback Isopod immediately stops racing.\n\nUse /yes to enter Impact Shell Hollow or /no to retreat while everyone is briefly behaving.",
+  "bossPromptTwitch": "The entire hollow trembles.\n\nA shell larger than a wagon slowly rises from the crater floor.\n\nEvery nearby Craterback Isopod immediately stops racing.\n\nUse !yes to enter Impact Shell Hollow or !no to retreat while everyone is briefly behaving.",
   "bossRetreatText": "You retreat uphill. The smaller Isopods resume racing approximately three seconds later.",
   "boss": {
     "enemyId": "craterback-matriarch-boss",
     "roomId": "boss",
     "revealText": "The enormous shell uncurls and claws strike the starstone.\n\nCraterback Matriarch emerges!"
   },
-  "completionText": "\"The Matriarch settles back into the crater.\n\nThe smaller Isopods immediately resume rolling down every available slope.\n\nPeace has been restored.\n\nTheir version of it, anyway.\"\n\n\n#################################################################"
+  "completionText": "\"The Matriarch settles back into the crater.\n\nThe smaller Isopods immediately resume rolling down every available slope.\n\nPeace has been restored.\n\nTheir version of it, anyway.\"\n\n#################################################################"
 }

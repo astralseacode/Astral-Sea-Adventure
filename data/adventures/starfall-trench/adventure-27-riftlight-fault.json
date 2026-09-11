@@ -28,7 +28,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "riftlight-fault-depths",
-          "message": "A star-chart coffer has been warped into an angle that should not exist.",
+          "message": "A star chart coffer has been warped into an angle that should not exist.",
           "reward": {
             "min": 55,
             "max": 98
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "riftlight-fault-threshold",
-          "message": "A meteor-iron reliquary flickers between two locations.",
+          "message": "A meteor iron reliquary flickers between two locations.",
           "reward": {
             "min": 67,
             "max": 110
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "fault-crowned-serpent-boss",
     "roomId": "boss",
-    "revealText": "A colossal serpent tears through the radiant fault.\n\nFault-Crowned Serpent reveals itself!"
+    "revealText": "A colossal serpent tears through the radiant fault.\n\nFault Crowned Serpent reveals itself!"
   },
-  "completionText": "\"The fracture shrinks.\n\nShizuki's sign remains:\n\n\"DO NOT ENTER RIFT.\"\n\nGood sign.\"\n\n\n#################################################################"
+  "completionText": "\"The fracture shrinks.\n\nShizuki's sign remains:\n\n\"DO NOT ENTER RIFT.\"\n\nGood sign.\"\n\n#################################################################"
 }

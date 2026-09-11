@@ -16,7 +16,7 @@
                     "type": "combat",
                     "nextRoomId": "the-walking-scale-depths",
                     "enemyId": "leviathan-scale-golem",
-                    "message": "A Leviathan scale lifts upright.\n\nStone-like limbs unfold beneath it.\n\nYou owe Shizuki's paranoia an apology."
+                    "message": "A Leviathan scale lifts upright.\n\nStone like limbs unfold beneath it.\n\nYou owe Shizuki's paranoia an apology."
                 },
                 "right": {
                     "type": "empty",
@@ -36,7 +36,7 @@
             }
         },
         "the-walking-scale-depths": {
-            "prompt": "Pressure-scarred wrecks surround three paths through the moving plates.",
+            "prompt": "Pressure scarred wrecks surround three paths through the moving plates.",
             "choices": {
                 "left": {
                     "type": "healing",
@@ -49,7 +49,7 @@
                     "type": "combat",
                     "nextRoomId": "the-walking-scale-threshold",
                     "enemyId": "leviathan-scale-golem",
-                    "message": "A Scale Golem unfolds from what you were absolutely certain was the\nfloor."
+                    "message": "A Scale Golem unfolds from what you were absolutely certain was the floor."
                 },
                 "forward": {
                     "type": "treasure",
@@ -92,16 +92,16 @@
         "boss-antechamber": {
             "name": "Titanplate Foundry",
             "type": "boss-prompt",
-            "prompt": "Every loose scale inside Titanplate Foundry begins sliding toward the\ncenter."
+            "prompt": "Every loose scale inside Titanplate Foundry begins sliding toward the center."
         }
     },
-    "bossPromptDiscord": "Every loose scale inside Titanplate Foundry begins sliding toward the\ncenter.\n\nThey stack.\n\nLock.\n\nRise.\n\nUse /yes to approach the growing structure or /no to leave before the\nfloor assembles anything larger.",
-    "bossPromptTwitch": "Every loose scale inside Titanplate Foundry begins sliding toward the\ncenter.\n\nThey stack.\n\nLock.\n\nRise.\n\nUse !yes to approach the growing structure or !no to leave before the\nfloor assembles anything larger.",
+    "bossPromptDiscord": "Every loose scale inside Titanplate Foundry begins sliding toward the center.\n\nThey stack.\n\nLock.\n\nRise.\n\nUse /yes to approach the growing structure or /no to leave before the floor assembles anything larger.",
+    "bossPromptTwitch": "Every loose scale inside Titanplate Foundry begins sliding toward the center.\n\nThey stack.\n\nLock.\n\nRise.\n\nUse !yes to approach the growing structure or !no to leave before the floor assembles anything larger.",
     "bossRetreatText": "You retreat onto ground that remains responsibly horizontal.",
     "boss": {
         "enemyId": "scale-forged-colossus-boss",
         "roomId": "boss",
-        "revealText": "Dozens of Leviathan scales form a towering armored body.\n\nScale-Forged Colossus reveals itself!"
+        "revealText": "Dozens of Leviathan scales form a towering armored body.\n\nScale Forged Colossus reveals itself!"
     },
     "completionText": "The Colossus collapses back into harmless plates.\n\nYou poke the nearest one.\n\nNothing happens.\n\nStill suspicious."
 }

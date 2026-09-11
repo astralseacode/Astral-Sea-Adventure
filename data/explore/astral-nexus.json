@@ -320,7 +320,7 @@
                        "max":  970
                    },
         "xp":  191,
-        "message":  "Coral made from shimmering memories grows around you. One branch becomes Moonlit Reef water. Another flashes with Starfall starlight. Whispering Kelp winds through Leviathan bone while a Sunken Kingdom lantern flickers nearby. Then a memory briefly shows a familiar white-haired elf sprinting past with an armful of Star Candies. Before you can look closer, the memory shatters into light and leaves {reward} Star Candies behind.",
+        "message":  "Coral made from shimmering memories grows around you. One branch becomes Moonlit Reef water. Another flashes with Starfall starlight. Whispering Kelp winds through Leviathan bone while a Sunken Kingdom lantern flickers nearby. Then a memory briefly shows a familiar white haired elf sprinting past with an armful of Star Candies. Before you can look closer, the memory shatters into light and leaves {reward} Star Candies behind.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-15",
@@ -446,7 +446,7 @@
         "region":  "Astral Nexus",
         "rarity":  "epic",
         "weight":  8,
-        "title":  "First-Light Memory",
+        "title":  "First Light Memory",
         "reward":  {
                        "min":  1050,
                        "max":  1300
@@ -512,7 +512,7 @@
         "region":  "Astral Nexus",
         "rarity":  "common",
         "weight":  90,
-        "title":  "Wrong-Way Map",
+        "title":  "Wrong Way Map",
         "reward":  {
                        "min":  525,
                        "max":  625
@@ -584,7 +584,7 @@
                        "max":  650
                    },
         "xp":  110,
-        "message":  "The Nexus suddenly begins replaying old magical afterimages of a familiar white-haired elf. One Shizuki runs left. Another runs right. One points upward. Another appears to argue furiously with a portal. One sits down. One confidently marches in a direction every other echo immediately ignores. None of this is helpful. Finally, one last afterimage points toward {reward} Star Candies, gives an enthusiastic thumbs-up, and vanishes.",
+        "message":  "The Nexus suddenly begins replaying old magical afterimages of a familiar white haired elf. One Shizuki runs left. Another runs right. One points upward. Another appears to argue furiously with a portal. One sits down. One confidently marches in a direction every other echo immediately ignores. None of this is helpful. Finally, one last afterimage points toward {reward} Star Candies, gives an enthusiastic thumbs-up, and vanishes.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-27",
@@ -606,7 +606,7 @@
                        "max":  1350
                    },
         "xp":  290,
-        "message":  "An enormous glass-like sphere floats silently in the Nexus. Inside are tiny moving representations of Moonlit Reef, Starfall Trench, Whispering Kelp Forest, Leviathan\u0027s Wake, Sunken King\u0027s Throne, and the Astral Nexus itself. Currents connect the six mapped regions like a miniature living world. A small opening appears in the sphere and releases {reward} Star Candies into your hands.",
+        "message":  "An enormous glass like sphere floats silently in the Nexus. Inside are tiny moving representations of Moonlit Reef, Starfall Trench, Whispering Kelp Forest, Leviathan\u0027s Wake, Sunken King\u0027s Throne, and the Astral Nexus itself. Currents connect the six mapped regions like a miniature living world. A small opening appears in the sphere and releases {reward} Star Candies into your hands.",
         "itemDrops":  [
                           {
                               "id":  "astral-nexus-note-28",

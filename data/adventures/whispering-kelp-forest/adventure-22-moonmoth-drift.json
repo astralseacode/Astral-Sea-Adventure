@@ -5,8 +5,8 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "moonmoth-nudibranch",
   "recommendedLevel": 17,
-  "introDiscord": "Thousands of pale Moonmoth Nudibranchs drift through the kelp like\nunderwater moths. Their glowing backs follow reflected starlight through\npaths hidden beneath the canopy.",
-  "introTwitch": "Thousands of pale Moonmoth Nudibranchs drift through the kelp like\nunderwater moths. Their glowing backs follow reflected starlight through\npaths hidden beneath the canopy.",
+  "introDiscord": "Thousands of pale Moonmoth Nudibranchs drift through the kelp like underwater moths. Their glowing backs follow reflected starlight through paths hidden beneath the canopy.",
+  "introTwitch": "Thousands of pale Moonmoth Nudibranchs drift through the kelp like underwater moths. Their glowing backs follow reflected starlight through paths hidden beneath the canopy.",
   "startRoomId": "moonmoth-drift-approach",
   "rooms": {
     "moonmoth-drift-approach": {
@@ -16,7 +16,7 @@
           "type": "combat",
           "nextRoomId": "moonmoth-drift-depths",
           "enemyId": "moonmoth-nudibranch",
-          "message": "One Moonmoth settles peacefully on a leaf.\n\nAnother joins it.\n\nThen a much larger Nudibranch drops directly into your route and proves\nthat 'peaceful' was a premature classification."
+          "message": "One Moonmoth settles peacefully on a leaf.\n\nAnother joins it.\n\nThen a much larger Nudibranch drops directly into your route and proves that 'peaceful' was a premature classification."
         },
         "right": {
           "type": "empty",
@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "moonmoth-drift-depths",
-          "message": "An offering basket glows beneath dozens of tiny Moonmoths. The Star\nCandies inside reflect enough light to briefly attract even more.",
+          "message": "An offering basket glows beneath dozens of tiny Moonmoths. The Star Candies inside reflect enough light to briefly attract even more.",
           "reward": {
             "min": 95,
             "max": 137
@@ -36,25 +36,25 @@
       }
     },
     "moonmoth-drift-depths": {
-      "prompt": "Living rootways curve beneath a migration cloud so thick the forest\nlooks full of silver snow.",
+      "prompt": "Living rootways curve beneath a migration cloud so thick the forest looks full of silver snow.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "moonmoth-drift-threshold",
           "healAmount": 20,
           "message": "A moonblossom pool rests under a quiet branch.\n\nShizuki wrote:\n\n'Rest spot.\n\nDo not shake branch.\n\nTrust me.'",
-          "fullHpMessage": "You leave the pool untouched and, more importantly, do not shake the\nbranch."
+          "fullHpMessage": "You leave the pool untouched and, more importantly, do not shake the branch."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "moonmoth-drift-threshold",
           "enemyId": "moonmoth-nudibranch",
-          "message": "A Moonmoth Nudibranch detaches from the migration cloud and glides\ntoward you with surprising speed."
+          "message": "A Moonmoth Nudibranch detaches from the migration cloud and glides toward you with surprising speed."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "moonmoth-drift-threshold",
-          "message": "Broad silver kelp wraps a Star Candy cache beneath several sleeping\nMoonmoths.\n\nYou perform the quietest treasure opening of your career.",
+          "message": "Broad silver kelp wraps a Star Candy cache beneath several sleeping Moonmoths.\n\nYou perform the quietest treasure opening of your career.",
           "reward": {
             "min": 107,
             "max": 149
@@ -63,12 +63,12 @@
       }
     },
     "moonmoth-drift-threshold": {
-      "prompt": "Moonlit fronds surround Dustlight Bower as three routes vanish beneath\npale drifting wings.",
+      "prompt": "Moonlit fronds surround Dustlight Bower as three routes vanish beneath pale drifting wings.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A shrine coffer rests beneath a natural arch. Star Candies inside\nscatter tiny points of reflected light across the entire Bower.",
+          "message": "A shrine coffer rests beneath a natural arch. Star Candies inside scatter tiny points of reflected light across the entire Bower.",
           "reward": {
             "min": 119,
             "max": 161
@@ -85,23 +85,23 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "moonmoth-nudibranch",
-          "message": "A cluster of Moonmoths suddenly parts around one much larger\nNudibranch.\n\nIt lands directly in the route.\n\nMigration checkpoint."
+          "message": "A cluster of Moonmoths suddenly parts around one much larger Nudibranch.\n\nIt lands directly in the route.\n\nMigration checkpoint."
         }
       }
     },
     "boss-antechamber": {
       "name": "Dustlight Bower",
       "type": "boss-prompt",
-      "prompt": "The entire migration cloud circles the Bower instead of continuing\nthrough it."
+      "prompt": "The entire migration cloud circles the Bower instead of continuing through it."
     }
   },
-  "bossPromptDiscord": "Moonmoths fill Dustlight Bower from root to canopy.\n\nThen every tiny creature turns toward the same pale silhouette overhead.\n\nTwo enormous glowing wings unfold among the drifting lights.\n\nUse /yes to enter the Bower or /no to let the migration continue without\nanother disturbance.",
-  "bossPromptTwitch": "Moonmoths fill Dustlight Bower from root to canopy.\n\nThen every tiny creature turns toward the same pale silhouette overhead.\n\nTwo enormous glowing wings unfold among the drifting lights.\n\nUse !yes to enter the Bower or !no to let the migration continue without\nanother disturbance.",
-  "bossRetreatText": "You step away from Dustlight Bower. The migration continues circling\nthe hidden guardian.",
+  "bossPromptDiscord": "Moonmoths fill Dustlight Bower from root to canopy.\n\nThen every tiny creature turns toward the same pale silhouette overhead.\n\nTwo enormous glowing wings unfold among the drifting lights.\n\nUse /yes to enter the Bower or /no to let the migration continue without another disturbance.",
+  "bossPromptTwitch": "Moonmoths fill Dustlight Bower from root to canopy.\n\nThen every tiny creature turns toward the same pale silhouette overhead.\n\nTwo enormous glowing wings unfold among the drifting lights.\n\nUse !yes to enter the Bower or !no to let the migration continue without another disturbance.",
+  "bossRetreatText": "You step away from Dustlight Bower. The migration continues circling the hidden guardian.",
   "boss": {
     "enemyId": "pale-wing-moonmoth-boss",
     "roomId": "boss",
-    "revealText": "The cloud parts as an enormous luminous Nudibranch descends like a pale\nmoth.\n\nPale-Wing Moonmoth reveals itself!"
+    "revealText": "The cloud parts as an enormous luminous Nudibranch descends like a pale moth.\n\nPale Wing Moonmoth reveals itself!"
   },
-  "completionText": "\"The Pale-Wing Moonmoth rejoins the drifting migration.\n\nThousands of tiny lights resume their journey through the forest.\n\nOne briefly lands on your shoulder before moving on.\"\n\n\n#################################################################"
+  "completionText": "\"The Pale Wing Moonmoth rejoins the drifting migration.\n\nThousands of tiny lights resume their journey through the forest.\n\nOne briefly lands on your shoulder before moving on.\"\n\n#################################################################"
 }

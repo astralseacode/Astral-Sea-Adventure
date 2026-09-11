@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "chalice-jelly",
     "recommendedLevel": 39,
-    "introDiscord": "A small royal chapel is filled with floating ceremonial cups.\n\nSeveral are simply cups.\n\nSeveral are Jellyfish wearing cups.\n\nNobody explains this.",
-    "introTwitch": "A small royal chapel is filled with floating ceremonial cups.\n\nSeveral are simply cups.\n\nSeveral are Jellyfish wearing cups.\n\nNobody explains this.",
+    "introDiscord": "A small royal chapel is filled with floating ceremonial cups. Several are simply cups.\n\nSeveral are Jellyfish wearing cups.\n\nNobody explains this.",
+    "introTwitch": "A small royal chapel is filled with floating ceremonial cups. Several are simply cups.\n\nSeveral are Jellyfish wearing cups.\n\nNobody explains this.",
     "startRoomId": "chalice-chapel-approach",
     "rooms": {
         "chalice-chapel-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Every floating chalice rises toward the chapel ceiling."
         }
     },
-    "bossPromptDiscord": "Every floating chalice rises toward the chapel ceiling.\n\nOne enormous bell-shaped figure descends beneath them.\n\nUse /yes to enter Sunken Communion or /no to maintain a\nhealthy skepticism toward religious tableware.",
-    "bossPromptTwitch": "Every floating chalice rises toward the chapel ceiling.\n\nOne enormous bell-shaped figure descends beneath them.\n\nUse !yes to enter Sunken Communion or !no to maintain a\nhealthy skepticism toward religious tableware.",
+    "bossPromptDiscord": "Every floating chalice rises toward the chapel ceiling.\n\nOne enormous bell shaped figure descends beneath them.\n\nUse /yes to enter Sunken Communion or /no to maintain a healthy skepticism toward religious tableware.",
+    "bossPromptTwitch": "Every floating chalice rises toward the chapel ceiling.\n\nOne enormous bell shaped figure descends beneath them.\n\nUse !yes to enter Sunken Communion or !no to maintain a healthy skepticism toward religious tableware.",
     "bossRetreatText": "You withdraw from Sunken Communion. The royal challenge will wait.",
     "boss": {
         "enemyId": "sacramental-medusa-boss",

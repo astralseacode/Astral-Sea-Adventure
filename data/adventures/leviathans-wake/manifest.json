@@ -2,7 +2,7 @@
     {
         "number": 1,
         "id": "wake-rider-crossing",
-        "name": "Wake-Rider Crossing",
+        "name": "Wake Rider Crossing",
         "enemyId": "wake-riding-razorfish",
         "bossEnemyId": "breaker-fin-alpha-boss",
         "file": "adventure-01-wake-rider-crossing.json"
@@ -26,7 +26,7 @@
     {
         "number": 4,
         "id": "scale-shelter-wrecks",
-        "name": "Scale-Shelter Wrecks",
+        "name": "Scale Shelter Wrecks",
         "enemyId": "scale-shelter-hermit",
         "bossEnemyId": "titan-scale-hermit-boss",
         "file": "adventure-04-scale-shelter-wrecks.json"
@@ -66,7 +66,7 @@
     {
         "number": 9,
         "id": "deep-scar-ravine",
-        "name": "Deep-Scar Ravine",
+        "name": "Deep Scar Ravine",
         "enemyId": "deep-scar-prowler",
         "bossEnemyId": "scar-marked-huntmaster-boss",
         "file": "adventure-09-deep-scar-ravine.json"
@@ -202,7 +202,7 @@
     {
         "number": 26,
         "id": "bone-crown-march",
-        "name": "Bone-Crown March",
+        "name": "Bone Crown March",
         "enemyId": "bone-crown-behemoth",
         "bossEnemyId": "ossuary-behemoth-boss",
         "file": "adventure-26-bone-crown-march.json"
@@ -218,7 +218,7 @@
     {
         "number": 28,
         "id": "titan-scar-threshold",
-        "name": "Titan-Scar Threshold",
+        "name": "Titan Scar Threshold",
         "enemyId": "titan-scar-guardian",
         "bossEnemyId": "scarbound-warden-boss",
         "file": "adventure-28-titan-scar-threshold.json"

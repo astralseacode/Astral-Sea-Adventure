@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "royal-archive-wisp",
     "recommendedLevel": 35,
-    "introDiscord": "The kingdom's library stretches through flooded halls packed with\nbooks, scroll tubes, maps, floating pages, and Royal Archive Wisps that\ntake overdue materials extremely seriously.",
-    "introTwitch": "The kingdom's library stretches through flooded halls packed with\nbooks, scroll tubes, maps, floating pages, and Royal Archive Wisps that\ntake overdue materials extremely seriously.",
+    "introDiscord": "The kingdom's library stretches through flooded halls packed with books, scroll tubes, maps, floating pages, and Royal Archive Wisps that take overdue materials extremely seriously.",
+    "introTwitch": "The kingdom's library stretches through flooded halls packed with books, scroll tubes, maps, floating pages, and Royal Archive Wisps that take overdue materials extremely seriously.",
     "startRoomId": "the-drowned-archive-approach",
     "rooms": {
         "the-drowned-archive-approach": {
@@ -54,7 +54,7 @@
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "the-drowned-archive-threshold",
-                    "message": "A map cabinet contains Star Candies and several kingdom maps that\nactually make sense.\n\nShizuki's annotations do not.",
+                    "message": "A map cabinet contains Star Candies and several kingdom maps that actually make sense.\n\nShizuki's annotations do not.",
                     "reward": {
                         "min": 298,
                         "max": 335
@@ -95,8 +95,8 @@
             "prompt": "Thousands of pages rise inside the Scriptorium of Bubbles."
         }
     },
-    "bossPromptDiscord": "Thousands of pages rise inside the Scriptorium of Bubbles.\n\nThey arrange themselves around one brilliant Wisp wearing a tiny\nspectral librarian's crown.\n\nUse /yes to approach or /no to avoid the world's most\naggressive late fee.",
-    "bossPromptTwitch": "Thousands of pages rise inside the Scriptorium of Bubbles.\n\nThey arrange themselves around one brilliant Wisp wearing a tiny\nspectral librarian's crown.\n\nUse !yes to approach or !no to avoid the world's most\naggressive late fee.",
+    "bossPromptDiscord": "Thousands of pages rise inside the Scriptorium of Bubbles.\n\nThey arrange themselves around one brilliant Wisp wearing a tiny spectral librarian's crown.\n\nUse /yes to approach or /no to avoid the world's most aggressive late fee.",
+    "bossPromptTwitch": "Thousands of pages rise inside the Scriptorium of Bubbles.\n\nThey arrange themselves around one brilliant Wisp wearing a tiny spectral librarian's crown.\n\nUse !yes to approach or !no to avoid the world's most aggressive late fee.",
     "bossRetreatText": "You withdraw from Scriptorium of Bubbles. The royal challenge will wait.",
     "boss": {
         "enemyId": "grand-archivist-wisp-boss",

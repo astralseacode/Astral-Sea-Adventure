@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "scepter-crab",
     "recommendedLevel": 33,
-    "introDiscord": "The royal gardens are overgrown but gorgeous.\n\nTopiary crowns, decorative fountains, fruit beds, and Scepter Crabs now\noccupy what used to be noble landscaping.",
-    "introTwitch": "The royal gardens are overgrown but gorgeous.\n\nTopiary crowns, decorative fountains, fruit beds, and Scepter Crabs now\noccupy what used to be noble landscaping.",
+    "introDiscord": "The royal gardens are overgrown but gorgeous. Topiary crowns, decorative fountains, fruit beds, and Scepter Crabs now occupy what used to be noble landscaping.",
+    "introTwitch": "The royal gardens are overgrown but gorgeous. Topiary crowns, decorative fountains, fruit beds, and Scepter Crabs now occupy what used to be noble landscaping.",
     "startRoomId": "scepter-gardens-approach",
     "rooms": {
         "scepter-gardens-approach": {
@@ -31,7 +31,7 @@
                     "type": "combat",
                     "nextRoomId": "scepter-gardens-depths",
                     "enemyId": "scepter-crab",
-                    "message": "A Scepter Crab emerges holding a broken garden ornament like an actual\nscepter.\n\nIt has declared itself nobility."
+                    "message": "A Scepter Crab emerges holding a broken garden ornament like an actual scepter.\n\nIt has declared itself nobility."
                 }
             }
         },
@@ -78,7 +78,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "scepter-crab",
-                    "message": "A Scepter Crab marches from beneath a crown-shaped hedge."
+                    "message": "A Scepter Crab marches from beneath a crown shaped hedge."
                 },
                 "forward": {
                     "type": "healing",
@@ -92,11 +92,11 @@
         "boss-antechamber": {
             "name": "Scepter Conservatory",
             "type": "boss-prompt",
-            "prompt": "Inside Scepter Conservatory, dozens of Crabs line either side of a tiny\nceremonial path."
+            "prompt": "Inside Scepter Conservatory, dozens of Crabs line either side of a tiny ceremonial path."
         }
     },
-    "bossPromptDiscord": "Inside Scepter Conservatory, dozens of Crabs line either side of a tiny\nceremonial path.\n\nAt its end sits one Crab with an outrageously large scepter.\n\nUse /yes to approach the royal gardener or /no to respect\ncrustacean sovereignty.",
-    "bossPromptTwitch": "Inside Scepter Conservatory, dozens of Crabs line either side of a tiny\nceremonial path.\n\nAt its end sits one Crab with an outrageously large scepter.\n\nUse !yes to approach the royal gardener or !no to respect\ncrustacean sovereignty.",
+    "bossPromptDiscord": "Inside Scepter Conservatory, dozens of Crabs line either side of a tiny ceremonial path.\n\nAt its end sits one Crab with an outrageously large scepter.\n\nUse /yes to approach the royal gardener or /no to respect crustacean sovereignty.",
+    "bossPromptTwitch": "Inside Scepter Conservatory, dozens of Crabs line either side of a tiny ceremonial path.\n\nAt its end sits one Crab with an outrageously large scepter.\n\nUse !yes to approach the royal gardener or !no to respect crustacean sovereignty.",
     "bossRetreatText": "You withdraw from Scepter Conservatory. The royal challenge will wait.",
     "boss": {
         "enemyId": "regalia-clawlord-boss",

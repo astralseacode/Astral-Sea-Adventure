@@ -95,8 +95,8 @@
             "prompt": "Chronology Crypt fills with overlapping versions of the same chamber."
         }
     },
-    "bossPromptDiscord": "Chronology Crypt fills with overlapping versions of the same chamber.\n\nA figure walks toward you from tomorrow while casting a shadow into\nyesterday.\n\nUse /yes to enter or /no to deal with this at a more\nreasonable time.",
-    "bossPromptTwitch": "Chronology Crypt fills with overlapping versions of the same chamber.\n\nA figure walks toward you from tomorrow while casting a shadow into\nyesterday.\n\nUse !yes to enter or !no to deal with this at a more\nreasonable time.",
+    "bossPromptDiscord": "Chronology Crypt fills with overlapping versions of the same chamber.\n\nA figure walks toward you from tomorrow while casting a shadow into yesterday.\n\nUse /yes to enter or /no to deal with this at a more reasonable time.",
+    "bossPromptTwitch": "Chronology Crypt fills with overlapping versions of the same chamber.\n\nA figure walks toward you from tomorrow while casting a shadow into yesterday.\n\nUse !yes to enter or !no to deal with this at a more reasonable time.",
     "bossRetreatText": "You withdraw from Chronology Crypt. The impossible guardian will wait.",
     "boss": {
         "enemyId": "tomorrows-ancestor-boss",

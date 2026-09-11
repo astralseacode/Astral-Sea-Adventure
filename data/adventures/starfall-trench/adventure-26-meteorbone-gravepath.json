@@ -5,12 +5,12 @@
   "regionId": "starfall-trench",
   "enemyId": "meteorbone-prowler",
   "recommendedLevel": 9,
-  "introDiscord": "Fossil-like shapes protrude from ancient meteorstone. Shizuki's notes contain an increasingly serious argument with herself over whether these are bones, rocks, or 'space bones.'",
-  "introTwitch": "Fossil-like shapes protrude from ancient meteorstone. Shizuki's notes contain an increasingly serious argument with herself over whether these are bones, rocks, or 'space bones.'",
+  "introDiscord": "Fossil like shapes protrude from ancient meteorstone. Shizuki's notes contain an increasingly serious argument with herself over whether these are bones, rocks, or 'space bones.'",
+  "introTwitch": "Fossil like shapes protrude from ancient meteorstone. Shizuki's notes contain an increasingly serious argument with herself over whether these are bones, rocks, or 'space bones.'",
   "startRoomId": "meteorbone-gravepath-approach",
   "rooms": {
     "meteorbone-gravepath-approach": {
-      "prompt": "Three paths wind through enormous fossil-shaped formations.",
+      "prompt": "Three paths wind through enormous fossil shaped formations.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "meteorbone-gravepath-threshold",
-          "message": "A star-chart coffer lies beneath a fossil arch.",
+          "message": "A star chart coffer lies beneath a fossil arch.",
           "reward": {
             "min": 71,
             "max": 114
@@ -63,12 +63,12 @@
       }
     },
     "meteorbone-gravepath-threshold": {
-      "prompt": "Ossuary of Impacts waits beyond three bone-shaped passages.",
+      "prompt": "Ossuary of Impacts waits beyond three bone shaped passages.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A meteor-iron reliquary rests inside an enormous hollow fossil.",
+          "message": "A meteor iron reliquary rests inside an enormous hollow fossil.",
           "reward": {
             "min": 83,
             "max": 126
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Ossuary of Impacts",
       "type": "boss-prompt",
-      "prompt": "An enormous skull-shaped formation moves."
+      "prompt": "An enormous skull shaped formation moves."
     }
   },
-  "bossPromptDiscord": "An enormous skull-shaped formation moves.\n\nThat significantly strengthens the space-bone argument.\n\nUse /yes to enter the Ossuary of Impacts or /no to publish no conclusions at this time.",
-  "bossPromptTwitch": "An enormous skull-shaped formation moves.\n\nThat significantly strengthens the space-bone argument.\n\nUse !yes to enter the Ossuary of Impacts or !no to publish no conclusions at this time.",
+  "bossPromptDiscord": "An enormous skull shaped formation moves.\n\nThat significantly strengthens the space bone argument.\n\nUse /yes to enter the Ossuary of Impacts or /no to publish no conclusions at this time.",
+  "bossPromptTwitch": "An enormous skull shaped formation moves.\n\nThat significantly strengthens the space bone argument.\n\nUse !yes to enter the Ossuary of Impacts or !no to publish no conclusions at this time.",
   "bossRetreatText": "You retreat.\n\nScientific consensus remains pending.",
   "boss": {
     "enemyId": "star-skull-prowler-boss",
     "roomId": "boss",
-    "revealText": "The enormous skull rises on a living celestial body.\n\nStar-Skull Prowler reveals itself!"
+    "revealText": "The enormous skull rises on a living celestial body.\n\nStar Skull Prowler reveals itself!"
   },
-  "completionText": "\"The Prowler disappears among the fossils.\n\nFinal conclusion:\n\nDefinitely weird.\n\nPossibly bones.\n\nExcellent adventure.\"\n\n\n#################################################################"
+  "completionText": "\"The Prowler disappears among the fossils.\n\nFinal conclusion:\n\nDefinitely weird.\n\nPossibly bones.\n\nExcellent adventure.\"\n\n#################################################################"
 }

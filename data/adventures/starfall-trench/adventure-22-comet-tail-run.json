@@ -1,12 +1,12 @@
 {
   "id": "comet-tail-run",
   "number": 22,
-  "name": "Comet-Tail Run",
+  "name": "Comet Tail Run",
   "regionId": "starfall-trench",
   "enemyId": "comet-tail-barracuda",
   "recommendedLevel": 9,
-  "introDiscord": "A blazing current cuts through the trench like a racetrack. Comet-Tail Barracudas streak through it at impossible speed. Shizuki's signs suggest she absolutely tried racing them.",
-  "introTwitch": "A blazing current cuts through the trench like a racetrack. Comet-Tail Barracudas streak through it at impossible speed. Shizuki's signs suggest she absolutely tried racing them.",
+  "introDiscord": "A blazing current cuts through the trench like a racetrack. Comet Tail Barracudas streak through it at impossible speed. Shizuki's signs suggest she absolutely tried racing them.",
+  "introTwitch": "A blazing current cuts through the trench like a racetrack. Comet Tail Barracudas streak through it at impossible speed. Shizuki's signs suggest she absolutely tried racing them.",
   "startRoomId": "comet-tail-run-approach",
   "rooms": {
     "comet-tail-run-approach": {
@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "comet-tail-run-depths",
-          "message": "A meteor-iron reliquary rests beside the course.",
+          "message": "A meteor iron reliquary rests beside the course.",
           "reward": {
             "min": 73,
             "max": 115
@@ -68,7 +68,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer sits beside what appears to be a finish marker.",
+          "message": "A star chart coffer sits beside what appears to be a finish marker.",
           "reward": {
             "min": 97,
             "max": 139
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "A colossal Barracuda streaks through the chamber.\n\nPerseid Barracuda reveals itself!"
   },
-  "completionText": "\"The Perseid slows and disappears down the course.\n\nSomewhere, Shizuki's scoreboard probably just updated itself.\"\n\n\n#################################################################"
+  "completionText": "\"The Perseid slows and disappears down the course.\n\nSomewhere, Shizuki's scoreboard probably just updated itself.\"\n\n#################################################################"
 }

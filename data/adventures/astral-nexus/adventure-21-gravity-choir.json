@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "gravity-choir-siren",
     "recommendedLevel": 50,
-    "introDiscord": "Music changes gravity.\n\nHigh notes send stones upward.\n\nLow notes slam them down.\n\nShizuki's handwriting begins several feet above the floor and ends on\nthe ceiling.",
-    "introTwitch": "Music changes gravity.\n\nHigh notes send stones upward.\n\nLow notes slam them down.\n\nShizuki's handwriting begins several feet above the floor and ends on\nthe ceiling.",
+    "introDiscord": "Music changes gravity.\n\nHigh notes send stones upward. Low notes slam them down.\n\nShizuki's handwriting begins several feet above the floor and ends on the ceiling.",
+    "introTwitch": "Music changes gravity.\n\nHigh notes send stones upward. Low notes slam them down.\n\nShizuki's handwriting begins several feet above the floor and ends on the ceiling.",
     "startRoomId": "gravity-choir-approach",
     "rooms": {
         "gravity-choir-approach": {
@@ -63,7 +63,7 @@
             }
         },
         "gravity-choir-threshold": {
-            "prompt": "Near Mass-Song Amphitheater, three final routes cross the edge of reality.",
+            "prompt": "Near Mass Song Amphitheater, three final routes cross the edge of reality.",
             "choices": {
                 "left": {
                     "type": "combat",
@@ -90,14 +90,14 @@
             }
         },
         "boss-antechamber": {
-            "name": "Mass-Song Amphitheater",
+            "name": "Mass Song Amphitheater",
             "type": "boss-prompt",
-            "prompt": "Mass-Song Amphitheater begins singing without musicians."
+            "prompt": "Mass Song Amphitheater begins singing without musicians."
         }
     },
-    "bossPromptDiscord": "Mass-Song Amphitheater begins singing without musicians.\n\nEverything starts falling toward the center.\n\nUse /yes to enter or /no to maintain a traditional\nrelationship with downward.",
-    "bossPromptTwitch": "Mass-Song Amphitheater begins singing without musicians.\n\nEverything starts falling toward the center.\n\nUse !yes to enter or !no to maintain a traditional\nrelationship with downward.",
-    "bossRetreatText": "You withdraw from Mass-Song Amphitheater. The impossible guardian will wait.",
+    "bossPromptDiscord": "Mass Song Amphitheater begins singing without musicians.\n\nEverything starts falling toward the center.\n\nUse /yes to enter or /no to maintain a traditional relationship with downward.",
+    "bossPromptTwitch": "Mass Song Amphitheater begins singing without musicians.\n\nEverything starts falling toward the center.\n\nUse !yes to enter or !no to maintain a traditional relationship with downward.",
+    "bossRetreatText": "You withdraw from Mass Song Amphitheater. The impossible guardian will wait.",
     "boss": {
         "enemyId": "singularity-cantor-boss",
         "roomId": "boss",

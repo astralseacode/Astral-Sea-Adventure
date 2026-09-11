@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "gravitic-deadfall-threshold",
-          "message": "A star-chart coffer rests beneath a strangely light patch.",
+          "message": "A star chart coffer rests beneath a strangely light patch.",
           "reward": {
             "min": 81,
             "max": 123
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "\"A meteor-iron reliquary lies at the edge of the pit.\"\n\nBOSS:",
+          "message": "\"A meteor iron reliquary lies at the edge of the pit.\"\n\nBOSS:",
           "reward": {
             "min": 93,
             "max": 135
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "A colossal Stonefish rises beneath crushing pressure.\n\nMasskeeper Stonefish reveals itself!"
   },
-  "completionText": "\"The pressure fades.\n\nBackpack #17 remains securely attached.\n\nShizuki would be proud.\"\n\n\n#################################################################"
+  "completionText": "\"The pressure fades.\n\nBackpack #17 remains securely attached.\n\nShizuki would be proud.\"\n\n#################################################################"
 }

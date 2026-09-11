@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "oathchain-serpent",
     "recommendedLevel": 46,
-    "introDiscord": "Behind the palace lies an enormous royal hedge maze.\n\nDecorative stone arches, fountains, garden statues, and completely\nunhelpful signposts divide the paths.\n\nOathchain Serpents have made the maze their home.\n\nShizuki has made the maze considerably worse.",
-    "introTwitch": "Behind the palace lies an enormous royal hedge maze.\n\nDecorative stone arches, fountains, garden statues, and completely\nunhelpful signposts divide the paths.\n\nOathchain Serpents have made the maze their home.\n\nShizuki has made the maze considerably worse.",
+    "introDiscord": "Behind the palace lies an enormous royal hedge maze. Decorative stone arches, fountains, garden statues, and completely unhelpful signposts divide the paths. Oathchain Serpents have made the maze their home.\n\nShizuki has made the maze considerably worse.",
+    "introTwitch": "Behind the palace lies an enormous royal hedge maze. Decorative stone arches, fountains, garden statues, and completely unhelpful signposts divide the paths. Oathchain Serpents have made the maze their home.\n\nShizuki has made the maze considerably worse.",
     "startRoomId": "oathchain-dungeons-approach",
     "rooms": {
         "oathchain-dungeons-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The hedges open around Mazeheart Pavilion."
         }
     },
-    "bossPromptDiscord": "The hedges open around Mazeheart Pavilion.\n\nA massive Serpent coils around the central fountain like it owns the\nentire maze.\n\nIt probably does.\n\nUse /yes to approach or /no to continue being lost\nelsewhere.",
-    "bossPromptTwitch": "The hedges open around Mazeheart Pavilion.\n\nA massive Serpent coils around the central fountain like it owns the\nentire maze.\n\nIt probably does.\n\nUse !yes to approach or !no to continue being lost\nelsewhere.",
+    "bossPromptDiscord": "The hedges open around Mazeheart Pavilion.\n\nA massive Serpent coils around the central fountain like it owns the entire maze.\n\nIt probably does.\n\nUse /yes to approach or /no to continue being lost elsewhere.",
+    "bossPromptTwitch": "The hedges open around Mazeheart Pavilion.\n\nA massive Serpent coils around the central fountain like it owns the entire maze.\n\nIt probably does.\n\nUse !yes to approach or !no to continue being lost elsewhere.",
     "bossRetreatText": "You withdraw from Mazeheart Pavilion. The royal challenge will wait.",
     "boss": {
         "enemyId": "high-gaoler-serpent-boss",

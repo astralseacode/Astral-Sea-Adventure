@@ -5,17 +5,17 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "singing-vine-serpent",
   "recommendedLevel": 13,
-  "introDiscord": "Long silver vines hum whenever the current moves through them. Some\nrepeat old melodies. Others improvise. Somewhere among the vines, a\nSerpent has learned harmony.",
-  "introTwitch": "Long silver vines hum whenever the current moves through them. Some\nrepeat old melodies. Others improvise. Somewhere among the vines, a\nSerpent has learned harmony.",
+  "introDiscord": "Long silver vines hum whenever the current moves through them. Some repeat old melodies. Others improvise. Somewhere among the vines, a Serpent has learned harmony.",
+  "introTwitch": "Long silver vines hum whenever the current moves through them. Some repeat old melodies. Others improvise. Somewhere among the vines, a Serpent has learned harmony.",
   "startRoomId": "the-singing-vines-approach",
   "rooms": {
     "the-singing-vines-approach": {
-      "prompt": "Three rootways pass beneath curtains of humming vines. Each route sings\na different melody.",
+      "prompt": "Three rootways pass beneath curtains of humming vines. Each route sings a different melody.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "the-singing-vines-depths",
-          "message": "Broad kelp wraps a Star Candy cache beneath vines playing a gentle\nthree-note refrain. Opening the bundle adds an accidental fourth note.",
+          "message": "Broad kelp wraps a Star Candy cache beneath vines playing a gentle three-note refrain. Opening the bundle adds an accidental fourth note.",
           "reward": {
             "min": 150,
             "max": 188
@@ -32,12 +32,12 @@
           "nextRoomId": "the-singing-vines-depths",
           "healAmount": 47,
           "message": "Restorative sap rests beneath Shizuki's note:\n\n'Tried singing with vines.\n\nVines copied me.\n\nGlimmer copied vines.\n\nI have been outnumbered musically.'",
-          "fullHpMessage": "You leave the sap untouched. The vines continue performing without\nrequiring another vocalist."
+          "fullHpMessage": "You leave the sap untouched. The vines continue performing without requiring another vocalist."
         }
       }
     },
     "the-singing-vines-depths": {
-      "prompt": "The melodies overlap as three passages twist through a natural\nunderwater concert hall.",
+      "prompt": "The melodies overlap as three passages twist through a natural underwater concert hall.",
       "choices": {
         "left": {
           "type": "combat",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "the-singing-vines-threshold",
-          "message": "A moss-covered shrine coffer opens beneath vines playing what sounds\nsuspiciously like a victory song.\n\nPremature, but encouraging.",
+          "message": "A moss covered shrine coffer opens beneath vines playing what sounds suspiciously like a victory song.\n\nPremature, but encouraging.",
           "reward": {
             "min": 162,
             "max": 200
@@ -63,14 +63,14 @@
       }
     },
     "the-singing-vines-threshold": {
-      "prompt": "Towering kelp forms Resonant Arbor. Three final routes hum in perfect\nthree-part harmony.",
+      "prompt": "Towering kelp forms Resonant Arbor. Three final routes hum in perfect three-part harmony.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 52,
-          "message": "A moonblossom pool sits beneath a vine humming softly enough to feel\nlike a lullaby.\n\nShizuki wrote:\n\n'Excellent nap vine.\nFive stars.'",
-          "fullHpMessage": "You leave the restorative pool untouched and allow the five-star nap\nvine to continue its work."
+          "message": "A moonblossom pool sits beneath a vine humming softly enough to feel like a lullaby.\n\nShizuki wrote:\n\n'Excellent nap vine.\nFive stars.'",
+          "fullHpMessage": "You leave the restorative pool untouched and allow the five-star nap vine to continue its work."
         },
         "right": {
           "type": "combat",
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "An offering basket has been woven directly into the singing vines.\nInside are Star Candies that gently rattle in rhythm.",
+          "message": "An offering basket has been woven directly into the singing vines. Inside are Star Candies that gently rattle in rhythm.",
           "reward": {
             "min": 174,
             "max": 212
@@ -95,13 +95,13 @@
       "prompt": "Every vine in the Arbor stops singing.\n\nOne deeper melody remains."
     }
   },
-  "bossPromptDiscord": "The Resonant Arbor answers with a single low note.\n\nThe roots vibrate.\n\nThe vines bend.\n\nA much larger harmony begins moving through the chamber from somewhere\nyou cannot see.\n\nUse /yes to enter the Arbor or /no to leave the final performance for\nanother night.",
-  "bossPromptTwitch": "The Resonant Arbor answers with a single low note.\n\nThe roots vibrate.\n\nThe vines bend.\n\nA much larger harmony begins moving through the chamber from somewhere\nyou cannot see.\n\nUse !yes to enter the Arbor or !no to leave the final performance for\nanother night.",
-  "bossRetreatText": "You retreat from the Arbor. The hidden melody continues behind you,\npatiently holding the final note.",
+  "bossPromptDiscord": "The Resonant Arbor answers with a single low note.\n\nThe roots vibrate.\n\nThe vines bend.\n\nA much larger harmony begins moving through the chamber from somewhere you cannot see.\n\nUse /yes to enter the Arbor or /no to leave the final performance for another night.",
+  "bossPromptTwitch": "The Resonant Arbor answers with a single low note.\n\nThe roots vibrate.\n\nThe vines bend.\n\nA much larger harmony begins moving through the chamber from somewhere you cannot see.\n\nUse !yes to enter the Arbor or !no to leave the final performance for another night.",
+  "bossRetreatText": "You retreat from the Arbor. The hidden melody continues behind you, patiently holding the final note.",
   "boss": {
     "enemyId": "canticle-serpent-boss",
     "roomId": "boss",
-    "revealText": "The vines split apart as an enormous Serpent coils through the singing\nroots.\n\nCanticle Serpent reveals itself!"
+    "revealText": "The vines split apart as an enormous Serpent coils through the singing roots.\n\nCanticle Serpent reveals itself!"
   },
-  "completionText": "\"The Canticle Serpent disappears beneath the Arbor.\n\nThe vines resume their music.\n\nFor several seconds, they play Shizuki's berry song.\n\nOh no.\"\n\n\n#################################################################"
+  "completionText": "\"The Canticle Serpent disappears beneath the Arbor.\n\nThe vines resume their music.\n\nFor several seconds, they play Shizuki's berry song.\n\nOh no.\"\n\n#################################################################"
 }

@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "constellation-automaton",
     "recommendedLevel": 50,
-    "introDiscord": "Constellations have climbed down from the sky.\n\nThey walk around on metal legs.\n\nShizuki's response:\n\n'STARS HAVE KNEES NOW.'",
-    "introTwitch": "Constellations have climbed down from the sky.\n\nThey walk around on metal legs.\n\nShizuki's response:\n\n'STARS HAVE KNEES NOW.'",
+    "introDiscord": "Constellations have climbed down from the sky. They walk around on metal legs.\n\nShizuki's response:\n\n'STARS HAVE KNEES NOW.'",
+    "introTwitch": "Constellations have climbed down from the sky. They walk around on metal legs.\n\nShizuki's response:\n\n'STARS HAVE KNEES NOW.'",
     "startRoomId": "walking-constellations-approach",
     "rooms": {
         "walking-constellations-approach": {
@@ -69,7 +69,7 @@
                     "type": "healing",
                     "nextRoomId": "boss-antechamber",
                     "healAmount": 84,
-                    "message": "A slow-moving constellation bathes you in restorative starlight.",
+                    "message": "A slow moving constellation bathes you in restorative starlight.",
                     "fullHpMessage": "You leave the restorative untouched. You're already at full health."
                 },
                 "right": {
@@ -95,8 +95,8 @@
             "prompt": "Mechanical Zodiac activates."
         }
     },
-    "bossPromptDiscord": "Mechanical Zodiac activates.\n\nTwelve constellations rotate around one central machine.\n\nUse /yes to enter or /no to reject astronomy with moving\nparts.",
-    "bossPromptTwitch": "Mechanical Zodiac activates.\n\nTwelve constellations rotate around one central machine.\n\nUse !yes to enter or !no to reject astronomy with moving\nparts.",
+    "bossPromptDiscord": "Mechanical Zodiac activates.\n\nTwelve constellations rotate around one central machine.\n\nUse /yes to enter or /no to reject astronomy with moving parts.",
+    "bossPromptTwitch": "Mechanical Zodiac activates.\n\nTwelve constellations rotate around one central machine.\n\nUse !yes to enter or !no to reject astronomy with moving parts.",
     "bossRetreatText": "You withdraw from Mechanical Zodiac. The impossible guardian will wait.",
     "boss": {
         "enemyId": "zodiac-engine-boss",

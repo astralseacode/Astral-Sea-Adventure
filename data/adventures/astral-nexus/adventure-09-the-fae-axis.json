@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "fae-axis-sentinel",
     "recommendedLevel": 50,
-    "introDiscord": "A brilliant silver line cuts through the Nexus.\n\nEvery portal, current, and floating fragment seems to orient around it.\n\nShizuki drew an arrow saying:\n\n'THIS might actually be north.\n\nGlimmer laughed for seven minutes.'",
-    "introTwitch": "A brilliant silver line cuts through the Nexus.\n\nEvery portal, current, and floating fragment seems to orient around it.\n\nShizuki drew an arrow saying:\n\n'THIS might actually be north.\n\nGlimmer laughed for seven minutes.'",
+    "introDiscord": "A brilliant silver line cuts through the Nexus. Every portal, current, and floating fragment seems to orient around it.\n\nShizuki drew an arrow saying:\n\n'THIS might actually be north.\n\nGlimmer laughed for seven minutes.'",
+    "introTwitch": "A brilliant silver line cuts through the Nexus. Every portal, current, and floating fragment seems to orient around it.\n\nShizuki drew an arrow saying:\n\n'THIS might actually be north.\n\nGlimmer laughed for seven minutes.'",
     "startRoomId": "the-fae-axis-approach",
     "rooms": {
         "the-fae-axis-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The silver Axis splits into six crossing lines."
         }
     },
-    "bossPromptDiscord": "The silver Axis splits into six crossing lines.\n\nOne Sentinel stands exactly where all six meet.\n\nUse /yes to enter the Crossroads or /no to remain\ndirectionally confused but alive.",
-    "bossPromptTwitch": "The silver Axis splits into six crossing lines.\n\nOne Sentinel stands exactly where all six meet.\n\nUse !yes to enter the Crossroads or !no to remain\ndirectionally confused but alive.",
+    "bossPromptDiscord": "The silver Axis splits into six crossing lines.\n\nOne Sentinel stands exactly where all six meet.\n\nUse /yes to enter the Crossroads or /no to remain directionally confused but alive.",
+    "bossPromptTwitch": "The silver Axis splits into six crossing lines.\n\nOne Sentinel stands exactly where all six meet.\n\nUse !yes to enter the Crossroads or !no to remain directionally confused but alive.",
     "bossRetreatText": "You withdraw from Crossroads of Silver Law. The impossible guardian will wait.",
     "boss": {
         "enemyId": "axis-prime-sentinel-boss",

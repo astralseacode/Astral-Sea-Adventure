@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "paradox-minnow",
     "recommendedLevel": 50,
-    "introDiscord": "The doorway behind Sunken King's Throne closes.\n\nOr maybe it opens.\n\nYou aren't entirely sure.\n\nPieces of ocean float ahead like islands suspended in open starlight.\nWater runs uphill between them.\n\nOne current flows left and right at the same time.\n\nShizuki's first sign reads:\n\n'WELCOME TO THE ASTRAL NEXUS.\n\nI understand NOTHING.'",
-    "introTwitch": "The doorway behind Sunken King's Throne closes.\n\nOr maybe it opens.\n\nYou aren't entirely sure.\n\nPieces of ocean float ahead like islands suspended in open starlight.\nWater runs uphill between them.\n\nOne current flows left and right at the same time.\n\nShizuki's first sign reads:\n\n'WELCOME TO THE ASTRAL NEXUS.\n\nI understand NOTHING.'",
+    "introDiscord": "The doorway behind Sunken King's Throne closes. Or maybe it opens.\n\nYou aren't entirely sure.\n\nPieces of ocean float ahead like islands suspended in open starlight. Water runs uphill between them. One current flows left and right at the same time.\n\nShizuki's first sign reads:\n\n'WELCOME TO THE ASTRAL NEXUS.\n\nI understand NOTHING.'",
+    "introTwitch": "The doorway behind Sunken King's Throne closes. Or maybe it opens.\n\nYou aren't entirely sure.\n\nPieces of ocean float ahead like islands suspended in open starlight. Water runs uphill between them. One current flows left and right at the same time.\n\nShizuki's first sign reads:\n\n'WELCOME TO THE ASTRAL NEXUS.\n\nI understand NOTHING.'",
     "startRoomId": "the-paradox-shoal-approach",
     "rooms": {
         "the-paradox-shoal-approach": {
@@ -32,7 +32,7 @@
                     "nextRoomId": "the-paradox-shoal-depths",
                     "healAmount": 135,
                     "message": "You enter a pocket where several restorative currents meet.\n\nShizuki left a note:\n\n'Found relaxing spot.\n\nTechnically I haven't found it yet.\n\nApparently I write this note tomorrow.\n\nI hate this place.\n\n★★★★★'",
-                    "fullHpMessage": "The restorative current has already healed the injuries you never\nreceived.\n\nYou're fine.\n\nProbably."
+                    "fullHpMessage": "The restorative current has already healed the injuries you never received.\n\nYou're fine.\n\nProbably."
                 }
             }
         },
@@ -52,7 +52,7 @@
                     "type": "combat",
                     "nextRoomId": "the-paradox-shoal-threshold",
                     "enemyId": "paradox-minnow",
-                    "message": "A Paradox Minnow exits one arch, enters another, and somehow comes out\nbehind you."
+                    "message": "A Paradox Minnow exits one arch, enters another, and somehow comes out behind you."
                 },
                 "forward": {
                     "type": "empty",
@@ -69,13 +69,13 @@
                     "type": "healing",
                     "nextRoomId": "boss-antechamber",
                     "healAmount": 140,
-                    "message": "A memory of Shizuki's old campsite becomes solid long enough to offer\na restorative bottle.\n\nShe apparently slept here yesterday and tomorrow.",
+                    "message": "A memory of Shizuki's old campsite becomes solid long enough to offer a restorative bottle.\n\nShe apparently slept here yesterday and tomorrow.",
                     "fullHpMessage": "You leave the restorative untouched. You're already at full health."
                 },
                 "right": {
                     "type": "treasure",
                     "nextRoomId": "boss-antechamber",
-                    "message": "A cache is labeled in an alphabet you recognize for exactly four\nseconds.\n\nLuckily, 'CANDY' appears to remain universal.",
+                    "message": "A cache is labeled in an alphabet you recognize for exactly four seconds.\n\nLuckily, 'CANDY' appears to remain universal.",
                     "reward": {
                         "min": 474,
                         "max": 509
@@ -95,8 +95,8 @@
             "prompt": "The Pool of Opposite Tides turns clockwise and counterclockwise at once."
         }
     },
-    "bossPromptDiscord": "The Pool of Opposite Tides turns clockwise and counterclockwise at once.\n\nA vast shape swims beneath both currents.\n\nUse /yes to enter the Pool, or /no to remain somewhere\nwith only ONE direction of time.",
-    "bossPromptTwitch": "The Pool of Opposite Tides turns clockwise and counterclockwise at once.\n\nA vast shape swims beneath both currents.\n\nUse !yes to enter the Pool, or !no to remain somewhere\nwith only ONE direction of time.",
+    "bossPromptDiscord": "The Pool of Opposite Tides turns clockwise and counterclockwise at once.\n\nA vast shape swims beneath both currents.\n\nUse /yes to enter the Pool, or /no to remain somewhere with only ONE direction of time.",
+    "bossPromptTwitch": "The Pool of Opposite Tides turns clockwise and counterclockwise at once.\n\nA vast shape swims beneath both currents.\n\nUse !yes to enter the Pool, or !no to remain somewhere with only ONE direction of time.",
     "bossRetreatText": "You withdraw from Pool of Opposite Tides. The impossible guardian will wait.",
     "boss": {
         "enemyId": "contradiction-leviathan-boss",

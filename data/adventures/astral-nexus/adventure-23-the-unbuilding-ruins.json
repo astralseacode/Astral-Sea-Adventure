@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "fae-ruin-architect",
     "recommendedLevel": 50,
-    "introDiscord": "Ruins assemble backward.\n\nBroken walls leap upward, become whole, then dissolve into raw stone.\n\nA staircase unbuilds itself directly after you climb it.",
-    "introTwitch": "Ruins assemble backward.\n\nBroken walls leap upward, become whole, then dissolve into raw stone.\n\nA staircase unbuilds itself directly after you climb it.",
+    "introDiscord": "Ruins assemble backward. Broken walls leap upward, become whole, then dissolve into raw stone.\n\nA staircase unbuilds itself directly after you climb it.",
+    "introTwitch": "Ruins assemble backward. Broken walls leap upward, become whole, then dissolve into raw stone.\n\nA staircase unbuilds itself directly after you climb it.",
     "startRoomId": "the-unbuilding-ruins-approach",
     "rooms": {
         "the-unbuilding-ruins-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Blueprint of Vanishing Stone draws itself in glowing lines."
         }
     },
-    "bossPromptDiscord": "Blueprint of Vanishing Stone draws itself in glowing lines.\n\nA massive architect assembles from the plan.\n\nUse /yes to enter or /no to wait for the building to\nfinish deciding whether it exists.",
-    "bossPromptTwitch": "Blueprint of Vanishing Stone draws itself in glowing lines.\n\nA massive architect assembles from the plan.\n\nUse !yes to enter or !no to wait for the building to\nfinish deciding whether it exists.",
+    "bossPromptDiscord": "Blueprint of Vanishing Stone draws itself in glowing lines.\n\nA massive architect assembles from the plan.\n\nUse /yes to enter or /no to wait for the building to finish deciding whether it exists.",
+    "bossPromptTwitch": "Blueprint of Vanishing Stone draws itself in glowing lines.\n\nA massive architect assembles from the plan.\n\nUse !yes to enter or !no to wait for the building to finish deciding whether it exists.",
     "bossRetreatText": "You withdraw from Blueprint of Vanishing Stone. The impossible guardian will wait.",
     "boss": {
         "enemyId": "last-architect-construct-boss",

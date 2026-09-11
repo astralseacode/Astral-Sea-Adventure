@@ -5,12 +5,12 @@
   "regionId": "moonlit-reef",
   "enemyId": "crescent-claw-crab",
   "recommendedLevel": 2,
-  "introDiscord": "A crescent-shaped citadel rises from the reef, its coral battlements sharpened by centuries of tide. Armored Crescent Claw Crabs patrol the walls with the seriousness of soldiers defending the entire Astral Sea.",
-  "introTwitch": "A crescent-shaped citadel rises from the reef, its coral battlements sharpened by centuries of tide. Armored Crescent Claw Crabs patrol the walls with the seriousness of soldiers defending the entire Astral Sea.",
+  "introDiscord": "A crescent shaped citadel rises from the reef, its coral battlements sharpened by centuries of tide. Armored Crescent Claw Crabs patrol the walls with the seriousness of soldiers defending the entire Astral Sea.",
+  "introTwitch": "A crescent shaped citadel rises from the reef, its coral battlements sharpened by centuries of tide. Armored Crescent Claw Crabs patrol the walls with the seriousness of soldiers defending the entire Astral Sea.",
   "startRoomId": "crescent-gate",
   "rooms": {
     "crescent-gate": {
-      "prompt": "A moon-carved gate opens beneath curving battlements. Three approaches lead inward while crab guards inspect shells, shadows, and occasionally each other.",
+      "prompt": "A moon carved gate opens beneath curving battlements. Three approaches lead inward while crab guards inspect shells, shadows, and occasionally each other.",
       "choices": {
         "left": {
           "type": "healing",
@@ -42,7 +42,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "moonclaw-court",
-          "message": "A moon-shell coffer sits behind five increasingly unnecessary barricades. After navigating all five, you discover Star Candies and a sixth barricade inside the coffer.",
+          "message": "A moon shell coffer sits behind five increasingly unnecessary barricades. After navigating all five, you discover Star Candies and a sixth barricade inside the coffer.",
           "reward": {
             "min": 40,
             "max": 70
@@ -95,8 +95,8 @@
       "prompt": "The thronepool fills the citadel's highest court, ringed by crescent battlements and ranks of armored crabs. Every defensive line points toward the massive shell throne at its center."
     }
   },
-  "bossPromptDiscord": "Shell horns sound across the citadel.\n\nEvery Crescent Claw guard raises its claws in salute.\n\nFrom the thronepool, a massive armored crab advances beneath a crescent-shaped crown.\n\nUse /yes to challenge the Regent or /no to make a tactical retreat that the crabs will absolutely call cowardice.",
-  "bossPromptTwitch": "Shell horns sound across the citadel.\n\nEvery Crescent Claw guard raises its claws in salute.\n\nFrom the thronepool, a massive armored crab advances beneath a crescent-shaped crown.\n\nUse !yes to challenge the Regent or !no to make a tactical retreat that the crabs will absolutely call cowardice.",
+  "bossPromptDiscord": "Shell horns sound across the citadel.\n\nEvery Crescent Claw guard raises its claws in salute.\n\nFrom the thronepool, a massive armored crab advances beneath a crescent shaped crown.\n\nUse /yes to challenge the Regent or /no to make a tactical retreat that the crabs will absolutely call cowardice.",
+  "bossPromptTwitch": "Shell horns sound across the citadel.\n\nEvery Crescent Claw guard raises its claws in salute.\n\nFrom the thronepool, a massive armored crab advances beneath a crescent shaped crown.\n\nUse !yes to challenge the Regent or !no to make a tactical retreat that the crabs will absolutely call cowardice.",
   "bossRetreatText": "You make a tactical retreat from Regent Thronepool. Shell horns announce your departure with entirely unnecessary enthusiasm.",
   "boss": {
     "enemyId": "crescent-claw-regent-boss",

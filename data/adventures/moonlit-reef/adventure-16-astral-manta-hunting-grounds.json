@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer is lodged high on a coral fin. Reaching it provides Star Candies and a spectacular view of several Hunters realizing where you are.",
+          "message": "A moon shell coffer is lodged high on a coral fin. Reaching it provides Star Candies and a spectacular view of several Hunters realizing where you are.",
           "reward": {
             "min": 60,
             "max": 95

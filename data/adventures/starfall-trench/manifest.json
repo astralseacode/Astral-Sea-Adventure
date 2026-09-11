@@ -82,7 +82,7 @@
     {
         "number":  11,
         "id":  "deep-orbit-spiral",
-        "name":  "Deep-Orbit Spiral",
+        "name":  "Deep Orbit Spiral",
         "enemyId":  "deep-orbit-nautilus",
         "bossEnemyId":  "periapsis-nautilus-boss",
         "file":  "adventure-11-deep-orbit-spiral.json"
@@ -114,7 +114,7 @@
     {
         "number":  15,
         "id":  "falling-light-drift",
-        "name":  "Falling-Light Drift",
+        "name":  "Falling Light Drift",
         "enemyId":  "falling-light-medusa",
         "bossEnemyId":  "starshower-medusa-boss",
         "file":  "adventure-15-falling-light-drift.json"
@@ -130,7 +130,7 @@
     {
         "number":  17,
         "id":  "meteor-marked-shelf",
-        "name":  "Meteor-Marked Shelf",
+        "name":  "Meteor Marked Shelf",
         "enemyId":  "meteor-marked-lobster",
         "bossEnemyId":  "impactclaw-tyrant-boss",
         "file":  "adventure-17-meteor-marked-shelf.json"
@@ -146,7 +146,7 @@
     {
         "number":  19,
         "id":  "the-broken-orbit-ruins",
-        "name":  "The Broken-Orbit Ruins",
+        "name":  "The Broken Orbit Ruins",
         "enemyId":  "broken-orbit-sentinel",
         "bossEnemyId":  "aphelion-sentinel-boss",
         "file":  "adventure-19-the-broken-orbit-ruins.json"
@@ -154,7 +154,7 @@
     {
         "number":  20,
         "id":  "star-eater-grooves",
-        "name":  "Star-Eater Grooves",
+        "name":  "Star Eater Grooves",
         "enemyId":  "star-eater-slug",
         "bossEnemyId":  "constellation-devourer-boss",
         "file":  "adventure-20-star-eater-grooves.json"
@@ -170,7 +170,7 @@
     {
         "number":  22,
         "id":  "comet-tail-run",
-        "name":  "Comet-Tail Run",
+        "name":  "Comet Tail Run",
         "enemyId":  "comet-tail-barracuda",
         "bossEnemyId":  "perseid-barracuda-boss",
         "file":  "adventure-22-comet-tail-run.json"

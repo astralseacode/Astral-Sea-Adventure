@@ -5,8 +5,8 @@
   "regionId": "starfall-trench",
   "enemyId": "gravity-skipping-ray",
   "recommendedLevel": 6,
-  "introDiscord": "\"The trench abruptly forgets which direction is down. Rocks float upward, sand falls sideways, and Gravity-Skipping Rays glide between broken chunks of starstone like this is completely normal.\"\n\n---------------- ROOM 1 ----------------",
-  "introTwitch": "\"The trench abruptly forgets which direction is down. Rocks float upward, sand falls sideways, and Gravity-Skipping Rays glide between broken chunks of starstone like this is completely normal.\"\n\n---------------- ROOM 1 ----------------",
+  "introDiscord": "\"The trench abruptly forgets which direction is down. Rocks float upward, sand falls sideways, and Gravity Skipping Rays glide between broken chunks of starstone like this is completely normal.\"\n\n---------------- ROOM 1 ----------------",
+  "introTwitch": "\"The trench abruptly forgets which direction is down. Rocks float upward, sand falls sideways, and Gravity Skipping Rays glide between broken chunks of starstone like this is completely normal.\"\n\n---------------- ROOM 1 ----------------",
   "startRoomId": "the-weightless-ravine-approach",
   "rooms": {
     "the-weightless-ravine-approach": {
@@ -16,7 +16,7 @@
           "type": "combat",
           "nextRoomId": "the-weightless-ravine-depths",
           "enemyId": "gravity-skipping-ray",
-          "message": "A Gravity-Skipping Ray flips through the water and gravity flips with it.\n\nYou are now fighting sideways.\n\nWonderful."
+          "message": "A Gravity Skipping Ray flips through the water and gravity flips with it.\n\nYou are now fighting sideways.\n\nWonderful."
         },
         "right": {
           "type": "empty",
@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "the-weightless-ravine-depths",
-          "message": "\"A meteor-iron reliquary circles a chunk of starstone in a perfect little orbit. Catching the treasure is apparently part of the treasure.\"\n\n---------------- ROOM 2 ----------------",
+          "message": "\"A meteor iron reliquary circles a chunk of starstone in a perfect little orbit. Catching the treasure is apparently part of the treasure.\"\n\n---------------- ROOM 2 ----------------",
           "reward": {
             "min": 135,
             "max": 171
@@ -63,12 +63,12 @@
       }
     },
     "the-weightless-ravine-threshold": {
-      "prompt": "Zero-Tide Vault hangs ahead where dozens of stones remain suspended in perfect stillness. Three routes spiral toward it.",
+      "prompt": "Zero Tide Vault hangs ahead where dozens of stones remain suspended in perfect stillness. Three routes spiral toward it.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer floats between two orbiting boulders. Someone wrote \"WAIT FOR IT\" nearby with an arrow marking the exact moment it passes within reach.",
+          "message": "A star chart coffer floats between two orbiting boulders. Someone wrote \"WAIT FOR IT\" nearby with an arrow marking the exact moment it passes within reach.",
           "reward": {
             "min": 159,
             "max": 195
@@ -85,23 +85,23 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "gravity-skipping-ray",
-          "message": "\"A Gravity-Skipping Ray crosses the route.\n\nThe entire corridor rotates ninety degrees.\n\nYou are officially done negotiating with physics.\"\n\n---------------- BOSS — ZERO-TIDE VAULT ----------------"
+          "message": "\"A Gravity Skipping Ray crosses the route.\n\nThe entire corridor rotates ninety degrees.\n\nYou are officially done negotiating with physics.\"\n\n---------------- BOSS — ZERO TIDE VAULT ----------------"
         }
       }
     },
     "boss-antechamber": {
-      "name": "Zero-Tide Vault",
+      "name": "Zero Tide Vault",
       "type": "boss-prompt",
       "prompt": "Every floating stone stops.\n\nThen the entire vault begins rotating around something enormous."
     }
   },
-  "bossPromptDiscord": "The chamber loses all sense of down.\n\nA massive silhouette glides through the center while broken starstone begins orbiting it.\n\nUse /yes to enter Zero-Tide Vault or /no to retreat somewhere gravity has basic manners.",
-  "bossPromptTwitch": "The chamber loses all sense of down.\n\nA massive silhouette glides through the center while broken starstone begins orbiting it.\n\nUse !yes to enter Zero-Tide Vault or !no to retreat somewhere gravity has basic manners.",
+  "bossPromptDiscord": "The chamber loses all sense of down.\n\nA massive silhouette glides through the center while broken starstone begins orbiting it.\n\nUse /yes to enter Zero Tide Vault or /no to retreat somewhere gravity has basic manners.",
+  "bossPromptTwitch": "The chamber loses all sense of down.\n\nA massive silhouette glides through the center while broken starstone begins orbiting it.\n\nUse !yes to enter Zero Tide Vault or !no to retreat somewhere gravity has basic manners.",
   "bossRetreatText": "You escape the vault and gravity reluctantly remembers where the floor is.",
   "boss": {
     "enemyId": "orbitbreaker-ray-boss",
     "roomId": "boss",
     "revealText": "The orbiting stones scatter as a colossal Ray twists through the chamber.\n\nOrbitbreaker Ray reveals itself!"
   },
-  "completionText": "\"The Orbitbreaker Ray vanishes into the ravine.\n\nGravity settles.\n\nA nearby pebble immediately falls upward.\n\nClose enough.\"\n\n\n#################################################################"
+  "completionText": "\"The Orbitbreaker Ray vanishes into the ravine.\n\nGravity settles.\n\nA nearby pebble immediately falls upward.\n\nClose enough.\"\n\n#################################################################"
 }

@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "memory-reef-warden",
     "recommendedLevel": 50,
-    "introDiscord": "Moonlit coral grows here.\n\nSo does Starfall crystal.\n\nKelp roots wrap Leviathan bone beside pieces of Sunken King's Festival\nlanterns.\n\nThe Nexus has built a reef out of memories.",
-    "introTwitch": "Moonlit coral grows here.\n\nSo does Starfall crystal.\n\nKelp roots wrap Leviathan bone beside pieces of Sunken King's Festival\nlanterns.\n\nThe Nexus has built a reef out of memories.",
+    "introDiscord": "Moonlit coral grows here. So does Starfall crystal. Kelp roots wrap Leviathan bone beside pieces of Sunken King's Festival lanterns.\n\nThe Nexus has built a reef out of memories.",
+    "introTwitch": "Moonlit coral grows here. So does Starfall crystal. Kelp roots wrap Leviathan bone beside pieces of Sunken King's Festival lanterns.\n\nThe Nexus has built a reef out of memories.",
     "startRoomId": "the-memory-reef-approach",
     "rooms": {
         "the-memory-reef-approach": {
@@ -95,13 +95,13 @@
             "prompt": "Living Remembrance assembles the journey into one enormous reef."
         }
     },
-    "bossPromptDiscord": "Living Remembrance assembles the journey into one enormous reef.\n\nAt its center, something awakens from all five previous regions at once.\n\nUse /yes to approach or /no to leave the scrapbook\nmonstrosity alone.",
-    "bossPromptTwitch": "Living Remembrance assembles the journey into one enormous reef.\n\nAt its center, something awakens from all five previous regions at once.\n\nUse !yes to approach or !no to leave the scrapbook\nmonstrosity alone.",
+    "bossPromptDiscord": "Living Remembrance assembles the journey into one enormous reef.\n\nAt its center, something awakens from all five previous regions at once.\n\nUse /yes to approach or /no to leave the scrapbook monstrosity alone.",
+    "bossPromptTwitch": "Living Remembrance assembles the journey into one enormous reef.\n\nAt its center, something awakens from all five previous regions at once.\n\nUse !yes to approach or !no to leave the scrapbook monstrosity alone.",
     "bossRetreatText": "You withdraw from Living Remembrance. The impossible guardian will wait.",
     "boss": {
         "enemyId": "archive-reef-sovereign-boss",
         "roomId": "boss",
-        "revealText": "The reef rises.\n\nArchive-Reef Sovereign reveals itself!"
+        "revealText": "The reef rises.\n\nArchive Reef Sovereign reveals itself!"
     },
     "completionText": "The Memory Reef settles.\n\nEvery region remains visible in miniature.\n\nThe journey is becoming something the Nexus remembers too."
 }

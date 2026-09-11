@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "forgotten-prince-revenant",
     "recommendedLevel": 47,
-    "introDiscord": "A quieter palace wing contains children's rooms, toy chests, miniature\nfurniture, faded murals, and one royal crest whose name has been removed.",
-    "introTwitch": "A quieter palace wing contains children's rooms, toy chests, miniature\nfurniture, faded murals, and one royal crest whose name has been removed.",
+    "introDiscord": "A quieter palace wing contains children's rooms, toy chests, miniature furniture, faded murals, and one royal crest whose name has been removed.",
+    "introTwitch": "A quieter palace wing contains children's rooms, toy chests, miniature furniture, faded murals, and one royal crest whose name has been removed.",
     "startRoomId": "the-forgotten-princes-wing-approach",
     "rooms": {
         "the-forgotten-princes-wing-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The nursery mural glows."
         }
     },
-    "bossPromptDiscord": "The nursery mural glows.\n\nA child-sized crown floats above the empty throne.\n\nA spectral heir appears beneath it.\n\nUse /yes to approach the Nameless Nursery Throne or /no to\nleave the forgotten room quiet.",
-    "bossPromptTwitch": "The nursery mural glows.\n\nA child-sized crown floats above the empty throne.\n\nA spectral heir appears beneath it.\n\nUse !yes to approach the Nameless Nursery Throne or !no to\nleave the forgotten room quiet.",
+    "bossPromptDiscord": "The nursery mural glows.\n\nA child sized crown floats above the empty throne.\n\nA spectral heir appears beneath it.\n\nUse /yes to approach the Nameless Nursery Throne or /no to leave the forgotten room quiet.",
+    "bossPromptTwitch": "The nursery mural glows.\n\nA child sized crown floats above the empty throne.\n\nA spectral heir appears beneath it.\n\nUse !yes to approach the Nameless Nursery Throne or !no to leave the forgotten room quiet.",
     "bossRetreatText": "You withdraw from Nameless Nursery Throne. The royal challenge will wait.",
     "boss": {
         "enemyId": "unremembered-heir-boss",

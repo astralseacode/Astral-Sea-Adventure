@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer is hidden beneath the altar platform. You discover Star Candies and another pebble. Definitely Shizuki.",
+          "message": "A moon shell coffer is hidden beneath the altar platform. You discover Star Candies and another pebble. Definitely Shizuki.",
           "reward": {
             "min": 80,
             "max": 120

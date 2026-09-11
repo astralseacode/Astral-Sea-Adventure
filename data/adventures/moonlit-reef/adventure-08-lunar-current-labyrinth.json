@@ -10,13 +10,13 @@
   "startRoomId": "moonflow-intake",
   "rooms": {
     "moonflow-intake": {
-      "prompt": "Three glass-lined corridors split around an engraved intake. Blue currents point toward all three simultaneously. Somewhere inside the walls, a Lunar Current Eel watches you make your first mistake.",
+      "prompt": "Three glass lined corridors split around an engraved intake. Blue currents point toward all three simultaneously. Somewhere inside the walls, a Lunar Current Eel watches you make your first mistake.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "spiral-channel",
           "healAmount": 30,
-          "message": "Shizuki wedged a field kit beside the only railing that seems permanently attached to reality. Its bottle reads: \"Current-root tonic. Hold the rail before drinking. No, seriously.\"",
+          "message": "Shizuki wedged a field kit beside the only railing that seems permanently attached to reality. Its bottle reads: \"Current root tonic. Hold the rail before drinking. No, seriously.\"",
           "fullHpMessage": "The tonic stays closed. You are healthy enough to experience the labyrinth's nonsense without medicinal assistance."
         },
         "right": {
@@ -42,7 +42,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "tideglass-junction",
-          "message": "A moon-shell coffer is visible behind one pane of moonglass. Unfortunately, so are five reflections of it. After opening two fake cupboards and one very offended clam, you finally locate the real coffer and Star Candies.",
+          "message": "A moon shell coffer is visible behind one pane of moonglass. Unfortunately, so are five reflections of it. After opening two fake cupboards and one very offended clam, you finally locate the real coffer and Star Candies.",
           "reward": {
             "min": 40,
             "max": 70

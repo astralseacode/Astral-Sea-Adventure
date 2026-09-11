@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "usurpers-bladefish",
     "recommendedLevel": 45,
-    "introDiscord": "A royal theater hides behind the palace halls.\n\nPainted scenery, costume racks, orchestra balconies, and a stage framed\nby a giant fake crown remain almost intact.",
-    "introTwitch": "A royal theater hides behind the palace halls.\n\nPainted scenery, costume racks, orchestra balconies, and a stage framed\nby a giant fake crown remain almost intact.",
+    "introDiscord": "A royal theater hides behind the palace halls. Painted scenery, costume racks, orchestra balconies, and a stage framed by a giant fake crown remain almost intact.",
+    "introTwitch": "A royal theater hides behind the palace halls. Painted scenery, costume racks, orchestra balconies, and a stage framed by a giant fake crown remain almost intact.",
     "startRoomId": "the-usurpers-passage-approach",
     "rooms": {
         "the-usurpers-passage-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The stage curtains rise by themselves."
         }
     },
-    "bossPromptDiscord": "The stage curtains rise by themselves.\n\nA single armored Bladefish enters beneath the broken prop crown.\n\nThe theater lights somehow still know where to point.\n\nUse /yes to begin the final act or /no to leave Shizuki's\nacting career undefeated.",
-    "bossPromptTwitch": "The stage curtains rise by themselves.\n\nA single armored Bladefish enters beneath the broken prop crown.\n\nThe theater lights somehow still know where to point.\n\nUse !yes to begin the final act or !no to leave Shizuki's\nacting career undefeated.",
+    "bossPromptDiscord": "The stage curtains rise by themselves.\n\nA single armored Bladefish enters beneath the broken prop crown.\n\nThe theater lights somehow still know where to point.\n\nUse /yes to begin the final act or /no to leave Shizuki's acting career undefeated.",
+    "bossPromptTwitch": "The stage curtains rise by themselves.\n\nA single armored Bladefish enters beneath the broken prop crown.\n\nThe theater lights somehow still know where to point.\n\nUse !yes to begin the final act or !no to leave Shizuki's acting career undefeated.",
     "bossRetreatText": "You withdraw from Hall of the Broken Crown. The royal challenge will wait.",
     "boss": {
         "enemyId": "regicide-bladefish-boss",

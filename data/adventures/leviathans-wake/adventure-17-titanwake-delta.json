@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "titanwake-crocodile",
     "recommendedLevel": 26,
-    "introDiscord": "Ancient wake channels branch across the delta like rivers.\n\nTitanwake Drakes bask between them on Leviathan bones as though this\ngraveyard was built entirely for them.",
-    "introTwitch": "Ancient wake channels branch across the delta like rivers.\n\nTitanwake Drakes bask between them on Leviathan bones as though this\ngraveyard was built entirely for them.",
+    "introDiscord": "Ancient wake channels branch across the delta like rivers. Titanwake Drakes bask between them on Leviathan bones as though this graveyard was built entirely for them.",
+    "introTwitch": "Ancient wake channels branch across the delta like rivers. Titanwake Drakes bask between them on Leviathan bones as though this graveyard was built entirely for them.",
     "startRoomId": "titanwake-delta-approach",
     "rooms": {
         "titanwake-delta-approach": {
@@ -43,7 +43,7 @@
                     "type": "combat",
                     "nextRoomId": "titanwake-delta-threshold",
                     "enemyId": "titanwake-crocodile",
-                    "message": "A Drake rises from what looked like an ordinary pile of ancient\nsediment."
+                    "message": "A Drake rises from what looked like an ordinary pile of ancient sediment."
                 },
                 "right": {
                     "type": "treasure",
@@ -63,7 +63,7 @@
             }
         },
         "titanwake-delta-threshold": {
-            "prompt": "Flooded Fangbank forms around an enormous jaw half-buried in sediment.",
+            "prompt": "Flooded Fangbank forms around an enormous jaw half buried in sediment.",
             "choices": {
                 "left": {
                     "type": "healing",
@@ -95,8 +95,8 @@
             "prompt": "The smaller Drakes abandon Fangbank."
         }
     },
-    "bossPromptDiscord": "The smaller Drakes abandon Fangbank.\n\nAn enormous scaled shape wakes beneath the ancient jaw.\n\nUse /yes to enter Flooded Fangbank or /no to wait for the local wildlife\nto finish using the Leviathan as furniture.",
-    "bossPromptTwitch": "The smaller Drakes abandon Fangbank.\n\nAn enormous scaled shape wakes beneath the ancient jaw.\n\nUse !yes to enter Flooded Fangbank or !no to wait for the local wildlife\nto finish using the Leviathan as furniture.",
+    "bossPromptDiscord": "The smaller Drakes abandon Fangbank.\n\nAn enormous scaled shape wakes beneath the ancient jaw.\n\nUse /yes to enter Flooded Fangbank or /no to wait for the local wildlife to finish using the Leviathan as furniture.",
+    "bossPromptTwitch": "The smaller Drakes abandon Fangbank.\n\nAn enormous scaled shape wakes beneath the ancient jaw.\n\nUse !yes to enter Flooded Fangbank or !no to wait for the local wildlife to finish using the Leviathan as furniture.",
     "bossRetreatText": "You withdraw.\n\nA smaller Drake immediately reclaims the rib bridge.",
     "boss": {
         "enemyId": "wakejaw-ancient-boss",

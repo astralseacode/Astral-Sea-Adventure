@@ -5,8 +5,8 @@
   "regionId": "starfall-trench",
   "enemyId": "shardwake-eel",
   "recommendedLevel": 7,
-  "introDiscord": "Fast currents race between razor-thin starstone channels. Shizuki has left several navigation signs here. Their increasing panic suggests the currents won.",
-  "introTwitch": "Fast currents race between razor-thin starstone channels. Shizuki has left several navigation signs here. Their increasing panic suggests the currents won.",
+  "introDiscord": "Fast currents race between razor thin starstone channels. Shizuki has left several navigation signs here. Their increasing panic suggests the currents won.",
+  "introTwitch": "Fast currents race between razor thin starstone channels. Shizuki has left several navigation signs here. Their increasing panic suggests the currents won.",
   "startRoomId": "shardwake-channels-approach",
   "rooms": {
     "shardwake-channels-approach": {
@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "shardwake-channels-depths",
-          "message": "A meteor-iron reliquary spins inside a calm pocket between the racing channels.",
+          "message": "A meteor iron reliquary spins inside a calm pocket between the racing channels.",
           "reward": {
             "min": 114,
             "max": 152
@@ -68,7 +68,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer circles slowly in an eddy.",
+          "message": "A star chart coffer circles slowly in an eddy.",
           "reward": {
             "min": 138,
             "max": 176
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "A colossal eel uncoils from the ring.\n\nRiftcoil Eel reveals itself!"
   },
-  "completionText": "\"The current loosens.\n\nA battered sign floats past:\n\n\"I KNEW THIS WOULD HAPPEN.\"\"\n\n\n#################################################################"
+  "completionText": "\"The current loosens.\n\nA battered sign floats past:\n\n\"I KNEW THIS WOULD HAPPEN.\"\"\n\n#################################################################"
 }

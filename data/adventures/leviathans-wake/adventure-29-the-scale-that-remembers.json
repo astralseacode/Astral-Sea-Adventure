@@ -10,7 +10,7 @@
     "startRoomId": "the-scale-that-remembers-approach",
     "rooms": {
         "the-scale-that-remembers-approach": {
-            "prompt": "Three routes circle the luminous scale while ancient scenes ripple\nacross its surface.",
+            "prompt": "Three routes circle the luminous scale while ancient scenes ripple across its surface.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -25,7 +25,7 @@
                     "type": "combat",
                     "nextRoomId": "the-scale-that-remembers-depths",
                     "enemyId": "primeval-scale-revenant",
-                    "message": "A Primeval Scale Revenant steps from the memory, formed from light and\nold instinct."
+                    "message": "A Primeval Scale Revenant steps from the memory, formed from light and old instinct."
                 },
                 "forward": {
                     "type": "healing",
@@ -43,7 +43,7 @@
                     "type": "combat",
                     "nextRoomId": "the-scale-that-remembers-threshold",
                     "enemyId": "primeval-scale-revenant",
-                    "message": "A Revenant emerges from an image of the Leviathan swimming through a\nyounger Astral Sea."
+                    "message": "A Revenant emerges from an image of the Leviathan swimming through a younger Astral Sea."
                 },
                 "right": {
                     "type": "treasure",
@@ -81,7 +81,7 @@
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "boss-antechamber",
-                    "message": "An old travel offering rests beneath the scale, left by someone who\nvisited this grave long before Shizuki.",
+                    "message": "An old travel offering rests beneath the scale, left by someone who visited this grave long before Shizuki.",
                     "reward": {
                         "min": 99,
                         "max": 143
@@ -95,8 +95,8 @@
             "prompt": "The scale releases its oldest memory."
         }
     },
-    "bossPromptDiscord": "The scale releases its oldest memory.\n\nThe water disappears beneath an image of the ancient Astral Sea.\n\nA Leviathan larger than every skeleton you crossed swims overhead.\n\nFor one impossible moment, the graveyard lives again.\n\nThen something turns within the memory and looks directly at you.\n\nUse /yes to enter Memory of the Colossus or /no to leave the final\nmemory untouched.",
-    "bossPromptTwitch": "The scale releases its oldest memory.\n\nThe water disappears beneath an image of the ancient Astral Sea.\n\nA Leviathan larger than every skeleton you crossed swims overhead.\n\nFor one impossible moment, the graveyard lives again.\n\nThen something turns within the memory and looks directly at you.\n\nUse !yes to enter Memory of the Colossus or !no to leave the final\nmemory untouched.",
+    "bossPromptDiscord": "The scale releases its oldest memory.\n\nThe water disappears beneath an image of the ancient Astral Sea.\n\nA Leviathan larger than every skeleton you crossed swims overhead.\n\nFor one impossible moment, the graveyard lives again.\n\nThen something turns within the memory and looks directly at you.\n\nUse /yes to enter Memory of the Colossus or /no to leave the final memory untouched.",
+    "bossPromptTwitch": "The scale releases its oldest memory.\n\nThe water disappears beneath an image of the ancient Astral Sea.\n\nA Leviathan larger than every skeleton you crossed swims overhead.\n\nFor one impossible moment, the graveyard lives again.\n\nThen something turns within the memory and looks directly at you.\n\nUse !yes to enter Memory of the Colossus or !no to leave the final memory untouched.",
     "bossRetreatText": "You step away.\n\nThe ancient sea remains inside the scale.",
     "boss": {
         "enemyId": "firstwake-revenant-boss",

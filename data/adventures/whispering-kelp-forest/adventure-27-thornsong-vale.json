@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "thornsong-siren",
   "recommendedLevel": 19,
-  "introDiscord": "Thorned vines stretch across the Vale like instrument strings. Each\ncurrent plucks a different note while Thornsong Sirens sing through the\nbriars, turning the forest into a beautiful and extremely dangerous\nconcert.",
-  "introTwitch": "Thorned vines stretch across the Vale like instrument strings. Each\ncurrent plucks a different note while Thornsong Sirens sing through the\nbriars, turning the forest into a beautiful and extremely dangerous\nconcert.",
+  "introDiscord": "Thorned vines stretch across the Vale like instrument strings. Each current plucks a different note while Thornsong Sirens sing through the briars, turning the forest into a beautiful and extremely dangerous concert.",
+  "introTwitch": "Thorned vines stretch across the Vale like instrument strings. Each current plucks a different note while Thornsong Sirens sing through the briars, turning the forest into a beautiful and extremely dangerous concert.",
   "startRoomId": "thornsong-vale-approach",
   "rooms": {
     "thornsong-vale-approach": {
-      "prompt": "Three paths cross beneath thorn-vines humming in different keys.",
+      "prompt": "Three paths cross beneath thorn vines humming in different keys.",
       "choices": {
         "left": {
           "type": "healing",
@@ -23,12 +23,12 @@
           "type": "combat",
           "nextRoomId": "thornsong-vale-depths",
           "enemyId": "thornsong-siren",
-          "message": "A beautiful voice calls from beyond the thorns.\n\nYou follow it for approximately three steps before noticing the Siren\nattached to the voice.\n\nAnd the thorns."
+          "message": "A beautiful voice calls from beyond the thorns.\n\nYou follow it for approximately three steps before noticing the Siren attached to the voice.\n\nAnd the thorns."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "thornsong-vale-depths",
-          "message": "A moss-covered shrine coffer rests beneath vines playing a delicate\nmelody. Inside are Star Candies and one thorn that immediately catches\nyour sleeve.",
+          "message": "A moss covered shrine coffer rests beneath vines playing a delicate melody. Inside are Star Candies and one thorn that immediately catches your sleeve.",
           "reward": {
             "min": 70,
             "max": 113
@@ -37,7 +37,7 @@
       }
     },
     "thornsong-vale-depths": {
-      "prompt": "Towering kelp surrounds three passages where the music grows louder and\nthe briars grow thicker.",
+      "prompt": "Towering kelp surrounds three passages where the music grows louder and the briars grow thicker.",
       "choices": {
         "left": {
           "type": "empty",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "thornsong-vale-threshold",
-          "message": "An offering basket hangs among the thornstrings. Star Candies inside\nrattle in time with the music.",
+          "message": "An offering basket hangs among the thornstrings. Star Candies inside rattle in time with the music.",
           "reward": {
             "min": 82,
             "max": 125
@@ -63,7 +63,7 @@
       }
     },
     "thornsong-vale-threshold": {
-      "prompt": "Living rootways descend toward Rose-Tide Amphitheater. Three approaches\nare lined with thornstrings tuned to the same haunting melody.",
+      "prompt": "Living rootways descend toward Rose Tide Amphitheater. Three approaches are lined with thornstrings tuned to the same haunting melody.",
       "choices": {
         "left": {
           "type": "combat",
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Broad silver kelp wraps a Star Candy bundle beneath a thorn arch shaped\nlike a theater curtain.",
+          "message": "Broad silver kelp wraps a Star Candy bundle beneath a thorn arch shaped like a theater curtain.",
           "reward": {
             "min": 94,
             "max": 137
@@ -90,18 +90,18 @@
       }
     },
     "boss-antechamber": {
-      "name": "Rose-Tide Amphitheater",
+      "name": "Rose Tide Amphitheater",
       "type": "boss-prompt",
       "prompt": "Every thornstring in the Amphitheater plays the same opening chord."
     }
   },
-  "bossPromptDiscord": "The Rose-Tide Amphitheater fills with one impossible voice.\n\nThe smaller Sirens fall silent.\n\nThorned vines tighten across the stage as a figure rises behind them,\nconducting the entire Vale with a single note.\n\nUse /yes to stay for the final performance or /no to leave before the\naudience participation becomes mandatory.",
-  "bossPromptTwitch": "The Rose-Tide Amphitheater fills with one impossible voice.\n\nThe smaller Sirens fall silent.\n\nThorned vines tighten across the stage as a figure rises behind them,\nconducting the entire Vale with a single note.\n\nUse !yes to stay for the final performance or !no to leave before the\naudience participation becomes mandatory.",
-  "bossRetreatText": "You retreat from the Amphitheater. The final song continues without\nyou.",
+  "bossPromptDiscord": "The Rose Tide Amphitheater fills with one impossible voice.\n\nThe smaller Sirens fall silent.\n\nThorned vines tighten across the stage as a figure rises behind them, conducting the entire Vale with a single note.\n\nUse /yes to stay for the final performance or /no to leave before the audience participation becomes mandatory.",
+  "bossPromptTwitch": "The Rose Tide Amphitheater fills with one impossible voice.\n\nThe smaller Sirens fall silent.\n\nThorned vines tighten across the stage as a figure rises behind them, conducting the entire Vale with a single note.\n\nUse !yes to stay for the final performance or !no to leave before the audience participation becomes mandatory.",
+  "bossRetreatText": "You retreat from the Amphitheater. The final song continues without you.",
   "boss": {
     "enemyId": "briar-chorus-siren-boss",
     "roomId": "boss",
-    "revealText": "The briars sweep apart as an ancient Siren rises at center stage.\n\nBriar-Chorus Siren reveals itself!"
+    "revealText": "The briars sweep apart as an ancient Siren rises at center stage.\n\nBriar Chorus Siren reveals itself!"
   },
-  "completionText": "\"The Briar-Chorus Siren's final note fades.\n\nThe thornstrings answer with one quiet closing chord.\n\nShizuki's imaginary review:\n\nFive stars.\n\nStill terrible seating.\"\n\n\n#################################################################"
+  "completionText": "\"The Briar Chorus Siren's final note fades.\n\nThe thornstrings answer with one quiet closing chord.\n\nShizuki's imaginary review:\n\nFive stars.\n\nStill terrible seating.\"\n\n#################################################################"
 }

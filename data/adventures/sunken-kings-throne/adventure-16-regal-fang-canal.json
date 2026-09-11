@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "regal-fang-moray",
     "recommendedLevel": 40,
-    "introDiscord": "A narrow royal canal passes beneath old hunting lodges and decorative\nbridges.\n\nRegal Fang Morays have inherited the king's private waterways.",
-    "introTwitch": "A narrow royal canal passes beneath old hunting lodges and decorative\nbridges.\n\nRegal Fang Morays have inherited the king's private waterways.",
+    "introDiscord": "A narrow royal canal passes beneath old hunting lodges and decorative bridges. Regal Fang Morays have inherited the king's private waterways.",
+    "introTwitch": "A narrow royal canal passes beneath old hunting lodges and decorative bridges. Regal Fang Morays have inherited the king's private waterways.",
     "startRoomId": "regal-fang-canal-approach",
     "rooms": {
         "regal-fang-canal-approach": {
@@ -92,16 +92,16 @@
         "boss-antechamber": {
             "name": "King's Hunting Canal",
             "type": "boss-prompt",
-            "prompt": "The canal ripples beneath a crown-shaped bridge."
+            "prompt": "The canal ripples beneath a crown shaped bridge."
         }
     },
-    "bossPromptDiscord": "The canal ripples beneath a crown-shaped bridge.\n\nOne enormous jaw passes underneath.\n\nUse /yes to continue the royal fishing expedition or /no\nto preserve your remaining footwear.",
-    "bossPromptTwitch": "The canal ripples beneath a crown-shaped bridge.\n\nOne enormous jaw passes underneath.\n\nUse !yes to continue the royal fishing expedition or !no\nto preserve your remaining footwear.",
+    "bossPromptDiscord": "The canal ripples beneath a crown shaped bridge.\n\nOne enormous jaw passes underneath.\n\nUse /yes to continue the royal fishing expedition or /no to preserve your remaining footwear.",
+    "bossPromptTwitch": "The canal ripples beneath a crown shaped bridge.\n\nOne enormous jaw passes underneath.\n\nUse !yes to continue the royal fishing expedition or !no to preserve your remaining footwear.",
     "bossRetreatText": "You withdraw from King's Hunting Canal. The royal challenge will wait.",
     "boss": {
         "enemyId": "crown-fang-moray-boss",
         "roomId": "boss",
-        "revealText": "Crown-Fang Moray reveals itself!"
+        "revealText": "Crown Fang Moray reveals itself!"
     },
-    "completionText": "The Crown-Fang retreats beneath the bridge.\n\nShizuki's missing boot is not recovered.\n\nThe case grows cold."
+    "completionText": "The Crown Fang retreats beneath the bridge.\n\nShizuki's missing boot is not recovered.\n\nThe case grows cold."
 }

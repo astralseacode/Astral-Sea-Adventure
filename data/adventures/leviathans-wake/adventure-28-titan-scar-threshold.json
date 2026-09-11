@@ -1,12 +1,12 @@
 {
     "id": "titan-scar-threshold",
     "number": 28,
-    "name": "Titan-Scar Threshold",
+    "name": "Titan Scar Threshold",
     "regionId": "leviathans-wake",
     "enemyId": "titan-scar-guardian",
     "recommendedLevel": 29,
-    "introDiscord": "The oldest graves lie beyond a natural gate formed by two enormous\nLeviathan skeletons.\n\nAncient Guardians still patrol the threshold.",
-    "introTwitch": "The oldest graves lie beyond a natural gate formed by two enormous\nLeviathan skeletons.\n\nAncient Guardians still patrol the threshold.",
+    "introDiscord": "The oldest graves lie beyond a natural gate formed by two enormous Leviathan skeletons. Ancient Guardians still patrol the threshold.",
+    "introTwitch": "The oldest graves lie beyond a natural gate formed by two enormous Leviathan skeletons. Ancient Guardians still patrol the threshold.",
     "startRoomId": "titan-scar-threshold-approach",
     "rooms": {
         "titan-scar-threshold-approach": {
@@ -16,7 +16,7 @@
                     "type": "combat",
                     "nextRoomId": "titan-scar-threshold-depths",
                     "enemyId": "titan-scar-guardian",
-                    "message": "A Titan-Scar Guardian awakens beneath carvings worn almost smooth by\ntime."
+                    "message": "A Titan Scar Guardian awakens beneath carvings worn almost smooth by time."
                 },
                 "right": {
                     "type": "empty",
@@ -68,7 +68,7 @@
                 "left": {
                     "type": "treasure",
                     "nextRoomId": "boss-antechamber",
-                    "message": "A navigator's chest rests beneath weathered carvings of enormous\nswimming forms.",
+                    "message": "A navigator's chest rests beneath weathered carvings of enormous swimming forms.",
                     "reward": {
                         "min": 106,
                         "max": 150
@@ -85,7 +85,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "titan-scar-guardian",
-                    "message": "A Titan-Scar Guardian blocks the Seal."
+                    "message": "A Titan Scar Guardian blocks the Seal."
                 }
             }
         },
@@ -95,8 +95,8 @@
             "prompt": "The ancient carvings around Leviathan Seal begin glowing."
         }
     },
-    "bossPromptDiscord": "The ancient carvings around Leviathan Seal begin glowing.\n\nA towering guardian rises beneath images of creatures far larger than\nanything still alive in the Wake.\n\nUse /yes to cross the Leviathan Seal or /no to leave the oldest graves\nunopened.",
-    "bossPromptTwitch": "The ancient carvings around Leviathan Seal begin glowing.\n\nA towering guardian rises beneath images of creatures far larger than\nanything still alive in the Wake.\n\nUse !yes to cross the Leviathan Seal or !no to leave the oldest graves\nunopened.",
+    "bossPromptDiscord": "The ancient carvings around Leviathan Seal begin glowing.\n\nA towering guardian rises beneath images of creatures far larger than anything still alive in the Wake.\n\nUse /yes to cross the Leviathan Seal or /no to leave the oldest graves unopened.",
+    "bossPromptTwitch": "The ancient carvings around Leviathan Seal begin glowing.\n\nA towering guardian rises beneath images of creatures far larger than anything still alive in the Wake.\n\nUse !yes to cross the Leviathan Seal or !no to leave the oldest graves unopened.",
     "bossRetreatText": "You step away from the ancient threshold.",
     "boss": {
         "enemyId": "scarbound-warden-boss",

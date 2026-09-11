@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "crownless-knight",
     "recommendedLevel": 34,
-    "introDiscord": "The royal barracks remain packed with shields, helmets, practice\nweapons, bunks, and several suits of armor still determined to maintain\nmilitary discipline.",
-    "introTwitch": "The royal barracks remain packed with shields, helmets, practice\nweapons, bunks, and several suits of armor still determined to maintain\nmilitary discipline.",
+    "introDiscord": "The royal barracks remain packed with shields, helmets, practice weapons, bunks, and several suits of armor still determined to maintain military discipline.",
+    "introTwitch": "The royal barracks remain packed with shields, helmets, practice weapons, bunks, and several suits of armor still determined to maintain military discipline.",
     "startRoomId": "crownless-barracks-approach",
     "rooms": {
         "crownless-barracks-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Every empty helmet in the Hall turns toward the same armored figure."
         }
     },
-    "bossPromptDiscord": "Every empty helmet in the Hall turns toward the same armored figure.\n\nIts own helmet is missing.\n\nSomehow this makes it more intimidating.\n\nUse /yes to enter or /no to postpone graduation from royal\nknight school.",
-    "bossPromptTwitch": "Every empty helmet in the Hall turns toward the same armored figure.\n\nIts own helmet is missing.\n\nSomehow this makes it more intimidating.\n\nUse !yes to enter or !no to postpone graduation from royal\nknight school.",
+    "bossPromptDiscord": "Every empty helmet in the Hall turns toward the same armored figure.\n\nIts own helmet is missing.\n\nSomehow this makes it more intimidating.\n\nUse /yes to enter or /no to postpone graduation from royal knight school.",
+    "bossPromptTwitch": "Every empty helmet in the Hall turns toward the same armored figure.\n\nIts own helmet is missing.\n\nSomehow this makes it more intimidating.\n\nUse !yes to enter or !no to postpone graduation from royal knight school.",
     "bossRetreatText": "You withdraw from Empty Helm Hall. The royal challenge will wait.",
     "boss": {
         "enemyId": "helmless-castellan-boss",

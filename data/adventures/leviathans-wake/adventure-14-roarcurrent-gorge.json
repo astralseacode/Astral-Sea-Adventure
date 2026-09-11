@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "roarcurrent-siren",
     "recommendedLevel": 24,
-    "introDiscord": "Currents rushing through hollow Leviathan bones produce a deep roar\nthat echoes across the gorge.\n\nRoarcurrent Sirens learned to sing with it.",
-    "introTwitch": "Currents rushing through hollow Leviathan bones produce a deep roar\nthat echoes across the gorge.\n\nRoarcurrent Sirens learned to sing with it.",
+    "introDiscord": "Currents rushing through hollow Leviathan bones produce a deep roar that echoes across the gorge. Roarcurrent Sirens learned to sing with it.",
+    "introTwitch": "Currents rushing through hollow Leviathan bones produce a deep roar that echoes across the gorge. Roarcurrent Sirens learned to sing with it.",
     "startRoomId": "roarcurrent-gorge-approach",
     "rooms": {
         "roarcurrent-gorge-approach": {
@@ -43,7 +43,7 @@
                     "type": "combat",
                     "nextRoomId": "roarcurrent-gorge-threshold",
                     "enemyId": "roarcurrent-siren",
-                    "message": "A Roarcurrent Siren matches the note of a hollow rib perfectly before\nturning the performance toward you."
+                    "message": "A Roarcurrent Siren matches the note of a hollow rib perfectly before turning the performance toward you."
                 },
                 "right": {
                     "type": "empty",
@@ -78,7 +78,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "roarcurrent-siren",
-                    "message": "A Siren emerges from behind an enormous vertebra while the entire gorge\nharmonizes."
+                    "message": "A Siren emerges from behind an enormous vertebra while the entire gorge harmonizes."
                 },
                 "forward": {
                     "type": "healing",
@@ -101,7 +101,7 @@
     "boss": {
         "enemyId": "tempest-voice-siren-boss",
         "roomId": "boss",
-        "revealText": "A powerful Siren rises through the roaring current.\n\nTempest-Voice Siren reveals itself!"
+        "revealText": "A powerful Siren rises through the roaring current.\n\nTempest Voice Siren reveals itself!"
     },
     "completionText": "The Siren's song fades.\n\nThe bones keep humming long after it is gone."
 }

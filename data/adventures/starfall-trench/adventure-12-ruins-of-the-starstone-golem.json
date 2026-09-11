@@ -15,13 +15,13 @@
         "left": {
           "type": "empty",
           "nextRoomId": "ruins-of-the-starstone-golem-depths",
-          "message": "A Berry rests on a small golem-shaped rock.\n\nShizuki wrote: \"Pebbles. Do not insult Pebbles. Pebbles has seniority.\"",
+          "message": "A Berry rests on a small golem shaped rock.\n\nShizuki wrote: \"Pebbles. Do not insult Pebbles. Pebbles has seniority.\"",
           "berries": 1
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "ruins-of-the-starstone-golem-depths",
-          "message": "A star-chart coffer rests beneath a collapsed statue.",
+          "message": "A star chart coffer rests beneath a collapsed statue.",
           "reward": {
             "min": 107,
             "max": 145
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "ruins-of-the-starstone-golem-threshold",
-          "message": "A meteor-iron reliquary lies inside a shattered golem torso.",
+          "message": "A meteor iron reliquary lies inside a shattered golem torso.",
           "reward": {
             "min": 119,
             "max": 157
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "Starstone plates lock together around a blazing core.\n\nMeteorheart Golem awakens!"
   },
-  "completionText": "\"The Meteorheart Golem collapses.\n\nPebbles remains standing.\n\nTechnically Pebbles wins.\"\n\n\n#################################################################"
+  "completionText": "\"The Meteorheart Golem collapses.\n\nPebbles remains standing.\n\nTechnically Pebbles wins.\"\n\n#################################################################"
 }

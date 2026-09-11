@@ -22,13 +22,13 @@
           "type": "healing",
           "nextRoomId": "vigil-corridor",
           "healAmount": 40,
-          "message": "Shizuki's Keeper-root medicine reads: \"Hidden from Sentinels and anyone fond of inventories. If you're reading this, congratulations on ignoring both.\"",
-          "fullHpMessage": "The Keeper-root medicine remains hidden. You are already at full health, and the inventory can remain blissfully inaccurate."
+          "message": "Shizuki's Keeper root medicine reads: \"Hidden from Sentinels and anyone fond of inventories. If you're reading this, congratulations on ignoring both.\"",
+          "fullHpMessage": "The Keeper root medicine remains hidden. You are already at full health, and the inventory can remain blissfully inaccurate."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "vigil-corridor",
-          "message": "A moon-shell coffer remains catalogued inside a storage recess. The inventory slate still says 'DO NOT REMOVE.' You remove Star Candies.",
+          "message": "A moon shell coffer remains catalogued inside a storage recess. The inventory slate still says 'DO NOT REMOVE.' You remove Star Candies.",
           "reward": {
             "min": 60,
             "max": 90
@@ -92,7 +92,7 @@
     "boss-antechamber": {
       "name": "Eternal Watchroom",
       "type": "boss-prompt",
-      "prompt": "The vault's deepest chamber is lined with ancient armor niches and one uninterrupted watch-rune. Every suit faces the oldest station at the center."
+      "prompt": "The vault's deepest chamber is lined with ancient armor niches and one uninterrupted watch rune. Every suit faces the oldest station at the center."
     }
   },
   "bossPromptDiscord": "Every dormant armor niche activates at once—then kneels.\n\nThe Watchroom's oldest suit of armor moves for the first time in centuries.\n\nA single rune flashes:\n\nWATCH CONTINUES.\n\nUse /yes to challenge the Moonkeeper Eternal or /no to let it continue watching somebody else.",
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "moonkeeper-eternal-boss",
     "roomId": "boss",
-    "revealText": "Ancient armor locks into place around a brilliant watch-rune. The Moonkeeper Eternal resumes its vigil!"
+    "revealText": "Ancient armor locks into place around a brilliant watch rune. The Moonkeeper Eternal resumes its vigil!"
   },
   "completionText": "The Moonkeeper Eternal returns to its station. A nearby rune changes from INTRUDER to TRAVELER. That is probably the closest this place gets to hospitality."
 }

@@ -5,17 +5,17 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "dreamsap-leech",
   "recommendedLevel": 16,
-  "introDiscord": "Golden dreamsap gathers in pools beneath the roots, its surface\nflickering with fragments of sleeping thoughts. Dreamsap Leeches drift\nbeneath those visions, feeding on whatever the forest dreams.",
-  "introTwitch": "Golden dreamsap gathers in pools beneath the roots, its surface\nflickering with fragments of sleeping thoughts. Dreamsap Leeches drift\nbeneath those visions, feeding on whatever the forest dreams.",
+  "introDiscord": "Golden dreamsap gathers in pools beneath the roots, its surface flickering with fragments of sleeping thoughts. Dreamsap Leeches drift beneath those visions, feeding on whatever the forest dreams.",
+  "introTwitch": "Golden dreamsap gathers in pools beneath the roots, its surface flickering with fragments of sleeping thoughts. Dreamsap Leeches drift beneath those visions, feeding on whatever the forest dreams.",
   "startRoomId": "dreamsap-pools-approach",
   "rooms": {
     "dreamsap-pools-approach": {
-      "prompt": "Three routes curve around glowing pools. Each surface reflects a dream\nthat belongs to someone else.",
+      "prompt": "Three routes curve around glowing pools. Each surface reflects a dream that belongs to someone else.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "dreamsap-pools-depths",
-          "message": "Broad silver kelp wraps a Star Candy cache beside a pool showing a\ntraveler dancing beneath a sky full of moons.\n\nThe dream continues after you leave.",
+          "message": "Broad silver kelp wraps a Star Candy cache beside a pool showing a traveler dancing beneath a sky full of moons.\n\nThe dream continues after you leave.",
           "reward": {
             "min": 120,
             "max": 160
@@ -32,12 +32,12 @@
           "nextRoomId": "dreamsap-pools-depths",
           "healAmount": 32,
           "message": "Fresh dreamsap collects inside a folded leaf.\n\nShizuki's note reads:\n\n'Fresh sap = healing.\n\nOld sap = weird dreams.\n\nCHECK LABEL.\n\nI did not check label.'",
-          "fullHpMessage": "You leave the fresh dreamsap untouched. You're already healthy and\nthere is no reason to accidentally sample the nightmare vintage."
+          "fullHpMessage": "You leave the fresh dreamsap untouched. You're already healthy and there is no reason to accidentally sample the nightmare vintage."
         }
       }
     },
     "dreamsap-pools-depths": {
-      "prompt": "Moonlit fronds shade deeper pools where the dreams become clearer and\nstranger.",
+      "prompt": "Moonlit fronds shade deeper pools where the dreams become clearer and stranger.",
       "choices": {
         "left": {
           "type": "combat",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "dreamsap-pools-threshold",
-          "message": "A shrine coffer rests beneath a root surrounded by softly glowing\ndreamsap. Inside are Star Candies and one tiny glass vial labeled:\n\n'DO NOT DRINK OLD SAP.'\n\nUseful.",
+          "message": "A shrine coffer rests beneath a root surrounded by softly glowing dreamsap. Inside are Star Candies and one tiny glass vial labeled:\n\n'DO NOT DRINK OLD SAP.'\n\nUseful.",
           "reward": {
             "min": 132,
             "max": 172
@@ -63,7 +63,7 @@
       }
     },
     "dreamsap-pools-threshold": {
-      "prompt": "Three rootways descend toward Sleeping Rootwell. The sap here is darker,\nand its dreams no longer look peaceful.",
+      "prompt": "Three rootways descend toward Sleeping Rootwell. The sap here is darker, and its dreams no longer look peaceful.",
       "choices": {
         "left": {
           "type": "healing",
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "An offering basket contains Star Candies above the blackened sap.\nSomeone very wisely placed it on a tall root.",
+          "message": "An offering basket contains Star Candies above the blackened sap. Someone very wisely placed it on a tall root.",
           "reward": {
             "min": 144,
             "max": 184
@@ -95,13 +95,13 @@
       "prompt": "Every dreamsap pool goes dark.\n\nOne enormous nightmare begins spreading through them all."
     }
   },
-  "bossPromptDiscord": "The visions across Sleeping Rootwell merge into the same dream.\n\nA huge shadow moves beneath every pool simultaneously.\n\nThe smaller Leeches flee into the roots as the nightmare grows closer\nto the surface.\n\nUse /yes to approach the Rootwell or /no to wake from this part of the\nforest later.",
-  "bossPromptTwitch": "The visions across Sleeping Rootwell merge into the same dream.\n\nA huge shadow moves beneath every pool simultaneously.\n\nThe smaller Leeches flee into the roots as the nightmare grows closer\nto the surface.\n\nUse !yes to approach the Rootwell or !no to wake from this part of the\nforest later.",
-  "bossRetreatText": "You back away from Sleeping Rootwell. The dark dream remains trapped in\nthe pools behind you.",
+  "bossPromptDiscord": "The visions across Sleeping Rootwell merge into the same dream.\n\nA huge shadow moves beneath every pool simultaneously.\n\nThe smaller Leeches flee into the roots as the nightmare grows closer to the surface.\n\nUse /yes to approach the Rootwell or /no to wake from this part of the forest later.",
+  "bossPromptTwitch": "The visions across Sleeping Rootwell merge into the same dream.\n\nA huge shadow moves beneath every pool simultaneously.\n\nThe smaller Leeches flee into the roots as the nightmare grows closer to the surface.\n\nUse !yes to approach the Rootwell or !no to wake from this part of the forest later.",
+  "bossRetreatText": "You back away from Sleeping Rootwell. The dark dream remains trapped in the pools behind you.",
   "boss": {
     "enemyId": "nightmare-sapmother-boss",
     "roomId": "boss",
-    "revealText": "The black dreamsap erupts as a colossal Leech rises through the shared\nnightmare.\n\nNightmare Sapmother reveals itself!"
+    "revealText": "The black dreamsap erupts as a colossal Leech rises through the shared nightmare.\n\nNightmare Sapmother reveals itself!"
   },
-  "completionText": "\"The Nightmare Sapmother sinks into the deepest rootwell.\n\nThe dreams return.\n\nOne briefly shows an enormous Glimmer carrying Shizuki through the\nforest.\n\nSuspicious indeed.\"\n\n\n#################################################################"
+  "completionText": "\"The Nightmare Sapmother sinks into the deepest rootwell.\n\nThe dreams return.\n\nOne briefly shows an enormous Glimmer carrying Shizuki through the forest.\n\nSuspicious indeed.\"\n\n#################################################################"
 }

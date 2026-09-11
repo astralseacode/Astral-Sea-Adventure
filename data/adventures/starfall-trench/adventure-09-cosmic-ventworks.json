@@ -28,7 +28,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "cosmic-ventworks-depths",
-          "message": "A star-chart coffer lies beneath a pipe that appears to have been repaired entirely with shells.",
+          "message": "A star chart coffer lies beneath a pipe that appears to have been repaired entirely with shells.",
           "reward": {
             "min": 117,
             "max": 154
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "cosmic-ventworks-threshold",
-          "message": "A meteor-iron reliquary has been incorporated into a crab's carefully organized scrap pile.",
+          "message": "A meteor iron reliquary has been incorporated into a crab's carefully organized scrap pile.",
           "reward": {
             "min": 129,
             "max": 166
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "Blue fire erupts as an enormous armored crab rises from the machinery.\n\nStarforge Clawlord reveals itself!"
   },
-  "completionText": "\"The Forge settles.\n\nThe Cosmic Vent Crabs immediately return to work.\n\nGerald survives.\n\nThe important lore has been preserved.\"\n\n\n#################################################################"
+  "completionText": "\"The Forge settles.\n\nThe Cosmic Vent Crabs immediately return to work.\n\nGerald survives.\n\nThe important lore has been preserved.\"\n\n#################################################################"
 }

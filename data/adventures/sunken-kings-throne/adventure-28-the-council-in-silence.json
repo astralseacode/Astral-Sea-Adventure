@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "drowned-councilor",
     "recommendedLevel": 49,
-    "introDiscord": "A street beyond the palace is frozen in the remains of a festival.\n\nLantern strings cross overhead.\n\nGame booths line the road.\n\nMasks hang from stalls.\n\nPaper stars drift through the current.\n\nFor once, the kingdom doesn't feel abandoned.\n\nIt feels like everyone simply stepped away for a moment.",
-    "introTwitch": "A street beyond the palace is frozen in the remains of a festival.\n\nLantern strings cross overhead.\n\nGame booths line the road.\n\nMasks hang from stalls.\n\nPaper stars drift through the current.\n\nFor once, the kingdom doesn't feel abandoned.\n\nIt feels like everyone simply stepped away for a moment.",
+    "introDiscord": "A street beyond the palace is frozen in the remains of a festival.\n\nLantern strings cross overhead. Game booths line the road. Masks hang from stalls. Paper stars drift through the current.\n\nFor once, the kingdom doesn't feel abandoned. It feels like everyone simply stepped away for a moment.",
+    "introTwitch": "A street beyond the palace is frozen in the remains of a festival.\n\nLantern strings cross overhead. Game booths line the road. Masks hang from stalls. Paper stars drift through the current.\n\nFor once, the kingdom doesn't feel abandoned. It feels like everyone simply stepped away for a moment.",
     "startRoomId": "the-council-in-silence-approach",
     "rooms": {
         "the-council-in-silence-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Every festival lantern suddenly lights."
         }
     },
-    "bossPromptDiscord": "Every festival lantern suddenly lights.\n\nMusic begins from instruments with no musicians.\n\nAt the end of the street, one elaborate masked figure raises a\nceremonial baton.\n\nUse /yes to enter the final festival game or /no to leave\nbefore Glimmer finds another unfair competition.",
-    "bossPromptTwitch": "Every festival lantern suddenly lights.\n\nMusic begins from instruments with no musicians.\n\nAt the end of the street, one elaborate masked figure raises a\nceremonial baton.\n\nUse !yes to enter the final festival game or !no to leave\nbefore Glimmer finds another unfair competition.",
+    "bossPromptDiscord": "Every festival lantern suddenly lights.\n\nMusic begins from instruments with no musicians.\n\nAt the end of the street, one elaborate masked figure raises a ceremonial baton.\n\nUse /yes to enter the final festival game or /no to leave before Glimmer finds another unfair competition.",
+    "bossPromptTwitch": "Every festival lantern suddenly lights.\n\nMusic begins from instruments with no musicians.\n\nAt the end of the street, one elaborate masked figure raises a ceremonial baton.\n\nUse !yes to enter the final festival game or !no to leave before Glimmer finds another unfair competition.",
     "bossRetreatText": "You withdraw from Festival Lantern Stage. The royal challenge will wait.",
     "boss": {
         "enemyId": "first-minister-revenant-boss",

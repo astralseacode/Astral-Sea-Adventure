@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "sepulcher-manta",
     "recommendedLevel": 37,
-    "introDiscord": "The royal memorial gardens are quiet, elegant, and covered in carved\nstatues honoring people whose names the sea has nearly erased.\n\nSepulcher Mantas glide between them like enormous ceremonial ribbons.",
-    "introTwitch": "The royal memorial gardens are quiet, elegant, and covered in carved\nstatues honoring people whose names the sea has nearly erased.\n\nSepulcher Mantas glide between them like enormous ceremonial ribbons.",
+    "introDiscord": "The royal memorial gardens are quiet, elegant, and covered in carved statues honoring people whose names the sea has nearly erased. Sepulcher Mantas glide between them like enormous ceremonial ribbons.",
+    "introTwitch": "The royal memorial gardens are quiet, elegant, and covered in carved statues honoring people whose names the sea has nearly erased. Sepulcher Mantas glide between them like enormous ceremonial ribbons.",
     "startRoomId": "sepulcher-cloisters-approach",
     "rooms": {
         "sepulcher-cloisters-approach": {
@@ -81,7 +81,7 @@
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "boss-antechamber",
-                    "message": "An old ceremonial casket contains no remains—only offerings and Star\nCandies.",
+                    "message": "An old ceremonial casket contains no remains—only offerings and Star Candies.",
                     "reward": {
                         "min": 283,
                         "max": 321
@@ -95,13 +95,13 @@
             "prompt": "Inside Royal Crypt Nave, the memorial ribbons rise."
         }
     },
-    "bossPromptDiscord": "Inside Royal Crypt Nave, the memorial ribbons rise.\n\nA vast Manta spreads dark wings beneath the carved royal names.\n\nUse /yes to approach or /no to leave the memorial in\npeace.",
-    "bossPromptTwitch": "Inside Royal Crypt Nave, the memorial ribbons rise.\n\nA vast Manta spreads dark wings beneath the carved royal names.\n\nUse !yes to approach or !no to leave the memorial in\npeace.",
+    "bossPromptDiscord": "Inside Royal Crypt Nave, the memorial ribbons rise.\n\nA vast Manta spreads dark wings beneath the carved royal names.\n\nUse /yes to approach or /no to leave the memorial in peace.",
+    "bossPromptTwitch": "Inside Royal Crypt Nave, the memorial ribbons rise.\n\nA vast Manta spreads dark wings beneath the carved royal names.\n\nUse !yes to approach or !no to leave the memorial in peace.",
     "bossRetreatText": "You withdraw from Royal Crypt Nave. The royal challenge will wait.",
     "boss": {
         "enemyId": "funeral-wing-manta-boss",
         "roomId": "boss",
-        "revealText": "Funeral-Wing Manta reveals itself!"
+        "revealText": "Funeral Wing Manta reveals itself!"
     },
     "completionText": "The Manta disappears between the memorial statues.\n\nNothing here celebrates death.\n\nIt remembers lives."
 }

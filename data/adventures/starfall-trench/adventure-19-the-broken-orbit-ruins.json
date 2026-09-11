@@ -1,7 +1,7 @@
 {
   "id": "the-broken-orbit-ruins",
   "number": 19,
-  "name": "The Broken-Orbit Ruins",
+  "name": "The Broken Orbit Ruins",
   "regionId": "starfall-trench",
   "enemyId": "broken-orbit-sentinel",
   "recommendedLevel": 8,
@@ -16,12 +16,12 @@
           "type": "combat",
           "nextRoomId": "the-broken-orbit-ruins-depths",
           "enemyId": "broken-orbit-sentinel",
-          "message": "A Broken-Orbit Sentinel activates, looks at a disconnected gear, looks at you, and apparently decides you are easier to fix."
+          "message": "A Broken Orbit Sentinel activates, looks at a disconnected gear, looks at you, and apparently decides you are easier to fix."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "the-broken-orbit-ruins-depths",
-          "message": "A meteor-iron reliquary lies inside a broken mechanism.",
+          "message": "A meteor iron reliquary lies inside a broken mechanism.",
           "reward": {
             "min": 83,
             "max": 124
@@ -75,7 +75,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer sits inside the broken orrery.",
+          "message": "A star chart coffer sits inside the broken orrery.",
           "reward": {
             "min": 107,
             "max": 148
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The central mechanism locks into place.\n\nAphelion Sentinel awakens!"
   },
-  "completionText": "\"The Sentinel falls silent.\n\nThe machinery continues malfunctioning peacefully.\n\nRepair successful enough.\"\n\n\n#################################################################"
+  "completionText": "\"The Sentinel falls silent.\n\nThe machinery continues malfunctioning peacefully.\n\nRepair successful enough.\"\n\n#################################################################"
 }

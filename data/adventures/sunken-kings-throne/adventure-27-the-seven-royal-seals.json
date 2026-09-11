@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "royal-seal-construct",
     "recommendedLevel": 48,
-    "introDiscord": "Seven enormous royal seals decorate the doors of the kingdom's grand\nbanquet hall.\n\nInside, tables stretch farther than some palace corridors.\n\nThe banquet ended centuries ago.\n\nShizuki still found a seat.",
-    "introTwitch": "Seven enormous royal seals decorate the doors of the kingdom's grand\nbanquet hall.\n\nInside, tables stretch farther than some palace corridors.\n\nThe banquet ended centuries ago.\n\nShizuki still found a seat.",
+    "introDiscord": "Seven enormous royal seals decorate the doors of the kingdom's grand banquet hall. Inside, tables stretch farther than some palace corridors.\n\nThe banquet ended centuries ago.\n\nShizuki still found a seat.",
+    "introTwitch": "Seven enormous royal seals decorate the doors of the kingdom's grand banquet hall. Inside, tables stretch farther than some palace corridors.\n\nThe banquet ended centuries ago.\n\nShizuki still found a seat.",
     "startRoomId": "the-seven-royal-seals-approach",
     "rooms": {
         "the-seven-royal-seals-approach": {
@@ -95,13 +95,13 @@
             "prompt": "All seven seals around the banquet hall light simultaneously."
         }
     },
-    "bossPromptDiscord": "All seven seals around the banquet hall light simultaneously.\n\nAt the high table, an ancient Steward Construct awakens beneath the\nroyal crest.\n\nUse /yes to approach the high table or /no to decline the\nworld's latest dinner invitation.",
-    "bossPromptTwitch": "All seven seals around the banquet hall light simultaneously.\n\nAt the high table, an ancient Steward Construct awakens beneath the\nroyal crest.\n\nUse !yes to approach the high table or !no to decline the\nworld's latest dinner invitation.",
+    "bossPromptDiscord": "All seven seals around the banquet hall light simultaneously.\n\nAt the high table, an ancient Steward Construct awakens beneath the royal crest.\n\nUse /yes to approach the high table or /no to decline the world's latest dinner invitation.",
+    "bossPromptTwitch": "All seven seals around the banquet hall light simultaneously.\n\nAt the high table, an ancient Steward Construct awakens beneath the royal crest.\n\nUse !yes to approach the high table or !no to decline the world's latest dinner invitation.",
     "bossRetreatText": "You withdraw from Royal Banquet High Table. The royal challenge will wait.",
     "boss": {
         "enemyId": "covenant-engine-boss",
         "roomId": "boss",
-        "revealText": "The Seven-Seal Steward awakens!"
+        "revealText": "The Seven Seal Steward awakens!"
     },
     "completionText": "The banquet hall falls quiet.\n\nShizuki's place card remains at the table.\n\nHouse Berry finally has official seating."
 }

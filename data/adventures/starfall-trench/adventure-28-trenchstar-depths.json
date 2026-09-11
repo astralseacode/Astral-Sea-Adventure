@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "trenchstar-depths-depths",
-          "message": "A meteor-iron reliquary sits inside a deeper crater.",
+          "message": "A meteor iron reliquary sits inside a deeper crater.",
           "reward": {
             "min": 52,
             "max": 96
@@ -68,7 +68,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer lies beneath Marker #11.",
+          "message": "A star chart coffer lies beneath Marker #11.",
           "reward": {
             "min": 76,
             "max": 120
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "abyssal-star-behemoth-boss",
     "roomId": "boss",
-    "revealText": "A colossal star-lit body rises from beneath the bedrock.\n\nAbyssal Star Behemoth reveals itself!"
+    "revealText": "A colossal star lit body rises from beneath the bedrock.\n\nAbyssal Star Behemoth reveals itself!"
   },
-  "completionText": "\"The Behemoth descends again.\n\nYou have reached the bottom.\n\nProbably.\n\nNo. We're not writing that down.\"\n\n\n#################################################################"
+  "completionText": "\"The Behemoth descends again.\n\nYou have reached the bottom.\n\nProbably.\n\nNo. We're not writing that down.\"\n\n#################################################################"
 }

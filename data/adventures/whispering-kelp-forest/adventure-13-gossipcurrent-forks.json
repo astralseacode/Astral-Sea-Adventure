@@ -5,18 +5,18 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "gossipcurrent-sprite",
   "recommendedLevel": 14,
-  "introDiscord": "Three currents meet beneath the kelp and carry whispers from opposite\nends of the forest. Gossipcurrent Sprites dart between them, happily\ncollecting every rumor and improving none of them.",
-  "introTwitch": "Three currents meet beneath the kelp and carry whispers from opposite\nends of the forest. Gossipcurrent Sprites dart between them, happily\ncollecting every rumor and improving none of them.",
+  "introDiscord": "Three currents meet beneath the kelp and carry whispers from opposite ends of the forest. Gossipcurrent Sprites dart between them, happily collecting every rumor and improving none of them.",
+  "introTwitch": "Three currents meet beneath the kelp and carry whispers from opposite ends of the forest. Gossipcurrent Sprites dart between them, happily collecting every rumor and improving none of them.",
   "startRoomId": "gossipcurrent-forks-approach",
   "rooms": {
     "gossipcurrent-forks-approach": {
-      "prompt": "Three routes split with three murmuring currents. One insists treasure\nlies left. Another insists danger lies left. The third says you already\nwent left.",
+      "prompt": "Three routes split with three murmuring currents. One insists treasure lies left. Another insists danger lies left. The third says you already went left.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "gossipcurrent-forks-depths",
           "enemyId": "gossipcurrent-sprite",
-          "message": "A Sprite zips from the current shouting a garbled imitation of your\narrival.\n\nBy the third repetition, you are apparently a terrifying royal invader.\n\nThe Sprite attacks accordingly."
+          "message": "A Sprite zips from the current shouting a garbled imitation of your arrival.\n\nBy the third repetition, you are apparently a terrifying royal invader.\n\nThe Sprite attacks accordingly."
         },
         "right": {
           "type": "treasure",
@@ -32,7 +32,7 @@
           "nextRoomId": "gossipcurrent-forks-depths",
           "healAmount": 42,
           "message": "Restorative sap rests under Shizuki's note:\n\n'Current says I fought twelve sea dragons here.\n\nActual number: zero.\n\nPlease stop encouraging it.'",
-          "fullHpMessage": "You leave the sap untouched. The current immediately whispers that you\ndrank seven bottles."
+          "fullHpMessage": "You leave the sap untouched. The current immediately whispers that you drank seven bottles."
         }
       }
     },
@@ -42,7 +42,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "gossipcurrent-forks-threshold",
-          "message": "Broad silver kelp wraps a Star Candy bundle.\n\nA Sprite announces:\n\n'Secret treasure!'\n\nEvery Sprite within approximately half the forest immediately repeats\nit.",
+          "message": "Broad silver kelp wraps a Star Candy bundle.\n\nA Sprite announces:\n\n'Secret treasure!'\n\nEvery Sprite within approximately half the forest immediately repeats it.",
           "reward": {
             "min": 152,
             "max": 191
@@ -52,7 +52,7 @@
           "type": "combat",
           "nextRoomId": "gossipcurrent-forks-threshold",
           "enemyId": "gossipcurrent-sprite",
-          "message": "A Gossipcurrent Sprite tells another Sprite something while pointing at\nyou.\n\nThe second gasps.\n\nThe third gasps louder.\n\nYou have apparently become controversial."
+          "message": "A Gossipcurrent Sprite tells another Sprite something while pointing at you.\n\nThe second gasps.\n\nThe third gasps louder.\n\nYou have apparently become controversial."
         },
         "forward": {
           "type": "empty",
@@ -63,19 +63,19 @@
       }
     },
     "gossipcurrent-forks-threshold": {
-      "prompt": "Moonlit fronds surround Whisperwell, where three currents circle a deep\nroot basin full of rapidly multiplying rumors.",
+      "prompt": "Moonlit fronds surround Whisperwell, where three currents circle a deep root basin full of rapidly multiplying rumors.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 47,
           "message": "A tranquil grove pool rests beneath Shizuki's note:\n\n'Drink here.\n\nIgnore anything current says about ingredients.\n\nIt has no medical license.'",
-          "fullHpMessage": "You leave the pool untouched. Somewhere nearby, the current announces\nyou have achieved immortality."
+          "fullHpMessage": "You leave the pool untouched. Somewhere nearby, the current announces you have achieved immortality."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moss-covered shrine coffer contains Star Candies and a tiny sign:\n\n'NOT CURSED.'\n\nA Sprite whispers:\n\n'Extremely cursed.'\n\nThe sign seems more trustworthy.",
+          "message": "A moss covered shrine coffer contains Star Candies and a tiny sign:\n\n'NOT CURSED.'\n\nA Sprite whispers:\n\n'Extremely cursed.'\n\nThe sign seems more trustworthy.",
           "reward": {
             "min": 164,
             "max": 203
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Whisperwell",
       "type": "boss-prompt",
-      "prompt": "Every rumor in the surrounding currents begins flowing toward\nWhisperwell."
+      "prompt": "Every rumor in the surrounding currents begins flowing toward Whisperwell."
     }
   },
-  "bossPromptDiscord": "The whispers circle faster.\n\nStories from every corner of the forest overlap until they become one\nenormous voice.\n\nThen something bright rises from the center of Whisperwell, surrounded\nby dozens of excited Sprites.\n\nUse /yes to enter Whisperwell or /no to leave before the rumor about\nyou gets any more impressive.",
-  "bossPromptTwitch": "The whispers circle faster.\n\nStories from every corner of the forest overlap until they become one\nenormous voice.\n\nThen something bright rises from the center of Whisperwell, surrounded\nby dozens of excited Sprites.\n\nUse !yes to enter Whisperwell or !no to leave before the rumor about\nyou gets any more impressive.",
-  "bossRetreatText": "You retreat. Behind you, several Sprites immediately begin telling the\nstory of your dramatic escape.",
+  "bossPromptDiscord": "The whispers circle faster.\n\nStories from every corner of the forest overlap until they become one enormous voice.\n\nThen something bright rises from the center of Whisperwell, surrounded by dozens of excited Sprites.\n\nUse /yes to enter Whisperwell or /no to leave before the rumor about you gets any more impressive.",
+  "bossPromptTwitch": "The whispers circle faster.\n\nStories from every corner of the forest overlap until they become one enormous voice.\n\nThen something bright rises from the center of Whisperwell, surrounded by dozens of excited Sprites.\n\nUse !yes to enter Whisperwell or !no to leave before the rumor about you gets any more impressive.",
+  "bossRetreatText": "You retreat. Behind you, several Sprites immediately begin telling the story of your dramatic escape.",
   "boss": {
     "enemyId": "rumor-tide-sprite-boss",
     "roomId": "boss",
-    "revealText": "The currents burst into shimmering light as a powerful Sprite rises\nfrom Whisperwell.\n\nRumor-Tide Sprite reveals itself!"
+    "revealText": "The currents burst into shimmering light as a powerful Sprite rises from Whisperwell.\n\nRumor Tide Sprite reveals itself!"
   },
-  "completionText": "\"The Rumor-Tide Sprite vanishes into the currents.\n\nThe forest immediately begins telling everyone you defeated something\nat least three times larger.\n\nDo not correct it.\"\n\n\n#################################################################"
+  "completionText": "\"The Rumor Tide Sprite vanishes into the currents.\n\nThe forest immediately begins telling everyone you defeated something at least three times larger.\n\nDo not correct it.\"\n\n#################################################################"
 }

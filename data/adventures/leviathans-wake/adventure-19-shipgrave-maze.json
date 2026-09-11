@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "shipgrave-scuttler",
     "recommendedLevel": 26,
-    "introDiscord": "Dozens of wrecks have collected between the skeletons until they form\na maze.\n\nShipgrave Scuttlers know every route.\n\nShizuki did not.",
-    "introTwitch": "Dozens of wrecks have collected between the skeletons until they form\na maze.\n\nShipgrave Scuttlers know every route.\n\nShizuki did not.",
+    "introDiscord": "Dozens of wrecks have collected between the skeletons until they form a maze. Shipgrave Scuttlers know every route.\n\nShizuki did not.",
+    "introTwitch": "Dozens of wrecks have collected between the skeletons until they form a maze. Shipgrave Scuttlers know every route.\n\nShizuki did not.",
     "startRoomId": "shipgrave-maze-approach",
     "rooms": {
         "shipgrave-maze-approach": {
@@ -95,13 +95,13 @@
             "prompt": "Every Scuttler abandons the central wreck."
         }
     },
-    "bossPromptDiscord": "Every Scuttler abandons the central wreck.\n\nSomething much larger crawls across the outside of Admiral's Ruin.\n\nThe hull groans beneath its weight.\n\nUse /yes to enter the Ruin or /no to resume Shizuki's comprehensive\ninspection somewhere else.",
-    "bossPromptTwitch": "Every Scuttler abandons the central wreck.\n\nSomething much larger crawls across the outside of Admiral's Ruin.\n\nThe hull groans beneath its weight.\n\nUse !yes to enter the Ruin or !no to resume Shizuki's comprehensive\ninspection somewhere else.",
+    "bossPromptDiscord": "Every Scuttler abandons the central wreck.\n\nSomething much larger crawls across the outside of Admiral's Ruin.\n\nThe hull groans beneath its weight.\n\nUse /yes to enter the Ruin or /no to resume Shizuki's comprehensive inspection somewhere else.",
+    "bossPromptTwitch": "Every Scuttler abandons the central wreck.\n\nSomething much larger crawls across the outside of Admiral's Ruin.\n\nThe hull groans beneath its weight.\n\nUse !yes to enter the Ruin or !no to resume Shizuki's comprehensive inspection somewhere else.",
     "bossRetreatText": "You retreat deeper into the maze.\n\nThis may or may not improve matters.",
     "boss": {
         "enemyId": "fleet-eater-scuttler-boss",
         "roomId": "boss",
-        "revealText": "A colossal Scuttler tears across the wreck.\n\nFleet-Eater Scuttler reveals itself!"
+        "revealText": "A colossal Scuttler tears across the wreck.\n\nFleet Eater Scuttler reveals itself!"
     },
-    "completionText": "The Fleet-Eater disappears.\n\nA direct exit lies behind it.\n\nShizuki's map has seventeen routes.\n\nNone are this one."
+    "completionText": "The Fleet Eater disappears.\n\nA direct exit lies behind it.\n\nShizuki's map has seventeen routes.\n\nNone are this one."
 }

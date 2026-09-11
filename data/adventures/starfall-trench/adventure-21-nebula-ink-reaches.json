@@ -28,7 +28,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "nebula-ink-reaches-depths",
-          "message": "A star-chart coffer hides beneath a violet cloud.",
+          "message": "A star chart coffer hides beneath a violet cloud.",
           "reward": {
             "min": 76,
             "max": 117
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "nebula-ink-reaches-threshold",
-          "message": "A meteor-iron reliquary has been decorated with an impressive spiral.",
+          "message": "A meteor iron reliquary has been decorated with an impressive spiral.",
           "reward": {
             "min": 88,
             "max": 129
@@ -63,7 +63,7 @@
       }
     },
     "nebula-ink-reaches-threshold": {
-      "prompt": "Violet Stormwell churns beyond three ink-filled passages.",
+      "prompt": "Violet Stormwell churns beyond three ink filled passages.",
       "choices": {
         "left": {
           "type": "combat",
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "Tentacles tear through the violet cloud.\n\nCloudveil Krakenet reveals itself!"
   },
-  "completionText": "\"The violet storm disperses.\n\nOne final ink blot resembles a five-pointed star.\n\nFive stars. Excellent exhibition.\"\n\n\n#################################################################"
+  "completionText": "\"The violet storm disperses.\n\nOne final ink blot resembles a five-pointed star.\n\nFive stars. Excellent exhibition.\"\n\n#################################################################"
 }

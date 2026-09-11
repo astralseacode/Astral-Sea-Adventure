@@ -1,7 +1,7 @@
 {
   "id": "falling-light-drift",
   "number": 15,
-  "name": "Falling-Light Drift",
+  "name": "Falling Light Drift",
   "regionId": "starfall-trench",
   "enemyId": "falling-light-medusa",
   "recommendedLevel": 7,
@@ -23,12 +23,12 @@
           "type": "combat",
           "nextRoomId": "falling-light-drift-depths",
           "enemyId": "falling-light-medusa",
-          "message": "A Falling-Light Medusa descends among the false stars."
+          "message": "A Falling Light Medusa descends among the false stars."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "falling-light-drift-depths",
-          "message": "A star-chart coffer glows beneath the meteor shower.",
+          "message": "A star chart coffer glows beneath the meteor shower.",
           "reward": {
             "min": 97,
             "max": 136
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "falling-light-drift-threshold",
-          "message": "A meteor-iron reliquary catches falling light like a tiny sun.",
+          "message": "A meteor iron reliquary catches falling light like a tiny sun.",
           "reward": {
             "min": 109,
             "max": 148
@@ -58,7 +58,7 @@
           "type": "combat",
           "nextRoomId": "falling-light-drift-threshold",
           "enemyId": "falling-light-medusa",
-          "message": "A Falling-Light Medusa drifts directly into your route."
+          "message": "A Falling Light Medusa drifts directly into your route."
         }
       }
     },
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The lights gather into an enormous luminous bell.\n\nStarshower Medusa reveals itself!"
   },
-  "completionText": "\"The Starshower disperses into harmless lights.\n\nOne falls beside you.\n\nWish carefully.\"\n\n\n#################################################################"
+  "completionText": "\"The Starshower disperses into harmless lights.\n\nOne falls beside you.\n\nWish carefully.\"\n\n#################################################################"
 }

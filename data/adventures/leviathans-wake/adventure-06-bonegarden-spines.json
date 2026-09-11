@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "bonegarden-urchin",
     "recommendedLevel": 22,
-    "introDiscord": "Leviathan spines rise from the seabed like an ivory garden.\n\nBonegarden Urchins have settled between them, resulting in a landscape\nwhere EVERYTHING is pointy.",
-    "introTwitch": "Leviathan spines rise from the seabed like an ivory garden.\n\nBonegarden Urchins have settled between them, resulting in a landscape\nwhere EVERYTHING is pointy.",
+    "introDiscord": "Leviathan spines rise from the seabed like an ivory garden. Bonegarden Urchins have settled between them, resulting in a landscape where EVERYTHING is pointy.",
+    "introTwitch": "Leviathan spines rise from the seabed like an ivory garden. Bonegarden Urchins have settled between them, resulting in a landscape where EVERYTHING is pointy.",
     "startRoomId": "bonegarden-spines-approach",
     "rooms": {
         "bonegarden-spines-approach": {
@@ -63,7 +63,7 @@
             }
         },
         "bonegarden-spines-threshold": {
-            "prompt": "Ivory Thornfield lies beyond three passages surrounded by increasingly\ndense bone.",
+            "prompt": "Ivory Thornfield lies beyond three passages surrounded by increasingly dense bone.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -95,13 +95,13 @@
             "prompt": "The smallest Urchins scatter."
         }
     },
-    "bossPromptDiscord": "The smallest Urchins scatter.\n\nAt the center of Ivory Thornfield, an enormous crown of glowing spines\nbegins moving between the Leviathan bones.\n\nUse /yes to enter the Thornfield or /no to choose the revolutionary\nstrategy of avoiding spikes.",
-    "bossPromptTwitch": "The smallest Urchins scatter.\n\nAt the center of Ivory Thornfield, an enormous crown of glowing spines\nbegins moving between the Leviathan bones.\n\nUse !yes to enter the Thornfield or !no to choose the revolutionary\nstrategy of avoiding spikes.",
+    "bossPromptDiscord": "The smallest Urchins scatter.\n\nAt the center of Ivory Thornfield, an enormous crown of glowing spines begins moving between the Leviathan bones.\n\nUse /yes to enter the Thornfield or /no to choose the revolutionary strategy of avoiding spikes.",
+    "bossPromptTwitch": "The smallest Urchins scatter.\n\nAt the center of Ivory Thornfield, an enormous crown of glowing spines begins moving between the Leviathan bones.\n\nUse !yes to enter the Thornfield or !no to choose the revolutionary strategy of avoiding spikes.",
     "bossRetreatText": "You retreat.\n\nFor once, nobody gets poked.",
     "boss": {
         "enemyId": "marrow-crown-urchin-boss",
         "roomId": "boss",
-        "revealText": "A massive Urchin rises beneath a crown of ivory-colored spines.\n\nMarrow-Crown Urchin reveals itself!"
+        "revealText": "A massive Urchin rises beneath a crown of ivory colored spines.\n\nMarrow Crown Urchin reveals itself!"
     },
-    "completionText": "The Marrow-Crown settles among the bones.\n\nYou leave the Bonegarden with exactly the recommended number of extra\nholes:\n\nzero."
+    "completionText": "The Marrow Crown settles among the bones.\n\nYou leave the Bonegarden with exactly the recommended number of extra holes:\n\nzero."
 }

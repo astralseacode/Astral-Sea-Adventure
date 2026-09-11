@@ -26,7 +26,7 @@
     {
         "number": 4,
         "id": "portal-skip-expanse",
-        "name": "Portal-Skip Expanse",
+        "name": "Portal Skip Expanse",
         "enemyId": "portal-skipping-ray",
         "bossEnemyId": "horizonfold-ray-boss",
         "file": "adventure-04-portal-skip-expanse.json"
@@ -50,7 +50,7 @@
     {
         "number": 7,
         "id": "dream-anchor-mooring",
-        "name": "Dream-Anchor Mooring",
+        "name": "Dream Anchor Mooring",
         "enemyId": "dream-anchor-turtle",
         "bossEnemyId": "waking-anchorback-boss",
         "file": "adventure-07-dream-anchor-mooring.json"
@@ -218,7 +218,7 @@
     {
         "number": 28,
         "id": "the-first-light-memory",
-        "name": "The First-Light Memory",
+        "name": "The First Light Memory",
         "enemyId": "first-light-remnant",
         "bossEnemyId": "dawn-before-the-sea-boss",
         "file": "adventure-28-the-first-light-memory.json"

@@ -1,22 +1,22 @@
 {
     "id": "scale-shelter-wrecks",
     "number": 4,
-    "name": "Scale-Shelter Wrecks",
+    "name": "Scale Shelter Wrecks",
     "regionId": "leviathans-wake",
     "enemyId": "scale-shelter-hermit",
     "recommendedLevel": 21,
-    "introDiscord": "Shipwrecks lie beneath enormous shed scales that protected them from\nthe worst currents for centuries.\n\nScale-Shelter Hermits had the same idea.",
-    "introTwitch": "Shipwrecks lie beneath enormous shed scales that protected them from\nthe worst currents for centuries.\n\nScale-Shelter Hermits had the same idea.",
+    "introDiscord": "Shipwrecks lie beneath enormous shed scales that protected them from the worst currents for centuries.\n\nScale Shelter Hermits had the same idea.",
+    "introTwitch": "Shipwrecks lie beneath enormous shed scales that protected them from the worst currents for centuries.\n\nScale Shelter Hermits had the same idea.",
     "startRoomId": "scale-shelter-wrecks-approach",
     "rooms": {
         "scale-shelter-wrecks-approach": {
-            "prompt": "Three wreck-lined routes pass beneath overlapping Leviathan scales,\neach broad enough to serve as a roof.",
+            "prompt": "Three wreck lined routes pass beneath overlapping Leviathan scales, each broad enough to serve as a roof.",
             "choices": {
                 "left": {
                     "type": "combat",
                     "nextRoomId": "scale-shelter-wrecks-depths",
                     "enemyId": "scale-shelter-hermit",
-                    "message": "A Scale-Shelter Hermit emerges carrying a fragment of Leviathan scale\nas its shell.\n\nShizuki would later describe this as:\n\n'ambitious housing.'"
+                    "message": "A Scale Shelter Hermit emerges carrying a fragment of Leviathan scale as its shell.\n\nShizuki would later describe this as:\n\n'ambitious housing.'"
                 },
                 "right": {
                     "type": "empty",
@@ -49,7 +49,7 @@
                     "type": "combat",
                     "nextRoomId": "scale-shelter-wrecks-threshold",
                     "enemyId": "scale-shelter-hermit",
-                    "message": "A Hermit crawls from beneath a wreck wearing a polished scale fragment\nlike extremely expensive armor."
+                    "message": "A Hermit crawls from beneath a wreck wearing a polished scale fragment like extremely expensive armor."
                 },
                 "forward": {
                     "type": "treasure",
@@ -63,7 +63,7 @@
             }
         },
         "scale-shelter-wrecks-threshold": {
-            "prompt": "Armored Drift is layered in enough Leviathan scales to resemble a\nsecond seabed.",
+            "prompt": "Armored Drift is layered in enough Leviathan scales to resemble a second seabed.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -85,7 +85,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "scale-shelter-hermit",
-                    "message": "A Scale-Shelter Hermit blocks the path wearing enough armor to qualify\nas a small bunker."
+                    "message": "A Scale Shelter Hermit blocks the path wearing enough armor to qualify as a small bunker."
                 }
             }
         },
@@ -101,7 +101,7 @@
     "boss": {
         "enemyId": "titan-scale-hermit-boss",
         "roomId": "boss",
-        "revealText": "A colossal Hermit rises beneath a full Leviathan scale.\n\nTitan-Scale Hermit reveals itself!"
+        "revealText": "A colossal Hermit rises beneath a full Leviathan scale.\n\nTitan Scale Hermit reveals itself!"
     },
-    "completionText": "The Titan-Scale Hermit retreats into the wrecks.\n\nYou now know one Leviathan scale can double as a house.\n\nUseful information.\n\nProbably."
+    "completionText": "The Titan Scale Hermit retreats into the wrecks.\n\nYou now know one Leviathan scale can double as a house.\n\nUseful information.\n\nProbably."
 }

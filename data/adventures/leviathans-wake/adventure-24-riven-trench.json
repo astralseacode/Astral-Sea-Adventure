@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "trench-rending-worm",
     "recommendedLevel": 28,
-    "introDiscord": "The trench is split by wounds so deep they resemble cracks through the\nworld itself.\n\nTrench-Rending Worms have made those cracks deeper.",
-    "introTwitch": "The trench is split by wounds so deep they resemble cracks through the\nworld itself.\n\nTrench-Rending Worms have made those cracks deeper.",
+    "introDiscord": "The trench is split by wounds so deep they resemble cracks through the world itself. Trench Rending Worms have made those cracks deeper.",
+    "introTwitch": "The trench is split by wounds so deep they resemble cracks through the world itself. Trench Rending Worms have made those cracks deeper.",
     "startRoomId": "riven-trench-approach",
     "rooms": {
         "riven-trench-approach": {
@@ -31,7 +31,7 @@
                     "type": "combat",
                     "nextRoomId": "riven-trench-depths",
                     "enemyId": "trench-rending-worm",
-                    "message": "A Trench-Rending Worm erupts through the seabed."
+                    "message": "A Trench Rending Worm erupts through the seabed."
                 }
             }
         },
@@ -63,7 +63,7 @@
             }
         },
         "riven-trench-threshold": {
-            "prompt": "Split-Sea Chasm opens ahead.",
+            "prompt": "Split Sea Chasm opens ahead.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -78,7 +78,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "trench-rending-worm",
-                    "message": "A Trench-Rending Worm crosses the chasm wall."
+                    "message": "A Trench Rending Worm crosses the chasm wall."
                 },
                 "forward": {
                     "type": "healing",
@@ -90,13 +90,13 @@
             }
         },
         "boss-antechamber": {
-            "name": "Split-Sea Chasm",
+            "name": "Split Sea Chasm",
             "type": "boss-prompt",
-            "prompt": "Split-Sea Chasm widens."
+            "prompt": "Split Sea Chasm widens."
         }
     },
-    "bossPromptDiscord": "Split-Sea Chasm widens.\n\nThe stone itself begins moving.\n\nSomething below is not merely living inside the fracture.\n\nIt is creating it.\n\nUse /yes to enter the Chasm or /no to preserve the current number of\npieces the seabed is in.",
-    "bossPromptTwitch": "Split-Sea Chasm widens.\n\nThe stone itself begins moving.\n\nSomething below is not merely living inside the fracture.\n\nIt is creating it.\n\nUse !yes to enter the Chasm or !no to preserve the current number of\npieces the seabed is in.",
+    "bossPromptDiscord": "Split Sea Chasm widens.\n\nThe stone itself begins moving.\n\nSomething below is not merely living inside the fracture.\n\nIt is creating it.\n\nUse /yes to enter the Chasm or /no to preserve the current number of pieces the seabed is in.",
+    "bossPromptTwitch": "Split Sea Chasm widens.\n\nThe stone itself begins moving.\n\nSomething below is not merely living inside the fracture.\n\nIt is creating it.\n\nUse !yes to enter the Chasm or !no to preserve the current number of pieces the seabed is in.",
     "bossRetreatText": "You retreat onto relatively intact terrain.",
     "boss": {
         "enemyId": "worldscar-worm-boss",

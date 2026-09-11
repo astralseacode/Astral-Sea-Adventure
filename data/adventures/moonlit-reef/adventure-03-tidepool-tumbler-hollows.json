@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "turning-pool",
-          "message": "A moon-shell coffer spins lazily in the center of a tiny whirlpool. Every time you reach for it, the current carries it around the pool and back to exactly where it started. After several increasingly personal attempts, you finally catch it and uncover Star Candies inside.",
+          "message": "A moon shell coffer spins lazily in the center of a tiny whirlpool. Every time you reach for it, the current carries it around the pool and back to exactly where it started. After several increasingly personal attempts, you finally catch it and uncover Star Candies inside.",
           "reward": {
             "min": 25,
             "max": 50
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Behind a curtain of upward-drifting foam, you uncover an old Moonkeeper cache sealed into the reefstone. The lock clicks open when moonlight touches it, revealing Star Candies untouched by the looping currents. Apparently somebody around here understood waterproof storage.",
+          "message": "Behind a curtain of upward drifting foam, you uncover an old Moonkeeper cache sealed into the reefstone. The lock clicks open when moonlight touches it, revealing Star Candies untouched by the looping currents. Apparently somebody around here understood waterproof storage.",
           "reward": {
             "min": 35,
             "max": 60
@@ -92,7 +92,7 @@
     "boss-antechamber": {
       "name": "Primeval Tidewell",
       "type": "boss-prompt",
-      "prompt": "The final channel opens into a vast circular tidewell. For the first time since entering the hollows, the water is completely still. No looping currents. No drifting foam. No tumbling shells. At the center, something enormous rests beneath the glass-smooth surface."
+      "prompt": "The final channel opens into a vast circular tidewell. For the first time since entering the hollows, the water is completely still. No looping currents. No drifting foam. No tumbling shells. At the center, something enormous rests beneath the glass smooth surface."
     }
   },
   "bossPromptDiscord": "A single ripple crosses the Primeval Tidewell.\n\nThen another.\n\nThe still water begins turning in one enormous circle as something beneath the surface rolls with the current. Whatever taught the smaller Tidepool Tumblers how to move through these hollows is waking up.\n\nUse /yes to approach or /no to back away while the water is still giving you the option.",

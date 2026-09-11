@@ -1,12 +1,12 @@
 {
   "id": "meteor-marked-shelf",
   "number": 17,
-  "name": "Meteor-Marked Shelf",
+  "name": "Meteor Marked Shelf",
   "regionId": "starfall-trench",
   "enemyId": "meteor-marked-lobster",
   "recommendedLevel": 8,
-  "introDiscord": "Meteor-Marked Lobsters occupy every desirable piece of the shelf and enforce an extremely simple property law: if a lobster is standing on it, it belongs to the lobster.",
-  "introTwitch": "Meteor-Marked Lobsters occupy every desirable piece of the shelf and enforce an extremely simple property law: if a lobster is standing on it, it belongs to the lobster.",
+  "introDiscord": "Meteor Marked Lobsters occupy every desirable piece of the shelf and enforce an extremely simple property law: if a lobster is standing on it, it belongs to the lobster.",
+  "introTwitch": "Meteor Marked Lobsters occupy every desirable piece of the shelf and enforce an extremely simple property law: if a lobster is standing on it, it belongs to the lobster.",
   "startRoomId": "meteor-marked-shelf-approach",
   "rooms": {
     "meteor-marked-shelf-approach": {
@@ -25,7 +25,7 @@
           "type": "combat",
           "nextRoomId": "meteor-marked-shelf-depths",
           "enemyId": "meteor-marked-lobster",
-          "message": "A Meteor-Marked Lobster plants both claws on the path.\n\nProperty dispute."
+          "message": "A Meteor Marked Lobster plants both claws on the path.\n\nProperty dispute."
         },
         "forward": {
           "type": "healing",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "meteor-marked-shelf-threshold",
-          "message": "A star-chart coffer sits inside an apparently abandoned territory.",
+          "message": "A star chart coffer sits inside an apparently abandoned territory.",
           "reward": {
             "min": 102,
             "max": 142
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "\"A meteor-iron reliquary rests beneath a disputed meteor fragment.\"\n\nBOSS:",
+          "message": "\"A meteor iron reliquary rests beneath a disputed meteor fragment.\"\n\nBOSS:",
           "reward": {
             "min": 114,
             "max": 154
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "An enormous armored lobster rises from the crater.\n\nImpactclaw Tyrant reveals itself!"
   },
-  "completionText": "\"The Tyrant retreats.\n\nThe ordinary lobsters immediately begin redistributing territory.\n\nYour tiny rock has already been annexed.\"\n\n\n#################################################################"
+  "completionText": "\"The Tyrant retreats.\n\nThe ordinary lobsters immediately begin redistributing territory.\n\nYour tiny rock has already been annexed.\"\n\n#################################################################"
 }

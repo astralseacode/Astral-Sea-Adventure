@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "astral-silt-labyrinth-depths",
-          "message": "A meteor-iron reliquary protrudes from the silt.",
+          "message": "A meteor iron reliquary protrudes from the silt.",
           "reward": {
             "min": 93,
             "max": 133
@@ -68,7 +68,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer lies half buried beneath silver sediment.",
+          "message": "A star chart coffer lies half buried beneath silver sediment.",
           "reward": {
             "min": 117,
             "max": 157
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The silt erupts upward.\n\nSiltveil Ambusher reveals itself!"
   },
-  "completionText": "\"The Court settles.\n\nShizuki's map remains inaccurate.\n\nTradition preserved.\"\n\n\n#################################################################"
+  "completionText": "\"The Court settles.\n\nShizuki's map remains inaccurate.\n\nTradition preserved.\"\n\n#################################################################"
 }

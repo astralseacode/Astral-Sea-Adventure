@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "wrecknest-moray",
     "recommendedLevel": 24,
-    "introDiscord": "Seven wrecks have been compressed into one tangled structure between\nthe bones.\n\nWrecknest Morays have decided this is excellent housing.",
-    "introTwitch": "Seven wrecks have been compressed into one tangled structure between\nthe bones.\n\nWrecknest Morays have decided this is excellent housing.",
+    "introDiscord": "Seven wrecks have been compressed into one tangled structure between the bones. Wrecknest Morays have decided this is excellent housing.",
+    "introTwitch": "Seven wrecks have been compressed into one tangled structure between the bones. Wrecknest Morays have decided this is excellent housing.",
     "startRoomId": "wrecknest-passage-approach",
     "rooms": {
         "wrecknest-passage-approach": {
@@ -31,7 +31,7 @@
                     "type": "combat",
                     "nextRoomId": "wrecknest-passage-depths",
                     "enemyId": "wrecknest-moray",
-                    "message": "A Wrecknest Moray emerges through three different ship windows before\nchoosing yours."
+                    "message": "A Wrecknest Moray emerges through three different ship windows before choosing yours."
                 }
             }
         },
@@ -68,7 +68,7 @@
                 "left": {
                     "type": "treasure",
                     "nextRoomId": "boss-antechamber",
-                    "message": "Star Candies are trapped beneath a Leviathan scale that somehow joined\nthe pile.",
+                    "message": "Star Candies are trapped beneath a Leviathan scale that somehow joined the pile.",
                     "reward": {
                         "min": 214,
                         "max": 252
@@ -95,8 +95,8 @@
             "prompt": "The fused wreck creaks."
         }
     },
-    "bossPromptDiscord": "The fused wreck creaks.\n\nSomething enormous moves through the entire structure without ever\nleaving it.\n\nUse /yes to enter Crushed Fleet Nest or /no to let the world's largest\neel apartment remain occupied.",
-    "bossPromptTwitch": "The fused wreck creaks.\n\nSomething enormous moves through the entire structure without ever\nleaving it.\n\nUse !yes to enter Crushed Fleet Nest or !no to let the world's largest\neel apartment remain occupied.",
+    "bossPromptDiscord": "The fused wreck creaks.\n\nSomething enormous moves through the entire structure without ever leaving it.\n\nUse /yes to enter Crushed Fleet Nest or /no to let the world's largest eel apartment remain occupied.",
+    "bossPromptTwitch": "The fused wreck creaks.\n\nSomething enormous moves through the entire structure without ever leaving it.\n\nUse !yes to enter Crushed Fleet Nest or !no to let the world's largest eel apartment remain occupied.",
     "bossRetreatText": "You withdraw from Ship.",
     "boss": {
         "enemyId": "keeljaw-moray-boss",

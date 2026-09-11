@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "whisperroot-colossus",
   "recommendedLevel": 19,
-  "introDiscord": "The ordinary kelp thins as roots older than the surrounding forest\nrise from the Deeps. Some are wider than houses. Some have footprints.",
-  "introTwitch": "The ordinary kelp thins as roots older than the surrounding forest\nrise from the Deeps. Some are wider than houses. Some have footprints.",
+  "introDiscord": "The ordinary kelp thins as roots older than the surrounding forest rise from the Deeps. Some are wider than houses. Some have footprints.",
+  "introTwitch": "The ordinary kelp thins as roots older than the surrounding forest rise from the Deeps. Some are wider than houses. Some have footprints.",
   "startRoomId": "whisperroot-deeps-approach",
   "rooms": {
     "whisperroot-deeps-approach": {
-      "prompt": "Three paths wind between colossal roots disappearing into darkness\nabove and below.",
+      "prompt": "Three paths wind between colossal roots disappearing into darkness above and below.",
       "choices": {
         "left": {
           "type": "combat",
@@ -21,13 +21,13 @@
         "right": {
           "type": "empty",
           "nextRoomId": "whisperroot-deeps-depths",
-          "message": "One Berry rests inside Shizuki's tiny camp beneath a root large enough\nto support a village.\n\nHer note reads:\n\n'Excellent shelter.\n\nRoot moved at breakfast.\n\nShelter rating adjusted.'",
+          "message": "One Berry rests inside Shizuki's tiny camp beneath a root large enough to support a village.\n\nHer note reads:\n\n'Excellent shelter.\n\nRoot moved at breakfast.\n\nShelter rating adjusted.'",
           "berries": 1
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "whisperroot-deeps-depths",
-          "message": "An offering basket hidden inside a root hollow contains Star Candies.\nThe hollow is large enough to qualify as a room.",
+          "message": "An offering basket hidden inside a root hollow contains Star Candies. The hollow is large enough to qualify as a room.",
           "reward": {
             "min": 65,
             "max": 109
@@ -36,14 +36,14 @@
       }
     },
     "whisperroot-deeps-depths": {
-      "prompt": "Living rootways descend deeper beneath drifting Fae lights. Three paths\ncross a forest floor made almost entirely from ancient roots.",
+      "prompt": "Living rootways descend deeper beneath drifting Fae lights. Three paths cross a forest floor made almost entirely from ancient roots.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "whisperroot-deeps-threshold",
           "healAmount": 5,
           "message": "A tiny moonblossom pool rests in a crack between enormous roots.\n\nShizuki wrote:\n\n'Found smallest thing in area.\n\nMe.\n\nRude.'",
-          "fullHpMessage": "You leave the restorative pool untouched and continue feeling\nappropriately small."
+          "fullHpMessage": "You leave the restorative pool untouched and continue feeling appropriately small."
         },
         "right": {
           "type": "combat",
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "whisperroot-deeps-threshold",
-          "message": "Broad silver kelp wraps a cache tucked between two roots. The Star\nCandies look absurdly tiny beside the surrounding forest.",
+          "message": "Broad silver kelp wraps a cache tucked between two roots. The Star Candies look absurdly tiny beside the surrounding forest.",
           "reward": {
             "min": 77,
             "max": 121
@@ -63,12 +63,12 @@
       }
     },
     "whisperroot-deeps-threshold": {
-      "prompt": "Moonlit fronds vanish almost entirely as three approaches descend\ntoward Primeval Root Cathedral.",
+      "prompt": "Moonlit fronds vanish almost entirely as three approaches descend toward Primeval Root Cathedral.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A shrine coffer rests inside a natural arch formed from two ancient\nroots. The carvings on it are almost completely grown over.",
+          "message": "A shrine coffer rests inside a natural arch formed from two ancient roots. The carvings on it are almost completely grown over.",
           "reward": {
             "min": 89,
             "max": 133
@@ -79,7 +79,7 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 10,
           "message": "Restorative sap sits beneath Shizuki's note:\n\n'If giant root moves:\n\n1. Do not panic.\n2. Move.\n3. Panic after moving.'",
-          "fullHpMessage": "You leave the medicine untouched and memorize the emergency order of\noperations."
+          "fullHpMessage": "You leave the medicine untouched and memorize the emergency order of operations."
         },
         "forward": {
           "type": "combat",
@@ -95,13 +95,13 @@
       "prompt": "The roots forming the Cathedral begin moving independently."
     }
   },
-  "bossPromptDiscord": "Primeval Root Cathedral groans around you.\n\nAncient roots lift from the forest floor one after another.\n\nWhat looked like the foundation of the entire chamber slowly rises into\na single colossal shape.\n\nEvery smaller Whisperroot Colossus kneels.\n\nUse /yes to enter the Cathedral or /no to leave before the forest itself\nstands completely upright.",
-  "bossPromptTwitch": "Primeval Root Cathedral groans around you.\n\nAncient roots lift from the forest floor one after another.\n\nWhat looked like the foundation of the entire chamber slowly rises into\na single colossal shape.\n\nEvery smaller Whisperroot Colossus kneels.\n\nUse !yes to enter the Cathedral or !no to leave before the forest itself\nstands completely upright.",
-  "bossRetreatText": "You withdraw while the enormous roots continue shifting behind you.\nThe Cathedral remains half forest, half creature.",
+  "bossPromptDiscord": "Primeval Root Cathedral groans around you.\n\nAncient roots lift from the forest floor one after another.\n\nWhat looked like the foundation of the entire chamber slowly rises into a single colossal shape.\n\nEvery smaller Whisperroot Colossus kneels.\n\nUse /yes to enter the Cathedral or /no to leave before the forest itself stands completely upright.",
+  "bossPromptTwitch": "Primeval Root Cathedral groans around you.\n\nAncient roots lift from the forest floor one after another.\n\nWhat looked like the foundation of the entire chamber slowly rises into a single colossal shape.\n\nEvery smaller Whisperroot Colossus kneels.\n\nUse !yes to enter the Cathedral or !no to leave before the forest itself stands completely upright.",
+  "bossRetreatText": "You withdraw while the enormous roots continue shifting behind you. The Cathedral remains half forest, half creature.",
   "boss": {
     "enemyId": "forest-heart-colossus-boss",
     "roomId": "boss",
-    "revealText": "The oldest roots tear free from the seabed as an immense guardian\nstands over the Deeps.\n\nForest-Heart Colossus reveals itself!"
+    "revealText": "The oldest roots tear free from the seabed as an immense guardian stands over the Deeps.\n\nForest Heart Colossus reveals itself!"
   },
-  "completionText": "\"The Forest-Heart Colossus lowers itself back into the ancient roots.\n\nWithin moments, the Cathedral looks like part of the landscape again.\n\nYou now trust landscapes considerably less.\"\n\n\n#################################################################"
+  "completionText": "\"The Forest Heart Colossus lowers itself back into the ancient roots.\n\nWithin moments, the Cathedral looks like part of the landscape again.\n\nYou now trust landscapes considerably less.\"\n\n#################################################################"
 }

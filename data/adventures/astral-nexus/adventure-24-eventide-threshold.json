@@ -78,7 +78,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "eventide-behemoth",
-                    "message": "An Eventide Behemoth steps from its own sunset-shadow."
+                    "message": "An Eventide Behemoth steps from its own sunset shadow."
                 },
                 "forward": {
                     "type": "healing",

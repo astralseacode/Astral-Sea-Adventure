@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "geometry-eel",
     "recommendedLevel": 50,
-    "introDiscord": "Architecture begins immediately committing crimes.\n\nStairs meet walls sideways.\nCorners contain too many corners.\nA doorway appears behind itself.\n\nShizuki wrote:\n\n'I have officially stopped believing in geometry.'",
-    "introTwitch": "Architecture begins immediately committing crimes.\n\nStairs meet walls sideways.\nCorners contain too many corners.\nA doorway appears behind itself.\n\nShizuki wrote:\n\n'I have officially stopped believing in geometry.'",
+    "introDiscord": "Architecture begins immediately committing crimes. Stairs meet walls sideways.\nCorners contain too many corners.\nA doorway appears behind itself.\n\nShizuki wrote:\n\n'I have officially stopped believing in geometry.'",
+    "introTwitch": "Architecture begins immediately committing crimes. Stairs meet walls sideways.\nCorners contain too many corners.\nA doorway appears behind itself.\n\nShizuki wrote:\n\n'I have officially stopped believing in geometry.'",
     "startRoomId": "impossible-angles-approach",
     "rooms": {
         "impossible-angles-approach": {
@@ -95,13 +95,13 @@
             "prompt": "The Unclosed Triangle rotates around an absent edge."
         }
     },
-    "bossPromptDiscord": "The Unclosed Triangle rotates around an absent edge.\n\nSomething coils through the geometry itself.\n\nUse /yes to enter or /no to preserve your remaining trust\nin shapes.",
-    "bossPromptTwitch": "The Unclosed Triangle rotates around an absent edge.\n\nSomething coils through the geometry itself.\n\nUse !yes to enter or !no to preserve your remaining trust\nin shapes.",
+    "bossPromptDiscord": "The Unclosed Triangle rotates around an absent edge.\n\nSomething coils through the geometry itself.\n\nUse /yes to enter or /no to preserve your remaining trust in shapes.",
+    "bossPromptTwitch": "The Unclosed Triangle rotates around an absent edge.\n\nSomething coils through the geometry itself.\n\nUse !yes to enter or !no to preserve your remaining trust in shapes.",
     "bossRetreatText": "You withdraw from The Unclosed Triangle. The impossible guardian will wait.",
     "boss": {
         "enemyId": "euclidean-coilbreaker-boss",
         "roomId": "boss",
-        "revealText": "Space folds inward.\n\nFractured-Angle Coil reveals itself!"
+        "revealText": "Space folds inward.\n\nFractured Angle Coil reveals itself!"
     },
     "completionText": "The impossible structure relaxes.\n\nFor one glorious moment, every triangle has three sides.\n\nThen Glimmer's old doodle appears on a fourth."
 }

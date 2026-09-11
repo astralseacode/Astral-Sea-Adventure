@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "clocktide-jelly",
     "recommendedLevel": 50,
-    "introDiscord": "A school of Jellyfish drifts through suspended clocks.\n\nSome tick backward.\n\nOne repeatedly strikes thirteen.\n\nShizuki wrote:\n\n'TIME HERE IS FAKE.\n\nI WILL BE LATE TO NOTHING.'",
-    "introTwitch": "A school of Jellyfish drifts through suspended clocks.\n\nSome tick backward.\n\nOne repeatedly strikes thirteen.\n\nShizuki wrote:\n\n'TIME HERE IS FAKE.\n\nI WILL BE LATE TO NOTHING.'",
+    "introDiscord": "A school of Jellyfish drifts through suspended clocks. Some tick backward. One repeatedly strikes thirteen.\n\nShizuki wrote:\n\n'TIME HERE IS FAKE.\n\nI WILL BE LATE TO NOTHING.'",
+    "introTwitch": "A school of Jellyfish drifts through suspended clocks. Some tick backward. One repeatedly strikes thirteen.\n\nShizuki wrote:\n\n'TIME HERE IS FAKE.\n\nI WILL BE LATE TO NOTHING.'",
     "startRoomId": "clocktide-drift-approach",
     "rooms": {
         "clocktide-drift-approach": {
@@ -15,7 +15,7 @@
                 "left": {
                     "type": "treasure",
                     "nextRoomId": "clocktide-drift-depths",
-                    "message": "Star Candies orbit a clock frozen at a time that has no corresponding\nhour.",
+                    "message": "Star Candies orbit a clock frozen at a time that has no corresponding hour.",
                     "reward": {
                         "min": 402,
                         "max": 438
@@ -95,8 +95,8 @@
             "prompt": "Still Second Chamber freezes."
         }
     },
-    "bossPromptDiscord": "Still Second Chamber freezes.\n\nBubbles stop rising.\n\nLight stops moving.\n\nOnly one enormous bell-shaped silhouette continues drifting.\n\nUse /yes to enter or /no to remain safely attached to\nchronological order.",
-    "bossPromptTwitch": "Still Second Chamber freezes.\n\nBubbles stop rising.\n\nLight stops moving.\n\nOnly one enormous bell-shaped silhouette continues drifting.\n\nUse !yes to enter or !no to remain safely attached to\nchronological order.",
+    "bossPromptDiscord": "Still Second Chamber freezes.\n\nBubbles stop rising.\n\nLight stops moving.\n\nOnly one enormous bell shaped silhouette continues drifting.\n\nUse /yes to enter or /no to remain safely attached to chronological order.",
+    "bossPromptTwitch": "Still Second Chamber freezes.\n\nBubbles stop rising.\n\nLight stops moving.\n\nOnly one enormous bell shaped silhouette continues drifting.\n\nUse !yes to enter or !no to remain safely attached to chronological order.",
     "bossRetreatText": "You withdraw from Still Second Chamber. The impossible guardian will wait.",
     "boss": {
         "enemyId": "hourless-medusa-boss",

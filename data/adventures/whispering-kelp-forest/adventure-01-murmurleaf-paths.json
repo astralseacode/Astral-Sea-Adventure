@@ -5,23 +5,23 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "murmurleaf-minnow",
   "recommendedLevel": 10,
-  "introDiscord": "The current from Starfall Trench slips beneath towering silver kelp,\nwhere every leaf seems to whisper to the next. Tiny Murmurleaf Minnows\ndart between the roots, carrying scraps of overheard sound deeper into\nthe forest. Somewhere ahead, something repeats your arrival.",
-  "introTwitch": "The current from Starfall Trench slips beneath towering silver kelp,\nwhere every leaf seems to whisper to the next. Tiny Murmurleaf Minnows\ndart between the roots, carrying scraps of overheard sound deeper into\nthe forest. Somewhere ahead, something repeats your arrival.",
+  "introDiscord": "The current from Starfall Trench slips beneath towering silver kelp, where every leaf seems to whisper to the next. Tiny Murmurleaf Minnows dart between the roots, carrying scraps of overheard sound deeper into the forest. Somewhere ahead, something repeats your arrival.",
+  "introTwitch": "The current from Starfall Trench slips beneath towering silver kelp, where every leaf seems to whisper to the next. Tiny Murmurleaf Minnows dart between the roots, carrying scraps of overheard sound deeper into the forest. Somewhere ahead, something repeats your arrival.",
   "startRoomId": "murmurleaf-paths-approach",
   "rooms": {
     "murmurleaf-paths-approach": {
-      "prompt": "Towering murmurleaf columns sway over three paths. Every rustle passes\nfrom leaf to leaf until the whole forest seems to be quietly discussing\nyou.",
+      "prompt": "Towering murmurleaf columns sway over three paths. Every rustle passes from leaf to leaf until the whole forest seems to be quietly discussing you.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "murmurleaf-paths-depths",
           "enemyId": "murmurleaf-minnow",
-          "message": "A tiny voice somewhere in the kelp whispers, 'Traveler.'\n\nAnother answers, 'Traveler.'\n\nA dozen leaves repeat it.\n\nThen a Murmurleaf Minnow shoots from the fronds, apparently appointed\nto investigate the rumor personally."
+          "message": "A tiny voice somewhere in the kelp whispers, 'Traveler.'\n\nAnother answers, 'Traveler.'\n\nA dozen leaves repeat it.\n\nThen a Murmurleaf Minnow shoots from the fronds, apparently appointed to investigate the rumor personally."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "murmurleaf-paths-depths",
-          "message": "Inside a living root, you discover an offering basket wrapped in broad\nleaves. Several Minnows hover nearby whispering excited bubbles at one\nanother as you recover the Star Candies.",
+          "message": "Inside a living root, you discover an offering basket wrapped in broad leaves. Several Minnows hover nearby whispering excited bubbles at one another as you recover the Star Candies.",
           "reward": {
             "min": 200,
             "max": 235
@@ -31,18 +31,18 @@
           "type": "healing",
           "nextRoomId": "murmurleaf-paths-depths",
           "healAmount": 72,
-          "message": "A folded leaf cradles restorative sap beside one of Shizuki's crooked\ntrail marks. She wrote:\n\n'Forest keeps repeating everything I say.\n\nTesting important phrase:\n\nBERRIES ARE IMPORTANT.'\n\nThe distant kelp softly whispers, 'berries are important.'",
-          "fullHpMessage": "The restorative sap remains folded safely inside the leaf. You're\nalready healthy, and the forest is still busy preserving Shizuki's\nextremely important berry announcement."
+          "message": "A folded leaf cradles restorative sap beside one of Shizuki's crooked trail marks. She wrote:\n\n'Forest keeps repeating everything I say.\n\nTesting important phrase:\n\nBERRIES ARE IMPORTANT.'\n\nThe distant kelp softly whispers, 'berries are important.'",
+          "fullHpMessage": "The restorative sap remains folded safely inside the leaf. You're already healthy, and the forest is still busy preserving Shizuki's extremely important berry announcement."
         }
       }
     },
     "murmurleaf-paths-depths": {
-      "prompt": "Living rootways twist deeper beneath drifting Fae lights. The whispers\nhave grown clearer, and three routes now seem to be repeating different\nconversations.",
+      "prompt": "Living rootways twist deeper beneath drifting Fae lights. The whispers have grown clearer, and three routes now seem to be repeating different conversations.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "murmurleaf-paths-threshold",
-          "message": "Broad silver kelp has been folded into a surprisingly neat parcel.\nInside are Star Candies and a tiny leaf-tag reading:\n\n'FOUND IT!'\n\nA second leaf nearby whispers, 'lost it.'",
+          "message": "Broad silver kelp has been folded into a surprisingly neat parcel. Inside are Star Candies and a tiny leaf tag reading:\n\n'FOUND IT!'\n\nA second leaf nearby whispers, 'lost it.'",
           "reward": {
             "min": 212,
             "max": 247
@@ -63,19 +63,19 @@
       }
     },
     "murmurleaf-paths-threshold": {
-      "prompt": "Moonlit fronds curl around forgotten shrines as three final routes\napproach Choirleaf Clearing. The murmur has become a coordinated chorus.",
+      "prompt": "Moonlit fronds curl around forgotten shrines as three final routes approach Choirleaf Clearing. The murmur has become a coordinated chorus.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 77,
-          "message": "A tranquil moonblossom pool rests beneath woven roots. Shizuki left a\nnote beside the restorative water:\n\n'Very peaceful.\n\nDo NOT loudly ask the forest whether you're lost.\n\nIt WILL answer.'",
-          "fullHpMessage": "You leave the moonblossom pool undisturbed. You're already healthy,\nand there is no need to invite further commentary from the vegetation."
+          "message": "A tranquil moonblossom pool rests beneath woven roots. Shizuki left a note beside the restorative water:\n\n'Very peaceful.\n\nDo NOT loudly ask the forest whether you're lost.\n\nIt WILL answer.'",
+          "fullHpMessage": "You leave the moonblossom pool undisturbed. You're already healthy, and there is no need to invite further commentary from the vegetation."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moss-covered shrine coffer opens beneath a canopy of whispering\nleaves. Inside are Star Candies. The leaves immediately begin telling\nthe rest of the forest what you found.",
+          "message": "A moss covered shrine coffer opens beneath a canopy of whispering leaves. Inside are Star Candies. The leaves immediately begin telling the rest of the forest what you found.",
           "reward": {
             "min": 224,
             "max": 259
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Choirleaf Clearing",
       "type": "boss-prompt",
-      "prompt": "The clearing ahead is ringed by thousands of leaves, each murmuring a\ndifferent note until the whole grove becomes one enormous underwater\nchoir."
+      "prompt": "The clearing ahead is ringed by thousands of leaves, each murmuring a different note until the whole grove becomes one enormous underwater choir."
     }
   },
-  "bossPromptDiscord": "Every Murmurleaf Minnow gathers along the roots of Choirleaf Clearing.\n\nTheir scattered whispers suddenly align into one perfect harmony.\n\nSomething much larger moves behind the curtain of leaves, and the entire\nschool falls silent for it.\n\nUse /yes to enter Choirleaf Clearing or /no to leave the forest choir\nwaiting for its audience.",
-  "bossPromptTwitch": "Every Murmurleaf Minnow gathers along the roots of Choirleaf Clearing.\n\nTheir scattered whispers suddenly align into one perfect harmony.\n\nSomething much larger moves behind the curtain of leaves, and the entire\nschool falls silent for it.\n\nUse !yes to enter Choirleaf Clearing or !no to leave the forest choir\nwaiting for its audience.",
-  "bossRetreatText": "You slip back beneath the murmuring leaves. The choir resumes softly\nbehind you, apparently rehearsing until you return.",
+  "bossPromptDiscord": "Every Murmurleaf Minnow gathers along the roots of Choirleaf Clearing.\n\nTheir scattered whispers suddenly align into one perfect harmony.\n\nSomething much larger moves behind the curtain of leaves, and the entire school falls silent for it.\n\nUse /yes to enter Choirleaf Clearing or /no to leave the forest choir waiting for its audience.",
+  "bossPromptTwitch": "Every Murmurleaf Minnow gathers along the roots of Choirleaf Clearing.\n\nTheir scattered whispers suddenly align into one perfect harmony.\n\nSomething much larger moves behind the curtain of leaves, and the entire school falls silent for it.\n\nUse !yes to enter Choirleaf Clearing or !no to leave the forest choir waiting for its audience.",
+  "bossRetreatText": "You slip back beneath the murmuring leaves. The choir resumes softly behind you, apparently rehearsing until you return.",
   "boss": {
     "enemyId": "chorus-fin-schoolmother-boss",
     "roomId": "boss",
-    "revealText": "The Minnows scatter as an enormous silver-fin shape sweeps through the\nclearing.\n\nChorus-Fin Schoolmother reveals itself!"
+    "revealText": "The Minnows scatter as an enormous silver fin shape sweeps through the clearing.\n\nChorus Fin Schoolmother reveals itself!"
   },
-  "completionText": "\"The Chorus-Fin Schoolmother retreats into the whispering canopy.\n\nThe Minnows return to their roots, and the forest begins passing the\nstory of your victory from leaf to leaf.\n\nBy tomorrow, the fish will probably have exaggerated everything.\"\n\n\n#################################################################"
+  "completionText": "\"The Chorus Fin Schoolmother retreats into the whispering canopy.\n\nThe Minnows return to their roots, and the forest begins passing the story of your victory from leaf to leaf.\n\nBy tomorrow, the fish will probably have exaggerated everything.\"\n\n#################################################################"
 }

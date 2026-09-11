@@ -5,12 +5,12 @@
     "regionId": "leviathans-wake",
     "enemyId": "titanbone-crab",
     "recommendedLevel": 20,
-    "introDiscord": "The next skeleton makes the ribs behind you look small.\n\nTitanbone arches rise like the frame of a ruined cathedral while Crabs\nhave built homes, pathways, and apparently an entire society across the\nbones.",
-    "introTwitch": "The next skeleton makes the ribs behind you look small.\n\nTitanbone arches rise like the frame of a ruined cathedral while Crabs\nhave built homes, pathways, and apparently an entire society across the\nbones.",
+    "introDiscord": "The next skeleton makes the ribs behind you look small. Titanbone arches rise like the frame of a ruined cathedral while Crabs have built homes, pathways, and apparently an entire society across the bones.",
+    "introTwitch": "The next skeleton makes the ribs behind you look small. Titanbone arches rise like the frame of a ruined cathedral while Crabs have built homes, pathways, and apparently an entire society across the bones.",
     "startRoomId": "titanbone-ribs-approach",
     "rooms": {
         "titanbone-ribs-approach": {
-            "prompt": "Three paths wind between ribs broad enough to support coral gardens.\nTitanbone Crabs patrol every desirable ledge.",
+            "prompt": "Three paths wind between ribs broad enough to support coral gardens. Titanbone Crabs patrol every desirable ledge.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -37,7 +37,7 @@
             }
         },
         "titanbone-ribs-depths": {
-            "prompt": "Deeper inside the skeleton, three routes cross vertebrae and immense\nscales buried among the ribs.",
+            "prompt": "Deeper inside the skeleton, three routes cross vertebrae and immense scales buried among the ribs.",
             "choices": {
                 "left": {
                     "type": "combat",
@@ -54,7 +54,7 @@
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "titanbone-ribs-threshold",
-                    "message": "A navigator's chest is wedged inside a gap between two vertebrae.\n\nThe gap is large enough to contain the chest, you, and several deeply\nuncomfortable anatomical observations.",
+                    "message": "A navigator's chest is wedged inside a gap between two vertebrae.\n\nThe gap is large enough to contain the chest, you, and several deeply uncomfortable anatomical observations.",
                     "reward": {
                         "min": 270,
                         "max": 305
@@ -63,7 +63,7 @@
             }
         },
         "titanbone-ribs-threshold": {
-            "prompt": "The Colossal Ribcage surrounds three final routes, its curved bones\nmeeting far overhead.",
+            "prompt": "The Colossal Ribcage surrounds three final routes, its curved bones meeting far overhead.",
             "choices": {
                 "left": {
                     "type": "treasure",
@@ -95,8 +95,8 @@
             "prompt": "The ribs ahead curve inward around an enormous hollow."
         }
     },
-    "bossPromptDiscord": "The ribs ahead curve inward around an enormous hollow.\n\nHundreds of smaller Titanbone Crabs retreat into cracks in the skeleton.\n\nOne set of claws remains outside.\n\nThey are considerably larger than you.\n\nUse /yes to enter the Colossal Ribcage or /no to respect the apparent\nlandlord.",
-    "bossPromptTwitch": "The ribs ahead curve inward around an enormous hollow.\n\nHundreds of smaller Titanbone Crabs retreat into cracks in the skeleton.\n\nOne set of claws remains outside.\n\nThey are considerably larger than you.\n\nUse !yes to enter the Colossal Ribcage or !no to respect the apparent\nlandlord.",
+    "bossPromptDiscord": "The ribs ahead curve inward around an enormous hollow.\n\nHundreds of smaller Titanbone Crabs retreat into cracks in the skeleton.\n\nOne set of claws remains outside.\n\nThey are considerably larger than you.\n\nUse /yes to enter the Colossal Ribcage or /no to respect the apparent landlord.",
+    "bossPromptTwitch": "The ribs ahead curve inward around an enormous hollow.\n\nHundreds of smaller Titanbone Crabs retreat into cracks in the skeleton.\n\nOne set of claws remains outside.\n\nThey are considerably larger than you.\n\nUse !yes to enter the Colossal Ribcage or !no to respect the apparent landlord.",
     "bossRetreatText": "You back away.\n\nSeveral tiny Crabs immediately return to their bone apartments.",
     "boss": {
         "enemyId": "ossuary-clawking-boss",

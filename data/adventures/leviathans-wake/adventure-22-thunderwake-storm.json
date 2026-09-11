@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "thunderwake-squid",
     "recommendedLevel": 27,
-    "introDiscord": "Static flashes through a storm trapped between enormous ribs.\n\nThunderwake Squid fill the dark water with glowing ink and electricity.",
-    "introTwitch": "Static flashes through a storm trapped between enormous ribs.\n\nThunderwake Squid fill the dark water with glowing ink and electricity.",
+    "introDiscord": "Static flashes through a storm trapped between enormous ribs. Thunderwake Squid fill the dark water with glowing ink and electricity.",
+    "introTwitch": "Static flashes through a storm trapped between enormous ribs. Thunderwake Squid fill the dark water with glowing ink and electricity.",
     "startRoomId": "thunderwake-storm-approach",
     "rooms": {
         "thunderwake-storm-approach": {
@@ -95,13 +95,13 @@
             "prompt": "The electric storm abruptly turns black with ink."
         }
     },
-    "bossPromptDiscord": "The electric storm abruptly turns black with ink.\n\nLightning flashes inside the cloud.\n\nSomething enormous unfolds within it.\n\nUse /yes to enter Electric Gyre or /no to accept lightning's undefeated\nrecord.",
-    "bossPromptTwitch": "The electric storm abruptly turns black with ink.\n\nLightning flashes inside the cloud.\n\nSomething enormous unfolds within it.\n\nUse !yes to enter Electric Gyre or !no to accept lightning's undefeated\nrecord.",
+    "bossPromptDiscord": "The electric storm abruptly turns black with ink.\n\nLightning flashes inside the cloud.\n\nSomething enormous unfolds within it.\n\nUse /yes to enter Electric Gyre or /no to accept lightning's undefeated record.",
+    "bossPromptTwitch": "The electric storm abruptly turns black with ink.\n\nLightning flashes inside the cloud.\n\nSomething enormous unfolds within it.\n\nUse !yes to enter Electric Gyre or !no to accept lightning's undefeated record.",
     "bossRetreatText": "You retreat beyond the charged current.",
     "boss": {
         "enemyId": "storm-ink-architeuthis-boss",
         "roomId": "boss",
-        "revealText": "Massive tentacles break through the storm cloud.\n\nStorm-Ink Architeuthis reveals itself!"
+        "revealText": "Massive tentacles break through the storm cloud.\n\nStorm Ink Architeuthis reveals itself!"
     },
     "completionText": "The storm disperses.\n\nGlimmer remains 0–2 against atmospheric electricity."
 }

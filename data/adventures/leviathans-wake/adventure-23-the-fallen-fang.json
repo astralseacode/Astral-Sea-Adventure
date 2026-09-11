@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "ancient-tooth-sentinel",
     "recommendedLevel": 28,
-    "introDiscord": "One Leviathan tooth lies across the seabed like a fallen tower.\n\nAncient Sentinels patrol around it as though the fang itself deserves\nprotection.",
-    "introTwitch": "One Leviathan tooth lies across the seabed like a fallen tower.\n\nAncient Sentinels patrol around it as though the fang itself deserves\nprotection.",
+    "introDiscord": "One Leviathan tooth lies across the seabed like a fallen tower. Ancient Sentinels patrol around it as though the fang itself deserves protection.",
+    "introTwitch": "One Leviathan tooth lies across the seabed like a fallen tower. Ancient Sentinels patrol around it as though the fang itself deserves protection.",
     "startRoomId": "the-fallen-fang-approach",
     "rooms": {
         "the-fallen-fang-approach": {
@@ -31,7 +31,7 @@
                     "type": "healing",
                     "nextRoomId": "the-fallen-fang-depths",
                     "healAmount": 21,
-                    "message": "Shizuki's bottle reads:\n\n'Found biggest tooth yet.\n\nI am officially done saying that because this region keeps taking it as\nchallenge.'",
+                    "message": "Shizuki's bottle reads:\n\n'Found biggest tooth yet.\n\nI am officially done saying that because this region keeps taking it as challenge.'",
                     "fullHpMessage": "You leave the medicine."
                 }
             }
@@ -57,7 +57,7 @@
                 "forward": {
                     "type": "empty",
                     "nextRoomId": "the-fallen-fang-threshold",
-                    "message": "One Berry sits beside Shizuki's rubbing of the growth lines:\n\n'This creature lived long enough for entire places to appear in its\ntooth.\n\nThat is... a lot.\n\nKeeping this page.'",
+                    "message": "One Berry sits beside Shizuki's rubbing of the growth lines:\n\n'This creature lived long enough for entire places to appear in its tooth.\n\nThat is... a lot.\n\nKeeping this page.'",
                     "berries": 1
                 }
             }
@@ -95,13 +95,13 @@
             "prompt": "The Sentinels kneel around Fang of Ages."
         }
     },
-    "bossPromptDiscord": "The Sentinels kneel around Fang of Ages.\n\nOne ancient guardian remains standing.\n\nIts armor bears the same patterns found inside the tooth itself.\n\nUse /yes to approach Fang of Ages or /no to leave the ancient relic\nundisturbed.",
-    "bossPromptTwitch": "The Sentinels kneel around Fang of Ages.\n\nOne ancient guardian remains standing.\n\nIts armor bears the same patterns found inside the tooth itself.\n\nUse !yes to approach Fang of Ages or !no to leave the ancient relic\nundisturbed.",
+    "bossPromptDiscord": "The Sentinels kneel around Fang of Ages.\n\nOne ancient guardian remains standing.\n\nIts armor bears the same patterns found inside the tooth itself.\n\nUse /yes to approach Fang of Ages or /no to leave the ancient relic undisturbed.",
+    "bossPromptTwitch": "The Sentinels kneel around Fang of Ages.\n\nOne ancient guardian remains standing.\n\nIts armor bears the same patterns found inside the tooth itself.\n\nUse !yes to approach Fang of Ages or !no to leave the ancient relic undisturbed.",
     "bossRetreatText": "You step away from the ancient fang.",
     "boss": {
         "enemyId": "first-tooth-sentinel-boss",
         "roomId": "boss",
         "revealText": "The oldest Sentinel raises its weapon.\n\nPrimeval Fangkeeper reveals itself!"
     },
-    "completionText": "The Fangkeeper falls silent.\n\nThe enormous tooth remains where it has rested for ages.\n\nWhatever carried it once saw parts of the Astral Sea that no longer\nexist."
+    "completionText": "The Fangkeeper falls silent.\n\nThe enormous tooth remains where it has rested for ages.\n\nWhatever carried it once saw parts of the Astral Sea that no longer exist."
 }

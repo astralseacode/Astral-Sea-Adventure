@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "marrowlight-angler",
     "recommendedLevel": 25,
-    "introDiscord": "Small luminous creatures have colonized the hollow bones, filling the\nOssuary with soft inner light.\n\nIt would be beautiful if some of the lights weren't Angler lures.",
-    "introTwitch": "Small luminous creatures have colonized the hollow bones, filling the\nOssuary with soft inner light.\n\nIt would be beautiful if some of the lights weren't Angler lures.",
+    "introDiscord": "Small luminous creatures have colonized the hollow bones, filling the Ossuary with soft inner light.\n\nIt would be beautiful if some of the lights weren't Angler lures.",
+    "introTwitch": "Small luminous creatures have colonized the hollow bones, filling the Ossuary with soft inner light.\n\nIt would be beautiful if some of the lights weren't Angler lures.",
     "startRoomId": "marrowlight-ossuary-approach",
     "rooms": {
         "marrowlight-ossuary-approach": {
@@ -49,7 +49,7 @@
                     "type": "combat",
                     "nextRoomId": "marrowlight-ossuary-threshold",
                     "enemyId": "marrowlight-angler",
-                    "message": "A Marrowlight Angler mimics the harmless creatures perfectly until the\nmouth appears."
+                    "message": "A Marrowlight Angler mimics the harmless creatures perfectly until the mouth appears."
                 },
                 "forward": {
                     "type": "treasure",
@@ -95,13 +95,13 @@
             "prompt": "Every harmless marrowlight creature leaves the skull."
         }
     },
-    "bossPromptDiscord": "Every harmless marrowlight creature leaves the skull.\n\nOne enormous lantern remains glowing inside its jaws.\n\nUse /yes to enter Lit Skull Chapel or /no to decline whatever is using\na Leviathan skull as a lamp.",
-    "bossPromptTwitch": "Every harmless marrowlight creature leaves the skull.\n\nOne enormous lantern remains glowing inside its jaws.\n\nUse !yes to enter Lit Skull Chapel or !no to decline whatever is using\na Leviathan skull as a lamp.",
+    "bossPromptDiscord": "Every harmless marrowlight creature leaves the skull.\n\nOne enormous lantern remains glowing inside its jaws.\n\nUse /yes to enter Lit Skull Chapel or /no to decline whatever is using a Leviathan skull as a lamp.",
+    "bossPromptTwitch": "Every harmless marrowlight creature leaves the skull.\n\nOne enormous lantern remains glowing inside its jaws.\n\nUse !yes to enter Lit Skull Chapel or !no to decline whatever is using a Leviathan skull as a lamp.",
     "bossRetreatText": "You back away from the illuminated skull.",
     "boss": {
         "enemyId": "bone-lantern-angler-boss",
         "roomId": "boss",
-        "revealText": "The light swings forward and an enormous Angler emerges.\n\nBone-Lantern Angler reveals itself!"
+        "revealText": "The light swings forward and an enormous Angler emerges.\n\nBone Lantern Angler reveals itself!"
     },
-    "completionText": "The Bone-Lantern retreats.\n\nThe harmless marrowlights return.\n\nThe skull becomes strangely beautiful again."
+    "completionText": "The Bone Lantern retreats.\n\nThe harmless marrowlights return.\n\nThe skull becomes strangely beautiful again."
 }

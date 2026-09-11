@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "camouflage-grouper",
   "recommendedLevel": 14,
-  "introDiscord": "The grove ahead seems incomplete. Roots fade into moss, moss fades\ninto fish, and several entire pieces of scenery disappear when viewed\nfrom the wrong angle.",
-  "introTwitch": "The grove ahead seems incomplete. Roots fade into moss, moss fades\ninto fish, and several entire pieces of scenery disappear when viewed\nfrom the wrong angle.",
+  "introDiscord": "The grove ahead seems incomplete. Roots fade into moss, moss fades into fish, and several entire pieces of scenery disappear when viewed from the wrong angle.",
+  "introTwitch": "The grove ahead seems incomplete. Roots fade into moss, moss fades into fish, and several entire pieces of scenery disappear when viewed from the wrong angle.",
   "startRoomId": "the-vanishing-grove-approach",
   "rooms": {
     "the-vanishing-grove-approach": {
-      "prompt": "Three paths pass through veilmoss so perfectly camouflaged that even\nthe routes seem uncertain about whether they exist.",
+      "prompt": "Three paths pass through veilmoss so perfectly camouflaged that even the routes seem uncertain about whether they exist.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -37,7 +37,7 @@
       }
     },
     "the-vanishing-grove-depths": {
-      "prompt": "Moonlit fronds surround three corridors whose landmarks disappear\nwhenever you turn around.",
+      "prompt": "Moonlit fronds surround three corridors whose landmarks disappear whenever you turn around.",
       "choices": {
         "left": {
           "type": "combat",
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "the-vanishing-grove-threshold",
-          "message": "A shrine coffer is completely invisible beneath mirror-moss until your\nhand bumps the latch.\n\nVery secure.\n\nMostly by accident.",
+          "message": "A shrine coffer is completely invisible beneath mirror moss until your hand bumps the latch.\n\nVery secure.\n\nMostly by accident.",
           "reward": {
             "min": 147,
             "max": 186
@@ -63,12 +63,12 @@
       }
     },
     "the-vanishing-grove-threshold": {
-      "prompt": "Towering kelp frames Mirror-Moss Hollow. Three final routes blend into\nwalls that look almost identical.",
+      "prompt": "Towering kelp frames Mirror Moss Hollow. Three final routes blend into walls that look almost identical.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "An offering basket hidden inside a root appears only in reflection.\nInside are Star Candies and Shizuki's tiny note:\n\n'Found this by walking into wall.'",
+          "message": "An offering basket hidden inside a root appears only in reflection. Inside are Star Candies and Shizuki's tiny note:\n\n'Found this by walking into wall.'",
           "reward": {
             "min": 159,
             "max": 198
@@ -84,24 +84,24 @@
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 45,
-          "message": "Restorative sap sits beneath a bright ribbon Shizuki tied around the\nbottle.\n\n'Could not find medicine.\n\nMade medicine easier to find.\n\nEvolution.'",
+          "message": "Restorative sap sits beneath a bright ribbon Shizuki tied around the bottle.\n\n'Could not find medicine.\n\nMade medicine easier to find.\n\nEvolution.'",
           "fullHpMessage": "You leave the extremely visible bottle exactly where it is."
         }
       }
     },
     "boss-antechamber": {
-      "name": "Mirror-Moss Hollow",
+      "name": "Mirror Moss Hollow",
       "type": "boss-prompt",
       "prompt": "The Hollow looks empty.\n\nEvery smaller Grouper has disappeared.\n\nYou are absolutely certain that means nothing good."
     }
   },
-  "bossPromptDiscord": "Mirror-moss reflects an empty chamber.\n\nThen one reflection moves.\n\nA huge section of the forest behind you is suddenly missing from the\nreflection entirely.\n\nSomething enormous has been standing there the whole time.\n\nUse /yes to enter Mirror-Moss Hollow or /no to leave before the scenery\ntries anything else.",
-  "bossPromptTwitch": "Mirror-moss reflects an empty chamber.\n\nThen one reflection moves.\n\nA huge section of the forest behind you is suddenly missing from the\nreflection entirely.\n\nSomething enormous has been standing there the whole time.\n\nUse !yes to enter Mirror-Moss Hollow or !no to leave before the scenery\ntries anything else.",
-  "bossRetreatText": "You retreat while carefully refusing to trust any object larger than a\nBerry.",
+  "bossPromptDiscord": "Mirror moss reflects an empty chamber.\n\nThen one reflection moves.\n\nA huge section of the forest behind you is suddenly missing from the reflection entirely.\n\nSomething enormous has been standing there the whole time.\n\nUse /yes to enter Mirror Moss Hollow or /no to leave before the scenery tries anything else.",
+  "bossPromptTwitch": "Mirror moss reflects an empty chamber.\n\nThen one reflection moves.\n\nA huge section of the forest behind you is suddenly missing from the reflection entirely.\n\nSomething enormous has been standing there the whole time.\n\nUse !yes to enter Mirror Moss Hollow or !no to leave before the scenery tries anything else.",
+  "bossRetreatText": "You retreat while carefully refusing to trust any object larger than a Berry.",
   "boss": {
     "enemyId": "unseen-grovejaw-boss",
     "roomId": "boss",
-    "revealText": "The moss-covered wall opens an enormous jaw.\n\nUnseen Grovejaw reveals itself!"
+    "revealText": "The moss covered wall opens an enormous jaw.\n\nUnseen Grovejaw reveals itself!"
   },
-  "completionText": "\"The Unseen Grovejaw fades back into the forest.\n\nWithin seconds, you cannot tell where it went.\n\nYou leave promptly.\"\n\n\n#################################################################"
+  "completionText": "\"The Unseen Grovejaw fades back into the forest.\n\nWithin seconds, you cannot tell where it went.\n\nYou leave promptly.\"\n\n#################################################################"
 }

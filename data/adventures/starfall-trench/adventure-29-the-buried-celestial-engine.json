@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "the-buried-celestial-engine-threshold",
-          "message": "A star-chart coffer is built directly into the engine wall.",
+          "message": "A star chart coffer is built directly into the engine wall.",
           "reward": {
             "min": 60,
             "max": 104
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "\"A meteor-iron reliquary opens beneath a rotating celestial ring.\"\n\nBOSS:",
+          "message": "\"A meteor iron reliquary opens beneath a rotating celestial ring.\"\n\nBOSS:",
           "reward": {
             "min": 72,
             "max": 116
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The central rings unlock as an ancient construct awakens.\n\nCorewake Custodian reveals itself!"
   },
-  "completionText": "\"The Custodian falls silent.\n\nThe Celestial Engine continues turning.\n\nWhatever it was built to do...\n\nit is apparently not finished.\"\n\n\n#################################################################"
+  "completionText": "\"The Custodian falls silent.\n\nThe Celestial Engine continues turning.\n\nWhatever it was built to do...\n\nit is apparently not finished.\"\n\n#################################################################"
 }

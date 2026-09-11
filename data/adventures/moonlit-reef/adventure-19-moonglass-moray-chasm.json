@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer appears in four reflections but only one shadow. Following the shadow reveals Star Candies.",
+          "message": "A moon shell coffer appears in four reflections but only one shadow. Following the shadow reveals Star Candies.",
           "reward": {
             "min": 60,
             "max": 95

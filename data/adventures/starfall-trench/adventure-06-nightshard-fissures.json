@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "nightshard-fissures-depths",
-          "message": "A star-chart coffer gleams faintly beneath the blackglass.",
+          "message": "A star chart coffer gleams faintly beneath the blackglass.",
           "reward": {
             "min": 128,
             "max": 164
@@ -36,7 +36,7 @@
       }
     },
     "nightshard-fissures-depths": {
-      "prompt": "The fissures narrow until every wall contains dozens of Moray-sized hiding places.",
+      "prompt": "The fissures narrow until every wall contains dozens of Moray sized hiding places.",
       "choices": {
         "left": {
           "type": "combat",
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "nightshard-fissures-threshold",
-          "message": "A meteor-iron reliquary lies behind a curtain of blackglass shards.",
+          "message": "A meteor iron reliquary lies behind a curtain of blackglass shards.",
           "reward": {
             "min": 140,
             "max": 176
@@ -95,13 +95,13 @@
       "prompt": "The surrounding Morays vanish into their cracks. Something much larger moves behind the blackglass."
     }
   },
-  "bossPromptDiscord": "A tremendous jaw-shaped shadow passes across Blackglass Maw.\n\nThe surrounding fissures suddenly feel much too small.\n\nUse /yes to enter Blackglass Maw or /no to retreat before the wall develops even larger teeth.",
-  "bossPromptTwitch": "A tremendous jaw-shaped shadow passes across Blackglass Maw.\n\nThe surrounding fissures suddenly feel much too small.\n\nUse !yes to enter Blackglass Maw or !no to retreat before the wall develops even larger teeth.",
+  "bossPromptDiscord": "A tremendous jaw shaped shadow passes across Blackglass Maw.\n\nThe surrounding fissures suddenly feel much too small.\n\nUse /yes to enter Blackglass Maw or /no to retreat before the wall develops even larger teeth.",
+  "bossPromptTwitch": "A tremendous jaw shaped shadow passes across Blackglass Maw.\n\nThe surrounding fissures suddenly feel much too small.\n\nUse !yes to enter Blackglass Maw or !no to retreat before the wall develops even larger teeth.",
   "bossRetreatText": "You withdraw. Several ordinary Morays peek from their cracks once the larger presence is gone.",
   "boss": {
     "enemyId": "eclipse-jaw-moray-boss",
     "roomId": "boss",
-    "revealText": "The blackglass fractures and a colossal jaw erupts from the darkness.\n\nEclipse-Jaw Moray reveals itself!"
+    "revealText": "The blackglass fractures and a colossal jaw erupts from the darkness.\n\nEclipse Jaw Moray reveals itself!"
   },
-  "completionText": "\"The Eclipse-Jaw Moray disappears into the fissures.\n\nYou look suspiciously at the nearest wall.\n\nThe wall behaves.\n\nFor now.\"\n\n\n#################################################################"
+  "completionText": "\"The Eclipse Jaw Moray disappears into the fissures.\n\nYou look suspiciously at the nearest wall.\n\nThe wall behaves.\n\nFor now.\"\n\n#################################################################"
 }

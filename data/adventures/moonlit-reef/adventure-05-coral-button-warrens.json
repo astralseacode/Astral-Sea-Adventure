@@ -55,7 +55,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "clasped-reef",
-          "message": "You find a moon-shell coffer wedged into the burrow wall. Someone has decorated the lid with pearls, shell chips, and one extremely proud-looking bottle cap. Inside wait Star Candies the crabs apparently considered less interesting than the lid.",
+          "message": "You find a moon shell coffer wedged into the burrow wall. Someone has decorated the lid with pearls, shell chips, and one extremely proud-looking bottle cap. Inside wait Star Candies the crabs apparently considered less interesting than the lid.",
           "reward": {
             "min": 30,
             "max": 55

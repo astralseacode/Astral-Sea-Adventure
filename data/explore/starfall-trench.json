@@ -490,7 +490,7 @@
         "region":  "Starfall Trench",
         "rarity":  "rare",
         "weight":  12,
-        "title":  "Buried Sky-Ruin",
+        "title":  "Buried Sky Ruin",
         "reward":  {
                        "min":  230,
                        "max":  330
@@ -556,7 +556,7 @@
         "region":  "Starfall Trench",
         "rarity":  "uncommon",
         "weight":  34,
-        "title":  "Falling-Light Curtain",
+        "title":  "Falling Light Curtain",
         "reward":  {
                        "min":  150,
                        "max":  240
@@ -584,7 +584,7 @@
                        "max":  210
                    },
         "xp":  45,
-        "message":  "An ancient orrery has unmistakably been \"repaired.\" Several planets turn backward, one moon races dangerously fast, and another has been replaced by a berry-shaped stone. A tiny label declares, \"Fixed.\" The wobbling mechanism eventually opens to release {reward} Star Candies.",
+        "message":  "An ancient orrery has unmistakably been \"repaired.\" Several planets turn backward, one moon races dangerously fast, and another has been replaced by a berry shaped stone. A tiny label declares, \"Fixed.\" The wobbling mechanism eventually opens to release {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-27",
@@ -606,7 +606,7 @@
                        "max":  340
                    },
         "xp":  72,
-        "message":  "At the bottom of an ancient crater, a garden blooms entirely from celestial dust: glass leaves, comet-tailed flowers, and luminous roots. One perfectly ordinary berry bush grows among them beneath a sign reading, \"HOW???\" Its roots cradle {reward} Star Candies.",
+        "message":  "At the bottom of an ancient crater, a garden blooms entirely from celestial dust: glass leaves, comet tailed flowers, and luminous roots. One perfectly ordinary berry bush grows among them beneath a sign reading, \"HOW???\" Its roots cradle {reward} Star Candies.",
         "itemDrops":  [
                           {
                               "id":  "starfall-trench-note-28",

@@ -95,13 +95,13 @@
             "prompt": "Unspoken Labyrinth goes dark."
         }
     },
-    "bossPromptDiscord": "Unspoken Labyrinth goes dark.\n\nThe one thing you don't want to imagine begins taking shape anyway.\n\nUse /yes to face it or /no to go think about puppies or\nsomething.",
-    "bossPromptTwitch": "Unspoken Labyrinth goes dark.\n\nThe one thing you don't want to imagine begins taking shape anyway.\n\nUse !yes to face it or !no to go think about puppies or\nsomething.",
+    "bossPromptDiscord": "Unspoken Labyrinth goes dark.\n\nThe one thing you don't want to imagine begins taking shape anyway.\n\nUse /yes to face it or /no to go think about puppies or something.",
+    "bossPromptTwitch": "Unspoken Labyrinth goes dark.\n\nThe one thing you don't want to imagine begins taking shape anyway.\n\nUse !yes to face it or !no to go think about puppies or something.",
     "bossRetreatText": "You withdraw from Unspoken Labyrinth. The impossible guardian will wait.",
     "boss": {
         "enemyId": "fear-made-huntress-boss",
         "roomId": "boss",
-        "revealText": "Fear becomes solid.\n\nFear-Made Huntress reveals itself!"
+        "revealText": "Fear becomes solid.\n\nFear Made Huntress reveals itself!"
     },
     "completionText": "The maze stops responding.\n\nShizuki's final thought is carved into the wall:\n\n'BERRIES.\n\nBERRIES.\n\nBERRIES.\n\nSafety strategy.'"
 }

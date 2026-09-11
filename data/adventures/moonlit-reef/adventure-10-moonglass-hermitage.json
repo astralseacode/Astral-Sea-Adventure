@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer has been hidden where several broken mirrors overlap. You follow the only reflection that is smiling and uncover Star Candies.",
+          "message": "A moon shell coffer has been hidden where several broken mirrors overlap. You follow the only reflection that is smiling and uncover Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "moonglass-elder-boss",
     "roomId": "boss",
-    "revealText": "The central mirror ripples like water as an ancient shell-clad figure steps through. The Moonglass Elder raises its staff, and every reflection moves with it!"
+    "revealText": "The central mirror ripples like water as an ancient shell clad figure steps through. The Moonglass Elder raises its staff, and every reflection moves with it!"
   },
   "completionText": "The Moonglass Elder lowers its guard and returns to the mirror. Your reflection reappears—slightly late, but yours again. As you leave, it gives you a tiny wave you definitely did not make."
 }

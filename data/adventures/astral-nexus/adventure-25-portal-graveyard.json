@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "portal-grave-scavenger",
     "recommendedLevel": 50,
-    "introDiscord": "Broken portals drift like ruined doors.\n\nSome lead nowhere.\n\nSome flicker with dead landscapes.\n\nOne repeatedly opens onto a broom closet.",
-    "introTwitch": "Broken portals drift like ruined doors.\n\nSome lead nowhere.\n\nSome flicker with dead landscapes.\n\nOne repeatedly opens onto a broom closet.",
+    "introDiscord": "Broken portals drift like ruined doors. Some lead nowhere. Some flicker with dead landscapes.\n\nOne repeatedly opens onto a broom closet.",
+    "introTwitch": "Broken portals drift like ruined doors. Some lead nowhere. Some flicker with dead landscapes.\n\nOne repeatedly opens onto a broom closet.",
     "startRoomId": "portal-graveyard-approach",
     "rooms": {
         "portal-graveyard-approach": {
@@ -92,16 +92,16 @@
         "boss-antechamber": {
             "name": "Sepulcher of Exits",
             "type": "boss-prompt",
-            "prompt": "Sepulcher of Exits begins collecting broken portals into one towering\narch."
+            "prompt": "Sepulcher of Exits begins collecting broken portals into one towering arch."
         }
     },
-    "bossPromptDiscord": "Sepulcher of Exits begins collecting broken portals into one towering\narch.\n\nUse /yes to approach or /no to avoid whatever collects\ndead doors.",
-    "bossPromptTwitch": "Sepulcher of Exits begins collecting broken portals into one towering\narch.\n\nUse !yes to approach or !no to avoid whatever collects\ndead doors.",
+    "bossPromptDiscord": "Sepulcher of Exits begins collecting broken portals into one towering arch.\n\nUse /yes to approach or /no to avoid whatever collects dead doors.",
+    "bossPromptTwitch": "Sepulcher of Exits begins collecting broken portals into one towering arch.\n\nUse !yes to approach or !no to avoid whatever collects dead doors.",
     "bossRetreatText": "You withdraw from Sepulcher of Exits. The impossible guardian will wait.",
     "boss": {
         "enemyId": "dead-gate-collector-boss",
         "roomId": "boss",
-        "revealText": "The broken gates lock around a massive shape.\n\nDead-Gate Collector reveals itself!"
+        "revealText": "The broken gates lock around a massive shape.\n\nDead Gate Collector reveals itself!"
     },
     "completionText": "The graveyard scatters again.\n\nOne broken portal flickers briefly.\n\nBehind it:\n\nan ocean you have never seen."
 }

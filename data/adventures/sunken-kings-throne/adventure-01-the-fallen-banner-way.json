@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "drowned-banner-guard",
     "recommendedLevel": 30,
-    "introDiscord": "The road from Leviathan's Wake finally reaches stone.\n\nNot bone.\n\nActual stone.\n\nA drowned avenue stretches between toppled towers and faded royal\nbanners while statues of armored guards line the old kingdom gates.\n\nSomeone has tied a tiny ribbon around one statue's spear.\n\nShizuki was definitely here.",
-    "introTwitch": "The road from Leviathan's Wake finally reaches stone.\n\nNot bone.\n\nActual stone.\n\nA drowned avenue stretches between toppled towers and faded royal\nbanners while statues of armored guards line the old kingdom gates.\n\nSomeone has tied a tiny ribbon around one statue's spear.\n\nShizuki was definitely here.",
+    "introDiscord": "The road from Leviathan's Wake finally reaches stone.\n\nNot bone.\n\nActual stone.\n\nA drowned avenue stretches between toppled towers and faded royal banners while statues of armored guards line the old kingdom gates. Someone has tied a tiny ribbon around one statue's spear.\n\nShizuki was definitely here.",
+    "introTwitch": "The road from Leviathan's Wake finally reaches stone.\n\nNot bone.\n\nActual stone.\n\nA drowned avenue stretches between toppled towers and faded royal banners while statues of armored guards line the old kingdom gates. Someone has tied a tiny ribbon around one statue's spear.\n\nShizuki was definitely here.",
     "startRoomId": "the-fallen-banner-way-approach",
     "rooms": {
         "the-fallen-banner-way-approach": {
@@ -52,7 +52,7 @@
                     "type": "combat",
                     "nextRoomId": "the-fallen-banner-way-threshold",
                     "enemyId": "drowned-banner-guard",
-                    "message": "A Drowned Banner Guard raises its standard and blocks the street.\n\nYou are being challenged by someone whose shift ended several centuries\nago."
+                    "message": "A Drowned Banner Guard raises its standard and blocks the street.\n\nYou are being challenged by someone whose shift ended several centuries ago."
                 },
                 "forward": {
                     "type": "empty",
@@ -95,13 +95,13 @@
             "prompt": "The Hall of Torn Colors opens beyond the avenue."
         }
     },
-    "bossPromptDiscord": "The Hall of Torn Colors opens beyond the avenue.\n\nHundreds of old standards hang from the ceiling, their faded colors\nmoving together in the current.\n\nEvery remaining Banner Guard steps aside.\n\nAt the far end, something lifts a standard larger than any of the others.\n\nUse /yes to enter the Hall or /no to postpone your extremely unofficial\nroyal visit.",
-    "bossPromptTwitch": "The Hall of Torn Colors opens beyond the avenue.\n\nHundreds of old standards hang from the ceiling, their faded colors\nmoving together in the current.\n\nEvery remaining Banner Guard steps aside.\n\nAt the far end, something lifts a standard larger than any of the others.\n\nUse !yes to enter the Hall or !no to postpone your extremely unofficial\nroyal visit.",
+    "bossPromptDiscord": "The Hall of Torn Colors opens beyond the avenue.\n\nHundreds of old standards hang from the ceiling, their faded colors moving together in the current.\n\nEvery remaining Banner Guard steps aside.\n\nAt the far end, something lifts a standard larger than any of the others.\n\nUse /yes to enter the Hall or /no to postpone your extremely unofficial royal visit.",
+    "bossPromptTwitch": "The Hall of Torn Colors opens beyond the avenue.\n\nHundreds of old standards hang from the ceiling, their faded colors moving together in the current.\n\nEvery remaining Banner Guard steps aside.\n\nAt the far end, something lifts a standard larger than any of the others.\n\nUse !yes to enter the Hall or !no to postpone your extremely unofficial royal visit.",
     "bossRetreatText": "You return to the outer avenue.\n\nThe banners continue drifting behind you.",
     "boss": {
         "enemyId": "standard-bearer-revenant-boss",
         "roomId": "boss",
-        "revealText": "The largest standard sweeps aside.\n\nStandard-Bearer Revenant reveals itself!"
+        "revealText": "The largest standard sweeps aside.\n\nStandard Bearer Revenant reveals itself!"
     },
     "completionText": "The Revenant lowers its standard.\n\nBeyond the Hall, the kingdom proper finally opens.\n\nShops.\n\nCanals.\n\nGardens.\n\nPalaces.\n\nShizuki's next arrow reads:\n\n'WE ARE GOING SHOPPING.'"
 }

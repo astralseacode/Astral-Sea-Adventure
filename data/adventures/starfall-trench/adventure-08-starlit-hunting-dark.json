@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "starlit-hunting-dark-threshold",
-          "message": "A star-chart coffer rests beneath a cluster of genuine stars.\n\nProbably.",
+          "message": "A star chart coffer rests beneath a cluster of genuine stars.\n\nProbably.",
           "reward": {
             "min": 133,
             "max": 170
@@ -68,7 +68,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A meteor-iron reliquary glints beneath the seabed.",
+          "message": "A meteor iron reliquary glints beneath the seabed.",
           "reward": {
             "min": 145,
             "max": 182
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "nova-fang-viperfish-boss",
     "roomId": "boss",
-    "revealText": "The brilliant lure splits around rows of enormous teeth.\n\nNova-Fang Viperfish reveals itself!"
+    "revealText": "The brilliant lure splits around rows of enormous teeth.\n\nNova Fang Viperfish reveals itself!"
   },
-  "completionText": "\"The Nova-Fang vanishes.\n\nReal stars slowly become visible again.\n\nYou inspect every single one suspiciously.\"\n\n\n#################################################################"
+  "completionText": "\"The Nova Fang vanishes.\n\nReal stars slowly become visible again.\n\nYou inspect every single one suspiciously.\"\n\n#################################################################"
 }

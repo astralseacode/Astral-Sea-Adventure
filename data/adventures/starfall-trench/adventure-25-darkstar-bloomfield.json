@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "darkstar-bloomfield-depths",
-          "message": "A meteor-iron reliquary rests beneath a field of closed blooms.",
+          "message": "A meteor iron reliquary rests beneath a field of closed blooms.",
           "reward": {
             "min": 62,
             "max": 105
@@ -63,7 +63,7 @@
       }
     },
     "darkstar-bloomfield-threshold": {
-      "prompt": "Three flower-lined paths converge on Sunless Corolla.",
+      "prompt": "Three flower lined paths converge on Sunless Corolla.",
       "choices": {
         "left": {
           "type": "healing",
@@ -75,7 +75,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A star-chart coffer rests beneath a giant closed bloom.",
+          "message": "A star chart coffer rests beneath a giant closed bloom.",
           "reward": {
             "min": 86,
             "max": 129
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The colossal dark bloom unfolds.\n\nUmbra Bloom Sovereign reveals itself!"
   },
-  "completionText": "\"The Sovereign closes and sinks into the bloomfield.\n\nA tiny light flickers behind a flower.\n\nYou suddenly understand Shizuki's Glimmer problem.\"\n\n\n#################################################################"
+  "completionText": "\"The Sovereign closes and sinks into the bloomfield.\n\nA tiny light flickers behind a flower.\n\nYou suddenly understand Shizuki's Glimmer problem.\"\n\n#################################################################"
 }

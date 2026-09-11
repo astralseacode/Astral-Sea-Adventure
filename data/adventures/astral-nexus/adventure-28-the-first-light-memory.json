@@ -1,22 +1,22 @@
 {
     "id": "the-first-light-memory",
     "number": 28,
-    "name": "The First-Light Memory",
+    "name": "The First Light Memory",
     "regionId": "astral-nexus",
     "enemyId": "first-light-remnant",
     "recommendedLevel": 50,
-    "introDiscord": "The Nexus becomes quiet.\n\nAhead is the Astral Sea before any of the places you know had their\nnames.\n\nNo ruins.\n\nNo kingdom.\n\nNo graveyard.\n\nNo trails.\n\nJust first light over endless water.",
-    "introTwitch": "The Nexus becomes quiet.\n\nAhead is the Astral Sea before any of the places you know had their\nnames.\n\nNo ruins.\n\nNo kingdom.\n\nNo graveyard.\n\nNo trails.\n\nJust first light over endless water.",
+    "introDiscord": "The Nexus becomes quiet.\n\nAhead is the Astral Sea before any of the places you know had their names.\n\nNo ruins. No kingdom. No graveyard. No trails.\n\nJust first light over endless water.",
+    "introTwitch": "The Nexus becomes quiet.\n\nAhead is the Astral Sea before any of the places you know had their names.\n\nNo ruins. No kingdom. No graveyard. No trails.\n\nJust first light over endless water.",
     "startRoomId": "the-first-light-memory-approach",
     "rooms": {
         "the-first-light-memory-approach": {
-            "prompt": "Three impossible routes open across The First-Light Memory.",
+            "prompt": "Three impossible routes open across The First Light Memory.",
             "choices": {
                 "left": {
                     "type": "combat",
                     "nextRoomId": "the-first-light-memory-depths",
                     "enemyId": "first-light-remnant",
-                    "message": "A First-Light Remnant forms from ancient Fae radiance."
+                    "message": "A First Light Remnant forms from ancient Fae radiance."
                 },
                 "right": {
                     "type": "empty",
@@ -36,7 +36,7 @@
             }
         },
         "the-first-light-memory-depths": {
-            "prompt": "Deeper within The First-Light Memory, three paths bend through the unstable Nexus.",
+            "prompt": "Deeper within The First Light Memory, three paths bend through the unstable Nexus.",
             "choices": {
                 "left": {
                     "type": "healing",
@@ -49,7 +49,7 @@
                     "type": "combat",
                     "nextRoomId": "the-first-light-memory-threshold",
                     "enemyId": "first-light-remnant",
-                    "message": "A First-Light Remnant moves through the newborn sea."
+                    "message": "A First Light Remnant moves through the newborn sea."
                 },
                 "forward": {
                     "type": "treasure",
@@ -95,8 +95,8 @@
             "prompt": "Origin Reflection brightens."
         }
     },
-    "bossPromptDiscord": "Origin Reflection brightens.\n\nFor a moment, there is no Moonlit Reef.\n\nNo Starfall Trench.\n\nNo Whispering Kelp Forest.\n\nNo Leviathan's Wake.\n\nNo Sunken King's Throne.\n\nNo Nexus.\n\nOnly the sea before the journey.\n\nUse /yes to enter the first dawn or /no to leave it\nuntouched.",
-    "bossPromptTwitch": "Origin Reflection brightens.\n\nFor a moment, there is no Moonlit Reef.\n\nNo Starfall Trench.\n\nNo Whispering Kelp Forest.\n\nNo Leviathan's Wake.\n\nNo Sunken King's Throne.\n\nNo Nexus.\n\nOnly the sea before the journey.\n\nUse !yes to enter the first dawn or !no to leave it\nuntouched.",
+    "bossPromptDiscord": "Origin Reflection brightens.\n\nFor a moment, there is no Moonlit Reef.\n\nNo Starfall Trench.\n\nNo Whispering Kelp Forest.\n\nNo Leviathan's Wake.\n\nNo Sunken King's Throne.\n\nNo Nexus.\n\nOnly the sea before the journey.\n\nUse /yes to enter the first dawn or /no to leave it untouched.",
+    "bossPromptTwitch": "Origin Reflection brightens.\n\nFor a moment, there is no Moonlit Reef.\n\nNo Starfall Trench.\n\nNo Whispering Kelp Forest.\n\nNo Leviathan's Wake.\n\nNo Sunken King's Throne.\n\nNo Nexus.\n\nOnly the sea before the journey.\n\nUse !yes to enter the first dawn or !no to leave it untouched.",
     "bossRetreatText": "You withdraw from Origin Reflection. The impossible guardian will wait.",
     "boss": {
         "enemyId": "dawn-before-the-sea-boss",

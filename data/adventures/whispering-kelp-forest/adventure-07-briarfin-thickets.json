@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "briarfin-prowler",
   "recommendedLevel": 12,
-  "introDiscord": "Thorned kelp knots together into a dense thicket ahead. Briarfin\nProwlers slip between the barbs without touching a single one, which\nfeels increasingly insulting the more branches catch on you.",
-  "introTwitch": "Thorned kelp knots together into a dense thicket ahead. Briarfin\nProwlers slip between the barbs without touching a single one, which\nfeels increasingly insulting the more branches catch on you.",
+  "introDiscord": "Thorned kelp knots together into a dense thicket ahead. Briarfin Prowlers slip between the barbs without touching a single one, which feels increasingly insulting the more branches catch on you.",
+  "introTwitch": "Thorned kelp knots together into a dense thicket ahead. Briarfin Prowlers slip between the barbs without touching a single one, which feels increasingly insulting the more branches catch on you.",
   "startRoomId": "briarfin-thickets-approach",
   "rooms": {
     "briarfin-thickets-approach": {
-      "prompt": "Three thorn-lined routes squeeze between braided briars. Loose straps\nand dignity are equally endangered.",
+      "prompt": "Three thorn lined routes squeeze between braided briars. Loose straps and dignity are equally endangered.",
       "choices": {
         "left": {
           "type": "combat",
@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "briarfin-thickets-depths",
-          "message": "An offering basket hangs inside a thorn cage. After a careful extraction\noperation, you recover the Star Candies and only slightly redesign your\nclothing.",
+          "message": "An offering basket hangs inside a thorn cage. After a careful extraction operation, you recover the Star Candies and only slightly redesign your clothing.",
           "reward": {
             "min": 170,
             "max": 207
@@ -31,18 +31,18 @@
           "type": "healing",
           "nextRoomId": "briarfin-thickets-depths",
           "healAmount": 57,
-          "message": "Restorative sap rests inside a folded leaf beside Shizuki's note:\n\n'Briar balm.\n\nFor scratches, snags, and the emotional damage of losing an argument\nwith a shrub.'",
+          "message": "Restorative sap rests inside a folded leaf beside Shizuki's note:\n\n'Briar balm.\n\nFor scratches, snags, and the emotional damage of losing an argument with a shrub.'",
           "fullHpMessage": "You leave the balm untouched. The thicket has not won yet."
         }
       }
     },
     "briarfin-thickets-depths": {
-      "prompt": "Living rootways disappear beneath thicker briars. Three passages remain,\nalthough one appears to have grown additional thorns while you watched.",
+      "prompt": "Living rootways disappear beneath thicker briars. Three passages remain, although one appears to have grown additional thorns while you watched.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "briarfin-thickets-threshold",
-          "message": "Broad silver kelp wraps a cache protected by a suspiciously thorn-free\ncircle.\n\nShizuki wrote nearby:\n\n'This means either safe spot or plant trap.\n\nWas safe for me.\n\nGood luck.'",
+          "message": "Broad silver kelp wraps a cache protected by a suspiciously thorn free circle.\n\nShizuki wrote nearby:\n\n'This means either safe spot or plant trap.\n\nWas safe for me.\n\nGood luck.'",
           "reward": {
             "min": 182,
             "max": 219
@@ -63,19 +63,19 @@
       }
     },
     "briarfin-thickets-threshold": {
-      "prompt": "Moonlit fronds close around Briar Moon Den. Three final paths wind\nthrough thorn arches shaped like claws.",
+      "prompt": "Moonlit fronds close around Briar Moon Den. Three final paths wind through thorn arches shaped like claws.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 62,
-          "message": "A moonblossom pool sits inside the only thorn-free pocket in sight.\nShizuki wrote:\n\n'Found safe clearing.\n\nDo not celebrate loudly.\n\nPlants may hear.'",
+          "message": "A moonblossom pool sits inside the only thorn free pocket in sight. Shizuki wrote:\n\n'Found safe clearing.\n\nDo not celebrate loudly.\n\nPlants may hear.'",
           "fullHpMessage": "You leave the pool untouched and celebrate internally."
         },
         "right": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moss-covered shrine coffer lies beneath a briar arch. The vines pull\nback slightly when you touch the latch.\n\nSuspiciously polite thorns.",
+          "message": "A moss covered shrine coffer lies beneath a briar arch. The vines pull back slightly when you touch the latch.\n\nSuspiciously polite thorns.",
           "reward": {
             "min": 194,
             "max": 231
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Briar Moon Den",
       "type": "boss-prompt",
-      "prompt": "The thorns throughout the Den bend in the same direction as something\nmoves silently behind them."
+      "prompt": "The thorns throughout the Den bend in the same direction as something moves silently behind them."
     }
   },
-  "bossPromptDiscord": "The Briar Moon Den falls completely still.\n\nEvery smaller Prowler disappears into the thickets.\n\nThen the briars part without a single thorn breaking.\n\nSomething larger has spent a very long time learning every path through\nthis forest.\n\nUse /yes to enter the Den or /no to avoid becoming the next thing\ncaught in the briars.",
-  "bossPromptTwitch": "The Briar Moon Den falls completely still.\n\nEvery smaller Prowler disappears into the thickets.\n\nThen the briars part without a single thorn breaking.\n\nSomething larger has spent a very long time learning every path through\nthis forest.\n\nUse !yes to enter the Den or !no to avoid becoming the next thing\ncaught in the briars.",
-  "bossRetreatText": "You withdraw through the thickets. The unseen hunter makes no attempt\nto follow.\n\nSomehow that is worse.",
+  "bossPromptDiscord": "The Briar Moon Den falls completely still.\n\nEvery smaller Prowler disappears into the thickets.\n\nThen the briars part without a single thorn breaking.\n\nSomething larger has spent a very long time learning every path through this forest.\n\nUse /yes to enter the Den or /no to avoid becoming the next thing caught in the briars.",
+  "bossPromptTwitch": "The Briar Moon Den falls completely still.\n\nEvery smaller Prowler disappears into the thickets.\n\nThen the briars part without a single thorn breaking.\n\nSomething larger has spent a very long time learning every path through this forest.\n\nUse !yes to enter the Den or !no to avoid becoming the next thing caught in the briars.",
+  "bossRetreatText": "You withdraw through the thickets. The unseen hunter makes no attempt to follow.\n\nSomehow that is worse.",
   "boss": {
     "enemyId": "thornwake-huntress-boss",
     "roomId": "boss",
-    "revealText": "The briars sweep aside as a sleek thorn-armored predator lunges from\nthe Den.\n\nThornwake Huntress reveals itself!"
+    "revealText": "The briars sweep aside as a sleek thorn armored predator lunges from the Den.\n\nThornwake Huntress reveals itself!"
   },
-  "completionText": "\"The Huntress vanishes into the deepest thicket.\n\nThe briars slowly relax.\n\nA thorn immediately catches your sleeve on the way out.\n\nThe forest demands the final word.\"\n\n\n#################################################################"
+  "completionText": "\"The Huntress vanishes into the deepest thicket.\n\nThe briars slowly relax.\n\nA thorn immediately catches your sleeve on the way out.\n\nThe forest demands the final word.\"\n\n#################################################################"
 }

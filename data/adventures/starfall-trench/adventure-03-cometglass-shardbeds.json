@@ -28,7 +28,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "cometglass-shardbeds-depths",
-          "message": "\"A star-chart coffer glitters beneath overlapping cometglass. Several tiny shrimp footprints lead directly to it and then stop, presumably because none of them could open the latch.\"\n\n---------------- ROOM 2 ----------------",
+          "message": "\"A star chart coffer glitters beneath overlapping cometglass. Several tiny shrimp footprints lead directly to it and then stop, presumably because none of them could open the latch.\"\n\n---------------- ROOM 2 ----------------",
           "reward": {
             "min": 138,
             "max": 173
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "cometglass-shardbeds-threshold",
-          "message": "A meteor-iron reliquary is wedged beneath a crystal shelf. A Cometglass Shrimp has decorated the lid with stolen buttons.",
+          "message": "A meteor iron reliquary is wedged beneath a crystal shelf. A Cometglass Shrimp has decorated the lid with stolen buttons.",
           "reward": {
             "min": 150,
             "max": 185
@@ -69,7 +69,7 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "cometglass-shrimp",
-          "message": "A Cometglass Shrimp emerges from the reflections with both claws raised.\n\nBehind it is an impressive pile of things that definitely belong to other people."
+          "message": "A Cometglass Shrimp emerges from the reflections with both claws raised. Behind it is an impressive pile of things that definitely belong to other people."
         },
         "right": {
           "type": "healing",
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "Cometglass explodes outward as an enormous armored shrimp rises from its hoard.\n\nShardclaw Colossus reveals itself!"
   },
-  "completionText": "\"The Colossus retreats among the shattered prisms.\n\nYou recover several stolen supplies.\n\nShizuki's hair clip is not among them.\n\nThe investigation remains open.\"\n\n\n#################################################################"
+  "completionText": "\"The Colossus retreats among the shattered prisms.\n\nYou recover several stolen supplies.\n\nShizuki's hair clip is not among them.\n\nThe investigation remains open.\"\n\n#################################################################"
 }

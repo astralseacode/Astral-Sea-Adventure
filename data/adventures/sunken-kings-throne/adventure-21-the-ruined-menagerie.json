@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "royal-menagerie-beast",
     "recommendedLevel": 44,
-    "introDiscord": "The royal menagerie spreads across overgrown enclosures and ornamental\nponds.\n\nMost cages are open.\n\nShizuki has named several creatures.\n\nNone of them were consulted.",
-    "introTwitch": "The royal menagerie spreads across overgrown enclosures and ornamental\nponds.\n\nMost cages are open.\n\nShizuki has named several creatures.\n\nNone of them were consulted.",
+    "introDiscord": "The royal menagerie spreads across overgrown enclosures and ornamental ponds. Most cages are open.\n\nShizuki has named several creatures.\n\nNone of them were consulted.",
+    "introTwitch": "The royal menagerie spreads across overgrown enclosures and ornamental ponds. Most cages are open.\n\nShizuki has named several creatures.\n\nNone of them were consulted.",
     "startRoomId": "the-ruined-menagerie-approach",
     "rooms": {
         "the-ruined-menagerie-approach": {
@@ -23,7 +23,7 @@
                     "type": "combat",
                     "nextRoomId": "the-ruined-menagerie-depths",
                     "enemyId": "royal-menagerie-beast",
-                    "message": "A Crown-Caged Chimera emerges from the enclosure."
+                    "message": "A Crown Caged Chimera emerges from the enclosure."
                 },
                 "forward": {
                     "type": "treasure",
@@ -42,7 +42,7 @@
                 "left": {
                     "type": "empty",
                     "nextRoomId": "the-ruined-menagerie-threshold",
-                    "message": "One Berry rests beneath a creature list:\n\n'Mr. Fluff\nBitey\nSir Shellington\nPrincess Screams-A-Lot\n\nGlimmer rejected all names.\n\nGlimmer lacks imagination.'",
+                    "message": "One Berry rests beneath a creature list:\n\n'Mr. Fluff\nBitey\nSir Shellington\nPrincess Screams A Lot\n\nGlimmer rejected all names.\n\nGlimmer lacks imagination.'",
                     "berries": 1
                 },
                 "right": {
@@ -69,7 +69,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "royal-menagerie-beast",
-                    "message": "A Crown-Caged Chimera guards the final habitat."
+                    "message": "A Crown Caged Chimera guards the final habitat."
                 },
                 "right": {
                     "type": "healing",
@@ -95,8 +95,8 @@
             "prompt": "The largest habitat gate swings open."
         }
     },
-    "bossPromptDiscord": "The largest habitat gate swings open.\n\nSeveral smaller creatures immediately flee.\n\nSomething enormous steps into the Menagerie Crown Cage.\n\nUse /yes to meet the king's favorite beast or /no to avoid\ndiscovering why Shizuki named something 'Bitey.'",
-    "bossPromptTwitch": "The largest habitat gate swings open.\n\nSeveral smaller creatures immediately flee.\n\nSomething enormous steps into the Menagerie Crown Cage.\n\nUse !yes to meet the king's favorite beast or !no to avoid\ndiscovering why Shizuki named something 'Bitey.'",
+    "bossPromptDiscord": "The largest habitat gate swings open.\n\nSeveral smaller creatures immediately flee.\n\nSomething enormous steps into the Menagerie Crown Cage.\n\nUse /yes to meet the king's favorite beast or /no to avoid discovering why Shizuki named something 'Bitey.'",
+    "bossPromptTwitch": "The largest habitat gate swings open.\n\nSeveral smaller creatures immediately flee.\n\nSomething enormous steps into the Menagerie Crown Cage.\n\nUse !yes to meet the king's favorite beast or !no to avoid discovering why Shizuki named something 'Bitey.'",
     "bossRetreatText": "You withdraw from Menagerie Crown Cage. The royal challenge will wait.",
     "boss": {
         "enemyId": "kings-chimera-boss",

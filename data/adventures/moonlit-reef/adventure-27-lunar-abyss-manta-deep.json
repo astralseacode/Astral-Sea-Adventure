@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "abyssal-gallery",
-          "message": "A moon-shell coffer rests at the very edge of the shelf. You recover Star Candies while carefully refusing to look directly down.",
+          "message": "A moon shell coffer rests at the very edge of the shelf. You recover Star Candies while carefully refusing to look directly down.",
           "reward": {
             "min": 60,
             "max": 90
@@ -92,12 +92,12 @@
     "boss-antechamber": {
       "name": "Moonwing Blackwater",
       "type": "boss-prompt",
-      "prompt": "Stone pillars vanish into the Moonwing blackwater around a current with no visible floor. Distant moon-shaped lights circle beneath the span."
+      "prompt": "Stone pillars vanish into the Moonwing blackwater around a current with no visible floor. Distant moon shaped lights circle beneath the span."
     }
   },
-  "bossPromptDiscord": "The distant lights vanish.\n\nSomething enormous passes beneath every pillar at once.\n\nA pair of moon-shaped markings slowly rises from the blackwater.\n\nUse /yes to remain on the Span or /no to return to somewhere with a visible floor.",
-  "bossPromptTwitch": "The distant lights vanish.\n\nSomething enormous passes beneath every pillar at once.\n\nA pair of moon-shaped markings slowly rises from the blackwater.\n\nUse !yes to remain on the Span or !no to return to somewhere with a visible floor.",
-  "bossRetreatText": "You return toward visible stone. The moon-shaped markings sink into the blackwater, and distant lights slowly reappear.",
+  "bossPromptDiscord": "The distant lights vanish.\n\nSomething enormous passes beneath every pillar at once.\n\nA pair of moon shaped markings slowly rises from the blackwater.\n\nUse /yes to remain on the Span or /no to return to somewhere with a visible floor.",
+  "bossPromptTwitch": "The distant lights vanish.\n\nSomething enormous passes beneath every pillar at once.\n\nA pair of moon shaped markings slowly rises from the blackwater.\n\nUse !yes to remain on the Span or !no to return to somewhere with a visible floor.",
+  "bossRetreatText": "You return toward visible stone. The moon shaped markings sink into the blackwater, and distant lights slowly reappear.",
   "boss": {
     "enemyId": "abyssal-moonwing-boss",
     "roomId": "boss",

@@ -95,13 +95,13 @@
             "prompt": "Inverted Firmament darkens."
         }
     },
-    "bossPromptDiscord": "Inverted Firmament darkens.\n\nOne enormous false sun begins moving between the stars.\n\nUse /yes to enter or /no to avoid celestial bodies with\nteeth.",
-    "bossPromptTwitch": "Inverted Firmament darkens.\n\nOne enormous false sun begins moving between the stars.\n\nUse !yes to enter or !no to avoid celestial bodies with\nteeth.",
+    "bossPromptDiscord": "Inverted Firmament darkens.\n\nOne enormous false sun begins moving between the stars.\n\nUse /yes to enter or /no to avoid celestial bodies with teeth.",
+    "bossPromptTwitch": "Inverted Firmament darkens.\n\nOne enormous false sun begins moving between the stars.\n\nUse !yes to enter or !no to avoid celestial bodies with teeth.",
     "bossRetreatText": "You withdraw from Inverted Firmament. The impossible guardian will wait.",
     "boss": {
         "enemyId": "under-sun-angler-boss",
         "roomId": "boss",
-        "revealText": "The false sun opens into a luminous lure.\n\nUnder-Sun Angler reveals itself!"
+        "revealText": "The false sun opens into a luminous lure.\n\nUnder Sun Angler reveals itself!"
     },
     "completionText": "The real stars return.\n\nThey remain underneath you.\n\nNobody fixed that."
 }

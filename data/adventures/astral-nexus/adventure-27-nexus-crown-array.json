@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "nexus-crown-construct",
     "recommendedLevel": 50,
-    "introDiscord": "Six enormous rings orbit a central crown-shaped structure.\n\nEach ring contains glimpses of a different region.\n\nShizuki immediately wrote:\n\n'ANOTHER CROWN.\n\nI AM QUALIFIED AFTER SUNKEN KINGDOM.'",
-    "introTwitch": "Six enormous rings orbit a central crown-shaped structure.\n\nEach ring contains glimpses of a different region.\n\nShizuki immediately wrote:\n\n'ANOTHER CROWN.\n\nI AM QUALIFIED AFTER SUNKEN KINGDOM.'",
+    "introDiscord": "Six enormous rings orbit a central crown shaped structure. Each ring contains glimpses of a different region.\n\nShizuki immediately wrote:\n\n'ANOTHER CROWN.\n\nI AM QUALIFIED AFTER SUNKEN KINGDOM.'",
+    "introTwitch": "Six enormous rings orbit a central crown shaped structure. Each ring contains glimpses of a different region.\n\nShizuki immediately wrote:\n\n'ANOTHER CROWN.\n\nI AM QUALIFIED AFTER SUNKEN KINGDOM.'",
     "startRoomId": "nexus-crown-array-approach",
     "rooms": {
         "nexus-crown-array-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Crown of Six Currents locks into place."
         }
     },
-    "bossPromptDiscord": "Crown of Six Currents locks into place.\n\nA regal construct forms beneath it.\n\nUse /yes to approach or /no to avoid Shizuki starting\nanother constitutional crisis.",
-    "bossPromptTwitch": "Crown of Six Currents locks into place.\n\nA regal construct forms beneath it.\n\nUse !yes to approach or !no to avoid Shizuki starting\nanother constitutional crisis.",
+    "bossPromptDiscord": "Crown of Six Currents locks into place.\n\nA regal construct forms beneath it.\n\nUse /yes to approach or /no to avoid Shizuki starting another constitutional crisis.",
+    "bossPromptTwitch": "Crown of Six Currents locks into place.\n\nA regal construct forms beneath it.\n\nUse !yes to approach or !no to avoid Shizuki starting another constitutional crisis.",
     "bossRetreatText": "You withdraw from Crown of Six Currents. The impossible guardian will wait.",
     "boss": {
         "enemyId": "convergence-monarch-boss",

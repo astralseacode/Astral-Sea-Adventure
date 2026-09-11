@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "moonblossom-mantis",
   "recommendedLevel": 14,
-  "introDiscord": "Moonblossoms fill a carefully arranged garden beneath the kelp canopy.\nEvery flower seems intentionally placed. Moonblossom Mantises tend the\nbeds with enough precision to make simply walking through feel like a\ngardening violation.",
-  "introTwitch": "Moonblossoms fill a carefully arranged garden beneath the kelp canopy.\nEvery flower seems intentionally placed. Moonblossom Mantises tend the\nbeds with enough precision to make simply walking through feel like a\ngardening violation.",
+  "introDiscord": "Moonblossoms fill a carefully arranged garden beneath the kelp canopy. Every flower seems intentionally placed. Moonblossom Mantises tend the beds with enough precision to make simply walking through feel like a gardening violation.",
+  "introTwitch": "Moonblossoms fill a carefully arranged garden beneath the kelp canopy. Every flower seems intentionally placed. Moonblossom Mantises tend the beds with enough precision to make simply walking through feel like a gardening violation.",
   "startRoomId": "moonblossom-garden-approach",
   "rooms": {
     "moonblossom-garden-approach": {
-      "prompt": "Three paths wind between immaculate flowerbeds. Several Mantises watch\nfrom the blossoms.",
+      "prompt": "Three paths wind between immaculate flowerbeds. Several Mantises watch from the blossoms.",
       "choices": {
         "left": {
           "type": "empty",
@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "moonblossom-garden-depths",
-          "message": "A moss-covered shrine coffer rests beneath a carefully trimmed\nmoonblossom arch. Inside are Star Candies arranged by size.\n\nThe Mantises have standards.",
+          "message": "A moss covered shrine coffer rests beneath a carefully trimmed moonblossom arch. Inside are Star Candies arranged by size.\n\nThe Mantises have standards.",
           "reward": {
             "min": 145,
             "max": 183
@@ -36,7 +36,7 @@
       }
     },
     "moonblossom-garden-depths": {
-      "prompt": "Towering kelp shades three pathways lined with increasingly elaborate\nflower arrangements.",
+      "prompt": "Towering kelp shades three pathways lined with increasingly elaborate flower arrangements.",
       "choices": {
         "left": {
           "type": "combat",
@@ -49,12 +49,12 @@
           "nextRoomId": "moonblossom-garden-threshold",
           "healAmount": 45,
           "message": "A moonblossom pool sits beneath a handwritten label:\n\n'Gardener-approved restorative.\n\nI THINK.\n\nMantis stopped glaring for six seconds.'",
-          "fullHpMessage": "You leave the restorative pool untouched. No reason to risk another\ngarden inspection."
+          "fullHpMessage": "You leave the restorative pool untouched. No reason to risk another garden inspection."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "moonblossom-garden-threshold",
-          "message": "An offering basket sits at the center of a flower pattern so perfect\nyou spend several minutes figuring out where you're allowed to step.\n\nStar Candies acquired without botanical incident.",
+          "message": "An offering basket sits at the center of a flower pattern so perfect you spend several minutes figuring out where you're allowed to step.\n\nStar Candies acquired without botanical incident.",
           "reward": {
             "min": 157,
             "max": 195
@@ -63,7 +63,7 @@
       }
     },
     "moonblossom-garden-threshold": {
-      "prompt": "Living roots surround Silver Bloom Court, where three final paths cross\nbeneath enormous lunar flowers.",
+      "prompt": "Living roots surround Silver Bloom Court, where three final paths cross beneath enormous lunar flowers.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Silver Bloom Court",
       "type": "boss-prompt",
-      "prompt": "Every Mantis in the garden stops tending its flowers and bows toward\nthe central bloom."
+      "prompt": "Every Mantis in the garden stops tending its flowers and bows toward the central bloom."
     }
   },
-  "bossPromptDiscord": "The largest moonblossom in Silver Bloom Court slowly opens.\n\nTwo blade-like arms unfold from inside.\n\nEvery smaller gardener retreats from the flowerbeds.\n\nApparently management has arrived.\n\nUse /yes to enter Silver Bloom Court or /no to leave before your garden\ninspection becomes official.",
-  "bossPromptTwitch": "The largest moonblossom in Silver Bloom Court slowly opens.\n\nTwo blade-like arms unfold from inside.\n\nEvery smaller gardener retreats from the flowerbeds.\n\nApparently management has arrived.\n\nUse !yes to enter Silver Bloom Court or !no to leave before your garden\ninspection becomes official.",
-  "bossRetreatText": "You step away from the Court. The flower closes again and the ordinary\nMantises resume gardening.",
+  "bossPromptDiscord": "The largest moonblossom in Silver Bloom Court slowly opens.\n\nTwo blade like arms unfold from inside.\n\nEvery smaller gardener retreats from the flowerbeds.\n\nApparently management has arrived.\n\nUse /yes to enter Silver Bloom Court or /no to leave before your garden inspection becomes official.",
+  "bossPromptTwitch": "The largest moonblossom in Silver Bloom Court slowly opens.\n\nTwo blade like arms unfold from inside.\n\nEvery smaller gardener retreats from the flowerbeds.\n\nApparently management has arrived.\n\nUse !yes to enter Silver Bloom Court or !no to leave before your garden inspection becomes official.",
+  "bossRetreatText": "You step away from the Court. The flower closes again and the ordinary Mantises resume gardening.",
   "boss": {
     "enemyId": "lunar-petal-mantis-boss",
     "roomId": "boss",
     "revealText": "Silver petals explode outward as a massive Mantis rises from the bloom.\n\nLunar Petal Mantis reveals itself!"
   },
-  "completionText": "\"The Lunar Petal Mantis retreats into the flowers.\n\nThe gardeners immediately begin repairing every petal disturbed during\nthe battle.\n\nYou are not invited to assist.\"\n\n\n#################################################################"
+  "completionText": "\"The Lunar Petal Mantis retreats into the flowers.\n\nThe gardeners immediately begin repairing every petal disturbed during the battle.\n\nYou are not invited to assist.\"\n\n#################################################################"
 }

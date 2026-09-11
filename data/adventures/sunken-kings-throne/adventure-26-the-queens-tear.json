@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "queens-tear-elemental",
     "recommendedLevel": 47,
-    "introDiscord": "A beautiful fountain dominates the Queen's courtyard.\n\nWater rises from it despite the surrounding sea, forming a perfect\nsilver tear that never disperses.",
-    "introTwitch": "A beautiful fountain dominates the Queen's courtyard.\n\nWater rises from it despite the surrounding sea, forming a perfect\nsilver tear that never disperses.",
+    "introDiscord": "A beautiful fountain dominates the Queen's courtyard. Water rises from it despite the surrounding sea, forming a perfect silver tear that never disperses.",
+    "introTwitch": "A beautiful fountain dominates the Queen's courtyard. Water rises from it despite the surrounding sea, forming a perfect silver tear that never disperses.",
     "startRoomId": "the-queens-tear-approach",
     "rooms": {
         "the-queens-tear-approach": {
@@ -95,13 +95,13 @@
             "prompt": "The silver tear expands across the basin."
         }
     },
-    "bossPromptDiscord": "The silver tear expands across the basin.\n\nA regal figure forms within the flowing water.\n\nUse /yes to approach or /no to leave the Queen's fountain\nundisturbed.",
-    "bossPromptTwitch": "The silver tear expands across the basin.\n\nA regal figure forms within the flowing water.\n\nUse !yes to approach or !no to leave the Queen's fountain\nundisturbed.",
+    "bossPromptDiscord": "The silver tear expands across the basin.\n\nA regal figure forms within the flowing water.\n\nUse /yes to approach or /no to leave the Queen's fountain undisturbed.",
+    "bossPromptTwitch": "The silver tear expands across the basin.\n\nA regal figure forms within the flowing water.\n\nUse !yes to approach or !no to leave the Queen's fountain undisturbed.",
     "bossRetreatText": "You withdraw from Lamentation Basin. The royal challenge will wait.",
     "boss": {
         "enemyId": "sorrow-tide-queen-boss",
         "roomId": "boss",
-        "revealText": "Sorrow-Tide Queen reveals itself!"
+        "revealText": "Sorrow Tide Queen reveals itself!"
     },
     "completionText": "The figure dissolves back into the fountain.\n\nThe silver tear remains.\n\nStill beautiful."
 }

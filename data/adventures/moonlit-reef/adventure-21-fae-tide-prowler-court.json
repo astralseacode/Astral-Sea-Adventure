@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "prowler-gallery",
-          "message": "A moon-shell coffer rests beneath a sign that politely requests 'ONE SECRET FOR ENTRY.' You tell it nothing. The latch opens anyway. Inside are Star Candies. Fae security remains questionable.",
+          "message": "A moon shell coffer rests beneath a sign that politely requests 'ONE SECRET FOR ENTRY.' You tell it nothing. The latch opens anyway. Inside are Star Candies. Fae security remains questionable.",
           "reward": {
             "min": 45,
             "max": 75

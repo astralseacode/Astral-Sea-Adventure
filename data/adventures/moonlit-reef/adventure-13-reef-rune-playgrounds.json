@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer is locked behind a rune combination. An otter helpfully demonstrates the sequence, then immediately tries to cover its own eyes. You collect Star Candies.",
+          "message": "A moon shell coffer is locked behind a rune combination. An otter helpfully demonstrates the sequence, then immediately tries to cover its own eyes. You collect Star Candies.",
           "reward": {
             "min": 45,
             "max": 80
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "reef-rune-trickster-boss",
     "roomId": "boss",
-    "revealText": "The runes explode into motion as the Reef-Rune Trickster bounds onto the tableau!"
+    "revealText": "The runes explode into motion as the Reef Rune Trickster bounds onto the tableau!"
   },
   "completionText": "The Trickster finally drops its last rune. The audience of otters goes silent... then erupts into frantic applause. A new path lights up. One otter quietly changes the scoreboard after you turn away."
 }

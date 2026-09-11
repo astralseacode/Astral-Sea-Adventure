@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "astral-convergence-warden",
     "recommendedLevel": 50,
-    "introDiscord": "Everything returns at once.\n\nMoonlit coral.\n\nStarfall crystal.\n\nWhispering roots.\n\nLeviathan bones.\n\nSunken palace stone.\n\nNexus starlight.\n\nAll six roads meet here.",
-    "introTwitch": "Everything returns at once.\n\nMoonlit coral.\n\nStarfall crystal.\n\nWhispering roots.\n\nLeviathan bones.\n\nSunken palace stone.\n\nNexus starlight.\n\nAll six roads meet here.",
+    "introDiscord": "Everything returns at once.\n\nMoonlit coral. Starfall crystal. Whispering roots.\n\nLeviathan bones. Sunken palace stone. Nexus starlight.\n\nAll six roads meet here.",
+    "introTwitch": "Everything returns at once.\n\nMoonlit coral. Starfall crystal. Whispering roots.\n\nLeviathan bones. Sunken palace stone. Nexus starlight.\n\nAll six roads meet here.",
     "startRoomId": "convergence-threshold-approach",
     "rooms": {
         "convergence-threshold-approach": {
@@ -63,13 +63,13 @@
             }
         },
         "convergence-threshold-threshold": {
-            "prompt": "Near Heart-Crossing Seal, three final routes cross the edge of reality.",
+            "prompt": "Near Heart Crossing Seal, three final routes cross the edge of reality.",
             "choices": {
                 "left": {
                     "type": "healing",
                     "nextRoomId": "boss-antechamber",
                     "healAmount": 10,
-                    "message": "The Heart-Crossing current restores you.",
+                    "message": "The Heart Crossing current restores you.",
                     "fullHpMessage": "You leave the restorative untouched. You're already at full health."
                 },
                 "right": {
@@ -81,7 +81,7 @@
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "boss-antechamber",
-                    "message": "A chest bears symbols from Moonlit Reef, Starfall Trench, Whispering\nKelp Forest, Leviathan's Wake, Sunken King's Throne and Astral Nexus.",
+                    "message": "A chest bears symbols from Moonlit Reef, Starfall Trench, Whispering Kelp Forest, Leviathan's Wake, Sunken King's Throne and Astral Nexus.",
                     "reward": {
                         "min": 141,
                         "max": 185
@@ -90,14 +90,14 @@
             }
         },
         "boss-antechamber": {
-            "name": "Heart-Crossing Seal",
+            "name": "Heart Crossing Seal",
             "type": "boss-prompt",
-            "prompt": "Heart-Crossing Seal opens."
+            "prompt": "Heart Crossing Seal opens."
         }
     },
-    "bossPromptDiscord": "Heart-Crossing Seal opens.\n\nBehind it, every region appears at once.\n\nA final guardian stands between the mapped Astral Sea and whatever lies\npast it.\n\nUse /yes to cross or /no to stand at the edge of the known\nworld a little longer.",
-    "bossPromptTwitch": "Heart-Crossing Seal opens.\n\nBehind it, every region appears at once.\n\nA final guardian stands between the mapped Astral Sea and whatever lies\npast it.\n\nUse !yes to cross or !no to stand at the edge of the known\nworld a little longer.",
-    "bossRetreatText": "You withdraw from Heart-Crossing Seal. The impossible guardian will wait.",
+    "bossPromptDiscord": "Heart Crossing Seal opens.\n\nBehind it, every region appears at once.\n\nA final guardian stands between the mapped Astral Sea and whatever lies past it.\n\nUse /yes to cross or /no to stand at the edge of the known world a little longer.",
+    "bossPromptTwitch": "Heart Crossing Seal opens.\n\nBehind it, every region appears at once.\n\nA final guardian stands between the mapped Astral Sea and whatever lies past it.\n\nUse !yes to cross or !no to stand at the edge of the known world a little longer.",
+    "bossRetreatText": "You withdraw from Heart Crossing Seal. The impossible guardian will wait.",
     "boss": {
         "enemyId": "nexus-prime-warden-boss",
         "roomId": "boss",

@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "drowned-duelist",
     "recommendedLevel": 42,
-    "introDiscord": "A massive arena lies beyond the palace walls.\n\nBroken lances, spectator boxes, banners, and stone tournament lanes\nreveal what this place really was:\n\nthe kingdom's royal jousting grounds.\n\nShizuki's excitement is documented extensively.",
-    "introTwitch": "A massive arena lies beyond the palace walls.\n\nBroken lances, spectator boxes, banners, and stone tournament lanes\nreveal what this place really was:\n\nthe kingdom's royal jousting grounds.\n\nShizuki's excitement is documented extensively.",
+    "introDiscord": "A massive arena lies beyond the palace walls. Broken lances, spectator boxes, banners, and stone tournament lanes reveal what this place really was: the kingdom's royal jousting grounds. Shizuki's excitement is documented extensively.",
+    "introTwitch": "A massive arena lies beyond the palace walls. Broken lances, spectator boxes, banners, and stone tournament lanes reveal what this place really was: the kingdom's royal jousting grounds. Shizuki's excitement is documented extensively.",
     "startRoomId": "drowned-lists-approach",
     "rooms": {
         "drowned-lists-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The spectator stands remain empty."
         }
     },
-    "bossPromptDiscord": "The spectator stands remain empty.\n\nStill, the arena bells ring.\n\nOne armored champion enters the opposite side of the tournament floor.\n\nUse /yes to enter the final royal match or /no to retire\nwith Shizuki's undefeated 1–0 record intact.",
-    "bossPromptTwitch": "The spectator stands remain empty.\n\nStill, the arena bells ring.\n\nOne armored champion enters the opposite side of the tournament floor.\n\nUse !yes to enter the final royal match or !no to retire\nwith Shizuki's undefeated 1–0 record intact.",
+    "bossPromptDiscord": "The spectator stands remain empty.\n\nStill, the arena bells ring.\n\nOne armored champion enters the opposite side of the tournament floor.\n\nUse /yes to enter the final royal match or /no to retire with Shizuki's undefeated 1–0 record intact.",
+    "bossPromptTwitch": "The spectator stands remain empty.\n\nStill, the arena bells ring.\n\nOne armored champion enters the opposite side of the tournament floor.\n\nUse !yes to enter the final royal match or !no to retire with Shizuki's undefeated 1–0 record intact.",
     "bossRetreatText": "You withdraw from Tidal Tournament Floor. The royal challenge will wait.",
     "boss": {
         "enemyId": "champion-of-the-last-court-boss",

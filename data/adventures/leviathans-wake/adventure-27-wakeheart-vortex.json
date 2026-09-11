@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "wakeheart-elemental",
     "recommendedLevel": 29,
-    "introDiscord": "Every ancient current in Leviathan's Wake seems to bend toward one\nplace.\n\nWakeheart Vortex.\n\nThe graveyard has no living heart.\n\nThe water behaves as if it does.",
-    "introTwitch": "Every ancient current in Leviathan's Wake seems to bend toward one\nplace.\n\nWakeheart Vortex.\n\nThe graveyard has no living heart.\n\nThe water behaves as if it does.",
+    "introDiscord": "Every ancient current in Leviathan's Wake seems to bend toward one place.\n\nWakeheart Vortex.\n\nThe graveyard has no living heart.\n\nThe water behaves as if it does.",
+    "introTwitch": "Every ancient current in Leviathan's Wake seems to bend toward one place.\n\nWakeheart Vortex.\n\nThe graveyard has no living heart.\n\nThe water behaves as if it does.",
     "startRoomId": "wakeheart-vortex-approach",
     "rooms": {
         "wakeheart-vortex-approach": {
@@ -95,13 +95,13 @@
             "prompt": "Every current in Leviathan's Wake seems to pause."
         }
     },
-    "bossPromptDiscord": "Every current in Leviathan's Wake seems to pause.\n\nThen:\n\none pulse.\n\nAnother.\n\nThe entire graveyard answers.\n\nSomething enormous forms at the center of the water itself.\n\nUse /yes to enter Endless Current Core or /no to leave the Wake's\n'definitely not heartbeat' unexplained.",
-    "bossPromptTwitch": "Every current in Leviathan's Wake seems to pause.\n\nThen:\n\none pulse.\n\nAnother.\n\nThe entire graveyard answers.\n\nSomething enormous forms at the center of the water itself.\n\nUse !yes to enter Endless Current Core or !no to leave the Wake's\n'definitely not heartbeat' unexplained.",
+    "bossPromptDiscord": "Every current in Leviathan's Wake seems to pause.\n\nThen:\n\none pulse.\n\nAnother.\n\nThe entire graveyard answers.\n\nSomething enormous forms at the center of the water itself.\n\nUse /yes to enter Endless Current Core or /no to leave the Wake's 'definitely not heartbeat' unexplained.",
+    "bossPromptTwitch": "Every current in Leviathan's Wake seems to pause.\n\nThen:\n\none pulse.\n\nAnother.\n\nThe entire graveyard answers.\n\nSomething enormous forms at the center of the water itself.\n\nUse !yes to enter Endless Current Core or !no to leave the Wake's 'definitely not heartbeat' unexplained.",
     "bossRetreatText": "You withdraw.\n\nThe distant rhythm continues.",
     "boss": {
         "enemyId": "heart-of-the-wake-boss",
         "roomId": "boss",
         "revealText": "Ancient wake currents twist into a towering living form.\n\nHeart of the Wake reveals itself!"
     },
-    "completionText": "The Heart disperses.\n\nThe currents continue flowing along routes carved by Leviathans that\nhave been dead for ages.\n\nNo heartbeat.\n\nShizuki wins.\n\nTechnically."
+    "completionText": "The Heart disperses.\n\nThe currents continue flowing along routes carved by Leviathans that have been dead for ages.\n\nNo heartbeat.\n\nShizuki wins.\n\nTechnically."
 }

@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "foldspace-nautilus",
     "recommendedLevel": 50,
-    "introDiscord": "The path spirals inward.\n\nThen keeps spiraling inward.\n\nThe inside somehow becomes larger than the outside.",
-    "introTwitch": "The path spirals inward.\n\nThen keeps spiraling inward.\n\nThe inside somehow becomes larger than the outside.",
+    "introDiscord": "The path spirals inward. Then keeps spiraling inward.\n\nThe inside somehow becomes larger than the outside.",
+    "introTwitch": "The path spirals inward. Then keeps spiraling inward.\n\nThe inside somehow becomes larger than the outside.",
     "startRoomId": "foldspace-spiral-approach",
     "rooms": {
         "foldspace-spiral-approach": {
@@ -16,7 +16,7 @@
                     "type": "combat",
                     "nextRoomId": "foldspace-spiral-depths",
                     "enemyId": "foldspace-nautilus",
-                    "message": "A Foldspace Nautilus retreats into its shell and reappears fifty feet\naway without crossing the distance."
+                    "message": "A Foldspace Nautilus retreats into its shell and reappears fifty feet away without crossing the distance."
                 },
                 "right": {
                     "type": "empty",
@@ -101,7 +101,7 @@
     "boss": {
         "enemyId": "infinite-chamber-nautilus-boss",
         "roomId": "boss",
-        "revealText": "The innermost shell opens into impossible distance.\n\nInfinite-Chamber Nautilus reveals itself!"
+        "revealText": "The innermost shell opens into impossible distance.\n\nInfinite Chamber Nautilus reveals itself!"
     },
     "completionText": "The shell closes.\n\nIt now fits comfortably in your palm.\n\nAbsolutely unacceptable."
 }

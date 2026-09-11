@@ -170,7 +170,7 @@
     {
         "number": 22,
         "id": "pearl-throne-approach",
-        "name": "Pearl-Throne Approach",
+        "name": "Pearl Throne Approach",
         "enemyId": "pearl-throne-sentinel",
         "bossEnemyId": "mother-of-pearl-warden-boss",
         "file": "adventure-22-pearl-throne-approach.json"

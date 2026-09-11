@@ -5,8 +5,8 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "mosscloak-octopus",
   "recommendedLevel": 13,
-  "introDiscord": "A maze of moss-covered roots closes around the trail. Mosscloak\nOctopuses vanish against nearly any surface, meaning every perfectly\nordinary patch of greenery is now legally suspicious.",
-  "introTwitch": "A maze of moss-covered roots closes around the trail. Mosscloak\nOctopuses vanish against nearly any surface, meaning every perfectly\nordinary patch of greenery is now legally suspicious.",
+  "introDiscord": "A maze of moss covered roots closes around the trail. Mosscloak Octopuses vanish against nearly any surface, meaning every perfectly ordinary patch of greenery is now legally suspicious.",
+  "introTwitch": "A maze of moss covered roots closes around the trail. Mosscloak Octopuses vanish against nearly any surface, meaning every perfectly ordinary patch of greenery is now legally suspicious.",
   "startRoomId": "mosscloak-maze-approach",
   "rooms": {
     "mosscloak-maze-approach": {
@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "mosscloak-maze-depths",
-          "message": "An offering basket hides inside a living root. The moss covering it\nslides away when you reach for the Star Candies.\n\nThe moss has eyes.\n\nYou choose not to investigate.",
+          "message": "An offering basket hides inside a living root. The moss covering it slides away when you reach for the Star Candies.\n\nThe moss has eyes.\n\nYou choose not to investigate.",
           "reward": {
             "min": 155,
             "max": 193
@@ -36,20 +36,20 @@
       }
     },
     "mosscloak-maze-depths": {
-      "prompt": "Living roots divide into three passages covered in nearly identical\ngreen growth.",
+      "prompt": "Living roots divide into three passages covered in nearly identical green growth.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "mosscloak-maze-threshold",
           "healAmount": 50,
           "message": "A moonblossom pool rests beneath Shizuki's inspection sign:\n\n'POOL: real.\nROCK: real.\nMOSS: questionable.\nME: tired.'",
-          "fullHpMessage": "You leave the restorative pool untouched and accept Shizuki's official\nmoss classification."
+          "fullHpMessage": "You leave the restorative pool untouched and accept Shizuki's official moss classification."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "mosscloak-maze-threshold",
           "enemyId": "mosscloak-octopus",
-          "message": "A moss-covered stone shifts aside.\n\nEight arms unfold.\n\nYou are beginning to resent environmental décor."
+          "message": "A moss covered stone shifts aside.\n\nEight arms unfold.\n\nYou are beginning to resent environmental décor."
         },
         "forward": {
           "type": "treasure",
@@ -63,7 +63,7 @@
       }
     },
     "mosscloak-maze-threshold": {
-      "prompt": "Moonlit fronds surround Green Masquerade, where every wall, root, and\nstone wears the same thick emerald moss.",
+      "prompt": "Moonlit fronds surround Green Masquerade, where every wall, root, and stone wears the same thick emerald moss.",
       "choices": {
         "left": {
           "type": "treasure",
@@ -79,7 +79,7 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 55,
           "message": "Restorative sap rests beneath Shizuki's note:\n\n'Medicine real.\n\nBottle real.\n\nTable was Octopus.\n\nStill upset.'",
-          "fullHpMessage": "You leave the medicine untouched. The table incident remains\nemotionally unresolved."
+          "fullHpMessage": "You leave the medicine untouched. The table incident remains emotionally unresolved."
         },
         "forward": {
           "type": "combat",
@@ -95,13 +95,13 @@
       "prompt": "Every patch of moss in Green Masquerade changes color simultaneously."
     }
   },
-  "bossPromptDiscord": "The walls move.\n\nThen the floor.\n\nThen half the chamber peels itself away from the roots.\n\nWhat looked like an overgrown grove has been hiding one enormous\npresence in plain sight.\n\nUse /yes to enter Green Masquerade or /no to reconsider every piece of\nmoss you have ever trusted.",
-  "bossPromptTwitch": "The walls move.\n\nThen the floor.\n\nThen half the chamber peels itself away from the roots.\n\nWhat looked like an overgrown grove has been hiding one enormous\npresence in plain sight.\n\nUse !yes to enter Green Masquerade or !no to reconsider every piece of\nmoss you have ever trusted.",
-  "bossRetreatText": "You retreat from Green Masquerade.\n\nBehind you, the entire chamber becomes perfectly ordinary greenery\nagain.\n\nAbsolutely not.",
+  "bossPromptDiscord": "The walls move.\n\nThen the floor.\n\nThen half the chamber peels itself away from the roots.\n\nWhat looked like an overgrown grove has been hiding one enormous presence in plain sight.\n\nUse /yes to enter Green Masquerade or /no to reconsider every piece of moss you have ever trusted.",
+  "bossPromptTwitch": "The walls move.\n\nThen the floor.\n\nThen half the chamber peels itself away from the roots.\n\nWhat looked like an overgrown grove has been hiding one enormous presence in plain sight.\n\nUse !yes to enter Green Masquerade or !no to reconsider every piece of moss you have ever trusted.",
+  "bossRetreatText": "You retreat from Green Masquerade.\n\nBehind you, the entire chamber becomes perfectly ordinary greenery again.\n\nAbsolutely not.",
   "boss": {
     "enemyId": "ancient-mosscloak-boss",
     "roomId": "boss",
-    "revealText": "Eight enormous arms unfold from the moss-covered walls.\n\nAncient Mosscloak reveals itself!"
+    "revealText": "Eight enormous arms unfold from the moss covered walls.\n\nAncient Mosscloak reveals itself!"
   },
-  "completionText": "\"The Ancient Mosscloak disappears back into the forest.\n\nYou know it is somewhere nearby.\n\nThe forest looks completely normal.\n\nThis is no longer comforting.\"\n\n\n#################################################################"
+  "completionText": "\"The Ancient Mosscloak disappears back into the forest.\n\nYou know it is somewhere nearby.\n\nThe forest looks completely normal.\n\nThis is no longer comforting.\"\n\n#################################################################"
 }

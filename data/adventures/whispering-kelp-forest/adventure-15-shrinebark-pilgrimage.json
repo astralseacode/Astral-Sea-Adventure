@@ -5,8 +5,8 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "shrinebark-guardian",
   "recommendedLevel": 15,
-  "introDiscord": "Old shrine trees line a ceremonial route through the forest. Their bark\nis covered in offerings left by generations of travelers, while\nShrinebark Guardians quietly watch each step.",
-  "introTwitch": "Old shrine trees line a ceremonial route through the forest. Their bark\nis covered in offerings left by generations of travelers, while\nShrinebark Guardians quietly watch each step.",
+  "introDiscord": "Old shrine trees line a ceremonial route through the forest. Their bark is covered in offerings left by generations of travelers, while Shrinebark Guardians quietly watch each step.",
+  "introTwitch": "Old shrine trees line a ceremonial route through the forest. Their bark is covered in offerings left by generations of travelers, while Shrinebark Guardians quietly watch each step.",
   "startRoomId": "shrinebark-pilgrimage-approach",
   "rooms": {
     "shrinebark-pilgrimage-approach": {
@@ -17,18 +17,18 @@
           "nextRoomId": "shrinebark-pilgrimage-depths",
           "healAmount": 37,
           "message": "Restorative sap rests in a folded ceremonial leaf.\n\nShizuki left one shiny pebble beside it and wrote:\n\n'Borrowed medicine.\n\nLeft payment.\n\nPebble excellent quality.'",
-          "fullHpMessage": "You leave the restorative sap and Shizuki's premium ceremonial pebble\nundisturbed."
+          "fullHpMessage": "You leave the restorative sap and Shizuki's premium ceremonial pebble undisturbed."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "shrinebark-pilgrimage-depths",
           "enemyId": "shrinebark-guardian",
-          "message": "A Shrinebark Guardian steps from beside the path and taps its staff\nagainst the root once.\n\nYou do not know the rule you broke.\n\nUnfortunately, it does."
+          "message": "A Shrinebark Guardian steps from beside the path and taps its staff against the root once.\n\nYou do not know the rule you broke.\n\nUnfortunately, it does."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "shrinebark-pilgrimage-depths",
-          "message": "A moss-covered shrine coffer contains Star Candies beneath dozens of\nold travel tokens.\n\nShizuki's pebble is somehow the shiniest offering.",
+          "message": "A moss covered shrine coffer contains Star Candies beneath dozens of old travel tokens.\n\nShizuki's pebble is somehow the shiniest offering.",
           "reward": {
             "min": 130,
             "max": 169
@@ -37,7 +37,7 @@
       }
     },
     "shrinebark-pilgrimage-depths": {
-      "prompt": "Towering kelp columns rise around three deeper pilgrimage routes.\nAncient carvings suggest travelers once stopped at every shrine.",
+      "prompt": "Towering kelp columns rise around three deeper pilgrimage routes. Ancient carvings suggest travelers once stopped at every shrine.",
       "choices": {
         "left": {
           "type": "empty",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "shrinebark-pilgrimage-threshold",
-          "message": "An offering basket hidden inside an old root contains Star Candies and\nseveral polished shells.",
+          "message": "An offering basket hidden inside an old root contains Star Candies and several polished shells.",
           "reward": {
             "min": 142,
             "max": 181
@@ -63,7 +63,7 @@
       }
     },
     "shrinebark-pilgrimage-threshold": {
-      "prompt": "Living rootways lead toward Old Bark Sanctuary. Three paths cross\nbeneath ancient prayer ribbons.",
+      "prompt": "Living rootways lead toward Old Bark Sanctuary. Three paths cross beneath ancient prayer ribbons.",
       "choices": {
         "left": {
           "type": "combat",
@@ -76,12 +76,12 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 42,
           "message": "A tranquil grove pool sits beneath Shizuki's note:\n\n'Pilgrimage status:\nRespectful.\nMostly.\nGlimmer wore offering ribbon as cape for ten minutes.'",
-          "fullHpMessage": "You leave the pool untouched. No further ceremonial incidents are\nrequired."
+          "fullHpMessage": "You leave the pool untouched. No further ceremonial incidents are required."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Broad silver kelp wraps a cache of Star Candies beneath a carved image\nof the oldest roots.",
+          "message": "Broad silver kelp wraps a cache of Star Candies beneath a carved image of the oldest roots.",
           "reward": {
             "min": 154,
             "max": 193
@@ -92,16 +92,16 @@
     "boss-antechamber": {
       "name": "Old Bark Sanctuary",
       "type": "boss-prompt",
-      "prompt": "Every Shrinebark Guardian along the pilgrimage kneels toward the oldest\ntree."
+      "prompt": "Every Shrinebark Guardian along the pilgrimage kneels toward the oldest tree."
     }
   },
-  "bossPromptDiscord": "The bark of Old Bark Sanctuary begins to glow.\n\nAncient carvings awaken one by one as the roots split around a towering\nfigure that has stood within the tree for longer than the surrounding\nshrines.\n\nUse /yes to approach the Sanctuary or /no to leave the oldest Guardian\nto its watch.",
-  "bossPromptTwitch": "The bark of Old Bark Sanctuary begins to glow.\n\nAncient carvings awaken one by one as the roots split around a towering\nfigure that has stood within the tree for longer than the surrounding\nshrines.\n\nUse !yes to approach the Sanctuary or !no to leave the oldest Guardian\nto its watch.",
-  "bossRetreatText": "You step away from the Sanctuary. The old carvings dim, and the\nGuardians remain kneeling.",
+  "bossPromptDiscord": "The bark of Old Bark Sanctuary begins to glow.\n\nAncient carvings awaken one by one as the roots split around a towering figure that has stood within the tree for longer than the surrounding shrines.\n\nUse /yes to approach the Sanctuary or /no to leave the oldest Guardian to its watch.",
+  "bossPromptTwitch": "The bark of Old Bark Sanctuary begins to glow.\n\nAncient carvings awaken one by one as the roots split around a towering figure that has stood within the tree for longer than the surrounding shrines.\n\nUse !yes to approach the Sanctuary or !no to leave the oldest Guardian to its watch.",
+  "bossRetreatText": "You step away from the Sanctuary. The old carvings dim, and the Guardians remain kneeling.",
   "boss": {
     "enemyId": "first-root-guardian-boss",
     "roomId": "boss",
-    "revealText": "The ancient bark opens and a massive guardian steps from the heartwood.\n\nFirst-Root Guardian reveals itself!"
+    "revealText": "The ancient bark opens and a massive guardian steps from the heartwood.\n\nFirst Root Guardian reveals itself!"
   },
-  "completionText": "\"The First-Root Guardian returns to the ancient tree.\n\nThe pilgrimage route opens ahead.\n\nShizuki's shiny pebble remains on the shrine.\n\nAccepted, apparently.\"\n\n\n#################################################################"
+  "completionText": "\"The First Root Guardian returns to the ancient tree.\n\nThe pilgrimage route opens ahead.\n\nShizuki's shiny pebble remains on the shrine.\n\nAccepted, apparently.\"\n\n#################################################################"
 }

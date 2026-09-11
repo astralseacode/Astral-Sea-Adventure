@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "abysslung-manta",
     "recommendedLevel": 25,
-    "introDiscord": "The graveyard opens into a vast dark expanse.\n\nLeviathan skeletons hang over the abyss while Abysslung Mantas glide\nbetween them like birds between ruined towers.",
-    "introTwitch": "The graveyard opens into a vast dark expanse.\n\nLeviathan skeletons hang over the abyss while Abysslung Mantas glide\nbetween them like birds between ruined towers.",
+    "introDiscord": "The graveyard opens into a vast dark expanse. Leviathan skeletons hang over the abyss while Abysslung Mantas glide between them like birds between ruined towers.",
+    "introTwitch": "The graveyard opens into a vast dark expanse. Leviathan skeletons hang over the abyss while Abysslung Mantas glide between them like birds between ruined towers.",
     "startRoomId": "abysslung-expanse-approach",
     "rooms": {
         "abysslung-expanse-approach": {
@@ -95,8 +95,8 @@
             "prompt": "The smaller Mantas vanish below."
         }
     },
-    "bossPromptDiscord": "The smaller Mantas vanish below.\n\nSomething enormous spreads its wings beneath Voidspan.\n\nFor several seconds it blocks what little light reaches the abyss.\n\nUse /yes to cross Voidspan or /no to stay somewhere the darkness has\nfewer wings.",
-    "bossPromptTwitch": "The smaller Mantas vanish below.\n\nSomething enormous spreads its wings beneath Voidspan.\n\nFor several seconds it blocks what little light reaches the abyss.\n\nUse !yes to cross Voidspan or !no to stay somewhere the darkness has\nfewer wings.",
+    "bossPromptDiscord": "The smaller Mantas vanish below.\n\nSomething enormous spreads its wings beneath Voidspan.\n\nFor several seconds it blocks what little light reaches the abyss.\n\nUse /yes to cross Voidspan or /no to stay somewhere the darkness has fewer wings.",
+    "bossPromptTwitch": "The smaller Mantas vanish below.\n\nSomething enormous spreads its wings beneath Voidspan.\n\nFor several seconds it blocks what little light reaches the abyss.\n\nUse !yes to cross Voidspan or !no to stay somewhere the darkness has fewer wings.",
     "bossRetreatText": "You retreat toward solid bone.\n\nThat sentence should not be comforting.",
     "boss": {
         "enemyId": "gravewing-manta-boss",

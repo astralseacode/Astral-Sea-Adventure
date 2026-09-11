@@ -166,7 +166,7 @@
                        "max":  735
                    },
         "xp":  145,
-        "message":  "Rows of water-preserved books and magical tablets fill the archive. A restoration enchantment briefly revives damaged pages, revealing children\u0027s tales, recipes, city maps, and ordinary family stories. One book compartment holds {reward} Star Candies and a Travel Note.",
+        "message":  "Rows of water preserved books and magical tablets fill the archive. A restoration enchantment briefly revives damaged pages, revealing children\u0027s tales, recipes, city maps, and ordinary family stories. One book compartment holds {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "sunken-kings-throne-note-08",
@@ -468,7 +468,7 @@
         "region":  "Sunken King\u0027s Throne",
         "rarity":  "epic",
         "weight":  8,
-        "title":  "Pearl-Throne Gate",
+        "title":  "Pearl Throne Gate",
         "reward":  {
                        "min":  800,
                        "max":  1000

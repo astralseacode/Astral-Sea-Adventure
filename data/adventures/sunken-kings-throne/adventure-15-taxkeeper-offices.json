@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "taxkeeper-octopus",
     "recommendedLevel": 40,
-    "introDiscord": "Beyond the chapel lies an enormous royal kitchen.\n\nCopper pots hang from the ceiling, ovens line the walls, banquet carts\nfloat between preparation tables, and several Octopuses have made\nthemselves suspiciously comfortable among the cookware.\n\nShizuki appears to have attempted cooking here.\n\nThere are scorch marks underwater.\n\nDo not ask.",
-    "introTwitch": "Beyond the chapel lies an enormous royal kitchen.\n\nCopper pots hang from the ceiling, ovens line the walls, banquet carts\nfloat between preparation tables, and several Octopuses have made\nthemselves suspiciously comfortable among the cookware.\n\nShizuki appears to have attempted cooking here.\n\nThere are scorch marks underwater.\n\nDo not ask.",
+    "introDiscord": "Beyond the chapel lies an enormous royal kitchen. Copper pots hang from the ceiling, ovens line the walls, banquet carts float between preparation tables, and several Octopuses have made themselves suspiciously comfortable among the cookware.\n\nShizuki appears to have attempted cooking here.\n\nThere are scorch marks underwater.\n\nDo not ask.",
+    "introTwitch": "Beyond the chapel lies an enormous royal kitchen. Copper pots hang from the ceiling, ovens line the walls, banquet carts float between preparation tables, and several Octopuses have made themselves suspiciously comfortable among the cookware.\n\nShizuki appears to have attempted cooking here.\n\nThere are scorch marks underwater.\n\nDo not ask.",
     "startRoomId": "taxkeeper-offices-approach",
     "rooms": {
         "taxkeeper-offices-approach": {
@@ -23,7 +23,7 @@
                     "type": "combat",
                     "nextRoomId": "taxkeeper-offices-depths",
                     "enemyId": "taxkeeper-octopus",
-                    "message": "An Octopus rises from inside an enormous soup pot wearing the lid like\na helmet."
+                    "message": "An Octopus rises from inside an enormous soup pot wearing the lid like a helmet."
                 },
                 "forward": {
                     "type": "treasure",
@@ -95,13 +95,13 @@
             "prompt": "The grand kitchen doors slam open."
         }
     },
-    "bossPromptDiscord": "The grand kitchen doors slam open.\n\nPots, pans, ladles, plates, and serving trays begin moving all at once.\n\nAt the center, an enormous Octopus rises from the royal cauldron holding\neight pieces of cookware like ceremonial weapons.\n\nUse /yes to enter the Grand Banquet Kitchen or /no to\nrespect the head chef.",
-    "bossPromptTwitch": "The grand kitchen doors slam open.\n\nPots, pans, ladles, plates, and serving trays begin moving all at once.\n\nAt the center, an enormous Octopus rises from the royal cauldron holding\neight pieces of cookware like ceremonial weapons.\n\nUse !yes to enter the Grand Banquet Kitchen or !no to\nrespect the head chef.",
+    "bossPromptDiscord": "The grand kitchen doors slam open.\n\nPots, pans, ladles, plates, and serving trays begin moving all at once.\n\nAt the center, an enormous Octopus rises from the royal cauldron holding eight pieces of cookware like ceremonial weapons.\n\nUse /yes to enter the Grand Banquet Kitchen or /no to respect the head chef.",
+    "bossPromptTwitch": "The grand kitchen doors slam open.\n\nPots, pans, ladles, plates, and serving trays begin moving all at once.\n\nAt the center, an enormous Octopus rises from the royal cauldron holding eight pieces of cookware like ceremonial weapons.\n\nUse !yes to enter the Grand Banquet Kitchen or !no to respect the head chef.",
     "bossRetreatText": "You withdraw from Grand Banquet Kitchen. The royal challenge will wait.",
     "boss": {
         "enemyId": "exchequer-krakenet-boss",
         "roomId": "boss",
-        "revealText": "Royal Master-Chef Krakenet reveals itself!"
+        "revealText": "Royal Master Chef Krakenet reveals itself!"
     },
     "completionText": "The kitchen settles.\n\nShizuki's final recipe remains pinned to the wall:\n\n'Cooking Is Not Alchemy.\n\nApparently.\n\nStill investigating.'"
 }

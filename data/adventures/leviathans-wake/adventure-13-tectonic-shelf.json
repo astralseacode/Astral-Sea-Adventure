@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "tectonic-barnacle",
     "recommendedLevel": 24,
-    "introDiscord": "A Leviathan skeleton lies beneath so much sediment that an entire shelf\nhas grown across its back.\n\nThe Barnacles here have mistaken ancient bones for geological features.\n\nFair.",
-    "introTwitch": "A Leviathan skeleton lies beneath so much sediment that an entire shelf\nhas grown across its back.\n\nThe Barnacles here have mistaken ancient bones for geological features.\n\nFair.",
+    "introDiscord": "A Leviathan skeleton lies beneath so much sediment that an entire shelf has grown across its back. The Barnacles here have mistaken ancient bones for geological features.\n\nFair.",
+    "introTwitch": "A Leviathan skeleton lies beneath so much sediment that an entire shelf has grown across its back. The Barnacles here have mistaken ancient bones for geological features.\n\nFair.",
     "startRoomId": "tectonic-shelf-approach",
     "rooms": {
         "tectonic-shelf-approach": {
@@ -95,13 +95,13 @@
             "prompt": "The shelf begins lifting."
         }
     },
-    "bossPromptDiscord": "The shelf begins lifting.\n\nNot shaking.\n\nLifting.\n\nAn enormous crown of stone-covered plates opens at its center.\n\nUse /yes to approach Moving Bedrock or /no to stop trusting geology.",
-    "bossPromptTwitch": "The shelf begins lifting.\n\nNot shaking.\n\nLifting.\n\nAn enormous crown of stone-covered plates opens at its center.\n\nUse !yes to approach Moving Bedrock or !no to stop trusting geology.",
+    "bossPromptDiscord": "The shelf begins lifting.\n\nNot shaking.\n\nLifting.\n\nAn enormous crown of stone covered plates opens at its center.\n\nUse /yes to approach Moving Bedrock or /no to stop trusting geology.",
+    "bossPromptTwitch": "The shelf begins lifting.\n\nNot shaking.\n\nLifting.\n\nAn enormous crown of stone covered plates opens at its center.\n\nUse !yes to approach Moving Bedrock or !no to stop trusting geology.",
     "bossRetreatText": "You retreat onto different questionable geology.",
     "boss": {
         "enemyId": "quake-crown-barnacle-boss",
         "roomId": "boss",
-        "revealText": "The stone shell splits wide.\n\nQuake-Crown Barnacle reveals itself!"
+        "revealText": "The stone shell splits wide.\n\nQuake Crown Barnacle reveals itself!"
     },
     "completionText": "The shelf settles.\n\nNothing moves.\n\nYou trust nothing."
 }

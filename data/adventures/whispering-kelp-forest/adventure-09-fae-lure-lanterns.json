@@ -1,34 +1,34 @@
 {
   "id": "fae-lure-lanterns",
   "number": 9,
-  "name": "Fae-Lure Lanterns",
+  "name": "Fae Lure Lanterns",
   "regionId": "whispering-kelp-forest",
   "enemyId": "fae-lure-angler",
   "recommendedLevel": 13,
-  "introDiscord": "Floating Fae lanterns illuminate the grove ahead. Some lead toward\nsafe paths. Some lead toward treasure. Some are attached to enormous\nteeth. The forest provides no labeling system.",
-  "introTwitch": "Floating Fae lanterns illuminate the grove ahead. Some lead toward\nsafe paths. Some lead toward treasure. Some are attached to enormous\nteeth. The forest provides no labeling system.",
+  "introDiscord": "Floating Fae lanterns illuminate the grove ahead. Some lead toward safe paths. Some lead toward treasure. Some are attached to enormous teeth. The forest provides no labeling system.",
+  "introTwitch": "Floating Fae lanterns illuminate the grove ahead. Some lead toward safe paths. Some lead toward treasure. Some are attached to enormous teeth. The forest provides no labeling system.",
   "startRoomId": "fae-lure-lanterns-approach",
   "rooms": {
     "fae-lure-lanterns-approach": {
-      "prompt": "Three routes are marked by drifting lights: silver, blue, and a very\nfriendly-looking gold.",
+      "prompt": "Three routes are marked by drifting lights: silver, blue, and a very friendly-looking gold.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "fae-lure-lanterns-depths",
           "healAmount": 52,
-          "message": "Restorative sap rests beneath a genuine Fae lantern. Shizuki added a\nsign:\n\n'REAL LIGHT.\n\nChecked for teeth TWICE.'",
-          "fullHpMessage": "You leave the sap untouched. The lantern continues its successful\ncareer as a non-predatory object."
+          "message": "Restorative sap rests beneath a genuine Fae lantern. Shizuki added a sign:\n\n'REAL LIGHT.\n\nChecked for teeth TWICE.'",
+          "fullHpMessage": "You leave the sap untouched. The lantern continues its successful career as a non-predatory object."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "fae-lure-lanterns-depths",
           "enemyId": "fae-lure-angler",
-          "message": "The golden lantern drifts closer.\n\nYou wait.\n\nIt blinks.\n\nLanterns do not blink.\n\nA Fae-Lure Angler lunges from the darkness."
+          "message": "The golden lantern drifts closer.\n\nYou wait.\n\nIt blinks.\n\nLanterns do not blink.\n\nA Fae Lure Angler lunges from the darkness."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "fae-lure-lanterns-depths",
-          "message": "A moss-covered shrine coffer sits beneath three harmless Fae lights.\nInside are Star Candies and one handwritten tag:\n\n'These lights passed inspection.'",
+          "message": "A moss covered shrine coffer sits beneath three harmless Fae lights. Inside are Star Candies and one handwritten tag:\n\n'These lights passed inspection.'",
           "reward": {
             "min": 160,
             "max": 197
@@ -37,7 +37,7 @@
       }
     },
     "fae-lure-lanterns-depths": {
-      "prompt": "Towering kelp columns hide dozens of floating lanterns. Three routes\nvanish beneath their glow.",
+      "prompt": "Towering kelp columns hide dozens of floating lanterns. Three routes vanish beneath their glow.",
       "choices": {
         "left": {
           "type": "empty",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "fae-lure-lanterns-threshold",
-          "message": "An offering basket sits beneath a blue lantern. You stare at the light\nfor an unnecessarily long time before opening the basket.\n\nNo teeth.\n\nStar Candies acquired.",
+          "message": "An offering basket sits beneath a blue lantern. You stare at the light for an unnecessarily long time before opening the basket.\n\nNo teeth.\n\nStar Candies acquired.",
           "reward": {
             "min": 172,
             "max": 209
@@ -63,25 +63,25 @@
       }
     },
     "fae-lure-lanterns-threshold": {
-      "prompt": "Living rootways converge around False-Light Chapel, where three doors\nare each illuminated by a single hovering glow.",
+      "prompt": "Living rootways converge around False Light Chapel, where three doors are each illuminated by a single hovering glow.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "fae-lure-angler",
-          "message": "One lantern casts no shadow.\n\nYou have learned enough.\n\nThe Fae-Lure Angler realizes you have learned enough.\n\nCombat begins."
+          "message": "One lantern casts no shadow.\n\nYou have learned enough.\n\nThe Fae Lure Angler realizes you have learned enough.\n\nCombat begins."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 57,
           "message": "A tranquil grove pool glows beneath Shizuki's final inspection notice:\n\n'POOL SAFE.\nLIGHT SAFE.\nROOT SAFE.\nI checked EVERYTHING.\n\nGlimmer checked me.'",
-          "fullHpMessage": "You leave the safe pool safely unused. A rare victory for quality\ncontrol."
+          "fullHpMessage": "You leave the safe pool safely unused. A rare victory for quality control."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Broad silver kelp wraps a Star Candy cache beneath an honest little\nFae lantern.\n\nYou thank it for not possessing a mouth.",
+          "message": "Broad silver kelp wraps a Star Candy cache beneath an honest little Fae lantern.\n\nYou thank it for not possessing a mouth.",
           "reward": {
             "min": 184,
             "max": 221
@@ -90,18 +90,18 @@
       }
     },
     "boss-antechamber": {
-      "name": "False-Light Chapel",
+      "name": "False Light Chapel",
       "type": "boss-prompt",
       "prompt": "Every genuine Fae lantern in the Chapel suddenly goes dark.\n\nOne enormous light remains."
     }
   },
-  "bossPromptDiscord": "The last glow floats alone inside False-Light Chapel.\n\nIt brightens.\n\nThen rises.\n\nThen reveals a shadow much larger than the lantern could possibly\nbelong to.\n\nYou have seen this trick before.\n\nNever at this scale.\n\nUse /yes to enter the Chapel or /no to refuse the forest's largest\nfalse advertisement.",
-  "bossPromptTwitch": "The last glow floats alone inside False-Light Chapel.\n\nIt brightens.\n\nThen rises.\n\nThen reveals a shadow much larger than the lantern could possibly\nbelong to.\n\nYou have seen this trick before.\n\nNever at this scale.\n\nUse !yes to enter the Chapel or !no to refuse the forest's largest\nfalse advertisement.",
-  "bossRetreatText": "You withdraw. The enormous lure remains glowing behind you with\noffensively innocent beauty.",
+  "bossPromptDiscord": "The last glow floats alone inside False Light Chapel.\n\nIt brightens.\n\nThen rises.\n\nThen reveals a shadow much larger than the lantern could possibly belong to.\n\nYou have seen this trick before.\n\nNever at this scale.\n\nUse /yes to enter the Chapel or /no to refuse the forest's largest false advertisement.",
+  "bossPromptTwitch": "The last glow floats alone inside False Light Chapel.\n\nIt brightens.\n\nThen rises.\n\nThen reveals a shadow much larger than the lantern could possibly belong to.\n\nYou have seen this trick before.\n\nNever at this scale.\n\nUse !yes to enter the Chapel or !no to refuse the forest's largest false advertisement.",
+  "bossRetreatText": "You withdraw. The enormous lure remains glowing behind you with offensively innocent beauty.",
   "boss": {
     "enemyId": "glamourmaw-angler-boss",
     "roomId": "boss",
     "revealText": "The false lantern swings upward as an enormous jaw emerges beneath it.\n\nGlamourmaw Angler reveals itself!"
   },
-  "completionText": "\"The Glamourmaw disappears into the dark kelp.\n\nOne genuine Fae lantern relights beside the exit.\n\nYou stare at it.\n\nIt has earned nothing.\"\n\n\n#################################################################"
+  "completionText": "\"The Glamourmaw disappears into the dark kelp.\n\nOne genuine Fae lantern relights beside the exit.\n\nYou stare at it.\n\nIt has earned nothing.\"\n\n#################################################################"
 }

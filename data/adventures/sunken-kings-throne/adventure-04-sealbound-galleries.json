@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "sealbound-squire",
     "recommendedLevel": 32,
-    "introDiscord": "Portrait halls and armor galleries line the old palace.\n\nRows of stone knights stand beside painted nobility.\n\nSeveral portraits now have paper mustaches.",
-    "introTwitch": "Portrait halls and armor galleries line the old palace.\n\nRows of stone knights stand beside painted nobility.\n\nSeveral portraits now have paper mustaches.",
+    "introDiscord": "Portrait halls and armor galleries line the old palace. Rows of stone knights stand beside painted nobility.\n\nSeveral portraits now have paper mustaches.",
+    "introTwitch": "Portrait halls and armor galleries line the old palace. Rows of stone knights stand beside painted nobility.\n\nSeveral portraits now have paper mustaches.",
     "startRoomId": "sealbound-galleries-approach",
     "rooms": {
         "sealbound-galleries-approach": {
@@ -68,7 +68,7 @@
                 "left": {
                     "type": "treasure",
                     "nextRoomId": "boss-antechamber",
-                    "message": "A glass cabinet holds Star Candies and an extremely fancy ceremonial\nhelmet.",
+                    "message": "A glass cabinet holds Star Candies and an extremely fancy ceremonial helmet.",
                     "reward": {
                         "min": 347,
                         "max": 383
@@ -95,13 +95,13 @@
             "prompt": "At Gallery of Vows, every suit of armor kneels."
         }
     },
-    "bossPromptDiscord": "At Gallery of Vows, every suit of armor kneels.\n\nOne full-sized knight remains standing beneath an ancient royal oath.\n\nUse /yes to approach, or /no to leave the museum's most\ndedicated employee alone.",
-    "bossPromptTwitch": "At Gallery of Vows, every suit of armor kneels.\n\nOne full-sized knight remains standing beneath an ancient royal oath.\n\nUse !yes to approach, or !no to leave the museum's most\ndedicated employee alone.",
+    "bossPromptDiscord": "At Gallery of Vows, every suit of armor kneels.\n\nOne full-sized knight remains standing beneath an ancient royal oath.\n\nUse /yes to approach, or /no to leave the museum's most dedicated employee alone.",
+    "bossPromptTwitch": "At Gallery of Vows, every suit of armor kneels.\n\nOne full-sized knight remains standing beneath an ancient royal oath.\n\nUse !yes to approach, or !no to leave the museum's most dedicated employee alone.",
     "bossRetreatText": "You withdraw from Gallery of Vows. The royal challenge will wait.",
     "boss": {
         "enemyId": "oath-sealed-knight-boss",
         "roomId": "boss",
-        "revealText": "Oath-Sealed Knight reveals itself!"
+        "revealText": "Oath Sealed Knight reveals itself!"
     },
     "completionText": "The Knight lowers its weapon.\n\nThe gallery goes still.\n\nThe king's paper mustache survives.\n\nImportant victory."
 }

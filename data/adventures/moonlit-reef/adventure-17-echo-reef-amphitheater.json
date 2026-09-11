@@ -16,8 +16,8 @@
           "type": "healing",
           "nextRoomId": "chorus-arcade",
           "healAmount": 35,
-          "message": "Shizuki's Echo-thyme tonic reads: \"Quietens pain. Does NOT quiet the room. Tried asking politely.\"",
-          "fullHpMessage": "The Echo-thyme tonic remains untouched. You are already at full health; the room continues humming regardless."
+          "message": "Shizuki's Echo thyme tonic reads: \"Quietens pain. Does NOT quiet the room. Tried asking politely.\"",
+          "fullHpMessage": "The Echo thyme tonic remains untouched. You are already at full health; the room continues humming regardless."
         },
         "right": {
           "type": "treasure",
@@ -55,7 +55,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "hushed-stage",
-          "message": "A moon-shell coffer vibrates whenever the correct note passes through the corridor. You wait for the melody to align and open it for Star Candies.",
+          "message": "A moon shell coffer vibrates whenever the correct note passes through the corridor. You wait for the melody to align and open it for Star Candies.",
           "reward": {
             "min": 55,
             "max": 85
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "echo-crowned-siren-boss",
     "roomId": "boss",
-    "revealText": "A crowned Siren steps into the silent stage and releases a note that sets every arch ringing. The Echo-Crowned Siren begins the final performance!"
+    "revealText": "A crowned Siren steps into the silent stage and releases a note that sets every arch ringing. The Echo Crowned Siren begins the final performance!"
   },
-  "completionText": "The Echo-Crowned Siren's final note fades through the amphitheater. For a moment there is silence—then the reef itself plays a soft closing chord as the next route opens."
+  "completionText": "The Echo Crowned Siren's final note fades through the amphitheater. For a moment there is silence—then the reef itself plays a soft closing chord as the next route opens."
 }

@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "mourning-courtesan",
     "recommendedLevel": 33,
-    "introDiscord": "A marble promenade curves toward the royal ballroom.\n\nMusic boxes still play beneath the water while spectral dancers repeat\npieces of celebrations that ended long ago.\n\nNaturally, Shizuki attempted to join.",
-    "introTwitch": "A marble promenade curves toward the royal ballroom.\n\nMusic boxes still play beneath the water while spectral dancers repeat\npieces of celebrations that ended long ago.\n\nNaturally, Shizuki attempted to join.",
+    "introDiscord": "A marble promenade curves toward the royal ballroom. Music boxes still play beneath the water while spectral dancers repeat pieces of celebrations that ended long ago.\n\nNaturally, Shizuki attempted to join.",
+    "introTwitch": "A marble promenade curves toward the royal ballroom. Music boxes still play beneath the water while spectral dancers repeat pieces of celebrations that ended long ago.\n\nNaturally, Shizuki attempted to join.",
     "startRoomId": "the-mourning-promenade-approach",
     "rooms": {
         "the-mourning-promenade-approach": {
@@ -15,7 +15,7 @@
                 "left": {
                     "type": "treasure",
                     "nextRoomId": "the-mourning-promenade-depths",
-                    "message": "A banquet side table still contains sealed Star Candies arranged like\nparty favors.",
+                    "message": "A banquet side table still contains sealed Star Candies arranged like party favors.",
                     "reward": {
                         "min": 313,
                         "max": 349
@@ -48,7 +48,7 @@
                 "right": {
                     "type": "treasure",
                     "nextRoomId": "the-mourning-promenade-threshold",
-                    "message": "An abandoned musician's chest contains Star Candies among old sheet\nmusic.",
+                    "message": "An abandoned musician's chest contains Star Candies among old sheet music.",
                     "reward": {
                         "min": 325,
                         "max": 361
@@ -95,13 +95,13 @@
             "prompt": "The ballroom lights flicker to life one chandelier at a time."
         }
     },
-    "bossPromptDiscord": "The ballroom lights flicker to life one chandelier at a time.\n\nOne dancer remains alone at the center of the floor.\n\nThe music begins.\n\nUse /yes to accept the final dance or /no to remain safely\nuncoordinated.",
-    "bossPromptTwitch": "The ballroom lights flicker to life one chandelier at a time.\n\nOne dancer remains alone at the center of the floor.\n\nThe music begins.\n\nUse !yes to accept the final dance or !no to remain safely\nuncoordinated.",
+    "bossPromptDiscord": "The ballroom lights flicker to life one chandelier at a time.\n\nOne dancer remains alone at the center of the floor.\n\nThe music begins.\n\nUse /yes to accept the final dance or /no to remain safely uncoordinated.",
+    "bossPromptTwitch": "The ballroom lights flicker to life one chandelier at a time.\n\nOne dancer remains alone at the center of the floor.\n\nThe music begins.\n\nUse !yes to accept the final dance or !no to remain safely uncoordinated.",
     "bossRetreatText": "You withdraw from Ballroom Beneath the Tide. The royal challenge will wait.",
     "boss": {
         "enemyId": "last-dance-courtesan-boss",
         "roomId": "boss",
-        "revealText": "Last-Dance Courtesan reveals itself!"
+        "revealText": "Last Dance Courtesan reveals itself!"
     },
     "completionText": "The music finishes.\n\nThe ballroom falls quiet.\n\nShizuki's scorecard has one final addition:\n\n'Ballroom: ★★★★★\n\nPillar: rude.'"
 }

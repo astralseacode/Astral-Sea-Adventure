@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "shrouded-mere",
-          "message": "A moon-shell coffer rests beneath reeds surrounded by tracks that deliberately circle it. You recover Star Candies while trying not to wonder what was watching the cache.",
+          "message": "A moon shell coffer rests beneath reeds surrounded by tracks that deliberately circle it. You recover Star Candies while trying not to wonder what was watching the cache.",
           "reward": {
             "min": 45,
             "max": 75

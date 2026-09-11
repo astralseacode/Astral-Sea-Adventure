@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A moon-shell coffer repeatedly changes color to match the floor. You finally catch it when it turns an extremely unhelpful neon green and recover Star Candies.",
+          "message": "A moon shell coffer repeatedly changes color to match the floor. You finally catch it when it turns an extremely unhelpful neon green and recover Star Candies.",
           "reward": {
             "min": 80,
             "max": 120

@@ -66,7 +66,7 @@
     {
         "number":  9,
         "id":  "fae-lure-lanterns",
-        "name":  "Fae-Lure Lanterns",
+        "name":  "Fae Lure Lanterns",
         "enemyId":  "fae-lure-angler",
         "bossEnemyId":  "glamourmaw-angler-boss",
         "file":  "adventure-09-fae-lure-lanterns.json"
@@ -162,7 +162,7 @@
     {
         "number":  21,
         "id":  "echo-bark-trunks",
-        "name":  "Echo-Bark Trunks",
+        "name":  "Echo Bark Trunks",
         "enemyId":  "echo-bark-woodfish",
         "bossEnemyId":  "resonant-timberfish-boss",
         "file":  "adventure-21-echo-bark-trunks.json"

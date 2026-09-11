@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "stormscript-squid",
     "recommendedLevel": 50,
-    "introDiscord": "Lightning writes glowing symbols across the water.\n\nStormscript Squid add ink between the flashes.\n\nThe result resembles someone doing mathematics during a thunderstorm.",
-    "introTwitch": "Lightning writes glowing symbols across the water.\n\nStormscript Squid add ink between the flashes.\n\nThe result resembles someone doing mathematics during a thunderstorm.",
+    "introDiscord": "Lightning writes glowing symbols across the water. Stormscript Squid add ink between the flashes.\n\nThe result resembles someone doing mathematics during a thunderstorm.",
+    "introTwitch": "Lightning writes glowing symbols across the water. Stormscript Squid add ink between the flashes.\n\nThe result resembles someone doing mathematics during a thunderstorm.",
     "startRoomId": "stormscript-tempest-approach",
     "rooms": {
         "stormscript-tempest-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Formula of Thunder fills the entire chamber."
         }
     },
-    "bossPromptDiscord": "Formula of Thunder fills the entire chamber.\n\nOne enormous creature begins completing the equation with its tentacles.\n\nUse /yes to continue or /no to accept that math has become\ntoo dangerous.",
-    "bossPromptTwitch": "Formula of Thunder fills the entire chamber.\n\nOne enormous creature begins completing the equation with its tentacles.\n\nUse !yes to continue or !no to accept that math has become\ntoo dangerous.",
+    "bossPromptDiscord": "Formula of Thunder fills the entire chamber.\n\nOne enormous creature begins completing the equation with its tentacles.\n\nUse /yes to continue or /no to accept that math has become too dangerous.",
+    "bossPromptTwitch": "Formula of Thunder fills the entire chamber.\n\nOne enormous creature begins completing the equation with its tentacles.\n\nUse !yes to continue or !no to accept that math has become too dangerous.",
     "bossRetreatText": "You withdraw from Formula of Thunder. The impossible guardian will wait.",
     "boss": {
         "enemyId": "living-equation-krakenet-boss",

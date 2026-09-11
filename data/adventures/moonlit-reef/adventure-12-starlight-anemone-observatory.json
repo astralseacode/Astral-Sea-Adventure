@@ -28,7 +28,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "starstem-gallery",
-          "message": "A moon-shell coffer sits directly beneath a focused beam of starlight. When the constellation above aligns, the lid opens and exposes Star Candies.",
+          "message": "A moon shell coffer sits directly beneath a focused beam of starlight. When the constellation above aligns, the lid opens and exposes Star Candies.",
           "reward": {
             "min": 35,
             "max": 60

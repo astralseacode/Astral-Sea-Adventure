@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "voidflower-mantis",
     "recommendedLevel": 50,
-    "introDiscord": "Flowers bloom in empty space.\n\nNo soil.\n\nNo stems.\n\nSome grow upside down.\n\nSeveral blooms contain tiny windows into other places.",
-    "introTwitch": "Flowers bloom in empty space.\n\nNo soil.\n\nNo stems.\n\nSome grow upside down.\n\nSeveral blooms contain tiny windows into other places.",
+    "introDiscord": "Flowers bloom in empty space.\n\nNo soil. No stems.\n\nSome grow upside down.\n\nSeveral blooms contain tiny windows into other places.",
+    "introTwitch": "Flowers bloom in empty space.\n\nNo soil. No stems.\n\nSome grow upside down.\n\nSeveral blooms contain tiny windows into other places.",
     "startRoomId": "voidflower-garden-approach",
     "rooms": {
         "voidflower-garden-approach": {
@@ -23,7 +23,7 @@
                     "type": "combat",
                     "nextRoomId": "voidflower-garden-depths",
                     "enemyId": "voidflower-mantis",
-                    "message": "A Voidflower Mantis unfolds from petals that were absolutely a flower\none second ago."
+                    "message": "A Voidflower Mantis unfolds from petals that were absolutely a flower one second ago."
                 },
                 "forward": {
                     "type": "treasure",
@@ -101,7 +101,7 @@
     "boss": {
         "enemyId": "nothing-bloom-mantis-boss",
         "roomId": "boss",
-        "revealText": "The central bloom unfolds into claws.\n\nNothing-Bloom Mantis reveals itself!"
+        "revealText": "The central bloom unfolds into claws.\n\nNothing Bloom Mantis reveals itself!"
     },
     "completionText": "The Garden becomes peaceful again.\n\nShizuki's review has been updated:\n\n'Pretty flower.\n\nSOME bite.\n\n★★★☆☆.'"
 }

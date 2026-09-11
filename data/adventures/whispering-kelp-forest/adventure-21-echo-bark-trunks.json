@@ -1,34 +1,34 @@
 {
   "id": "echo-bark-trunks",
   "number": 21,
-  "name": "Echo-Bark Trunks",
+  "name": "Echo Bark Trunks",
   "regionId": "whispering-kelp-forest",
   "enemyId": "echo-bark-woodfish",
   "recommendedLevel": 17,
-  "introDiscord": "Hollow echo-bark trunks rise between the kelp like drowned trees. Every\ntap, laugh, footstep, and bubble returns seconds later from somewhere\nelse in the forest.",
-  "introTwitch": "Hollow echo-bark trunks rise between the kelp like drowned trees. Every\ntap, laugh, footstep, and bubble returns seconds later from somewhere\nelse in the forest.",
+  "introDiscord": "Hollow echo bark trunks rise between the kelp like drowned trees. Every tap, laugh, footstep, and bubble returns seconds later from somewhere else in the forest.",
+  "introTwitch": "Hollow echo bark trunks rise between the kelp like drowned trees. Every tap, laugh, footstep, and bubble returns seconds later from somewhere else in the forest.",
   "startRoomId": "echo-bark-trunks-approach",
   "rooms": {
     "echo-bark-trunks-approach": {
-      "prompt": "Three routes pass between enormous hollow trunks. Your last footstep\nechoes from a direction you never walked.",
+      "prompt": "Three routes pass between enormous hollow trunks. Your last footstep echoes from a direction you never walked.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "echo-bark-trunks-depths",
           "healAmount": 22,
           "message": "Restorative sap rests inside a hollow trunk.\n\nShizuki scratched:\n\n'HELLO!'\n\nThe forest immediately echoes:\n\n'Hello... hello... hello...'\n\nBelow it:\n\n'Regret.'",
-          "fullHpMessage": "You leave the sap untouched and wisely avoid contributing new material\nto the echo system."
+          "fullHpMessage": "You leave the sap untouched and wisely avoid contributing new material to the echo system."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "echo-bark-trunks-depths",
           "enemyId": "echo-bark-woodfish",
-          "message": "A knocking sound comes from inside one trunk.\n\nKnock knock.\n\nYou wait.\n\nKnock knock.\n\nAn Echo-Bark Woodfish shoots from the hollow.\n\nWorst joke setup."
+          "message": "A knocking sound comes from inside one trunk.\n\nKnock knock.\n\nYou wait.\n\nKnock knock.\n\nAn Echo Bark Woodfish shoots from the hollow.\n\nWorst joke setup."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "echo-bark-trunks-depths",
-          "message": "A shrine coffer sits inside an open trunk. Star Candies rattle inside,\nand every tiny clink echoes through the forest.",
+          "message": "A shrine coffer sits inside an open trunk. Star Candies rattle inside, and every tiny clink echoes through the forest.",
           "reward": {
             "min": 100,
             "max": 141
@@ -37,7 +37,7 @@
       }
     },
     "echo-bark-trunks-depths": {
-      "prompt": "Towering kelp surrounds three passages lined with hollow echo-bark.",
+      "prompt": "Towering kelp surrounds three passages lined with hollow echo bark.",
       "choices": {
         "left": {
           "type": "empty",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "echo-bark-trunks-threshold",
-          "message": "An offering basket rests beneath a trunk repeating the distant sound\nof laughter from some long-gone traveler.",
+          "message": "An offering basket rests beneath a trunk repeating the distant sound of laughter from some long-gone traveler.",
           "reward": {
             "min": 112,
             "max": 153
@@ -58,12 +58,12 @@
           "type": "combat",
           "nextRoomId": "echo-bark-trunks-threshold",
           "enemyId": "echo-bark-woodfish",
-          "message": "A Woodfish imitates the sound of a Berry pouch opening from inside the\ntrunk.\n\nClever.\n\nManipulative.\n\nEffective."
+          "message": "A Woodfish imitates the sound of a Berry pouch opening from inside the trunk.\n\nClever.\n\nManipulative.\n\nEffective."
         }
       }
     },
     "echo-bark-trunks-threshold": {
-      "prompt": "Living roots approach Hollow Song Chamber, where three enormous trunks\nresonate with one another.",
+      "prompt": "Living roots approach Hollow Song Chamber, where three enormous trunks resonate with one another.",
       "choices": {
         "left": {
           "type": "combat",
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Broad silver kelp hides a cache inside a resonant trunk. The Star\nCandies ring like tiny bells when removed.",
+          "message": "Broad silver kelp hides a cache inside a resonant trunk. The Star Candies ring like tiny bells when removed.",
           "reward": {
             "min": 124,
             "max": 165
@@ -95,13 +95,13 @@
       "prompt": "Every hollow trunk in the chamber produces the same deep knock."
     }
   },
-  "bossPromptDiscord": "One knock rolls through Hollow Song Chamber.\n\nThen another.\n\nEvery echo-bark trunk answers in perfect rhythm.\n\nSomething enormous moves inside the interconnected hollows.\n\nUse /yes to enter the Chamber or /no to leave before whatever is knocking\nexpects an answer.",
-  "bossPromptTwitch": "One knock rolls through Hollow Song Chamber.\n\nThen another.\n\nEvery echo-bark trunk answers in perfect rhythm.\n\nSomething enormous moves inside the interconnected hollows.\n\nUse !yes to enter the Chamber or !no to leave before whatever is knocking\nexpects an answer.",
+  "bossPromptDiscord": "One knock rolls through Hollow Song Chamber.\n\nThen another.\n\nEvery echo bark trunk answers in perfect rhythm.\n\nSomething enormous moves inside the interconnected hollows.\n\nUse /yes to enter the Chamber or /no to leave before whatever is knocking expects an answer.",
+  "bossPromptTwitch": "One knock rolls through Hollow Song Chamber.\n\nThen another.\n\nEvery echo bark trunk answers in perfect rhythm.\n\nSomething enormous moves inside the interconnected hollows.\n\nUse !yes to enter the Chamber or !no to leave before whatever is knocking expects an answer.",
   "bossRetreatText": "You retreat. One final knock echoes behind you.\n\nYou do not answer.",
   "boss": {
     "enemyId": "resonant-timberfish-boss",
     "roomId": "boss",
-    "revealText": "The oldest trunk splits open as a massive Woodfish surges from the\nheartwood.\n\nResonant Timberfish reveals itself!"
+    "revealText": "The oldest trunk splits open as a massive Woodfish surges from the heartwood.\n\nResonant Timberfish reveals itself!"
   },
-  "completionText": "\"The Resonant Timberfish disappears into the hollow forest.\n\nThe echoes slowly fade.\n\nThen, from very far away:\n\n'BERRIES.'\n\nShizuki's experiment survived.\"\n\n\n#################################################################"
+  "completionText": "\"The Resonant Timberfish disappears into the hollow forest.\n\nThe echoes slowly fade.\n\nThen, from very far away:\n\n'BERRIES.'\n\nShizuki's experiment survived.\"\n\n#################################################################"
 }

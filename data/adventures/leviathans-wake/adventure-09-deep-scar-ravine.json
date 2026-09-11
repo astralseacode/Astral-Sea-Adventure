@@ -1,12 +1,12 @@
 {
     "id": "deep-scar-ravine",
     "number": 9,
-    "name": "Deep-Scar Ravine",
+    "name": "Deep Scar Ravine",
     "regionId": "leviathans-wake",
     "enemyId": "deep-scar-prowler",
     "recommendedLevel": 23,
-    "introDiscord": "A trench-wide scar cuts across the seabed.\n\nWhatever created it did not strike the Leviathan.\n\nThe Leviathan created the scar.",
-    "introTwitch": "A trench-wide scar cuts across the seabed.\n\nWhatever created it did not strike the Leviathan.\n\nThe Leviathan created the scar.",
+    "introDiscord": "A trench wide scar cuts across the seabed.\n\nWhatever created it did not strike the Leviathan.\n\nThe Leviathan created the scar.",
+    "introTwitch": "A trench wide scar cuts across the seabed.\n\nWhatever created it did not strike the Leviathan.\n\nThe Leviathan created the scar.",
     "startRoomId": "deep-scar-ravine-approach",
     "rooms": {
         "deep-scar-ravine-approach": {
@@ -23,7 +23,7 @@
                     "type": "combat",
                     "nextRoomId": "deep-scar-ravine-depths",
                     "enemyId": "deep-scar-prowler",
-                    "message": "A Deep-Scar Prowler emerges from a groove inside the larger scar."
+                    "message": "A Deep Scar Prowler emerges from a groove inside the larger scar."
                 },
                 "forward": {
                     "type": "treasure",
@@ -58,7 +58,7 @@
                     "type": "combat",
                     "nextRoomId": "deep-scar-ravine-threshold",
                     "enemyId": "deep-scar-prowler",
-                    "message": "A Prowler races along the ancient groove as if following a trail left\nyesterday."
+                    "message": "A Prowler races along the ancient groove as if following a trail left yesterday."
                 }
             }
         },
@@ -69,7 +69,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "deep-scar-prowler",
-                    "message": "A Deep-Scar Prowler watches from inside the Leviathan-made trench."
+                    "message": "A Deep Scar Prowler watches from inside the Leviathan made trench."
                 },
                 "right": {
                     "type": "healing",
@@ -95,13 +95,13 @@
             "prompt": "The deepest portion of Ancient Wound goes silent."
         }
     },
-    "bossPromptDiscord": "The deepest portion of Ancient Wound goes silent.\n\nLong claw marks cover the stone.\n\nA predator steps from one of them as if the scar itself has been hiding\nit.\n\nUse /yes to enter Ancient Wound or /no to stop investigating ancient\nthings with claw marks.",
-    "bossPromptTwitch": "The deepest portion of Ancient Wound goes silent.\n\nLong claw marks cover the stone.\n\nA predator steps from one of them as if the scar itself has been hiding\nit.\n\nUse !yes to enter Ancient Wound or !no to stop investigating ancient\nthings with claw marks.",
+    "bossPromptDiscord": "The deepest portion of Ancient Wound goes silent.\n\nLong claw marks cover the stone.\n\nA predator steps from one of them as if the scar itself has been hiding it.\n\nUse /yes to enter Ancient Wound or /no to stop investigating ancient things with claw marks.",
+    "bossPromptTwitch": "The deepest portion of Ancient Wound goes silent.\n\nLong claw marks cover the stone.\n\nA predator steps from one of them as if the scar itself has been hiding it.\n\nUse !yes to enter Ancient Wound or !no to stop investigating ancient things with claw marks.",
     "bossRetreatText": "You climb out of the scar.",
     "boss": {
         "enemyId": "scar-marked-huntmaster-boss",
         "roomId": "boss",
-        "revealText": "A massive scar-covered predator emerges.\n\nScar-Marked Huntmaster reveals itself!"
+        "revealText": "A massive scar covered predator emerges.\n\nScar Marked Huntmaster reveals itself!"
     },
-    "completionText": "The Huntmaster disappears along the ancient groove.\n\nWhatever Leviathan originally made this wound was larger than anything\nyou've fought here.\n\nBy an uncomfortable margin."
+    "completionText": "The Huntmaster disappears along the ancient groove.\n\nWhatever Leviathan originally made this wound was larger than anything you've fought here.\n\nBy an uncomfortable margin."
 }

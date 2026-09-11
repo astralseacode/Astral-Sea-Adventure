@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "crystalfang-galleries-threshold",
-          "message": "A star-chart coffer sits inside a crystal pedestal.",
+          "message": "A star chart coffer sits inside a crystal pedestal.",
           "reward": {
             "min": 112,
             "max": 151
@@ -68,7 +68,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "A meteor-iron reliquary has become completely encased in crystal.",
+          "message": "A meteor iron reliquary has become completely encased in crystal.",
           "reward": {
             "min": 124,
             "max": 163
@@ -101,7 +101,7 @@
   "boss": {
     "enemyId": "diamond-maw-snapper-boss",
     "roomId": "boss",
-    "revealText": "An enormous crystalline jaw tears free from the gallery.\n\nDiamond-Maw Snapper reveals itself!"
+    "revealText": "An enormous crystalline jaw tears free from the gallery.\n\nDiamond Maw Snapper reveals itself!"
   },
-  "completionText": "\"The Diamond-Maw retreats.\n\nShizuki's museum survives.\n\nAdmission remains free.\"\n\n\n#################################################################"
+  "completionText": "\"The Diamond Maw retreats.\n\nShizuki's museum survives.\n\nAdmission remains free.\"\n\n#################################################################"
 }

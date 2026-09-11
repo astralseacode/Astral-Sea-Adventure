@@ -16,8 +16,8 @@
           "type": "healing",
           "nextRoomId": "sentry-rampart",
           "healAmount": 30,
-          "message": "Shizuki's field kit is hidden behind a loose plate. \"Sentry-salve. Quiet feet are healthier feet. Loud feet discovered this medicine.\"",
-          "fullHpMessage": "The Sentry-salve remains behind the loose plate. You are already at full health, and your footsteps have attracted enough attention."
+          "message": "Shizuki's field kit is hidden behind a loose plate. \"Sentry salve. Quiet feet are healthier feet. Loud feet discovered this medicine.\"",
+          "fullHpMessage": "The Sentry salve remains behind the loose plate. You are already at full health, and your footsteps have attracted enough attention."
         },
         "right": {
           "type": "treasure",
@@ -55,7 +55,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "moonplate-keep",
-          "message": "A moon-shell coffer is sitting inside what was clearly once a confiscated-items locker. Among several ancient spoons and one sandal are Star Candies.",
+          "message": "A moon shell coffer is sitting inside what was clearly once a confiscated-items locker. Among several ancient spoons and one sandal are Star Candies.",
           "reward": {
             "min": 40,
             "max": 70

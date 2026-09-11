@@ -5,8 +5,8 @@
     "regionId": "astral-nexus",
     "enemyId": "nexus-current-elemental",
     "recommendedLevel": 50,
-    "introDiscord": "Six distinct currents meet.\n\nOne smells faintly of Moonlit Reef.\n\nOne carries Starfall dust.\n\nOne brings kelp spores.\n\nAnother hums like Leviathan's Wake.\n\nAnother carries festival confetti.\n\nThe sixth is pure Nexus starlight.",
-    "introTwitch": "Six distinct currents meet.\n\nOne smells faintly of Moonlit Reef.\n\nOne carries Starfall dust.\n\nOne brings kelp spores.\n\nAnother hums like Leviathan's Wake.\n\nAnother carries festival confetti.\n\nThe sixth is pure Nexus starlight.",
+    "introDiscord": "Six distinct currents meet.\n\nOne smells faintly of Moonlit Reef. One carries Starfall dust. One brings kelp spores.\n\nAnother hums like Leviathan's Wake. Another carries festival confetti.\n\nThe sixth is pure Nexus starlight.",
+    "introTwitch": "Six distinct currents meet.\n\nOne smells faintly of Moonlit Reef. One carries Starfall dust. One brings kelp spores.\n\nAnother hums like Leviathan's Wake. Another carries festival confetti.\n\nThe sixth is pure Nexus starlight.",
     "startRoomId": "convergent-currents-approach",
     "rooms": {
         "convergent-currents-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Confluence Core begins beating with six different currents at once."
         }
     },
-    "bossPromptDiscord": "Confluence Core begins beating with six different currents at once.\n\nUse /yes to enter or /no to avoid whatever counts as\nmulti-regional weather.",
-    "bossPromptTwitch": "Confluence Core begins beating with six different currents at once.\n\nUse !yes to enter or !no to avoid whatever counts as\nmulti-regional weather.",
+    "bossPromptDiscord": "Confluence Core begins beating with six different currents at once.\n\nUse /yes to enter or /no to avoid whatever counts as multi-regional weather.",
+    "bossPromptTwitch": "Confluence Core begins beating with six different currents at once.\n\nUse !yes to enter or !no to avoid whatever counts as multi-regional weather.",
     "bossRetreatText": "You withdraw from Confluence Core. The impossible guardian will wait.",
     "boss": {
         "enemyId": "sixfold-tideheart-boss",

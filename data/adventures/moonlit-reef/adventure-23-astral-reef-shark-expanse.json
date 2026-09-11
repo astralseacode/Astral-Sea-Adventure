@@ -55,7 +55,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "open-reef-run",
-          "message": "A moon-shell coffer lies between two marker stones. You retrieve Star Candies during the narrow gap between circling fins.",
+          "message": "A moon shell coffer lies between two marker stones. You retrieve Star Candies during the narrow gap between circling fins.",
           "reward": {
             "min": 70,
             "max": 105

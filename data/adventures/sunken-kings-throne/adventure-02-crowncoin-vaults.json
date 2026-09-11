@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "crowncoin-mimic",
     "recommendedLevel": 31,
-    "introDiscord": "A wealthy district surrounds an old royal vault.\n\nCoins cover the floor.\n\nTreasure chests line the walls.\n\nSeveral treasure chests have teeth.\n\nExcellent kingdom.",
-    "introTwitch": "A wealthy district surrounds an old royal vault.\n\nCoins cover the floor.\n\nTreasure chests line the walls.\n\nSeveral treasure chests have teeth.\n\nExcellent kingdom.",
+    "introDiscord": "A wealthy district surrounds an old royal vault. Coins cover the floor. Treasure chests line the walls.\n\nSeveral treasure chests have teeth.\n\nExcellent kingdom.",
+    "introTwitch": "A wealthy district surrounds an old royal vault. Coins cover the floor. Treasure chests line the walls.\n\nSeveral treasure chests have teeth.\n\nExcellent kingdom.",
     "startRoomId": "crowncoin-vaults-approach",
     "rooms": {
         "crowncoin-vaults-approach": {
@@ -32,7 +32,7 @@
                     "type": "combat",
                     "nextRoomId": "crowncoin-vaults-depths",
                     "enemyId": "crowncoin-mimic",
-                    "message": "A gold-covered chest rattles.\n\nThe lid opens.\n\nTeeth.\n\nCrowncoin Mimic.\n\nYou knew the shopping district was too generous."
+                    "message": "A gold covered chest rattles.\n\nThe lid opens.\n\nTeeth.\n\nCrowncoin Mimic.\n\nYou knew the shopping district was too generous."
                 }
             }
         },
@@ -48,13 +48,13 @@
                 "right": {
                     "type": "empty",
                     "nextRoomId": "crowncoin-vaults-threshold",
-                    "message": "One Berry rests on a merchant counter beneath Shizuki's handwritten\nsign:\n\n'SHIZUKI'S TOTALLY LEGITIMATE SHOP\n\nBerry: priceless.\n\nEverything else: also priceless because I don't know currency.'",
+                    "message": "One Berry rests on a merchant counter beneath Shizuki's handwritten sign:\n\n'SHIZUKI'S TOTALLY LEGITIMATE SHOP\n\nBerry: priceless.\n\nEverything else: also priceless because I don't know currency.'",
                     "berries": 1
                 },
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "crowncoin-vaults-threshold",
-                    "message": "A merchant strongbox still contains Star Candies beneath old royal\ntokens.\n\nNo teeth detected.",
+                    "message": "A merchant strongbox still contains Star Candies beneath old royal tokens.\n\nNo teeth detected.",
                     "reward": {
                         "min": 353,
                         "max": 388
@@ -95,8 +95,8 @@
             "prompt": "The central treasury chest is enormous."
         }
     },
-    "bossPromptDiscord": "The central treasury chest is enormous.\n\nSuspiciously enormous.\n\nEvery ordinary Mimic hurriedly crawls away from it.\n\nThe lid creaks open from the inside.\n\nUse /yes to enter Gilded Hunger, or /no to accept that\nsometimes the treasure is simply not worth it.",
-    "bossPromptTwitch": "The central treasury chest is enormous.\n\nSuspiciously enormous.\n\nEvery ordinary Mimic hurriedly crawls away from it.\n\nThe lid creaks open from the inside.\n\nUse !yes to enter Gilded Hunger, or !no to accept that\nsometimes the treasure is simply not worth it.",
+    "bossPromptDiscord": "The central treasury chest is enormous.\n\nSuspiciously enormous.\n\nEvery ordinary Mimic hurriedly crawls away from it.\n\nThe lid creaks open from the inside.\n\nUse /yes to enter Gilded Hunger, or /no to accept that sometimes the treasure is simply not worth it.",
+    "bossPromptTwitch": "The central treasury chest is enormous.\n\nSuspiciously enormous.\n\nEvery ordinary Mimic hurriedly crawls away from it.\n\nThe lid creaks open from the inside.\n\nUse !yes to enter Gilded Hunger, or !no to accept that sometimes the treasure is simply not worth it.",
     "bossRetreatText": "You leave the giant treasure chest unopened.\n\nA deeply mature financial decision.",
     "boss": {
         "enemyId": "royal-treasury-maw-boss",

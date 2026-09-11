@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "dynasty-coral-golem",
     "recommendedLevel": 38,
-    "introDiscord": "Royal family halls have become overgrown with coral shaped around old\nportraits and family crests.\n\nShizuki has invented several entirely fictional nobles.",
-    "introTwitch": "Royal family halls have become overgrown with coral shaped around old\nportraits and family crests.\n\nShizuki has invented several entirely fictional nobles.",
+    "introDiscord": "Royal family halls have become overgrown with coral shaped around old portraits and family crests.\n\nShizuki has invented several entirely fictional nobles.",
+    "introTwitch": "Royal family halls have become overgrown with coral shaped around old portraits and family crests.\n\nShizuki has invented several entirely fictional nobles.",
     "startRoomId": "dynasty-coral-halls-approach",
     "rooms": {
         "dynasty-coral-halls-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Every coral family crest begins glowing."
         }
     },
-    "bossPromptDiscord": "Every coral family crest begins glowing.\n\nAt the center of the Rotunda, generations of coral growth assemble into\none enormous guardian.\n\nUse /yes to meet the oldest member of House Definitely-Not-Berry\nor /no to avoid royal genealogy.",
-    "bossPromptTwitch": "Every coral family crest begins glowing.\n\nAt the center of the Rotunda, generations of coral growth assemble into\none enormous guardian.\n\nUse !yes to meet the oldest member of House Definitely-Not-Berry\nor !no to avoid royal genealogy.",
+    "bossPromptDiscord": "Every coral family crest begins glowing.\n\nAt the center of the Rotunda, generations of coral growth assemble into one enormous guardian.\n\nUse /yes to meet the oldest member of House Definitely Not Berry or /no to avoid royal genealogy.",
+    "bossPromptTwitch": "Every coral family crest begins glowing.\n\nAt the center of the Rotunda, generations of coral growth assemble into one enormous guardian.\n\nUse !yes to meet the oldest member of House Definitely Not Berry or !no to avoid royal genealogy.",
     "bossRetreatText": "You withdraw from Lineage Rotunda. The royal challenge will wait.",
     "boss": {
         "enemyId": "ancestral-reef-golem-boss",

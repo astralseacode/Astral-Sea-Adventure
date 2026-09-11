@@ -5,8 +5,8 @@
   "regionId": "moonlit-reef",
   "enemyId": "fae-petal-ray",
   "recommendedLevel": 2,
-  "introDiscord": "The Lunar Current enters a garden rooted in forgotten elven stone. Fae-touched petals drift like confetti through moonlit water, flowers turn toward passing travelers, and graceful shapes glide beneath the blossoms.",
-  "introTwitch": "The Lunar Current enters a garden rooted in forgotten elven stone. Fae-touched petals drift like confetti through moonlit water, flowers turn toward passing travelers, and graceful shapes glide beneath the blossoms.",
+  "introDiscord": "The Lunar Current enters a garden rooted in forgotten elven stone. Fae touched petals drift like confetti through moonlit water, flowers turn toward passing travelers, and graceful shapes glide beneath the blossoms.",
+  "introTwitch": "The Lunar Current enters a garden rooted in forgotten elven stone. Fae touched petals drift like confetti through moonlit water, flowers turn toward passing travelers, and graceful shapes glide beneath the blossoms.",
   "startRoomId": "petalwake-arch",
   "rooms": {
     "petalwake-arch": {
@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "blooming-arcade",
-          "message": "A moon-shell coffer sits inside a flower that closes whenever you reach toward it. After several polite requests—and one less polite request—the blossom opens and reveals Star Candies.",
+          "message": "A moon shell coffer sits inside a flower that closes whenever you reach toward it. After several polite requests—and one less polite request—the blossom opens and reveals Star Candies.",
           "reward": {
             "min": 35,
             "max": 60
@@ -70,7 +70,7 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 30,
           "message": "Shizuki's restorative bottle has been decorated with an unnecessary number of flowers. Its label reads: \"Smells like flowers. Tastes like rebellion. Fae rating: 'adequate.' Rude.\"",
-          "fullHpMessage": "Shizuki's flower-covered restorative remains unused. You are already at full health, sparing you both the taste of rebellion and another Fae review."
+          "fullHpMessage": "Shizuki's flower covered restorative remains unused. You are already at full health, sparing you both the taste of rebellion and another Fae review."
         },
         "right": {
           "type": "combat",

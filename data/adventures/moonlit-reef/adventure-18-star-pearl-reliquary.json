@@ -28,7 +28,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "reliquary-nave",
-          "message": "A moon-shell coffer has been placed beneath a pearl mosaic depicting travelers leaving offerings. Inside are Star Candies and no instructions about whether taking them counts.",
+          "message": "A moon shell coffer has been placed beneath a pearl mosaic depicting travelers leaving offerings. Inside are Star Candies and no instructions about whether taking them counts.",
           "reward": {
             "min": 45,
             "max": 75
@@ -97,11 +97,11 @@
   },
   "bossPromptDiscord": "Every star pearl in the reliquary brightens simultaneously.\n\nTheir light gathers above the central vault.\n\nA towering Guardian steps into the glow while the smaller sentries bow their heads.\n\nUse /yes to approach the Luminary or /no to leave the old vows undisturbed.",
   "bossPromptTwitch": "Every star pearl in the reliquary brightens simultaneously.\n\nTheir light gathers above the central vault.\n\nA towering Guardian steps into the glow while the smaller sentries bow their heads.\n\nUse !yes to approach the Luminary or !no to leave the old vows undisturbed.",
-  "bossRetreatText": "You leave the old vows undisturbed. The gathered pearl-light softens, and the towering Guardian returns to its quiet vigil.",
+  "bossRetreatText": "You leave the old vows undisturbed. The gathered pearl light softens, and the towering Guardian returns to its quiet vigil.",
   "boss": {
     "enemyId": "pearlward-luminary-boss",
     "roomId": "boss",
-    "revealText": "Pearl-light gathers around a towering armored figure as it raises an ancient weapon. The Pearlward Luminary stands before the vault!"
+    "revealText": "Pearl light gathers around a towering armored figure as it raises an ancient weapon. The Pearlward Luminary stands before the vault!"
   },
   "completionText": "The Pearlward Luminary lowers its weapon. The reliquary's lights soften, and the pearls return to their quiet glow. One near the exit flashes once as you pass—almost like a farewell."
 }

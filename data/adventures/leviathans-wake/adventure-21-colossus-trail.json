@@ -5,8 +5,8 @@
     "regionId": "leviathans-wake",
     "enemyId": "colossus-remora",
     "recommendedLevel": 27,
-    "introDiscord": "A trail crosses the back of a Leviathan skeleton so enormous that early\ntravelers apparently mistook it for a road.\n\nColossus Remoras still cling to the ancient remains.",
-    "introTwitch": "A trail crosses the back of a Leviathan skeleton so enormous that early\ntravelers apparently mistook it for a road.\n\nColossus Remoras still cling to the ancient remains.",
+    "introDiscord": "A trail crosses the back of a Leviathan skeleton so enormous that early travelers apparently mistook it for a road. Colossus Remoras still cling to the ancient remains.",
+    "introTwitch": "A trail crosses the back of a Leviathan skeleton so enormous that early travelers apparently mistook it for a road. Colossus Remoras still cling to the ancient remains.",
     "startRoomId": "colossus-trail-approach",
     "rooms": {
         "colossus-trail-approach": {
@@ -95,8 +95,8 @@
             "prompt": "Every Remora releases its grip."
         }
     },
-    "bossPromptDiscord": "Every Remora releases its grip.\n\nOne enormous shape remains attached to Pilgrim Scale.\n\nThen the 'marking' begins moving.\n\nUse /yes to approach Pilgrim Scale or /no to leave the oldest hitchhiker\nin the Wake alone.",
-    "bossPromptTwitch": "Every Remora releases its grip.\n\nOne enormous shape remains attached to Pilgrim Scale.\n\nThen the 'marking' begins moving.\n\nUse !yes to approach Pilgrim Scale or !no to leave the oldest hitchhiker\nin the Wake alone.",
+    "bossPromptDiscord": "Every Remora releases its grip.\n\nOne enormous shape remains attached to Pilgrim Scale.\n\nThen the 'marking' begins moving.\n\nUse /yes to approach Pilgrim Scale or /no to leave the oldest hitchhiker in the Wake alone.",
+    "bossPromptTwitch": "Every Remora releases its grip.\n\nOne enormous shape remains attached to Pilgrim Scale.\n\nThen the 'marking' begins moving.\n\nUse !yes to approach Pilgrim Scale or !no to leave the oldest hitchhiker in the Wake alone.",
     "bossRetreatText": "You step back along the ancient road-that-is-not-a-road.",
     "boss": {
         "enemyId": "titanbound-remora-boss",

@@ -42,7 +42,7 @@
         "left": {
           "type": "treasure",
           "nextRoomId": "falling-star-cut",
-          "message": "A moon-shell coffer spins inside the current. You grab it during the half-second between Razorfin passes and recover Star Candies.",
+          "message": "A moon shell coffer spins inside the current. You grab it during the half-second between Razorfin passes and recover Star Candies.",
           "reward": {
             "min": 70,
             "max": 105
@@ -53,7 +53,7 @@
           "nextRoomId": "falling-star-cut",
           "healAmount": 40,
           "message": "Shizuki's remedy reads: \"For the wound you expected and the three you absolutely did not. I ran out of labels after that.\"",
-          "fullHpMessage": "Shizuki's many-wound remedy remains unused. At full health, you can spare it another label."
+          "fullHpMessage": "Shizuki's many wound remedy remains unused. At full health, you can spare it another label."
         },
         "forward": {
           "type": "combat",
@@ -70,7 +70,7 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "starfall-razorfin",
-          "message": "A Razorfin uses a falling fragment as cover, darts behind it, then emerges from the other side directly toward you. Clever little knife-fish."
+          "message": "A Razorfin uses a falling fragment as cover, darts behind it, then emerges from the other side directly toward you. Clever little knife fish."
         },
         "right": {
           "type": "treasure",

@@ -5,12 +5,12 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "dewbell-jelly",
   "recommendedLevel": 12,
-  "introDiscord": "High above the rootways, enormous leaves hold glowing drops of dew.\nEach drop rings softly when disturbed, turning the canopy into a living\nchime garden filled with drifting Dewbell Jellies.",
-  "introTwitch": "High above the rootways, enormous leaves hold glowing drops of dew.\nEach drop rings softly when disturbed, turning the canopy into a living\nchime garden filled with drifting Dewbell Jellies.",
+  "introDiscord": "High above the rootways, enormous leaves hold glowing drops of dew. Each drop rings softly when disturbed, turning the canopy into a living chime garden filled with drifting Dewbell Jellies.",
+  "introTwitch": "High above the rootways, enormous leaves hold glowing drops of dew. Each drop rings softly when disturbed, turning the canopy into a living chime garden filled with drifting Dewbell Jellies.",
   "startRoomId": "dewbell-canopy-approach",
   "rooms": {
     "dewbell-canopy-approach": {
-      "prompt": "Three routes cross beneath hanging dew bells. Every movement sends a\ndifferent silver note through the canopy.",
+      "prompt": "Three routes cross beneath hanging dew bells. Every movement sends a different silver note through the canopy.",
       "choices": {
         "left": {
           "type": "empty",
@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "dewbell-canopy-depths",
-          "message": "A shrine coffer hangs beneath an enormous leaf. Opening it rings three\ndew bells overhead and releases Star Candies.\n\nA surprisingly classy treasure jingle.",
+          "message": "A shrine coffer hangs beneath an enormous leaf. Opening it rings three dew bells overhead and releases Star Candies.\n\nA surprisingly classy treasure jingle.",
           "reward": {
             "min": 175,
             "max": 211
@@ -36,25 +36,25 @@
       }
     },
     "dewbell-canopy-depths": {
-      "prompt": "The canopy grows denser, and three routes pass beneath dozens of\nsuspended glowing bells.",
+      "prompt": "The canopy grows denser, and three routes pass beneath dozens of suspended glowing bells.",
       "choices": {
         "left": {
           "type": "combat",
           "nextRoomId": "dewbell-canopy-threshold",
           "enemyId": "dewbell-jelly",
-          "message": "A Dewbell Jelly drifts between the hanging droplets without touching\na single one.\n\nThen you brush a leaf.\n\nEvery bell rings.\n\nThe Jelly turns.\n\nApparently stealth section failed."
+          "message": "A Dewbell Jelly drifts between the hanging droplets without touching a single one.\n\nThen you brush a leaf.\n\nEvery bell rings.\n\nThe Jelly turns.\n\nApparently stealth section failed."
         },
         "right": {
           "type": "healing",
           "nextRoomId": "dewbell-canopy-threshold",
           "healAmount": 60,
           "message": "A moonblossom pool gathers under the canopy beside Shizuki's note:\n\n'Healing water.\n\nQuiet spot.\n\nDo NOT touch big dew drop above pool.'\n\nThe big dew drop is directly above you.",
-          "fullHpMessage": "You leave the pool untouched and, more importantly, leave the enormous\ndew bell untouched."
+          "fullHpMessage": "You leave the pool untouched and, more importantly, leave the enormous dew bell untouched."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "dewbell-canopy-threshold",
-          "message": "An offering basket swings beneath a leaf like a tiny chandelier. Inside\nare Star Candies that chime softly against one another.",
+          "message": "An offering basket swings beneath a leaf like a tiny chandelier. Inside are Star Candies that chime softly against one another.",
           "reward": {
             "min": 187,
             "max": 223
@@ -63,12 +63,12 @@
       }
     },
     "dewbell-canopy-threshold": {
-      "prompt": "Living rootways climb toward Chiming Bower, where three paths pass\nthrough increasingly enormous dew bells.",
+      "prompt": "Living rootways climb toward Chiming Bower, where three paths pass through increasingly enormous dew bells.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "Broad silver kelp wraps a cache beneath a perfectly clear droplet.\nOpening it releases Star Candies without ringing anything.\n\nA flawless operation.",
+          "message": "Broad silver kelp wraps a cache beneath a perfectly clear droplet. Opening it releases Star Candies without ringing anything.\n\nA flawless operation.",
           "reward": {
             "min": 199,
             "max": 235
@@ -95,13 +95,13 @@
       "prompt": "Every dew bell in the Bower rings once.\n\nThen the canopy becomes completely still."
     }
   },
-  "bossPromptDiscord": "A single deep chime rolls through the forest.\n\nThe smaller Dewbell Jellies scatter from Chiming Bower as an enormous\nbell-shaped shadow descends between the leaves.\n\nAnother chime follows.\n\nCloser.\n\nUse /yes to enter Chiming Bower or /no to leave before the midnight\nperformance begins.",
-  "bossPromptTwitch": "A single deep chime rolls through the forest.\n\nThe smaller Dewbell Jellies scatter from Chiming Bower as an enormous\nbell-shaped shadow descends between the leaves.\n\nAnother chime follows.\n\nCloser.\n\nUse !yes to enter Chiming Bower or !no to leave before the midnight\nperformance begins.",
-  "bossRetreatText": "You withdraw beneath the canopy. One enormous bell continues tolling\nsoftly behind you.",
+  "bossPromptDiscord": "A single deep chime rolls through the forest.\n\nThe smaller Dewbell Jellies scatter from Chiming Bower as an enormous bell shaped shadow descends between the leaves.\n\nAnother chime follows.\n\nCloser.\n\nUse /yes to enter Chiming Bower or /no to leave before the midnight performance begins.",
+  "bossPromptTwitch": "A single deep chime rolls through the forest.\n\nThe smaller Dewbell Jellies scatter from Chiming Bower as an enormous bell shaped shadow descends between the leaves.\n\nAnother chime follows.\n\nCloser.\n\nUse !yes to enter Chiming Bower or !no to leave before the midnight performance begins.",
+  "bossRetreatText": "You withdraw beneath the canopy. One enormous bell continues tolling softly behind you.",
   "boss": {
     "enemyId": "midnight-bell-medusa-boss",
     "roomId": "boss",
     "revealText": "The hanging dew erupts into silver light as an enormous Medusa descends.\n\nMidnight Bell Medusa reveals itself!"
   },
-  "completionText": "\"The Midnight Bell Medusa rises into the dark canopy.\n\nThe smaller dew bells resume their gentle chiming.\n\nShizuki's music career remains wisely postponed.\"\n\n\n#################################################################"
+  "completionText": "\"The Midnight Bell Medusa rises into the dark canopy.\n\nThe smaller dew bells resume their gentle chiming.\n\nShizuki's music career remains wisely postponed.\"\n\n#################################################################"
 }

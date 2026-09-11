@@ -5,17 +5,17 @@
   "regionId": "whispering-kelp-forest",
   "enemyId": "rootcoil-eel",
   "recommendedLevel": 11,
-  "introDiscord": "Living roots weave together into tunnels beneath the kelp forest.\nRootcoil Eels slip through openings barely wider than their bodies,\nappearing from roots that should not connect to one another.",
-  "introTwitch": "Living roots weave together into tunnels beneath the kelp forest.\nRootcoil Eels slip through openings barely wider than their bodies,\nappearing from roots that should not connect to one another.",
+  "introDiscord": "Living roots weave together into tunnels beneath the kelp forest. Rootcoil Eels slip through openings barely wider than their bodies, appearing from roots that should not connect to one another.",
+  "introTwitch": "Living roots weave together into tunnels beneath the kelp forest. Rootcoil Eels slip through openings barely wider than their bodies, appearing from roots that should not connect to one another.",
   "startRoomId": "rootcoil-channels-approach",
   "rooms": {
     "rootcoil-channels-approach": {
-      "prompt": "Three root channels twist ahead. Every few moments the roots flex,\nquietly changing the shape of the passages.",
+      "prompt": "Three root channels twist ahead. Every few moments the roots flex, quietly changing the shape of the passages.",
       "choices": {
         "left": {
           "type": "treasure",
           "nextRoomId": "rootcoil-channels-depths",
-          "message": "Broad silver kelp hides a Star Candy cache inside a hollow root.\nShizuki scratched an arrow toward it, then another arrow pointing in the\nopposite direction, then wrote:\n\n'Root moved. Not my fault.'",
+          "message": "Broad silver kelp hides a Star Candy cache inside a hollow root. Shizuki scratched an arrow toward it, then another arrow pointing in the opposite direction, then wrote:\n\n'Root moved. Not my fault.'",
           "reward": {
             "min": 180,
             "max": 216
@@ -25,19 +25,19 @@
           "type": "combat",
           "nextRoomId": "rootcoil-channels-depths",
           "enemyId": "rootcoil-eel",
-          "message": "A Rootcoil Eel disappears through a hole the width of your wrist.\n\nA second later it emerges from an entirely different wall.\n\nYou would like to see the floor plan."
+          "message": "A Rootcoil Eel disappears through a hole the width of your wrist. A second later it emerges from an entirely different wall.\n\nYou would like to see the floor plan."
         },
         "forward": {
           "type": "healing",
           "nextRoomId": "rootcoil-channels-depths",
           "healAmount": 62,
-          "message": "A folded leaf holds restorative sap inside a root alcove. Shizuki's\nnote reads:\n\n'Safe resting nook.\n\nWas on left yesterday.\n\nCurrently forward.\n\nTomorrow's problem.'",
-          "fullHpMessage": "You leave the sap where it is. At full health, you can save your energy\nfor arguing with moving architecture."
+          "message": "A folded leaf holds restorative sap inside a root alcove. Shizuki's note reads:\n\n'Safe resting nook.\n\nWas on left yesterday.\n\nCurrently forward.\n\nTomorrow's problem.'",
+          "fullHpMessage": "You leave the sap where it is. At full health, you can save your energy for arguing with moving architecture."
         }
       }
     },
     "rootcoil-channels-depths": {
-      "prompt": "Moonlit fronds hang through the root ceiling as three tunnels coil over,\nunder, and possibly through one another.",
+      "prompt": "Moonlit fronds hang through the root ceiling as three tunnels coil over, under, and possibly through one another.",
       "choices": {
         "left": {
           "type": "combat",
@@ -48,7 +48,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "rootcoil-channels-threshold",
-          "message": "A moss-covered shrine coffer has been completely enclosed by roots.\nOne root politely lifts when you reach for the latch.\n\nYou are choosing to trust this.",
+          "message": "A moss covered shrine coffer has been completely enclosed by roots. One root politely lifts when you reach for the latch.\n\nYou are choosing to trust this.",
           "reward": {
             "min": 192,
             "max": 228
@@ -57,31 +57,31 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "rootcoil-channels-threshold",
-          "message": "One Berry is jammed into the corner of Shizuki's hopelessly outdated\nroot map.\n\nShe wrote:\n\n'MAP STATUS:\nAccurate for eleven minutes.\nNew record.'",
+          "message": "One Berry is jammed into the corner of Shizuki's hopelessly outdated root map.\n\nShe wrote:\n\n'MAP STATUS:\nAccurate for eleven minutes.\nNew record.'",
           "berries": 1
         }
       }
     },
     "rootcoil-channels-threshold": {
-      "prompt": "Towering kelp gives way to the Heartroot Spiral, where three passages\nwind around one enormous ancient root.",
+      "prompt": "Towering kelp gives way to the Heartroot Spiral, where three passages wind around one enormous ancient root.",
       "choices": {
         "left": {
           "type": "healing",
           "nextRoomId": "boss-antechamber",
           "healAmount": 67,
-          "message": "A tranquil grove pool collects between the roots. Shizuki's note says:\n\n'If route starts rotating, stay in pool until forest finishes whatever\nit is doing.'",
-          "fullHpMessage": "You leave the pool untouched. The roots are currently behaving, which\nfeels temporary."
+          "message": "A tranquil grove pool collects between the roots. Shizuki's note says:\n\n'If route starts rotating, stay in pool until forest finishes whatever it is doing.'",
+          "fullHpMessage": "You leave the pool untouched. The roots are currently behaving, which feels temporary."
         },
         "right": {
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "rootcoil-eel",
-          "message": "A Rootcoil Eel wraps around the passage itself, blending perfectly with\nthe twisted root until its eyes open."
+          "message": "A Rootcoil Eel wraps around the passage itself, blending perfectly with the twisted root until its eyes open."
         },
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "An offering basket is tucked inside the Heartroot's bark. Star Candies\nrest beneath a carved symbol that looks remarkably like a smiling Eel.",
+          "message": "An offering basket is tucked inside the Heartroot's bark. Star Candies rest beneath a carved symbol that looks remarkably like a smiling Eel.",
           "reward": {
             "min": 204,
             "max": 240
@@ -95,13 +95,13 @@
       "prompt": "The enormous central root begins to unwind.\n\nSomething has been curled around it."
     }
   },
-  "bossPromptDiscord": "The Heartroot Spiral twists open one layer at a time.\n\nAn immense eel-shaped shadow remains coiled around the oldest root,\nunmoving until every smaller Rootcoil has fled.\n\nThen one ancient eye opens.\n\nUse /yes to enter the Spiral or /no to let the old root keep its equally\nold tenant.",
-  "bossPromptTwitch": "The Heartroot Spiral twists open one layer at a time.\n\nAn immense eel-shaped shadow remains coiled around the oldest root,\nunmoving until every smaller Rootcoil has fled.\n\nThen one ancient eye opens.\n\nUse !yes to enter the Spiral or !no to let the old root keep its equally\nold tenant.",
-  "bossRetreatText": "You back away before the Heartroot finishes unwinding. The enormous\ncoil slowly settles again.",
+  "bossPromptDiscord": "The Heartroot Spiral twists open one layer at a time.\n\nAn immense eel shaped shadow remains coiled around the oldest root, unmoving until every smaller Rootcoil has fled.\n\nThen one ancient eye opens.\n\nUse /yes to enter the Spiral or /no to let the old root keep its equally old tenant.",
+  "bossPromptTwitch": "The Heartroot Spiral twists open one layer at a time.\n\nAn immense eel shaped shadow remains coiled around the oldest root, unmoving until every smaller Rootcoil has fled.\n\nThen one ancient eye opens.\n\nUse !yes to enter the Spiral or !no to let the old root keep its equally old tenant.",
+  "bossRetreatText": "You back away before the Heartroot finishes unwinding. The enormous coil slowly settles again.",
   "boss": {
     "enemyId": "elder-rootcoil-boss",
     "roomId": "boss",
     "revealText": "The root parts and an ancient eel uncoils from its center.\n\nElder Rootcoil reveals itself!"
   },
-  "completionText": "\"The Elder Rootcoil disappears through the ancient root network.\n\nThe passages settle.\n\nFor now.\n\nShizuki's map is already wrong again.\"\n\n\n#################################################################"
+  "completionText": "\"The Elder Rootcoil disappears through the ancient root network.\n\nThe passages settle.\n\nFor now.\n\nShizuki's map is already wrong again.\"\n\n#################################################################"
 }

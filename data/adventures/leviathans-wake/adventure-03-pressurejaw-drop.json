@@ -5,12 +5,12 @@
     "regionId": "leviathans-wake",
     "enemyId": "pressurejaw-eel",
     "recommendedLevel": 21,
-    "introDiscord": "The seabed suddenly falls away beside a jawbone larger than a bridge.\n\nPressurejaw Eels twist through the teeth while the surrounding water\ngrows heavy enough to press sound flat.",
-    "introTwitch": "The seabed suddenly falls away beside a jawbone larger than a bridge.\n\nPressurejaw Eels twist through the teeth while the surrounding water\ngrows heavy enough to press sound flat.",
+    "introDiscord": "The seabed suddenly falls away beside a jawbone larger than a bridge. Pressurejaw Eels twist through the teeth while the surrounding water grows heavy enough to press sound flat.",
+    "introTwitch": "The seabed suddenly falls away beside a jawbone larger than a bridge. Pressurejaw Eels twist through the teeth while the surrounding water grows heavy enough to press sound flat.",
     "startRoomId": "pressurejaw-drop-approach",
     "rooms": {
         "pressurejaw-drop-approach": {
-            "prompt": "Three descending paths curve around an enormous Leviathan jaw. Several\nteeth disappear into darkness below.",
+            "prompt": "Three descending paths curve around an enormous Leviathan jaw. Several teeth disappear into darkness below.",
             "choices": {
                 "left": {
                     "type": "healing",
@@ -28,7 +28,7 @@
                 "forward": {
                     "type": "treasure",
                     "nextRoomId": "pressurejaw-drop-depths",
-                    "message": "A navigator's chest hangs from an old anchor line caught around the\njawbone.",
+                    "message": "A navigator's chest hangs from an old anchor line caught around the jawbone.",
                     "reward": {
                         "min": 251,
                         "max": 286
@@ -58,7 +58,7 @@
                     "type": "combat",
                     "nextRoomId": "pressurejaw-drop-threshold",
                     "enemyId": "pressurejaw-eel",
-                    "message": "A Pressurejaw Eel coils around one giant fang before striking from the\ndrop."
+                    "message": "A Pressurejaw Eel coils around one giant fang before striking from the drop."
                 }
             }
         },
@@ -69,7 +69,7 @@
                     "type": "combat",
                     "nextRoomId": "boss-antechamber",
                     "enemyId": "pressurejaw-eel",
-                    "message": "An Eel slips from a hollow tooth.\n\nYou discover that gigantic Leviathan teeth can apparently have cavities\nlarge enough to contain predators.\n\nKnowledge was a mistake."
+                    "message": "An Eel slips from a hollow tooth.\n\nYou discover that gigantic Leviathan teeth can apparently have cavities large enough to contain predators.\n\nKnowledge was a mistake."
                 },
                 "right": {
                     "type": "healing",
@@ -95,8 +95,8 @@
             "prompt": "The pressure around Compression Vault suddenly doubles."
         }
     },
-    "bossPromptDiscord": "The pressure around Compression Vault suddenly doubles.\n\nA long shape coils through the enormous Leviathan jaw, weaving between\nthe teeth without touching them.\n\nUse /yes to descend into Compression Vault or /no to return somewhere\nwith fewer giant mouths.",
-    "bossPromptTwitch": "The pressure around Compression Vault suddenly doubles.\n\nA long shape coils through the enormous Leviathan jaw, weaving between\nthe teeth without touching them.\n\nUse !yes to descend into Compression Vault or !no to return somewhere\nwith fewer giant mouths.",
+    "bossPromptDiscord": "The pressure around Compression Vault suddenly doubles.\n\nA long shape coils through the enormous Leviathan jaw, weaving between the teeth without touching them.\n\nUse /yes to descend into Compression Vault or /no to return somewhere with fewer giant mouths.",
+    "bossPromptTwitch": "The pressure around Compression Vault suddenly doubles.\n\nA long shape coils through the enormous Leviathan jaw, weaving between the teeth without touching them.\n\nUse !yes to descend into Compression Vault or !no to return somewhere with fewer giant mouths.",
     "bossRetreatText": "You retreat uphill.\n\nThe jaw remains open.\n\nGood.",
     "boss": {
         "enemyId": "crushdepth-coil-boss",

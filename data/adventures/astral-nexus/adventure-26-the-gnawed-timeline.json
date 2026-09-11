@@ -95,8 +95,8 @@
             "prompt": "Missing Century opens like a hole in history."
         }
     },
-    "bossPromptDiscord": "Missing Century opens like a hole in history.\n\nSomething enormous is feeding inside.\n\nUse /yes to enter or /no to keep the remaining years\nintact.",
-    "bossPromptTwitch": "Missing Century opens like a hole in history.\n\nSomething enormous is feeding inside.\n\nUse !yes to enter or !no to keep the remaining years\nintact.",
+    "bossPromptDiscord": "Missing Century opens like a hole in history.\n\nSomething enormous is feeding inside.\n\nUse /yes to enter or /no to keep the remaining years intact.",
+    "bossPromptTwitch": "Missing Century opens like a hole in history.\n\nSomething enormous is feeding inside.\n\nUse !yes to enter or !no to keep the remaining years intact.",
     "bossRetreatText": "You withdraw from Missing Century. The impossible guardian will wait.",
     "boss": {
         "enemyId": "epoch-devourer-boss",

@@ -6,7 +6,7 @@
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
         "weight":  100,
-        "title":  "Wake-Rider Current",
+        "title":  "Wake Rider Current",
         "reward":  {
                        "min":  225,
                        "max":  315
@@ -182,7 +182,7 @@
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
         "weight":  90,
-        "title":  "Deep-Scar Path",
+        "title":  "Deep Scar Path",
         "reward":  {
                        "min":  225,
                        "max":  315
@@ -342,7 +342,7 @@
                        "max":  395
                    },
         "xp":  75,
-        "message":  "Blue-white Marrowlight glows from within enormous bones, illuminating thousands of tiny organisms that have transformed the skeleton into a living reef. The serene light travels along one rib and reveals {reward} Star Candies beside a Travel Note.",
+        "message":  "Blue white Marrowlight glows from within enormous bones, illuminating thousands of tiny organisms that have transformed the skeleton into a living reef. The serene light travels along one rib and reveals {reward} Star Candies beside a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-16",
@@ -364,7 +364,7 @@
                        "max":  360
                    },
         "xp":  61,
-        "message":  "Several major currents intersect around a half-buried skeleton. Local creatures use them like roads, and you are accidentally swept into their orderly traffic. After three dizzying junctions, the delta deposits you beside {reward} Star Candies and a Travel Note.",
+        "message":  "Several major currents intersect around a half buried skeleton. Local creatures use them like roads, and you are accidentally swept into their orderly traffic. After three dizzying junctions, the delta deposits you beside {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-17",
@@ -386,7 +386,7 @@
                        "max":  415
                    },
         "xp":  80,
-        "message":  "Deep-sea flowers lie tightly closed across the plain. A massive pressure wave sweeps over them, and thousands bloom at once until the entire seafloor becomes a field of light. Between the luminous petals appear {reward} Star Candies and a Travel Note.",
+        "message":  "Deep sea flowers lie tightly closed across the plain. A massive pressure wave sweeps over them, and thousands bloom at once until the entire seafloor becomes a field of light. Between the luminous petals appear {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-18",
@@ -474,7 +474,7 @@
                        "max":  435
                    },
         "xp":  85,
-        "message":  "Distant currents collide hard enough to produce underwater thunder. Each flash of pressure-light reveals a colossal skeleton in the dark, then another farther away, then another. When the storm finally passes, {reward} Star Candies and a Travel Note shine among the wreckage.",
+        "message":  "Distant currents collide hard enough to produce underwater thunder. Each flash of pressure light reveals a colossal skeleton in the dark, then another farther away, then another. When the storm finally passes, {reward} Star Candies and a Travel Note shine among the wreckage.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-22",
@@ -556,7 +556,7 @@
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
         "weight":  90,
-        "title":  "Bone-Crown Reach",
+        "title":  "Bone Crown Reach",
         "reward":  {
                        "min":  270,
                        "max":  360
@@ -600,7 +600,7 @@
         "region":  "Leviathan\u0027s Wake",
         "rarity":  "common",
         "weight":  80,
-        "title":  "Titan-Scar Gate",
+        "title":  "Titan Scar Gate",
         "reward":  {
                        "min":  285,
                        "max":  375
@@ -628,7 +628,7 @@
                        "max":  625
                    },
         "xp":  134,
-        "message":  "Touching an ancient scale awakens impressions held within it: unfamiliar stars, something colossal moving below, and ancient Fae observing from far away. A later memory shows a familiar white-haired elf touch the same scale and recoil. It fades, revealing {reward} Star Candies and a Travel Note.",
+        "message":  "Touching an ancient scale awakens impressions held within it: unfamiliar stars, something colossal moving below, and ancient Fae observing from far away. A later memory shows a familiar white haired elf touch the same scale and recoil. It fades, revealing {reward} Star Candies and a Travel Note.",
         "itemDrops":  [
                           {
                               "id":  "leviathans-wake-note-29",

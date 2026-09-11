@@ -21,7 +21,7 @@
         "right": {
           "type": "treasure",
           "nextRoomId": "celestial-ruin-march-depths",
-          "message": "A star-chart coffer rests beneath a collapsed arch.",
+          "message": "A star chart coffer rests beneath a collapsed arch.",
           "reward": {
             "min": 66,
             "max": 108
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "celestial-ruin-march-threshold",
-          "message": "A meteor-iron reliquary rests beneath an old celestial banner.",
+          "message": "A meteor iron reliquary rests beneath an old celestial banner.",
           "reward": {
             "min": 78,
             "max": 120
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "A towering celestial construct raises its weapon.\n\nFirmament Warden reveals itself!"
   },
-  "completionText": "\"The Warden falls silent.\n\nThe smaller Walkers return to their endless march.\n\nGrand Marshal Stompy's identity remains classified.\"\n\n\n#################################################################"
+  "completionText": "\"The Warden falls silent.\n\nThe smaller Walkers return to their endless march.\n\nGrand Marshal Stompy's identity remains classified.\"\n\n#################################################################"
 }

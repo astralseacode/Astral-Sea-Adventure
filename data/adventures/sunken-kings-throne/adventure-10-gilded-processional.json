@@ -5,8 +5,8 @@
     "regionId": "sunken-kings-throne",
     "enemyId": "gilded-armorfish",
     "recommendedLevel": 36,
-    "introDiscord": "A grand processional road stretches between golden statues.\n\nGilded Platefish weave through discarded ceremonial armor like they're\nparticipating in their own parade.",
-    "introTwitch": "A grand processional road stretches between golden statues.\n\nGilded Platefish weave through discarded ceremonial armor like they're\nparticipating in their own parade.",
+    "introDiscord": "A grand processional road stretches between golden statues. Gilded Platefish weave through discarded ceremonial armor like they're participating in their own parade.",
+    "introTwitch": "A grand processional road stretches between golden statues. Gilded Platefish weave through discarded ceremonial armor like they're participating in their own parade.",
     "startRoomId": "gilded-processional-approach",
     "rooms": {
         "gilded-processional-approach": {
@@ -16,12 +16,12 @@
                     "type": "combat",
                     "nextRoomId": "gilded-processional-depths",
                     "enemyId": "gilded-armorfish",
-                    "message": "A Gilded Platefin charges down the parade route wearing a piece of\nceremonial armor."
+                    "message": "A Gilded Platefin charges down the parade route wearing a piece of ceremonial armor."
                 },
                 "right": {
                     "type": "empty",
                     "nextRoomId": "gilded-processional-depths",
-                    "message": "One Berry rests inside a crown-shaped parade float.\n\nShizuki wrote:\n\n'Declared myself parade queen.\n\nAttendance:\n\nGlimmer.\n\nThree fish.\n\nExcellent turnout.'",
+                    "message": "One Berry rests inside a crown shaped parade float.\n\nShizuki wrote:\n\n'Declared myself parade queen.\n\nAttendance:\n\nGlimmer.\n\nThree fish.\n\nExcellent turnout.'",
                     "berries": 1
                 },
                 "forward": {
@@ -95,8 +95,8 @@
             "prompt": "The golden reviewing platform lights up."
         }
     },
-    "bossPromptDiscord": "The golden reviewing platform lights up.\n\nOne enormous armored fish takes position in front of the royal seats.\n\nUse /yes to continue the parade or /no to abdicate as\nparade royalty.",
-    "bossPromptTwitch": "The golden reviewing platform lights up.\n\nOne enormous armored fish takes position in front of the royal seats.\n\nUse !yes to continue the parade or !no to abdicate as\nparade royalty.",
+    "bossPromptDiscord": "The golden reviewing platform lights up.\n\nOne enormous armored fish takes position in front of the royal seats.\n\nUse /yes to continue the parade or /no to abdicate as parade royalty.",
+    "bossPromptTwitch": "The golden reviewing platform lights up.\n\nOne enormous armored fish takes position in front of the royal seats.\n\nUse !yes to continue the parade or !no to abdicate as parade royalty.",
     "bossRetreatText": "You withdraw from Golden Review Court. The royal challenge will wait.",
     "boss": {
         "enemyId": "auric-platefish-boss",
