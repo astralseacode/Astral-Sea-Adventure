@@ -18,6 +18,30 @@ const LONG_REST_ENCOUNTER_CHANCE = 0.5;
 const OFFENSIVE_ROLL_TRIGGER = "next_offensive_d20";
 // Used only when migrating the original charge-based saved effect.
 const LEGACY_ELF_BLESSING_DURATION_MS = 30 * 60 * 1000;
+const STIM_USES_PER_BATTLE = 1;
+const STIM_SUCCESS_MESSAGES = [
+  "You administer the Stim and loudly declare that you are NOT dying here. Somewhere in the Astral Sea, you get the distinct feeling Shizuki would approve.",
+  "You administer the Stim and immediately decide that dying would be extremely inconvenient right now.",
+  "The Stim takes effect. Whatever was hurting five seconds ago has apparently become a problem for later.",
+  "You administer the Stim. Your body remembers that it has places to be.",
+  "You were having a terrible time a moment ago. The Stim has filed a formal disagreement.",
+  "You administer the Stim and loudly announce that you're still alive. The enemy was already aware of this.",
+  "The Stim surges through you. You suddenly feel significantly more qualified to make another bad decision.",
+  "You administer the Stim and stubbornly return to your feet. Somewhere, Shizuki would probably call this character development.",
+  "You administer the Stim. Your injuries receive the unfortunate news that you're busy.",
+  "The Stim takes effect almost immediately. You have survived. Your decision making remains untreated.",
+  "You administer the Stim and feel completely refreshed. This seems medically suspicious, but now is not the time for questions.",
+  "You administer the Stim. Every part of your body collectively agrees to keep going.",
+  "The Stim takes effect. You briefly feel capable of fighting the entire Astral Sea. Please do not test this.",
+  "You administer the Stim and make an unnecessarily dramatic declaration about surviving. If Shizuki were here, she'd approve.",
+  "You administer the Stim. Somewhere in the distance, you could swear you hear an approving giggle.",
+  "The Stim takes effect. Against several reasonable expectations, you're completely fine.",
+  "You administer the Stim and immediately regain the confidence of someone who has learned absolutely nothing from nearly dying.",
+  "You administer the Stim. The supervising leaf looks up from its clipboard, pauses, and slowly writes something down.",
+  "The Stim works instantly. The Fae medical team appears deeply concerned about how quickly that worked.",
+  "You administer the Stim. Several nearby Fae stare at you in complete silence. Apparently this is not approved medical procedure.",
+  "The Stim takes effect. Somewhere, a tiny Fae medic just felt a disturbance in the Astral Sea.",
+];
 const BERRY_HEAL_AMOUNT = 25;
 const BERRY_MANA_AMOUNT = 25;
 const BERRY_OUTSIDE_COMBAT_MESSAGES = [
@@ -601,6 +625,11 @@ const DISCORD_COMMANDS = [
     type: 1,
   },
   {
+    name: "stim",
+    description: "Fully restore HP at the cost of your turn. Once per battle; available from Level 1.",
+    type: 1,
+  },
+  {
     name: "cast",
     description: "Cast a learned spell during an Adventure fight.",
     type: 1,
@@ -950,6 +979,11 @@ async function handleTwitchRequest(url, env) {
         (await performAttack(env, backpackKey, "twitch")).message,
       );
 
+    case "stim":
+      return textResponse(
+        (await performStim(env, backpackKey, "twitch", rawArgs)).message,
+      );
+
     case "cast":
       return textResponse(
         (
@@ -1138,6 +1172,7 @@ async function handleTwitchRequest(url, env) {
 
     default:
       return textResponse(
+        "Level 1 — Stim — !stim fully restores HP at the cost of your turn, once per battle. " +
         "Level 5 — Evocation — /cast evocation / !cast evocation completely restores Mana at the cost of your turn; 7 combat turn cooldown. " +
         "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
         "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
@@ -1338,6 +1373,16 @@ async function handleDiscordInteraction(request, env) {
           (await performAttack(env, backpackKey, "discord")).message,
         );
 
+      case "stim":
+        return discordMessage(
+          (await performStim(
+            env, backpackKey, "discord",
+            interaction.data?.options !== undefined &&
+              (!Array.isArray(interaction.data.options) || interaction.data.options.length > 0)
+              ? "invalid options" : "",
+          )).message,
+        );
+
       case "cast":
         return discordMessage(
           (
@@ -1527,6 +1572,7 @@ async function handleDiscordInteraction(request, env) {
 
       default:
         return discordMessage(
+          "Level 1 — Stim — /stim fully restores HP at the cost of your turn, once per battle. " +
           "Level 5 — Evocation — /cast evocation / !cast evocation completely restores Mana at the cost of your turn; 7 combat turn cooldown. " +
           "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
           "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
@@ -2078,6 +2124,7 @@ async function startAdventureBattle(
       isBoss: context.isBoss === true,
     },
     round: 1,
+    stimUses: 0,
     startedAt: now,
     updatedAt: now,
   };
@@ -2505,6 +2552,7 @@ async function startCombatEncounter(
       maxHp: enemy.hp,
     },
     round: 1,
+    stimUses: 0,
     startedAt: now,
     updatedAt: now,
   };
@@ -2608,6 +2656,65 @@ async function startLongRestEncounter(
     enemy: selected.enemy,
     message: battle.message,
   };
+}
+
+async function performStim(env, backpackKey, platform = "twitch", input = "") {
+  return withPlayerMutationLock(
+    backpackKey,
+    () => performStimUnlocked(env, backpackKey, platform, input),
+  );
+}
+
+async function performStimUnlocked(env, backpackKey, platform, input) {
+  if (String(input || "").trim()) {
+    return { message: `Use ${platform === "discord" ? "/stim" : "!stim"} without any arguments.` };
+  }
+  const combatState = await getCombatState(env, backpackKey);
+  if (!combatState) {
+    return { message: "Stim can only be used during a battle." };
+  }
+  if ((combatState.stimUses || 0) >= STIM_USES_PER_BATTLE) {
+    return { message: "You have already used your Stim for this battle." };
+  }
+  const progress = await getPlayerProgress(env, backpackKey);
+  const maximumHp = getPlayerResourceCaps(progress).hp;
+  if (combatState.playerHp === maximumHp) {
+    return { message: "You're already at full HP. Save your Stim for this battle." };
+  }
+
+  const originalCombatState = structuredClone(combatState);
+  const updatedProgress = { ...progress, hp: maximumHp };
+  combatState.playerHp = maximumHp;
+  combatState.playerMaxHp = maximumHp;
+  combatState.stimUses = (combatState.stimUses || 0) + 1;
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  const stimMessage = randomChoice(STIM_SUCCESS_MESSAGES) + separator +
+    `HP fully restored: ${maximumHp}/${maximumHp}. Stim used for this battle.`;
+
+  try {
+    await savePlayerProgress(env, backpackKey, updatedProgress);
+    const turnStart = await advanceLeviathansWake(
+      env, backpackKey, combatState, updatedProgress, platform,
+    );
+    if (turnStart.victory) return {
+      ...turnStart.victory,
+      message: [stimMessage, turnStart.victory.message].join(separator),
+    };
+    return await resolvePlayerCombatAction(env, backpackKey, combatState, {
+      damage: 0,
+      message: [turnStart.message, stimMessage].filter(Boolean).join(separator),
+    }, platform);
+  } catch (error) {
+    try {
+      await Promise.all([
+        savePlayerProgress(env, backpackKey, progress),
+        saveCombatState(env, backpackKey, originalCombatState),
+      ]);
+    } catch (rollbackError) {
+      console.error("Stim rollback failed:", rollbackError);
+    }
+    throw error;
+  }
 }
 
 async function performAttack(
@@ -3875,7 +3982,7 @@ async function castLeviathansWake(
 async function advanceLeviathansWake(
   env, backpackKey, combatState, progress, platform, advanceCooldown = true,
 ) {
-  // Only validated Attack and turn-consuming casts reach this hook. Persist
+  // Only validated Attack, Stim, and turn-consuming casts reach this hook. Persist
   // before Wake can end the encounter. Evocation skips its own casting turn.
   if (advanceCooldown && progress.evocationCooldownTurns > 0) {
     progress.evocationCooldownTurns -= 1;
@@ -6869,6 +6976,11 @@ function isValidCombatState(combatState) {
     combatState.playerMaxHp >= PLAYER_COMBAT_MAX_HP &&
     combatState.playerHp > 0 &&
     combatState.playerHp <= MAX_PLAYER_RESOURCE_CAP &&
+    (
+      combatState.stimUses === undefined ||
+      (Number.isSafeInteger(combatState.stimUses) &&
+        combatState.stimUses >= 0 && combatState.stimUses <= STIM_USES_PER_BATTLE)
+    ) &&
     enemy &&
     typeof enemy.id === "string" &&
     /^[a-z0-9-]+$/.test(enemy.id) &&
