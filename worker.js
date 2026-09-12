@@ -308,6 +308,7 @@ const PERK_FILES = {
   "astral-aftershock": "astral-aftershock.json",
   "fae-intervention": "fae-intervention.json",
   "astral-curiosity": "astral-curiosity.json",
+  "astral-patience": "astral-patience.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1190,6 +1191,7 @@ async function handleTwitchRequest(url, env) {
         "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
         "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
         "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
+        "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1590,6 +1592,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
           "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
           "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
+          "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3170,6 +3173,18 @@ async function resolvePlayerCombatAction(
   const mendMessage = triggerMendHealing(combatState);
   if (mendMessage) {
     messageParts.push(mendMessage);
+  }
+
+  const astralPatience = activePerks.find(
+    (perk) => perk.effect.trigger === "non-offensive-combat-turn",
+  );
+  if (
+    astralPatience && !combatState.astralPatience &&
+    action.roll === undefined && action.damage === 0 &&
+    !action.echoDamage && !action.aftershockDamage
+  ) {
+    combatState.astralPatience = { offensiveRollModifier: astralPatience.effect.offensiveRollModifier };
+    messageParts.push(astralPatience.activationLine);
   }
 
   combatState.round += 1;
@@ -7032,6 +7047,10 @@ function isValidCombatState(combatState) {
       isValidAstralCuriosityBonus(combatState.astralCuriosity)
     ) &&
     (
+      combatState.astralPatience === undefined ||
+      (combatState.astralPatience?.offensiveRollModifier === 2)
+    ) &&
+    (
       combatState.jellyfishResolve === undefined ||
       (
         combatState.jellyfishResolve &&
@@ -7854,6 +7873,13 @@ function consumeTriggeredStatusEffects(
     modifierDetails.push({ name: "Jellyfish Resolve", value: resolveModifier });
     delete combatState.jellyfishResolve;
   }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.astralPatience) {
+    const patienceModifier = combatState.astralPatience.offensiveRollModifier;
+    modifier += patienceModifier;
+    applied.push("Astral Patience");
+    modifierDetails.push({ name: "Astral Patience", value: patienceModifier });
+    delete combatState.astralPatience;
+  }
 
   return {
     naturalRoll,
@@ -8528,6 +8554,11 @@ function validatePerkDefinition(perk, expectedId) {
     Number(tripleRewards?.candies) === 100 &&
     Number(tripleRewards?.offensiveRollModifier) === 1 &&
     hasCuriosityPresentation;
+  const validAstralPatience = expectedId === "astral-patience" &&
+    Number(perk.requiredLevel) === 22 &&
+    effect?.trigger === "non-offensive-combat-turn" &&
+    Number(effect.offensiveRollModifier) === 2 &&
+    hasSingleActivationLine && !hasActivationLines;
 
   if (
     !validResilience &&
@@ -8535,7 +8566,8 @@ function validatePerkDefinition(perk, expectedId) {
     !validHarvest &&
     !validAftershock &&
     !validFaeIntervention &&
-    !validAstralCuriosity
+    !validAstralCuriosity &&
+    !validAstralPatience
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }

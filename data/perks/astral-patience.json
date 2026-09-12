@@ -1,0 +1,12 @@
+{
+  "id": "astral-patience",
+  "name": "Astral Patience",
+  "requiredLevel": 22,
+  "type": "passive",
+  "description": "Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack.",
+  "effect": {
+    "trigger": "non-offensive-combat-turn",
+    "offensiveRollModifier": 2
+  },
+  "activationLine": "Astral Patience settles over you. Your next offensive roll gains +2."
+}
