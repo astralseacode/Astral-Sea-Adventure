@@ -1,0 +1,98 @@
+{
+    "id":  "berries",
+    "name":  "Berries",
+    "aliases":  [
+                    "berry",
+                    "berries"
+                ],
+    "requiredLevel":  24,
+    "manaCost":  20,
+    "type":  "pre-action-utility",
+    "description":  "Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects.",
+    "damage":  {
+                   "dice":  1,
+                   "sides":  20
+               },
+    "outcomes":  [
+                     {
+                         "roll":  1,
+                         "text":  "Roll 1 → Sour Berry | You pull out a tiny, suspiciously angry-looking berry, taste it, immediately regret every decision that led to this moment, and throw it at your foe instead; the berry deals 10 damage, and nobody enjoyed this."
+                     },
+                     {
+                         "roll":  2,
+                         "text":  "Roll 2 → Sleepy Berry | You pull out a berry that appears to already be asleep, and after a tiny yawn it nestles into your pocket and promises absolutely nothing except reducing the next enemy hit by 5 damage."
+                     },
+                     {
+                         "roll":  3,
+                         "text":  "Roll 3 → Blue Berry | You pull out a perfectly blue berry, briefly wonder whether calling it a blueberry would cause some kind of magical copyright dispute, and feel 30 Mana rush back into you before anyone can investigate."
+                     },
+                     {
+                         "roll":  4,
+                         "text":  "Roll 4 → Sweet Berry | You take one bite of the suspiciously perfect berry and immediately understand why Shizuki keeps snacks around, restoring 15 HP and perhaps developing a problem."
+                     },
+                     {
+                         "roll":  5,
+                         "text":  "Roll 5 → Bouncy Berry | The berry immediately escapes your hand, bounces off the floor, your shoulder, and somehow your foe before returning to you looking extremely proud of itself, granting +2 to your next offensive roll."
+                     },
+                     {
+                         "roll":  6,
+                         "text":  "Roll 6 → Fae Berry | Several tiny Fae emerge carrying a berry much larger than they are, deposit it into your hands, restore 20 Mana, grant +1 to your next offensive spell roll, and hurriedly leave before you can ask where they got it."
+                     },
+                     {
+                         "roll":  7,
+                         "text":  "Roll 7 → Bubble Berry | You squeeze the berry slightly and it responds with an offended *boing* before expanding into 10 protection around you, which raises several questions about whether Bubble has relatives."
+                     },
+                     {
+                         "roll":  8,
+                         "text":  "Roll 8 → Spark Berry | The berry begins sparkling with increasingly concerning enthusiasm, zaps your fingertips, and leaves enough magic behind to add 8 damage to your next successful offensive spell."
+                     },
+                     {
+                         "roll":  9,
+                         "text":  "Roll 9 → Healing Berry | You eat the berry and immediately restore 25 HP while several tiny Fae appear in the distance, nod approvingly as if they personally supervised your recovery, and disappear before doing any actual paperwork."
+                     },
+                     {
+                         "roll":  10,
+                         "text":  "Roll 10 → Mana Berry | The berry dissolves into blue light the moment you touch it, restoring 50 Mana and leaving behind the strange feeling that somewhere Shizuki just whispered, \"See? Berries fix everything.\""
+                     },
+                     {
+                         "roll":  11,
+                         "text":  "Roll 11 → Twilight Berry | The berry glows in the soft colors of an Astral Sea sunset and tastes weirdly nostalgic, restoring 15 HP and 20 Mana while leaving you unable to remember exactly what you\u0027re nostalgic about."
+                     },
+                     {
+                         "roll":  12,
+                         "text":  "Roll 12 → Giggling Berry | You pull out an otherwise completely normal berry that quietly giggles at you in a very familiar way, refuses to explain itself, and grants +3 to your next offensive roll."
+                     },
+                     {
+                         "roll":  13,
+                         "text":  "Roll 13 → Lucky Berry | The berry rattles when you shake it, so naturally you shake it harder until 75 Star Candies spill out, and somewhere in the Astral Sea you get the distinct feeling Shizuki would be proud of this financial strategy."
+                     },
+                     {
+                         "roll":  14,
+                         "text":  "Roll 14 → Moon Berry | Pale moonlight swirls across the berry before it melts into shimmering magic, restoring 15 HP and 30 Mana while a tiny crescent briefly appears above your head because apparently the berry enjoys presentation."
+                     },
+                     {
+                         "roll":  15,
+                         "text":  "Roll 15 → Shimmer Berry | The berry flickers between several colors before exploding into glitter directly in your face, restoring 20 Mana while you are busy questioning why Shizuki\u0027s magic is like this, and your next offensive spell quietly becomes 50% cheaper."
+                     },
+                     {
+                         "roll":  16,
+                         "text":  "Roll 16 → Guardian Berry | The berry sprouts a tiny pair of magical leaves, positions itself heroically between you and your foe, and generates 20 protection despite being approximately the least intimidating guardian you have ever seen."
+                     },
+                     {
+                         "roll":  17,
+                         "text":  "Roll 17 → Comet Berry | You pull out a berry that immediately begins vibrating, wisely point it away from yourself, and watch it launch like a tiny comet directly into your foe for 25 damage while a distant giggle suggests somebody knew that would happen."
+                     },
+                     {
+                         "roll":  18,
+                         "text":  "Roll 18 → Astral Berry | Tiny constellations flicker beneath the berry\u0027s skin before bursting into your hands, restoring 60 Mana and granting +2 to your next offensive roll as the Astral Sea briefly seems very pleased with itself."
+                     },
+                     {
+                         "roll":  19,
+                         "text":  "Roll 19 → Golden Berry | A brilliant golden berry appears with enough sparkles to announce that you almost rolled something even better, restoring 30 HP and 60 Mana while being just slightly smug about second place."
+                     },
+                     {
+                         "roll":  20,
+                         "text":  "Roll 20 → Shizuki\u0027s Favorite | A familiar little berry appears in your hand, and for some reason you already know this one is special as a faint giggle drifts through the Astral Sea and the berry bursts into warm starlight, restoring 40 HP and 80 Mana and granting +4 to your next offensive roll."
+                     }
+                 ]
+}

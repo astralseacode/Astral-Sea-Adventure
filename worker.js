@@ -292,6 +292,7 @@ const SPELL_FILES = {
   "astral-echo": "astral-echo.json",
   "falling-star": "falling-star.json",
   "leviathans-wake": "leviathans-wake.json",
+  berries: "berries.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -652,6 +653,7 @@ const DISCORD_COMMANDS = [
           { name: "Astral Echo", value: "astral-echo" },
           { name: "Falling Star", value: "falling-star" },
           { name: "Leviathan's Wake", value: "leviathans-wake" },
+          { name: "Berry", value: "berry" },
         ],
       },
     ],
@@ -1194,6 +1196,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
         "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
         "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
+        "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1596,6 +1599,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
           "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
           "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
+          "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3112,6 +3116,23 @@ async function resolvePlayerCombatAction(
     sleepyGuardMessage =
       `Jellyfish Sleepy Guard reduces the hit by ${reduction}. You take ${enemyDamage} dmg.`;
   }
+  let berryProtectionMessage = "";
+  const berryEffects = combatState.berryEffects;
+  if (berryEffects?.protection > 0 && enemyDamage > 0) {
+    const absorbed = Math.min(berryEffects.protection, enemyDamage);
+    enemyDamage -= absorbed;
+    berryEffects.protection -= absorbed;
+    if (berryEffects.protection === 0) delete berryEffects.protection;
+    berryProtectionMessage = `Berry protection absorbs ${absorbed} damage` +
+      (berryEffects.protection ? ` | ${berryEffects.protection} remains` : " | depleted");
+  }
+  let berrySleepyMessage = "";
+  if (berryEffects?.sleepyGuard && enemyDamage > 0) {
+    const reduction = Math.min(5, enemyDamage);
+    enemyDamage -= reduction;
+    delete berryEffects.sleepyGuard;
+    berrySleepyMessage = `Sleepy Berry reduces the hit by ${reduction} damage.`;
+  }
   combatState.playerHp = Math.max(
     0,
     combatState.playerHp - enemyDamage,
@@ -3123,7 +3144,8 @@ async function resolvePlayerCombatAction(
       enemyRoll,
       {
         ...enemyAttack,
-        damage: bubbleMessage || sleepyGuardMessage ? enemyDamage : rawEnemyDamage,
+        damage: bubbleMessage || sleepyGuardMessage || berryProtectionMessage || berrySleepyMessage
+          ? enemyDamage : rawEnemyDamage,
       },
     ),
   );
@@ -3142,6 +3164,8 @@ async function resolvePlayerCombatAction(
   if (sleepyGuardMessage) {
     messageParts.push(sleepyGuardMessage);
   }
+  if (berryProtectionMessage) messageParts.push(berryProtectionMessage);
+  if (berrySleepyMessage) messageParts.push(berrySleepyMessage);
 
   const faeIntervention = activePerks.find(
     (perk) => perk.effect.trigger === "lethal-enemy-damage",
@@ -3362,6 +3386,7 @@ async function performCastUnlocked(
   const wakeCommand = platform === "discord"
     ? "/cast spell:Leviathan's Wake"
     : "!cast wake";
+  const berryCommand = platform === "discord" ? "/cast Berry" : "!cast berry";
 
   if (!spellInputValue) {
     return {
@@ -3370,7 +3395,7 @@ async function performCastUnlocked(
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
         `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, ${evocationCommand} for Evocation, or ` +
         `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
-        `${fallingStarCommand} for Falling Star, or ${wakeCommand} for Leviathan's Wake.`,
+        `${fallingStarCommand} for Falling Star, ${wakeCommand} for Leviathan's Wake, or ${berryCommand} for Berries.`,
     };
   }
 
@@ -3387,7 +3412,7 @@ async function performCastUnlocked(
         `You haven't learned that spell. Use ${blessingCommand}, ` +
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
         `${moonbeamCommand}, ${evocationCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
-        `${fallingStarCommand}, or ${wakeCommand}.`,
+        `${fallingStarCommand}, ${wakeCommand}, or ${berryCommand}.`,
     };
   }
 
@@ -3421,6 +3446,97 @@ async function performCastUnlocked(
       message: currentCombatState && platform === "discord"
         ? appendDiscordCombatHud(message, currentCombatState, progress)
         : message,
+    };
+  }
+
+  if (spell.id === "berries") {
+    if (!currentCombatState) {
+      return { message: "Berries can only be cast during a fight." };
+    }
+    if (currentCombatState.berriesCastRound === currentCombatState.round) {
+      return { message: "You have already conjured a Berry this turn." };
+    }
+    if (progress.mana < spell.manaCost) {
+      return { message: `You don't have enough Mana to cast ${spell.name}.` };
+    }
+
+    const originalCombatState = structuredClone(currentCombatState);
+    await savePlayerProgress(env, backpackKey, {
+      ...progress,
+      mana: progress.mana - spell.manaCost,
+    });
+    const paidProgress = await getPlayerProgress(env, backpackKey);
+    const resourceCaps = getPlayerResourceCaps(paidProgress);
+    currentCombatState.playerMaxHp = resourceCaps.hp;
+    currentCombatState.playerHp = Math.min(currentCombatState.playerHp, resourceCaps.hp);
+    const naturalRoll = randomInteger(1, 20);
+    const outcome = spell.outcomes[naturalRoll - 1];
+    const effects = currentCombatState.berryEffects ||= {};
+    const updatedProgress = { ...paidProgress };
+    const restoreHp = amount => {
+      currentCombatState.playerHp = Math.min(
+        resourceCaps.hp, currentCombatState.playerHp + amount,
+      );
+    };
+    const restoreMana = amount => {
+      updatedProgress.mana = Math.min(resourceCaps.mana, updatedProgress.mana + amount);
+    };
+    const grantRollBonus = (name, value) => {
+      effects.rollBonuses ||= {};
+      effects.rollBonuses[name] = value;
+    };
+    let fixedDamage = 0;
+    switch (naturalRoll) {
+      case 1: fixedDamage = 10; break;
+      case 2: effects.sleepyGuard = true; break;
+      case 3: restoreMana(30); break;
+      case 4: restoreHp(15); break;
+      case 5: grantRollBonus("Bouncy Berry", 2); break;
+      case 6: restoreMana(20); grantRollBonus("Fae Berry", 1); break;
+      case 7: effects.protection = (effects.protection || 0) + 10; break;
+      case 8: effects.sparkDamage = true; break;
+      case 9: restoreHp(25); break;
+      case 10: restoreMana(50); break;
+      case 11: restoreHp(15); restoreMana(20); break;
+      case 12: grantRollBonus("Giggling Berry", 3); break;
+      case 13: break;
+      case 14: restoreHp(15); restoreMana(30); break;
+      case 15: restoreMana(20); effects.shimmerDiscount = true; break;
+      case 16: effects.protection = (effects.protection || 0) + 20; break;
+      case 17: fixedDamage = 25; break;
+      case 18: restoreMana(60); grantRollBonus("Astral Berry", 2); break;
+      case 19: restoreHp(30); restoreMana(60); break;
+      case 20: restoreHp(40); restoreMana(80); grantRollBonus("Shizuki's Favorite", 4); break;
+    }
+    currentCombatState.berriesCastRound = currentCombatState.round;
+    currentCombatState.enemy.hp = Math.max(0, currentCombatState.enemy.hp - fixedDamage);
+    updatedProgress.hp = currentCombatState.playerHp;
+    const originalCandies = naturalRoll === 13
+      ? await getBackpackTotal(env, backpackKey) : null;
+    try {
+      await savePlayerProgress(env, backpackKey, updatedProgress);
+      if (naturalRoll === 13) {
+        await saveBackpackTotal(env, backpackKey, originalCandies + 75);
+      }
+      if (currentCombatState.enemy.hp === 0) {
+        return await resolveCombatVictory(
+          env, backpackKey, currentCombatState, null, fixedDamage,
+          platform, outcome.text,
+        );
+      }
+      await saveCombatState(env, backpackKey, currentCombatState);
+    } catch (error) {
+      await savePlayerProgress(env, backpackKey, progress);
+      await saveCombatState(env, backpackKey, originalCombatState);
+      if (originalCandies !== null) {
+        await saveBackpackTotal(env, backpackKey, originalCandies);
+      }
+      throw error;
+    }
+    const separator = platform === "discord" ? "\n\n" : " | ";
+    return {
+      message: outcome.text + separator +
+        formatDiscordCombatHud(currentCombatState, updatedProgress),
     };
   }
 
@@ -3803,9 +3919,14 @@ async function performCastUnlocked(
   }
 
   const astralCharge = getAstralCharge(combatState.enemy);
-  const manaCost = astralCharge?.manaDiscountAvailable
-    ? Math.round(spell.manaCost * (1 - astralCharge.manaReduction))
-    : spell.manaCost;
+  const shimmerDiscount = combatState.berryEffects?.shimmerDiscount === true;
+  // Both 50% discounts apply to the same next offensive spell; the larger
+  // discount wins rather than compounding into an unintended 75% reduction.
+  const manaReduction = Math.max(
+    astralCharge?.manaDiscountAvailable ? astralCharge.manaReduction : 0,
+    shimmerDiscount ? 0.5 : 0,
+  );
+  const manaCost = Math.round(spell.manaCost * (1 - manaReduction));
 
   if (progress.mana < manaCost) {
     const message = `You don't have enough Mana to cast ${spell.name}.`;
@@ -3823,6 +3944,8 @@ async function performCastUnlocked(
   );
   if (turnStart.victory) return turnStart.victory;
 
+  if (shimmerDiscount) delete combatState.berryEffects.shimmerDiscount;
+
   if (spell.id === "leviathans-wake") {
     return castLeviathansWake(
       env, backpackKey, combatState, progress, spell, activePerks,
@@ -3836,6 +3959,7 @@ async function performCastUnlocked(
     OFFENSIVE_ROLL_TRIGGER,
     spellRoll.total,
     combatState,
+    true,
   );
   const faeBonus = getFaeSpellRollBonus(progress);
   if (faeBonus > 0) {
@@ -3877,6 +4001,10 @@ async function performCastUnlocked(
         astralEcho.damagePercent,
       )
     : 0;
+  if (resolvedSpellRoll.damage > 0 && combatState.berryEffects?.sparkDamage) {
+    resolvedSpellRoll.damage += 8;
+    delete combatState.berryEffects.sparkDamage;
+  }
   const astralAftershock = activePerks.find(
     (perk) => perk.effect.trigger === "critical-offensive-spell",
   );
@@ -3977,7 +4105,7 @@ async function castLeviathansWake(
 ) {
   const naturalRoll = randomInteger(1, spell.damage.sides);
   const triggeredRoll = consumeTriggeredStatusEffects(
-    progress, OFFENSIVE_ROLL_TRIGGER, naturalRoll, combatState,
+    progress, OFFENSIVE_ROLL_TRIGGER, naturalRoll, combatState, true,
   );
   const faeBonus = getFaeSpellRollBonus(progress);
   if (faeBonus > 0) {
@@ -4068,6 +4196,11 @@ async function advanceLeviathansWake(
   const echoDamage = wake.astralEchoSnapshot
     ? applyPercentageOfDamage(primaryDamage, wake.astralEchoSnapshot.damagePercent)
     : 0;
+  const sparkBerry = combatState.berryEffects?.sparkDamage === true;
+  if (sparkBerry) {
+    primaryDamage += 8;
+    delete combatState.berryEffects.sparkDamage;
+  }
   const aftershock = wake.aftershockDamage > 0
     ? await getPerkDefinition("astral-aftershock")
     : null;
@@ -4082,7 +4215,8 @@ async function advanceLeviathansWake(
     parts.push(spell.easterEggs[egg]);
   }
   parts.push(`${spell.name}: ${wake.baseDamage} +${strength} Strength` +
-    `${wake.astralChargeSnapshot ? " + Astral Charge" : ""} → ${primaryDamage} dmg`);
+    `${wake.astralChargeSnapshot ? " + Astral Charge" : ""}` +
+    `${sparkBerry ? " + Spark Berry" : ""} → ${primaryDamage} dmg`);
   combatState.enemy.hp = Math.max(0, combatState.enemy.hp - primaryDamage);
   if (wake.astralEchoSnapshot) {
     combatState.enemy.hp = Math.max(0, combatState.enemy.hp - echoDamage);
@@ -7017,6 +7151,29 @@ function isValidAstralCuriosityBonus(bonus) {
   );
 }
 
+function isValidBerryEffects(effects) {
+  if (!effects || typeof effects !== "object" || Array.isArray(effects)) return false;
+  const allowedBonuses = {
+    "Bouncy Berry": 2,
+    "Fae Berry": 1,
+    "Giggling Berry": 3,
+    "Astral Berry": 2,
+    "Shizuki's Favorite": 4,
+  };
+  return Object.keys(effects).every((key) =>
+    ["sleepyGuard", "protection", "rollBonuses", "sparkDamage", "shimmerDiscount"].includes(key)) &&
+    (effects.sleepyGuard === undefined || effects.sleepyGuard === true) &&
+    (effects.sparkDamage === undefined || effects.sparkDamage === true) &&
+    (effects.shimmerDiscount === undefined || effects.shimmerDiscount === true) &&
+    (effects.protection === undefined ||
+      (Number.isSafeInteger(effects.protection) && effects.protection > 0)) &&
+    (effects.rollBonuses === undefined ||
+      (effects.rollBonuses && typeof effects.rollBonuses === "object" &&
+        !Array.isArray(effects.rollBonuses) &&
+        Object.entries(effects.rollBonuses).every(([name, value]) =>
+          allowedBonuses[name] === value)));
+}
+
 function isValidLeviathansWake(wake) {
   const validFraction = (value) =>
     typeof value === "number" && Number.isFinite(value) && value > 0 && value <= 1;
@@ -7059,6 +7216,14 @@ function isValidCombatState(combatState) {
       (Number.isSafeInteger(combatState.stimUses) &&
         combatState.stimUses >= 0 && combatState.stimUses <= STIM_USES_PER_BATTLE)
     ) &&
+    (
+      combatState.berriesCastRound === undefined ||
+      (Number.isSafeInteger(combatState.berriesCastRound) &&
+        combatState.berriesCastRound >= 1 &&
+        combatState.berriesCastRound <= combatState.round)
+    ) &&
+    (combatState.berryEffects === undefined ||
+      isValidBerryEffects(combatState.berryEffects)) &&
     enemy &&
     typeof enemy.id === "string" &&
     /^[a-z0-9-]+$/.test(enemy.id) &&
@@ -7865,6 +8030,7 @@ function consumeTriggeredStatusEffects(
   trigger,
   naturalRoll,
   combatState = null,
+  offensiveSpell = false,
 ) {
   const statusEffects = normalizeStatusEffects(progress.statusEffects);
   const applied = [];
@@ -7928,6 +8094,18 @@ function consumeTriggeredStatusEffects(
     applied.push("Astral Patience");
     modifierDetails.push({ name: "Astral Patience", value: patienceModifier });
     delete combatState.astralPatience;
+  }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.berryEffects?.rollBonuses) {
+    for (const [name, value] of Object.entries(combatState.berryEffects.rollBonuses)) {
+      if (name === "Fae Berry" && !offensiveSpell) continue;
+      modifier += value;
+      applied.push(name);
+      modifierDetails.push({ name, value });
+      delete combatState.berryEffects.rollBonuses[name];
+    }
+    if (Object.keys(combatState.berryEffects.rollBonuses).length === 0) {
+      delete combatState.berryEffects.rollBonuses;
+    }
   }
 
   return {
@@ -8206,6 +8384,7 @@ function validateSpellDefinition(spell, expectedId) {
       "healing-support",
       "defensive",
       "pre-action-support",
+      "pre-action-utility",
       "mana-recovery",
     ].includes(spell.type)
   ) {
@@ -8217,6 +8396,18 @@ function validateSpellDefinition(spell, expectedId) {
     spell.cooldownTurns !== 7 || !isTextArray(spell.successLines) ||
     spell.successLines.length !== 26 || typeof spell.fullManaLine !== "string"
   )) throw new Error("Invalid Evocation content data.");
+
+  if (spell.type === "pre-action-utility" && (
+    spell.id !== "berries" || spell.requiredLevel !== 24 ||
+    spell.manaCost !== 20 || spell.damage?.dice !== 1 ||
+    spell.damage?.sides !== 20 ||
+    !Array.isArray(spell.outcomes) || spell.outcomes.length !== 20 ||
+    spell.outcomes.some((outcome, index) =>
+      outcome.roll !== index + 1 ||
+      typeof outcome.text !== "string" ||
+      !outcome.text.startsWith(`Roll ${index + 1} → `) ||
+      outcome.text.includes("\n"))
+  )) throw new Error("Invalid Berries content data.");
 
   if (spell.type === "offensive") {
     if (spell.id !== "falling-star" && (
