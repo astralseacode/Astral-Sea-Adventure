@@ -47,6 +47,14 @@
     "Bubble activates! The bubble absorbs {absorbedDamage} damage, gives your foe one last accusatory *boing*, and pops. It clearly expected an apology.",
     "Bubble activates! Your foe strikes the bubble. It absorbs {absorbedDamage} damage, wobbles dramatically, and pops. Somehow, you get the impression it took that personally."
   ],
+  "survivalLines": [
+    "The attack slams into your Bubble. It wobbles violently, gives an offended *boing*, and somehow holds together.",
+    "Your Bubble squishes inward from the impact, pauses for a moment, then stubbornly pops back into shape.",
+    "The attack crashes into your Bubble. It trembles indignantly but refuses to pop.",
+    "Your Bubble absorbs the hit and gives your foe a deeply offended *boing*. Apparently that was rude.",
+    "The Bubble wobbles dangerously.\n\nIt survives.\n\nIt seems almost disappointed that it didn't get to be dramatic about this.",
+    "Your Bubble takes the hit, stretches to a concerning degree, and snaps back into place.\n\nNobody should tell it how close that was."
+  ],
   "criticalFlavorChance": 0.25,
   "criticalFlavor": [
     "The bubble gives you a confident little *boing*. It has trained its entire life for this moment. Approximately three seconds.",

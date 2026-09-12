@@ -299,6 +299,7 @@ const MASTERY_FILES = {
   "jellyfish-mastery-2": "jellyfish-mastery-2.json",
   "elf-blessing-mastery-1": "elf-blessing-mastery-1.json",
   "bubble-mastery-1": "bubble-mastery-1.json",
+  "bubble-mastery-2": "bubble-mastery-2.json",
   "mend-mastery-1": "mend-mastery-1.json",
 };
 const PERK_FILES = {
@@ -1192,6 +1193,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
         "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
         "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
+        "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1593,6 +1595,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
           "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
           "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
+          "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3033,41 +3036,69 @@ async function resolvePlayerCombatAction(
     : Math.max(1, rawEnemyDamage - armorReduction);
   let bubbleMessage = "";
   let bubbleMasteryMessage = "";
+  let bubbleMasteryIIMessage = "";
   if (combatState.bubble && enemyDamage > 0) {
+    const bubbleSpell = await getSpellDefinition("bubble");
+    const bubbleTier = bubbleSpell.protectionTiers.find(
+      (tier) => combatState.bubble.naturalRoll <= tier.naturalMaximum,
+    );
+    const maxProtection = combatState.bubble.maxProtection ?? Math.max(
+      combatState.bubble.protection,
+      bubbleTier.protection,
+    );
     const absorbedDamage = Math.min(
       combatState.bubble.protection,
-      Math.max(0, enemyDamage - 1),
+      enemyDamage,
     );
     enemyDamage -= absorbedDamage;
-    const bubbleSpell = await getSpellDefinition("bubble");
-    bubbleMessage = randomChoice(bubbleSpell.activationLines).replace(
-      "{absorbedDamage}",
-      String(absorbedDamage),
-    );
-    delete combatState.bubble;
-    const bubbleMastery = activeMasteries.find(
-      (mastery) => mastery.spellId === "bubble" &&
-        mastery.effect.id === "bubble-rebound",
-    );
-    if (bubbleMastery && absorbedDamage > 0) {
-      const maximumMana = getPlayerResourceCaps(progress).mana;
-      const restoredMana = Math.min(
-        bubbleMastery.effect.manaRestore,
-        Math.max(0, maximumMana - progress.mana),
+    combatState.bubble.protection -= absorbedDamage;
+    if (combatState.bubble.protection > 0) {
+      combatState.bubble.maxProtection = maxProtection;
+      bubbleMessage = randomChoice(bubbleSpell.survivalLines) +
+        `\n\nBubble absorbs ${absorbedDamage} damage | ` +
+        `Protection ${combatState.bubble.protection}/${maxProtection}`;
+    } else {
+      delete combatState.bubble;
+      const bubbleMasteryII = activeMasteries.find(
+        (mastery) => mastery.spellId === "bubble" &&
+          mastery.effect.id === "bubble-retaliation",
       );
-      progress = {
-        ...progress,
-        mana: progress.mana + restoredMana,
-      };
-      combatState.astralRebound = {
-        offensiveRollModifier:
-          bubbleMastery.effect.offensiveRollModifier,
-      };
-      bubbleMasteryMessage = restoredMana > 0
-        ? "Bubble Mastery activates! The Bubble pops with an extremely offended *boing*. " +
-          `You recover ${restoredMana} Mana and gain +2 to your next offensive roll.`
-        : "Bubble Mastery activates! Your Mana is already full, but the extremely offended Bubble still grants +2 to your next offensive roll.";
-      await savePlayerProgress(env, backpackKey, progress);
+      const bubbleMastery = activeMasteries.find(
+        (mastery) => mastery.spellId === "bubble" &&
+          mastery.effect.id === "bubble-rebound",
+      );
+      if (bubbleMastery && absorbedDamage > 0) {
+        const maximumMana = getPlayerResourceCaps(progress).mana;
+        const restoredMana = Math.min(
+          bubbleMastery.effect.manaRestore,
+          Math.max(0, maximumMana - progress.mana),
+        );
+        progress = {
+          ...progress,
+          mana: progress.mana + restoredMana,
+        };
+        combatState.astralRebound = {
+          offensiveRollModifier:
+            bubbleMastery.effect.offensiveRollModifier,
+        };
+        bubbleMasteryMessage = bubbleMasteryII
+          ? `Bubble Mastery I: ${restoredMana > 0 ? `+${restoredMana} Mana` : "Mana full"} | Astral Rebound +2`
+          : restoredMana > 0
+            ? "Bubble Mastery activates! The Bubble pops with an extremely offended *boing*. " +
+              `You recover ${restoredMana} Mana and gain +2 to your next offensive roll.`
+            : "Bubble Mastery activates! Your Mana is already full, but the extremely offended Bubble still grants +2 to your next offensive roll.";
+        await savePlayerProgress(env, backpackKey, progress);
+      }
+      if (bubbleMasteryII && absorbedDamage > 0) {
+        combatState.enemy.hp = Math.max(0, combatState.enemy.hp - bubbleMasteryII.effect.damage);
+        bubbleMasteryIIMessage = randomChoice(bubbleMasteryII.flavor) +
+          `\n\nBubble retaliates → ${bubbleMasteryII.effect.damage} dmg`;
+      } else {
+        bubbleMessage = randomChoice(bubbleSpell.activationLines).replace(
+          "{absorbedDamage}",
+          String(absorbedDamage),
+        );
+      }
     }
   }
   let sleepyGuardMessage = "";
@@ -3104,6 +3135,9 @@ async function resolvePlayerCombatAction(
   }
   if (bubbleMasteryMessage) {
     messageParts.push(bubbleMasteryMessage);
+  }
+  if (bubbleMasteryIIMessage) {
+    messageParts.push(bubbleMasteryIIMessage);
   }
   if (sleepyGuardMessage) {
     messageParts.push(sleepyGuardMessage);
@@ -3173,6 +3207,17 @@ async function resolvePlayerCombatAction(
   const mendMessage = triggerMendHealing(combatState);
   if (mendMessage) {
     messageParts.push(mendMessage);
+  }
+
+  if (combatState.enemy.hp === 0) {
+    await savePlayerProgress(env, backpackKey, {
+      ...updatedProgress,
+      hp: combatState.playerHp,
+    });
+    return resolveCombatVictory(
+      env, backpackKey, combatState, null, 15, platform,
+      formatCombatMessageParts(messageParts, platform),
+    );
   }
 
   const astralPatience = activePerks.find(
@@ -3499,6 +3544,7 @@ async function performCastUnlocked(
       tierId: tier.id,
       displayName: tier.displayName,
       protection: tier.protection,
+      maxProtection: tier.protection,
     };
 
     try {
@@ -6928,7 +6974,10 @@ function isValidBubbleState(bubble) {
     typeof bubble.displayName === "string" &&
     bubble.displayName.trim() &&
     Number.isSafeInteger(bubble.protection) &&
-    bubble.protection > 0
+    bubble.protection > 0 &&
+    (bubble.maxProtection === undefined ||
+      (Number.isSafeInteger(bubble.maxProtection) &&
+        bubble.maxProtection >= bubble.protection))
   );
 }
 
@@ -8235,6 +8284,8 @@ function validateSpellDefinition(spell, expectedId) {
         !tier.narration.trim()) ||
       !isTextArray(spell.activationLines) ||
       spell.activationLines.length !== 5 ||
+      !isTextArray(spell.survivalLines) ||
+      spell.survivalLines.length !== 6 ||
       Number(spell.criticalFlavorChance) !== 0.25 ||
       !isTextArray(spell.criticalFlavor) ||
       spell.criticalFlavor.length !== 5
@@ -8435,6 +8486,12 @@ function validateMasteryDefinition(mastery, expectedId) {
     effect?.id === "bubble-rebound" &&
     Number(effect.manaRestore) === 10 &&
     Number(effect.offensiveRollModifier) === 2;
+  const validBubbleMasteryII = expectedId === "bubble-mastery-2" &&
+    mastery.spellId === "bubble" && mastery.requiredLevel === 23 &&
+    mastery.tier === 2 && effect?.id === "bubble-retaliation" &&
+    Number(effect.damage) === 15 && Array.isArray(mastery.flavor) &&
+    mastery.flavor.length === 3 &&
+    mastery.flavor.every((line) => typeof line === "string" && line.trim());
   const mendHealing = effect?.healingPerTrigger;
   const validMendMastery = expectedId === "mend-mastery-1" &&
     effect?.id === "mend-upgrade" &&
@@ -8456,6 +8513,7 @@ function validateMasteryDefinition(mastery, expectedId) {
     !validJellyfishMasteryII &&
     !validElfBlessingMastery &&
     !validBubbleMastery &&
+    !validBubbleMasteryII &&
     !validMendMastery
   ) {
     throw new Error(`Invalid mastery effect for ${expectedId}.`);

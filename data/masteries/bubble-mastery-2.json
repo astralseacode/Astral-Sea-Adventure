@@ -1,0 +1,17 @@
+{
+  "id": "bubble-mastery-2",
+  "name": "Bubble Mastery II",
+  "spellId": "bubble",
+  "requiredLevel": 23,
+  "tier": 2,
+  "description": "When an enemy breaks your Bubble, its remaining magic retaliates for 15 damage.",
+  "effect": {
+    "id": "bubble-retaliation",
+    "damage": 15
+  },
+  "flavor": [
+    "Your Bubble finally pops.\n\nThere is a brief, deeply offended silence.\n\nThen the remaining Astral energy launches directly back at your foe.",
+    "Your Bubble bursts with an indignant *BOING!* and fires the last of its magic directly at your foe.\n\nApparently this was personal.",
+    "Your Bubble breaks.\n\nIt has had enough."
+  ]
+}
