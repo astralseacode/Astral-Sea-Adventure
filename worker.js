@@ -2105,12 +2105,14 @@ async function startAdventureBattle(
   platform,
 ) {
   const now = Math.floor(Date.now() / 1000);
+  const progress = await getPlayerProgress(env, backpackKey);
+  const resourceCaps = getPlayerResourceCaps(progress);
   const combatState = {
     version: 1,
     regionId: state.regionId,
     encounterNumber: state.adventureNumber,
-    playerHp: state.playerHp,
-    playerMaxHp: state.playerMaxHp,
+    playerHp: Math.min(state.playerHp, resourceCaps.hp),
+    playerMaxHp: resourceCaps.hp,
     enemy: {
       ...enemy,
       hp: enemy.hp,
@@ -2129,8 +2131,6 @@ async function startAdventureBattle(
     updatedAt: now,
   };
 
-  const progress = await getPlayerProgress(env, backpackKey);
-  const resourceCaps = getPlayerResourceCaps(progress);
   await saveCombatState(env, backpackKey, combatState);
 
   return {
@@ -6180,7 +6180,14 @@ async function getCombatState(env, backpackKey) {
 
   try {
     const parsed = JSON.parse(storedValue);
-    return isValidCombatState(parsed) ? parsed : null;
+    if (!isValidCombatState(parsed)) return null;
+    const cap = getPlayerResourceCaps(await getPlayerProgress(env, backpackKey)).hp;
+    if (parsed.playerMaxHp !== cap || parsed.playerHp > cap) {
+      parsed.playerMaxHp = cap;
+      parsed.playerHp = Math.min(parsed.playerHp, cap);
+      await saveCombatState(env, backpackKey, parsed);
+    }
+    return parsed;
   } catch {
     return null;
   }
@@ -6267,7 +6274,14 @@ async function getActiveAdventure(env, backpackKey) {
 
   try {
     const state = JSON.parse(storedValue);
-    return isValidAdventureState(state) ? state : null;
+    if (!isValidAdventureState(state)) return null;
+    const cap = getPlayerResourceCaps(await getPlayerProgress(env, backpackKey)).hp;
+    if (state.playerMaxHp !== cap || state.playerHp > cap) {
+      state.playerMaxHp = cap;
+      state.playerHp = Math.min(state.playerHp, cap);
+      await saveActiveAdventure(env, backpackKey, state);
+    }
+    return state;
   } catch {
     return null;
   }
