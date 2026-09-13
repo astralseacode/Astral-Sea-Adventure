@@ -1,0 +1,31 @@
+{
+    "id":  "fae-second-opinion",
+    "name":  "Fae Second Opinion",
+    "requiredLevel":  29,
+    "type":  "passive",
+    "description":  "Once per battle, a natural 1 on a qualifying forced-failure offensive roll grants +3 to the next offensive roll.",
+    "effect":  {
+                   "trigger":  "natural-one-forced-offensive-failure",
+                   "offensiveRollModifier":  3,
+                   "usesPerBattle":  1
+               },
+    "activationLine":  "Fae Second Opinion Activates! You rolled a 1. Sad.",
+    "flavor":  [
+                   "The supervising leaf has reviewed your roll.\n\nIt remains completely silent.\n\nSomehow, this feels worse.",
+                   "The suspicious mustached shopkeeper who\u0027s definitely not Shizuki appears from absolutely nowhere.\n\nShe looks at your roll.\n\nShe looks at you.\n\nShe slowly adjusts the mustache.\n\nDisappointing.",
+                   "Several Fae gather around to inspect your roll.\n\nA heated discussion immediately begins.\n\nThe vote is unanimous.\n\nAbsolutely not.",
+                   "A Jellyfish floats over and looks at your roll.\n\nIt doesn\u0027t have a face.\n\nYou still somehow feel judged.",
+                   "Somewhere nearby, a Bubble makes a deeply disappointed *boing*.\n\nIt wasn\u0027t even involved in this.",
+                   "The Fae medical team arrives.\n\nThey examine you carefully.\n\nThere appears to be nothing physically wrong with you.\n\nThis only raises further questions.",
+                   "A Fae places the supervising leaf beside your roll.\n\nThe leaf is shown the evidence.\n\nThe leaf declines to comment.",
+                   "The suspicious mustached shopkeeper who\u0027s definitely not Shizuki examines your roll.\n\n\"Hmm.\"\n\nShe writes something down.\n\nYou are fairly certain you\u0027re being charged for this.",
+                   "Somewhere in the Astral Sea, an Astral Charge quietly removes itself from somebody\u0027s forehead.\n\nIt does not wish to be associated with this.",
+                   "Several Jellyfish gather around your roll.\n\nOne of them slowly floats away.\n\nThe others follow.\n\nThe meeting has concluded.",
+                   "A tiny Fae bell begins ringing.\n\nSeveral Fae rush toward your roll carrying paperwork.\n\nApparently there is a procedure for this.",
+                   "A familiar little giggle drifts across the Astral Sea.\n\nYou cannot see Shizuki anywhere.\n\nSomehow, you know exactly what she\u0027s laughing at.",
+                   "A Berry rolls into view.\n\nIt stops beside your roll.\n\nThere is an uncomfortable silence.\n\nYou are being judged by fruit.",
+                   "The Fae stare at your roll.\n\nThe Jellyfish stare at your roll.\n\nThe suspicious shopkeeper who\u0027s definitely not Shizuki stares at your roll.\n\nThe supervising leaf supervises.\n\nNobody is impressed.",
+                   "The supervising leaf appears.\n\nA tiny Fae points at your roll.\n\nThe leaf is turned slightly toward you.\n\nThis feels official."
+               ],
+    "endingLine":  "Next offensive roll +3"
+}

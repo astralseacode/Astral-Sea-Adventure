@@ -1,0 +1,12 @@
+{
+  "id": "kinship",
+  "name": "Kinship",
+  "requiredLevel": 31,
+  "type": "passive",
+  "description": "When your Familiar leaves after completing all 5 of its actions, restore up to 15 Mana.",
+  "effect": {
+    "trigger": "familiar-fifth-action-completed",
+    "manaRestore": 15
+  },
+  "activationLine": "Kinship\n\nAs your Familiar leaves, a little of the magic that brought it to life remains with you.\n\nRestored 15 Mana"
+}

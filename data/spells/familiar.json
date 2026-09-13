@@ -1,0 +1,211 @@
+{
+    "id":  "familiar",
+    "name":  "Familiar",
+    "aliases":  [
+                    "familiar"
+                ],
+    "requiredLevel":  30,
+    "manaCost":  30,
+    "type":  "pre-action-utility",
+    "description":  "Create a living Familiar that assists on the next five qualifying offensive actions.",
+    "damage":  {
+                   "dice":  2,
+                   "sides":  6
+               },
+    "familiars":  [
+                      {
+                          "total":  2,
+                          "id":  "astral-dragonling",
+                          "name":  "Astral Dragonling",
+                          "effect":  {
+                                         "damage":  10
+                                     },
+                          "intros":  [
+                                         "A tiny dragon tumbles out of a burst of starlight.\n\nIt looks around at the Astral Sea for the very first time.\n\nThen it notices your enemy.\n\nApparently violence is instinctive.",
+                                         "Astral light gathers into tiny wings, tiny claws, and a surprisingly confident little dragon.\n\nThe Astral Dragonling takes its first breath.\n\nIt immediately chooses violence.",
+                                         "Something small emerges from the Astral magic.\n\nAn Astral Dragonling stretches its new wings and stares curiously at the world around it.\n\nYour enemy becomes its first point of interest.\n\nUnfortunate."
+                                     ],
+                          "action2":  "The Astral Dragonling enthusiastically continues its first adventure.",
+                          "action3":  "The Astral Dragonling swoops around you, becoming increasingly confident with its new wings.",
+                          "action4":  "The Astral Dragonling charges forward again. It seems to be getting the hang of this whole existing thing.",
+                          "outro":  "The Astral Dragonling attacks one last time before looking toward the distant Astral Sea.\n\nIt spreads its tiny wings and flies away to begin an adventure of its own."
+                      },
+                      {
+                          "total":  3,
+                          "id":  "star-crab",
+                          "name":  "Star Crab",
+                          "effect":  {
+                                         "protection":  5,
+                                         "damage":  5
+                                     },
+                          "intros":  [
+                                         "A tiny Star Crab emerges from the Astral Sea.\n\nIt raises both claws toward your enemy.\n\nNegotiations appear to have failed immediately.",
+                                         "Starlight gathers near your feet.\n\nA Star Crab scuttles out, takes one look at the situation, and raises its claws.\n\nIt has chosen a side.",
+                                         "A newly formed Star Crab clicks its claws experimentally.\n\nIt notices your enemy.\n\nMore clicking follows.\n\nThis appears to be a threat."
+                                     ],
+                          "action2":  "The Star Crab continues aggressively clicking its claws at the opposition.",
+                          "action3":  "The Star Crab scuttles forward and continues making its opinion known with its claws.",
+                          "action4":  "The Star Crab raises both claws again. Its position on the matter remains unchanged.",
+                          "outro":  "The Star Crab gives your enemy one final pinch.\n\nSatisfied with its contribution, it scuttles away into the Astral Sea."
+                      },
+                      {
+                          "total":  4,
+                          "id":  "fae-snail",
+                          "name":  "Fae Snail",
+                          "effect":  {
+                                         "hp":  8
+                                     },
+                          "intros":  [
+                                         "A tiny Fae Snail appears in a shimmer of green light.\n\nIt begins making its way toward you.\n\nVery slowly.\n\nIt is doing its best.",
+                                         "Fae magic gathers into the shape of a very small snail.\n\nThe Fae Snail looks around at its new existence.\n\nThere appears to be no particular hurry.",
+                                         "A Fae Snail emerges into the Astral Sea.\n\nIt immediately begins helping you.\n\nAt its own pace."
+                                     ],
+                          "action2":  "The Fae Snail continues helping at a perfectly reasonable snail speed.",
+                          "action3":  "The Fae Snail continues its important work. Progress is being made.",
+                          "action4":  "The Fae Snail inches onward with quiet determination. There is still no need to rush.",
+                          "outro":  "The Fae Snail helps you one last time.\n\nIt then begins its journey into the Astral Sea.\n\nThis may take a while."
+                      },
+                      {
+                          "total":  5,
+                          "id":  "moonlit-bird",
+                          "name":  "Moonlit Bird",
+                          "effect":  {
+                                         "mana":  8
+                                     },
+                          "intros":  [
+                                         "A tiny bird emerges from a shimmer of moonlight.\n\nIt spreads its glowing wings and sings a single clear note.\n\nThe Moonlit Bird has arrived.",
+                                         "Moonlight gathers above you before taking the shape of a small glowing bird.\n\nIt circles you once and settles comfortably into its new existence.",
+                                         "A soft chirp comes from the Astral light.\n\nA newly formed Moonlit Bird flutters into view and looks around curiously.\n\nIt seems pleased with the place."
+                                     ],
+                          "action2":  "The Moonlit Bird continues fluttering nearby, softly humming with magic.",
+                          "action3":  "The Moonlit Bird circles nearby, leaving a faint trail of moonlight behind its wings.",
+                          "action4":  "The Moonlit Bird gives a cheerful chirp and continues sharing its magic with you.",
+                          "outro":  "The Moonlit Bird sings one final note.\n\nSomething in the distance catches its attention.\n\nIt spreads its wings and flies toward the moonlit horizon."
+                      },
+                      {
+                          "total":  6,
+                          "id":  "puffer-fish",
+                          "name":  "Puffer Fish",
+                          "effect":  {
+                                         "protection":  8
+                                     },
+                          "intros":  [
+                                         "A tiny Puffer Fish pops into existence.\n\nIt looks at your enemy.\n\nIt immediately puffs up.\n\nApparently it has already taken this personally.",
+                                         "A small Puffer Fish emerges from the Astral Sea.\n\nUpon discovering that a battle is happening, it becomes approximately twice as round.",
+                                         "Astral bubbles gather together and form a tiny Puffer Fish.\n\nIt stares at your enemy.\n\n*Puff.*\n\nIntimidation successful."
+                                     ],
+                          "action2":  "The Puffer Fish remains extremely round and extremely committed to the situation.",
+                          "action3":  "The Puffer Fish somehow manages to look even rounder than before.",
+                          "action4":  "The Puffer Fish maintains maximum puff. It refuses to elaborate.",
+                          "outro":  "The Puffer Fish provides one final bit of protection.\n\nThen it slowly floats away, still puffed up.\n\nNobody tells it the battle is over."
+                      },
+                      {
+                          "total":  7,
+                          "id":  "moon-sprite",
+                          "name":  "Moon Sprite",
+                          "effect":  {
+                                         "mana":  5,
+                                         "hp":  5
+                                     },
+                          "intros":  [
+                                         "Moonlight gathers into a tiny floating shape.\n\nA newly formed Moon Sprite looks around at the Astral Sea for the first time.\n\nAfter a moment, it happily begins following you.",
+                                         "A small light drifts out of the Astral Sea.\n\nIt twirls around you curiously before settling nearby.\n\nYour Moon Sprite has chosen to stay with you for a while.",
+                                         "A tiny Moon Sprite emerges from a pool of pale light.\n\nIt bobs excitedly through the air as it discovers the world around it.\n\nFor now, it seems interested in discovering it with you."
+                                     ],
+                          "action2":  "The Moon Sprite happily continues floating alongside you.",
+                          "action3":  "The Moon Sprite twirls happily around you, scattering tiny specks of moonlight.",
+                          "action4":  "The Moon Sprite bobs excitedly beside you, still perfectly content with its new adventure.",
+                          "outro":  "The Moon Sprite helps you one last time.\n\nThen something far across the Astral Sea catches its attention.\n\nIt circles you once before floating away to see what it finds."
+                      },
+                      {
+                          "total":  8,
+                          "id":  "jelly-fish",
+                          "name":  "Jelly Fish",
+                          "effect":  {
+                                         "mana":  5,
+                                         "damage":  5
+                                     },
+                          "intros":  [
+                                         "A Jelly Fish wobbles into existence.\n\nIt takes several moments to understand its surroundings.\n\nThen it notices your enemy.\n\nGood enough.",
+                                         "Astral water ripples as a new Jelly Fish emerges.\n\nIt floats beside you with absolutely no idea what is happening.\n\nIt is willing to help anyway.",
+                                         "A small Jelly Fish appears with a gentle wobble.\n\nIt looks ready for its first adventure.\n\nOr possibly a nap.\n\nIt\u0027s difficult to tell."
+                                     ],
+                          "action2":  "The Jelly Fish continues wobbling helpfully through the battle.",
+                          "action3":  "The Jelly Fish drifts around you with surprising enthusiasm for something so wobbly.",
+                          "action4":  "The Jelly Fish gives another determined wobble. It appears to believe this is helping.",
+                          "outro":  "The Jelly Fish gives one final enthusiastic wobble.\n\nThen it drifts away into the Astral Sea.\n\nWherever it is going, it seems confident about it."
+                      },
+                      {
+                          "total":  9,
+                          "id":  "wishshell",
+                          "name":  "Wishshell",
+                          "effect":  {
+                                         "protection":  5,
+                                         "hp":  5
+                                     },
+                          "intros":  [
+                                         "A tiny shell appears in a ripple of Astral light.\n\nSomething inside it softly glows.\n\nThe Wishshell has decided to help.",
+                                         "A Wishshell gently settles beside you.\n\nYou hear something quietly moving inside.\n\nPerhaps it\u0027s better not to investigate.",
+                                         "Starlight gathers into a small shimmering shell.\n\nA faint glow peeks out from inside.\n\nWhatever lives in there seems friendly."
+                                     ],
+                          "action2":  "The Wishshell continues glowing quietly beside you.",
+                          "action3":  "A soft light pulses from inside the Wishshell. Whatever is in there remains hard at work.",
+                          "action4":  "The Wishshell shimmers quietly. You are no closer to understanding it.",
+                          "outro":  "The Wishshell gives one final gentle glow.\n\nIt begins sliding toward the distant Astral Sea.\n\nYou still have no idea what was inside."
+                      },
+                      {
+                          "total":  10,
+                          "id":  "comet-fish",
+                          "name":  "Comet Fish",
+                          "effect":  {
+                                         "damage":  8
+                                     },
+                          "intros":  [
+                                         "A streak of light shoots across the battlefield.\n\nIt circles back.\n\nApparently that was a fish.",
+                                         "A Comet Fish bursts into existence already moving at an unreasonable speed.\n\nIt appears extremely excited about being alive.",
+                                         "Astral light forms into a tiny fish.\n\nBefore you can properly look at it, the Comet Fish launches itself directly toward your enemy.\n\nIntroductions can wait."
+                                     ],
+                          "action2":  "The Comet Fish continues zooming through the battlefield at irresponsible speeds.",
+                          "action3":  "The Comet Fish rockets past again. Slowing down has apparently never occurred to it.",
+                          "action4":  "The Comet Fish makes another high-speed pass. It seems delighted with this arrangement.",
+                          "outro":  "The Comet Fish makes one final pass through the battle.\n\nIt spots the open Astral Sea ahead.\n\nThere is absolutely no hesitation.\n\nIt zooms away."
+                      },
+                      {
+                          "total":  11,
+                          "id":  "fae-leaf",
+                          "name":  "Fae Leaf",
+                          "effect":  {
+                                         "damage":  5,
+                                         "hp":  10
+                                     },
+                          "intros":  [
+                                         "Fae magic gathers into a tiny glowing leaf.\n\nIt floats around you before sharply turning toward your enemy.\n\nThis particular leaf appears considerably more proactive.",
+                                         "A small Fae Leaf drifts into existence.\n\nIt gently restores some of your strength.\n\nThen it smacks your enemy.\n\nBalanced priorities.",
+                                         "A glowing Fae Leaf appears beside you.\n\nFor a moment, it floats peacefully through the air.\n\nThen it launches itself at your enemy.\n\nApparently not every leaf is management."
+                                     ],
+                          "action2":  "The Fae Leaf continues alternating between helping you and harassing your enemy.",
+                          "action3":  "The Fae Leaf circles back to you before immediately returning to bother your enemy.",
+                          "action4":  "The Fae Leaf continues its unusual combination of healthcare and violence.",
+                          "outro":  "The Fae Leaf helps you one final time and gives your enemy one last smack.\n\nIts work complete, it catches an Astral current and drifts away."
+                      },
+                      {
+                          "total":  12,
+                          "id":  "astral-wyrmling",
+                          "name":  "Astral Wyrmling",
+                          "effect":  {
+                                         "damage":  10,
+                                         "mana":  10,
+                                         "hp":  10
+                                     },
+                          "intros":  [
+                                         "The Astral Sea suddenly grows still.\n\nStarlight gathers before you, slowly taking the shape of a tiny Wyrmling.\n\nIt opens its eyes for the first time.\n\nSomething rare has entered the Astral Sea.",
+                                         "A brilliant cluster of Astral light begins twisting into a small creature.\n\nTiny wings unfold.\n\nA tail flicks through the air.\n\nAn Astral Wyrmling looks upon its new world for the first time.",
+                                         "The stars around you shimmer strangely.\n\nFrom their light emerges a tiny Astral Wyrmling.\n\nIt looks at you.\n\nThen at your enemy.\n\nApparently its first decision has already been made."
+                                     ],
+                          "action2":  "The Astral Wyrmling continues fighting proudly beside you.",
+                          "action3":  "The Astral Wyrmling circles overhead before diving eagerly back into the battle.",
+                          "action4":  "The Astral Wyrmling fights on with growing confidence in its newly discovered strength.",
+                          "outro":  "The Astral Wyrmling helps you one final time.\n\nIt looks toward the endless Astral Sea stretching ahead.\n\nWith its first adventure behind it, the Wyrmling spreads its wings and flies toward whatever comes next."
+                      }
+                  ]
+}

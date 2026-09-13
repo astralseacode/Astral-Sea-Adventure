@@ -293,6 +293,7 @@ const SPELL_FILES = {
   "falling-star": "falling-star.json",
   "leviathans-wake": "leviathans-wake.json",
   berries: "berries.json",
+  familiar: "familiar.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -315,6 +316,8 @@ const PERK_FILES = {
   "astral-patience": "astral-patience.json",
   "astral-awakening": "astral-awakening.json",
   "astral-harmony": "astral-harmony.json",
+  "fae-second-opinion": "fae-second-opinion.json",
+  kinship: "kinship.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -658,6 +661,7 @@ const DISCORD_COMMANDS = [
           { name: "Falling Star", value: "falling-star" },
           { name: "Leviathan's Wake", value: "leviathans-wake" },
           { name: "Berry", value: "berry" },
+          { name: "Familiar", value: "familiar" },
         ],
       },
     ],
@@ -1205,6 +1209,9 @@ async function handleTwitchRequest(url, env) {
         "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
         "lvl 27 Mastery Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits. " +
         "lvl 28 Passive Astral Harmony: A successful offensive roll with bonuses from 3 or more different sources restores 15 Mana once per battle. " +
+        "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll grants +3 to your next offensive roll. Activates once per battle. " +
+        "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
+        "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1612,6 +1619,9 @@ async function handleDiscordInteraction(request, env) {
           "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
           "lvl 27 Mastery Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits. " +
           "lvl 28 Passive Astral Harmony: A successful offensive roll with bonuses from 3 or more different sources restores 15 Mana once per battle. " +
+          "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll grants +3 to your next offensive roll. Activates once per battle. " +
+          "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
+          "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2841,8 +2851,10 @@ async function performAttackUnlocked(
         victoryMessage: actionMessage,
         momentumAction: "attack",
         momentumNaturalRoll: playerRoll,
+        familiarQualifies: true,
         harmonySources: countOffensiveRollBonusSources(triggeredRoll),
         harmonySuccess: playerRoll !== 1 && playerAttack.damage > 0,
+        faeSecondOpinionFailure: playerRoll === 1,
       },
       platform,
     );
@@ -2860,6 +2872,63 @@ async function performAttackUnlocked(
 
     throw error;
   }
+}
+
+async function applyFamiliarAction(env, backpackKey, combatState, progress) {
+  const spell = await getSpellDefinition("familiar");
+  const active = combatState.familiar;
+  const creature = spell.familiars.find((entry) => entry.id === active.id);
+  const effect = creature.effect;
+  const caps = getPlayerResourceCaps(progress);
+  combatState.playerMaxHp = caps.hp;
+  combatState.playerHp = Math.min(combatState.playerHp, caps.hp);
+  const hpBefore = combatState.playerHp;
+  const manaBefore = progress.mana;
+  combatState.playerHp = Math.min(caps.hp, combatState.playerHp + (effect.hp || 0));
+  const restoredMana = Math.min(caps.mana, progress.mana + (effect.mana || 0));
+  const clauses = [];
+  if (effect.damage) {
+    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - effect.damage);
+    clauses.push(`deals ${effect.damage} damage`);
+  }
+  if (effect.hp) clauses.push(`restores ${combatState.playerHp - hpBefore} HP`);
+  if (effect.mana) clauses.push(`restores ${restoredMana - manaBefore} Mana`);
+  if (effect.protection) {
+    const pools = combatState.familiarProtection ||= [];
+    let pool = pools.find((entry) => entry.serial === active.serial);
+    if (!pool) {
+      pool = { serial: active.serial, amount: 0, max: effect.protection * 5 };
+      pools.push(pool);
+    }
+    const granted = Math.min(effect.protection, pool.max - pool.amount);
+    pool.amount += granted;
+    clauses.push(`grants ${granted} protection`);
+  }
+  active.actions += 1;
+  const milestone = active.actions === 2 ? creature.action2
+    : active.actions === 3 ? creature.action3
+      : active.actions === 4 ? creature.action4
+        : active.actions === 5 ? creature.outro : "";
+  const kinship = active.actions === 5
+    ? (await getActivePerks(levelFromXp(progress.xp))).find(
+        (perk) => perk.effect.trigger === "familiar-fifth-action-completed",
+      )
+    : null;
+  const updatedProgress = {
+    ...progress,
+    hp: combatState.playerHp,
+    mana: kinship
+      ? Math.min(caps.mana, restoredMana + kinship.effect.manaRestore)
+      : restoredMana,
+  };
+  await savePlayerProgress(env, backpackKey, updatedProgress);
+  if (active.actions === 5) delete combatState.familiar;
+  return {
+    progress: updatedProgress,
+    message: `${creature.name} ${clauses.join(" + ")}.` +
+      (milestone ? `\n\n${milestone}` : "") +
+      (kinship ? `\n\n${kinship.activationLine}` : ""),
+  };
 }
 
 async function resolvePlayerCombatAction(
@@ -2922,8 +2991,35 @@ async function resolvePlayerCombatAction(
     };
   }
 
+  let familiarMessage = "";
+  if (action.familiarQualifies && combatState.familiar &&
+      combatState.enemy.hp > 0) {
+    const familiarResult = await applyFamiliarAction(
+      env, backpackKey, combatState, progress,
+    );
+    progress = familiarResult.progress;
+    familiarMessage = familiarResult.message;
+  }
+
   let momentumMessage = "";
   const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  let faeSecondOpinionMessage = "";
+  const faeSecondOpinion = activePerks.find(
+    (perk) => perk.effect.trigger === "natural-one-forced-offensive-failure",
+  );
+  if (faeSecondOpinion && action.faeSecondOpinionFailure &&
+      !combatState.perkUses?.[faeSecondOpinion.id]) {
+    combatState.faeSecondOpinion = {
+      offensiveRollModifier: faeSecondOpinion.effect.offensiveRollModifier,
+    };
+    combatState.perkUses = {
+      ...(combatState.perkUses || {}),
+      [faeSecondOpinion.id]: 1,
+    };
+    faeSecondOpinionMessage = faeSecondOpinion.activationLine + "\n\n" +
+      randomChoice(faeSecondOpinion.flavor) + "\n\n" +
+      faeSecondOpinion.endingLine;
+  }
   let harmonyMessage = "";
   const harmony = activePerks.find(
     (perk) => perk.effect.trigger === "successful-offensive-roll-with-distinct-bonuses",
@@ -3045,6 +3141,8 @@ async function resolvePlayerCombatAction(
   progress = curiosityResult.progress;
 
   const messageParts = [action.message];
+  if (familiarMessage) messageParts.push(familiarMessage);
+  if (faeSecondOpinionMessage) messageParts.push(faeSecondOpinionMessage);
   if (harmonyMessage) messageParts.push(harmonyMessage);
   if (chargeDetonationMessage) messageParts.push(chargeDetonationMessage);
   if (curiosityResult.message) {
@@ -3180,6 +3278,26 @@ async function resolvePlayerCombatAction(
     delete berryEffects.sleepyGuard;
     berrySleepyMessage = `Sleepy Berry reduces the hit by ${reduction} damage.`;
   }
+  let familiarProtectionMessage = "";
+  if (combatState.familiarProtection?.length && enemyDamage > 0) {
+    let absorbed = 0;
+    for (const pool of combatState.familiarProtection) {
+      if (enemyDamage === 0) break;
+      const amount = Math.min(pool.amount, enemyDamage);
+      pool.amount -= amount;
+      enemyDamage -= amount;
+      absorbed += amount;
+    }
+    combatState.familiarProtection = combatState.familiarProtection.filter(
+      (pool) => pool.amount > 0,
+    );
+    if (combatState.familiarProtection.length === 0) {
+      delete combatState.familiarProtection;
+    }
+    if (absorbed > 0) {
+      familiarProtectionMessage = `Familiar protection absorbs ${absorbed} damage.`;
+    }
+  }
   combatState.playerHp = Math.max(
     0,
     combatState.playerHp - enemyDamage,
@@ -3191,7 +3309,8 @@ async function resolvePlayerCombatAction(
       enemyRoll,
       {
         ...enemyAttack,
-        damage: bubbleMessage || sleepyGuardMessage || berryProtectionMessage || berrySleepyMessage
+        damage: bubbleMessage || sleepyGuardMessage || berryProtectionMessage ||
+          berrySleepyMessage || familiarProtectionMessage
           ? enemyDamage : rawEnemyDamage,
       },
     ),
@@ -3213,6 +3332,7 @@ async function resolvePlayerCombatAction(
   }
   if (berryProtectionMessage) messageParts.push(berryProtectionMessage);
   if (berrySleepyMessage) messageParts.push(berrySleepyMessage);
+  if (familiarProtectionMessage) messageParts.push(familiarProtectionMessage);
 
   const faeIntervention = activePerks.find(
     (perk) => perk.effect.trigger === "lethal-enemy-damage",
@@ -3468,6 +3588,7 @@ async function performCastUnlocked(
     ? "/cast spell:Leviathan's Wake"
     : "!cast wake";
   const berryCommand = platform === "discord" ? "/cast Berry" : "!cast berry";
+  const familiarCommand = platform === "discord" ? "/cast Familiar" : "!cast familiar";
 
   if (!spellInputValue) {
     return {
@@ -3476,7 +3597,8 @@ async function performCastUnlocked(
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
         `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, ${evocationCommand} for Evocation, or ` +
         `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
-        `${fallingStarCommand} for Falling Star, ${wakeCommand} for Leviathan's Wake, or ${berryCommand} for Berries.`,
+        `${fallingStarCommand} for Falling Star, ${wakeCommand} for Leviathan's Wake, ` +
+        `${berryCommand} for Berries, or ${familiarCommand} for Familiar.`,
     };
   }
 
@@ -3493,7 +3615,7 @@ async function performCastUnlocked(
         `You haven't learned that spell. Use ${blessingCommand}, ` +
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
         `${moonbeamCommand}, ${evocationCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
-        `${fallingStarCommand}, ${wakeCommand}, or ${berryCommand}.`,
+        `${fallingStarCommand}, ${wakeCommand}, ${berryCommand}, or ${familiarCommand}.`,
     };
   }
 
@@ -3531,6 +3653,45 @@ async function performCastUnlocked(
       message: currentCombatState && platform === "discord"
         ? appendDiscordCombatHud(message, currentCombatState, progress)
         : message,
+    };
+  }
+
+  if (spell.id === "familiar") {
+    if (!currentCombatState) {
+      return { message: "Familiar can only be cast during a fight." };
+    }
+    if (currentCombatState.familiar) {
+      return { message: "You already have an active Familiar." };
+    }
+    if (progress.mana < spell.manaCost) {
+      return { message: `You don't have enough Mana to cast ${spell.name}.` };
+    }
+
+    await savePlayerProgress(env, backpackKey, {
+      ...progress, mana: progress.mana - spell.manaCost,
+    });
+    const paidProgress = await getPlayerProgress(env, backpackKey);
+    const caps = getPlayerResourceCaps(paidProgress);
+    currentCombatState.playerMaxHp = caps.hp;
+    currentCombatState.playerHp = Math.min(currentCombatState.playerHp, caps.hp);
+    const firstDie = randomInteger(1, 6);
+    const secondDie = randomInteger(1, 6);
+    const total = firstDie + secondDie;
+    const creature = spell.familiars.find((entry) => entry.total === total);
+    const serial = (currentCombatState.familiarSerial || 0) + 1;
+    currentCombatState.familiarSerial = serial;
+    currentCombatState.familiar = {
+      id: creature.id, total, actions: 0, serial,
+    };
+    await savePlayerProgress(env, backpackKey, {
+      ...paidProgress, hp: currentCombatState.playerHp,
+    });
+    await saveCombatState(env, backpackKey, currentCombatState);
+    const separator = platform === "discord" ? "\n\n" : " | ";
+    return {
+      message: `Familiar Roll: ${firstDie} + ${secondDie} = ${total}` + separator +
+        randomChoice(creature.intros) + separator +
+        formatDiscordCombatHud(currentCombatState, paidProgress),
     };
   }
 
@@ -4173,6 +4334,9 @@ async function performCastUnlocked(
           : spellRoll.rolls,
         harmonySources: countOffensiveRollBonusSources(triggeredRoll),
         harmonySuccess: resolvedSpellRoll.damage > 0,
+        familiarQualifies: true,
+        faeSecondOpinionFailure: spell.id === "falling-star" &&
+          spellRoll.accuracyRoll === 1,
       },
       platform,
     );
@@ -4247,6 +4411,7 @@ async function castLeviathansWake(
       consumeAstralEcho: Boolean(astralEcho),
       harmonySources: countOffensiveRollBonusSources(triggeredRoll),
       harmonySuccess: true,
+      familiarQualifies: true,
     }, platform);
   } catch (error) {
     try {
@@ -7348,6 +7513,33 @@ function isValidCombatState(combatState) {
         combatState.astralAwakeningSurvived <= 5)) &&
     (combatState.astralAwakening === undefined ||
       combatState.astralAwakening?.offensiveRollModifier === 2) &&
+    (combatState.faeSecondOpinion === undefined ||
+      combatState.faeSecondOpinion?.offensiveRollModifier === 3) &&
+    (combatState.familiarSerial === undefined ||
+      (Number.isSafeInteger(combatState.familiarSerial) &&
+        combatState.familiarSerial >= 1)) &&
+    (combatState.familiar === undefined ||
+      (combatState.familiar &&
+        Number.isSafeInteger(combatState.familiar.total) &&
+        combatState.familiar.total >= 2 && combatState.familiar.total <= 12 &&
+        typeof combatState.familiar.id === "string" &&
+        /^[a-z-]+$/.test(combatState.familiar.id) &&
+        Number.isSafeInteger(combatState.familiar.actions) &&
+        combatState.familiar.actions >= 0 && combatState.familiar.actions < 5 &&
+        Number.isSafeInteger(combatState.familiar.serial) &&
+        combatState.familiar.serial >= 1 &&
+        combatState.familiar.serial <= combatState.familiarSerial)) &&
+    (combatState.familiarProtection === undefined ||
+      (Array.isArray(combatState.familiarProtection) &&
+        combatState.familiarProtection.length > 0 &&
+        combatState.familiarProtection.every((pool) =>
+          Number.isSafeInteger(pool.serial) && pool.serial >= 1 &&
+          pool.serial <= combatState.familiarSerial &&
+          Number.isSafeInteger(pool.amount) && pool.amount > 0 &&
+          Number.isSafeInteger(pool.max) && [25, 40].includes(pool.max) &&
+          pool.amount <= pool.max) &&
+        new Set(combatState.familiarProtection.map((pool) => pool.serial)).size ===
+          combatState.familiarProtection.length)) &&
     enemy &&
     typeof enemy.id === "string" &&
     /^[a-z0-9-]+$/.test(enemy.id) &&
@@ -8234,6 +8426,13 @@ function consumeTriggeredStatusEffects(
     modifierDetails.push({ name: "Astral Awakening", value: awakeningModifier });
     delete combatState.astralAwakening;
   }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.faeSecondOpinion) {
+    const opinionModifier = combatState.faeSecondOpinion.offensiveRollModifier;
+    modifier += opinionModifier;
+    applied.push("Fae Second Opinion");
+    modifierDetails.push({ name: "Fae Second Opinion", value: opinionModifier });
+    delete combatState.faeSecondOpinion;
+  }
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.berryEffects?.rollBonuses) {
     for (const [name, value] of Object.entries(combatState.berryEffects.rollBonuses)) {
       if (name === "Fae Berry" && !offensiveSpell) continue;
@@ -8536,7 +8735,7 @@ function validateSpellDefinition(spell, expectedId) {
     spell.successLines.length !== 26 || typeof spell.fullManaLine !== "string"
   )) throw new Error("Invalid Evocation content data.");
 
-  if (spell.type === "pre-action-utility" && (
+  if (spell.id === "berries" && (
     spell.id !== "berries" || spell.requiredLevel !== 24 ||
     spell.manaCost !== 20 || spell.damage?.dice !== 1 ||
     spell.damage?.sides !== 20 ||
@@ -8547,6 +8746,38 @@ function validateSpellDefinition(spell, expectedId) {
       !outcome.text.startsWith(`Roll ${index + 1} → `) ||
       outcome.text.includes("\n"))
   )) throw new Error("Invalid Berries content data.");
+
+  if (spell.id === "familiar") {
+    const expected = [
+      ["astral-dragonling", "Astral Dragonling", 10, 0, 0, 0],
+      ["star-crab", "Star Crab", 5, 0, 0, 5],
+      ["fae-snail", "Fae Snail", 0, 8, 0, 0],
+      ["moonlit-bird", "Moonlit Bird", 0, 0, 8, 0],
+      ["puffer-fish", "Puffer Fish", 0, 0, 0, 8],
+      ["moon-sprite", "Moon Sprite", 0, 5, 5, 0],
+      ["jelly-fish", "Jelly Fish", 5, 0, 5, 0],
+      ["wishshell", "Wishshell", 0, 5, 0, 5],
+      ["comet-fish", "Comet Fish", 8, 0, 0, 0],
+      ["fae-leaf", "Fae Leaf", 5, 10, 0, 0],
+      ["astral-wyrmling", "Astral Wyrmling", 10, 10, 10, 0],
+    ];
+    if (spell.type !== "pre-action-utility" || spell.requiredLevel !== 30 ||
+        spell.manaCost !== 30 || spell.damage?.dice !== 2 ||
+        spell.damage?.sides !== 6 || !Array.isArray(spell.familiars) ||
+        spell.familiars.length !== expected.length ||
+        spell.familiars.some((entry, index) => {
+          const [id, name, damage, hp, mana, protection] = expected[index];
+          return entry.total !== index + 2 || entry.id !== id || entry.name !== name ||
+            (entry.effect?.damage || 0) !== damage ||
+            (entry.effect?.hp || 0) !== hp ||
+            (entry.effect?.mana || 0) !== mana ||
+            (entry.effect?.protection || 0) !== protection ||
+            !isTextArray(entry.intros) || entry.intros.length !== 3 ||
+            [entry.action2, entry.action3, entry.action4, entry.outro].some(
+              (line) => typeof line !== "string" || !line.trim(),
+            );
+        })) throw new Error("Invalid Familiar content data.");
+  }
 
   if (spell.type === "offensive") {
     if (spell.id !== "falling-star" && (
@@ -8978,6 +9209,22 @@ function validatePerkDefinition(perk, expectedId) {
     effect.usesPerBattle === 1 &&
     perk.activationLine === "Astral Harmony\nRestored 15 Mana" &&
     hasSingleActivationLine && !hasActivationLines;
+  const validFaeSecondOpinion = expectedId === "fae-second-opinion" &&
+    perk.requiredLevel === 29 &&
+    effect?.trigger === "natural-one-forced-offensive-failure" &&
+    effect.offensiveRollModifier === 3 && effect.usesPerBattle === 1 &&
+    perk.activationLine === "Fae Second Opinion Activates! You rolled a 1. Sad." &&
+    perk.endingLine === "Next offensive roll +3" &&
+    Array.isArray(perk.flavor) && perk.flavor.length === 15 &&
+    perk.flavor.every((scene) => typeof scene === "string" && scene.trim());
+  const validKinship = expectedId === "kinship" &&
+    perk.requiredLevel === 31 &&
+    effect?.trigger === "familiar-fifth-action-completed" &&
+    effect.manaRestore === 15 &&
+    perk.activationLine === "Kinship\n\n" +
+      "As your Familiar leaves, a little of the magic that brought it to life remains with you.\n\n" +
+      "Restored 15 Mana" &&
+    hasSingleActivationLine && !hasActivationLines;
 
   if (
     !validResilience &&
@@ -8988,7 +9235,9 @@ function validatePerkDefinition(perk, expectedId) {
     !validAstralCuriosity &&
     !validAstralPatience &&
     !validAstralAwakening &&
-    !validAstralHarmony
+    !validAstralHarmony &&
+    !validFaeSecondOpinion &&
+    !validKinship
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }
