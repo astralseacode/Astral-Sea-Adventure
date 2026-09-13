@@ -409,8 +409,8 @@ const TITLES = [
 
 const DISCORD_API_BASE = "https://discord.com/api/v10";
 // TEMPORARY DEVELOPMENT COMMAND
-// REMOVE /devlevel AND DEV_USER_ID BEFORE FULL RELEASE
-const DEV_USER_ID = "715083178834133043";
+// REMOVE /devlevel AND DEV_USER_IDS BEFORE FULL RELEASE
+const DEV_USER_IDS = new Set(["715083178834133043", "369312325397905418"]);
 const DISCORD_DAILY_COOLDOWN_SECONDS = 23 * 60 * 60;
 const DAILY_REWARD = 250;
 
@@ -1286,11 +1286,11 @@ async function handleDiscordInteraction(request, env) {
     interaction.user?.id;
 
   // TEMPORARY DEVELOPMENT COMMAND
-  // REMOVE /devlevel AND DEV_USER_ID BEFORE FULL RELEASE
+  // REMOVE /devlevel AND DEV_USER_IDS BEFORE FULL RELEASE
   // Check the signed interaction identity before any player reads or writes,
   // including the normal shop-session cleanup below.
   if (commandName === "devlevel") {
-    if (userId !== DEV_USER_ID) {
+    if (!DEV_USER_IDS.has(userId)) {
       return discordMessage("This command is only available in development.", true);
     }
     try {

@@ -6,6 +6,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const { fixture } = require('./test-leviathans-wake.cjs');
 const DEV_ID = '715083178834133043';
+const NEW_DEV_ID = '369312325397905418';
 
 async function main() {
   const f = await fixture(5);
@@ -75,6 +76,17 @@ async function main() {
     assert((await f.c.getActiveMasteries(f.c.levelFromXp(loaded.xp))).some(m => m.id === 'jellyfish-mastery-2'));
   }
   console.log('PASS guild/DM identity, canonical XP, preservation, repeat invocation, normal stat/mastery progression');
+
+  const newKey = `backpack:discord:${NEW_DEV_ID}`;
+  const newProgressKey = f.c.getProgressKey(newKey);
+  await f.c.savePlayerProgress(f.env, newKey, f.c.createEmptyProgress());
+  f.writes.length = 0;
+  const newResponse = await (await invoke({ id: NEW_DEV_ID })).json();
+  assert.match(newResponse.data.content, /now Level 50 \(259700 XP\)/);
+  assert.equal(newResponse.data.flags, 64);
+  assert.equal(JSON.parse(f.values.get(newProgressKey)).xp, f.c.totalXpForLevel(50));
+  assert.deepEqual(f.writes, [['put', newProgressKey]]);
+  console.log('PASS existing and newly authorized Discord IDs');
 
   const commands = vm.runInContext('DISCORD_COMMANDS', f.c);
   const definition = commands.filter(c => c.name === 'devlevel');
