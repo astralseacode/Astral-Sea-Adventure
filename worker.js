@@ -314,6 +314,7 @@ const PERK_FILES = {
   "astral-momentum": "astral-momentum.json",
   "astral-harvest": "astral-harvest.json",
   "astral-defiance": "astral-defiance.json",
+  "astral-reprieve": "astral-reprieve.json",
   "astral-aftershock": "astral-aftershock.json",
   "fae-intervention": "fae-intervention.json",
   "fae-aid": "fae-aid.json",
@@ -5213,6 +5214,11 @@ async function resolveCombatVictory(
   const defianceQualifies = Boolean(astralDefiance) &&
     combatState.playerHp <= resourceCaps.hp *
       astralDefiance.effect.hpThresholdPercent / 100;
+  const astralReprieve = activePerks.find(
+    (perk) => perk.effect.trigger === "enemy-defeated-without-stim",
+  );
+  const reprieveQualifies = Boolean(astralReprieve) &&
+    (combatState.stimUses || 0) === 0;
   const astralHarvest = activePerks.find(
     (perk) => perk.effect.trigger === "enemy-defeated",
   );
@@ -5253,6 +5259,15 @@ async function resolveCombatVictory(
         progress.mana + astralDefiance.effect.manaRestore),
     };
     astralDefianceMessage = astralDefiance.activationLine;
+  }
+  let astralReprieveMessage = "";
+  if (reprieveQualifies) {
+    progress = {
+      ...progress,
+      mana: Math.min(resourceCaps.mana,
+        progress.mana + astralReprieve.effect.manaRestore),
+    };
+    astralReprieveMessage = astralReprieve.activationLine;
   }
   const baseCandyReward = randomInteger(
     combatState.enemy.reward.candies.min,
@@ -5331,6 +5346,7 @@ async function resolveCombatVictory(
       `You rolled ${playerRoll} for ${playerDamage} dmg`,
     ...(astralHarvestMessage ? [astralHarvestMessage] : []),
     ...(astralDefianceMessage ? [astralDefianceMessage] : []),
+    ...(astralReprieveMessage ? [astralReprieveMessage] : []),
     ...(platform === "discord"
       ? []
       : [`Mana: ${progress.mana}/${getPlayerResourceCaps(progress).mana}`]),
@@ -9433,6 +9449,14 @@ function validatePerkDefinition(perk, expectedId) {
     effect.hpRestore === 20 && effect.manaRestore === 20 &&
     perk.activationLine === "Astral Defiance activates!\n\n+20 HP +20 Mana" &&
     hasSingleActivationLine && !hasActivationLines;
+  const validReprieve = expectedId === "astral-reprieve" &&
+    perk.requiredLevel === 38 &&
+    effect?.trigger === "enemy-defeated-without-stim" &&
+    effect.manaRestore === 30 &&
+    perk.activationLine === "No Stims Used - Astral Reprieve +30 Mana" &&
+    perk.levelUpLine ===
+      "lvl 38 Passive ✨ Astral Reprieve: Defeating an enemy without using Stim during the battle restores 30 Mana." &&
+    hasSingleActivationLine && !hasActivationLines;
   const validAftershock = expectedId === "astral-aftershock" &&
     effect?.trigger === "critical-offensive-spell" &&
     Number(effect.bonusDamage) === 5 &&
@@ -9535,6 +9559,7 @@ function validatePerkDefinition(perk, expectedId) {
     !validMomentum &&
     !validHarvest &&
     !validDefiance &&
+    !validReprieve &&
     !validAftershock &&
     !validFaeIntervention &&
     !validFaeAid &&

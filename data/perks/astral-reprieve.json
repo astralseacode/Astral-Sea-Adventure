@@ -1,0 +1,13 @@
+{
+  "id": "astral-reprieve",
+  "name": "Astral Reprieve",
+  "requiredLevel": 38,
+  "type": "passive",
+  "description": "Defeating an enemy without using Stim during the battle restores 30 Mana.",
+  "levelUpLine": "lvl 38 Passive ✨ Astral Reprieve: Defeating an enemy without using Stim during the battle restores 30 Mana.",
+  "effect": {
+    "trigger": "enemy-defeated-without-stim",
+    "manaRestore": 30
+  },
+  "activationLine": "No Stims Used - Astral Reprieve +30 Mana"
+}
