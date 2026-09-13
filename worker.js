@@ -297,6 +297,7 @@ const SPELL_FILES = {
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
   "starspark-mastery-2": "starspark-mastery-2.json",
+  "moonbeam-mastery-1": "moonbeam-mastery-1.json",
   "jellyfish-mastery-1": "jellyfish-mastery-1.json",
   "jellyfish-mastery-2": "jellyfish-mastery-2.json",
   "elf-blessing-mastery-1": "elf-blessing-mastery-1.json",
@@ -1201,6 +1202,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
         "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
         "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
+        "lvl 27 Mastery Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1606,6 +1608,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
           "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
           "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
+          "lvl 27 Mastery Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3477,6 +3480,10 @@ async function performCastUnlocked(
     (mastery) => mastery.spellId === "star-spark" &&
       mastery.effect.id === "astral-charge",
   );
+  const moonbeamMastery = activeMasteries.find(
+    (mastery) => mastery.spellId === "moonbeam" &&
+      mastery.effect.id === "lunar-alignment",
+  );
   const jellyfishMastery = activeMasteries.filter(
     (mastery) => mastery.spellId === "jelly" &&
       mastery.effect.id === "jellyfish-moods",
@@ -4025,6 +4032,7 @@ async function performCastUnlocked(
     spell,
     spellRoll,
     triggeredRoll.finalTotal,
+    moonbeamMastery,
   );
   const strengthBonus = spell.id === "falling-star" &&
       resolvedSpellRoll.damage === 0
@@ -4344,7 +4352,7 @@ function rollSpellDamage(spell) {
   };
 }
 
-function resolveSpellRoll(spell, spellRoll, finalTotal) {
+function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null) {
   if (spell.id === "falling-star") {
     const outcome = spellRoll.accuracyRoll === 1
       ? "miss"
@@ -4376,7 +4384,17 @@ function resolveSpellRoll(spell, spellRoll, finalTotal) {
     const baseDamage = isCritical
       ? spell.criticalDamage
       : attackResult.damage;
-    const bonusDamage = randomInteger(1, spell.damage.bonusDieSides);
+    const moonlightRolls = Array.from(
+      { length: moonbeamMastery?.effect.moonlightDice || 1 },
+      () => randomInteger(1, spell.damage.bonusDieSides),
+    );
+    const bonusDamage = moonlightRolls.reduce((sum, die) => sum + die, 0);
+    const aligned = moonlightRolls.length === 2 &&
+      (moonlightRolls[0] === moonlightRolls[1] || bonusDamage === 7);
+    const alignmentDamage = aligned
+      ? (isCritical ? moonbeamMastery.effect.criticalDamage
+        : moonbeamMastery.effect.normalDamage)
+      : 0;
 
     return {
       ...spellRoll,
@@ -4385,8 +4403,10 @@ function resolveSpellRoll(spell, spellRoll, finalTotal) {
       category: isCritical ? "Critical" : attackResult.category,
       damageTier: isCritical ? "Critical Hit" : `${attackResult.category} Hit`,
       baseDamage,
+      moonlightRolls,
       bonusDamage,
-      damage: baseDamage + bonusDamage,
+      alignmentDamage,
+      damage: baseDamage + bonusDamage + alignmentDamage,
       criticalFlavor: isCritical ? getMoonbeamCriticalFlavor(spell) : null,
     };
   }
@@ -4590,7 +4610,13 @@ function formatMoonbeamCastMessage(spell, spellRoll, effectResult, platform = "t
       ...criticalLine,
       ...(!spellRoll.isCritical ? [`Damage Tier:\n${spellRoll.damageTier}`] : []),
       `${baseLabel}:\n${spellRoll.baseDamage}`,
+      ...(spellRoll.moonlightRolls.length === 2
+        ? [`Moonlight Rolls:\n${spellRoll.moonlightRolls[0]} and ${spellRoll.moonlightRolls[1]}`]
+        : []),
       `Moonlight Bonus:\n+${spellRoll.bonusDamage}`,
+      ...(spellRoll.alignmentDamage > 0
+        ? [`Lunar Alignment:\n+${spellRoll.alignmentDamage}`]
+        : []),
       ...strengthLine,
       `Total Damage:\n${spellRoll.damage}`,
       ...(spellRoll.criticalFlavor ? [spellRoll.criticalFlavor] : []),
@@ -4610,6 +4636,16 @@ function formatMoonbeamCastMessage(spell, spellRoll, effectResult, platform = "t
   const flavorText = spellRoll.criticalFlavor
     ? ` ${spellRoll.criticalFlavor}`
     : "";
+
+  if (spellRoll.moonlightRolls.length === 2) {
+    const alignmentText = spellRoll.alignmentDamage > 0
+      ? ` | Lunar Alignment: +${spellRoll.alignmentDamage}` : "";
+    return `${tier.displayName}! Moonbeam rolls ${spellRoll.rolls[0]}/${spellRoll.rolls[1]}, ` +
+      `keeps ${rollCalculation}${criticalText} — ${spellRoll.baseDamage} base` +
+      ` | Moonlight Rolls: ${spellRoll.moonlightRolls[0]} and ${spellRoll.moonlightRolls[1]}` +
+      ` | Moonlight Bonus: +${spellRoll.bonusDamage}${alignmentText}` +
+      `${strengthText} = ${spellRoll.damage} dmg.${flavorText}`;
+  }
 
   return `${tier.displayName}! Moonbeam rolls ${spellRoll.rolls[0]}/${spellRoll.rolls[1]}, ` +
     `keeps ${rollCalculation}${criticalText} — ${spellRoll.baseDamage} base ` +
@@ -8696,6 +8732,11 @@ function validateMasteryDefinition(mastery, expectedId) {
     effect.damage === 20 && Array.isArray(mastery.flavor) &&
     mastery.flavor.length === 6 &&
     mastery.flavor.every((line) => typeof line === "string" && line.trim());
+  const validMoonbeamMastery = expectedId === "moonbeam-mastery-1" &&
+    mastery.spellId === "moonbeam" && mastery.requiredLevel === 27 &&
+    mastery.tier === 1 && effect?.id === "lunar-alignment" &&
+    effect.moonlightDice === 2 && effect.normalDamage === 5 &&
+    effect.criticalDamage === 20;
   const jellyfishEffectTypes = [
     "restore-mana",
     "restore-hp",
@@ -8773,6 +8814,7 @@ function validateMasteryDefinition(mastery, expectedId) {
   if (
     !validStarSparkMastery &&
     !validStarSparkMasteryII &&
+    !validMoonbeamMastery &&
     !validJellyfishMastery &&
     !validJellyfishMasteryII &&
     !validElfBlessingMastery &&

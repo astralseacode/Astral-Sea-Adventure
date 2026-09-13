@@ -1,0 +1,14 @@
+{
+  "id": "moonbeam-mastery-1",
+  "name": "Moonbeam Mastery I",
+  "spellId": "moonbeam",
+  "requiredLevel": 27,
+  "tier": 1,
+  "description": "Moonbeam's bonus Moonlight damage rolls 2d6. Matching dice or a total of 7 adds 5 damage, or 20 on a critical Moonbeam.",
+  "effect": {
+    "id": "lunar-alignment",
+    "moonlightDice": 2,
+    "normalDamage": 5,
+    "criticalDamage": 20
+  }
+}
