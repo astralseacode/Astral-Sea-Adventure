@@ -294,6 +294,7 @@ const SPELL_FILES = {
   "leviathans-wake": "leviathans-wake.json",
   berries: "berries.json",
   familiar: "familiar.json",
+  "all-or-nothing": "all-or-nothing.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -1219,6 +1220,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
         "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
         "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
+        "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak. " +
         "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
@@ -1633,6 +1635,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
           "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
           "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
+          "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak. " +
           "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
@@ -4308,8 +4311,9 @@ async function performCastUnlocked(
     shimmerDiscount ? 0.5 : 0,
   );
   const manaCost = Math.round(spell.manaCost * (1 - manaReduction));
+  const isAllOrNothing = spell.id === "all-or-nothing";
 
-  if (progress.mana < manaCost) {
+  if (progress.mana < (isAllOrNothing ? spell.manaCost : manaCost)) {
     const message = `You don't have enough Mana to cast ${spell.name}.`;
     return {
       message: platform === "discord"
@@ -4325,7 +4329,7 @@ async function performCastUnlocked(
   );
   if (turnStart.victory) return turnStart.victory;
 
-  if (shimmerDiscount) delete combatState.berryEffects.shimmerDiscount;
+  if (shimmerDiscount && !isAllOrNothing) delete combatState.berryEffects.shimmerDiscount;
 
   if (spell.id === "leviathans-wake") {
     return castLeviathansWake(
@@ -4335,14 +4339,22 @@ async function performCastUnlocked(
   }
 
   const spellRoll = rollSpellDamage(spell);
-  const triggeredRoll = consumeTriggeredStatusEffects(
+  const triggeredRoll = isAllOrNothing ? {
+    naturalRoll: spellRoll.total,
+    modifier: 0,
+    finalTotal: spellRoll.total,
+    applied: [],
+    modifierDetails: [],
+    consumed: [],
+    statusEffects: progress.statusEffects,
+  } : consumeTriggeredStatusEffects(
     progress,
     OFFENSIVE_ROLL_TRIGGER,
     spellRoll.total,
     combatState,
     true,
   );
-  const faeBonus = getFaeSpellRollBonus(progress);
+  const faeBonus = isAllOrNothing ? 0 : getFaeSpellRollBonus(progress);
   if (faeBonus > 0) {
     triggeredRoll.modifier += faeBonus;
     triggeredRoll.finalTotal += faeBonus;
@@ -4354,8 +4366,9 @@ async function performCastUnlocked(
     spellRoll,
     triggeredRoll.finalTotal,
     moonbeamMastery,
+    isAllOrNothing ? (combatState.allOrNothingStreak || 0) : 0,
   );
-  const strengthBonus = spell.id === "falling-star" &&
+  const strengthBonus = (spell.id === "falling-star" || isAllOrNothing) &&
       resolvedSpellRoll.damage === 0
     ? 0
     : getStrengthDamageBonus(progress);
@@ -4370,7 +4383,7 @@ async function performCastUnlocked(
   if (jellyfishMasteryEffect?.effectType === "bonus-damage") {
     resolvedSpellRoll.damage += jellyfishMasteryEffect.amount;
   }
-  if (astralCharge) {
+  if (astralCharge && (!isAllOrNothing || resolvedSpellRoll.damage > 0)) {
     resolvedSpellRoll.damage = applyPercentageDamageIncrease(
       resolvedSpellRoll.damage,
       astralCharge.damageIncrease,
@@ -4380,7 +4393,8 @@ async function performCastUnlocked(
     ? applyAstralRhythm(combatState, activePerks, spell.id)
     : null;
   if (rhythm) resolvedSpellRoll.damage += rhythm.effect.bonusDamage;
-  const astralEcho = getAstralEcho(combatState);
+  const astralEcho = isAllOrNothing && resolvedSpellRoll.damage === 0
+    ? null : getAstralEcho(combatState);
   const echoDamage = astralEcho
     ? applyPercentageOfDamage(
         resolvedSpellRoll.damage,
@@ -4411,7 +4425,7 @@ async function performCastUnlocked(
     triggeredRoll,
     platform,
   );
-  if (astralCharge) {
+  if (astralCharge && (!isAllOrNothing || resolvedSpellRoll.damage > 0)) {
     const chargeMessage =
       "Astral Charge bursts! Your spell surges with borrowed starlight!";
     castMessage = platform === "discord"
@@ -4440,9 +4454,17 @@ async function performCastUnlocked(
       ? `${castMessage}\n\n${rhythm.activationLine}`
       : `${castMessage} | ${rhythm.activationLine}`;
   }
+  if (isAllOrNothing) {
+    combatState.allOrNothingStreak = spellRoll.total === 2
+      ? (combatState.allOrNothingStreak || 0) + 1 : 0;
+    if (shimmerDiscount && spellRoll.total === 2) {
+      delete combatState.berryEffects.shimmerDiscount;
+    }
+  }
   const updatedProgress = {
     ...progress,
-    mana: progress.mana - manaCost,
+    mana: progress.mana - (isAllOrNothing && spellRoll.total === 1
+      ? spell.manaCost : manaCost),
     statusEffects: triggeredRoll.statusEffects,
   };
 
@@ -4460,7 +4482,8 @@ async function performCastUnlocked(
         aftershockDamage,
         message: turnStart.message ? `${turnStart.message}\n\n${castMessage}` : castMessage,
         victoryMessage: castMessage,
-        consumeAstralCharge: Boolean(astralCharge),
+        consumeAstralCharge: Boolean(astralCharge) &&
+          (!isAllOrNothing || spellRoll.total === 2),
         applyAstralCharge: resolvedSpellRoll.appliesAstralCharge,
         astralCharge: {
           ...spell.astralCharge,
@@ -4482,8 +4505,8 @@ async function performCastUnlocked(
         harmonySuccess: resolvedSpellRoll.damage > 0,
         expeditionQualifies: spell.type === "offensive" && resolvedSpellRoll.damage > 0,
         familiarQualifies: true,
-        faeSecondOpinionFailure: spell.id === "falling-star" &&
-          spellRoll.accuracyRoll === 1,
+        faeSecondOpinionFailure: (spell.id === "falling-star" &&
+          spellRoll.accuracyRoll === 1) || (isAllOrNothing && spellRoll.total === 1),
       },
       platform,
     );
@@ -4710,7 +4733,14 @@ function rollSpellDamage(spell) {
   };
 }
 
-function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null) {
+function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null,
+  allOrNothingPriorStreak = 0) {
+  if (spell.id === "all-or-nothing") {
+    const damage = spellRoll.total === 2
+      ? spell.baseDamagePerWin * (allOrNothingPriorStreak + 1) : 0;
+    return { ...spellRoll, finalTotal: spellRoll.total, isCritical: false,
+      priorStreak: allOrNothingPriorStreak, damage, baseDamage: damage };
+  }
   if (spell.id === "falling-star") {
     const outcome = spellRoll.accuracyRoll === 1
       ? "miss"
@@ -4791,6 +4821,14 @@ function formatSpellCastMessage(
   effectResult,
   platform = "twitch",
 ) {
+  if (spell.id === "all-or-nothing") {
+    const tier = spellRoll.total === 1
+      ? (spellRoll.priorStreak >= 3 ? "highStreakFailure" : "failure")
+      : ["firstSuccess", "secondSuccess", "thirdSuccess", "fourthSuccess"][
+          Math.min(spellRoll.priorStreak, 4)] || "fifthPlusSuccess";
+    return `${spell.opener}\n\n${randomChoice(spell.flavor[tier])}` +
+      `\n\nRoll ${spellRoll.total} → ${spellRoll.damage} dmg`;
+  }
   if (spell.id === "falling-star") {
     return formatFallingStarCastMessage(
       spell,
@@ -7687,6 +7725,9 @@ function isValidCombatState(combatState) {
       combatState.astralAwakening?.offensiveRollModifier === 2) &&
     (combatState.astralEchoMastery === undefined ||
       [1, 2].includes(combatState.astralEchoMastery?.offensiveRollModifier)) &&
+    (combatState.allOrNothingStreak === undefined ||
+      (Number.isSafeInteger(combatState.allOrNothingStreak) &&
+        combatState.allOrNothingStreak >= 0)) &&
     (combatState.faeSecondOpinion === undefined ||
       combatState.faeSecondOpinion?.offensiveRollModifier === 3) &&
     (combatState.astralRhythmPreviousSpell === undefined ||
@@ -8974,6 +9015,14 @@ function validateSpellDefinition(spell, expectedId) {
       throw new Error(`Invalid offensive spell definition for ${expectedId}.`);
     }
   }
+  if (spell.id === "all-or-nothing" && (
+    spell.requiredLevel !== 35 || spell.manaCost !== 20 ||
+    spell.damage?.dice !== 1 || spell.damage?.sides !== 2 ||
+    spell.baseDamagePerWin !== 25 || spell.opener !== "You leave it to chance." ||
+    ["failure", "firstSuccess", "secondSuccess", "thirdSuccess",
+      "fourthSuccess", "fifthPlusSuccess", "highStreakFailure"].some(
+      (tier) => !isTextArray(spell.flavor?.[tier]))
+  )) throw new Error("Invalid All or Nothing content data.");
 
   if (spell.type === "timed-support") {
     if (

@@ -1,0 +1,72 @@
+{
+  "id": "all-or-nothing",
+  "name": "All or Nothing",
+  "aliases": ["all or nothing", "allornothing"],
+  "requiredLevel": 35,
+  "manaCost": 20,
+  "type": "offensive",
+  "description": "Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 deals no damage and resets the streak. Roll 2 deals 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25.",
+  "damage": { "dice": 1, "sides": 2 },
+  "criticalThreshold": 3,
+  "criticalDamage": 0,
+  "baseDamagePerWin": 25,
+  "opener": "You leave it to chance.",
+  "flavor": {
+    "failure": [
+      "Nothing answers.",
+      "The magic fizzles. Unfortunate.",
+      "You chose Nothing. Nothing chose you back.",
+      "The stars decline.",
+      "For a moment, something almost happens.",
+      "Nothing. Absolutely nothing.",
+      "The magic considered it.",
+      "You feel like that could have gone better.",
+      "A tiny spark appears, thinks better of it, and disappears.",
+      "The universe says no."
+    ],
+    "firstSuccess": [
+      "The stars choose All.",
+      "Chance favors you.",
+      "The gamble pays off.",
+      "Something answers.",
+      "The magic surges forward.",
+      "The stars accept your wager.",
+      "All."
+    ],
+    "secondSuccess": [
+      "The stars choose All. Again.",
+      "Chance favors you twice.",
+      "The wager continues.",
+      "The magic returns stronger than before."
+    ],
+    "thirdSuccess": [
+      "The stars are beginning to encourage this.",
+      "Against reasonable expectations, All wins again.",
+      "The wager is getting concerning.",
+      "The magic returns. Considerably less politely."
+    ],
+    "fourthSuccess": [
+      "Perhaps someone should stop you.",
+      "The stars choose All. This is getting ridiculous.",
+      "The universe appears unusually invested in your gambling problem.",
+      "Somewhere, the supervising leaf rustles disapprovingly."
+    ],
+    "fifthPlusSuccess": [
+      "All. Again.",
+      "This should have stopped working by now.",
+      "The stars refuse to teach you a lesson.",
+      "At this point, even the magic seems confused.",
+      "The wager continues against all sensible advice.",
+      "Somehow, All keeps winning."
+    ],
+    "highStreakFailure": [
+      "And there it is.",
+      "The stars finally learned how probability works.",
+      "Nothing. That was bound to happen eventually.",
+      "Your winning streak ends with remarkable efficiency.",
+      "The universe has corrected its mistake.",
+      "All that confidence. Gone.",
+      "You knew this would happen eventually."
+    ]
+  }
+}
