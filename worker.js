@@ -295,6 +295,7 @@ const SPELL_FILES = {
   berries: "berries.json",
   familiar: "familiar.json",
   "all-or-nothing": "all-or-nothing.json",
+  "tidal-wave": "tidal-wave.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -672,6 +673,7 @@ const DISCORD_COMMANDS = [
           { name: "Berry", value: "berry" },
           { name: "Familiar", value: "familiar" },
           { name: "All or Nothing", value: "all-or-nothing" },
+          { name: "Tidal Wave", value: "tidal-wave" },
         ],
       },
     ],
@@ -3671,6 +3673,8 @@ async function performCastUnlocked(
   const familiarCommand = platform === "discord" ? "/cast Familiar" : "!cast familiar";
   const allOrNothingCommand = platform === "discord"
     ? "/cast spell:All or Nothing" : "!cast all or nothing";
+  const tidalWaveCommand = platform === "discord"
+    ? "/cast spell:Tidal Wave" : "!cast tidal";
 
   if (!spellInputValue) {
     return {
@@ -3681,7 +3685,7 @@ async function performCastUnlocked(
         `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
         `${fallingStarCommand} for Falling Star, ${wakeCommand} for Leviathan's Wake, ` +
         `${berryCommand} for Berries, ${familiarCommand} for Familiar, or ` +
-        `${allOrNothingCommand} for All or Nothing.`,
+        `${allOrNothingCommand} for All or Nothing, or ${tidalWaveCommand} for Tidal Wave.`,
     };
   }
 
@@ -3699,7 +3703,7 @@ async function performCastUnlocked(
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
         `${moonbeamCommand}, ${evocationCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
         `${fallingStarCommand}, ${wakeCommand}, ${berryCommand}, ` +
-        `${familiarCommand}, or ${allOrNothingCommand}.`,
+        `${familiarCommand}, ${allOrNothingCommand}, or ${tidalWaveCommand}.`,
     };
   }
 
@@ -4674,6 +4678,13 @@ async function advanceLeviathansWake(
 }
 
 function rollSpellDamage(spell) {
+  if (spell.id === "tidal-wave") {
+    const rolls = Array.from(
+      { length: spell.damage.dice },
+      () => randomInteger(1, spell.damage.sides),
+    );
+    return { rolls, total: rolls.reduce((sum, roll) => sum + roll, 0) };
+  }
   if (spell.id === "falling-star") {
     const powerRolls = Array.from(
       { length: spell.power.dice },
@@ -4726,6 +4737,15 @@ function rollSpellDamage(spell) {
 
 function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null,
   allOrNothingPriorStreak = 0) {
+  if (spell.id === "tidal-wave") {
+    const tier = spell.damageTiers.find((entry) =>
+      finalTotal <= entry.finalMaximum) || spell.damageTiers.at(-1);
+    return {
+      ...spellRoll, finalTotal, tierId: tier.id,
+      isCritical: tier.id === "critical", damage: tier.baseDamage,
+      baseDamage: tier.baseDamage,
+    };
+  }
   if (spell.id === "all-or-nothing") {
     const damage = spellRoll.total === 2
       ? spell.baseDamagePerWin * (allOrNothingPriorStreak + 1) : 0;
@@ -4812,6 +4832,22 @@ function formatSpellCastMessage(
   effectResult,
   platform = "twitch",
 ) {
+  if (spell.id === "tidal-wave") {
+    const tier = spell.damageTiers.find((entry) => entry.id === spellRoll.tierId);
+    const separator = platform === "discord" ? "\n\n" : " | ";
+    const modifiers = effectResult.modifierDetails.map((detail) => {
+      const name = detail.name === "Fae Affinity" ? "Fae" : detail.name;
+      return `${detail.value >= 0 ? "+" : "-"}${Math.abs(detail.value)} ${name}`;
+    }).join(" ");
+    const rollText = `Tidal Wave: ${spellRoll.rolls.join(" + ")} = ${spellRoll.total}` +
+      (modifiers ? ` | ${modifiers} → ${spellRoll.finalTotal}`
+        : ` → ${spellRoll.finalTotal}`);
+    const damageText = `${tier.displayName} → ${tier.baseDamage} base dmg` +
+      (spellRoll.strengthBonus ? ` + ${spellRoll.strengthBonus} Strength` : "") +
+      ` = ${spellRoll.damage} dmg`;
+    return [randomChoice(tier.scenes).join(separator), rollText, damageText]
+      .join(separator);
+  }
   if (spell.id === "all-or-nothing") {
     const tier = spellRoll.total === 1
       ? (spellRoll.priorStreak >= 3 ? "highStreakFailure" : "failure")
@@ -9053,6 +9089,29 @@ function validateSpellDefinition(spell, expectedId) {
       "fourthSuccess", "fifthPlusSuccess", "highStreakFailure"].some(
       (tier) => !isTextArray(spell.flavor?.[tier]))
   )) throw new Error("Invalid All or Nothing content data.");
+  if (expectedId === "tidal-wave") {
+    const tiers = [
+      ["rising", "Rising Tide", 14, 40, 5],
+      ["surging", "Surging Tide", 19, 50, 2],
+      ["astral", "Astral Tide", 24, 55, 3],
+      ["critical", "Critical Tidal Wave", null, 65, 4],
+    ];
+    if (spell.name !== "Tidal Wave" || spell.requiredLevel !== 40 ||
+        spell.manaCost !== 30 || spell.damage?.dice !== 3 ||
+        spell.damage?.sides !== 12 || spell.criticalThreshold !== 25 ||
+        spell.criticalDamage !== 65 || !Array.isArray(spell.damageTiers) ||
+        spell.damageTiers.length !== tiers.length ||
+        spell.damageTiers.some((tier, index) => {
+          const [id, displayName, finalMaximum, baseDamage, sceneCount] = tiers[index];
+          return tier.id !== id || tier.displayName !== displayName ||
+            tier.finalMaximum !== finalMaximum || tier.baseDamage !== baseDamage ||
+            !Array.isArray(tier.scenes) || tier.scenes.length !== sceneCount ||
+            tier.scenes.some((scene) => !isTextArray(scene));
+        }) || spell.levelUpLine !==
+        "lvl 40 Spell 🌊 Tidal Wave: Cast Tidal Wave for 30 Mana and roll 3d12. Add the dice together and apply offensive roll bonuses to determine the strength of the wave. Rolls 3-14 deal 40 damage, 15-19 deal 50 damage, 20-24 deal 55 damage, and 25+ critically hits for 65 damage.") {
+      throw new Error("Invalid Tidal Wave content data.");
+    }
+  }
 
   if (spell.type === "timed-support") {
     if (

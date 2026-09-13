@@ -1,0 +1,49 @@
+{
+  "id": "tidal-wave",
+  "name": "Tidal Wave",
+  "aliases": ["tidal wave", "tidal", "wave"],
+  "requiredLevel": 40,
+  "manaCost": 30,
+  "type": "offensive",
+  "description": "Roll 3d12 and apply offensive roll bonuses to determine Tidal Wave damage.",
+  "levelUpLine": "lvl 40 Spell 🌊 Tidal Wave: Cast Tidal Wave for 30 Mana and roll 3d12. Add the dice together and apply offensive roll bonuses to determine the strength of the wave. Rolls 3-14 deal 40 damage, 15-19 deal 50 damage, 20-24 deal 55 damage, and 25+ critically hits for 65 damage.",
+  "damage": { "dice": 3, "sides": 12 },
+  "criticalThreshold": 25,
+  "criticalDamage": 65,
+  "damageTiers": [
+    {
+      "id": "rising", "displayName": "Rising Tide", "finalMaximum": 14, "baseDamage": 40,
+      "scenes": [
+        ["You call upon Shizuki and the sea answers.", "A small silhouette flickers through the rising water before disappearing.", "The Rising Tide crashes forward."],
+        ["You call upon Shizuki and the water begins to rise.", "A familiar pair of pointed ears briefly takes shape within the wave.", "The Rising Tide crashes forward."],
+        ["You call upon Shizuki and the sea answers.", "A familiar elf like silhouette appears within the water wearing a suspicious mustache.", "They are definitely not Shizuki.", "The Rising Tide crashes forward."],
+        ["You call upon Shizuki and the tide begins to rise.", "A familiar silhouette flickers beneath the surface as something small and star shaped tumbles through the water beside her.", "The Rising Tide crashes into the enemy."],
+        ["You call upon Shizuki and the sea begins to stir.", "A familiar silhouette peeks out from within the rising water before quickly disappearing.", "The Rising Tide crashes forward."]
+      ]
+    },
+    {
+      "id": "surging", "displayName": "Surging Tide", "finalMaximum": 19, "baseDamage": 50,
+      "scenes": [
+        ["You call upon the lingering presence of Shizuki and the sea surges forward.", "A familiar elf like silhouette races within the rushing water beside you.", "The Surging Tide crashes into the enemy."],
+        ["You call upon Shizuki and the sea rises to answer.", "White hair and pointed ears briefly take shape within the rushing water.", "The figure disappears as the Surging Tide crashes forward."]
+      ]
+    },
+    {
+      "id": "astral", "displayName": "Astral Tide", "finalMaximum": 24, "baseDamage": 55,
+      "scenes": [
+        ["You call upon Shizuki and Astral light spreads across the sea.", "A familiar silhouette forms within the towering water, surrounded by tiny star like lights.", "For a moment, the Astral Sea seems to remember her.", "The Astral Tide crashes down."],
+        ["You call upon the lingering presence of Shizuki.", "The water glows with Astral light as a familiar elf like silhouette takes shape within it.", "Something star shaped glimmers in her hand before the Astral Tide crashes down."],
+        ["You call upon Shizuki and the sea begins to glow.", "A familiar silhouette walks calmly within the towering wave as though the rushing water were nothing at all.", "The Astral Tide crashes into the enemy."]
+      ]
+    },
+    {
+      "id": "critical", "displayName": "Critical Tidal Wave", "finalMaximum": null, "baseDamage": 65,
+      "scenes": [
+        ["The sea rises impossibly high.", "For a moment, a silhouette resembling Shizuki can be seen within the wave.", "The Tidal Wave crashes down."],
+        ["You call upon Shizuki and the Astral Sea answers.", "The sea rises impossibly high. Within the towering wave, Shizuki's silhouette becomes unmistakable.", "For just a moment, you hear her laugh.", "The Tidal Wave crashes down."],
+        ["The Astral Sea begins to rise.", "A familiar silhouette stands within the impossible wall of water. White hair drifts around pointed ears as Astral light gathers behind her.", "You have seen traces of her throughout your journey. This time, there is no mistaking who the sea remembers.", "The Tidal Wave crashes down."],
+        ["You call upon Shizuki and the water begins to rise.", "A familiar silhouette appears within the wave. Something small and star shaped floats past you.", "You reach for it.", "The Tidal Wave crashes down before you can grab it."]
+      ]
+    }
+  ]
+}
