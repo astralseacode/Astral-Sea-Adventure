@@ -320,6 +320,7 @@ const PERK_FILES = {
   "fae-second-opinion": "fae-second-opinion.json",
   kinship: "kinship.json",
   "astral-rhythm": "astral-rhythm.json",
+  "astral-expedition": "astral-expedition.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1215,6 +1216,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
         "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
         "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
+        "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
         "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
@@ -1627,6 +1629,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
           "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
           "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
+          "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
           "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
@@ -2857,6 +2860,7 @@ async function performAttackUnlocked(
         victoryMessage: actionMessage,
         momentumAction: "attack",
         momentumNaturalRoll: playerRoll,
+        expeditionQualifies: playerRoll !== 1 && playerAttack.damage > 0,
         familiarQualifies: true,
         harmonySources: countOffensiveRollBonusSources(triggeredRoll),
         harmonySuccess: playerRoll !== 1 && playerAttack.damage > 0,
@@ -2952,6 +2956,44 @@ function applyAstralRhythm(combatState, activePerks, spellId) {
   return rhythm;
 }
 
+async function applyAstralExpedition(env, backpackKey, progress, perk) {
+  const count = Math.min(
+    Number.MAX_SAFE_INTEGER,
+    progress.astralExpeditionRolls + 1,
+  );
+  const reachedMilestone = count % perk.effect.rollsPerMilestone === 0;
+  const updatedProgress = {
+    ...progress,
+    astralExpeditionRolls: count,
+    ...(reachedMilestone ? {
+      statusEffects: addStatusEffect(progress, {
+        id: "astral_expedition",
+        displayName: "Astral Expedition",
+        description: "+3 to the next offensive roll",
+        category: "buff",
+        source: "perk",
+        visibility: "public",
+        durationType: "charges",
+        remainingCharges: 1,
+        trigger: OFFENSIVE_ROLL_TRIGGER,
+        modifiers: { attackRoll: perk.effect.offensiveRollModifier },
+        createdAt: Date.now(),
+      }),
+    } : {}),
+  };
+  await savePlayerProgress(env, backpackKey, updatedProgress);
+  if (reachedMilestone) {
+    const total = await getBackpackTotal(env, backpackKey);
+    await saveBackpackTotal(
+      env, backpackKey, total + perk.effect.candies,
+    );
+  }
+  return {
+    progress: updatedProgress,
+    message: reachedMilestone ? perk.activationLine : "",
+  };
+}
+
 async function resolvePlayerCombatAction(
   env,
   backpackKey,
@@ -3024,6 +3066,17 @@ async function resolvePlayerCombatAction(
 
   let momentumMessage = "";
   const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  let expeditionMessage = "";
+  const expedition = activePerks.find(
+    (perk) => perk.effect.trigger === "successful-offensive-roll-milestone",
+  );
+  if (expedition && action.expeditionQualifies) {
+    const result = await applyAstralExpedition(
+      env, backpackKey, progress, expedition,
+    );
+    progress = result.progress;
+    expeditionMessage = result.message;
+  }
   let faeSecondOpinionMessage = "";
   const faeSecondOpinion = activePerks.find(
     (perk) => perk.effect.trigger === "natural-one-forced-offensive-failure",
@@ -3162,6 +3215,7 @@ async function resolvePlayerCombatAction(
   progress = curiosityResult.progress;
 
   const messageParts = [action.message];
+  if (expeditionMessage) messageParts.push(expeditionMessage);
   if (familiarMessage) messageParts.push(familiarMessage);
   if (faeSecondOpinionMessage) messageParts.push(faeSecondOpinionMessage);
   if (harmonyMessage) messageParts.push(harmonyMessage);
@@ -4379,6 +4433,7 @@ async function performCastUnlocked(
           : spellRoll.rolls,
         harmonySources: countOffensiveRollBonusSources(triggeredRoll),
         harmonySuccess: resolvedSpellRoll.damage > 0,
+        expeditionQualifies: spell.type === "offensive" && resolvedSpellRoll.damage > 0,
         familiarQualifies: true,
         faeSecondOpinionFailure: spell.id === "falling-star" &&
           spellRoll.accuracyRoll === 1,
@@ -4459,6 +4514,7 @@ async function castLeviathansWake(
       consumeAstralEcho: Boolean(astralEcho),
       harmonySources: countOffensiveRollBonusSources(triggeredRoll),
       harmonySuccess: true,
+      expeditionQualifies: true,
       familiarQualifies: true,
     }, platform);
   } catch (error) {
@@ -9240,6 +9296,17 @@ function validatePerkDefinition(perk, expectedId) {
     perk.activationLine ===
       "two attacks in a row Astral Rhythm Applied! +5 damage" &&
     hasSingleActivationLine && !hasActivationLines;
+  const validAstralExpedition = expectedId === "astral-expedition" &&
+    perk.requiredLevel === 33 &&
+    effect?.trigger === "successful-offensive-roll-milestone" &&
+    effect.rollsPerMilestone === 33 && effect.candies === 33 &&
+    effect.offensiveRollModifier === 3 &&
+    perk.activationLine ===
+      "Astral Expedition\n\n" +
+      "Faintly you hear \"for those who come after\" behind a bush.\n\n" +
+      "33 offensive rolls reached.\n\n" +
+      "33 Star Candies gained | Next offensive roll +3" &&
+    hasSingleActivationLine && !hasActivationLines;
   const doubleOutcomes = effect?.doubleOutcomes;
   const tripleRewards = effect?.tripleRewards;
   const validAstralCuriosity = expectedId === "astral-curiosity" &&
@@ -9307,6 +9374,7 @@ function validatePerkDefinition(perk, expectedId) {
     !validFaeIntervention &&
     !validFaeAid &&
     !validAstralRhythm &&
+    !validAstralExpedition &&
     !validAstralCuriosity &&
     !validAstralPatience &&
     !validAstralAwakening &&
@@ -9870,6 +9938,10 @@ function normalizeEvocationCooldown(value) {
   return Number.isSafeInteger(value) && value >= 0 ? Math.min(7, value) : 0;
 }
 
+function normalizeAstralExpeditionRolls(value) {
+  return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+}
+
 function createEmptyProgress() {
   const progress = {
     xp: 0,
@@ -9879,6 +9951,7 @@ function createEmptyProgress() {
     mana: PLAYER_MAX_MANA,
     maxMana: PLAYER_MAX_MANA,
     evocationCooldownTurns: 0,
+    astralExpeditionRolls: 0,
     lastRestAt: 0,
     lastLongRestAt: 0,
     restBufferType: null,
@@ -10093,6 +10166,7 @@ async function getPlayerProgress(
 
     const normalizedProgress = {
       evocationCooldownTurns: normalizeEvocationCooldown(parsed.evocationCooldownTurns),
+      astralExpeditionRolls: normalizeAstralExpeditionRolls(parsed.astralExpeditionRolls),
       xp,
       berries,
       hp,
@@ -10265,6 +10339,7 @@ async function savePlayerProgress(
 
   const safeProgress = {
     evocationCooldownTurns: normalizeEvocationCooldown(progress.evocationCooldownTurns),
+    astralExpeditionRolls: normalizeAstralExpeditionRolls(progress.astralExpeditionRolls),
     xp: Math.max(
       0,
       Math.floor(

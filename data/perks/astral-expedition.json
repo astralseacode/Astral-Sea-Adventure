@@ -1,0 +1,14 @@
+{
+  "id": "astral-expedition",
+  "name": "Astral Expedition",
+  "requiredLevel": 33,
+  "type": "passive",
+  "description": "Every 33 successful offensive rolls, gain 33 Star Candies and +3 to your next offensive roll.",
+  "effect": {
+    "trigger": "successful-offensive-roll-milestone",
+    "rollsPerMilestone": 33,
+    "candies": 33,
+    "offensiveRollModifier": 3
+  },
+  "activationLine": "Astral Expedition\n\nFaintly you hear \"for those who come after\" behind a bush.\n\n33 offensive rolls reached.\n\n33 Star Candies gained | Next offensive roll +3"
+}
