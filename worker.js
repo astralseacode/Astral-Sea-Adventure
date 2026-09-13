@@ -5884,6 +5884,10 @@ async function performRestUnlocked(
   restType,
   platform,
 ) {
+  if (await getCombatState(env, backpackKey)) {
+    return { message: "You cannot rest while in combat." };
+  }
+
   const progress = await getPlayerProgress(env, backpackKey);
   const sharedCooldownAt = await getSharedRestCooldown(
     env,
@@ -5918,7 +5922,7 @@ async function performRestUnlocked(
   const combatState = await getCombatState(env, backpackKey);
   const activeAdventure = await getActiveAdventure(env, backpackKey);
 
-  if (restType === "long" && (combatState || activeAdventure)) {
+  if (restType === "long" && activeAdventure) {
     const message =
       "You cannot begin a Long Rest during an active Adventure or fight. " +
       `Finish it before using ${platform === "discord"
