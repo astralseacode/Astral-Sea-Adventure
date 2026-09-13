@@ -1,7 +1,7 @@
 {
   "id": "fae-intervention",
   "name": "Fae Intervention",
-  "requiredLevel": 17,
+  "requiredLevel": 43,
   "type": "passive",
   "description": "Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP.",
   "effect": {

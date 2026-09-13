@@ -164,15 +164,17 @@ async function main() {
   });
 
   await test('Stim after Fae Intervention, and normal Intervention/Resilience after Stim', async () => {
-    const saved = await setup(21); await saved.hurt(1);
+    const saved = await setup(43); await saved.hurt(1);
+    await saved.editState(s => { s.perkUses = { 'fae-aid': 1 }; });
     await saved.editProgress(p => { p.mana = 0; });
-    saved.rolls.push(1, 20); await saved.attack();
+    saved.rolls.push(2, 20); await saved.attack();
     assert.equal((await saved.state()).playerHp, 1);
     assert.equal((await saved.state()).perkUses['fae-intervention'], 1);
     await saved.stim();
     assert.equal((await saved.state()).playerHp, 100);
     assert.equal((await saved.state()).perkUses['fae-intervention'], 1);
-    const f = await setup(21); await f.hurt(1);
+    const f = await setup(43); await f.hurt(1);
+    await f.editState(s => { s.perkUses = { 'fae-aid': 1 }; });
     await f.editProgress(p => { p.mana = 0; });
     await f.editState(s => { s.enemy.damageBonus = 100; });
     f.rolls.push(0, 20); await f.stim();

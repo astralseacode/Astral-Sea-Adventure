@@ -1,0 +1,14 @@
+{
+  "id": "fae-aid",
+  "name": "Fae Aid",
+  "requiredLevel": 17,
+  "type": "passive",
+  "description": "Once per battle, when you fall below 15% HP after surviving an enemy attack, restore 5 HP.",
+  "effect": {
+    "trigger": "survived-enemy-attack-below-hp-threshold",
+    "hpThresholdPercent": 15,
+    "hpRestore": 5,
+    "usesPerBattle": 1
+  },
+  "activationLine": "Fae Aid activates! Restored 5 HP."
+}

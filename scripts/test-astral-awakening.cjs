@@ -76,10 +76,14 @@ async function main() {
   assert.match(protectedHit.message, /Restored 25 HP \+ 25 Mana/);
   assert.equal((await protectedPlayer.state()).astralAwakeningSurvived, 5);
 
-  const fae = await fixture(25);
+  const fae = await fixture(43);
   await fae.editProgress(p => { p.hp = 1; p.mana = 50; });
-  await fae.editState(s => { s.playerHp = 1; s.astralAwakeningSurvived = 4; });
-  const saved = await hit(fae, 20);
+  await fae.editState(s => {
+    s.playerHp = 1; s.astralAwakeningSurvived = 4;
+    s.perkUses = { 'fae-aid': 1 };
+  });
+  fae.rolls.push(2, 20);
+  const saved = await fae.attack();
   assert.match(saved.message, /Restored 25 HP \+ 25 Mana/);
   assert.equal((await fae.state()).playerHp, 26);
   assert.equal((await fae.state()).perkUses['fae-intervention'], 1);

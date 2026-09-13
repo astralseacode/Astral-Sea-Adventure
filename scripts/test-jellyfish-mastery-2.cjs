@@ -157,9 +157,12 @@ async function main() {
   });
 
   await test('Guard applies before Fae Intervention, Resilience, and Mend without changing those hooks', async () => {
-    const f = await setup(); await f.cast('mend');
-    await f.editState(s => { s.playerHp = 2; s.jellyfishSleepyGuard = { damageReduction: 5 }; });
-    f.rolls.push(1, 20); const result = await f.attack(); const s = await f.state();
+    const f = await setup(43); await f.cast('mend');
+    await f.editState(s => {
+      s.playerHp = 2; s.jellyfishSleepyGuard = { damageReduction: 5 };
+      s.perkUses['fae-aid'] = 1;
+    });
+    f.rolls.push(2, 20); const result = await f.attack(); const s = await f.state();
     assert.equal(s.playerHp, 8); // Fae leaves 1; mastered weak Mend restores 7.
     assert.equal(s.perkUses['fae-intervention'], 1);
     assert.equal(s.perkUses['astral-resilience'], 1);

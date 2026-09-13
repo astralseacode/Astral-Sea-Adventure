@@ -312,6 +312,7 @@ const PERK_FILES = {
   "astral-harvest": "astral-harvest.json",
   "astral-aftershock": "astral-aftershock.json",
   "fae-intervention": "fae-intervention.json",
+  "fae-aid": "fae-aid.json",
   "astral-curiosity": "astral-curiosity.json",
   "astral-patience": "astral-patience.json",
   "astral-awakening": "astral-awakening.json",
@@ -1197,7 +1198,7 @@ async function handleTwitchRequest(url, env) {
         "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
         "Level 15 — Falling Star — !cast falling star uses Power and Accuracy for volatile heavy damage. " +
         "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
-        "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
+        "lvl 17 Passive 🌿 Fae Aid: Once per battle, when you fall below 15% HP after surviving an enemy attack, restore 5 HP. " +
         "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
         "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
         "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
@@ -1212,6 +1213,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll grants +3 to your next offensive roll. Activates once per battle. " +
         "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
         "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
+        "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1607,7 +1609,7 @@ async function handleDiscordInteraction(request, env) {
           "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
           "Level 15 — Falling Star — /cast Falling Star uses Power and Accuracy for volatile heavy damage. " +
           "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
-          "Level 17 — Fae Intervention — Once per battle, lethal enemy damage leaves you alive at 1 HP. " +
+          "lvl 17 Passive 🌿 Fae Aid: Once per battle, when you fall below 15% HP after surviving an enemy attack, restore 5 HP. " +
           "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
           "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
           "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
@@ -1622,6 +1624,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll grants +3 to your next offensive roll. Activates once per battle. " +
           "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
           "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
+          "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3367,6 +3370,25 @@ async function resolvePlayerCombatAction(
       ...defeat,
       message: formatCombatMessageParts(messageParts, platform),
     };
+  }
+
+  const faeAid = activePerks.find(
+    (perk) => perk.effect.trigger === "survived-enemy-attack-below-hp-threshold",
+  );
+  if (faeAid && !combatState.perkUses?.[faeAid.id]) {
+    const currentMaxHp = getPlayerResourceCaps(progress).hp;
+    if (combatState.playerHp <
+      currentMaxHp * (faeAid.effect.hpThresholdPercent / 100)) {
+      combatState.playerMaxHp = currentMaxHp;
+      combatState.playerHp = Math.min(
+        currentMaxHp, combatState.playerHp + faeAid.effect.hpRestore,
+      );
+      combatState.perkUses = {
+        ...(combatState.perkUses || {}),
+        [faeAid.id]: 1,
+      };
+      messageParts.push(faeAid.activationLine);
+    }
   }
 
   let updatedProgress = progress;
@@ -9162,11 +9184,19 @@ function validatePerkDefinition(perk, expectedId) {
     hasSingleActivationLine &&
     !hasActivationLines;
   const validFaeIntervention = expectedId === "fae-intervention" &&
+    perk.requiredLevel === 43 &&
     effect?.trigger === "lethal-enemy-damage" &&
     Number(effect.survivalHp) === 1 &&
     Number(effect.usesPerBattle) === 1 &&
     hasActivationLines &&
     perk.activationLines.length === 8;
+  const validFaeAid = expectedId === "fae-aid" &&
+    perk.requiredLevel === 17 &&
+    effect?.trigger === "survived-enemy-attack-below-hp-threshold" &&
+    effect.hpThresholdPercent === 15 && effect.hpRestore === 5 &&
+    effect.usesPerBattle === 1 &&
+    perk.activationLine === "Fae Aid activates! Restored 5 HP." &&
+    hasSingleActivationLine && !hasActivationLines;
   const doubleOutcomes = effect?.doubleOutcomes;
   const tripleRewards = effect?.tripleRewards;
   const validAstralCuriosity = expectedId === "astral-curiosity" &&
@@ -9232,6 +9262,7 @@ function validatePerkDefinition(perk, expectedId) {
     !validHarvest &&
     !validAftershock &&
     !validFaeIntervention &&
+    !validFaeAid &&
     !validAstralCuriosity &&
     !validAstralPatience &&
     !validAstralAwakening &&
