@@ -309,6 +309,7 @@ const MASTERY_FILES = {
   "mend-mastery-1": "mend-mastery-1.json",
   "astral-echo-mastery-1": "astral-echo-mastery-1.json",
   "leviathans-wake-mastery-1": "leviathans-wake-mastery-1.json",
+  "falling-star-mastery-1": "falling-star-mastery-1.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
@@ -3719,6 +3720,10 @@ async function performCastUnlocked(
     (mastery) => mastery.spellId === "moonbeam" &&
       mastery.effect.id === "lunar-alignment",
   );
+  const meteorAlignmentMastery = activeMasteries.find(
+    (mastery) => mastery.spellId === "falling-star" &&
+      mastery.effect.id === "meteor-alignment",
+  );
   const jellyfishMastery = activeMasteries.filter(
     (mastery) => mastery.spellId === "jelly" &&
       mastery.effect.id === "jellyfish-moods",
@@ -4332,6 +4337,7 @@ async function performCastUnlocked(
     triggeredRoll.finalTotal,
     moonbeamMastery,
     isAllOrNothing ? (combatState.allOrNothingStreak || 0) : 0,
+    meteorAlignmentMastery,
   );
   if (lunarPatience) {
     if (resolvedSpellRoll.isCritical) delete combatState.lunarPatience;
@@ -4736,7 +4742,7 @@ function rollSpellDamage(spell) {
 }
 
 function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null,
-  allOrNothingPriorStreak = 0) {
+  allOrNothingPriorStreak = 0, meteorAlignmentMastery = null) {
   if (spell.id === "tidal-wave") {
     const tier = spell.damageTiers.find((entry) =>
       finalTotal <= entry.finalMaximum) || spell.damageTiers.at(-1);
@@ -4753,6 +4759,19 @@ function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null,
       priorStreak: allOrNothingPriorStreak, damage, baseDamage: damage };
   }
   if (spell.id === "falling-star") {
+    const counts = new Map();
+    if (meteorAlignmentMastery) {
+      for (const die of spellRoll.powerRolls) {
+        counts.set(die, (counts.get(die) || 0) + 1);
+      }
+    }
+    const matchingPower = counts.size === 1
+      ? meteorAlignmentMastery.effect.triplePower
+      : [...counts.values()].includes(2)
+        ? meteorAlignmentMastery?.effect.doublePower || 0 : 0;
+    const totalSevenPower = meteorAlignmentMastery && spellRoll.powerTotal === 7
+      ? meteorAlignmentMastery.effect.totalSevenPower : 0;
+    const adjustedPower = spellRoll.powerTotal + matchingPower + totalSevenPower;
     const outcome = spellRoll.accuracyRoll === 1
       ? "miss"
       : finalTotal <= 9
@@ -4763,14 +4782,20 @@ function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null,
     const damage = outcome === "miss"
       ? 0
       : outcome === "glancing"
-        ? Math.max(1, spellRoll.powerTotal - spell.glancingPenalty)
+        ? Math.max(1, adjustedPower - spell.glancingPenalty)
         : outcome === "critical"
-          ? spellRoll.powerTotal + spell.criticalBonus
-          : spellRoll.powerTotal;
+          ? adjustedPower + spell.criticalBonus
+          : adjustedPower;
     return {
       ...spellRoll,
       finalTotal,
       outcome,
+      adjustedPower,
+      meteorAlignment: meteorAlignmentMastery ? {
+        matchingPower, totalSevenPower,
+        matchType: counts.size === 1 ? "triples"
+          : matchingPower ? "pair" : null,
+      } : null,
       isCritical: outcome === "critical",
       damage,
       baseDamage: damage,
@@ -4948,6 +4973,18 @@ function formatFallingStarCastMessage(
   const separator = platform === "discord" ? "\n\n" : " | ";
   return [
     rareFlavor || narration,
+    ...(spellRoll.meteorAlignment &&
+      (spellRoll.meteorAlignment.matchingPower ||
+        spellRoll.meteorAlignment.totalSevenPower)
+      ? [`Meteor Alignment: ${[
+          spellRoll.meteorAlignment.matchingPower
+            ? `${spellRoll.meteorAlignment.matchType === "triples" ? "Triples" : "Matching pair"} +${spellRoll.meteorAlignment.matchingPower} Power`
+            : null,
+          spellRoll.meteorAlignment.totalSevenPower
+            ? `Total of 7 +${spellRoll.meteorAlignment.totalSevenPower} Power`
+            : null,
+        ].filter(Boolean).join(" | ")} | Adjusted Power ${spellRoll.adjustedPower}`]
+      : []),
     `Power ${spellRoll.powerTotal} (${spellRoll.powerRolls.join("+")}) | ` +
       `Accuracy ${accuracyText} → ${outcomeName} | ${spellRoll.damage} dmg`,
   ].join(separator);
@@ -9327,6 +9364,14 @@ function validateMasteryDefinition(mastery, expectedId) {
     mastery.tier === 1 && effect?.id === "lunar-alignment" &&
     effect.moonlightDice === 2 && effect.normalDamage === 5 &&
     effect.criticalDamage === 20;
+  const validMeteorAlignment = expectedId === "falling-star-mastery-1" &&
+    mastery.name === "Meteor Alignment" &&
+    mastery.spellId === "falling-star" && mastery.requiredLevel === 41 &&
+    mastery.tier === 1 && effect?.id === "meteor-alignment" &&
+    effect.doublePower === 10 && effect.triplePower === 20 &&
+    effect.totalSevenPower === 15 &&
+    mastery.levelUpLine ===
+      "lvl 41 Mastery ☄️ Meteor Alignment: Falling Star's Power dice can form a Meteor Alignment. If two Power dice match, add +10 Power. If all three Power dice match, add +20 Power instead. If the three Power dice total exactly 7, add +15 Power.";
   const wakeMasteryEffects = [
     ["wakefin", 0, 5, 0, "Restored 5 Mana"],
     ["astral-manta", 0, 0, 5, "Gained 5 protection"],
@@ -9444,6 +9489,7 @@ function validateMasteryDefinition(mastery, expectedId) {
     !validStarSparkMastery &&
     !validStarSparkMasteryII &&
     !validMoonbeamMastery &&
+    !validMeteorAlignment &&
     !validWakeMastery &&
     !validJellyfishMastery &&
     !validJellyfishMasteryII &&

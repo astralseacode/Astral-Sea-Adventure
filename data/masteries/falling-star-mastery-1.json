@@ -1,0 +1,15 @@
+{
+  "id": "falling-star-mastery-1",
+  "name": "Meteor Alignment",
+  "spellId": "falling-star",
+  "requiredLevel": 41,
+  "tier": 1,
+  "description": "Matching natural Falling Star Power dice and a natural Power total of 7 add Power before Accuracy resolves.",
+  "levelUpLine": "lvl 41 Mastery ☄️ Meteor Alignment: Falling Star's Power dice can form a Meteor Alignment. If two Power dice match, add +10 Power. If all three Power dice match, add +20 Power instead. If the three Power dice total exactly 7, add +15 Power.",
+  "effect": {
+    "id": "meteor-alignment",
+    "doublePower": 10,
+    "triplePower": 20,
+    "totalSevenPower": 15
+  }
+}
