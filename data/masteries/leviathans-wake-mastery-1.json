@@ -5,6 +5,7 @@
   "requiredLevel": 37,
   "tier": 1,
   "description": "Leviathan's Wake creatures leave an additional effect when they arrive: Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals 5 fixed damage, Leviathan deals 10 fixed damage and restores 5 Mana, and Ancient Leviathan deals 20 fixed damage and restores 10 Mana.",
+  "levelUpLine": "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by Leviathan's Wake now leave an additional effect when they arrive. Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient Leviathan deals +20 damage and restores 10 Mana.",
   "effect": {
     "id": "wake-creature-arrival",
     "creatures": [

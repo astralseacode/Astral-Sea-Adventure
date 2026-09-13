@@ -4,6 +4,7 @@
   "requiredLevel": 36,
   "type": "passive",
   "description": "Defeating an enemy while at or below 25% HP restores 20 HP + 20 Mana.",
+  "levelUpLine": "lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP and 20 Mana.",
   "effect": {
     "trigger": "enemy-defeated-low-hp",
     "hpThresholdPercent": 25,

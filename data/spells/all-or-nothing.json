@@ -6,6 +6,7 @@
   "manaCost": 20,
   "type": "offensive",
   "description": "Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 deals no damage and resets the streak. Roll 2 deals 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25.",
+  "levelUpLine": "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak.",
   "damage": { "dice": 1, "sides": 2 },
   "criticalThreshold": 3,
   "criticalDamage": 0,

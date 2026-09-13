@@ -738,19 +738,6 @@ const DISCORD_COMMANDS = [
     type: 1,
   },
   {
-    name: "progression",
-    description: "View a level's spell, mastery, and passive unlocks.",
-    type: 1,
-    options: [{
-      type: 4,
-      name: "level",
-      description: "Level to view; omit for your latest unlocked level.",
-      required: false,
-      min_value: 1,
-      max_value: 50,
-    }],
-  },
-  {
     name: "vitality",
     description: "Spend one Stat Point to gain +10 permanent Maximum HP.",
     type: 1,
@@ -1096,10 +1083,6 @@ async function handleTwitchRequest(url, env) {
         (await performStats(env, backpackKey, username, "twitch")).message,
       );
 
-    case "progression":
-      return textResponse((await formatProgressionForPlayer(
-        env, backpackKey, rawArgs, "twitch",
-      )).message);
 
     case "vitality":
     case "focus":
@@ -1209,9 +1192,7 @@ async function handleTwitchRequest(url, env) {
     }
 
     default:
-      return textResponse((await formatProgressionForPlayer(
-        env, backpackKey, null, "twitch",
-      )).message);
+      return textResponse("Unknown command.", 400);
   }
 }
 
@@ -1492,11 +1473,6 @@ async function handleDiscordInteraction(request, env) {
           true,
         );
 
-      case "progression":
-        return discordMessage((await formatProgressionForPlayer(
-          env, backpackKey, getDiscordIntegerOption(interaction, "level"),
-          "discord",
-        )).message, true);
 
       case "vitality":
       case "focus":
@@ -1596,9 +1572,7 @@ async function handleDiscordInteraction(request, env) {
         );
 
       default:
-        return discordMessage((await formatProgressionForPlayer(
-          env, backpackKey, null, "discord",
-        )).message, true);
+        return discordMessage("Unknown command.", true);
     }
   } catch (error) {
     console.error(`Discord /${commandName} error:`, error);
@@ -2068,8 +2042,7 @@ async function performAdventureDirectionUnlocked(
       xpProgression.progress.unspentStatPoints,
       platform,
     ));
-    messageParts.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
-    messageParts.push(...await formatPerkUnlocks(startingLevel, endingLevel));
+    messageParts.push(...await formatLevelUpUnlocks(startingLevel, endingLevel));
   }
   if (endingTitle !== startingTitle) {
     messageParts.push(`Title Earned: ${endingTitle}`);
@@ -5379,8 +5352,7 @@ async function resolveCombatVictory(
       xpProgression.progress.unspentStatPoints,
       platform,
     ));
-    messageParts.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
-    messageParts.push(...await formatPerkUnlocks(startingLevel, endingLevel));
+    messageParts.push(...await formatLevelUpUnlocks(startingLevel, endingLevel));
   }
 
   if (endingTitle !== startingTitle) {
@@ -5675,8 +5647,7 @@ async function performExploreUnlocked(
       xpProgression.progress.unspentStatPoints,
       platform,
     ));
-    messageLines.push(...await formatMasteryUnlocks(startingLevel, endingLevel));
-    messageLines.push(...await formatPerkUnlocks(startingLevel, endingLevel));
+    messageLines.push(...await formatLevelUpUnlocks(startingLevel, endingLevel));
   }
 
   if (endingTitle !== startingTitle) {
@@ -9623,55 +9594,30 @@ async function getActiveMasteries(playerLevel) {
   return masteries.filter((mastery) => level >= mastery.requiredLevel);
 }
 
-const LEVEL_37_PROGRESSION_ENTRY =
-  "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by " +
-  "Leviathan's Wake now leave an additional effect when they arrive. " +
-  "Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 " +
-  "damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient " +
-  "Leviathan deals +20 damage and restores 10 Mana.";
-
-async function formatProgressionForPlayer(env, backpackKey, levelInput, platform) {
-  const progress = await getPlayerProgress(env, backpackKey);
-  const playerLevel = levelFromXp(progress.xp);
+async function formatLevelUpUnlocks(startingLevel, endingLevel) {
   const [spells, masteries, perks] = await Promise.all([
     getSpellDefinitions(), getMasteryDefinitions(), getPerkDefinitions(),
   ]);
-  const entries = [
-    { requiredLevel: 1, text: "Level 1 — Stim — Fully restore HP once per battle at the cost of a turn." },
-    ...spells.map((spell) => ({
-      requiredLevel: spell.requiredLevel,
-      text: `Level ${spell.requiredLevel} Spell ${spell.name}: ${spell.description}`,
+  const unlocks = [
+    ...spells.filter((spell) => spell.levelUpLine).map((spell) => ({
+      level: spell.requiredLevel, line: spell.levelUpLine,
     })),
     ...masteries.map((mastery) => ({
-      requiredLevel: mastery.requiredLevel,
-      text: mastery.id === "leviathans-wake-mastery-1"
-        ? LEVEL_37_PROGRESSION_ENTRY
-        : `Level ${mastery.requiredLevel} Mastery ${mastery.name}: ${mastery.description}`,
+      level: mastery.requiredLevel,
+      line: mastery.levelUpLine ||
+        `Mastery Unlocked: ${mastery.name} — ${mastery.description}`,
     })),
     ...perks.map((perk) => ({
-      requiredLevel: perk.requiredLevel,
-      text: `Level ${perk.requiredLevel} Passive ${perk.name}: ${perk.description}`,
+      level: perk.requiredLevel,
+      line: perk.levelUpLine ||
+        `Perk Unlocked: ${perk.name} — ${perk.description}`,
     })),
-  ].sort((left, right) => left.requiredLevel - right.requiredLevel);
-  const latestLevel = entries.reduce((latest, entry) =>
-    entry.requiredLevel <= playerLevel ? entry.requiredLevel : latest, 1);
-  const requestedLevel = levelInput === null || levelInput === undefined ||
-      String(levelInput).trim() === ""
-    ? latestLevel : Number(levelInput);
-  if (!Number.isSafeInteger(requestedLevel) || requestedLevel < 1 ||
-      requestedLevel > 50) {
-    return { message: platform === "discord"
-      ? "Choose a level from 1 to 50."
-      : "Use !progression <level> (1-50)." };
-  }
-  if (requestedLevel > playerLevel) {
-    return { message: `Level ${requestedLevel} is not unlocked yet.` };
-  }
-  const lines = entries.filter((entry) => entry.requiredLevel === requestedLevel)
-    .map((entry) => entry.text);
-  return { message: lines.length > 0
-    ? lines.join("\n")
-    : `Level ${requestedLevel}: No new spell, mastery, or passive.` };
+  ];
+  return unlocks
+    .filter((unlock) => unlock.level > startingLevel &&
+      unlock.level <= endingLevel)
+    .sort((left, right) => left.level - right.level)
+    .map((unlock) => unlock.line);
 }
 
 async function formatMasteryUnlocks(startingLevel, endingLevel) {
@@ -9681,6 +9627,7 @@ async function formatMasteryUnlocks(startingLevel, endingLevel) {
       mastery.requiredLevel > startingLevel &&
       mastery.requiredLevel <= endingLevel)
     .map((mastery) =>
+      mastery.levelUpLine ||
       `Mastery Unlocked: ${mastery.name} — ${mastery.description}`);
 }
 
@@ -9713,7 +9660,8 @@ async function formatPerkUnlocks(startingLevel, endingLevel) {
     .filter((perk) =>
       perk.requiredLevel > startingLevel &&
       perk.requiredLevel <= endingLevel)
-    .map((perk) => `Perk Unlocked: ${perk.name} — ${perk.description}`);
+    .map((perk) => perk.levelUpLine ||
+      `Perk Unlocked: ${perk.name} — ${perk.description}`);
 }
 
 async function getRegionMetadata(regionId) {
