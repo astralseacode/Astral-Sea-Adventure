@@ -319,6 +319,7 @@ const PERK_FILES = {
   "astral-harmony": "astral-harmony.json",
   "fae-second-opinion": "fae-second-opinion.json",
   kinship: "kinship.json",
+  "astral-rhythm": "astral-rhythm.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1213,6 +1214,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll grants +3 to your next offensive roll. Activates once per battle. " +
         "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
         "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
+        "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
         "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
@@ -1624,6 +1626,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll grants +3 to your next offensive roll. Activates once per battle. " +
           "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
           "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
+          "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
           "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
@@ -2932,6 +2935,21 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
       (milestone ? `\n\n${milestone}` : "") +
       (kinship ? `\n\n${kinship.activationLine}` : ""),
   };
+}
+
+function applyAstralRhythm(combatState, activePerks, spellId) {
+  const rhythm = activePerks.find(
+    (perk) => perk.effect.trigger === "different-successful-damaging-spells",
+  );
+  if (!rhythm || combatState.perkUses?.[rhythm.id]) return null;
+  const previousSpell = combatState.astralRhythmPreviousSpell;
+  combatState.astralRhythmPreviousSpell = spellId;
+  if (!previousSpell || previousSpell === spellId) return null;
+  combatState.perkUses = {
+    ...(combatState.perkUses || {}),
+    [rhythm.id]: 1,
+  };
+  return rhythm;
 }
 
 async function resolvePlayerCombatAction(
@@ -4259,6 +4277,10 @@ async function performCastUnlocked(
       astralCharge.damageIncrease,
     );
   }
+  const rhythm = spell.type === "offensive" && resolvedSpellRoll.damage > 0
+    ? applyAstralRhythm(combatState, activePerks, spell.id)
+    : null;
+  if (rhythm) resolvedSpellRoll.damage += rhythm.effect.bonusDamage;
   const astralEcho = getAstralEcho(combatState);
   const echoDamage = astralEcho
     ? applyPercentageOfDamage(
@@ -4313,6 +4335,11 @@ async function performCastUnlocked(
     castMessage = platform === "discord"
       ? `${castMessage}\n\n${astralAftershock.activationLine}`
       : `${castMessage} | ${astralAftershock.activationLine}`;
+  }
+  if (rhythm) {
+    castMessage = platform === "discord"
+      ? `${castMessage}\n\n${rhythm.activationLine}`
+      : `${castMessage} | ${rhythm.activationLine}`;
   }
   const updatedProgress = {
     ...progress,
@@ -4388,6 +4415,7 @@ async function castLeviathansWake(
     (tier) => naturalRoll <= tier.naturalMaximum,
   );
   const critical = naturalRoll === 20;
+  const rhythm = applyAstralRhythm(combatState, activePerks, spell.id);
   const astralEcho = getAstralEcho(combatState);
   const aftershock = activePerks.find(
     (perk) => perk.effect.trigger === "critical-offensive-spell",
@@ -4398,6 +4426,7 @@ async function castLeviathansWake(
     creatureId: creature.id,
     stage: 1,
     baseDamage: creature.baseDamage,
+    rhythmBonus: rhythm?.effect.bonusDamage || 0,
     critical,
     astralChargeSnapshot: astralCharge
       ? { damageIncrease: astralCharge.damageIncrease }
@@ -4411,7 +4440,8 @@ async function castLeviathansWake(
     ({ name, value }) => ` ${value >= 0 ? "+" : ""}${value} ${name}`,
   ).join("");
   const message = `${creature.cast}\n\n` +
-    `${spell.name} Roll: ${naturalRoll}${modifiers} → ${triggeredRoll.finalTotal}`;
+    `${spell.name} Roll: ${naturalRoll}${modifiers} → ${triggeredRoll.finalTotal}` +
+    (rhythm ? `\n\n${rhythm.activationLine}` : "");
   const updatedProgress = {
     ...progress,
     mana: progress.mana - manaCost,
@@ -4466,6 +4496,7 @@ async function advanceLeviathansWake(
       primaryDamage, wake.astralChargeSnapshot.damageIncrease,
     );
   }
+  primaryDamage += wake.rhythmBonus || 0;
   const echoDamage = wake.astralEchoSnapshot
     ? applyPercentageOfDamage(primaryDamage, wake.astralEchoSnapshot.damagePercent)
     : 0;
@@ -4489,6 +4520,7 @@ async function advanceLeviathansWake(
   }
   parts.push(`${spell.name}: ${wake.baseDamage} +${strength} Strength` +
     `${wake.astralChargeSnapshot ? " + Astral Charge" : ""}` +
+    `${wake.rhythmBonus ? " + Astral Rhythm" : ""}` +
     `${sparkBerry ? " + Spark Berry" : ""} → ${primaryDamage} dmg`);
   combatState.enemy.hp = Math.max(0, combatState.enemy.hp - primaryDamage);
   if (wake.astralEchoSnapshot) {
@@ -7492,6 +7524,7 @@ function isValidLeviathansWake(wake) {
     wake.critical === (wake.naturalRoll === 20) &&
     (wake.astralChargeSnapshot === null || validFraction(wake.astralChargeSnapshot?.damageIncrease)) &&
     (wake.astralEchoSnapshot === null || validFraction(wake.astralEchoSnapshot?.damagePercent)) &&
+    (wake.rhythmBonus === undefined || wake.rhythmBonus === 0 || wake.rhythmBonus === 5) &&
     Number.isSafeInteger(wake.aftershockDamage) &&
     (wake.aftershockDamage === 0 || (wake.critical && wake.aftershockDamage === 5))
   );
@@ -7537,6 +7570,9 @@ function isValidCombatState(combatState) {
       combatState.astralAwakening?.offensiveRollModifier === 2) &&
     (combatState.faeSecondOpinion === undefined ||
       combatState.faeSecondOpinion?.offensiveRollModifier === 3) &&
+    (combatState.astralRhythmPreviousSpell === undefined ||
+      (typeof combatState.astralRhythmPreviousSpell === "string" &&
+        /^[a-z-]+$/.test(combatState.astralRhythmPreviousSpell))) &&
     (combatState.familiarSerial === undefined ||
       (Number.isSafeInteger(combatState.familiarSerial) &&
         combatState.familiarSerial >= 1)) &&
@@ -9197,6 +9233,13 @@ function validatePerkDefinition(perk, expectedId) {
     effect.usesPerBattle === 1 &&
     perk.activationLine === "Fae Aid activates! Restored 5 HP." &&
     hasSingleActivationLine && !hasActivationLines;
+  const validAstralRhythm = expectedId === "astral-rhythm" &&
+    perk.requiredLevel === 32 &&
+    effect?.trigger === "different-successful-damaging-spells" &&
+    effect.bonusDamage === 5 && effect.usesPerBattle === 1 &&
+    perk.activationLine ===
+      "two attacks in a row Astral Rhythm Applied! +5 damage" &&
+    hasSingleActivationLine && !hasActivationLines;
   const doubleOutcomes = effect?.doubleOutcomes;
   const tripleRewards = effect?.tripleRewards;
   const validAstralCuriosity = expectedId === "astral-curiosity" &&
@@ -9263,6 +9306,7 @@ function validatePerkDefinition(perk, expectedId) {
     !validAftershock &&
     !validFaeIntervention &&
     !validFaeAid &&
+    !validAstralRhythm &&
     !validAstralCuriosity &&
     !validAstralPatience &&
     !validAstralAwakening &&
