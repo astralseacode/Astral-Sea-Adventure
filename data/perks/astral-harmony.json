@@ -1,0 +1,14 @@
+{
+  "id": "astral-harmony",
+  "name": "Astral Harmony",
+  "requiredLevel": 28,
+  "type": "passive",
+  "description": "Once per battle, a successful offensive roll with bonuses from at least three distinct sources restores up to 15 Mana.",
+  "effect": {
+    "trigger": "successful-offensive-roll-with-distinct-bonuses",
+    "minimumSources": 3,
+    "manaRestore": 15,
+    "usesPerBattle": 1
+  },
+  "activationLine": "Astral Harmony\nRestored 15 Mana"
+}

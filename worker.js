@@ -314,6 +314,7 @@ const PERK_FILES = {
   "astral-curiosity": "astral-curiosity.json",
   "astral-patience": "astral-patience.json",
   "astral-awakening": "astral-awakening.json",
+  "astral-harmony": "astral-harmony.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1203,6 +1204,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
         "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
         "lvl 27 Mastery Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits. " +
+        "lvl 28 Passive Astral Harmony: A successful offensive roll with bonuses from 3 or more different sources restores 15 Mana once per battle. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1609,6 +1611,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
           "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
           "lvl 27 Mastery Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits. " +
+          "lvl 28 Passive Astral Harmony: A successful offensive roll with bonuses from 3 or more different sources restores 15 Mana once per battle. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2838,6 +2841,8 @@ async function performAttackUnlocked(
         victoryMessage: actionMessage,
         momentumAction: "attack",
         momentumNaturalRoll: playerRoll,
+        harmonySources: countOffensiveRollBonusSources(triggeredRoll),
+        harmonySuccess: playerRoll !== 1 && playerAttack.damage > 0,
       },
       platform,
     );
@@ -2919,6 +2924,25 @@ async function resolvePlayerCombatAction(
 
   let momentumMessage = "";
   const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  let harmonyMessage = "";
+  const harmony = activePerks.find(
+    (perk) => perk.effect.trigger === "successful-offensive-roll-with-distinct-bonuses",
+  );
+  if (harmony && action.harmonySuccess &&
+      action.harmonySources >= harmony.effect.minimumSources &&
+      !combatState.perkUses?.[harmony.id]) {
+    const maximumMana = getPlayerResourceCaps(progress).mana;
+    progress = {
+      ...progress,
+      mana: Math.min(maximumMana, progress.mana + harmony.effect.manaRestore),
+    };
+    await savePlayerProgress(env, backpackKey, progress);
+    combatState.perkUses = {
+      ...(combatState.perkUses || {}),
+      [harmony.id]: 1,
+    };
+    harmonyMessage = harmony.activationLine;
+  }
   const astralMomentum = activePerks.find(
     (perk) => perk.effect.trigger === "natural-perfect-hit",
   );
@@ -3021,6 +3045,7 @@ async function resolvePlayerCombatAction(
   progress = curiosityResult.progress;
 
   const messageParts = [action.message];
+  if (harmonyMessage) messageParts.push(harmonyMessage);
   if (chargeDetonationMessage) messageParts.push(chargeDetonationMessage);
   if (curiosityResult.message) {
     messageParts.push(curiosityResult.message);
@@ -4146,6 +4171,8 @@ async function performCastUnlocked(
         curiosityDice: spell.id === "falling-star"
           ? spellRoll.powerRolls
           : spellRoll.rolls,
+        harmonySources: countOffensiveRollBonusSources(triggeredRoll),
+        harmonySuccess: resolvedSpellRoll.damage > 0,
       },
       platform,
     );
@@ -4218,6 +4245,8 @@ async function castLeviathansWake(
       message,
       consumeAstralCharge: Boolean(astralCharge),
       consumeAstralEcho: Boolean(astralEcho),
+      harmonySources: countOffensiveRollBonusSources(triggeredRoll),
+      harmonySuccess: true,
     }, platform);
   } catch (error) {
     try {
@@ -8120,6 +8149,14 @@ function createElfBlessingEffect(spell, mastery = null, now = Date.now()) {
   };
 }
 
+function countOffensiveRollBonusSources(roll) {
+  return new Set(
+    roll.modifierDetails
+      .filter((detail) => detail.value > 0)
+      .map((detail) => detail.name),
+  ).size;
+}
+
 function consumeTriggeredStatusEffects(
   progress,
   trigger,
@@ -8934,6 +8971,13 @@ function validatePerkDefinition(perk, expectedId) {
     perk.memories.every((memory) => typeof memory === "string" && memory.trim()) &&
     perk.ending?.heading === "Astral Awakening" &&
     perk.ending?.effect === "Restored 25 HP + 25 Mana | Next offensive roll +2";
+  const validAstralHarmony = expectedId === "astral-harmony" &&
+    perk.requiredLevel === 28 &&
+    effect?.trigger === "successful-offensive-roll-with-distinct-bonuses" &&
+    effect.minimumSources === 3 && effect.manaRestore === 15 &&
+    effect.usesPerBattle === 1 &&
+    perk.activationLine === "Astral Harmony\nRestored 15 Mana" &&
+    hasSingleActivationLine && !hasActivationLines;
 
   if (
     !validResilience &&
@@ -8943,7 +8987,8 @@ function validatePerkDefinition(perk, expectedId) {
     !validFaeIntervention &&
     !validAstralCuriosity &&
     !validAstralPatience &&
-    !validAstralAwakening
+    !validAstralAwakening &&
+    !validAstralHarmony
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }
