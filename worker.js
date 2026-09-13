@@ -307,6 +307,7 @@ const MASTERY_FILES = {
   "bubble-mastery-2": "bubble-mastery-2.json",
   "mend-mastery-1": "mend-mastery-1.json",
   "astral-echo-mastery-1": "astral-echo-mastery-1.json",
+  "leviathans-wake-mastery-1": "leviathans-wake-mastery-1.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
@@ -1223,6 +1224,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
         "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak. " +
         "lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP + 20 Mana. " +
+        "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by Leviathan's Wake now leave an additional effect when they arrive. Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient Leviathan deals +20 damage and restores 10 Mana. " +
         "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
@@ -1639,6 +1641,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
           "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak. " +
           "lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP + 20 Mana. " +
+          "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by Leviathan's Wake now leave an additional effect when they arrive. Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient Leviathan deals +20 damage and restores 10 Mana. " +
           "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
@@ -3392,6 +3395,18 @@ async function resolvePlayerCombatAction(
     berryProtectionMessage = `Berry protection absorbs ${absorbed} damage` +
       (berryEffects.protection ? ` | ${berryEffects.protection} remains` : " | depleted");
   }
+  let wakeMantaProtectionMessage = "";
+  if (combatState.wakeMantaProtection > 0 && enemyDamage > 0) {
+    const absorbed = Math.min(combatState.wakeMantaProtection, enemyDamage);
+    enemyDamage -= absorbed;
+    combatState.wakeMantaProtection -= absorbed;
+    if (combatState.wakeMantaProtection === 0) {
+      delete combatState.wakeMantaProtection;
+    }
+    wakeMantaProtectionMessage = `Manta protection absorbs ${absorbed} damage` +
+      (combatState.wakeMantaProtection
+        ? ` | ${combatState.wakeMantaProtection} remains` : " | depleted");
+  }
   let berrySleepyMessage = "";
   if (berryEffects?.sleepyGuard && enemyDamage > 0) {
     const reduction = Math.min(5, enemyDamage);
@@ -3431,7 +3446,7 @@ async function resolvePlayerCombatAction(
       {
         ...enemyAttack,
         damage: bubbleMessage || sleepyGuardMessage || berryProtectionMessage ||
-          berrySleepyMessage || familiarProtectionMessage
+        wakeMantaProtectionMessage || berrySleepyMessage || familiarProtectionMessage
           ? enemyDamage : rawEnemyDamage,
       },
     ),
@@ -3452,6 +3467,7 @@ async function resolvePlayerCombatAction(
     messageParts.push(sleepyGuardMessage);
   }
   if (berryProtectionMessage) messageParts.push(berryProtectionMessage);
+  if (wakeMantaProtectionMessage) messageParts.push(wakeMantaProtectionMessage);
   if (berrySleepyMessage) messageParts.push(berrySleepyMessage);
   if (familiarProtectionMessage) messageParts.push(familiarProtectionMessage);
 
@@ -4671,13 +4687,39 @@ async function advanceLeviathansWake(
     combatState.enemy.hp = Math.max(0, combatState.enemy.hp - wake.aftershockDamage);
     parts.push(aftershock.activationLine);
   }
+  let masteryDamage = 0;
+  const wakeMastery = (await getActiveMasteries(levelFromXp(progress.xp))).find(
+    (mastery) => mastery.effect.id === "wake-creature-arrival",
+  );
+  const arrivalEffect = wakeMastery?.effect.creatures.find(
+    (effect) => effect.creatureId === wake.creatureId,
+  );
+  if (arrivalEffect) {
+    masteryDamage = arrivalEffect.fixedDamage;
+    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - masteryDamage);
+    if (arrivalEffect.protection > 0) {
+      combatState.wakeMantaProtection =
+        (combatState.wakeMantaProtection || 0) + arrivalEffect.protection;
+    }
+    if (arrivalEffect.manaRestore > 0) {
+      const latestProgress = await getPlayerProgress(env, backpackKey);
+      const restoredMana = Math.min(arrivalEffect.manaRestore,
+        Math.max(0, getPlayerResourceCaps(latestProgress).mana - latestProgress.mana));
+      progress.mana = latestProgress.mana + restoredMana;
+      await savePlayerProgress(env, backpackKey, {
+        ...latestProgress, mana: progress.mana,
+      });
+    }
+    parts.push(arrivalEffect.activationLine);
+  }
   delete combatState.leviathansWake;
   const message = parts.join("\n\n");
   if (combatState.enemy.hp === 0) {
     return {
       victory: await resolveCombatVictory(
         env, backpackKey, combatState, wake.finalRoll,
-        primaryDamage + echoDamage + wake.aftershockDamage, platform, message,
+        primaryDamage + echoDamage + wake.aftershockDamage + masteryDamage,
+        platform, message,
       ),
     };
   }
@@ -7840,6 +7882,9 @@ function isValidCombatState(combatState) {
       combatState.leviathansWake === undefined ||
       isValidLeviathansWake(combatState.leviathansWake)
     ) &&
+    (combatState.wakeMantaProtection === undefined ||
+      (Number.isSafeInteger(combatState.wakeMantaProtection) &&
+        combatState.wakeMantaProtection > 0)) &&
     (
       combatState.perkUses === undefined ||
       (
@@ -9262,6 +9307,26 @@ function validateMasteryDefinition(mastery, expectedId) {
     mastery.tier === 1 && effect?.id === "lunar-alignment" &&
     effect.moonlightDice === 2 && effect.normalDamage === 5 &&
     effect.criticalDamage === 20;
+  const wakeMasteryEffects = [
+    ["wakefin", 0, 5, 0, "Restored 5 Mana"],
+    ["astral-manta", 0, 0, 5, "Gained 5 protection"],
+    ["deepwake-serpent", 5, 0, 0, "+5 damage"],
+    ["leviathan", 10, 5, 0, "+10 damage | Restored 5 Mana"],
+    ["ancient-one", 20, 10, 0, "+20 damage | Restored 10 Mana"],
+  ];
+  const validWakeMastery = expectedId === "leviathans-wake-mastery-1" &&
+    mastery.spellId === "leviathans-wake" && mastery.requiredLevel === 37 &&
+    mastery.tier === 1 && effect?.id === "wake-creature-arrival" &&
+    Array.isArray(effect.creatures) &&
+    effect.creatures.length === wakeMasteryEffects.length &&
+    effect.creatures.every((entry, index) => {
+      const expected = wakeMasteryEffects[index];
+      return entry.creatureId === expected[0] &&
+        entry.fixedDamage === expected[1] &&
+        entry.manaRestore === expected[2] &&
+        entry.protection === expected[3] &&
+        entry.activationLine === `Leviathan's Wake Mastery I: ${expected[4]}`;
+    });
   const jellyfishEffectTypes = [
     "restore-mana",
     "restore-hp",
@@ -9359,6 +9424,7 @@ function validateMasteryDefinition(mastery, expectedId) {
     !validStarSparkMastery &&
     !validStarSparkMasteryII &&
     !validMoonbeamMastery &&
+    !validWakeMastery &&
     !validJellyfishMastery &&
     !validJellyfishMasteryII &&
     !validElfBlessingMastery &&

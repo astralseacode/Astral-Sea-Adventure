@@ -1,0 +1,18 @@
+{
+  "id": "leviathans-wake-mastery-1",
+  "name": "Leviathan's Wake Mastery I",
+  "spellId": "leviathans-wake",
+  "requiredLevel": 37,
+  "tier": 1,
+  "description": "Leviathan's Wake creatures leave an additional effect when they arrive: Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals 5 fixed damage, Leviathan deals 10 fixed damage and restores 5 Mana, and Ancient Leviathan deals 20 fixed damage and restores 10 Mana.",
+  "effect": {
+    "id": "wake-creature-arrival",
+    "creatures": [
+      { "creatureId": "wakefin", "fixedDamage": 0, "manaRestore": 5, "protection": 0, "activationLine": "Leviathan's Wake Mastery I: Restored 5 Mana" },
+      { "creatureId": "astral-manta", "fixedDamage": 0, "manaRestore": 0, "protection": 5, "activationLine": "Leviathan's Wake Mastery I: Gained 5 protection" },
+      { "creatureId": "deepwake-serpent", "fixedDamage": 5, "manaRestore": 0, "protection": 0, "activationLine": "Leviathan's Wake Mastery I: +5 damage" },
+      { "creatureId": "leviathan", "fixedDamage": 10, "manaRestore": 5, "protection": 0, "activationLine": "Leviathan's Wake Mastery I: +10 damage | Restored 5 Mana" },
+      { "creatureId": "ancient-one", "fixedDamage": 20, "manaRestore": 10, "protection": 0, "activationLine": "Leviathan's Wake Mastery I: +20 damage | Restored 10 Mana" }
+    ]
+  }
+}
