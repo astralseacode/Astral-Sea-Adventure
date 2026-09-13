@@ -305,6 +305,7 @@ const MASTERY_FILES = {
   "bubble-mastery-1": "bubble-mastery-1.json",
   "bubble-mastery-2": "bubble-mastery-2.json",
   "mend-mastery-1": "mend-mastery-1.json",
+  "astral-echo-mastery-1": "astral-echo-mastery-1.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
@@ -1217,6 +1218,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
         "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
         "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
+        "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
         "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
@@ -1630,6 +1632,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
           "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
           "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
+          "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
           "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
@@ -2994,6 +2997,32 @@ async function applyAstralExpedition(env, backpackKey, progress, perk) {
   };
 }
 
+async function applyAstralEchoMastery(
+  env, backpackKey, combatState, progress, naturalRoll, activeMasteries,
+) {
+  const mastery = activeMasteries.find(
+    (entry) => entry.spellId === "astral-echo" &&
+      entry.effect.id === "echo-afterglow",
+  );
+  const outcome = mastery?.effect.outcomes.find(
+    (entry) => entry.naturalRoll === naturalRoll,
+  );
+  if (!outcome) return { progress, message: "" };
+  if (outcome.manaRestore) {
+    const maximumMana = getPlayerResourceCaps(progress).mana;
+    const mana = Math.min(maximumMana, progress.mana + outcome.manaRestore);
+    if (mana !== progress.mana) {
+      progress.mana = mana;
+      await savePlayerProgress(env, backpackKey, progress);
+    }
+  } else {
+    combatState.astralEchoMastery = {
+      offensiveRollModifier: outcome.offensiveRollModifier,
+    };
+  }
+  return { progress, message: outcome.activationLine };
+}
+
 async function resolvePlayerCombatAction(
   env,
   backpackKey,
@@ -3021,6 +3050,16 @@ async function resolvePlayerCombatAction(
 
   let progress = await getPlayerProgress(env, backpackKey);
   const activeMasteries = await getActiveMasteries(levelFromXp(progress.xp));
+  let echoMasteryMessage = "";
+  if (action.consumeAstralEcho && action.echoMasteryQualifies &&
+      action.echoMasteryNaturalRoll) {
+    const result = await applyAstralEchoMastery(
+      env, backpackKey, combatState, progress,
+      action.echoMasteryNaturalRoll, activeMasteries,
+    );
+    progress = result.progress;
+    echoMasteryMessage = result.message;
+  }
   let chargeDetonationMessage = "";
 
   if (action.consumeAstralCharge) {
@@ -3215,6 +3254,7 @@ async function resolvePlayerCombatAction(
   progress = curiosityResult.progress;
 
   const messageParts = [action.message];
+  if (echoMasteryMessage) messageParts.push(echoMasteryMessage);
   if (expeditionMessage) messageParts.push(expeditionMessage);
   if (familiarMessage) messageParts.push(familiarMessage);
   if (faeSecondOpinionMessage) messageParts.push(faeSecondOpinionMessage);
@@ -3733,6 +3773,10 @@ async function performCastUnlocked(
     (mastery) => mastery.spellId === "mend" &&
       mastery.effect.id === "mend-upgrade",
   );
+  const echoMastery = activeMasteries.find(
+    (mastery) => mastery.spellId === "astral-echo" &&
+      mastery.effect.id === "echo-afterglow",
+  );
   const currentCombatState = await getCombatState(env, backpackKey);
 
   if (playerLevel < spell.requiredLevel) {
@@ -3877,6 +3921,7 @@ async function performCastUnlocked(
   }
 
   if (spell.type === "pre-action-support" && spell.id === "astral-echo") {
+    const echoManaCost = echoMastery?.effect.manaCost ?? spell.manaCost;
     if (!currentCombatState) {
       return {
         message:
@@ -3895,7 +3940,7 @@ async function performCastUnlocked(
       };
     }
 
-    if (progress.mana < spell.manaCost) {
+    if (progress.mana < echoManaCost) {
       const message = `You don't have enough Mana to cast ${spell.name}.`;
       return {
         message: platform === "discord"
@@ -3911,7 +3956,7 @@ async function performCastUnlocked(
     const originalCombatState = structuredClone(currentCombatState);
     const updatedProgress = {
       ...progress,
-      mana: progress.mana - spell.manaCost,
+      mana: progress.mana - echoManaCost,
     };
     currentCombatState.astralEcho = {
       naturalRoll,
@@ -4428,6 +4473,8 @@ async function performCastUnlocked(
           : null,
         jellyfishMasteryEffect,
         consumeAstralEcho: Boolean(astralEcho),
+        echoMasteryNaturalRoll: astralEcho?.naturalRoll,
+        echoMasteryQualifies: Boolean(astralEcho) && resolvedSpellRoll.damage > 0,
         curiosityDice: spell.id === "falling-star"
           ? spellRoll.powerRolls
           : spellRoll.rolls,
@@ -4487,7 +4534,10 @@ async function castLeviathansWake(
       ? { damageIncrease: astralCharge.damageIncrease }
       : null,
     astralEchoSnapshot: astralEcho
-      ? { damagePercent: astralEcho.damagePercent }
+      ? {
+          damagePercent: astralEcho.damagePercent,
+          naturalRoll: astralEcho.naturalRoll,
+        }
       : null,
     aftershockDamage: critical && aftershock ? aftershock.effect.bonusDamage : 0,
   };
@@ -4582,6 +4632,14 @@ async function advanceLeviathansWake(
   if (wake.astralEchoSnapshot) {
     combatState.enemy.hp = Math.max(0, combatState.enemy.hp - echoDamage);
     parts.push(spell.echoActivationLine.replace("{echoDamage}", String(echoDamage)));
+    if (echoDamage > 0 && wake.astralEchoSnapshot.naturalRoll) {
+      const activeMasteries = await getActiveMasteries(levelFromXp(progress.xp));
+      const result = await applyAstralEchoMastery(
+        env, backpackKey, combatState, progress,
+        wake.astralEchoSnapshot.naturalRoll, activeMasteries,
+      );
+      if (result.message) parts.push(result.message);
+    }
   }
   if (aftershock) {
     combatState.enemy.hp = Math.max(0, combatState.enemy.hp - wake.aftershockDamage);
@@ -7579,7 +7637,10 @@ function isValidLeviathansWake(wake) {
     Number.isSafeInteger(wake.baseDamage) && wake.baseDamage > 0 &&
     wake.critical === (wake.naturalRoll === 20) &&
     (wake.astralChargeSnapshot === null || validFraction(wake.astralChargeSnapshot?.damageIncrease)) &&
-    (wake.astralEchoSnapshot === null || validFraction(wake.astralEchoSnapshot?.damagePercent)) &&
+    (wake.astralEchoSnapshot === null ||
+      (validFraction(wake.astralEchoSnapshot?.damagePercent) &&
+        (wake.astralEchoSnapshot.naturalRoll === undefined ||
+          [1, 2, 3, 4].includes(wake.astralEchoSnapshot.naturalRoll)))) &&
     (wake.rhythmBonus === undefined || wake.rhythmBonus === 0 || wake.rhythmBonus === 5) &&
     Number.isSafeInteger(wake.aftershockDamage) &&
     (wake.aftershockDamage === 0 || (wake.critical && wake.aftershockDamage === 5))
@@ -7624,6 +7685,8 @@ function isValidCombatState(combatState) {
         combatState.astralAwakeningSurvived <= 5)) &&
     (combatState.astralAwakening === undefined ||
       combatState.astralAwakening?.offensiveRollModifier === 2) &&
+    (combatState.astralEchoMastery === undefined ||
+      [1, 2].includes(combatState.astralEchoMastery?.offensiveRollModifier)) &&
     (combatState.faeSecondOpinion === undefined ||
       combatState.faeSecondOpinion?.offensiveRollModifier === 3) &&
     (combatState.astralRhythmPreviousSpell === undefined ||
@@ -8540,6 +8603,13 @@ function consumeTriggeredStatusEffects(
     modifierDetails.push({ name: "Astral Awakening", value: awakeningModifier });
     delete combatState.astralAwakening;
   }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.astralEchoMastery) {
+    const echoModifier = combatState.astralEchoMastery.offensiveRollModifier;
+    modifier += echoModifier;
+    applied.push("Astral Echo Mastery I");
+    modifierDetails.push({ name: "Astral Echo Mastery I", value: echoModifier });
+    delete combatState.astralEchoMastery;
+  }
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.faeSecondOpinion) {
     const opinionModifier = combatState.faeSecondOpinion.offensiveRollModifier;
     modifier += opinionModifier;
@@ -9192,6 +9262,25 @@ function validateMasteryDefinition(mastery, expectedId) {
     mastery.flavor.length === 6 &&
     mastery.flavor.every((line) =>
       typeof line === "string" && line.trim());
+  const echoMasteryOutcomes = [
+    [1, 5, 0, "Astral Echo Mastery I: Restored 5 Mana"],
+    [2, 10, 0, "Astral Echo Mastery I: Restored 10 Mana"],
+    [3, 0, 1, "Astral Echo Mastery I: Next offensive roll +1"],
+    [4, 0, 2, "Astral Echo Mastery I: Next offensive roll +2"],
+  ];
+  const validEchoMastery = expectedId === "astral-echo-mastery-1" &&
+    mastery.spellId === "astral-echo" && mastery.requiredLevel === 34 &&
+    mastery.tier === 1 && effect?.id === "echo-afterglow" &&
+    effect.manaCost === 20 &&
+    Array.isArray(effect.outcomes) &&
+    effect.outcomes.length === echoMasteryOutcomes.length &&
+    effect.outcomes.every((outcome, index) => {
+      const expected = echoMasteryOutcomes[index];
+      return outcome.naturalRoll === expected[0] &&
+        (outcome.manaRestore || 0) === expected[1] &&
+        (outcome.offensiveRollModifier || 0) === expected[2] &&
+        outcome.activationLine === expected[3];
+    });
 
   if (
     !validStarSparkMastery &&
@@ -9202,7 +9291,8 @@ function validateMasteryDefinition(mastery, expectedId) {
     !validElfBlessingMastery &&
     !validBubbleMastery &&
     !validBubbleMasteryII &&
-    !validMendMastery
+    !validMendMastery &&
+    !validEchoMastery
   ) {
     throw new Error(`Invalid mastery effect for ${expectedId}.`);
   }
