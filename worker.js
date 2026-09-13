@@ -3426,11 +3426,7 @@ async function resolvePlayerCombatAction(
         ...(combatState.perkUses || {}),
         [astralAwakening.id]: 1,
       };
-      messageParts.push(
-        randomChoice(astralAwakening.memories) + "\n\n" +
-        astralAwakening.ending.heading + "\n\n" +
-        astralAwakening.ending.effect,
-      );
+      messageParts.push(astralAwakening.activationLine);
     }
   }
 
@@ -9202,10 +9198,10 @@ function validatePerkDefinition(perk, expectedId) {
     effect.survivingAttacks === 5 &&
     effect.hpRestore === 25 && effect.manaRestore === 25 &&
     effect.offensiveRollModifier === 2 && effect.usesPerBattle === 1 &&
-    Array.isArray(perk.memories) && perk.memories.length === 15 &&
-    perk.memories.every((memory) => typeof memory === "string" && memory.trim()) &&
-    perk.ending?.heading === "Astral Awakening" &&
-    perk.ending?.effect === "Restored 25 HP + 25 Mana | Next offensive roll +2";
+    perk.activationLine ===
+      "5 enemy attacks survived. Astral Awakening activates!\n\n" +
+      "Restored 25 HP + 25 Mana | Next offensive roll +2" &&
+    hasSingleActivationLine && !hasActivationLines;
   const validAstralHarmony = expectedId === "astral-harmony" &&
     perk.requiredLevel === 28 &&
     effect?.trigger === "successful-offensive-roll-with-distinct-bonuses" &&

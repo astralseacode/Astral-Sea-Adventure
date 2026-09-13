@@ -18,10 +18,13 @@ async function main() {
   const f = await fixture(25);
   const perk = await f.c.getPerkDefinition('astral-awakening');
   assert((await f.c.getActivePerks(25)).some(p => p.id === perk.id));
-  assert.equal(perk.memories.length, 15);
+  const activation = '5 enemy attacks survived. Astral Awakening activates!\n\n' +
+    'Restored 25 HP + 25 Mana | Next offensive roll +2';
+  assert.equal(perk.activationLine, activation);
   const spec = fs.readFileSync(path.join(__dirname, '..', 'data', 'perks',
     'astral-awakening.json'), 'utf8');
-  assert.equal(JSON.parse(spec).memories.length, 15);
+  assert.equal(JSON.parse(spec).memories, undefined);
+  assert.equal(JSON.parse(spec).ending, undefined);
   await f.editProgress(p => { p.hp = 50; p.mana = 50; });
   await f.editState(s => { s.playerHp = 50; });
   for (let n = 1; n <= 4; n++) {
@@ -35,8 +38,7 @@ async function main() {
   assert.equal((await f.progress()).mana, 75);
   assert.equal((await f.state()).astralAwakening.offensiveRollModifier, 2);
   assert.equal((await f.state()).perkUses['astral-awakening'], 1);
-  assert.equal(fifth.message.split('Restored 25 HP + 25 Mana | Next offensive roll +2').length - 1, 1);
-  assert(fifth.message.includes(perk.memories[0]));
+  assert.equal(fifth.message.split(activation).length - 1, 1);
   await hit(f, 1);
   assert.equal((await f.state()).astralAwakeningSurvived, 5);
   assert.equal((await f.progress()).mana, 75);
@@ -92,15 +94,17 @@ async function main() {
   assert.doesNotMatch(defeat.message, /Restored 25 HP \+ 25 Mana/);
   assert.equal(await lethal.state(), null);
 
-  for (let i = 0; i < 15; i++) {
-    const memory = await fixture(25, i % 2 ? 'twitch' : 'discord');
-    await memory.editState(s => { s.astralAwakeningSurvived = 4; });
-    memory.rolls.push(1, 1, i);
-    const result = await memory.attack();
-    assert(result.message.includes(perk.memories[i]), `Memory ${i + 1}`);
-    assert.equal(perk.memories.filter(line => result.message.includes(line)).length, 1);
-    assert(result.message.includes(perk.ending.heading));
-    assert(result.message.includes(perk.ending.effect));
+  for (const platform of ['discord', 'twitch']) {
+    const player = await fixture(25, platform);
+    await player.editState(s => { s.astralAwakeningSurvived = 4; });
+    let flavorSelections = 0;
+    player.math.random = () => { flavorSelections++; return 0.99; };
+    player.rolls.push(1, 1);
+    const result = await player.attack();
+    assert.equal(result.message.split(activation).length - 1, 1);
+    assert.equal(flavorSelections, 0, 'Awakening must not select a random memory');
+    assert.doesNotMatch(result.message, /supervising leaf|mustache|memories of your journey|Shizuki/i);
+    assert.doesNotMatch(activation, /\p{Extended_Pictographic}/u);
   }
 
   const fresh = await fixture(25);
