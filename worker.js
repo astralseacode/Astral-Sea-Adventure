@@ -296,6 +296,7 @@ const SPELL_FILES = {
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
+  "starspark-mastery-2": "starspark-mastery-2.json",
   "jellyfish-mastery-1": "jellyfish-mastery-1.json",
   "jellyfish-mastery-2": "jellyfish-mastery-2.json",
   "elf-blessing-mastery-1": "elf-blessing-mastery-1.json",
@@ -1199,6 +1200,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
         "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
         "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
+        "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1603,6 +1605,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
           "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
           "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
+          "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -2876,6 +2879,10 @@ async function resolvePlayerCombatAction(
     );
   }
 
+  let progress = await getPlayerProgress(env, backpackKey);
+  const activeMasteries = await getActiveMasteries(levelFromXp(progress.xp));
+  let chargeDetonationMessage = "";
+
   if (action.consumeAstralCharge) {
     const currentCharge = getAstralCharge(combatState.enemy);
     if (currentCharge && currentCharge.remainingDamageUses > 1) {
@@ -2886,6 +2893,16 @@ async function resolvePlayerCombatAction(
       };
     } else {
       delete combatState.enemy.astralCharge;
+      const detonation = activeMasteries.find(
+        (mastery) => mastery.effect.id === "astral-charge-detonation",
+      );
+      if (currentCharge && detonation && combatState.enemy.hp > 0) {
+        combatState.enemy.hp = Math.max(
+          0, combatState.enemy.hp - detonation.effect.damage,
+        );
+        chargeDetonationMessage = randomChoice(detonation.flavor) + "\n\n" +
+          `Astral Charge detonates → ${detonation.effect.damage} dmg`;
+      }
     }
   }
   if (action.applyAstralCharge && combatState.enemy.hp > 0) {
@@ -2897,10 +2914,8 @@ async function resolvePlayerCombatAction(
     };
   }
 
-  let progress = await getPlayerProgress(env, backpackKey);
   let momentumMessage = "";
   const activePerks = await getActivePerks(levelFromXp(progress.xp));
-  const activeMasteries = await getActiveMasteries(levelFromXp(progress.xp));
   const astralMomentum = activePerks.find(
     (perk) => perk.effect.trigger === "natural-perfect-hit",
   );
@@ -3003,6 +3018,7 @@ async function resolvePlayerCombatAction(
   progress = curiosityResult.progress;
 
   const messageParts = [action.message];
+  if (chargeDetonationMessage) messageParts.push(chargeDetonationMessage);
   if (curiosityResult.message) {
     messageParts.push(curiosityResult.message);
   }
@@ -8674,6 +8690,12 @@ function validateMasteryDefinition(mastery, expectedId) {
     Number.isSafeInteger(Number(effect.manaDiscountUses)) &&
     Number(effect.manaDiscountUses) >= 0 &&
     Number(effect.manaDiscountUses) <= Number(effect.damageUses);
+  const validStarSparkMasteryII = expectedId === "starspark-mastery-2" &&
+    mastery.spellId === "star-spark" && mastery.requiredLevel === 26 &&
+    mastery.tier === 2 && effect?.id === "astral-charge-detonation" &&
+    effect.damage === 20 && Array.isArray(mastery.flavor) &&
+    mastery.flavor.length === 6 &&
+    mastery.flavor.every((line) => typeof line === "string" && line.trim());
   const jellyfishEffectTypes = [
     "restore-mana",
     "restore-hp",
@@ -8750,6 +8772,7 @@ function validateMasteryDefinition(mastery, expectedId) {
 
   if (
     !validStarSparkMastery &&
+    !validStarSparkMasteryII &&
     !validJellyfishMastery &&
     !validJellyfishMasteryII &&
     !validElfBlessingMastery &&
