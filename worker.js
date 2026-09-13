@@ -312,6 +312,7 @@ const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
   "astral-momentum": "astral-momentum.json",
   "astral-harvest": "astral-harvest.json",
+  "astral-defiance": "astral-defiance.json",
   "astral-aftershock": "astral-aftershock.json",
   "fae-intervention": "fae-intervention.json",
   "fae-aid": "fae-aid.json",
@@ -1221,6 +1222,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
         "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
         "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak. " +
+        "lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP + 20 Mana. " +
         "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
@@ -1636,6 +1638,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
           "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
           "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak. " +
+          "lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP + 20 Mana. " +
           "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
@@ -5229,14 +5232,22 @@ async function resolveCombatVictory(
   ]);
   let astralHarvestMessage = "";
   const activePerks = await getActivePerks(levelFromXp(progress.xp));
+  const resourceCaps = getPlayerResourceCaps(progress);
+  combatState.playerMaxHp = resourceCaps.hp;
+  combatState.playerHp = Math.min(combatState.playerHp, resourceCaps.hp);
+  const astralDefiance = activePerks.find(
+    (perk) => perk.effect.trigger === "enemy-defeated-low-hp",
+  );
+  const defianceQualifies = Boolean(astralDefiance) &&
+    combatState.playerHp <= resourceCaps.hp *
+      astralDefiance.effect.hpThresholdPercent / 100;
   const astralHarvest = activePerks.find(
     (perk) => perk.effect.trigger === "enemy-defeated",
   );
   if (astralHarvest) {
-    const resourceCaps = getPlayerResourceCaps(progress);
     const hpGained = Math.min(
       astralHarvest.effect.hpRestore,
-      Math.max(0, combatState.playerMaxHp - combatState.playerHp),
+      Math.max(0, resourceCaps.hp - combatState.playerHp),
     );
     const manaGained = Math.min(
       astralHarvest.effect.manaRestore,
@@ -5258,6 +5269,18 @@ async function resolveCombatVictory(
             .replace("{manaGained}", String(manaGained))
         : `Astral Harvest activates! You gain ${gains[0]}.`;
     }
+  }
+  let astralDefianceMessage = "";
+  if (defianceQualifies) {
+    combatState.playerHp = Math.min(
+      resourceCaps.hp, combatState.playerHp + astralDefiance.effect.hpRestore,
+    );
+    progress = {
+      ...progress,
+      mana: Math.min(resourceCaps.mana,
+        progress.mana + astralDefiance.effect.manaRestore),
+    };
+    astralDefianceMessage = astralDefiance.activationLine;
   }
   const baseCandyReward = randomInteger(
     combatState.enemy.reward.candies.min,
@@ -5335,6 +5358,7 @@ async function resolveCombatVictory(
     playerActionMessage ||
       `You rolled ${playerRoll} for ${playerDamage} dmg`,
     ...(astralHarvestMessage ? [astralHarvestMessage] : []),
+    ...(astralDefianceMessage ? [astralDefianceMessage] : []),
     ...(platform === "discord"
       ? []
       : [`Mana: ${progress.mana}/${getPlayerResourceCaps(progress).mana}`]),
@@ -9408,6 +9432,13 @@ function validatePerkDefinition(perk, expectedId) {
     Number(effect.manaRestore) === 20 &&
     hasSingleActivationLine &&
     !hasActivationLines;
+  const validDefiance = expectedId === "astral-defiance" &&
+    perk.requiredLevel === 36 &&
+    effect?.trigger === "enemy-defeated-low-hp" &&
+    effect.hpThresholdPercent === 25 &&
+    effect.hpRestore === 20 && effect.manaRestore === 20 &&
+    perk.activationLine === "Astral Defiance activates!\n\n+20 HP +20 Mana" &&
+    hasSingleActivationLine && !hasActivationLines;
   const validAftershock = expectedId === "astral-aftershock" &&
     effect?.trigger === "critical-offensive-spell" &&
     Number(effect.bonusDamage) === 5 &&
@@ -9509,6 +9540,7 @@ function validatePerkDefinition(perk, expectedId) {
     !validResilience &&
     !validMomentum &&
     !validHarvest &&
+    !validDefiance &&
     !validAftershock &&
     !validFaeIntervention &&
     !validFaeAid &&
