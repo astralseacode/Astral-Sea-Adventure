@@ -669,6 +669,7 @@ const DISCORD_COMMANDS = [
           { name: "Leviathan's Wake", value: "leviathans-wake" },
           { name: "Berry", value: "berry" },
           { name: "Familiar", value: "familiar" },
+          { name: "All or Nothing", value: "all-or-nothing" },
         ],
       },
     ],
@@ -735,6 +736,19 @@ const DISCORD_COMMANDS = [
     name: "stats",
     description: "View your permanent stats, resources, available points, and active effects.",
     type: 1,
+  },
+  {
+    name: "progression",
+    description: "View a level's spell, mastery, and passive unlocks.",
+    type: 1,
+    options: [{
+      type: 4,
+      name: "level",
+      description: "Level to view; omit for your latest unlocked level.",
+      required: false,
+      min_value: 1,
+      max_value: 50,
+    }],
   },
   {
     name: "vitality",
@@ -1082,6 +1096,11 @@ async function handleTwitchRequest(url, env) {
         (await performStats(env, backpackKey, username, "twitch")).message,
       );
 
+    case "progression":
+      return textResponse((await formatProgressionForPlayer(
+        env, backpackKey, rawArgs, "twitch",
+      )).message);
+
     case "vitality":
     case "focus":
     case "strength":
@@ -1190,45 +1209,9 @@ async function handleTwitchRequest(url, env) {
     }
 
     default:
-      return textResponse(
-        "Level 1 — Stim — !stim fully restores HP at the cost of your turn, once per battle. " +
-        "Level 5 — Evocation — /cast evocation / !cast evocation completely restores Mana at the cost of your turn; 7 combat turn cooldown. " +
-        "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
-        "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
-        "Level 8 — Bubble — !cast bubble prepares protection without ending your normal action. " +
-        "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
-        "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
-        "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
-        "Level 12 — Astral Echo — !cast astral echo stores power for your next offensive spell without ending your normal action. " +
-        "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
-        "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
-        "Level 15 — Falling Star — !cast falling star uses Power and Accuracy for volatile heavy damage. " +
-        "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
-        "lvl 17 Passive 🌿 Fae Aid: Once per battle, when you fall below 15% HP after surviving an enemy attack, restore 5 HP. " +
-        "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
-        "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
-        "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
-        "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
-        "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
-        "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
-        "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
-        "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
-        "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
-        "lvl 27 Mastery Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits. " +
-        "lvl 28 Passive Astral Harmony: A successful offensive roll with bonuses from 3 or more different sources restores 15 Mana once per battle. " +
-        "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll grants +3 to your next offensive roll. Activates once per battle. " +
-        "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
-        "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
-        "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
-        "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
-        "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
-        "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak. " +
-        "lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP + 20 Mana. " +
-        "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by Leviathan's Wake now leave an additional effect when they arrive. Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient Leviathan deals +20 damage and restores 10 Mana. " +
-        "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
-        "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
-        400,
-      );
+      return textResponse((await formatProgressionForPlayer(
+        env, backpackKey, null, "twitch",
+      )).message);
   }
 }
 
@@ -1509,6 +1492,12 @@ async function handleDiscordInteraction(request, env) {
           true,
         );
 
+      case "progression":
+        return discordMessage((await formatProgressionForPlayer(
+          env, backpackKey, getDiscordIntegerOption(interaction, "level"),
+          "discord",
+        )).message, true);
+
       case "vitality":
       case "focus":
       case "strength":
@@ -1607,45 +1596,9 @@ async function handleDiscordInteraction(request, env) {
         );
 
       default:
-        return discordMessage(
-          "Level 1 — Stim — /stim fully restores HP at the cost of your turn, once per battle. " +
-          "Level 5 — Evocation — /cast evocation / !cast evocation completely restores Mana at the cost of your turn; 7 combat turn cooldown. " +
-          "Level 6 — Star Spark Mastery I — Astral Charge empowers two offensive casts; only the first costs 50% less Mana. " +
-          "Level 7 — Astral Resilience — Once per battle, surviving an enemy attack while below 25% HP restores 10 Mana. " +
-          "Level 8 — Bubble — /cast bubble prepares protection without ending your normal action. " +
-          "Level 9 — Astral Momentum — Once per battle, a natural 20 Attack or Moonbeam restores up to 10 Mana. " +
-          "Level 10 — Jellyfish Mastery I — Jellyfish moods now grant additional effects. " +
-          "Level 11 — Astral Harvest — Defeating an enemy restores 15 HP and 20 Mana. " +
-          "Level 12 — Astral Echo — /cast Astral Echo stores power for your next offensive spell without ending your normal action. " +
-          "Level 13 — Elf Blessing Mastery I — Elf Blessing grants +3 to offensive rolls for 60 minutes. " +
-          "Level 14 — Astral Aftershock — Critical offensive spells deal a separate +5 damage. " +
-          "Level 15 — Falling Star — /cast Falling Star uses Power and Accuracy for volatile heavy damage. " +
-          "Level 16 — Bubble Mastery I — Bubble pops restore 10 Mana and grant +2 to the next offensive roll. " +
-          "lvl 17 Passive 🌿 Fae Aid: Once per battle, when you fall below 15% HP after surviving an enemy attack, restore 5 HP. " +
-          "Level 18 — Mend Mastery I — Mend rolls 2d12, keeps the highest, and restores 7/10/12/18 HP per trigger by tier. " +
-          "Level 19 — Astral Curiosity — Matching natural dice can trigger Astral Oddities. " +
-          "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll. " +
-          "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a guaranteed Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage. " +
-          "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
-          "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
-          "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
-          "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
-          "lvl 26 Mastery Star Spark Mastery II: When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage. " +
-          "lvl 27 Mastery Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits. " +
-          "lvl 28 Passive Astral Harmony: A successful offensive roll with bonuses from 3 or more different sources restores 15 Mana once per battle. " +
-          "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll grants +3 to your next offensive roll. Activates once per battle. " +
-          "lvl 30 Spell Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create one of 11 different Familiars. Your Familiar assists you during your next 5 qualifying offensive actions before leaving to begin an adventure of its own. " +
-          "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana. " +
-          "lvl 32 Passive ✨ Astral Rhythm: Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle. " +
-          "lvl 33 Passive ⭐ Astral Expedition: Every 33 offensive rolls, gain 33 Star Candies and +3 to your next offensive roll. " +
-          "lvl 34 Mastery 🌟 Astral Echo Mastery I: Astral Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll. " +
-          "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak. " +
-          "lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP + 20 Mana. " +
-          "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by Leviathan's Wake now leave an additional effect when they arrive. Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient Leviathan deals +20 damage and restores 10 Mana. " +
-          "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP. " +
-          "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
-          true,
-        );
+        return discordMessage((await formatProgressionForPlayer(
+          env, backpackKey, null, "discord",
+        )).message, true);
     }
   } catch (error) {
     console.error(`Discord /${commandName} error:`, error);
@@ -3741,6 +3694,8 @@ async function performCastUnlocked(
     : "!cast wake";
   const berryCommand = platform === "discord" ? "/cast Berry" : "!cast berry";
   const familiarCommand = platform === "discord" ? "/cast Familiar" : "!cast familiar";
+  const allOrNothingCommand = platform === "discord"
+    ? "/cast spell:All or Nothing" : "!cast all or nothing";
 
   if (!spellInputValue) {
     return {
@@ -3750,7 +3705,8 @@ async function performCastUnlocked(
         `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, ${evocationCommand} for Evocation, or ` +
         `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
         `${fallingStarCommand} for Falling Star, ${wakeCommand} for Leviathan's Wake, ` +
-        `${berryCommand} for Berries, or ${familiarCommand} for Familiar.`,
+        `${berryCommand} for Berries, ${familiarCommand} for Familiar, or ` +
+        `${allOrNothingCommand} for All or Nothing.`,
     };
   }
 
@@ -3767,7 +3723,8 @@ async function performCastUnlocked(
         `You haven't learned that spell. Use ${blessingCommand}, ` +
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
         `${moonbeamCommand}, ${evocationCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
-        `${fallingStarCommand}, ${wakeCommand}, ${berryCommand}, or ${familiarCommand}.`,
+        `${fallingStarCommand}, ${wakeCommand}, ${berryCommand}, ` +
+        `${familiarCommand}, or ${allOrNothingCommand}.`,
     };
   }
 
@@ -9664,6 +9621,57 @@ async function getActiveMasteries(playerLevel) {
   const level = Number(playerLevel);
   const masteries = await getMasteryDefinitions();
   return masteries.filter((mastery) => level >= mastery.requiredLevel);
+}
+
+const LEVEL_37_PROGRESSION_ENTRY =
+  "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by " +
+  "Leviathan's Wake now leave an additional effect when they arrive. " +
+  "Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 " +
+  "damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient " +
+  "Leviathan deals +20 damage and restores 10 Mana.";
+
+async function formatProgressionForPlayer(env, backpackKey, levelInput, platform) {
+  const progress = await getPlayerProgress(env, backpackKey);
+  const playerLevel = levelFromXp(progress.xp);
+  const [spells, masteries, perks] = await Promise.all([
+    getSpellDefinitions(), getMasteryDefinitions(), getPerkDefinitions(),
+  ]);
+  const entries = [
+    { requiredLevel: 1, text: "Level 1 — Stim — Fully restore HP once per battle at the cost of a turn." },
+    ...spells.map((spell) => ({
+      requiredLevel: spell.requiredLevel,
+      text: `Level ${spell.requiredLevel} Spell ${spell.name}: ${spell.description}`,
+    })),
+    ...masteries.map((mastery) => ({
+      requiredLevel: mastery.requiredLevel,
+      text: mastery.id === "leviathans-wake-mastery-1"
+        ? LEVEL_37_PROGRESSION_ENTRY
+        : `Level ${mastery.requiredLevel} Mastery ${mastery.name}: ${mastery.description}`,
+    })),
+    ...perks.map((perk) => ({
+      requiredLevel: perk.requiredLevel,
+      text: `Level ${perk.requiredLevel} Passive ${perk.name}: ${perk.description}`,
+    })),
+  ].sort((left, right) => left.requiredLevel - right.requiredLevel);
+  const latestLevel = entries.reduce((latest, entry) =>
+    entry.requiredLevel <= playerLevel ? entry.requiredLevel : latest, 1);
+  const requestedLevel = levelInput === null || levelInput === undefined ||
+      String(levelInput).trim() === ""
+    ? latestLevel : Number(levelInput);
+  if (!Number.isSafeInteger(requestedLevel) || requestedLevel < 1 ||
+      requestedLevel > 50) {
+    return { message: platform === "discord"
+      ? "Choose a level from 1 to 50."
+      : "Use !progression <level> (1-50)." };
+  }
+  if (requestedLevel > playerLevel) {
+    return { message: `Level ${requestedLevel} is not unlocked yet.` };
+  }
+  const lines = entries.filter((entry) => entry.requiredLevel === requestedLevel)
+    .map((entry) => entry.text);
+  return { message: lines.length > 0
+    ? lines.join("\n")
+    : `Level ${requestedLevel}: No new spell, mastery, or passive.` };
 }
 
 async function formatMasteryUnlocks(startingLevel, endingLevel) {
