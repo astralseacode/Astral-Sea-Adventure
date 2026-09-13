@@ -315,6 +315,7 @@ const PERK_FILES = {
   "astral-harvest": "astral-harvest.json",
   "astral-defiance": "astral-defiance.json",
   "astral-reprieve": "astral-reprieve.json",
+  "lunar-patience": "lunar-patience.json",
   "astral-aftershock": "astral-aftershock.json",
   "fae-intervention": "fae-intervention.json",
   "fae-aid": "fae-aid.json",
@@ -4311,6 +4312,16 @@ async function performCastUnlocked(
     triggeredRoll.applied.unshift("Fae Affinity");
     triggeredRoll.modifierDetails.unshift({ name: "Fae Affinity", value: faeBonus });
   }
+  const lunarPatience = spell.id === "moonbeam" && activePerks.find(
+    (perk) => perk.effect.trigger === "moonbeam-noncritical-main-roll",
+  );
+  if (lunarPatience && combatState.lunarPatience) {
+    const bonus = lunarPatience.effect.offensiveRollModifier;
+    triggeredRoll.modifier += bonus;
+    triggeredRoll.finalTotal += bonus;
+    triggeredRoll.applied.push("Lunar Patience");
+    triggeredRoll.modifierDetails.push({ name: "Lunar Patience", value: bonus });
+  }
   const resolvedSpellRoll = resolveSpellRoll(
     spell,
     spellRoll,
@@ -4318,6 +4329,10 @@ async function performCastUnlocked(
     moonbeamMastery,
     isAllOrNothing ? (combatState.allOrNothingStreak || 0) : 0,
   );
+  if (lunarPatience) {
+    if (resolvedSpellRoll.isCritical) delete combatState.lunarPatience;
+    else combatState.lunarPatience = { offensiveRollModifier: 1 };
+  }
   const strengthBonus = (spell.id === "falling-star" || isAllOrNothing) &&
       resolvedSpellRoll.damage === 0
     ? 0
@@ -7808,6 +7823,8 @@ function isValidCombatState(combatState) {
       combatState.astralPatience === undefined ||
       (combatState.astralPatience?.offensiveRollModifier === 2)
     ) &&
+    (combatState.lunarPatience === undefined ||
+      combatState.lunarPatience?.offensiveRollModifier === 1) &&
     (
       combatState.jellyfishResolve === undefined ||
       (
@@ -9410,7 +9427,8 @@ function validatePerkDefinition(perk, expectedId) {
     (!hasActivationLines &&
       !hasSingleActivationLine &&
       !hasCuriosityPresentation &&
-      !Array.isArray(perk.memories))
+      !Array.isArray(perk.memories) &&
+      expectedId !== "lunar-patience")
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
   }
@@ -9457,6 +9475,13 @@ function validatePerkDefinition(perk, expectedId) {
     perk.levelUpLine ===
       "lvl 38 Passive ✨ Astral Reprieve: Defeating an enemy without using Stim during the battle restores 30 Mana." &&
     hasSingleActivationLine && !hasActivationLines;
+  const validLunarPatience = expectedId === "lunar-patience" &&
+    perk.requiredLevel === 39 &&
+    effect?.trigger === "moonbeam-noncritical-main-roll" &&
+    effect.offensiveRollModifier === 1 &&
+    perk.levelUpLine ===
+      "lvl 39 Passive 🌙 Lunar Patience: When Moonbeam fails to critically hit, your next Moonbeam in the same battle gains +1 to its main offensive roll. Lunar Patience does not stack and resets when Moonbeam critically hits or the battle ends." &&
+    !hasSingleActivationLine && !hasActivationLines;
   const validAftershock = expectedId === "astral-aftershock" &&
     effect?.trigger === "critical-offensive-spell" &&
     Number(effect.bonusDamage) === 5 &&
@@ -9560,6 +9585,7 @@ function validatePerkDefinition(perk, expectedId) {
     !validHarvest &&
     !validDefiance &&
     !validReprieve &&
+    !validLunarPatience &&
     !validAftershock &&
     !validFaeIntervention &&
     !validFaeAid &&

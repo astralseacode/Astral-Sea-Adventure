@@ -1,0 +1,12 @@
+{
+  "id": "lunar-patience",
+  "name": "Lunar Patience",
+  "requiredLevel": 39,
+  "type": "passive",
+  "description": "A noncritical Moonbeam prepares +1 for the next Moonbeam main offensive roll in the same battle. The bonus does not stack and clears on a critical hit.",
+  "levelUpLine": "lvl 39 Passive 🌙 Lunar Patience: When Moonbeam fails to critically hit, your next Moonbeam in the same battle gains +1 to its main offensive roll. Lunar Patience does not stack and resets when Moonbeam critically hits or the battle ends.",
+  "effect": {
+    "trigger": "moonbeam-noncritical-main-roll",
+    "offensiveRollModifier": 1
+  }
+}
