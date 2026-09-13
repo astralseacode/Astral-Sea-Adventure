@@ -1,0 +1,36 @@
+{
+    "id":  "astral-awakening",
+    "name":  "Astral Awakening",
+    "requiredLevel":  25,
+    "type":  "passive",
+    "description":  "After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle.",
+    "effect":  {
+                   "trigger":  "survived-enemy-attack",
+                   "survivingAttacks":  5,
+                   "hpRestore":  25,
+                   "manaRestore":  25,
+                   "offensiveRollModifier":  2,
+                   "usesPerBattle":  1
+               },
+    "memories":  [
+                     "In the middle of battle, your thoughts suddenly drift toward that suspicious shopkeeper with the mustache who definitely wasn\u0027t Shizuki.\n\nYou have absolutely no idea why you\u0027re thinking about them right now.\n\n...The mustache wasn\u0027t even convincing.\n\nSomehow, you feel determined to keep going.",
+                     "You remember your glorious Fae healing unit arriving to Mend your wounds.\n\nTiny lights. Tiny leaves. An alarming amount of confidence.\n\nSomewhere among them, you are fairly certain somebody was arguing about workplace procedure.\n\nYou\u0027ve survived worse management than this.",
+                     "For reasons beyond your understanding, you suddenly remember the supervising leaf.\n\nIt said nothing.\n\nIt did nothing.\n\nIt supervised.\n\nYou cannot disappoint it now.",
+                     "You remember the first time your Bubble took an enemy attack personally.\n\nThe wobble.\n\nThe indignation.\n\nThe deeply offended *boing*.\n\nPerhaps you should try being equally difficult to pop.",
+                     "Your thoughts drift toward one of the Jellyfish you\u0027ve summoned along the way.\n\nYou don\u0027t remember which one.\n\nIt might have been brave.\n\nIt might have been sleepy.\n\nIt might have been deeply upset about being here.\n\nEither way, it tried its best.\n\nSo will you.",
+                     "You remember watching an Astral Charge attach itself directly to an enemy\u0027s forehead.\n\nThey tried to shake it off.\n\nIt stayed.\n\nYou stared at them.\n\nThey stared at you.\n\nSomehow, remembering this fills you with strength.",
+                     "You remember all the mysterious Berries you\u0027ve encountered throughout your journey.\n\nHealing Berries. Mana Berries. Exploding Berries.\n\nAt some point, you really should have started questioning where these things come from.\n\nThis is probably not the time.",
+                     "Your life briefly flashes before your eyes.\n\nFor some reason, a Sour Berry is prominently featured.\n\nYou still remember the taste.\n\nYou refuse to let that be one of your final memories.",
+                     "Somewhere in the back of your mind, you imagine the Fae Ancestors holding an emergency meeting about your current condition.\n\nSeveral tiny elf voices begin arguing at once.\n\nSomebody produces a leaf.\n\nNobody appears to know why.\n\nYou decide to survive before they make things worse.",
+                     "You remember calling a star down from the Astral Sea with absolute confidence.\n\nYour aim was perfect.\n\nThe star was terrible.\n\nYou perfectly aimed a really crappy star.\n\nYou\u0027ve recovered from greater disappointments than this.",
+                     "You remember the first time you called into the distant Astral Sea and something answered.\n\nFor several terrifying moments, nothing happened.\n\nThen the water moved.\n\nYou remember thinking that perhaps summoning enormous sea creatures was a questionable combat strategy.\n\nYou have continued doing it anyway.",
+                     "A tiny light flickers somewhere in your memory.\n\nShizuki\u0027s travel companion Glimmer.\n\nFor just a moment, the chaos of battle feels strangely far away.\n\nYou\u0027ve traveled farther across the Astral Sea than you realized.\n\nYou\u0027re not finished exploring yet.",
+                     "You suddenly remember every Star Candy you\u0027ve collected, spent, gambled, dropped, discovered, and handed directly back to that definitely-not-Shizuki shopkeeper.\n\nYou begin to wonder whether this entire economy is suspicious.\n\nThe thought is strangely invigorating.",
+                     "For just a moment, the battlefield grows strangely quiet.\n\nSomewhere beyond the noise, you hear a familiar little giggle.\n\nYou can\u0027t tell whether it\u0027s a memory or something carried through the Astral Sea.\n\nEither way, you suddenly remember how far you\u0027ve come.\n\nKeep going.",
+                     "Your thoughts race through everything that brought you this far.\n\nThe Fae. The Jellyfish. The stars. The Berries. The battles. The discoveries. The deeply suspicious shopkeeper.\n\nEvery ridiculous victory and every moment you probably should not have survived.\n\nThe Astral Sea stirs around you.\n\nYou\u0027ve made it this far.\n\nYou\u0027re not stopping here."
+                 ],
+    "ending":  {
+                   "heading":  "Astral Awakening",
+                   "effect":  "Restored 25 HP + 25 Mana | Next offensive roll +2"
+               }
+}

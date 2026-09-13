@@ -311,6 +311,7 @@ const PERK_FILES = {
   "fae-intervention": "fae-intervention.json",
   "astral-curiosity": "astral-curiosity.json",
   "astral-patience": "astral-patience.json",
+  "astral-awakening": "astral-awakening.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1197,6 +1198,7 @@ async function handleTwitchRequest(url, env) {
         "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
         "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
         "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
+        "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
         "Commands: !adventure [number], !left, !right, !forward, !yes, !no, !attack. !cast elf blessing - Spend 30 Mana to gain +2 on offensive rolls for 30 minutes. Level 2 — Star Spark — /cast star / !cast star. !cast jelly - Cast Jellyfish at Level 3 for 10 Mana. Level 4 — Mend — /cast mend / !cast mend. !cast moonbeam - Cast Moonbeam at Level 5 for 20 Mana. !stats - View your character sheet. Each Level after Level 1 grants one Stat Point. Spend points with !vitality, !focus, !strength, !luck, !armor, or !fae. Regional Adventure + Travel Note completion: !moonlit, !starfall, !whispering, !leviathan, !sunken, !astral. Other commands: !shop, !buy berry, !rest, !rest long, !eat berry, !explore, !daily, !gamble, !backpack, !travel, !journal, !notes, !note.",
         400,
       );
@@ -1600,6 +1602,7 @@ async function handleDiscordInteraction(request, env) {
           "lvl 22 Passive ✨ Astral Patience: Ending a combat turn without attacking or damaging the enemy grants +2 to your next offensive roll. Astral Patience does not stack. " +
           "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage. Apparently Bubble has finally had enough. " +
           "lvl 24 Spell Berries: Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects. " +
+          "lvl 25 Passive Astral Awakening: After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle. " +
           "Commands: /adventure, /attack, /cast. /stats — View your complete character sheet. Each Level after Level 1 grants one Stat Point. /vitality — +10 Maximum HP. /focus — +10 Maximum Mana. /strength — +1 damage. /luck — improve rewards and Berry drops. /armor — -1 enemy damage taken. /fae — +1 offensive spell roll. Regional Adventure + Travel Note completion: /moonlit, /starfall, /whispering, /leviathan, /sunken, /astral. Other commands: /shop, /buy, /rest, /eat, /explore, /daily, /gamble, /backpack, /travel, /journal, /notes, /note.",
           true,
         );
@@ -3231,6 +3234,40 @@ async function resolvePlayerCombatAction(
   const mendMessage = triggerMendHealing(combatState);
   if (mendMessage) {
     messageParts.push(mendMessage);
+  }
+
+  const astralAwakening = activePerks.find(
+    (perk) => perk.effect.trigger === "survived-enemy-attack",
+  );
+  if (astralAwakening && !combatState.perkUses?.[astralAwakening.id]) {
+    combatState.astralAwakeningSurvived =
+      (combatState.astralAwakeningSurvived || 0) + 1;
+    if (combatState.astralAwakeningSurvived ===
+      astralAwakening.effect.survivingAttacks) {
+      const caps = getPlayerResourceCaps(updatedProgress);
+      combatState.playerMaxHp = caps.hp;
+      combatState.playerHp = Math.min(
+        caps.hp, combatState.playerHp + astralAwakening.effect.hpRestore,
+      );
+      updatedProgress = {
+        ...updatedProgress,
+        mana: Math.min(
+          caps.mana, updatedProgress.mana + astralAwakening.effect.manaRestore,
+        ),
+      };
+      combatState.astralAwakening = {
+        offensiveRollModifier: astralAwakening.effect.offensiveRollModifier,
+      };
+      combatState.perkUses = {
+        ...(combatState.perkUses || {}),
+        [astralAwakening.id]: 1,
+      };
+      messageParts.push(
+        randomChoice(astralAwakening.memories) + "\n\n" +
+        astralAwakening.ending.heading + "\n\n" +
+        astralAwakening.ending.effect,
+      );
+    }
   }
 
   if (combatState.enemy.hp === 0) {
@@ -7224,6 +7261,12 @@ function isValidCombatState(combatState) {
     ) &&
     (combatState.berryEffects === undefined ||
       isValidBerryEffects(combatState.berryEffects)) &&
+    (combatState.astralAwakeningSurvived === undefined ||
+      (Number.isSafeInteger(combatState.astralAwakeningSurvived) &&
+        combatState.astralAwakeningSurvived >= 1 &&
+        combatState.astralAwakeningSurvived <= 5)) &&
+    (combatState.astralAwakening === undefined ||
+      combatState.astralAwakening?.offensiveRollModifier === 2) &&
     enemy &&
     typeof enemy.id === "string" &&
     /^[a-z0-9-]+$/.test(enemy.id) &&
@@ -8095,6 +8138,13 @@ function consumeTriggeredStatusEffects(
     modifierDetails.push({ name: "Astral Patience", value: patienceModifier });
     delete combatState.astralPatience;
   }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.astralAwakening) {
+    const awakeningModifier = combatState.astralAwakening.offensiveRollModifier;
+    modifier += awakeningModifier;
+    applied.push("Astral Awakening");
+    modifierDetails.push({ name: "Astral Awakening", value: awakeningModifier });
+    delete combatState.astralAwakening;
+  }
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.berryEffects?.rollBonuses) {
     for (const [name, value] of Object.entries(combatState.berryEffects.rollBonuses)) {
       if (name === "Fae Berry" && !offensiveSpell) continue;
@@ -8739,7 +8789,8 @@ function validatePerkDefinition(perk, expectedId) {
     !perk.description.trim() ||
     (!hasActivationLines &&
       !hasSingleActivationLine &&
-      !hasCuriosityPresentation)
+      !hasCuriosityPresentation &&
+      !Array.isArray(perk.memories))
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
   }
@@ -8808,6 +8859,16 @@ function validatePerkDefinition(perk, expectedId) {
     effect?.trigger === "non-offensive-combat-turn" &&
     Number(effect.offensiveRollModifier) === 2 &&
     hasSingleActivationLine && !hasActivationLines;
+  const validAstralAwakening = expectedId === "astral-awakening" &&
+    perk.requiredLevel === 25 &&
+    effect?.trigger === "survived-enemy-attack" &&
+    effect.survivingAttacks === 5 &&
+    effect.hpRestore === 25 && effect.manaRestore === 25 &&
+    effect.offensiveRollModifier === 2 && effect.usesPerBattle === 1 &&
+    Array.isArray(perk.memories) && perk.memories.length === 15 &&
+    perk.memories.every((memory) => typeof memory === "string" && memory.trim()) &&
+    perk.ending?.heading === "Astral Awakening" &&
+    perk.ending?.effect === "Restored 25 HP + 25 Mana | Next offensive roll +2";
 
   if (
     !validResilience &&
@@ -8816,7 +8877,8 @@ function validatePerkDefinition(perk, expectedId) {
     !validAftershock &&
     !validFaeIntervention &&
     !validAstralCuriosity &&
-    !validAstralPatience
+    !validAstralPatience &&
+    !validAstralAwakening
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }
