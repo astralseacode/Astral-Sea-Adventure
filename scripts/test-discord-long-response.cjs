@@ -117,6 +117,32 @@ async function deliveryFixture(content, ephemeral = false) {
   assert(longChunks.every(chunk => chunk.length <= limit));
   assert.equal(long.resolutions, 1);
 
+  const gunCombat = await fixture(50);
+  await gunCombat.editState(state => {
+    state.regionId = 'astral-nexus';
+    state.encounterNumber = 30;
+    state.enemy = { ...boss, hp: 1, maxHp: boss.hp };
+    state.adventureContext = {
+      adventureId: definition.id, adventureNumber: 30,
+      roomId: 'open-horizon', nextRoomId: null, isBoss: true,
+    };
+  });
+  const gunShots = Array.from({ length: 140 }, (_, index) => index % 2);
+  gunCombat.rolls.push(...gunShots, 0);
+  const gunVictory = await gunCombat.cast('gun');
+  assert.equal(gunVictory.won, true);
+  assert(gunVictory.message.includes(`Shots: ${gunShots.join(', ')}`));
+  assert(gunVictory.message.includes(definition.completionText));
+  const gunWrites = gunCombat.writes.length;
+  const gunDelivered = await deliveryFixture(gunVictory.message);
+  const gunChunks = [gunDelivered.response.data.content,
+    ...gunDelivered.calls.map(call => call.body.content)];
+  assert(gunChunks.length > 1);
+  assert(gunChunks.every(chunk => chunk.length <= limit));
+  assert.equal(gunChunks.join(''), gunVictory.message);
+  assert.equal(gunDelivered.resolutions, 1);
+  assert.equal(gunCombat.writes.length, gunWrites);
+
   const failed = await fixture(50);
   failed.c.Response = Response;
   failed.c.setTimeout = setTimeout;

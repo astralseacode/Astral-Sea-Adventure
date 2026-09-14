@@ -4789,13 +4789,9 @@ function rollSpellDamage(spell) {
   if (spell.id === "conjure-gun") {
     const rolls = Array.from(
       { length: spell.damage.dice },
-      () => randomInteger(1, spell.damage.sides),
+      () => randomInteger(spell.damage.min, spell.damage.max),
     );
-    const criticalShots = rolls.filter((roll) => roll === spell.damage.sides).length;
-    return {
-      rolls, total: rolls.reduce((sum, roll) => sum + roll, 0),
-      criticalShots,
-    };
+    return { rolls, total: rolls.reduce((sum, roll) => sum + roll, 0) };
   }
   if (spell.id === "tidal-wave") {
     const rolls = Array.from(
@@ -4857,7 +4853,7 @@ function rollSpellDamage(spell) {
 function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null,
   allOrNothingPriorStreak = 0, meteorAlignmentMastery = null) {
   if (spell.id === "conjure-gun") {
-    const baseDamage = spellRoll.total + spellRoll.criticalShots;
+    const baseDamage = spellRoll.total;
     return { ...spellRoll, finalTotal, baseDamage, damage: baseDamage,
       isCritical: false };
   }
@@ -4977,12 +4973,14 @@ function formatSpellCastMessage(
 ) {
   if (spell.id === "conjure-gun") {
     const separator = platform === "discord" ? "\n\n" : " | ";
-    const criticalWord = spellRoll.criticalShots === 1 ? "Hit" : "Hits";
+    const hits = spellRoll.total;
+    const misses = spellRoll.rolls.length - hits;
     return [
       randomChoice(spell.flavor),
       `Shots: ${spellRoll.rolls.join(", ")}`,
-      `20 Hits!`,
-      `${spellRoll.criticalShots} Critical ${criticalWord}!`,
+      `${spellRoll.rolls.length} Shots!`,
+      `${hits} ${hits === 1 ? "Hit" : "Hits"}!`,
+      `${misses} ${misses === 1 ? "Miss" : "Misses"}!`,
       `Base Damage: ${spellRoll.baseDamage}`,
       ...(spellRoll.strengthBonus ? [`Strength: +${spellRoll.strengthBonus}`] : []),
       `Total Damage: ${spellRoll.damage}`,
@@ -9325,10 +9323,11 @@ function validateSpellDefinition(spell, expectedId) {
   if (expectedId === "conjure-gun" && (
     spell.name !== "Conjure Gun" || spell.requiredLevel !== 45 ||
     spell.manaCost !== 35 || spell.type !== "offensive" ||
-    spell.damage?.dice !== 20 || spell.damage?.sides !== 10 ||
+    spell.damage?.dice !== 140 || spell.damage?.min !== 0 ||
+    spell.damage?.max !== 1 ||
     !isTextArray(spell.flavor) || spell.flavor.length !== 15 ||
     spell.levelUpLine !==
-      "lvl 45 Spell 🔫 Conjure Gun: Cast Conjure Gun for 35 Mana. Conjure an Astral gun and rapidly fire 20 shots. Roll 20d10, with each die dealing damage equal to its roll. Natural 10s are Critical Hits and deal 11 damage instead. Add the damage of all 20 shots together, then add Strength to determine the final damage."
+      "lvl 45 Spell 🔫 Conjure Gun: Cast Conjure Gun for 35 Mana. Conjure an Astral gun and rapidly fire 140 shots. Each shot rolls either 0 or 1. A 1 hits and deals 1 damage, while a 0 misses. Add all successful hits together, then add Strength to determine the final damage."
   )) throw new Error("Invalid Conjure Gun content data.");
   if (expectedId === "tidal-wave") {
     const tiers = [
