@@ -412,6 +412,7 @@ const TITLES = [
 ];
 
 const DISCORD_API_BASE = "https://discord.com/api/v10";
+const DISCORD_SAFE_CONTENT_LENGTH = 1900;
 // TEMPORARY DEVELOPMENT COMMAND
 // REMOVE /devlevel AND DEV_USER_IDS BEFORE FULL RELEASE
 const DEV_USER_IDS = new Set(["715083178834133043", "369312325397905418"]);
@@ -885,12 +886,12 @@ const DISCORD_COMMANDS = [
    ============================================================ */
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
 
       if (url.pathname === "/discord/interactions") {
-        return await handleDiscordInteraction(request, env);
+        return await handleDiscordInteraction(request, env, ctx);
       }
 
       if (url.pathname === "/discord/register") {
@@ -1209,7 +1210,53 @@ async function handleTwitchRequest(url, env) {
       DISCORD INTERACTIONS ROUTER
    ============================================================ */
 
-async function handleDiscordInteraction(request, env) {
+async function handleDiscordInteraction(request, env, ctx) {
+  const interactionRequest = request.clone();
+  const response = await handleDiscordInteractionCore(request, env);
+  let payload;
+  try {
+    payload = await response.clone().json();
+  } catch {
+    return response;
+  }
+  if (payload?.type !== 4 ||
+      typeof payload.data?.content !== "string" ||
+      payload.data.content.length <= DISCORD_SAFE_CONTENT_LENGTH) {
+    return response;
+  }
+
+  const chunks = splitDiscordContent(payload.data.content);
+  let interaction;
+  try {
+    interaction = await interactionRequest.json();
+  } catch {
+    // The command has already resolved, so report delivery failure without retrying it.
+  }
+  if (!/^\d+$/.test(interaction?.application_id || "") ||
+      typeof interaction?.token !== "string" || !interaction.token) {
+    console.error("Discord long response has no interaction follow-up credentials.");
+    return discordMessage(
+      "Your action completed, but its full result could not be delivered. Please contact the game maintainer.",
+      Boolean(payload.data.flags & 64),
+    );
+  }
+
+  const followups = sendDiscordFollowups(
+    interaction.application_id, interaction.token, chunks.slice(1),
+    payload.data.flags,
+  ).catch((error) => {
+    console.error("Discord follow-up delivery failed:", error);
+  });
+  if (ctx?.waitUntil) ctx.waitUntil(followups);
+  else await followups;
+
+  return jsonResponse({
+    ...payload,
+    data: { ...payload.data, content: chunks[0] },
+  });
+}
+
+async function handleDiscordInteractionCore(request, env) {
   if (request.method !== "POST") {
     return textResponse("Method not allowed.", 405);
   }
@@ -7202,6 +7249,63 @@ function isValidAdventureState(state) {
 /* ============================================================
    DISCORD HELPERS
    ============================================================ */
+
+function splitDiscordContent(content, maximum = DISCORD_SAFE_CONTENT_LENGTH) {
+  if (!Number.isSafeInteger(maximum) || maximum < 2 ||
+      maximum > DISCORD_SAFE_CONTENT_LENGTH) {
+    throw new RangeError("Invalid Discord content chunk limit.");
+  }
+  if (content.length <= maximum) return [content];
+  const chunks = [];
+  let remaining = content;
+  while (remaining.length > maximum) {
+    let cut = remaining.lastIndexOf("\n\n", maximum - 2);
+    if (cut >= 0) cut += 2;
+    else {
+      cut = remaining.lastIndexOf("\n", maximum - 1);
+      if (cut >= 0) cut += 1;
+      else {
+        cut = 0;
+        for (let index = maximum - 1; index > 0; index -= 1) {
+          if (/\s/u.test(remaining[index])) {
+            cut = index + 1;
+            break;
+          }
+        }
+        if (!cut) cut = maximum;
+      }
+    }
+    // Never split a UTF-16 surrogate pair at a hard or whitespace boundary.
+    if (cut < remaining.length && cut > 0 &&
+        /[\uD800-\uDBFF]/u.test(remaining[cut - 1]) &&
+        /[\uDC00-\uDFFF]/u.test(remaining[cut])) cut -= 1;
+    chunks.push(remaining.slice(0, cut));
+    remaining = remaining.slice(cut);
+  }
+  if (remaining) chunks.push(remaining);
+  return chunks;
+}
+
+async function sendDiscordFollowups(applicationId, token, chunks, flags) {
+  const endpoint = `${DISCORD_API_BASE}/webhooks/` +
+    `${encodeURIComponent(applicationId)}/${encodeURIComponent(token)}`;
+  // Give Discord time to receive the immediate type-4 response before follow-ups.
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  for (const content of chunks) {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        content,
+        ...(flags & 64 ? { flags: 64 } : {}),
+        allowed_mentions: { parse: [] },
+      }),
+    });
+    if (!response.ok) {
+      throw new Error(`Discord follow-up HTTP ${response.status}.`);
+    }
+  }
+}
 
 function discordMessage(
   content,
