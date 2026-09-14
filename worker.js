@@ -310,6 +310,7 @@ const MASTERY_FILES = {
   "astral-echo-mastery-1": "astral-echo-mastery-1.json",
   "leviathans-wake-mastery-1": "leviathans-wake-mastery-1.json",
   "falling-star-mastery-1": "falling-star-mastery-1.json",
+  "familiar-mastery-1": "familiar-mastery-1.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
@@ -328,6 +329,7 @@ const PERK_FILES = {
   "fae-second-opinion": "fae-second-opinion.json",
   kinship: "kinship.json",
   "astral-rhythm": "astral-rhythm.json",
+  "rising-power": "rising-power.json",
   "astral-expedition": "astral-expedition.json",
 };
 const DATA_CACHE = new Map();
@@ -2832,17 +2834,21 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
   const active = combatState.familiar;
   const creature = spell.familiars.find((entry) => entry.id === active.id);
   const effect = creature.effect;
+  const astralBond = active.astralBond === "armed";
+  const multiplier = astralBond ? 2 : 1;
+  if (astralBond) active.astralBond = "spent";
   const caps = getPlayerResourceCaps(progress);
   combatState.playerMaxHp = caps.hp;
   combatState.playerHp = Math.min(combatState.playerHp, caps.hp);
   const hpBefore = combatState.playerHp;
   const manaBefore = progress.mana;
-  combatState.playerHp = Math.min(caps.hp, combatState.playerHp + (effect.hp || 0));
-  const restoredMana = Math.min(caps.mana, progress.mana + (effect.mana || 0));
+  combatState.playerHp = Math.min(caps.hp, combatState.playerHp + (effect.hp || 0) * multiplier);
+  const restoredMana = Math.min(caps.mana, progress.mana + (effect.mana || 0) * multiplier);
   const clauses = [];
   if (effect.damage) {
-    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - effect.damage);
-    clauses.push(`deals ${effect.damage} damage`);
+    const damage = effect.damage * multiplier;
+    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - damage);
+    clauses.push(`deals ${damage} damage`);
   }
   if (effect.hp) clauses.push(`restores ${combatState.playerHp - hpBefore} HP`);
   if (effect.mana) clauses.push(`restores ${restoredMana - manaBefore} Mana`);
@@ -2853,7 +2859,8 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
       pool = { serial: active.serial, amount: 0, max: effect.protection * 5 };
       pools.push(pool);
     }
-    const granted = Math.min(effect.protection, pool.max - pool.amount);
+    if (astralBond) pool.max += effect.protection;
+    const granted = Math.min(effect.protection * multiplier, pool.max - pool.amount);
     pool.amount += granted;
     clauses.push(`grants ${granted} protection`);
   }
@@ -2878,7 +2885,8 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
   if (active.actions === 5) delete combatState.familiar;
   return {
     progress: updatedProgress,
-    message: `${creature.name} ${clauses.join(" + ")}.` +
+    message: (astralBond ? "🌌 Astral Bond empowers your Familiar!\n\n" : "") +
+      `${creature.name} ${clauses.join(" + ")}.` +
       (milestone ? `\n\n${milestone}` : "") +
       (kinship ? `\n\n${kinship.activationLine}` : ""),
   };
@@ -2897,6 +2905,28 @@ function applyAstralRhythm(combatState, activePerks, spellId) {
     [rhythm.id]: 1,
   };
   return rhythm;
+}
+
+function applyRisingPower(combatState, activePerks, spellId) {
+  const perk = activePerks.find(
+    (entry) => entry.effect.trigger === "different-successful-damaging-offensive-spells",
+  );
+  if (!perk) return null;
+  const previous = combatState.risingPower;
+  if (previous?.spellId === spellId) {
+    combatState.risingPower = { spellId, steps: 0 };
+    return previous.steps > 0
+      ? { bonusDamage: 0, message: "🌊 Rising Power resets." }
+      : null;
+  }
+  const steps = previous ? Math.min(previous.steps + 1, perk.effect.maximumSteps) : 0;
+  combatState.risingPower = { spellId, steps };
+  const bonusDamage = steps * perk.effect.damagePerStep;
+  return bonusDamage
+    ? { bonusDamage, message: `🌊 Rising Power: +${bonusDamage} damage`,
+      reachedMaximum: previous?.steps === perk.effect.maximumSteps - 1 &&
+        steps === perk.effect.maximumSteps }
+    : null;
 }
 
 async function applyAstralExpedition(env, backpackKey, progress, perk) {
@@ -3041,6 +3071,14 @@ async function resolvePlayerCombatAction(
     );
     progress = familiarResult.progress;
     familiarMessage = familiarResult.message;
+  }
+  let astralBondArmedMessage = "";
+  if (action.armAstralBond && combatState.enemy.hp > 0 && combatState.familiar &&
+      combatState.familiar.astralBond === undefined &&
+      activeMasteries.some((mastery) => mastery.effect.id === "astral-bond")) {
+    combatState.familiar.astralBond = "armed";
+    astralBondArmedMessage =
+      "🌌 Astral Bond: Your Familiar's next assistance is empowered!";
   }
 
   let momentumMessage = "";
@@ -3197,6 +3235,7 @@ async function resolvePlayerCombatAction(
   if (echoMasteryMessage) messageParts.push(echoMasteryMessage);
   if (expeditionMessage) messageParts.push(expeditionMessage);
   if (familiarMessage) messageParts.push(familiarMessage);
+  if (astralBondArmedMessage) messageParts.push(astralBondArmedMessage);
   if (faeSecondOpinionMessage) messageParts.push(faeSecondOpinionMessage);
   if (harmonyMessage) messageParts.push(harmonyMessage);
   if (chargeDetonationMessage) messageParts.push(chargeDetonationMessage);
@@ -4368,6 +4407,10 @@ async function performCastUnlocked(
     ? applyAstralRhythm(combatState, activePerks, spell.id)
     : null;
   if (rhythm) resolvedSpellRoll.damage += rhythm.effect.bonusDamage;
+  const risingPower = spell.type === "offensive" && resolvedSpellRoll.damage > 0
+    ? applyRisingPower(combatState, activePerks, spell.id)
+    : null;
+  if (risingPower) resolvedSpellRoll.damage += risingPower.bonusDamage;
   const astralEcho = isAllOrNothing && resolvedSpellRoll.damage === 0
     ? null : getAstralEcho(combatState);
   const echoDamage = astralEcho
@@ -4429,6 +4472,11 @@ async function performCastUnlocked(
       ? `${castMessage}\n\n${rhythm.activationLine}`
       : `${castMessage} | ${rhythm.activationLine}`;
   }
+  if (risingPower) {
+    castMessage = platform === "discord"
+      ? `${castMessage}\n\n${risingPower.message}`
+      : `${castMessage} | ${risingPower.message}`;
+  }
   if (isAllOrNothing) {
     combatState.allOrNothingStreak = spellRoll.total === 2
       ? (combatState.allOrNothingStreak || 0) + 1 : 0;
@@ -4480,6 +4528,7 @@ async function performCastUnlocked(
         harmonySuccess: resolvedSpellRoll.damage > 0,
         expeditionQualifies: spell.type === "offensive" && resolvedSpellRoll.damage > 0,
         familiarQualifies: true,
+        armAstralBond: Boolean(risingPower?.reachedMaximum),
         faeSecondOpinionFailure: (spell.id === "falling-star" &&
           spellRoll.accuracyRoll === 1) || (isAllOrNothing && spellRoll.total === 1),
       },
@@ -7831,6 +7880,12 @@ function isValidCombatState(combatState) {
     (combatState.astralRhythmPreviousSpell === undefined ||
       (typeof combatState.astralRhythmPreviousSpell === "string" &&
         /^[a-z-]+$/.test(combatState.astralRhythmPreviousSpell))) &&
+    (combatState.risingPower === undefined ||
+      (combatState.risingPower &&
+        typeof combatState.risingPower.spellId === "string" &&
+        /^[a-z-]+$/.test(combatState.risingPower.spellId) &&
+        Number.isSafeInteger(combatState.risingPower.steps) &&
+        combatState.risingPower.steps >= 0 && combatState.risingPower.steps <= 3)) &&
     (combatState.familiarSerial === undefined ||
       (Number.isSafeInteger(combatState.familiarSerial) &&
         combatState.familiarSerial >= 1)) &&
@@ -7840,6 +7895,8 @@ function isValidCombatState(combatState) {
         combatState.familiar.total >= 2 && combatState.familiar.total <= 12 &&
         typeof combatState.familiar.id === "string" &&
         /^[a-z-]+$/.test(combatState.familiar.id) &&
+        (combatState.familiar.astralBond === undefined ||
+          ["armed", "spent"].includes(combatState.familiar.astralBond)) &&
         Number.isSafeInteger(combatState.familiar.actions) &&
         combatState.familiar.actions >= 0 && combatState.familiar.actions < 5 &&
         Number.isSafeInteger(combatState.familiar.serial) &&
@@ -7852,7 +7909,7 @@ function isValidCombatState(combatState) {
           Number.isSafeInteger(pool.serial) && pool.serial >= 1 &&
           pool.serial <= combatState.familiarSerial &&
           Number.isSafeInteger(pool.amount) && pool.amount > 0 &&
-          Number.isSafeInteger(pool.max) && [25, 40].includes(pool.max) &&
+          Number.isSafeInteger(pool.max) && [25, 30, 40, 48].includes(pool.max) &&
           pool.amount <= pool.max) &&
         new Set(combatState.familiarProtection.map((pool) => pool.serial)).size ===
           combatState.familiarProtection.length)) &&
@@ -9372,6 +9429,13 @@ function validateMasteryDefinition(mastery, expectedId) {
     effect.totalSevenPower === 15 &&
     mastery.levelUpLine ===
       "lvl 41 Mastery ☄️ Meteor Alignment: Falling Star's Power dice can form a Meteor Alignment. If two Power dice match, add +10 Power. If all three Power dice match, add +20 Power instead. If the three Power dice total exactly 7, add +15 Power.";
+  const validAstralBond = expectedId === "familiar-mastery-1" &&
+    mastery.name === "Astral Bond" && mastery.spellId === "familiar" &&
+    mastery.requiredLevel === 44 && mastery.tier === 1 &&
+    effect?.id === "astral-bond" && effect.maximumRisingPower === 6 &&
+    effect.assistanceMultiplier === 2 &&
+    mastery.levelUpLine ===
+      "lvl 44 Mastery 🌌 Astral Bond: While a Familiar is active, reaching maximum Rising Power empowers the Familiar's next assistance, doubling its effects. Activates once per Familiar.";
   const wakeMasteryEffects = [
     ["wakefin", 0, 5, 0, "Restored 5 Mana"],
     ["astral-manta", 0, 0, 5, "Gained 5 protection"],
@@ -9490,6 +9554,7 @@ function validateMasteryDefinition(mastery, expectedId) {
     !validStarSparkMasteryII &&
     !validMoonbeamMastery &&
     !validMeteorAlignment &&
+    !validAstralBond &&
     !validWakeMastery &&
     !validJellyfishMastery &&
     !validJellyfishMasteryII &&
@@ -9533,7 +9598,8 @@ function validatePerkDefinition(perk, expectedId) {
       !hasSingleActivationLine &&
       !hasCuriosityPresentation &&
       !Array.isArray(perk.memories) &&
-      expectedId !== "lunar-patience")
+      expectedId !== "lunar-patience" &&
+      expectedId !== "rising-power")
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
   }
@@ -9614,6 +9680,13 @@ function validatePerkDefinition(perk, expectedId) {
     perk.activationLine ===
       "two attacks in a row Astral Rhythm Applied! +5 damage" &&
     hasSingleActivationLine && !hasActivationLines;
+  const validRisingPower = expectedId === "rising-power" &&
+    perk.requiredLevel === 42 &&
+    effect?.trigger === "different-successful-damaging-offensive-spells" &&
+    effect.damagePerStep === 2 && effect.maximumSteps === 3 &&
+    perk.levelUpLine ===
+      "lvl 42 Passive 🌊 Rising Power: Successfully damaging an enemy with a different offensive spell than your previous damaging spell builds Rising Power. Each step in the chain grants +2 damage to the next different offensive spell, up to +6 damage. Repeating the same offensive spell resets Rising Power." &&
+    !hasSingleActivationLine && !hasActivationLines;
   const validAstralExpedition = expectedId === "astral-expedition" &&
     perk.requiredLevel === 33 &&
     effect?.trigger === "successful-offensive-roll-milestone" &&
@@ -9695,6 +9768,7 @@ function validatePerkDefinition(perk, expectedId) {
     !validFaeIntervention &&
     !validFaeAid &&
     !validAstralRhythm &&
+    !validRisingPower &&
     !validAstralExpedition &&
     !validAstralCuriosity &&
     !validAstralPatience &&

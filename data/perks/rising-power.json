@@ -1,0 +1,13 @@
+{
+  "id": "rising-power",
+  "name": "Rising Power",
+  "requiredLevel": 42,
+  "type": "passive",
+  "description": "Different successful damaging offensive spells build a battle-long chain for up to +6 damage. Repeating the previous damaging spell resets the chain.",
+  "levelUpLine": "lvl 42 Passive 🌊 Rising Power: Successfully damaging an enemy with a different offensive spell than your previous damaging spell builds Rising Power. Each step in the chain grants +2 damage to the next different offensive spell, up to +6 damage. Repeating the same offensive spell resets Rising Power.",
+  "effect": {
+    "trigger": "different-successful-damaging-offensive-spells",
+    "damagePerStep": 2,
+    "maximumSteps": 3
+  }
+}
