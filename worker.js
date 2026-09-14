@@ -296,6 +296,7 @@ const SPELL_FILES = {
   familiar: "familiar.json",
   "all-or-nothing": "all-or-nothing.json",
   "tidal-wave": "tidal-wave.json",
+  "conjure-gun": "conjure-gun.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -677,6 +678,7 @@ const DISCORD_COMMANDS = [
           { name: "Familiar", value: "familiar" },
           { name: "All or Nothing", value: "all-or-nothing" },
           { name: "Tidal Wave", value: "tidal-wave" },
+          { name: "Conjure Gun", value: "conjure-gun" },
         ],
       },
     ],
@@ -3715,6 +3717,8 @@ async function performCastUnlocked(
     ? "/cast spell:All or Nothing" : "!cast all or nothing";
   const tidalWaveCommand = platform === "discord"
     ? "/cast spell:Tidal Wave" : "!cast tidal";
+  const conjureGunCommand = platform === "discord"
+    ? "/cast spell:Conjure Gun" : "!cast conjure gun";
 
   if (!spellInputValue) {
     return {
@@ -3725,7 +3729,8 @@ async function performCastUnlocked(
         `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
         `${fallingStarCommand} for Falling Star, ${wakeCommand} for Leviathan's Wake, ` +
         `${berryCommand} for Berries, ${familiarCommand} for Familiar, or ` +
-        `${allOrNothingCommand} for All or Nothing, or ${tidalWaveCommand} for Tidal Wave.`,
+        `${allOrNothingCommand} for All or Nothing, ${tidalWaveCommand} for Tidal Wave, or ` +
+        `${conjureGunCommand} for Conjure Gun.`,
     };
   }
 
@@ -3743,7 +3748,8 @@ async function performCastUnlocked(
         `${starSparkCommand}, ${jellyCommand}, ${mendCommand}, or ` +
         `${moonbeamCommand}, ${evocationCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
         `${fallingStarCommand}, ${wakeCommand}, ${berryCommand}, ` +
-        `${familiarCommand}, ${allOrNothingCommand}, or ${tidalWaveCommand}.`,
+        `${familiarCommand}, ${allOrNothingCommand}, ${tidalWaveCommand}, or ` +
+        `${conjureGunCommand}.`,
     };
   }
 
@@ -4733,6 +4739,17 @@ async function advanceLeviathansWake(
 }
 
 function rollSpellDamage(spell) {
+  if (spell.id === "conjure-gun") {
+    const rolls = Array.from(
+      { length: spell.damage.dice },
+      () => randomInteger(1, spell.damage.sides),
+    );
+    const criticalShots = rolls.filter((roll) => roll === spell.damage.sides).length;
+    return {
+      rolls, total: rolls.reduce((sum, roll) => sum + roll, 0),
+      criticalShots,
+    };
+  }
   if (spell.id === "tidal-wave") {
     const rolls = Array.from(
       { length: spell.damage.dice },
@@ -4792,6 +4809,11 @@ function rollSpellDamage(spell) {
 
 function resolveSpellRoll(spell, spellRoll, finalTotal, moonbeamMastery = null,
   allOrNothingPriorStreak = 0, meteorAlignmentMastery = null) {
+  if (spell.id === "conjure-gun") {
+    const baseDamage = spellRoll.total + spellRoll.criticalShots;
+    return { ...spellRoll, finalTotal, baseDamage, damage: baseDamage,
+      isCritical: false };
+  }
   if (spell.id === "tidal-wave") {
     const tier = spell.damageTiers.find((entry) =>
       finalTotal <= entry.finalMaximum) || spell.damageTiers.at(-1);
@@ -4906,6 +4928,19 @@ function formatSpellCastMessage(
   effectResult,
   platform = "twitch",
 ) {
+  if (spell.id === "conjure-gun") {
+    const separator = platform === "discord" ? "\n\n" : " | ";
+    const criticalWord = spellRoll.criticalShots === 1 ? "Hit" : "Hits";
+    return [
+      randomChoice(spell.flavor),
+      `Shots: ${spellRoll.rolls.join(", ")}`,
+      `20 Hits!`,
+      `${spellRoll.criticalShots} Critical ${criticalWord}!`,
+      `Base Damage: ${spellRoll.baseDamage}`,
+      ...(spellRoll.strengthBonus ? [`Strength: +${spellRoll.strengthBonus}`] : []),
+      `Total Damage: ${spellRoll.damage}`,
+    ].join(separator);
+  }
   if (spell.id === "tidal-wave") {
     const tier = spell.damageTiers.find((entry) => entry.id === spellRoll.tierId);
     const separator = platform === "discord" ? "\n\n" : " | ";
@@ -9165,7 +9200,7 @@ function validateSpellDefinition(spell, expectedId) {
   }
 
   if (spell.type === "offensive") {
-    if (spell.id !== "falling-star" && (
+    if (spell.id !== "falling-star" && spell.id !== "conjure-gun" && (
       !isPositiveInteger(spell.damage?.dice) ||
       !isPositiveInteger(spell.damage?.sides) ||
       !isPositiveInteger(spell.criticalThreshold) ||
@@ -9183,6 +9218,14 @@ function validateSpellDefinition(spell, expectedId) {
       "fourthSuccess", "fifthPlusSuccess", "highStreakFailure"].some(
       (tier) => !isTextArray(spell.flavor?.[tier]))
   )) throw new Error("Invalid All or Nothing content data.");
+  if (expectedId === "conjure-gun" && (
+    spell.name !== "Conjure Gun" || spell.requiredLevel !== 45 ||
+    spell.manaCost !== 35 || spell.type !== "offensive" ||
+    spell.damage?.dice !== 20 || spell.damage?.sides !== 10 ||
+    !isTextArray(spell.flavor) || spell.flavor.length !== 15 ||
+    spell.levelUpLine !==
+      "lvl 45 Spell 🔫 Conjure Gun: Cast Conjure Gun for 35 Mana. Conjure an Astral gun and rapidly fire 20 shots. Roll 20d10, with each die dealing damage equal to its roll. Natural 10s are Critical Hits and deal 11 damage instead. Add the damage of all 20 shots together, then add Strength to determine the final damage."
+  )) throw new Error("Invalid Conjure Gun content data.");
   if (expectedId === "tidal-wave") {
     const tiers = [
       ["rising", "Rising Tide", 14, 40, 5],

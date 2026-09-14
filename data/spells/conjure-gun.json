@@ -1,0 +1,28 @@
+{
+  "id": "conjure-gun",
+  "name": "Conjure Gun",
+  "aliases": ["conjure gun", "gun"],
+  "requiredLevel": 45,
+  "manaCost": 35,
+  "type": "offensive",
+  "description": "Conjure an Astral gun and fire twenty 1d10 shots. Each natural 10 deals 11 damage, then add Strength once.",
+  "levelUpLine": "lvl 45 Spell 🔫 Conjure Gun: Cast Conjure Gun for 35 Mana. Conjure an Astral gun and rapidly fire 20 shots. Roll 20d10, with each die dealing damage equal to its roll. Natural 10s are Critical Hits and deal 11 damage instead. Add the damage of all 20 shots together, then add Strength to determine the final damage.",
+  "damage": { "dice": 20, "sides": 10 },
+  "flavor": [
+    "You conjure an Astral gun and inspect it proudly. Behold, magic! You fire the first shot. Magic with bullets!",
+    "Astral light twists together in your hands and somehow becomes a gun. There is absolutely no reason to question this. You start running and open fire.",
+    "You weave an Astral gun into existence and immediately take off around the enemy. Aiming is important, but apparently firing twenty times is importanter.",
+    "An Astral gun flashes into your hands. You could carefully line up your shot, but you have twenty of them. Spray and pray!",
+    "You conjure an Astral gun and begin circling the enemy at full speed. Running? Check. Gun? Check. Sensible plan? Completely optional.",
+    "Starlight gathers into the suspiciously familiar shape of a gun. You admire your mastery of the Astral arts before immediately using it to fire twenty times.",
+    "You weave together an Astral gun and take aim. One shot would probably be reasonable. Fortunately, you didn't conjure this thing to be reasonable.",
+    "An Astral gun materializes in your hands. Somewhere, centuries of magical tradition suddenly feel deeply concerned. You start firing.",
+    "You summon an Astral gun and dash around the enemy, filling the air with magical shots. The strategy is simple: keep running until the problem has significantly more holes in it.",
+    "Astral energy gathers between your hands. Moonbeam? Falling Star? Some ancient elven technique? Nope. Gun.",
+    "You conjure an Astral gun and immediately start running. The enemy gets approximately half a second to process this development before the barrage begins.",
+    "You weave an Astral gun from shimmering light and inspect your creation. Thousands of possibilities exist within the Astral arts. You have chosen bullets.",
+    "An Astral gun snaps into existence. You take off around the enemy and begin firing with the confidence of someone who definitely did not just invent this strategy five seconds ago.",
+    "You conjure an Astral gun and start running circles around the enemy. Twenty magical shots should be more than enough to prove that this was an excellent and completely responsible use of Mana.",
+    "Starlight forms into an Astral gun in your hands. After everything you've learned about magic on your journey, you have finally reached the natural conclusion: give the magic a gun."
+  ]
+}
