@@ -9,6 +9,7 @@ All source JSON remains authoritative; do not edit generated copies.
 ```text
 node scripts/build-worker.cjs
 node scripts/build-worker.cjs --check
+node scripts/test-deployment-artifact.cjs
 node scripts/test-free-tier.cjs
 node scripts/test-runtime-reliability.cjs
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-expansion.ps1
@@ -19,6 +20,10 @@ The deterministic build validates and embeds every source JSON file into
 `dist/worker.js`. `--check` fails if that artifact is missing or stale. Rebuild
 after changing code or content. No dependencies, network access, account changes,
 or deployment are performed by the build.
+
+Generation alone does not validate a release. The deployment-artifact smoke test
+must pass before uploading: it executes the exact generated file, checks every
+document through the game's real loaders, and exercises all six regions.
 
 **The standalone upload artifact is now `dist/worker.js`, not the root
 `worker.js`.** It retains the same module Worker export and existing bindings,

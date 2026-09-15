@@ -3128,14 +3128,14 @@ function applyRisingPower(combatState, activePerks, spellId) {
   if (previous?.spellId === spellId) {
     combatState.risingPower = { spellId, steps: 0 };
     return previous.steps > 0
-      ? { bonusDamage: 0, message: "🌊 Rising Power resets." }
+      ? { bonusDamage: 0, message: "Rising Power resets." }
       : null;
   }
   const steps = previous ? Math.min(previous.steps + 1, perk.effect.maximumSteps) : 0;
   combatState.risingPower = { spellId, steps };
   const bonusDamage = steps * perk.effect.damagePerStep;
   return bonusDamage
-    ? { bonusDamage, message: `🌊 Rising Power: +${bonusDamage} damage`,
+    ? { bonusDamage, message: `Rising Power: +${bonusDamage} damage`,
       reachedMaximum: previous?.steps === perk.effect.maximumSteps - 1 &&
         steps === perk.effect.maximumSteps }
     : null;
@@ -10823,8 +10823,7 @@ async function formatLevelUpUnlocks(startingLevel, endingLevel) {
     })),
     ...perks.map((perk) => ({
       level: perk.requiredLevel,
-      line: perk.levelUpLine ||
-        `Perk Unlocked: ${perk.name} — ${perk.description}`,
+      line: formatPerkUnlockLine(perk),
     })),
   ];
   return unlocks
@@ -10872,14 +10871,20 @@ async function getActivePerks(playerLevel) {
   return perks.filter((perk) => level >= perk.requiredLevel);
 }
 
+function formatPerkUnlockLine(perk) {
+  const line = perk.levelUpLine ||
+    `Perk Unlocked: ${perk.name} — ${perk.description}`;
+  // Keep category markers in metadata, not Rising Power player-facing text.
+  return perk.id === "rising-power" ? line.replace("🌊 Rising Power", "Rising Power") : line;
+}
+
 async function formatPerkUnlocks(startingLevel, endingLevel) {
   const perks = await getPerkDefinitions();
   return perks
     .filter((perk) =>
       perk.requiredLevel > startingLevel &&
       perk.requiredLevel <= endingLevel)
-    .map((perk) => perk.levelUpLine ||
-      `Perk Unlocked: ${perk.name} — ${perk.description}`);
+    .map(formatPerkUnlockLine);
 }
 
 async function getRegionMetadata(regionId) {

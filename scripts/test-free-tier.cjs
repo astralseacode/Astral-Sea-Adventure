@@ -6,7 +6,7 @@ const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const fallback = 'The Astral Sea is unusually turbulent. Please try again shortly.';
 
-async function runtime(source, { budget = 50, seed = 0x51ea } = {}) {
+async function runtime(source, { budget = 50, seed = 0x51ea, initialize = true, accountId = '123456789' } = {}) {
   const values = new Map(), errors = [], deliveries = [], rolls = [];
   let counts, armed = false, rejectWrite = null;
   const reset = () => { counts = { content: 0, followups: 0, reads: 0, writes: {}, deletes: {} }; };
@@ -35,7 +35,7 @@ async function runtime(source, { budget = 50, seed = 0x51ea } = {}) {
   vm.runInContext(source.replace('export default {','const workerExport = {'), c);
   c.verifyDiscordRequest = async () => true;
   c.randomInteger = (min,max) => rolls.length ? rolls.shift() : min + Math.floor(math.random()*(max-min+1));
-  const key = 'backpack:discord:123456789';
+  const key = 'backpack:discord:' + accountId;
   const env = { DISCORD_PUBLIC_KEY: 'offline', Backpack: {
     get: async key => { counts.reads++; return values.get(key) ?? null; },
     put: async (key,value,options) => {
@@ -49,10 +49,10 @@ async function runtime(source, { budget = 50, seed = 0x51ea } = {}) {
   const progress = c.createEmptyProgress();
   Object.assign(progress,{xp:c.totalXpForLevel(50),mana:250,hp:200,restBufferType:'long'});
   progress.stats.focus=10;progress.stats.vitality=5;
-  await c.savePlayerProgress(env,key,progress);
+  if (initialize) await c.savePlayerProgress(env,key,progress);
   const enemy = {id:'test-enemy',name:'Test Enemy',level:20,hp:1000,damageBonus:0,
     reward:{candies:{min:1,max:1},xp:{min:1,max:1}},defeatCandyLoss:0};
-  await c.startCombatEncounter(env,key,c.getRegionById('moonlit-reef'),1,enemy,'discord');
+  if (initialize) await c.startCombatEncounter(env,key,c.getRegionById('moonlit-reef'),1,enemy,'discord');
   const worker = vm.runInContext('workerExport',c);
   const f = {c,env,key,values,errors,rolls,enemy,
     counts:()=>counts,
@@ -69,7 +69,7 @@ async function runtime(source, { budget = 50, seed = 0x51ea } = {}) {
         ? new Request(`https://offline.invalid/?user=test&action=${name}&args=${encodeURIComponent(options)}`)
         : new Request('https://offline.invalid/discord/interactions',{method:'POST',
           headers:{'X-Signature-Ed25519':'offline','X-Signature-Timestamp':'1'},
-          body:JSON.stringify({type:2,application_id:'123456789',token:'offline-token',user:{id:'123456789'},data:{name,options}})});
+          body:JSON.stringify({type:2,application_id:'123456789',token:'offline-token',user:{id:accountId},data:{name,options}})});
       const response=await worker.fetch(request,env,{waitUntil:p=>pending.push(p)});
       const initialMs=Date.now()-start;
       await Promise.all(pending);armed=false;
