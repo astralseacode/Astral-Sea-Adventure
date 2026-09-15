@@ -10,16 +10,16 @@ async function main() {
   await f.editProgress(p => { p.hp = 50; });
   await f.editState(s => { s.playerHp = 50; });
   const stim = await f.c.performStim(f.env, f.key, 'discord');
-  assert.match(stim.message, /Astral Patience settles over you/);
+  assert.match(stim.message, /Patience settles over you/);
   assert.equal((await f.state()).astralPatience.offensiveRollModifier, 2);
 
   // A second qualifying turn keeps the same single charge and omits repeated feedback.
   await f.editProgress(p => { p.mana = 0; });
   const evocation = await f.c.performCastUnlocked(f.env, f.key, 'evocation', 'discord');
-  assert.doesNotMatch(evocation.message, /Astral Patience settles over you/);
+  assert.doesNotMatch(evocation.message, /Patience settles over you/);
   assert.equal((await f.state()).astralPatience.offensiveRollModifier, 2);
   const rejected = await f.c.performCastUnlocked(f.env, f.key, 'evocation', 'discord');
-  assert.doesNotMatch(rejected.message, /Astral Patience settles over you/);
+  assert.doesNotMatch(rejected.message, /Patience settles over you/);
 
   // All offensive actions use this shared consumption path, including Wake Turn 1.
   const combat = await f.state();
@@ -27,7 +27,7 @@ async function main() {
     combat.astralPatience = { offensiveRollModifier: 2 };
     const roll = f.c.consumeTriggeredStatusEffects(await f.progress(),
       'next_offensive_d20', natural, combat);
-    assert.equal(roll.modifierDetails.find(m => m.name === 'Astral Patience').value, 2);
+    assert.equal(roll.modifierDetails.find(m => m.name === 'Patience').value, 2);
     assert.equal(combat.astralPatience, undefined);
   }
 
@@ -35,7 +35,7 @@ async function main() {
   f.rolls.push(1, 1);
   const attack = await f.attack();
   assert.match(attack.message, /Critical Miss/);
-  assert.match(attack.message, /Astral Patience/);
+  assert.match(attack.message, /Patience/);
   assert.equal((await f.state()).astralPatience, undefined);
 
   const wake = await fixture(22);
@@ -43,7 +43,7 @@ async function main() {
   wake.rolls.push(13, 1);
   const wakeCast = await wake.c.performCastUnlocked(wake.env, wake.key,
     'leviathans-wake', 'discord');
-  assert.match(wakeCast.message, /\+2 Astral Patience/);
+  assert.match(wakeCast.message, /\+2 Patience/);
   assert.equal((await wake.state()).astralPatience, undefined);
   const savedWakeRoll = (await wake.state()).leviathansWake.finalRoll;
   await wake.editProgress(p => { p.hp = 30; });
@@ -54,6 +54,6 @@ async function main() {
 
   const fresh = await fixture(22);
   assert.equal((await fresh.state()).astralPatience, undefined);
-  console.log('Astral Patience regressions passed.');
+  console.log('Patience regressions passed.');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

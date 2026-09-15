@@ -28,7 +28,7 @@ const spark = f => cast(f, 'star', [10]);
   const afterFirstHp = (await f.state()).enemy.hp;
   const second = await star(f);
   assert.match(second.message, /🌊 Rising Power: \+2 damage/);
-  assert.match(second.message, /Astral Rhythm Applied! \+5 damage/);
+  assert.match(second.message, /Rhythm Applied! \+5 damage/);
   assert.equal((await f.state()).risingPower.steps, 1);
   assert.equal(afterFirstHp - (await f.state()).enemy.hp, 16); // 9 Power + 5 Rhythm + 2 Rising.
   const afterSecondHp = (await f.state()).enemy.hp;

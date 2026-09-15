@@ -92,7 +92,7 @@ async function gun(f, dice = shots(70), alias = 'gun') {
   chain.rolls.push(12, 2, 1, 1);
   const tidalCast = await chain.cast('tidal');
   assert.match(tidalCast.message, /Rising Power: \+2 damage/);
-  assert.match(tidalCast.message, /Astral Rhythm Applied! \+5 damage/);
+  assert.match(tidalCast.message, /Rhythm Applied! \+5 damage/);
   await chain.editProgress(p => { p.mana = 100; });
   const chainedGun = await gun(chain);
   assert.match(chainedGun.message, /Rising Power: \+4 damage/);
@@ -101,12 +101,12 @@ async function gun(f, dice = shots(70), alias = 'gun') {
 
   const echoed = await fixture(45);
   await echoed.editState(s => { s.astralEcho = { naturalRoll: 1, tierId: 'faint', displayName: 'Faint', damagePercent: 0.5 }; });
-  assert.match((await gun(echoed)).message, /Astral Echo/);
+  assert.match((await gun(echoed)).message, /Echo/);
   assert.equal((await echoed.state()).enemy.hp, 895);
 
   const charged = await fixture(45);
   await charged.editState(s => { s.enemy.astralCharge = { manaReduction: 0.5, damageIncrease: 0.15, remainingDamageUses: 1, manaDiscountAvailable: true }; });
-  assert.match((await gun(charged)).message, /Astral Charge bursts!/);
+  assert.match((await gun(charged)).message, /Charge bursts!/);
   assert.equal((await charged.progress()).mana, 82);
 
   const familiar = await fixture(45);
@@ -119,10 +119,10 @@ async function gun(f, dice = shots(70), alias = 'gun') {
   bond.rolls.push(1, 1, 0);
   await bond.cast('familiar');
   await bond.editState(s => { s.risingPower = { spellId: 'moonbeam', steps: 2 }; });
-  assert.match((await gun(bond)).message, /Astral Bond: Your Familiar's next assistance is empowered!/);
+  assert.match((await gun(bond)).message, /Bond: Your Familiar's next assistance is empowered!/);
   assert.equal((await bond.state()).familiar.actions, 1);
   await bond.editProgress(p => { p.mana = 100; });
-  assert.match((await gun(bond)).message, /Astral Bond empowers your Familiar!/);
+  assert.match((await gun(bond)).message, /Bond empowers your Familiar!/);
   assert.equal((await bond.state()).familiar.actions, 2);
 
   const harmony = await fixture(45);
@@ -131,7 +131,7 @@ async function gun(f, dice = shots(70), alias = 'gun') {
     s.astralRebound = { offensiveRollModifier: 2 };
     s.astralPatience = { offensiveRollModifier: 2 };
   });
-  assert.match((await gun(harmony)).message, /Astral Harmony\nRestored 15 Mana/);
+  assert.match((await gun(harmony)).message, /Harmony\nRestored 15 Mana/);
   assert.equal((await harmony.state()).perkUses['astral-harmony'], 1);
 
   const expedition = await fixture(45);

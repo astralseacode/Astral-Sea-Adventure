@@ -1,9 +1,9 @@
-﻿{
+{
     "id":  "astral-awakening",
-    "name":  "Astral Awakening",
+    "name":  "Awakening",
     "requiredLevel":  25,
     "type":  "passive",
-    "description":  "After surviving 5 enemy attacks in the same battle, restore 25 HP + 25 Mana and gain +2 to your next offensive roll. Activates once per battle.",
+    "description":  "After surviving 5 enemy attacks in the same battle, memories of your journey awaken the magic within you, restoring 25 HP + 25 Mana and granting +2 to your next offensive roll. Activates once per battle.",
     "effect":  {
                    "trigger":  "survived-enemy-attack",
                    "survivingAttacks":  5,
@@ -12,5 +12,5 @@
                    "offensiveRollModifier":  2,
                    "usesPerBattle":  1
                },
-    "activationLine":  "5 enemy attacks survived. Astral Awakening activates!\n\nRestored 25 HP + 25 Mana | Next offensive roll +2"
+    "activationLine":  "5 enemy attacks survived. Awakening activates!\n\nRestored 25 HP + 25 Mana | Next offensive roll +2"
 }

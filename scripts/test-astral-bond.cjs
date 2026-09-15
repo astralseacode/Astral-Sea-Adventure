@@ -2,7 +2,7 @@
 const assert = require('node:assert/strict');
 const { fixture } = require('./test-leviathans-wake.cjs');
 
-const unlock = "lvl 44 Mastery 🌌 Astral Bond: While a Familiar is active, reaching maximum Rising Power empowers the Familiar's next assistance, doubling its effects. Activates once per Familiar.";
+const unlock = "lvl 44 Mastery 🌌 Bond: While a Familiar is active, reaching maximum Rising Power empowers the Familiar's next assistance, doubling its effects. Activates once per Familiar.";
 const pair = total => total <= 7 ? [1, total - 1] : [total - 6, 6];
 
 async function summon(f, total) {
@@ -37,14 +37,14 @@ async function attack(f) {
     });
     const armedMessage = await tidal(f);
     assert.match(armedMessage.message,
-      /🌌 Astral Bond: Your Familiar's next assistance is empowered!/);
-    assert(!armedMessage.message.includes('Astral Bond empowers your Familiar!'));
+      /🌌 Bond: Your Familiar's next assistance is empowered!/);
+    assert(!armedMessage.message.includes('Bond empowers your Familiar!'));
     assert.equal((await f.state()).familiar.astralBond, 'armed');
     assert.equal((await f.state()).familiar.actions, 1);
     const before = await f.state();
     const beforeProgress = await f.progress();
     const empowered = await attack(f);
-    assert.match(empowered.message, /🌌 Astral Bond empowers your Familiar!/);
+    assert.match(empowered.message, /🌌 Bond empowers your Familiar!/);
     const after = await f.state();
     const afterProgress = await f.progress();
     assert.equal(after.familiar.astralBond, 'spent');
@@ -94,7 +94,7 @@ async function attack(f) {
   assert.equal((await protectedFinal.state()).familiarProtection[0].max, 30);
 
   const final = await attack(late);
-  assert.match(final.message, /Astral Bond empowers your Familiar!/);
+  assert.match(final.message, /Bond empowers your Familiar!/);
   assert.match(final.message, /Kinship/);
   assert(final.message.includes(spell.familiars[0].outro));
   assert.equal((await late.state()).familiar, undefined);
@@ -131,8 +131,8 @@ async function attack(f) {
   await tidal(familiarVictory);
   await familiarVictory.editState(s => { s.enemy.hp = 11; });
   const victory = await attack(familiarVictory);
-  assert.match(victory.message, /Astral Bond empowers your Familiar!/);
+  assert.match(victory.message, /Bond empowers your Familiar!/);
   assert.equal(await familiarVictory.state(), null);
 
-  console.log('Astral Bond regressions passed.');
+  console.log('Bond regressions passed.');
 })().catch(error => { console.error(error); process.exitCode = 1; });

@@ -1,11 +1,11 @@
 {
   "id": "familiar-mastery-1",
-  "name": "Astral Bond",
+  "name": "Bond",
   "spellId": "familiar",
   "requiredLevel": 44,
   "tier": 1,
   "description": "Reaching maximum Rising Power while a Familiar is active empowers its next assistance once, doubling its effects.",
-  "levelUpLine": "lvl 44 Mastery 🌌 Astral Bond: While a Familiar is active, reaching maximum Rising Power empowers the Familiar's next assistance, doubling its effects. Activates once per Familiar.",
+  "levelUpLine": "lvl 44 Mastery 🌌 Bond: While a Familiar is active, reaching maximum Rising Power empowers the Familiar's next assistance, doubling its effects. Activates once per Familiar.",
   "effect": {
     "id": "astral-bond",
     "maximumRisingPower": 6,

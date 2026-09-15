@@ -2,7 +2,7 @@
 const assert = require('node:assert/strict');
 const { fixture } = require('./test-leviathans-wake.cjs');
 
-const line = 'two attacks in a row Astral Rhythm Applied! +5 damage';
+const line = 'two attacks in a row Rhythm Applied! +5 damage';
 const dice = {
   star: [3],
   moonbeam: [4, 5, 2, 3],
@@ -42,16 +42,16 @@ async function sequence(level, names, platform = 'discord') {
   }
 
   const repeated = await sequence(32, ['moonbeam', 'moonbeam', 'jelly']);
-  assert.doesNotMatch(repeated.messages[1], /Astral Rhythm Applied/);
-  assert.match(repeated.messages[2], /Astral Rhythm Applied/);
+  assert.doesNotMatch(repeated.messages[1], /Rhythm Applied/);
+  assert.match(repeated.messages[2], /Rhythm Applied/);
   const attacks = await sequence(32, ['attack', 'attack', 'moonbeam', 'attack', 'jelly']);
-  assert.doesNotMatch(attacks.messages.slice(0, 4).join(' '), /Astral Rhythm Applied/);
+  assert.doesNotMatch(attacks.messages.slice(0, 4).join(' '), /Rhythm Applied/);
   assert.equal(attacks.state.perkUses['astral-rhythm'], 1);
-  assert.match(attacks.messages[4], /Astral Rhythm Applied/);
+  assert.match(attacks.messages[4], /Rhythm Applied/);
 
   const missed = await sequence(32, ['star', 'missedFalling', 'moonbeam']);
-  assert.doesNotMatch(missed.messages[1], /Astral Rhythm Applied/);
-  assert.match(missed.messages[2], /Astral Rhythm Applied/);
+  assert.doesNotMatch(missed.messages[1], /Rhythm Applied/);
+  assert.match(missed.messages[2], /Rhythm Applied/);
   for (const support of ['bubble', 'berries', 'stim']) {
     const f = await fixture(32);
     await use(f, 'star');
@@ -64,17 +64,17 @@ async function sequence(level, names, platform = 'discord') {
       await f.cast('bubble');
     }
     assert.equal((await f.state()).astralRhythmPreviousSpell, 'star-spark');
-    assert.match((await use(f, 'moonbeam')).message, /Astral Rhythm Applied/);
+    assert.match((await use(f, 'moonbeam')).message, /Rhythm Applied/);
   }
   const once = await sequence(32, ['star', 'moonbeam', 'jelly']);
-  assert.doesNotMatch(once.messages[2], /Astral Rhythm Applied/);
+  assert.doesNotMatch(once.messages[2], /Rhythm Applied/);
   await once.f.c.startCombatEncounter(once.f.env, once.f.key,
     once.f.c.getRegionById('moonlit-reef'), 1, once.f.enemy, 'discord');
   assert.equal((await once.f.state()).astralRhythmPreviousSpell, undefined);
   assert.equal((await once.f.state()).perkUses?.['astral-rhythm'], undefined);
 
   const wake = await sequence(32, ['star', 'wake']);
-  assert.match(wake.messages[1], /Astral Rhythm Applied/);
+  assert.match(wake.messages[1], /Rhythm Applied/);
   assert.equal(wake.state.leviathansWake.rhythmBonus, 5);
   assert.equal(wake.state.astralRhythmPreviousSpell, 'leviathans-wake');
   const beforeArrival = wake.state.enemy.hp;
@@ -86,7 +86,7 @@ async function sequence(level, names, platform = 'discord') {
   const wakeAlone = await sequence(32, ['wake']);
   await use(wakeAlone.f, 'attack');
   const arrival = await use(wakeAlone.f, 'attack');
-  assert.doesNotMatch(arrival.message, /Astral Rhythm Applied/);
+  assert.doesNotMatch(arrival.message, /Rhythm Applied/);
   assert.equal((await wakeAlone.f.state()).astralRhythmPreviousSpell,
     'leviathans-wake');
 
@@ -106,5 +106,5 @@ async function sequence(level, names, platform = 'discord') {
   await lethal.editState(s => { s.enemy.hp = moonbeamDamage + 5; });
   assert.equal((await use(lethal, 'moonbeam')).won, true);
   assert.equal(await lethal.state(), null);
-  console.log('Astral Rhythm regressions passed.');
+  console.log('Rhythm regressions passed.');
 })().catch(error => { console.error(error); process.exitCode = 1; });

@@ -58,7 +58,7 @@
     }
   ],
   "duplicateCastLine": "The depths are already answering your call. Maybe don't summon a second enormous sea creature until the first one gets here.",
-  "echoActivationLine": "Astral Echo activates! The wake echoes through the Astral Sea and strikes again for {echoDamage} damage.",
+  "echoActivationLine": "Echo activates! The wake echoes through the Astral Sea and strikes again for {echoDamage} damage.",
   "ancientFlavorChance": 0.25,
   "ancientFlavor": "You decide not to do that again.\n\nYou will absolutely do that again.",
   "easterEggChance": 0.25,

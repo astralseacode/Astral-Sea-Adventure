@@ -40,7 +40,7 @@ async function main() {
   harmony.rolls.push(10, 1);
   const combined = await harmony.attack();
   assert.match(combined.message, /\+3 Fae Second Opinion/);
-  assert.match(combined.message, /Astral Harmony\nRestored 15 Mana/);
+  assert.match(combined.message, /Harmony\nRestored 15 Mana/);
   assert.equal((await harmony.progress()).mana, 65);
 
   const falling = await fixture(29);

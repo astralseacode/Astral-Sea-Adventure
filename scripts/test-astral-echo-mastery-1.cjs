@@ -4,10 +4,10 @@ const { fixture } = require('./test-leviathans-wake.cjs');
 
 const percent = [0, 0.30, 0.35, 0.40, 0.50];
 const line = [null,
-  'Astral Echo Mastery I: Restored 5 Mana',
-  'Astral Echo Mastery I: Restored 10 Mana',
-  'Astral Echo Mastery I: Next offensive roll +1',
-  'Astral Echo Mastery I: Next offensive roll +2'];
+  'Echo Mastery I: Restored 5 Mana',
+  'Echo Mastery I: Restored 10 Mana',
+  'Echo Mastery I: Next offensive roll +1',
+  'Echo Mastery I: Next offensive roll +2'];
 async function cast(f, name, dice) {
   f.rolls.push(...dice);
   return f.cast(name);
@@ -35,14 +35,14 @@ async function attack(f, natural = 10) {
       assert.equal((await low.state()).astralEcho.damagePercent, percent[natural]);
       assert.equal((await high.state()).astralEcho.damagePercent, percent[natural]);
       assert.doesNotMatch(lowPrep.message + highPrep.message,
-        /Astral Echo Mastery I:/);
+        /Echo Mastery I:/);
       assert.equal((await high.state()).astralEchoMastery, undefined);
       assert.equal((await high.progress()).astralExpeditionRolls, 0);
       assert.equal((await high.state()).astralRhythmPreviousSpell, undefined);
       const lowHit = await cast(low, 'star', [3]);
       const highHit = await cast(high, 'star', [3]);
       assert.equal((await low.state()).enemy.hp, (await high.state()).enemy.hp);
-      assert.doesNotMatch(lowHit.message, /Astral Echo Mastery I:/);
+      assert.doesNotMatch(lowHit.message, /Echo Mastery I:/);
       assert.equal(highHit.message.split(line[natural]).length - 1, 1);
       assert.equal((await high.state()).astralEcho, undefined);
       assert.equal((await high.progress()).astralExpeditionRolls, 1);
@@ -57,10 +57,10 @@ async function attack(f, natural = 10) {
         assert.equal((await high.state()).astralEchoMastery.offensiveRollModifier,
           natural - 2);
         assert.doesNotMatch(highHit.message,
-          new RegExp(`\\+${natural - 2} Astral Echo Mastery I`));
+          new RegExp(`\\+${natural - 2} Echo Mastery I`));
         const next = await attack(high, 10);
         assert.match(next.message,
-          new RegExp(`\\+${natural - 2} Astral Echo Mastery I`));
+          new RegExp(`\\+${natural - 2} Echo Mastery I`));
         assert.equal((await high.state()).astralEchoMastery, undefined);
       }
       assert.doesNotMatch(line[natural], /\p{Extended_Pictographic}/u);
@@ -84,14 +84,14 @@ async function attack(f, natural = 10) {
   const miss = await fixture(34);
   await cast(miss, 'echo', [4]);
   const missed = await cast(miss, 'falling star', [3, 3, 3, 1]);
-  assert.doesNotMatch(missed.message, /Astral Echo Mastery I:/);
+  assert.doesNotMatch(missed.message, /Echo Mastery I:/);
   assert.equal((await miss.state()).astralEchoMastery, undefined);
 
   const tinySpell = await fixture(34);
   await cast(tinySpell, 'echo', [1]);
   const tinyEcho = await cast(tinySpell, 'star', [1]);
   assert.match(tinyEcho.message, /strikes again for 0 damage/);
-  assert.match(tinyEcho.message, /Astral Echo Mastery I: Restored 5 Mana/);
+  assert.match(tinyEcho.message, /Echo Mastery I: Restored 5 Mana/);
 
   const harmony = await fixture(34);
   await cast(harmony, 'echo', [3]);
@@ -115,8 +115,8 @@ async function attack(f, natural = 10) {
   await cast(moonbeam, 'echo', [4]);
   const moonReceipt = await cast(moonbeam, 'moonbeam', [4, 5, 2, 3]);
   assert.match(moonReceipt.message, /Moonbeam/);
-  assert.match(moonReceipt.message, /Astral Echo activates!/);
-  assert.match(moonReceipt.message, /Astral Echo Mastery I: Next offensive roll \+2/);
+  assert.match(moonReceipt.message, /Echo activates!/);
+  assert.match(moonReceipt.message, /Echo Mastery I: Next offensive roll \+2/);
 
   const victory = await fixture(34);
   await cast(victory, 'echo', [1]);
@@ -142,7 +142,7 @@ async function attack(f, natural = 10) {
       natural === 1 ? 55 : natural === 2 ? 60 : 50);
     if (natural >= 3) {
       assert.match(arrival.message,
-        new RegExp(`\\+${natural - 2} Astral Echo Mastery I`));
+        new RegExp(`\\+${natural - 2} Echo Mastery I`));
     }
   }
 
@@ -157,5 +157,5 @@ async function attack(f, natural = 10) {
     2, await capped.c.getActiveMasteries(34));
   assert.equal(full.message, line[2]);
   assert.equal((await capped.progress()).mana, 175);
-  console.log('Astral Echo Mastery I regressions passed.');
+  console.log('Echo Mastery I regressions passed.');
 })().catch(error => { console.error(error); process.exitCode = 1; });

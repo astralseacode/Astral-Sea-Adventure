@@ -71,7 +71,7 @@ async function moonbeam(f, kept = 12, low = 10, moonlight = [1, 2], enemy = 1) {
   assert.match(combined.message, /Lunar Patience:\n\+1/);
   assert.match(combined.message, /Fae Affinity:\n\+1/);
   assert.match(combined.message, /Elf Blessing:\n\+3/);
-  assert.match(combined.message, /Astral Harmony/);
+  assert.match(combined.message, /Harmony/);
 
   const otherCritical = await fixture(39);
   await otherCritical.editProgress(p => {

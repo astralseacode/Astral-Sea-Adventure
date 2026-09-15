@@ -4,17 +4,17 @@
     "spellId":  "star-spark",
     "requiredLevel":  26,
     "tier":  2,
-    "description":  "When the second Astral Charge empowerment is consumed, the remaining Astral Charge detonates for 20 damage.",
+    "description":  "When the second Charge empowerment is consumed, the remaining Charge detonates for 20 damage.",
     "effect":  {
                    "id":  "astral-charge-detonation",
                    "damage":  20
                },
     "flavor":  [
-                   "The Astral Charge flashes brightly on your foe\u0027s forehead.\n\nThere is a very brief moment where everyone realizes what is about to happen.\n\nIt explodes.",
-                   "Your foe finally manages to touch the Astral Charge.\n\nThis turns out to be a mistake.",
-                   "The Astral Charge sparkles one last time.\n\nYour foe looks concerned.\n\nThey are correct.",
-                   "The Astral Charge begins flashing faster and faster.\n\nYour foe appears to understand the situation approximately one second too late.",
-                   "The Astral Charge has spent quite enough time on your foe\u0027s forehead.\n\nIt decides to leave violently.",
-                   "Your foe looks up at the glowing Astral Charge.\n\nThe Astral Charge looks back.\n\nThis relationship ends explosively."
+                   "The Charge flashes brightly on your foe\u0027s forehead.\n\nThere is a very brief moment where everyone realizes what is about to happen.\n\nIt explodes.",
+                   "Your foe finally manages to touch the Charge.\n\nThis turns out to be a mistake.",
+                   "The Charge sparkles one last time.\n\nYour foe looks concerned.\n\nThey are correct.",
+                   "The Charge begins flashing faster and faster.\n\nYour foe appears to understand the situation approximately one second too late.",
+                   "The Charge has spent quite enough time on your foe\u0027s forehead.\n\nIt decides to leave violently.",
+                   "Your foe looks up at the glowing Charge.\n\nThe Charge looks back.\n\nThis relationship ends explosively."
                ]
 }

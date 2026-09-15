@@ -193,7 +193,7 @@ async function main() {
     const echoed = f.c.applyPercentageOfDamage(primary, echo.damagePercent);
     const result = await f.c.advanceLeviathansWake(f.env, f.key, s, await f.progress(), f.platform);
     assert.equal(s.enemy.hp, hpBefore - primary - echoed - 5);
-    assert(result.message.indexOf('Astral Echo activates!') < result.message.indexOf('Astral Aftershock activates!'));
+    assert(result.message.indexOf('Echo activates!') < result.message.indexOf('Aftershock activates!'));
     assert.equal(s.leviathansWake, undefined);
   });
 
@@ -217,8 +217,8 @@ async function main() {
     const count = f.randomCalls.length;
     const result = await f.cast('falling star');
     assert.equal(result.won, true);
-    assert(result.message.includes('Astral Aftershock activates!'));
-    assert(result.message.includes('Astral Harvest activates!'));
+    assert(result.message.includes('Aftershock activates!'));
+    assert(result.message.includes('Harvest activates!'));
     assert.equal(await f.state(), null);
     assert.equal((await f.progress()).mana, 90);
     assert.equal((await f.progress()).hp, 65);

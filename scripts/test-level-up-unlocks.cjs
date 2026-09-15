@@ -6,7 +6,7 @@ const vm = require('node:vm');
 const { fixture } = require('./test-leviathans-wake.cjs');
 
 const level35 = "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak.";
-const level36 = 'lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP and 20 Mana.';
+const level36 = 'lvl 36 Passive ⭐ Defiance: Defeating an enemy while at or below 25% HP restores 20 HP and 20 Mana.';
 const level37 = "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by Leviathan's Wake now leave an additional effect when they arrive. Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient Leviathan deals +20 damage and restores 10 Mana.";
 
 (async () => {

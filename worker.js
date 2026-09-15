@@ -672,7 +672,7 @@ const DISCORD_COMMANDS = [
           { name: "Moonbeam", value: "moonbeam" },
           { name: "Evocation", value: "evocation" },
           { name: "Bubble", value: "bubble" },
-          { name: "Astral Echo", value: "astral-echo" },
+          { name: "Echo", value: "astral-echo" },
           { name: "Falling Star", value: "falling-star" },
           { name: "Leviathan's Wake", value: "leviathans-wake" },
           { name: "Berry", value: "berry" },
@@ -2935,7 +2935,7 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
   if (active.actions === 5) delete combatState.familiar;
   return {
     progress: updatedProgress,
-    message: (astralBond ? "🌌 Astral Bond empowers your Familiar!\n\n" : "") +
+    message: (astralBond ? "🌌 Bond empowers your Familiar!\n\n" : "") +
       `${creature.name} ${clauses.join(" + ")}.` +
       (milestone ? `\n\n${milestone}` : "") +
       (kinship ? `\n\n${kinship.activationLine}` : ""),
@@ -3100,7 +3100,7 @@ async function resolvePlayerCombatAction(
           0, combatState.enemy.hp - detonation.effect.damage,
         );
         chargeDetonationMessage = randomChoice(detonation.flavor) + "\n\n" +
-          `Astral Charge detonates → ${detonation.effect.damage} dmg`;
+          `Charge detonates → ${detonation.effect.damage} dmg`;
       }
     }
   }
@@ -3128,7 +3128,7 @@ async function resolvePlayerCombatAction(
       activeMasteries.some((mastery) => mastery.effect.id === "astral-bond")) {
     combatState.familiar.astralBond = "armed";
     astralBondArmedMessage =
-      "🌌 Astral Bond: Your Familiar's next assistance is empowered!";
+      "🌌 Bond: Your Familiar's next assistance is empowered!";
   }
 
   let momentumMessage = "";
@@ -3751,8 +3751,8 @@ async function performCastUnlocked(
     ? "/cast spell:Bubble"
     : "!cast bubble";
   const astralEchoCommand = platform === "discord"
-    ? "/cast spell:Astral Echo"
-    : "!cast astral echo";
+    ? "/cast spell:Echo"
+    : "!cast echo";
   const fallingStarCommand = platform === "discord"
     ? "/cast spell:Falling Star"
     : "!cast falling star";
@@ -3774,7 +3774,7 @@ async function performCastUnlocked(
         `Use ${blessingCommand} for Elf Blessing, ${jellyCommand} ` +
         `for Jellyfish, ${starSparkCommand} for Star Spark, or ` +
         `${mendCommand} for Mend, ${moonbeamCommand} for Moonbeam, ${evocationCommand} for Evocation, or ` +
-        `${bubbleCommand} for Bubble, ${astralEchoCommand} for Astral Echo, or ` +
+        `${bubbleCommand} for Bubble, ${astralEchoCommand} for Echo, or ` +
         `${fallingStarCommand} for Falling Star, ${wakeCommand} for Leviathan's Wake, ` +
         `${berryCommand} for Berries, ${familiarCommand} for Familiar, or ` +
         `${allOrNothingCommand} for All or Nothing, ${tidalWaveCommand} for Tidal Wave, or ` +
@@ -3981,14 +3981,14 @@ async function performCastUnlocked(
     if (!currentCombatState) {
       return {
         message:
-          "Astral Echo can only be cast during a fight. Start or continue an " +
+          "Echo can only be cast during a fight. Start or continue an " +
           "Adventure battle first.",
       };
     }
 
     if (currentCombatState.astralEcho) {
       const message =
-        "Your Astral Echo is already storing power. Cast an offensive spell to release it first.";
+        "Your Echo is already storing power. Cast an offensive spell to release it first.";
       return {
         message: platform === "discord"
           ? appendDiscordCombatHud(message, currentCombatState, progress)
@@ -4031,16 +4031,16 @@ async function performCastUnlocked(
           saveCombatState(env, backpackKey, originalCombatState),
         ]);
       } catch (rollbackError) {
-        console.error("Astral Echo cast rollback failed:", rollbackError);
+        console.error("Echo cast rollback failed:", rollbackError);
       }
       throw error;
     }
 
     const castParts = [
       tier.narration,
-      `Astral Echo Roll: ${naturalRoll} → ${tier.displayName}`,
+      `Echo Roll: ${naturalRoll} → ${tier.displayName}`,
       `Echo Power: ${Math.round(tier.damagePercent * 100)}%`,
-      "Your Astral Echo is stored. Your turn continues.",
+      "Your Echo is stored. Your turn continues.",
     ];
     const hud = formatDiscordCombatHud(currentCombatState, updatedProgress);
     return {
@@ -4499,7 +4499,7 @@ async function performCastUnlocked(
   );
   if (astralCharge && (!isAllOrNothing || resolvedSpellRoll.damage > 0)) {
     const chargeMessage =
-      "Astral Charge bursts! Your spell surges with borrowed starlight!";
+      "Charge bursts! Your spell surges with borrowed starlight!";
     castMessage = platform === "discord"
       ? `${chargeMessage}\n\n${castMessage}`
       : `${chargeMessage} | ${castMessage}`;
@@ -4726,8 +4726,8 @@ async function advanceLeviathansWake(
     parts.push(spell.easterEggs[egg]);
   }
   parts.push(`${spell.name}: ${wake.baseDamage} +${strength} Strength` +
-    `${wake.astralChargeSnapshot ? " + Astral Charge" : ""}` +
-    `${wake.rhythmBonus ? " + Astral Rhythm" : ""}` +
+    `${wake.astralChargeSnapshot ? " + Charge" : ""}` +
+    `${wake.rhythmBonus ? " + Rhythm" : ""}` +
     `${sparkBerry ? " + Spark Berry" : ""} → ${primaryDamage} dmg`);
   combatState.enemy.hp = Math.max(0, combatState.enemy.hp - primaryDamage);
   if (wake.astralEchoSnapshot) {
@@ -5142,8 +5142,8 @@ function formatStarSparkCastMessage(
     ...(spellRoll.appliesAstralCharge
       ? [
           spellRoll.astralChargeDamageUses > 1
-            ? "Astral Charge applied! Your next two offensive spells deal 15% more damage; the first also costs 50% less Mana."
-            : "Astral Charge applied! Your next offensive spell costs 50% less Mana and deals 15% more damage.",
+            ? "Charge applied! Your next two offensive spells deal 15% more damage; the first also costs 50% less Mana."
+            : "Charge applied! Your next offensive spell costs 50% less Mana and deals 15% more damage.",
         ]
       : []),
     formatCompactCombatRoll(
@@ -5470,7 +5470,7 @@ async function resolveCombatVictory(
         ? astralHarvest.activationLine
             .replace("{hpGained}", String(hpGained))
             .replace("{manaGained}", String(manaGained))
-        : `Astral Harvest activates! You gain ${gains[0]}.`;
+        : `Harvest activates! You gain ${gains[0]}.`;
     }
   }
   let astralDefianceMessage = "";
@@ -8631,7 +8631,7 @@ async function resolveAstralCuriosity(
       );
       message = hpRestored > 0
         ? message.replace("10 HP", `${hpRestored} HP`)
-        : "Astral Curiosity activates! The matching dice shimmer as a suspiciously familiar Fae light wraps around you. Somewhere very far away, you get the distinct impression Shizuki is pleased with herself. Your HP is already full.";
+        : "Curiosity activates! The matching dice shimmer as a suspiciously familiar Fae light wraps around you. Somewhere very far away, you get the distinct impression Shizuki is pleased with herself. Your HP is already full.";
     } else if (outcome.effectType === "restore-mana") {
       manaRestored = Math.min(
         outcome.amount,
@@ -8639,7 +8639,7 @@ async function resolveAstralCuriosity(
       );
       message = manaRestored > 0
         ? message.replace("10 Mana", `${manaRestored} Mana`)
-        : "Astral Curiosity activates! The matching dice sparkle and Astral energy suddenly rushes back into you. For just a moment, you swear you hear someone quietly say, *“You're welcome~”* Your Mana is already full.";
+        : "Curiosity activates! The matching dice sparkle and Astral energy suddenly rushes back into you. For just a moment, you swear you hear someone quietly say, *“You're welcome~”* Your Mana is already full.";
     } else if (outcome.effectType === "award-candies") {
       candiesAwarded = outcome.amount;
     } else if (outcome.effectType === "offensive-roll") {
@@ -8924,9 +8924,9 @@ function consumeTriggeredStatusEffects(
     const curiosityModifier =
       combatState.astralCuriosity.offensiveRollModifier;
     modifier += curiosityModifier;
-    applied.push("Astral Curiosity");
+    applied.push("Curiosity");
     modifierDetails.push({
-      name: "Astral Curiosity",
+      name: "Curiosity",
       value: curiosityModifier,
     });
     delete combatState.astralCuriosity;
@@ -8941,22 +8941,22 @@ function consumeTriggeredStatusEffects(
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.astralPatience) {
     const patienceModifier = combatState.astralPatience.offensiveRollModifier;
     modifier += patienceModifier;
-    applied.push("Astral Patience");
-    modifierDetails.push({ name: "Astral Patience", value: patienceModifier });
+    applied.push("Patience");
+    modifierDetails.push({ name: "Patience", value: patienceModifier });
     delete combatState.astralPatience;
   }
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.astralAwakening) {
     const awakeningModifier = combatState.astralAwakening.offensiveRollModifier;
     modifier += awakeningModifier;
-    applied.push("Astral Awakening");
-    modifierDetails.push({ name: "Astral Awakening", value: awakeningModifier });
+    applied.push("Awakening");
+    modifierDetails.push({ name: "Awakening", value: awakeningModifier });
     delete combatState.astralAwakening;
   }
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.astralEchoMastery) {
     const echoModifier = combatState.astralEchoMastery.offensiveRollModifier;
     modifier += echoModifier;
-    applied.push("Astral Echo Mastery I");
-    modifierDetails.push({ name: "Astral Echo Mastery I", value: echoModifier });
+    applied.push("Echo Mastery I");
+    modifierDetails.push({ name: "Echo Mastery I", value: echoModifier });
     delete combatState.astralEchoMastery;
   }
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.faeSecondOpinion) {
@@ -9447,7 +9447,7 @@ function validateSpellDefinition(spell, expectedId) {
       typeof spell.activationLine !== "string" ||
       !spell.activationLine.includes("{echoDamage}")
     ) {
-      throw new Error("Invalid Astral Echo content data.");
+      throw new Error("Invalid Echo content data.");
     }
   }
 
@@ -9587,12 +9587,12 @@ function validateMasteryDefinition(mastery, expectedId) {
     mastery.levelUpLine ===
       "lvl 41 Mastery ☄️ Meteor Alignment: Falling Star's Power dice can form a Meteor Alignment. If two Power dice match, add +10 Power. If all three Power dice match, add +20 Power instead. If the three Power dice total exactly 7, add +15 Power.";
   const validAstralBond = expectedId === "familiar-mastery-1" &&
-    mastery.name === "Astral Bond" && mastery.spellId === "familiar" &&
+    mastery.name === "Bond" && mastery.spellId === "familiar" &&
     mastery.requiredLevel === 44 && mastery.tier === 1 &&
     effect?.id === "astral-bond" && effect.maximumRisingPower === 6 &&
     effect.assistanceMultiplier === 2 &&
     mastery.levelUpLine ===
-      "lvl 44 Mastery 🌌 Astral Bond: While a Familiar is active, reaching maximum Rising Power empowers the Familiar's next assistance, doubling its effects. Activates once per Familiar.";
+      "lvl 44 Mastery 🌌 Bond: While a Familiar is active, reaching maximum Rising Power empowers the Familiar's next assistance, doubling its effects. Activates once per Familiar.";
   const wakeMasteryEffects = [
     ["wakefin", 0, 5, 0, "Restored 5 Mana"],
     ["astral-manta", 0, 0, 5, "Gained 5 protection"],
@@ -9687,10 +9687,10 @@ function validateMasteryDefinition(mastery, expectedId) {
     mastery.flavor.every((line) =>
       typeof line === "string" && line.trim());
   const echoMasteryOutcomes = [
-    [1, 5, 0, "Astral Echo Mastery I: Restored 5 Mana"],
-    [2, 10, 0, "Astral Echo Mastery I: Restored 10 Mana"],
-    [3, 0, 1, "Astral Echo Mastery I: Next offensive roll +1"],
-    [4, 0, 2, "Astral Echo Mastery I: Next offensive roll +2"],
+    [1, 5, 0, "Echo Mastery I: Restored 5 Mana"],
+    [2, 10, 0, "Echo Mastery I: Restored 10 Mana"],
+    [3, 0, 1, "Echo Mastery I: Next offensive roll +1"],
+    [4, 0, 2, "Echo Mastery I: Next offensive roll +2"],
   ];
   const validEchoMastery = expectedId === "astral-echo-mastery-1" &&
     mastery.spellId === "astral-echo" && mastery.requiredLevel === 34 &&
@@ -9793,15 +9793,15 @@ function validatePerkDefinition(perk, expectedId) {
     effect?.trigger === "enemy-defeated-low-hp" &&
     effect.hpThresholdPercent === 25 &&
     effect.hpRestore === 20 && effect.manaRestore === 20 &&
-    perk.activationLine === "Astral Defiance activates!\n\n+20 HP +20 Mana" &&
+    perk.activationLine === "Defiance activates!\n\n+20 HP +20 Mana" &&
     hasSingleActivationLine && !hasActivationLines;
   const validReprieve = expectedId === "astral-reprieve" &&
     perk.requiredLevel === 38 &&
     effect?.trigger === "enemy-defeated-without-stim" &&
     effect.manaRestore === 30 &&
-    perk.activationLine === "No Stims Used - Astral Reprieve +30 Mana" &&
+    perk.activationLine === "No Stims Used - Reprieve +30 Mana" &&
     perk.levelUpLine ===
-      "lvl 38 Passive ✨ Astral Reprieve: Defeating an enemy without using Stim during the battle restores 30 Mana." &&
+      "lvl 38 Passive ✨ Reprieve: Defeating an enemy without using Stim during the battle restores 30 Mana." &&
     hasSingleActivationLine && !hasActivationLines;
   const validLunarPatience = expectedId === "lunar-patience" &&
     perk.requiredLevel === 39 &&
@@ -9813,7 +9813,7 @@ function validatePerkDefinition(perk, expectedId) {
   const validAftershock = expectedId === "astral-aftershock" &&
     effect?.trigger === "critical-offensive-spell" &&
     Number(effect.bonusDamage) === 5 &&
-    perk.activationLine === "Astral Aftershock activates! +5 damage." &&
+    perk.activationLine === "Aftershock activates! +5 damage." &&
     hasSingleActivationLine &&
     !hasActivationLines;
   const validFaeIntervention = expectedId === "fae-intervention" &&
@@ -9835,7 +9835,7 @@ function validatePerkDefinition(perk, expectedId) {
     effect?.trigger === "different-successful-damaging-spells" &&
     effect.bonusDamage === 5 && effect.usesPerBattle === 1 &&
     perk.activationLine ===
-      "two attacks in a row Astral Rhythm Applied! +5 damage" &&
+      "two attacks in a row Rhythm Applied! +5 damage" &&
     hasSingleActivationLine && !hasActivationLines;
   const validRisingPower = expectedId === "rising-power" &&
     perk.requiredLevel === 42 &&
@@ -9887,7 +9887,7 @@ function validatePerkDefinition(perk, expectedId) {
     effect.hpRestore === 25 && effect.manaRestore === 25 &&
     effect.offensiveRollModifier === 2 && effect.usesPerBattle === 1 &&
     perk.activationLine ===
-      "5 enemy attacks survived. Astral Awakening activates!\n\n" +
+      "5 enemy attacks survived. Awakening activates!\n\n" +
       "Restored 25 HP + 25 Mana | Next offensive roll +2" &&
     hasSingleActivationLine && !hasActivationLines;
   const validAstralHarmony = expectedId === "astral-harmony" &&
@@ -9895,7 +9895,7 @@ function validatePerkDefinition(perk, expectedId) {
     effect?.trigger === "successful-offensive-roll-with-distinct-bonuses" &&
     effect.minimumSources === 3 && effect.manaRestore === 15 &&
     effect.usesPerBattle === 1 &&
-    perk.activationLine === "Astral Harmony\nRestored 15 Mana" &&
+    perk.activationLine === "Harmony\nRestored 15 Mana" &&
     hasSingleActivationLine && !hasActivationLines;
   const validFaeSecondOpinion = expectedId === "fae-second-opinion" &&
     perk.requiredLevel === 29 &&

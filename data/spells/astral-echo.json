@@ -1,11 +1,11 @@
 {
   "id": "astral-echo",
-  "name": "Astral Echo",
+  "name": "Echo",
   "aliases": ["astral echo", "echo"],
   "requiredLevel": 12,
   "manaCost": 25,
   "type": "pre-action-support",
-  "description": "Store an Astral Echo that makes your next offensive spell strike again for a percentage of its final damage without ending your normal action.",
+  "description": "Store an Echo that makes your next offensive spell strike again for a percentage of its final damage without ending your normal action.",
   "damage": {
     "dice": 1,
     "sides": 4
@@ -40,5 +40,5 @@
       "narration": "The Astral Sea suddenly resonates around you as brilliant starlight gathers into a perfect rhythm. A Perfect Echo has been stored at 50% power."
     }
   ],
-  "activationLine": "Astral Echo activates! Your spell echoes through the Astral Sea and strikes again for {echoDamage} damage."
+  "activationLine": "Echo activates! Your spell echoes through the Astral Sea and strikes again for {echoDamage} damage."
 }

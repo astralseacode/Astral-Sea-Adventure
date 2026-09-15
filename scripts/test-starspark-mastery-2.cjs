@@ -31,7 +31,7 @@ async function main() {
     await charge(f);
     f.rolls.push(2, 1);
     const first = await f.cast('star');
-    assert.doesNotMatch(first.message, /Astral Charge detonates/);
+    assert.doesNotMatch(first.message, /Charge detonates/);
     assert.equal((await f.progress()).mana, 95);
     assert.equal((await f.state()).enemy.astralCharge.remainingDamageUses, 1);
     assert.equal((await f.state()).enemy.astralCharge.manaDiscountAvailable, false);
@@ -42,11 +42,11 @@ async function main() {
     assert.equal((await f.progress()).mana, 85);
     assert.equal((await f.state()).enemy.astralCharge, undefined);
     if (level === 26) {
-      assert.match(second.message, /Astral Charge detonates → 20 dmg/);
-      assert.equal(second.message.split('Astral Charge detonates → 20 dmg').length - 1, 1);
+      assert.match(second.message, /Charge detonates → 20 dmg/);
+      assert.equal(second.message.split('Charge detonates → 20 dmg').length - 1, 1);
       assert.equal(damage, 22); // 2 base +15% rounds to 2, then fixed 20.
     } else {
-      assert.doesNotMatch(second.message, /Astral Charge detonates/);
+      assert.doesNotMatch(second.message, /Charge detonates/);
       assert.equal(damage, 2);
     }
   }
@@ -58,14 +58,14 @@ async function main() {
     const result = await f.cast('star');
     assert(result.message.includes(mastery.flavor[index]));
     assert.equal(mastery.flavor.filter(line => result.message.includes(line)).length, 1);
-    assert.equal(result.message.split('Astral Charge detonates → 20 dmg').length - 1, 1);
+    assert.equal(result.message.split('Charge detonates → 20 dmg').length - 1, 1);
   }
 
   const refreshed = await fixture(26);
   await charge(refreshed, 1);
   refreshed.rolls.push(12, 0, 1);
   const refresh = await refreshed.cast('star');
-  assert.match(refresh.message, /Astral Charge detonates → 20 dmg/);
+  assert.match(refresh.message, /Charge detonates → 20 dmg/);
   assert.equal((await refreshed.state()).enemy.astralCharge.remainingDamageUses, 2);
   assert.equal((await refreshed.state()).enemy.astralCharge.manaDiscountAvailable, true);
 
@@ -85,7 +85,7 @@ async function main() {
   spellKill.rolls.push(2);
   const directVictory = await spellKill.cast('star');
   assert.equal(directVictory.won, true);
-  assert.doesNotMatch(directVictory.message, /Astral Charge detonates/);
+  assert.doesNotMatch(directVictory.message, /Charge detonates/);
 
   const lethal = await fixture(26);
   await charge(lethal, 1);
@@ -94,7 +94,7 @@ async function main() {
   const victory = await lethal.cast('star');
   assert.equal(victory.won, true);
   assert.equal(await lethal.state(), null);
-  assert.equal(victory.message.split('Astral Charge detonates → 20 dmg').length - 1, 1);
+  assert.equal(victory.message.split('Charge detonates → 20 dmg').length - 1, 1);
 
   const cleanup = await fixture(26);
   await charge(cleanup, 1);

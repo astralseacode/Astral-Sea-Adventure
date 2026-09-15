@@ -4,7 +4,7 @@ const { fixture: baseFixture } = require('./test-leviathans-wake.cjs');
 
 async function fixture(level, platform) {
   const f = await baseFixture(level, platform);
-  // Isolate Kinship's Mana from Astral Awakening's fifth-survived-hit reward.
+  // Isolate Kinship's Mana from Awakening's fifth-survived-hit reward.
   await f.editState(s => { s.perkUses = { 'astral-awakening': 1 }; });
   return f;
 }

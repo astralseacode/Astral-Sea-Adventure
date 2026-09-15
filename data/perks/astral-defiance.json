@@ -1,15 +1,15 @@
 {
   "id": "astral-defiance",
-  "name": "Astral Defiance",
+  "name": "Defiance",
   "requiredLevel": 36,
   "type": "passive",
   "description": "Defeating an enemy while at or below 25% HP restores 20 HP + 20 Mana.",
-  "levelUpLine": "lvl 36 Passive ⭐ Astral Defiance: Defeating an enemy while at or below 25% HP restores 20 HP and 20 Mana.",
+  "levelUpLine": "lvl 36 Passive ⭐ Defiance: Defeating an enemy while at or below 25% HP restores 20 HP and 20 Mana.",
   "effect": {
     "trigger": "enemy-defeated-low-hp",
     "hpThresholdPercent": 25,
     "hpRestore": 20,
     "manaRestore": 20
   },
-  "activationLine": "Astral Defiance activates!\n\n+20 HP +20 Mana"
+  "activationLine": "Defiance activates!\n\n+20 HP +20 Mana"
 }

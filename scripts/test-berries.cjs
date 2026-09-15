@@ -89,7 +89,7 @@ async function main() {
   const missedAttack = await bounce.attack();
   assert.match(missedAttack.message, /Critical Miss/);
   assert.match(missedAttack.message, /\+2 Bouncy Berry/);
-  assert.match(missedAttack.message, /\+2 Astral Patience/);
+  assert.match(missedAttack.message, /\+2 Patience/);
   assert.equal((await bounce.state()).berryEffects.rollBonuses, undefined);
 
   const protectedPlayer = await setup();

@@ -108,7 +108,7 @@ async function cast(f, dice = [1, 1, 1], alias = 'tidal') {
     s.astralPatience = { offensiveRollModifier: 2 };
   });
   assert.match((await cast(harmony, [12, 2, 1])).message,
-    /Astral Harmony\nRestored 15 Mana/);
+    /Harmony\nRestored 15 Mana/);
 
   const charged = await fixture(40);
   await charged.editState(s => { s.enemy.astralCharge = {
@@ -116,7 +116,7 @@ async function cast(f, dice = [1, 1, 1], alias = 'tidal') {
     remainingDamageUses: 1, manaDiscountAvailable: true,
   }; });
   const chargedWave = await cast(charged, [12, 2, 1]);
-  assert.match(chargedWave.message, /Astral Charge bursts!/);
+  assert.match(chargedWave.message, /Charge bursts!/);
   assert.equal((await charged.progress()).mana, 85);
   assert.equal((await charged.state()).enemy.hp, 922); // 58 wave + 20 Charge Mastery II.
 
@@ -124,7 +124,7 @@ async function cast(f, dice = [1, 1, 1], alias = 'tidal') {
   await echoed.editState(s => { s.astralEcho = {
     naturalRoll: 1, tierId: 'faint', displayName: 'Faint', damagePercent: 0.5,
   }; });
-  assert.match((await cast(echoed, [12, 2, 1])).message, /Astral Echo/);
+  assert.match((await cast(echoed, [12, 2, 1])).message, /Echo/);
   assert.equal((await echoed.state()).enemy.hp, 925);
 
   const expedition = await fixture(40);

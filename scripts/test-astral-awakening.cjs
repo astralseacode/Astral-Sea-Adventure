@@ -18,7 +18,7 @@ async function main() {
   const f = await fixture(25);
   const perk = await f.c.getPerkDefinition('astral-awakening');
   assert((await f.c.getActivePerks(25)).some(p => p.id === perk.id));
-  const activation = '5 enemy attacks survived. Astral Awakening activates!\n\n' +
+  const activation = '5 enemy attacks survived. Awakening activates!\n\n' +
     'Restored 25 HP + 25 Mana | Next offensive roll +2';
   assert.equal(perk.activationLine, activation);
   const spec = fs.readFileSync(path.join(__dirname, '..', 'data', 'perks',
@@ -50,7 +50,7 @@ async function main() {
   const bonus = await fixture(25);
   await bonus.editState(s => { s.astralAwakening = { offensiveRollModifier: 2 }; });
   bonus.rolls.push(10, 1);
-  assert.match((await bonus.attack()).message, /\+2 Astral Awakening/);
+  assert.match((await bonus.attack()).message, /\+2 Awakening/);
   assert.equal((await bonus.state()).astralAwakening, undefined);
 
   const cap = await fixture(25);
@@ -122,6 +122,6 @@ async function main() {
   victory.rolls.push(20);
   assert.equal((await victory.attack()).won, true);
   assert.equal(await victory.state(), null);
-  console.log('Astral Awakening regressions passed.');
+  console.log('Awakening regressions passed.');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

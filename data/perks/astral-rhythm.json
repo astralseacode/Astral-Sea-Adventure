@@ -1,6 +1,6 @@
 {
   "id": "astral-rhythm",
-  "name": "Astral Rhythm",
+  "name": "Rhythm",
   "requiredLevel": 32,
   "type": "passive",
   "description": "Successfully use two different damaging spells in a row to deal +5 bonus damage on the second spell. Activates once per battle.",
@@ -9,5 +9,5 @@
     "bonusDamage": 5,
     "usesPerBattle": 1
   },
-  "activationLine": "two attacks in a row Astral Rhythm Applied! +5 damage"
+  "activationLine": "two attacks in a row Rhythm Applied! +5 damage"
 }

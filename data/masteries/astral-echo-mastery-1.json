@@ -1,10 +1,10 @@
 {
   "id": "astral-echo-mastery-1",
-  "name": "Astral Echo Mastery I",
+  "name": "Echo Mastery I",
   "spellId": "astral-echo",
   "requiredLevel": 34,
   "tier": 1,
-  "description": "Astral Echo costs 20 Mana. After the Echo resolves, its original natural 1d4 grants 5 or 10 Mana, or +1 or +2 to the next offensive roll.",
+  "description": "Echo costs 20 Mana. After the Echo resolves, its original natural 1d4 grants 5 or 10 Mana, or +1 or +2 to the next offensive roll.",
   "effect": {
     "id": "echo-afterglow",
     "manaCost": 20,
@@ -12,22 +12,22 @@
       {
         "naturalRoll": 1,
         "manaRestore": 5,
-        "activationLine": "Astral Echo Mastery I: Restored 5 Mana"
+        "activationLine": "Echo Mastery I: Restored 5 Mana"
       },
       {
         "naturalRoll": 2,
         "manaRestore": 10,
-        "activationLine": "Astral Echo Mastery I: Restored 10 Mana"
+        "activationLine": "Echo Mastery I: Restored 10 Mana"
       },
       {
         "naturalRoll": 3,
         "offensiveRollModifier": 1,
-        "activationLine": "Astral Echo Mastery I: Next offensive roll +1"
+        "activationLine": "Echo Mastery I: Next offensive roll +1"
       },
       {
         "naturalRoll": 4,
         "offensiveRollModifier": 2,
-        "activationLine": "Astral Echo Mastery I: Next offensive roll +2"
+        "activationLine": "Echo Mastery I: Next offensive roll +2"
       }
     ]
   }

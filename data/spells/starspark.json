@@ -5,7 +5,7 @@
   "requiredLevel": 2,
   "manaCost": 10,
   "type": "offensive",
-  "description": "Cast Star Spark at Level 2 for 10 Mana. Critical casts leave behind an Astral Charge that empowers your next offensive spell.",
+  "description": "Cast Star Spark at Level 2 for 10 Mana. Critical casts leave behind a Charge that empowers your next offensive spell.",
   "damage": {
     "dice": 1,
     "sides": 12
@@ -45,15 +45,15 @@
     {
       "id": "critical",
       "displayName": "Critical Cast",
-      "narration": "The little star suddenly erupts with Astral energy and slams into your foe. When the light clears, a glowing Astral Charge is stuck directly to the enemy's forehead. They do not look pleased about this."
+      "narration": "The little star suddenly erupts with Astral energy and slams into your foe. When the light clears, a glowing Charge is stuck directly to the enemy's forehead. They do not look pleased about this."
     }
   ],
   "criticalFlavorChance": 0.25,
   "criticalFlavor": [
-    "The Astral Charge makes a tiny *ding!* as it attaches itself. Nobody knows why.",
-    "Your foe tries to shake the Astral Charge off. It stubbornly remains attached.",
-    "The Astral Charge has chosen the forehead. Negotiations have failed.",
+    "The Charge makes a tiny *ding!* as it attaches itself. Nobody knows why.",
+    "Your foe tries to shake the Charge off. It stubbornly remains attached.",
+    "The Charge has chosen the forehead. Negotiations have failed.",
     "Your foe stares at the glowing star attached to their forehead. You stare back. This is awkward.",
-    "The Astral Charge sparkles triumphantly. Your foe appears personally offended."
+    "The Charge sparkles triumphantly. Your foe appears personally offended."
   ]
 }
