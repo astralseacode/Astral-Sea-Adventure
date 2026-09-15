@@ -1860,6 +1860,7 @@ async function performAdventureUnlocked(
     visitedRooms: [definition.startRoomId],
     completedRooms: [],
     collectedRewards: [],
+    berriesEaten: 0,
     playerHp: progress.hp,
     playerMaxHp: getPlayerResourceCaps(progress).hp,
     startedAt: now,
@@ -5281,13 +5282,17 @@ async function performEatUnlocked(
 
   const combatState = await getCombatState(env, backpackKey);
   const latestProgress = await getPlayerProgress(env, backpackKey);
-  const activeAdventure = combatState
-    ? null
-    : await getActiveAdventure(env, backpackKey);
+  const adventureRun = await getActiveAdventure(env, backpackKey);
+  const activeAdventure = combatState ? null : adventureRun;
   const currentHp =
     combatState?.playerHp ??
     activeAdventure?.playerHp ??
     latestProgress.hp;
+
+  const berriesEaten = adventureRun?.berriesEaten ?? 0;
+  if (adventureRun && berriesEaten >= 4) {
+    return { message: "You've already eaten 4 berries during this adventure. You'll have to save the rest for later." };
+  }
 
   if (latestProgress.berries < 1) {
     const message = `${displayName}, you do not have any Berries to eat.`;
@@ -5334,8 +5339,8 @@ async function performEatUnlocked(
   const originalCombatState = combatState
     ? structuredClone(combatState)
     : null;
-  const originalAdventure = activeAdventure
-    ? structuredClone(activeAdventure)
+  const originalAdventureRun = adventureRun
+    ? structuredClone(adventureRun)
     : null;
 
   if (combatState) {
@@ -5349,13 +5354,15 @@ async function performEatUnlocked(
     activeAdventure.updatedAt = Date.now();
   }
 
+  if (adventureRun) adventureRun.berriesEaten = berriesEaten + 1;
+
   try {
     if (combatState) {
       await saveCombatState(env, backpackKey, combatState);
     }
 
-    if (activeAdventure) {
-      await saveActiveAdventure(env, backpackKey, activeAdventure);
+    if (adventureRun) {
+      await saveActiveAdventure(env, backpackKey, adventureRun);
     }
 
     await savePlayerProgress(env, backpackKey, {
@@ -5370,8 +5377,8 @@ async function performEatUnlocked(
         originalCombatState
           ? saveCombatState(env, backpackKey, originalCombatState)
           : Promise.resolve(),
-        originalAdventure
-          ? saveActiveAdventure(env, backpackKey, originalAdventure)
+        originalAdventureRun
+          ? saveActiveAdventure(env, backpackKey, originalAdventureRun)
           : Promise.resolve(),
       ]);
     } catch (rollbackError) {
@@ -5387,7 +5394,7 @@ async function performEatUnlocked(
     berries: remainingBerries,
     playerHp: updatedHp,
     playerMaxHp: hpLimit,
-    message: combatState
+    message: (combatState
       ? platform === "discord"
         ? appendDiscordCombatHud(
             `${displayName} ate 1 Berry and restored ${healedAmount} HP and ` +
@@ -5403,7 +5410,8 @@ async function performEatUnlocked(
       : `${randomChoice(BERRY_OUTSIDE_COMBAT_MESSAGES)} | ` +
         `HP: ${updatedHp}/${hpLimit} | ` +
         `Mana: ${updatedMana}/${manaLimit} | ` +
-        `Berries: ${remainingBerries.toLocaleString("en-US")}`,
+        `Berries: ${remainingBerries.toLocaleString("en-US")}`) +
+      (adventureRun ? ` | Adventure Berry Uses: ${adventureRun.berriesEaten}/4` : ""),
   };
 }
 
@@ -7232,6 +7240,9 @@ function isValidAdventureState(state) {
     Array.isArray(state.visitedRooms) &&
     Array.isArray(state.completedRooms) &&
     Array.isArray(state.collectedRewards) &&
+    (state.berriesEaten === undefined ||
+      (Number.isSafeInteger(state.berriesEaten) &&
+        state.berriesEaten >= 0 && state.berriesEaten <= 4)) &&
     Number.isSafeInteger(state.playerHp) &&
     Number.isSafeInteger(state.playerMaxHp) &&
     state.playerHp > 0 &&
