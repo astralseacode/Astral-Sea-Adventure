@@ -45,7 +45,9 @@ const level37 = "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures s
   assert(cast);
   const spell = cast.options.find(option => option.name === 'spell');
   assert(spell);
-  assert.equal(spell.choices.length, 15);
+  assert.equal(spell.choices.length, 16);
+  assert.equal(spell.choices.filter(choice => choice.name === 'Help!').length, 1);
+  assert.equal(spell.choices.find(choice => choice.name === 'Help!').value, 'help');
   assert.equal(spell.choices.filter(choice => choice.name === 'Conjure Gun').length, 1);
   assert.equal(spell.choices.find(choice => choice.name === 'Conjure Gun').value,
     'conjure-gun');

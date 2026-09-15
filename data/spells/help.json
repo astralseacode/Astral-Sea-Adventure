@@ -1,0 +1,60 @@
+{
+  "id": "help",
+  "name": "Help!",
+  "aliases": [
+    "help",
+    "help!"
+  ],
+  "requiredLevel": 50,
+  "manaCost": 0,
+  "type": "ultimate",
+  "description": "Call for some very questionable assistance.",
+  "levelUpLine": "lvl 50 Ultimate Spell Help!: Call for some very questionable assistance. Requires at least 150 current Mana. Costs 50% of your current Mana and can only be cast once per battle. Roll 1d20: 1–10 fails, 11–20 succeeds. On success, the enemy loses 50% of its current HP.",
+  "opening": [
+    "You cast the spell, expecting something to happen like it always does.",
+    "Nothing happens.",
+    "It's supposed to summon the almighty spell, yet... there's nothing.",
+    "You wave your hand through the air.",
+    "Still nothing.",
+    "The enemy stares at you, seemingly just as confused about what's supposed to happen next.",
+    "A random gust of wind blows across the battlefield.",
+    "A tumbleweed rolls past you.",
+    "Then you hear something rustling in the bushes.",
+    "There's nobody there.",
+    "At least... you don't think there is.",
+    "Suddenly, you feel a strangely familiar presence.",
+    "Far in the distance, a figure appears.",
+    "It's Shizuki.",
+    "And she has a sniper rifle.",
+    "She takes a deep breath.",
+    "She aims.",
+    "She fires."
+  ],
+  "successLines": [
+    "\"For democracyyyyyyyyy...\" she shouts from the distance, somehow quietly enough that you can still hear every word.",
+    "The shot lands.",
+    "In an instant, half of the enemy's remaining HP is gone.",
+    "\"You're welcome, by the way! Oh, and gimme half your Mana too. Don't you know how much energy it takes for me to be summoned here? I was relaxing with my four kitties!\"",
+    "Before you can object, Shizuki yoinks half of your Mana.",
+    "And then she's gone.",
+    "You're left standing there with half your Mana and a very confused enemy."
+  ],
+  "failureLines": [
+    "The shot lands—",
+    "—and bounces harmlessly off the enemy.",
+    "Apparently, it was a plastic magical bullet.",
+    "\"Oh... shucks. Lemme do that again...\"",
+    "Shizuki reloads while the enemy slowly turns to stare at her.",
+    "She fires again.",
+    "The bullet flies RIGHT past the enemy.",
+    "Silence.",
+    "\"...I'm going home. Gimme that Mana.\"",
+    "You immediately try to stop Shizuki from taking it.",
+    "Somehow, she gets it anyway.",
+    "Half your Mana disappears.",
+    "So does Shizuki.",
+    "The enemy is completely unharmed.",
+    "You are considerably poorer in Mana.",
+    "And absolutely nothing has been accomplished."
+  ]
+}

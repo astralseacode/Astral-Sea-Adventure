@@ -297,6 +297,7 @@ const SPELL_FILES = {
   "all-or-nothing": "all-or-nothing.json",
   "tidal-wave": "tidal-wave.json",
   "conjure-gun": "conjure-gun.json",
+  help: "help.json",
 };
 const MASTERY_FILES = {
   "starspark-mastery-1": "starspark-mastery-1.json",
@@ -684,6 +685,7 @@ const DISCORD_COMMANDS = [
           { name: "All or Nothing", value: "all-or-nothing" },
           { name: "Tidal Wave", value: "tidal-wave" },
           { name: "Conjure Gun", value: "conjure-gun" },
+          { name: "Help!", value: "help" },
         ],
       },
     ],
@@ -3436,6 +3438,17 @@ async function resolvePlayerCombatAction(
     };
   }
 
+  return resolveEnemyCombatResponse(
+    env, backpackKey, combatState, action, platform, progress,
+    activeMasteries, activePerks, shizukisPresenceMastery, messageParts,
+  );
+}
+
+// Shared enemy response; isolated Ultimates enter here after their own resolution.
+async function resolveEnemyCombatResponse(
+  env, backpackKey, combatState, action, platform, progress,
+  activeMasteries, activePerks, shizukisPresenceMastery, messageParts,
+) {
   const enemyRoll = randomInteger(1, 20);
   const enemyAttack = getCombatRollResult(enemyRoll);
   const rawEnemyDamage = enemyAttack.damage === 0
@@ -3759,7 +3772,7 @@ async function resolvePlayerCombatAction(
     (perk) => perk.effect.trigger === "non-offensive-combat-turn",
   );
   if (
-    astralPatience && !combatState.astralPatience &&
+    !action.isolatedUltimate && astralPatience && !combatState.astralPatience &&
     action.roll === undefined && action.damage === 0 &&
     !action.echoDamage && !action.aftershockDamage
   ) {
@@ -3906,6 +3919,8 @@ async function performCastUnlocked(
   const conjureGunCommand = platform === "discord"
     ? "/cast spell:Conjure Gun" : "!cast conjure gun";
 
+  const helpCommand = platform === "discord" ? "/cast spell:Help!" : "!cast help";
+
   if (!spellInputValue) {
     return {
       message:
@@ -3916,7 +3931,7 @@ async function performCastUnlocked(
         `${fallingStarCommand} for Falling Star, ${wakeCommand} for Leviathan's Wake, ` +
         `${berryCommand} for Berries, ${familiarCommand} for Familiar, or ` +
         `${allOrNothingCommand} for All or Nothing, ${tidalWaveCommand} for Tidal Wave, or ` +
-        `${conjureGunCommand} for Conjure Gun.`,
+        `${conjureGunCommand} for Conjure Gun, or ${helpCommand} for Help!.`,
     };
   }
 
@@ -3935,7 +3950,7 @@ async function performCastUnlocked(
         `${moonbeamCommand}, ${evocationCommand}, ${bubbleCommand}, ${astralEchoCommand}, or ` +
         `${fallingStarCommand}, ${wakeCommand}, ${berryCommand}, ` +
         `${familiarCommand}, ${allOrNothingCommand}, ${tidalWaveCommand}, or ` +
-        `${conjureGunCommand}.`,
+        `${conjureGunCommand}, or ${helpCommand}.`,
     };
   }
 
@@ -3988,6 +4003,10 @@ async function performCastUnlocked(
         ? appendDiscordCombatHud(message, currentCombatState, progress)
         : message,
     };
+  }
+
+  if (spell.id === "help") {
+    return castHelp(env, backpackKey, currentCombatState, progress, spell, platform);
   }
 
   if (spell.id === "familiar") {
@@ -4875,6 +4894,54 @@ async function performCastUnlocked(
 
     throw error;
   }
+}
+
+// Help! never enters the offensive action/modifier pipeline.
+async function castHelp(env, backpackKey, combatState, progress, spell, platform) {
+  if (!combatState) return { message: "Help! can only be cast during a fight." };
+  if (combatState.helpUsed) {
+    return { message: "You have already cast Help! this battle." };
+  }
+  if (progress.mana < 150) {
+    return { message: "Help! requires at least 150 current Mana." };
+  }
+
+  // Preserve the existing delayed-arrival timing for valid combat actions.
+  const turnStart = await advanceLeviathansWake(
+    env, backpackKey, combatState, progress, platform,
+  );
+  if (turnStart.victory) return turnStart.victory;
+  progress = await getPlayerProgress(env, backpackKey);
+  const manaTaken = Math.round(progress.mana * 0.5);
+  const naturalRoll = randomInteger(1, 20);
+  const success = naturalRoll >= 11;
+  // Floor removal deliberately leaves ceil(current HP / 2), including at 1 HP.
+  const hpRemoved = success ? Math.floor(combatState.enemy.hp / 2) : 0;
+  combatState.enemy.hp -= hpRemoved;
+  combatState.helpUsed = true;
+  const paidProgress = { ...progress, mana: progress.mana - manaTaken };
+  await savePlayerProgress(env, backpackKey, paidProgress);
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  const receipt = `Help! | Natural d20: ${naturalRoll} | ${success ? "SUCCESS" : "FAILURE"} | ` +
+    `Enemy HP removed: ${hpRemoved} | Enemy HP remaining: ${combatState.enemy.hp} | ` +
+    `Mana taken: ${manaTaken} | Mana remaining: ${paidProgress.mana}`;
+  const messageParts = [
+    turnStart.message,
+    [...spell.opening, success ? "WIN 50/50" : "LOST 50/50",
+      ...(success ? spell.successLines : spell.failureLines), receipt].join(separator),
+  ].filter(Boolean);
+  const level = levelFromXp(paidProgress.xp);
+  const activeMasteries = await getActiveMasteries(level);
+  const activePerks = await getActivePerks(level);
+  // Chapters still track actual enemy HP, but never modify this Ultimate.
+  const chapterMessage = advanceStoryteller(combatState, activePerks, platform);
+  if (chapterMessage) messageParts.push(chapterMessage);
+  return resolveEnemyCombatResponse(
+    env, backpackKey, combatState, { isolatedUltimate: true }, platform,
+    paidProgress, activeMasteries, activePerks,
+    activeMasteries.find(mastery => mastery.effect.id === "shizukis-presence"),
+    messageParts,
+  );
 }
 
 async function castLeviathansWake(
@@ -8461,6 +8528,7 @@ function isValidCombatState(combatState) {
     (combatState.shizukisPresence === undefined ||
       (combatState.shizukisPresence?.offensiveRollModifier === 3 &&
         combatState.shizukisPresence?.bonusDamage === 15)) &&
+    (combatState.helpUsed === undefined || combatState.helpUsed === true) &&
     (combatState.storytellerChapter === undefined ||
       [1, 2, 3].includes(combatState.storytellerChapter)) &&
     (combatState.storytellerActivated === undefined ||
@@ -9753,9 +9821,20 @@ function validateSpellDefinition(spell, expectedId) {
       "pre-action-support",
       "pre-action-utility",
       "mana-recovery",
+      "ultimate",
     ].includes(spell.type)
   ) {
     throw new Error(`Invalid spell definition for ${expectedId}.`);
+  }
+
+  if (spell.type === "ultimate" || expectedId === "help") {
+    if (expectedId !== "help" || spell.name !== "Help!" ||
+        spell.type !== "ultimate" || spell.requiredLevel !== 50 ||
+        spell.manaCost !== 0 || !spell.aliases.includes("help") ||
+        !spell.aliases.includes("help!") || !isTextArray(spell.opening) ||
+        !isTextArray(spell.successLines) || !isTextArray(spell.failureLines)) {
+      throw new Error("Invalid Help! content data.");
+    }
   }
 
   if (spell.type === "mana-recovery" && (
