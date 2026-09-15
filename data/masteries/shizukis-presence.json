@@ -1,0 +1,38 @@
+{
+  "id": "shizukis-presence",
+  "name": "Shizuki's Presence",
+  "spellId": "evocation",
+  "requiredLevel": 48,
+  "tier": 1,
+  "description": "Two different Fae activations awaken Shizuki's Presence once per battle, restoring HP and Mana and empowering the next damaging spell. Low-Mana Evocation overflows Mana to 150% of its normal maximum.",
+  "levelUpLine": "lvl 48 Mastery 🌿 Shizuki's Presence: When two different Fae abilities activate during the same battle, Shizuki's Presence awakens once per battle, restoring 30 HP and 40 Mana and empowering your next offensive spell with +3 to its offensive roll and +15 damage. Casting Evocation below 25% Mana causes it to overflow your Mana to 150% of its maximum.",
+  "effect": {
+    "id": "shizukis-presence",
+    "qualifyingSources": [
+      { "id": "elf-blessing", "name": "Elf Blessing" },
+      { "id": "fae-aid", "name": "Fae Aid" },
+      { "id": "fae-second-opinion", "name": "Fae Second Opinion" },
+      { "id": "fae-intervention", "name": "Fae Intervention" },
+      { "id": "fae-mischief", "name": "Fae Mischief" },
+      { "id": "fae-snail", "name": "Fae Snail" },
+      { "id": "fae-berry", "name": "Fae Berry" }
+    ],
+    "recovery": { "hp": 30, "mana": 40 },
+    "empowerment": { "offensiveRollModifier": 3, "bonusDamage": 15 },
+    "evocation": { "threshold": 0.25, "overflowMultiplier": 1.5 }
+  },
+  "convergenceFlavor": [
+    "The Fae gather around you, their magic suddenly moving in perfect harmony.",
+    "Two traces of Fae magic intertwine. For just a moment, something about it feels strangely familiar.",
+    "The Fae suddenly grow quiet. Their magic gathers around you as though following a path they somehow remember.",
+    "The Fae exchange knowing glances before their magic begins to resonate around you.",
+    "Two different Fae magics collide, but instead of dispersing, they begin moving as one.",
+    "The Fae circle closer. For a fleeting moment, you get the strange feeling that you've stood here before."
+  ],
+  "evocationFlavor": [
+    "Your remaining Mana flickers—and something answers. Evocation surges far beyond its usual limit.",
+    "Evocation should have stopped. It doesn't. Mana continues pouring through you long after your reserves are full.",
+    "The familiar flow of Evocation suddenly changes. For a moment, the magic feels like it belongs to someone else.",
+    "The Fae watch silently as Evocation surges past its natural limit. Strangely, none of them seem surprised."
+  ]
+}

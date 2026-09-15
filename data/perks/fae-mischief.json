@@ -1,0 +1,24 @@
+{
+  "id": "fae-mischief",
+  "name": "Fae Mischief",
+  "requiredLevel": 47,
+  "type": "passive",
+  "description": "Once per battle, when a natural spell roll is one die away from completing a powerful dice pattern, the Fae may change that die after it lands to complete the pattern.",
+  "levelUpLine": "lvl 47 Passive 🌿 Fae Mischief: Once per battle, when a natural spell roll is one die away from completing a powerful dice pattern, the Fae may change that die after it lands to complete the pattern.",
+  "effect": {
+    "trigger": "one-die-pattern-completion",
+    "usesPerBattle": 1,
+    "priority": [
+      "full-moon",
+      "perfect-jellyfish",
+      "meteor-alignment-triple",
+      "lunar-alignment"
+    ]
+  },
+  "flavor": [
+    "One of the Fae quietly nudges the die while nobody is looking...",
+    "You could have sworn that die landed differently a second ago.",
+    "A tiny laugh rings out as fate changes its mind.",
+    "The Fae exchange innocent looks. The die does not."
+  ]
+}

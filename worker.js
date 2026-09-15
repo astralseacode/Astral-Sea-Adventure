@@ -312,6 +312,7 @@ const MASTERY_FILES = {
   "leviathans-wake-mastery-1": "leviathans-wake-mastery-1.json",
   "falling-star-mastery-1": "falling-star-mastery-1.json",
   "familiar-mastery-1": "familiar-mastery-1.json",
+  "shizukis-presence": "shizukis-presence.json",
 };
 const PERK_FILES = {
   "astral-resilience": "astral-resilience.json",
@@ -333,6 +334,7 @@ const PERK_FILES = {
   "rising-power": "rising-power.json",
   "astral-expedition": "astral-expedition.json",
   legacy: "legacy.json",
+  "fae-mischief": "fae-mischief.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -1748,7 +1750,7 @@ async function performAdventureUnlocked(
   adventureInput,
   platform,
 ) {
-  const progress = await getPlayerProgress(env, backpackKey);
+  let progress = await getPlayerProgress(env, backpackKey);
   const region = getRegionById(progress.currentRegion) || REGIONS[0];
   let entries;
 
@@ -2832,7 +2834,7 @@ async function performAttackUnlocked(
     triggeredRoll,
     platform,
   );
-  const updatedProgress = {
+  let updatedProgress = {
     ...progress,
     statusEffects: triggeredRoll.statusEffects,
   };
@@ -2894,7 +2896,9 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
   const hpBefore = combatState.playerHp;
   const manaBefore = progress.mana;
   combatState.playerHp = Math.min(caps.hp, combatState.playerHp + (effect.hp || 0) * multiplier);
-  const restoredMana = Math.min(caps.mana, progress.mana + (effect.mana || 0) * multiplier);
+  const restoredMana = restoreManaToNormalCap(
+    progress.mana, (effect.mana || 0) * multiplier, caps.mana,
+  );
   const clauses = [];
   if (effect.damage) {
     const damage = effect.damage * multiplier;
@@ -2936,6 +2940,7 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
   if (active.actions === 5) delete combatState.familiar;
   return {
     progress: updatedProgress,
+    faeSource: creature.id === "fae-snail" ? "fae-snail" : null,
     message: (astralBond ? "🌌 Bond empowers your Familiar!\n\n" : "") +
       `${creature.name} ${clauses.join(" + ")}.` +
       (milestone ? `\n\n${milestone}` : "") +
@@ -2956,6 +2961,52 @@ function applyAstralRhythm(combatState, activePerks, spellId) {
     [rhythm.id]: 1,
   };
   return rhythm;
+}
+
+function activateShizukisPresence(combatState, progress, mastery, sourceId,
+  platform = "discord") {
+  if (!mastery) return { progress, message: "", activated: false };
+  const source = mastery.effect.qualifyingSources.find(
+    (entry) => entry.id === sourceId,
+  );
+  if (!source) return { progress, message: "", activated: false };
+  const sources = combatState.shizukiFaeSources ||= [];
+  if (!sources.includes(sourceId)) sources.push(sourceId);
+  if (combatState.shizukisPresenceUsed || sources.length < 2) {
+    return { progress, message: "", activated: false };
+  }
+
+  combatState.shizukisPresenceUsed = true;
+  combatState.shizukisPresence = {
+    offensiveRollModifier: mastery.effect.empowerment.offensiveRollModifier,
+    bonusDamage: mastery.effect.empowerment.bonusDamage,
+  };
+  const caps = getPlayerResourceCaps(progress);
+  combatState.playerMaxHp = caps.hp;
+  combatState.playerHp = Math.min(
+    caps.hp, combatState.playerHp + mastery.effect.recovery.hp,
+  );
+  const manaBefore = progress.mana;
+  const manaAfter = manaBefore >= caps.mana
+    ? manaBefore
+    : Math.min(caps.mana, manaBefore + mastery.effect.recovery.mana);
+  const updatedProgress = {
+    ...progress,
+    hp: combatState.playerHp,
+    mana: manaAfter,
+  };
+  const names = sources.slice(0, 2).map((id) =>
+    mastery.effect.qualifyingSources.find((entry) => entry.id === id).name);
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  return {
+    progress: updatedProgress,
+    activated: true,
+    message: [
+      randomChoice(mastery.convergenceFlavor),
+      `${names[0]} and ${names[1]} have activated Shizuki's Presence!`,
+      "Restoring 30 HP and 40 Mana and empowering your next damaging spell.",
+    ].join(separator),
+  };
 }
 
 function applyRisingPower(combatState, activePerks, spellId) {
@@ -3031,7 +3082,9 @@ async function applyAstralEchoMastery(
   if (!outcome) return { progress, message: "" };
   if (outcome.manaRestore) {
     const maximumMana = getPlayerResourceCaps(progress).mana;
-    const mana = Math.min(maximumMana, progress.mana + outcome.manaRestore);
+    const mana = restoreManaToNormalCap(
+      progress.mana, outcome.manaRestore, maximumMana,
+    );
     if (mana !== progress.mana) {
       progress.mana = mana;
       await savePlayerProgress(env, backpackKey, progress);
@@ -3071,6 +3124,9 @@ async function resolvePlayerCombatAction(
 
   let progress = await getPlayerProgress(env, backpackKey);
   const activeMasteries = await getActiveMasteries(levelFromXp(progress.xp));
+  const shizukisPresenceMastery = activeMasteries.find(
+    (mastery) => mastery.effect.id === "shizukis-presence",
+  );
   let legacyMessage = "";
   if (action.legacyEffect && action.legacyEffect.type !== "charge") {
     const legacySeparator = platform === "discord" ? "\n\n" : " | ";
@@ -3153,6 +3209,7 @@ async function resolvePlayerCombatAction(
   }
 
   let familiarMessage = "";
+  let shizukiMessage = "";
   if (action.familiarQualifies && combatState.familiar &&
       combatState.enemy.hp > 0) {
     const familiarResult = await applyFamiliarAction(
@@ -3160,6 +3217,15 @@ async function resolvePlayerCombatAction(
     );
     progress = familiarResult.progress;
     familiarMessage = familiarResult.message;
+    if (familiarResult.faeSource) {
+      const shizuki = activateShizukisPresence(
+        combatState, progress, shizukisPresenceMastery,
+        familiarResult.faeSource, platform,
+      );
+      progress = shizuki.progress;
+      shizukiMessage = shizuki.message;
+      if (shizuki.activated) await savePlayerProgress(env, backpackKey, progress);
+    }
   }
   let astralBondArmedMessage = "";
   if (action.armAstralBond && combatState.enemy.hp > 0 && combatState.familiar &&
@@ -3199,6 +3265,12 @@ async function resolvePlayerCombatAction(
     faeSecondOpinionMessage = faeSecondOpinion.activationLine + "\n\n" +
       randomChoice(faeSecondOpinion.flavor) + "\n\n" +
       faeSecondOpinion.endingLine;
+    const shizuki = activateShizukisPresence(
+      combatState, progress, shizukisPresenceMastery,
+      "fae-second-opinion", platform,
+    );
+    progress = shizuki.progress;
+    if (shizuki.message) shizukiMessage = shizuki.message;
   }
   let harmonyMessage = "";
   const harmony = activePerks.find(
@@ -3210,7 +3282,9 @@ async function resolvePlayerCombatAction(
     const maximumMana = getPlayerResourceCaps(progress).mana;
     progress = {
       ...progress,
-      mana: Math.min(maximumMana, progress.mana + harmony.effect.manaRestore),
+      mana: restoreManaToNormalCap(
+        progress.mana, harmony.effect.manaRestore, maximumMana,
+      ),
     };
     await savePlayerProgress(env, backpackKey, progress);
     combatState.perkUses = {
@@ -3327,6 +3401,7 @@ async function resolvePlayerCombatAction(
   if (familiarMessage) messageParts.push(familiarMessage);
   if (astralBondArmedMessage) messageParts.push(astralBondArmedMessage);
   if (faeSecondOpinionMessage) messageParts.push(faeSecondOpinionMessage);
+  if (shizukiMessage) messageParts.push(shizukiMessage);
   if (harmonyMessage) messageParts.push(harmonyMessage);
   if (chargeDetonationMessage) messageParts.push(chargeDetonationMessage);
   if (curiosityResult.message) {
@@ -3531,6 +3606,7 @@ async function resolvePlayerCombatAction(
   if (berrySleepyMessage) messageParts.push(berrySleepyMessage);
   if (familiarProtectionMessage) messageParts.push(familiarProtectionMessage);
 
+  let updatedProgress = progress;
   const faeIntervention = activePerks.find(
     (perk) => perk.effect.trigger === "lethal-enemy-damage",
   );
@@ -3545,6 +3621,12 @@ async function resolvePlayerCombatAction(
       [faeIntervention.id]: 1,
     };
     messageParts.push(randomChoice(faeIntervention.activationLines));
+    const shizuki = activateShizukisPresence(
+      combatState, updatedProgress, shizukisPresenceMastery,
+      "fae-intervention", platform,
+    );
+    updatedProgress = shizuki.progress;
+    if (shizuki.message) messageParts.push(shizuki.message);
   }
 
   if (combatState.playerHp === 0) {
@@ -3582,10 +3664,15 @@ async function resolvePlayerCombatAction(
         [faeAid.id]: 1,
       };
       messageParts.push(faeAid.activationLine);
+      const shizuki = activateShizukisPresence(
+        combatState, updatedProgress, shizukisPresenceMastery,
+        "fae-aid", platform,
+      );
+      updatedProgress = shizuki.progress;
+      if (shizuki.message) messageParts.push(shizuki.message);
     }
   }
 
-  let updatedProgress = progress;
   const astralResilience = activePerks.find(
     (perk) => perk.effect.trigger === "post-enemy-damage",
   );
@@ -3599,9 +3686,8 @@ async function resolvePlayerCombatAction(
     const maximumMana = getPlayerResourceCaps(progress).mana;
     updatedProgress = {
       ...progress,
-      mana: Math.min(
-        maximumMana,
-        progress.mana + astralResilience.effect.manaRestore,
+      mana: restoreManaToNormalCap(
+        progress.mana, astralResilience.effect.manaRestore, maximumMana,
       ),
     };
     combatState.perkUses = {
@@ -3631,8 +3717,8 @@ async function resolvePlayerCombatAction(
       );
       updatedProgress = {
         ...updatedProgress,
-        mana: Math.min(
-          caps.mana, updatedProgress.mana + astralAwakening.effect.manaRestore,
+        mana: restoreManaToNormalCap(
+          updatedProgress.mana, astralAwakening.effect.manaRestore, caps.mana,
         ),
       };
       combatState.astralAwakening = {
@@ -3873,6 +3959,9 @@ async function performCastUnlocked(
     (mastery) => mastery.spellId === "astral-echo" &&
       mastery.effect.id === "echo-afterglow",
   );
+  const shizukisPresenceMastery = activeMasteries.find(
+    (mastery) => mastery.effect.id === "shizukis-presence",
+  );
   const currentCombatState = await getCombatState(env, backpackKey);
 
   if (playerLevel < spell.requiredLevel) {
@@ -3955,7 +4044,9 @@ async function performCastUnlocked(
       );
     };
     const restoreMana = amount => {
-      updatedProgress.mana = Math.min(resourceCaps.mana, updatedProgress.mana + amount);
+      updatedProgress.mana = restoreManaToNormalCap(
+        updatedProgress.mana, amount, resourceCaps.mana,
+      );
     };
     const grantRollBonus = (name, value) => {
       effects.rollBonuses ||= {};
@@ -3984,6 +4075,15 @@ async function performCastUnlocked(
       case 19: restoreHp(30); restoreMana(60); break;
       case 20: restoreHp(40); restoreMana(80); grantRollBonus("Shizuki's Favorite", 4); break;
     }
+    let shizukiMessage = "";
+    if (naturalRoll === 6) {
+      const shizuki = activateShizukisPresence(
+        currentCombatState, updatedProgress, shizukisPresenceMastery,
+        "fae-berry", platform,
+      );
+      Object.assign(updatedProgress, shizuki.progress);
+      shizukiMessage = shizuki.message;
+    }
     currentCombatState.berriesCastRound = currentCombatState.round;
     currentCombatState.enemy.hp = Math.max(0, currentCombatState.enemy.hp - fixedDamage);
     updatedProgress.hp = currentCombatState.playerHp;
@@ -4011,8 +4111,9 @@ async function performCastUnlocked(
     }
     const separator = platform === "discord" ? "\n\n" : " | ";
     return {
-      message: outcome.text + separator +
-        formatDiscordCombatHud(currentCombatState, updatedProgress),
+      message: [outcome.text, shizukiMessage,
+        formatDiscordCombatHud(currentCombatState, updatedProgress)]
+        .filter(Boolean).join(separator),
     };
   }
 
@@ -4297,7 +4398,7 @@ async function performCastUnlocked(
       };
     }
 
-    const updatedProgress = {
+    let updatedProgress = {
       ...progress,
       mana: progress.mana - spell.manaCost,
       statusEffects: addStatusEffect(
@@ -4306,8 +4407,20 @@ async function performCastUnlocked(
       ),
     };
 
+    let shizukiMessage = "";
+    if (currentCombatState) {
+      const shizuki = activateShizukisPresence(
+        currentCombatState, updatedProgress, shizukisPresenceMastery,
+        "elf-blessing", platform,
+      );
+      updatedProgress = shizuki.progress;
+      shizukiMessage = shizuki.message;
+    }
     try {
       await savePlayerProgress(env, backpackKey, updatedProgress);
+      if (currentCombatState) {
+        await saveCombatState(env, backpackKey, currentCombatState);
+      }
     } catch (error) {
       try {
         await savePlayerProgress(env, backpackKey, progress);
@@ -4324,13 +4437,18 @@ async function performCastUnlocked(
     );
     const effectDetails = currentCombatState ? "" : activeEffects;
 
-    const message = platform === "discord"
+    let message = platform === "discord"
         ? effectDetails
           ? `${scene}\n\n${effectDetails}`
           : scene
         : effectDetails
           ? `${scene.split("\n")[0]} ${effectDetails}`
           : scene.split("\n")[0];
+    if (shizukiMessage) {
+      message = platform === "discord"
+        ? `${message}\n\n${shizukiMessage}`
+        : `${message} | ${shizukiMessage}`;
+    }
     return {
       message: currentCombatState && platform === "discord"
         ? appendDiscordCombatHud(message, currentCombatState, updatedProgress)
@@ -4359,15 +4477,30 @@ async function performCastUnlocked(
 
   if (spell.id === "evocation") {
     const maximumMana = getPlayerResourceCaps(progress).mana;
-    if (progress.mana === maximumMana) return { message: spell.fullManaLine };
+    if (progress.mana >= maximumMana) return { message: spell.fullManaLine };
     if (progress.evocationCooldownTurns > 0) {
       return { message: `Evocation is unavailable: ${progress.evocationCooldownTurns} combat turns remaining.` };
     }
+    const overflow = Boolean(shizukisPresenceMastery &&
+      progress.mana < maximumMana * shizukisPresenceMastery.effect.evocation.threshold);
+    const targetMana = overflow
+      ? Math.floor(maximumMana *
+          shizukisPresenceMastery.effect.evocation.overflowMultiplier)
+      : maximumMana;
     const updatedProgress = {
-      ...progress, mana: maximumMana, evocationCooldownTurns: spell.cooldownTurns,
+      ...progress, mana: targetMana, evocationCooldownTurns: spell.cooldownTurns,
     };
-    const castMessage = `${randomChoice(spell.successLines)}\n\n` +
-      `Mana fully restored: ${maximumMana}/${maximumMana}. Turn consumed. Evocation cooldown: 7 combat turns.`;
+    const separator = platform === "discord" ? "\n\n" : " | ";
+    const castMessage = overflow
+      ? [
+          "Evocation cast below 25% Mana!",
+          randomChoice(shizukisPresenceMastery.evocationFlavor),
+          "Shizuki's Presence activated - Overflowing you with Mana!",
+          `Mana: ${progress.mana} → ${targetMana}`,
+          "Turn consumed. Evocation cooldown: 7 combat turns.",
+        ].join(separator)
+      : `${randomChoice(spell.successLines)}${separator}` +
+        `Mana fully restored: ${maximumMana}/${maximumMana}. Turn consumed. Evocation cooldown: 7 combat turns.`;
     await savePlayerProgress(env, backpackKey, updatedProgress);
     try {
       const turnStart = await advanceLeviathansWake(
@@ -4432,6 +4565,12 @@ async function performCastUnlocked(
   }
 
   const spellRoll = rollSpellDamage(spell);
+  const faeMischiefPerk = activePerks.find(
+    (perk) => perk.effect.trigger === "one-die-pattern-completion",
+  );
+  let faeMischief = applyFaeMischiefToPrimaryDice(
+    spell, spellRoll, faeMischiefPerk, combatState,
+  );
   const triggeredRoll = isAllOrNothing ? {
     naturalRoll: spellRoll.total,
     modifier: 0,
@@ -4472,6 +4611,11 @@ async function performCastUnlocked(
     isAllOrNothing ? (combatState.allOrNothingStreak || 0) : 0,
     meteorAlignmentMastery,
   );
+  if (!faeMischief) {
+    faeMischief = applyFaeMischiefToMoonlight(
+      resolvedSpellRoll, moonbeamMastery, faeMischiefPerk, combatState,
+    );
+  }
   if (lunarPatience) {
     if (resolvedSpellRoll.isCritical) delete combatState.lunarPatience;
     else combatState.lunarPatience = { offensiveRollModifier: 1 };
@@ -4518,6 +4662,12 @@ async function performCastUnlocked(
     ? applyRisingPower(combatState, activePerks, spell.id)
     : null;
   if (risingPower) resolvedSpellRoll.damage += risingPower.bonusDamage;
+  const shizukiEmpowered = triggeredRoll.modifierDetails.some(
+    (detail) => detail.name === "Shizuki's Presence",
+  );
+  if (shizukiEmpowered && resolvedSpellRoll.damage > 0) {
+    resolvedSpellRoll.damage += shizukisPresenceMastery.effect.empowerment.bonusDamage;
+  }
   const astralEcho = isAllOrNothing && resolvedSpellRoll.damage === 0
     ? null : getAstralEcho(combatState);
   const echoDamage = astralEcho
@@ -4554,6 +4704,12 @@ async function performCastUnlocked(
     triggeredRoll,
     platform,
   );
+  if (faeMischief) {
+    const mischiefMessage = formatFaeMischiefMessage(faeMischief, platform);
+    castMessage = platform === "discord"
+      ? `${mischiefMessage}\n\n${castMessage}`
+      : `${mischiefMessage} | ${castMessage}`;
+  }
   if (astralCharge && (!isAllOrNothing || resolvedSpellRoll.damage > 0)) {
     const chargeMessage =
       "Charge bursts! Your spell surges with borrowed starlight!";
@@ -4588,6 +4744,14 @@ async function performCastUnlocked(
       ? `${castMessage}\n\n${risingPower.message}`
       : `${castMessage} | ${risingPower.message}`;
   }
+  if (shizukiEmpowered) {
+    const empowermentMessage = resolvedSpellRoll.damage > 0
+      ? "Shizuki's Presence empowers the spell! +3 offensive roll | +15 damage"
+      : "Shizuki's Presence empowers the spell! +3 offensive roll | No damage dealt";
+    castMessage = platform === "discord"
+      ? `${castMessage}\n\n${empowermentMessage}`
+      : `${castMessage} | ${empowermentMessage}`;
+  }
   if (isAllOrNothing) {
     combatState.allOrNothingStreak = spellRoll.total === 2
       ? (combatState.allOrNothingStreak || 0) + 1 : 0;
@@ -4595,12 +4759,24 @@ async function performCastUnlocked(
       delete combatState.berryEffects.shimmerDiscount;
     }
   }
-  const updatedProgress = {
+  let updatedProgress = {
     ...progress,
     mana: progress.mana - (isAllOrNothing && spellRoll.total === 1
       ? spell.manaCost : manaCost),
     statusEffects: triggeredRoll.statusEffects,
   };
+  if (faeMischief) {
+    const shizuki = activateShizukisPresence(
+      combatState, updatedProgress, shizukisPresenceMastery,
+      "fae-mischief", platform,
+    );
+    updatedProgress = shizuki.progress;
+    if (shizuki.message) {
+      castMessage = platform === "discord"
+        ? `${castMessage}\n\n${shizuki.message}`
+        : `${castMessage} | ${shizuki.message}`;
+    }
+  }
 
   await savePlayerProgress(env, backpackKey, updatedProgress);
 
@@ -4695,6 +4871,9 @@ async function castLeviathansWake(
     stage: 1,
     baseDamage: creature.baseDamage,
     rhythmBonus: rhythm?.effect.bonusDamage || 0,
+    shizukisPresenceBonus: triggeredRoll.modifierDetails.some(
+      (detail) => detail.name === "Shizuki's Presence",
+    ) ? 15 : 0,
     critical,
     astralChargeSnapshot: astralCharge
       ? { damageIncrease: astralCharge.damageIncrease }
@@ -4769,6 +4948,7 @@ async function advanceLeviathansWake(
     );
   }
   primaryDamage += wake.rhythmBonus || 0;
+  primaryDamage += wake.shizukisPresenceBonus || 0;
   const echoDamage = wake.astralEchoSnapshot
     ? applyPercentageOfDamage(primaryDamage, wake.astralEchoSnapshot.damagePercent)
     : 0;
@@ -4793,6 +4973,7 @@ async function advanceLeviathansWake(
   parts.push(`${spell.name}: ${wake.baseDamage} +${strength} Strength` +
     `${wake.astralChargeSnapshot ? " + Charge" : ""}` +
     `${wake.rhythmBonus ? " + Rhythm" : ""}` +
+    `${wake.shizukisPresenceBonus ? " + Shizuki's Presence" : ""}` +
     `${sparkBerry ? " + Spark Berry" : ""} → ${primaryDamage} dmg`);
   combatState.enemy.hp = Math.max(0, combatState.enemy.hp - primaryDamage);
   if (wake.astralEchoSnapshot) {
@@ -4849,6 +5030,113 @@ async function advanceLeviathansWake(
   }
   // The caller still executes its normal action and saves the resulting turn.
   return { message };
+}
+
+function consumeFaeMischief(perk, combatState, pattern, originalDice,
+  resolvedDice, dieIndex) {
+  combatState.perkUses = {
+    ...(combatState.perkUses || {}),
+    [perk.id]: 1,
+  };
+  return {
+    pattern,
+    originalDice,
+    resolvedDice,
+    dieIndex,
+    from: originalDice[dieIndex],
+    to: resolvedDice[dieIndex],
+    flavor: randomChoice(perk.flavor),
+  };
+}
+
+function applyFaeMischiefToPrimaryDice(spell, spellRoll, perk, combatState) {
+  if (!perk || combatState.perkUses?.[perk.id] ||
+      !Array.isArray(spellRoll.naturalPatternDice)) return null;
+
+  const originalDice = [...spellRoll.naturalPatternDice];
+  let dieIndex = -1;
+  let target = null;
+  let pattern = null;
+
+  if (spell.id === "moonbeam" && originalDice.length === 2) {
+    const twenties = originalDice.filter((die) => die === 20).length;
+    if (twenties === 1) {
+      dieIndex = originalDice.findIndex((die) => die !== 20);
+      target = 20;
+      pattern = "Full Moon";
+    }
+  } else if (spell.id === "jelly" && originalDice.length === 3) {
+    const counts = new Map();
+    for (const die of originalDice) counts.set(die, (counts.get(die) || 0) + 1);
+    const matching = [...counts.entries()].find(([, count]) => count === 2);
+    if (matching) {
+      dieIndex = originalDice.findIndex((die) => die !== matching[0]);
+      target = matching[0];
+      pattern = "Perfect Jellyfish";
+    }
+  } else if (spell.id === "falling-star" && originalDice.length === 3) {
+    const counts = new Map();
+    for (const die of originalDice) counts.set(die, (counts.get(die) || 0) + 1);
+    const matching = [...counts.entries()].find(([, count]) => count === 2);
+    if (matching) {
+      dieIndex = originalDice.findIndex((die) => die !== matching[0]);
+      target = matching[0];
+      pattern = "Meteor Alignment triples";
+    }
+  }
+
+  if (dieIndex < 0) return null;
+  const resolvedDice = [...originalDice];
+  resolvedDice[dieIndex] = target;
+  spellRoll.originalNaturalPatternDice = originalDice;
+  spellRoll.naturalPatternDice = resolvedDice;
+  if (spell.id === "falling-star") {
+    spellRoll.powerRolls = resolvedDice;
+    spellRoll.powerTotal = resolvedDice.reduce((sum, die) => sum + die, 0);
+  } else {
+    spellRoll.rolls = resolvedDice;
+    spellRoll.total = spell.id === "moonbeam"
+      ? Math.max(...resolvedDice)
+      : resolvedDice.reduce((sum, die) => sum + die, 0);
+    if (spell.id === "moonbeam") spellRoll.keptRoll = spellRoll.total;
+  }
+  return consumeFaeMischief(
+    perk, combatState, pattern, originalDice, resolvedDice, dieIndex,
+  );
+}
+
+function applyFaeMischiefToMoonlight(spellRoll, moonbeamMastery, perk,
+  combatState) {
+  if (!perk || !moonbeamMastery || combatState.perkUses?.[perk.id] ||
+      !Array.isArray(spellRoll.moonlightRolls) ||
+      spellRoll.moonlightRolls.length !== 2) return null;
+  const originalDice = [...spellRoll.moonlightRolls];
+  if (originalDice[0] === originalDice[1] || originalDice[0] + originalDice[1] === 7) {
+    return null;
+  }
+  const resolvedDice = [originalDice[0], originalDice[0]];
+  spellRoll.originalMoonlightRolls = originalDice;
+  spellRoll.moonlightRolls = resolvedDice;
+  spellRoll.bonusDamage = resolvedDice[0] + resolvedDice[1];
+  spellRoll.alignmentDamage = spellRoll.isCritical
+    ? moonbeamMastery.effect.criticalDamage
+    : moonbeamMastery.effect.normalDamage;
+  spellRoll.damage = spellRoll.baseDamage + spellRoll.bonusDamage +
+    spellRoll.alignmentDamage;
+  return consumeFaeMischief(
+    perk, combatState, "Lunar Alignment", originalDice, resolvedDice, 1,
+  );
+}
+
+function formatFaeMischiefMessage(result, platform = "twitch") {
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  return [
+    "Fae Mischief!",
+    result.flavor,
+    `Original ${result.pattern}: ${result.originalDice.join(" + ")}`,
+    `${result.from} → ${result.to}`,
+    `Resolved ${result.pattern}: ${result.resolvedDice.join(" + ")}`,
+  ].join(separator);
 }
 
 function rollSpellDamage(spell) {
@@ -5550,8 +5838,9 @@ async function resolveCombatVictory(
     );
     progress = {
       ...progress,
-      mana: Math.min(resourceCaps.mana,
-        progress.mana + astralDefiance.effect.manaRestore),
+      mana: restoreManaToNormalCap(
+        progress.mana, astralDefiance.effect.manaRestore, resourceCaps.mana,
+      ),
     };
     astralDefianceMessage = astralDefiance.activationLine;
   }
@@ -5559,8 +5848,9 @@ async function resolveCombatVictory(
   if (reprieveQualifies) {
     progress = {
       ...progress,
-      mana: Math.min(resourceCaps.mana,
-        progress.mana + astralReprieve.effect.manaRestore),
+      mana: restoreManaToNormalCap(
+        progress.mana, astralReprieve.effect.manaRestore, resourceCaps.mana,
+      ),
     };
     astralReprieveMessage = astralReprieve.activationLine;
   }
@@ -6673,7 +6963,9 @@ async function performStatAllocation(env, backpackKey, statId, platform = "twitc
       }
     }
     if (definition.id === "focus") {
-      updatedProgress.mana = Math.min(getPlayerResourceCaps(updatedProgress).mana, progress.mana + 10);
+      updatedProgress.mana = restoreManaToNormalCap(
+        progress.mana, 10, getPlayerResourceCaps(updatedProgress).mana,
+      );
     }
 
     try {
@@ -8045,6 +8337,8 @@ function isValidLeviathansWake(wake) {
         (wake.astralEchoSnapshot.naturalRoll === undefined ||
           [1, 2, 3, 4].includes(wake.astralEchoSnapshot.naturalRoll)))) &&
     (wake.rhythmBonus === undefined || wake.rhythmBonus === 0 || wake.rhythmBonus === 5) &&
+    (wake.shizukisPresenceBonus === undefined ||
+      wake.shizukisPresenceBonus === 0 || wake.shizukisPresenceBonus === 15) &&
     Number.isSafeInteger(wake.aftershockDamage) &&
     (wake.aftershockDamage === 0 || (wake.critical && wake.aftershockDamage === 5))
   );
@@ -8095,6 +8389,21 @@ function isValidCombatState(combatState) {
         combatState.allOrNothingStreak >= 0)) &&
     (combatState.faeSecondOpinion === undefined ||
       combatState.faeSecondOpinion?.offensiveRollModifier === 3) &&
+    (combatState.shizukiFaeSources === undefined ||
+      (Array.isArray(combatState.shizukiFaeSources) &&
+        combatState.shizukiFaeSources.length >= 1 &&
+        combatState.shizukiFaeSources.length <= 7 &&
+        combatState.shizukiFaeSources.every((source) => [
+          "elf-blessing", "fae-aid", "fae-second-opinion",
+          "fae-intervention", "fae-mischief", "fae-snail", "fae-berry",
+        ].includes(source)) &&
+        new Set(combatState.shizukiFaeSources).size ===
+          combatState.shizukiFaeSources.length)) &&
+    (combatState.shizukisPresenceUsed === undefined ||
+      combatState.shizukisPresenceUsed === true) &&
+    (combatState.shizukisPresence === undefined ||
+      (combatState.shizukisPresence?.offensiveRollModifier === 3 &&
+        combatState.shizukisPresence?.bonusDamage === 15)) &&
     (combatState.astralRhythmPreviousSpell === undefined ||
       (typeof combatState.astralRhythmPreviousSpell === "string" &&
         /^[a-z-]+$/.test(combatState.astralRhythmPreviousSpell))) &&
@@ -8580,6 +8889,12 @@ function getPlayerResourceCaps(progress) {
   };
 }
 
+function restoreManaToNormalCap(currentMana, amount, maximumMana) {
+  return currentMana >= maximumMana
+    ? currentMana
+    : Math.min(maximumMana, currentMana + amount);
+}
+
 function getStrengthDamageBonus(progress) {
   return normalizePlayerStats(progress?.stats).strength;
 }
@@ -9035,6 +9350,14 @@ function consumeTriggeredStatusEffects(
     applied.push("Fae Second Opinion");
     modifierDetails.push({ name: "Fae Second Opinion", value: opinionModifier });
     delete combatState.faeSecondOpinion;
+  }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER && offensiveSpell &&
+      combatState?.shizukisPresence) {
+    const presenceModifier = combatState.shizukisPresence.offensiveRollModifier;
+    modifier += presenceModifier;
+    applied.push("Shizuki's Presence");
+    modifierDetails.push({ name: "Shizuki's Presence", value: presenceModifier });
+    delete combatState.shizukisPresence;
   }
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.berryEffects?.rollBonuses) {
     for (const [name, value] of Object.entries(combatState.berryEffects.rollBonuses)) {
@@ -9779,6 +10102,35 @@ function validateMasteryDefinition(mastery, expectedId) {
         (outcome.offensiveRollModifier || 0) === expected[2] &&
         outcome.activationLine === expected[3];
     });
+  const shizukiSources = [
+    ["elf-blessing", "Elf Blessing"], ["fae-aid", "Fae Aid"],
+    ["fae-second-opinion", "Fae Second Opinion"],
+    ["fae-intervention", "Fae Intervention"],
+    ["fae-mischief", "Fae Mischief"], ["fae-snail", "Fae Snail"],
+    ["fae-berry", "Fae Berry"],
+  ];
+  const validShizukisPresence = expectedId === "shizukis-presence" &&
+    mastery.name === "Shizuki's Presence" && mastery.spellId === "evocation" &&
+    mastery.requiredLevel === 48 && mastery.tier === 1 &&
+    effect?.id === "shizukis-presence" &&
+    effect.recovery?.hp === 30 && effect.recovery?.mana === 40 &&
+    effect.empowerment?.offensiveRollModifier === 3 &&
+    effect.empowerment?.bonusDamage === 15 &&
+    effect.evocation?.threshold === 0.25 &&
+    effect.evocation?.overflowMultiplier === 1.5 &&
+    Array.isArray(effect.qualifyingSources) &&
+    effect.qualifyingSources.length === shizukiSources.length &&
+    effect.qualifyingSources.every((source, index) =>
+      source.id === shizukiSources[index][0] &&
+      source.name === shizukiSources[index][1]) &&
+    Array.isArray(mastery.convergenceFlavor) &&
+    mastery.convergenceFlavor.length === 6 &&
+    mastery.convergenceFlavor.every((line) => typeof line === "string" && line.trim()) &&
+    Array.isArray(mastery.evocationFlavor) &&
+    mastery.evocationFlavor.length === 4 &&
+    mastery.evocationFlavor.every((line) => typeof line === "string" && line.trim()) &&
+    mastery.levelUpLine ===
+      "lvl 48 Mastery 🌿 Shizuki's Presence: When two different Fae abilities activate during the same battle, Shizuki's Presence awakens once per battle, restoring 30 HP and 40 Mana and empowering your next offensive spell with +3 to its offensive roll and +15 damage. Casting Evocation below 25% Mana causes it to overflow your Mana to 150% of its maximum.";
 
   if (
     !validStarSparkMastery &&
@@ -9793,7 +10145,8 @@ function validateMasteryDefinition(mastery, expectedId) {
     !validBubbleMastery &&
     !validBubbleMasteryII &&
     !validMendMastery &&
-    !validEchoMastery
+    !validEchoMastery &&
+    !validShizukisPresence
   ) {
     throw new Error(`Invalid mastery effect for ${expectedId}.`);
   }
@@ -9831,7 +10184,8 @@ function validatePerkDefinition(perk, expectedId) {
       !Array.isArray(perk.memories) &&
       expectedId !== "lunar-patience" &&
       expectedId !== "rising-power" &&
-      expectedId !== "legacy")
+      expectedId !== "legacy" &&
+      expectedId !== "fae-mischief")
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
   }
@@ -9998,6 +10352,17 @@ function validatePerkDefinition(perk, expectedId) {
     effect.fullMoon?.damage === 75 &&
     perk.levelUpLine ===
       "lvl 46 Passive ⭐ Legacy: The spells that began your journey have grown alongside you. Star Spark critical Charges restore 10 Mana. Matching all three natural Jellyfish dice summons a Perfect Jellyfish, dealing +20 bonus damage and restoring 20 HP + 20 Mana. If both of Moonbeam's natural main dice roll 20, a Full Moon forms and deals +75 bonus damage.";
+  const validFaeMischief = expectedId === "fae-mischief" &&
+    perk.name === "Fae Mischief" && perk.requiredLevel === 47 &&
+    effect?.trigger === "one-die-pattern-completion" &&
+    effect.usesPerBattle === 1 &&
+    Array.isArray(effect.priority) &&
+    effect.priority.join(",") ===
+      "full-moon,perfect-jellyfish,meteor-alignment-triple,lunar-alignment" &&
+    Array.isArray(perk.flavor) && perk.flavor.length === 4 &&
+    perk.flavor.every((line) => typeof line === "string" && line.trim()) &&
+    perk.levelUpLine ===
+      "lvl 47 Passive 🌿 Fae Mischief: Once per battle, when a natural spell roll is one die away from completing a powerful dice pattern, the Fae may change that die after it lands to complete the pattern.";
 
   if (
     !validResilience &&
@@ -10018,7 +10383,8 @@ function validatePerkDefinition(perk, expectedId) {
     !validAstralHarmony &&
     !validFaeSecondOpinion &&
     !validKinship &&
-    !validLegacy
+    !validLegacy &&
+    !validFaeMischief
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }
@@ -10703,9 +11069,12 @@ async function getPlayerProgress(
           ),
         )
       : maxHp;
+    const manaStorageCap = currentLevel >= 48
+      ? Math.floor(resourceCaps.mana * 1.5)
+      : resourceCaps.mana;
     let mana = Object.prototype.hasOwnProperty.call(parsed, "mana")
       ? Math.min(
-          resourceCaps.mana,
+          manaStorageCap,
           Math.max(
             0,
             Math.floor(Number(parsed.mana) || 0),
@@ -11002,6 +11371,11 @@ async function savePlayerProgress(
   const activeMasteries = await getActiveMasteries(
     levelFromXp(Number(progress.xp) || 0),
   );
+  const manaStorageCap = activeMasteries.some(
+    (mastery) => mastery.effect.id === "shizukis-presence",
+  )
+    ? Math.floor(resourceCaps.mana * 1.5)
+    : resourceCaps.mana;
 
   const safeProgress = {
     evocationCooldownTurns: normalizeEvocationCooldown(progress.evocationCooldownTurns),
@@ -11051,7 +11425,7 @@ async function savePlayerProgress(
     requestedHp,
   );
   safeProgress.mana = Math.min(
-    resourceCaps.mana,
+    manaStorageCap,
     requestedMana,
   );
 
