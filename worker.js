@@ -335,6 +335,7 @@ const PERK_FILES = {
   "astral-expedition": "astral-expedition.json",
   legacy: "legacy.json",
   "fae-mischief": "fae-mischief.json",
+  storyteller: "storyteller.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -3393,6 +3394,9 @@ async function resolvePlayerCombatAction(
     action.curiosityDice,
   );
   progress = curiosityResult.progress;
+  const storytellerMessage = advanceStoryteller(
+    combatState, activePerks, platform,
+  );
 
   const messageParts = [action.message];
   if (legacyMessage) messageParts.push(legacyMessage);
@@ -3413,6 +3417,7 @@ async function resolvePlayerCombatAction(
   if (momentumMessage) {
     messageParts.push(momentumMessage);
   }
+  if (storytellerMessage) messageParts.push(storytellerMessage);
 
   if (combatState.enemy.hp === 0) {
     const victory = await resolveCombatVictory(
@@ -3732,6 +3737,13 @@ async function resolvePlayerCombatAction(
     }
   }
 
+  const retaliationStorytellerMessage = advanceStoryteller(
+    combatState, activePerks, platform,
+  );
+  if (retaliationStorytellerMessage) {
+    messageParts.push(retaliationStorytellerMessage);
+  }
+
   if (combatState.enemy.hp === 0) {
     await savePlayerProgress(env, backpackKey, {
       ...updatedProgress,
@@ -3963,6 +3975,9 @@ async function performCastUnlocked(
     (mastery) => mastery.effect.id === "shizukis-presence",
   );
   const currentCombatState = await getCombatState(env, backpackKey);
+  const storytellerManaCost = getStorytellerManaCost(
+    spell.manaCost, currentCombatState,
+  );
 
   if (playerLevel < spell.requiredLevel) {
     const message =
@@ -3982,12 +3997,12 @@ async function performCastUnlocked(
     if (currentCombatState.familiar) {
       return { message: "You already have an active Familiar." };
     }
-    if (progress.mana < spell.manaCost) {
+    if (progress.mana < storytellerManaCost) {
       return { message: `You don't have enough Mana to cast ${spell.name}.` };
     }
 
     await savePlayerProgress(env, backpackKey, {
-      ...progress, mana: progress.mana - spell.manaCost,
+      ...progress, mana: progress.mana - storytellerManaCost,
     });
     const paidProgress = await getPlayerProgress(env, backpackKey);
     const caps = getPlayerResourceCaps(paidProgress);
@@ -4021,14 +4036,14 @@ async function performCastUnlocked(
     if (currentCombatState.berriesCastRound === currentCombatState.round) {
       return { message: "You have already conjured a Berry this turn." };
     }
-    if (progress.mana < spell.manaCost) {
+    if (progress.mana < storytellerManaCost) {
       return { message: `You don't have enough Mana to cast ${spell.name}.` };
     }
 
     const originalCombatState = structuredClone(currentCombatState);
     await savePlayerProgress(env, backpackKey, {
       ...progress,
-      mana: progress.mana - spell.manaCost,
+      mana: progress.mana - storytellerManaCost,
     });
     const paidProgress = await getPlayerProgress(env, backpackKey);
     const resourceCaps = getPlayerResourceCaps(paidProgress);
@@ -4086,6 +4101,9 @@ async function performCastUnlocked(
     }
     currentCombatState.berriesCastRound = currentCombatState.round;
     currentCombatState.enemy.hp = Math.max(0, currentCombatState.enemy.hp - fixedDamage);
+    const storytellerMessage = advanceStoryteller(
+      currentCombatState, activePerks, platform,
+    );
     updatedProgress.hp = currentCombatState.playerHp;
     const originalCandies = naturalRoll === 13
       ? await getBackpackTotal(env, backpackKey) : null;
@@ -4111,14 +4129,16 @@ async function performCastUnlocked(
     }
     const separator = platform === "discord" ? "\n\n" : " | ";
     return {
-      message: [outcome.text, shizukiMessage,
+      message: [outcome.text, shizukiMessage, storytellerMessage,
         formatDiscordCombatHud(currentCombatState, updatedProgress)]
         .filter(Boolean).join(separator),
     };
   }
 
   if (spell.type === "pre-action-support" && spell.id === "astral-echo") {
-    const echoManaCost = echoMastery?.effect.manaCost ?? spell.manaCost;
+    const echoManaCost = getStorytellerManaCost(
+      echoMastery?.effect.manaCost ?? spell.manaCost, currentCombatState,
+    );
     if (!currentCombatState) {
       return {
         message:
@@ -4210,7 +4230,7 @@ async function performCastUnlocked(
       };
     }
 
-    if (progress.mana < spell.manaCost) {
+    if (progress.mana < storytellerManaCost) {
       const message = `You don't have enough Mana to cast ${spell.name}.`;
       return {
         message: platform === "discord"
@@ -4231,7 +4251,7 @@ async function performCastUnlocked(
     const originalCombatState = structuredClone(currentCombatState);
     const updatedProgress = {
       ...progress,
-      mana: progress.mana - spell.manaCost,
+      mana: progress.mana - storytellerManaCost,
     };
     currentCombatState.bubble = {
       naturalRoll,
@@ -4287,7 +4307,7 @@ async function performCastUnlocked(
       };
     }
 
-    if (progress.mana < spell.manaCost) {
+    if (progress.mana < storytellerManaCost) {
       const message = `You don't have enough Mana to cast ${spell.name}.`;
       return {
         message: platform === "discord"
@@ -4308,7 +4328,7 @@ async function performCastUnlocked(
     const originalCombatState = structuredClone(currentCombatState);
     const paidProgress = {
       ...progress,
-      mana: progress.mana - spell.manaCost,
+      mana: progress.mana - storytellerManaCost,
     };
     const curiosityResult = mendMastery
       ? await resolveAstralCuriosity(
@@ -4389,7 +4409,7 @@ async function performCastUnlocked(
       };
     }
 
-    if (progress.mana < spell.manaCost) {
+    if (progress.mana < storytellerManaCost) {
       const message = `You don't have enough Mana to cast ${spell.name}.`;
       return {
         message: currentCombatState && platform === "discord"
@@ -4400,7 +4420,7 @@ async function performCastUnlocked(
 
     let updatedProgress = {
       ...progress,
-      mana: progress.mana - spell.manaCost,
+      mana: progress.mana - storytellerManaCost,
       statusEffects: addStatusEffect(
         progress,
         createElfBlessingEffect(spell, elfBlessingMastery),
@@ -4536,10 +4556,10 @@ async function performCastUnlocked(
     astralCharge?.manaDiscountAvailable ? astralCharge.manaReduction : 0,
     shimmerDiscount ? 0.5 : 0,
   );
-  const manaCost = Math.round(spell.manaCost * (1 - manaReduction));
+  const manaCost = Math.round(storytellerManaCost * (1 - manaReduction));
   const isAllOrNothing = spell.id === "all-or-nothing";
 
-  if (progress.mana < (isAllOrNothing ? spell.manaCost : manaCost)) {
+  if (progress.mana < (isAllOrNothing ? storytellerManaCost : manaCost)) {
     const message = `You don't have enough Mana to cast ${spell.name}.`;
     return {
       message: platform === "discord"
@@ -4627,6 +4647,12 @@ async function performCastUnlocked(
   resolvedSpellRoll.baseDamage ??= resolvedSpellRoll.damage;
   resolvedSpellRoll.strengthBonus = strengthBonus;
   resolvedSpellRoll.damage += strengthBonus;
+  const storytellerFinalChapter = combatState.storytellerChapter === 3;
+  const storytellerCriticalBonus = storytellerFinalChapter &&
+      resolvedSpellRoll.isCritical && resolvedSpellRoll.damage > 0
+    ? Math.round(resolvedSpellRoll.damage * 1.12) - resolvedSpellRoll.damage
+    : 0;
+  resolvedSpellRoll.damage += storytellerCriticalBonus;
   const jellyfishMasteryEffect = spell.id === "jelly" && jellyfishMastery
     ? jellyfishMastery.effect.moods.find(
         (mood) => spellRoll.total <= mood.naturalMaximum,
@@ -4668,6 +4694,9 @@ async function performCastUnlocked(
   if (shizukiEmpowered && resolvedSpellRoll.damage > 0) {
     resolvedSpellRoll.damage += shizukisPresenceMastery.effect.empowerment.bonusDamage;
   }
+  const storytellerFinalDamage = storytellerFinalChapter &&
+      resolvedSpellRoll.damage > 0 ? 10 : 0;
+  resolvedSpellRoll.damage += storytellerFinalDamage;
   const astralEcho = isAllOrNothing && resolvedSpellRoll.damage === 0
     ? null : getAstralEcho(combatState);
   const echoDamage = astralEcho
@@ -4752,6 +4781,14 @@ async function performCastUnlocked(
       ? `${castMessage}\n\n${empowermentMessage}`
       : `${castMessage} | ${empowermentMessage}`;
   }
+  if (storytellerFinalDamage) {
+    const storytellerMessage = storytellerCriticalBonus
+      ? `THE FINAL CHAPTER: +10 Final Damage | +12% Critical Damage (+${storytellerCriticalBonus})`
+      : "THE FINAL CHAPTER: +10 Final Damage";
+    castMessage = platform === "discord"
+      ? `${castMessage}\n\n${storytellerMessage}`
+      : `${castMessage} | ${storytellerMessage}`;
+  }
   if (isAllOrNothing) {
     combatState.allOrNothingStreak = spellRoll.total === 2
       ? (combatState.allOrNothingStreak || 0) + 1 : 0;
@@ -4762,7 +4799,7 @@ async function performCastUnlocked(
   let updatedProgress = {
     ...progress,
     mana: progress.mana - (isAllOrNothing && spellRoll.total === 1
-      ? spell.manaCost : manaCost),
+      ? storytellerManaCost : manaCost),
     statusEffects: triggeredRoll.statusEffects,
   };
   if (faeMischief) {
@@ -4874,6 +4911,7 @@ async function castLeviathansWake(
     shizukisPresenceBonus: triggeredRoll.modifierDetails.some(
       (detail) => detail.name === "Shizuki's Presence",
     ) ? 15 : 0,
+    storytellerFinalChapter: combatState.storytellerChapter === 3,
     critical,
     astralChargeSnapshot: astralCharge
       ? { damageIncrease: astralCharge.damageIncrease }
@@ -4942,6 +4980,10 @@ async function advanceLeviathansWake(
 
   const strength = getStrengthDamageBonus(progress);
   let primaryDamage = wake.baseDamage + strength;
+  const storytellerCriticalBonus = wake.storytellerFinalChapter && wake.critical
+    ? Math.round(primaryDamage * 1.12) - primaryDamage
+    : 0;
+  primaryDamage += storytellerCriticalBonus;
   if (wake.astralChargeSnapshot) {
     primaryDamage = applyPercentageDamageIncrease(
       primaryDamage, wake.astralChargeSnapshot.damageIncrease,
@@ -4949,6 +4991,7 @@ async function advanceLeviathansWake(
   }
   primaryDamage += wake.rhythmBonus || 0;
   primaryDamage += wake.shizukisPresenceBonus || 0;
+  primaryDamage += wake.storytellerFinalChapter ? 10 : 0;
   const echoDamage = wake.astralEchoSnapshot
     ? applyPercentageOfDamage(primaryDamage, wake.astralEchoSnapshot.damagePercent)
     : 0;
@@ -4974,7 +5017,13 @@ async function advanceLeviathansWake(
     `${wake.astralChargeSnapshot ? " + Charge" : ""}` +
     `${wake.rhythmBonus ? " + Rhythm" : ""}` +
     `${wake.shizukisPresenceBonus ? " + Shizuki's Presence" : ""}` +
+    `${wake.storytellerFinalChapter ? " + THE FINAL CHAPTER" : ""}` +
     `${sparkBerry ? " + Spark Berry" : ""} → ${primaryDamage} dmg`);
+  if (storytellerCriticalBonus) {
+    parts.push(`THE FINAL CHAPTER: +10 Final Damage | +12% Critical Damage (+${storytellerCriticalBonus})`);
+  } else if (wake.storytellerFinalChapter) {
+    parts.push("THE FINAL CHAPTER: +10 Final Damage");
+  }
   combatState.enemy.hp = Math.max(0, combatState.enemy.hp - primaryDamage);
   if (wake.astralEchoSnapshot) {
     combatState.enemy.hp = Math.max(0, combatState.enemy.hp - echoDamage);
@@ -5017,6 +5066,12 @@ async function advanceLeviathansWake(
     }
     parts.push(arrivalEffect.activationLine);
   }
+  const storytellerMessage = advanceStoryteller(
+    combatState,
+    await getActivePerks(levelFromXp(progress.xp)),
+    platform,
+  );
+  if (storytellerMessage) parts.push(storytellerMessage);
   delete combatState.leviathansWake;
   const message = parts.join("\n\n");
   if (combatState.enemy.hp === 0) {
@@ -8339,6 +8394,8 @@ function isValidLeviathansWake(wake) {
     (wake.rhythmBonus === undefined || wake.rhythmBonus === 0 || wake.rhythmBonus === 5) &&
     (wake.shizukisPresenceBonus === undefined ||
       wake.shizukisPresenceBonus === 0 || wake.shizukisPresenceBonus === 15) &&
+    (wake.storytellerFinalChapter === undefined ||
+      typeof wake.storytellerFinalChapter === "boolean") &&
     Number.isSafeInteger(wake.aftershockDamage) &&
     (wake.aftershockDamage === 0 || (wake.critical && wake.aftershockDamage === 5))
   );
@@ -8404,6 +8461,10 @@ function isValidCombatState(combatState) {
     (combatState.shizukisPresence === undefined ||
       (combatState.shizukisPresence?.offensiveRollModifier === 3 &&
         combatState.shizukisPresence?.bonusDamage === 15)) &&
+    (combatState.storytellerChapter === undefined ||
+      [1, 2, 3].includes(combatState.storytellerChapter)) &&
+    (combatState.storytellerActivated === undefined ||
+      combatState.storytellerActivated === true) &&
     (combatState.astralRhythmPreviousSpell === undefined ||
       (typeof combatState.astralRhythmPreviousSpell === "string" &&
         /^[a-z-]+$/.test(combatState.astralRhythmPreviousSpell))) &&
@@ -8895,6 +8956,42 @@ function restoreManaToNormalCap(currentMana, amount, maximumMana) {
     : Math.min(maximumMana, currentMana + amount);
 }
 
+function getStorytellerManaCost(baseCost, combatState) {
+  return combatState?.storytellerChapter === 1
+    ? Math.round(baseCost * 0.8)
+    : baseCost;
+}
+
+function getStorytellerChapterForEnemy(enemy) {
+  if (!enemy || enemy.hp <= 0) return 0;
+  if (enemy.hp * 4 < enemy.maxHp) return 3;
+  if (enemy.hp * 2 < enemy.maxHp) return 2;
+  if (enemy.hp * 4 < enemy.maxHp * 3) return 1;
+  return 0;
+}
+
+function advanceStoryteller(combatState, activePerks, platform = "discord") {
+  const storyteller = activePerks.find(
+    (perk) => perk.effect.trigger === "enemy-hp-chapters",
+  );
+  if (!storyteller || combatState.enemy.hp <= 0) return "";
+  const nextChapter = getStorytellerChapterForEnemy(combatState.enemy);
+  const currentChapter = combatState.storytellerChapter || 0;
+  if (nextChapter <= currentChapter) return "";
+  combatState.storytellerChapter = nextChapter;
+  const chapter = storyteller.effect.chapters.find(
+    (entry) => entry.stage === nextChapter,
+  );
+  const firstActivation = combatState.storytellerActivated !== true;
+  combatState.storytellerActivated = true;
+  const separator = platform === "discord" ? "\n\n" : " | ";
+  return [
+    ...(firstActivation ? ["Storyteller Activated!"] : []),
+    chapter.heading,
+    ...chapter.effects,
+  ].join(separator);
+}
+
 function getStrengthDamageBonus(progress) {
   return normalizePlayerStats(progress?.stats).strength;
 }
@@ -9358,6 +9455,12 @@ function consumeTriggeredStatusEffects(
     applied.push("Shizuki's Presence");
     modifierDetails.push({ name: "Shizuki's Presence", value: presenceModifier });
     delete combatState.shizukisPresence;
+  }
+  if (trigger === OFFENSIVE_ROLL_TRIGGER &&
+      combatState?.storytellerChapter === 2) {
+    modifier += 2;
+    applied.push("Storyteller");
+    modifierDetails.push({ name: "Storyteller", value: 2 });
   }
   if (trigger === OFFENSIVE_ROLL_TRIGGER && combatState?.berryEffects?.rollBonuses) {
     for (const [name, value] of Object.entries(combatState.berryEffects.rollBonuses)) {
@@ -10185,7 +10288,8 @@ function validatePerkDefinition(perk, expectedId) {
       expectedId !== "lunar-patience" &&
       expectedId !== "rising-power" &&
       expectedId !== "legacy" &&
-      expectedId !== "fae-mischief")
+      expectedId !== "fae-mischief" &&
+      expectedId !== "storyteller")
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
   }
@@ -10363,6 +10467,28 @@ function validatePerkDefinition(perk, expectedId) {
     perk.flavor.every((line) => typeof line === "string" && line.trim()) &&
     perk.levelUpLine ===
       "lvl 47 Passive 🌿 Fae Mischief: Once per battle, when a natural spell roll is one die away from completing a powerful dice pattern, the Fae may change that die after it lands to complete the pattern.";
+  const storytellerChapters = [
+    [1, "first-page", 0.8, 0, 0, 0],
+    [2, "turning-point", 0, 2, 0, 0],
+    [3, "final-chapter", 0, 0, 10, 1.12],
+  ];
+  const validStoryteller = expectedId === "storyteller" &&
+    perk.name === "Storyteller" && perk.requiredLevel === 49 &&
+    effect?.trigger === "enemy-hp-chapters" &&
+    Array.isArray(effect.chapters) && effect.chapters.length === 3 &&
+    effect.chapters.every((chapter, index) => {
+      const expected = storytellerChapters[index];
+      return chapter.stage === expected[0] && chapter.id === expected[1] &&
+        (chapter.manaCostMultiplier || 0) === expected[2] &&
+        (chapter.offensiveRollModifier || 0) === expected[3] &&
+        (chapter.bonusDamage || 0) === expected[4] &&
+        (chapter.criticalDamageMultiplier || 0) === expected[5] &&
+        typeof chapter.heading === "string" && chapter.heading.trim() &&
+        Array.isArray(chapter.effects) && chapter.effects.length > 0 &&
+        chapter.effects.every((line) => typeof line === "string" && line.trim());
+    }) &&
+    perk.levelUpLine ===
+      "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storyteller progresses through three Chapters. Below 75% HP, THE FIRST PAGE reduces Mana costs by 20%. Below 50% HP, THE TURNING POINT replaces it with +2 to offensive rolls. Below 25% HP, THE FINAL CHAPTER replaces it with +10 final damage and +12% critical damage. Chapters only progress forward and reset when the battle ends.";
 
   if (
     !validResilience &&
@@ -10384,7 +10510,8 @@ function validatePerkDefinition(perk, expectedId) {
     !validFaeSecondOpinion &&
     !validKinship &&
     !validLegacy &&
-    !validFaeMischief
+    !validFaeMischief &&
+    !validStoryteller
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }

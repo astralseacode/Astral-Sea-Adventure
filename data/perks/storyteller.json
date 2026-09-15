@@ -1,0 +1,35 @@
+{
+  "id": "storyteller",
+  "name": "Storyteller",
+  "requiredLevel": 49,
+  "type": "passive",
+  "description": "As an enemy's HP falls, Storyteller advances through three exclusive chapters that reduce Mana costs, improve offensive rolls, then increase final and critical spell damage.",
+  "levelUpLine": "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storyteller progresses through three Chapters. Below 75% HP, THE FIRST PAGE reduces Mana costs by 20%. Below 50% HP, THE TURNING POINT replaces it with +2 to offensive rolls. Below 25% HP, THE FINAL CHAPTER replaces it with +10 final damage and +12% critical damage. Chapters only progress forward and reset when the battle ends.",
+  "effect": {
+    "trigger": "enemy-hp-chapters",
+    "chapters": [
+      {
+        "stage": 1,
+        "id": "first-page",
+        "heading": "Enemy Below 75% HP — THE FIRST PAGE",
+        "effects": ["Mana Costs Reduced by 20%"],
+        "manaCostMultiplier": 0.8
+      },
+      {
+        "stage": 2,
+        "id": "turning-point",
+        "heading": "Enemy Below 50% HP — THE TURNING POINT",
+        "effects": ["+2 Offensive Rolls"],
+        "offensiveRollModifier": 2
+      },
+      {
+        "stage": 3,
+        "id": "final-chapter",
+        "heading": "Enemy Below 25% HP — THE FINAL CHAPTER",
+        "effects": ["+10 Final Damage", "+12% Critical Damage"],
+        "bonusDamage": 10,
+        "criticalDamageMultiplier": 1.12
+      }
+    ]
+  }
+}
