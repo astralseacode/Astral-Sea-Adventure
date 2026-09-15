@@ -21,5 +21,12 @@
     "...You could swear you hear Shizuki quietly whisper, “Not bad.”",
     "Somewhere nearby, a single approving clap echoes through the reef.",
     "A fake mustache briefly floats through the moonlight... then vanishes."
-  ]
+  ],
+  "legacy": {
+    "fullMoonScenes": [
+      "Both Moonbeams align perfectly. The night above you falls silent as a brilliant full moon takes shape overhead. For a single moment, the battlefield is drowned in silver light—then the moon answers. A colossal pillar of moonlight crashes down upon the enemy!",
+      "Two perfect beams cross in the sky. The light spreads outward until an enormous full moon burns above the battlefield. Its glow intensifies... brighter... brighter... until the entire sky erupts in moonlight!",
+      "This isn't the Moonbeam you first learned. Twin perfect rays pierce the heavens, and something far greater answers. The full moon blazes overhead before unleashing its light upon the enemy!"
+    ]
+  }
 }

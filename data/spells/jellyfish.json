@@ -16,5 +16,11 @@
     { "maximumRoll": 17, "adjective": "confident", "followUp": "It glides gracefully through the current..." },
     { "maximumRoll": 24, "adjective": "dedicated", "followUp": "It surges forward with surprising determination..." }
   ],
-  "criticalText": "It erupts in brilliant Astral light! Critical Hit!"
+  "criticalText": "It erupts in brilliant Astral light! Critical Hit!",
+  "legacy": {
+    "perfectJellyfishScenes": [
+      "The Jellyfish has achieved a level of focus previously thought impossible for a Jellyfish. Nobody knows what it's thinking. Whatever it is, it's working.",
+      "The Jellyfish becomes perfectly still. For once, not sleepy. Not sad. Not confused. It simply understands. A brilliant light pulses through its body before crashing into the enemy!"
+    ]
+  }
 }

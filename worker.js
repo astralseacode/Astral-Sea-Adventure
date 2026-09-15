@@ -332,6 +332,7 @@ const PERK_FILES = {
   "astral-rhythm": "astral-rhythm.json",
   "rising-power": "rising-power.json",
   "astral-expedition": "astral-expedition.json",
+  legacy: "legacy.json",
 };
 const DATA_CACHE = new Map();
 const PLAYER_MUTATION_CHAINS = new Map();
@@ -3070,6 +3071,34 @@ async function resolvePlayerCombatAction(
 
   let progress = await getPlayerProgress(env, backpackKey);
   const activeMasteries = await getActiveMasteries(levelFromXp(progress.xp));
+  let legacyMessage = "";
+  if (action.legacyEffect && action.legacyEffect.type !== "charge") {
+    const legacySeparator = platform === "discord" ? "\n\n" : " | ";
+    const caps = getPlayerResourceCaps(progress);
+    const hpRestore = action.legacyEffect.hpRestore || 0;
+    const manaRestore = action.legacyEffect.manaRestore || 0;
+    const restoredHp = Math.min(
+      hpRestore, Math.max(0, caps.hp - combatState.playerHp),
+    );
+    const restoredMana = Math.min(
+      manaRestore, Math.max(0, caps.mana - progress.mana),
+    );
+    combatState.playerHp += restoredHp;
+    if (restoredMana > 0) {
+      progress = { ...progress, mana: progress.mana + restoredMana };
+      await savePlayerProgress(env, backpackKey, progress);
+    }
+    if (action.legacyEffect.type === "perfect-jellyfish") {
+      legacyMessage = `Perfect Jellyfish!${legacySeparator}` +
+        `${action.legacyEffect.scene}${legacySeparator}` +
+        `+${action.legacyEffect.damage} damage | ` +
+        `Restored ${restoredHp} HP + ${restoredMana} Mana`;
+    } else if (action.legacyEffect.type === "full-moon") {
+      legacyMessage = `FULL MOON${legacySeparator}` +
+        `${action.legacyEffect.scene}${legacySeparator}` +
+        `+${action.legacyEffect.damage} Full Moon Damage`;
+    }
+  }
   let echoMasteryMessage = "";
   if (action.consumeAstralEcho && action.echoMasteryQualifies &&
       action.echoMasteryNaturalRoll) {
@@ -3111,6 +3140,16 @@ async function resolvePlayerCombatAction(
       remainingDamageUses: action.astralCharge.damageUses,
       manaDiscountAvailable: action.astralCharge.manaDiscountUses > 0,
     };
+    if (action.legacyEffect?.type === "charge") {
+      const maximumMana = getPlayerResourceCaps(progress).mana;
+      const restoredMana = Math.min(
+        action.legacyEffect.manaRestore,
+        Math.max(0, maximumMana - progress.mana),
+      );
+      progress = { ...progress, mana: progress.mana + restoredMana };
+      await savePlayerProgress(env, backpackKey, progress);
+      legacyMessage = `Legacy: Charge restored ${restoredMana} Mana.`;
+    }
   }
 
   let familiarMessage = "";
@@ -3282,6 +3321,7 @@ async function resolvePlayerCombatAction(
   progress = curiosityResult.progress;
 
   const messageParts = [action.message];
+  if (legacyMessage) messageParts.push(legacyMessage);
   if (echoMasteryMessage) messageParts.push(echoMasteryMessage);
   if (expeditionMessage) messageParts.push(expeditionMessage);
   if (familiarMessage) messageParts.push(familiarMessage);
@@ -4451,6 +4491,19 @@ async function performCastUnlocked(
   if (jellyfishMasteryEffect?.effectType === "bonus-damage") {
     resolvedSpellRoll.damage += jellyfishMasteryEffect.amount;
   }
+  const legacy = activePerks.find(
+    (perk) => perk.effect.trigger === "early-spell-legacy",
+  );
+  const perfectJellyfish = Boolean(legacy && spell.id === "jelly" &&
+    spellRoll.rolls.length === 3 &&
+    spellRoll.rolls.every((roll) => roll === spellRoll.rolls[0]));
+  const fullMoon = Boolean(legacy && spell.id === "moonbeam" &&
+    spellRoll.rolls.length === 2 &&
+    spellRoll.rolls.every((roll) => roll === 20));
+  const legacyBonusDamage = perfectJellyfish
+    ? legacy.effect.perfectJellyfish.damage
+    : fullMoon ? legacy.effect.fullMoon.damage : 0;
+  resolvedSpellRoll.damage += legacyBonusDamage;
   if (astralCharge && (!isAllOrNothing || resolvedSpellRoll.damage > 0)) {
     resolvedSpellRoll.damage = applyPercentageDamageIncrease(
       resolvedSpellRoll.damage,
@@ -4490,6 +4543,10 @@ async function performCastUnlocked(
     spell.id === "star-spark" &&
     resolvedSpellRoll.isCritical &&
     combatState.enemy.hp > resolvedSpellRoll.damage;
+  const legacyCharge = Boolean(legacy && resolvedSpellRoll.appliesAstralCharge);
+  const legacyScene = perfectJellyfish
+    ? randomChoice(spell.legacy.perfectJellyfishScenes)
+    : fullMoon ? randomChoice(spell.legacy.fullMoonScenes) : "";
   resolvedSpellRoll.astralChargeDamageUses = starSparkMastery?.effect.damageUses || 1;
   let castMessage = formatSpellCastMessage(
     spell,
@@ -4572,6 +4629,16 @@ async function performCastUnlocked(
           ? spellRoll.keptRoll
           : null,
         jellyfishMasteryEffect,
+        legacyEffect: legacyCharge ? {
+          type: "charge", manaRestore: legacy.effect.charge.manaRestore,
+        } : perfectJellyfish ? {
+          type: "perfect-jellyfish", scene: legacyScene,
+          damage: legacyBonusDamage,
+          hpRestore: legacy.effect.perfectJellyfish.hpRestore,
+          manaRestore: legacy.effect.perfectJellyfish.manaRestore,
+        } : fullMoon ? {
+          type: "full-moon", scene: legacyScene, damage: legacyBonusDamage,
+        } : null,
         consumeAstralEcho: Boolean(astralEcho),
         echoMasteryNaturalRoll: astralEcho?.naturalRoll,
         echoMasteryQualifies: Boolean(astralEcho) && resolvedSpellRoll.damage > 0,
@@ -9455,7 +9522,9 @@ function validateSpellDefinition(spell, expectedId) {
     !Array.isArray(spell.personalities) ||
     spell.personalities.length !== 5 ||
     typeof spell.criticalText !== "string" ||
-    !spell.criticalText.trim()
+    !spell.criticalText.trim() ||
+    !isTextArray(spell.legacy?.perfectJellyfishScenes) ||
+    spell.legacy.perfectJellyfishScenes.length !== 2
   )) {
     throw new Error("Invalid Jellyfish narration data.");
   }
@@ -9483,7 +9552,9 @@ function validateSpellDefinition(spell, expectedId) {
     !Number.isFinite(Number(spell.criticalFlavorChance)) ||
     Number(spell.criticalFlavorChance) < 0 ||
     Number(spell.criticalFlavorChance) > 1 ||
-    !isTextArray(spell.criticalFlavor)
+    !isTextArray(spell.criticalFlavor) ||
+    !isTextArray(spell.legacy?.fullMoonScenes) ||
+    spell.legacy.fullMoonScenes.length !== 3
   )) {
     throw new Error("Invalid Moonbeam content data.");
   }
@@ -9756,7 +9827,8 @@ function validatePerkDefinition(perk, expectedId) {
       !hasCuriosityPresentation &&
       !Array.isArray(perk.memories) &&
       expectedId !== "lunar-patience" &&
-      expectedId !== "rising-power")
+      expectedId !== "rising-power" &&
+      expectedId !== "legacy")
   ) {
     throw new Error(`Invalid perk definition for ${expectedId}.`);
   }
@@ -9913,6 +9985,16 @@ function validatePerkDefinition(perk, expectedId) {
       "As your Familiar leaves, a little of the magic that brought it to life remains with you.\n\n" +
       "Restored 15 Mana" &&
     hasSingleActivationLine && !hasActivationLines;
+  const validLegacy = expectedId === "legacy" &&
+    perk.name === "Legacy" && perk.requiredLevel === 46 &&
+    effect?.trigger === "early-spell-legacy" &&
+    effect.charge?.manaRestore === 10 &&
+    effect.perfectJellyfish?.damage === 20 &&
+    effect.perfectJellyfish?.hpRestore === 20 &&
+    effect.perfectJellyfish?.manaRestore === 20 &&
+    effect.fullMoon?.damage === 75 &&
+    perk.levelUpLine ===
+      "lvl 46 Passive ⭐ Legacy: The spells that began your journey have grown alongside you. Star Spark critical Charges restore 10 Mana. Matching all three natural Jellyfish dice summons a Perfect Jellyfish, dealing +20 bonus damage and restoring 20 HP + 20 Mana. If both of Moonbeam's natural main dice roll 20, a Full Moon forms and deals +75 bonus damage.";
 
   if (
     !validResilience &&
@@ -9932,7 +10014,8 @@ function validatePerkDefinition(perk, expectedId) {
     !validAstralAwakening &&
     !validAstralHarmony &&
     !validFaeSecondOpinion &&
-    !validKinship
+    !validKinship &&
+    !validLegacy
   ) {
     throw new Error(`Invalid perk effect for ${expectedId}.`);
   }
