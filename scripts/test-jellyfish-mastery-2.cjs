@@ -148,12 +148,33 @@ async function main() {
     assert(!second.message.includes('Jellyfish Sleepy Guard'));
 
     const g = await setup();
-    await g.cast('bubble');
     await g.editState(s => { s.jellyfishSleepyGuard = { damageReduction: 5 }; });
     const hp = (await g.state()).playerHp;
     g.rolls.push(1, 2); await g.attack();
     assert.equal((await g.state()).playerHp, hp - 1);
     assert.equal((await g.state()).jellyfishSleepyGuard, undefined);
+  });
+
+  await test('Legacy isolation at levels 45/46 and matching Sleepy coexistence', async () => {
+    for (const level of [45, 46]) {
+      const f = await setup(level);
+      const result = await f.jelly([1, 2, 3]);
+      assert.equal((await f.state()).playerHp, 70);
+      assert.equal((await f.state()).jellyfishSleepyGuard.damageReduction, 5);
+      assert(!result.message.includes('Perfect Jellyfish!'));
+    }
+
+    const perfect = await setup(46);
+    perfect.rolls.push(2, 2, 2, 0, 0, 1);
+    const result = await perfect.cast('jelly');
+    const state = await perfect.state();
+    assert(result.message.includes('Perfect Jellyfish!'));
+    assert(result.message.includes('+20 damage | Restored 20 HP + 20 Mana'));
+    assert.equal(perfect.actions[0].damage, 26);
+    assert.equal(state.playerHp, 100); // 20 Legacy + 20 Sleepy + 10 Curiosity, capped.
+    assert.equal((await perfect.progress()).mana, 70); // 50 - 10 + 20 Legacy + 10 Curiosity.
+    assert.equal(state.jellyfishSleepyGuard.damageReduction, 5);
+    assert.equal(perfect.actions[0].curiosityDice.join(','), '2,2,2');
   });
 
   await test('Guard applies before Fae Intervention, Resilience, and Mend without changing those hooks', async () => {

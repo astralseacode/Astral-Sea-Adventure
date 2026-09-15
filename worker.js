@@ -4642,9 +4642,7 @@ async function performCastUnlocked(
         consumeAstralEcho: Boolean(astralEcho),
         echoMasteryNaturalRoll: astralEcho?.naturalRoll,
         echoMasteryQualifies: Boolean(astralEcho) && resolvedSpellRoll.damage > 0,
-        curiosityDice: spell.id === "falling-star"
-          ? spellRoll.powerRolls
-          : spellRoll.rolls,
+        curiosityDice: spellRoll.naturalPatternDice,
         harmonySources: countOffensiveRollBonusSources(triggeredRoll),
         harmonySuccess: resolvedSpellRoll.damage > 0,
         expeditionQualifies: spell.type === "offensive" && resolvedSpellRoll.damage > 0,
@@ -4859,14 +4857,16 @@ function rollSpellDamage(spell) {
       { length: spell.damage.dice },
       () => randomInteger(spell.damage.min, spell.damage.max),
     );
-    return { rolls, total: rolls.reduce((sum, roll) => sum + roll, 0) };
+    return { rolls, total: rolls.reduce((sum, roll) => sum + roll, 0),
+      naturalPatternDice: null };
   }
   if (spell.id === "tidal-wave") {
     const rolls = Array.from(
       { length: spell.damage.dice },
       () => randomInteger(1, spell.damage.sides),
     );
-    return { rolls, total: rolls.reduce((sum, roll) => sum + roll, 0) };
+    return { rolls, total: rolls.reduce((sum, roll) => sum + roll, 0),
+      naturalPatternDice: rolls };
   }
   if (spell.id === "falling-star") {
     const powerRolls = Array.from(
@@ -4880,6 +4880,7 @@ function rollSpellDamage(spell) {
       total: accuracyRoll,
       powerRolls,
       powerTotal,
+      naturalPatternDice: powerRolls,
       accuracyRoll,
       isCritical: false,
       damage: 0,
@@ -4897,6 +4898,7 @@ function rollSpellDamage(spell) {
       rolls,
       total: keptRoll,
       keptRoll,
+      naturalPatternDice: rolls,
       isCritical: false,
       damage: 0,
     };
@@ -4913,6 +4915,7 @@ function rollSpellDamage(spell) {
   return {
     rolls,
     total,
+    naturalPatternDice: rolls,
     isCritical,
     damage: isCritical ? spell.criticalDamage : total,
   };
