@@ -2,7 +2,6 @@ const GITHUB_EXPLORE_BASE =
   "https://raw.githubusercontent.com/astralseacode/Astral-Sea-Adventure/main/data/explore";
 const GITHUB_DATA_BASE =
   "https://raw.githubusercontent.com/astralseacode/Astral-Sea-Adventure/main/data";
-const DATA_CACHE_TTL_MS = 5 * 60 * 1000;
 const DUPLICATE_NOTE_CANDY_BONUS = 40;
 const COMBAT_STATE_TTL_SECONDS = 24 * 60 * 60;
 const PENDING_COMBAT_TTL_MS = 5 * 60 * 1000;
@@ -891,13 +890,94 @@ const DISCORD_COMMANDS = [
    WORKER ENTRY POINT
    ============================================================ */
 
+// Request-local diagnostics. Never include request bodies, arguments, KV keys/values,
+// Discord identities, or webhook URLs in a diagnostic record.
+const RUNTIME_DIAGNOSTICS = Symbol("runtimeDiagnostics");
+const RUNTIME_ERROR_STAGES = new WeakMap();
+
+function createRuntimeDiagnostics(env = {}) {
+  return {
+    command: "unknown", stage: "worker.dispatch", responseState: "not-prepared",
+    startedAt: Date.now(),
+    secrets: [env.DISCORD_BOT_TOKEN, env.SETUP_SECRET].filter(Boolean),
+  };
+}
+
+function tagRuntimeError(error, stage) {
+  if (error && typeof error === "object" && !RUNTIME_ERROR_STAGES.has(error)) {
+    RUNTIME_ERROR_STAGES.set(error, stage);
+  }
+  return error;
+}
+
+function logRuntimeError(error, diagnostic, fallbackStage) {
+  const context = diagnostic || createRuntimeDiagnostics();
+  const redact = (value) => {
+    let text = String(value || "");
+    for (const secret of context.secrets || []) {
+      if (typeof secret === "string" && secret) text = text.split(secret).join("[redacted]");
+    }
+    return text
+      .replace(/https?:\/\/[^\s()]+/gi, "[redacted-url]")
+      .replace(/(?:Bearer|Bot)\s+[^\s]+/gi, "[redacted-authorization]")
+      .replace(/(?:progress:|combat:|pending-combat:|adventure:)?backpack:[^\s,()]+/gi, "[redacted-key]")
+      .replace(/"[^"\r\n]*"/g, "[redacted-quoted-text]")
+      .replace(/\b\d{15,30}\b/g, "[redacted-id]");
+  };
+  const message = redact(error?.message || error);
+  const stack = redact(error?.stack || "");
+  console.error("Astral Sea runtime failure", {
+    command: context.command,
+    stage: RUNTIME_ERROR_STAGES.get(error) || fallbackStage || context.stage,
+    responseState: context.responseState,
+    elapsedMs: Date.now() - context.startedAt,
+    ...(context.committedKeyCount === undefined ? {} : { committedKeyCount: context.committedKeyCount }),
+    errorName: redact(error?.name || "Error"),
+    errorMessage: message,
+    stack,
+    ...(error?.cause ? { cause: {
+      name: redact(error.cause.name || "Error"),
+      message: redact(error.cause.message || error.cause),
+      stack: redact(error.cause.stack || ""),
+    } } : {}),
+  });
+}
+
+function withRuntimeDiagnostics(env, diagnostic) {
+  const backpack = env.Backpack;
+  const wrapped = new Proxy(backpack || {}, {
+    get(target, property) {
+      if (!["get", "put", "delete"].includes(property)) return target[property];
+      return async (key, ...args) => {
+        // Only the fixed namespace category is retained; never retain the key.
+        const prefix = String(key).split(":")[0];
+        const category = ["progress", "combat", "pending-combat", "adventure",
+          "backpack", "shop-session", "rest"].includes(prefix) ? prefix : "other";
+        try {
+          return await target[property](key, ...args);
+        } catch (error) {
+          throw tagRuntimeError(error, `kv.${category}.${property}`);
+        }
+      };
+    },
+  });
+  return new Proxy(env, {
+    get(target, property) {
+      if (property === RUNTIME_DIAGNOSTICS) return diagnostic;
+      if (property === "Backpack") return wrapped;
+      return target[property];
+    },
+  });
+}
+
 export default {
   async fetch(request, env, ctx) {
+    const diagnostic = createRuntimeDiagnostics(env);
     try {
       const url = new URL(request.url);
 
       if (url.pathname === "/discord/interactions") {
-        return await handleDiscordInteraction(request, env, ctx);
+        return await handleDiscordInteraction(request, env, ctx, diagnostic);
       }
 
       if (url.pathname === "/discord/register") {
@@ -923,9 +1003,9 @@ export default {
         });
       }
 
-      return await handleTwitchRequest(url, env);
+      return await handleTwitchRequest(url, withRuntimeDiagnostics(env, diagnostic));
     } catch (error) {
-      console.error("Astral Sea Worker error:", error);
+      logRuntimeError(error, diagnostic, diagnostic.stage);
 
       return textResponse(
         "The Astral Sea is unusually turbulent. Please try again shortly.",
@@ -946,6 +1026,12 @@ async function handleTwitchRequest(url, env) {
   const action = (url.searchParams.get("action") || "explore")
     .trim()
     .toLowerCase();
+  const diagnostic = env[RUNTIME_DIAGNOSTICS];
+  if (diagnostic) {
+    diagnostic.command = DISCORD_COMMANDS.some(command => command.name === action) ? action : "unknown";
+    diagnostic.stage = "twitch.command.execute";
+    diagnostic.secrets.push(suppliedUsername);
+  }
 
   if (!username) {
     return textResponse("Could not identify the explorer.", 400);
@@ -967,6 +1053,7 @@ async function handleTwitchRequest(url, env) {
       ? argumentParts.at(-1)
       : "");
 
+  return withCommandPersistence(env, backpackKey, async (env) => {
   if (action !== "shop" && action !== "buy") {
     await closeShopSession(env, username);
   }
@@ -1210,15 +1297,20 @@ async function handleTwitchRequest(url, env) {
     default:
       return textResponse("Unknown command.", 400);
   }
+  });
 }
 
 /* ============================================================
       DISCORD INTERACTIONS ROUTER
    ============================================================ */
 
-async function handleDiscordInteraction(request, env, ctx) {
+async function handleDiscordInteraction(request, env, ctx, diagnostic = createRuntimeDiagnostics(env)) {
+  diagnostic.stage = "discord.core";
+  env = withRuntimeDiagnostics(env, diagnostic);
   const interactionRequest = request.clone();
   const response = await handleDiscordInteractionCore(request, env);
+  diagnostic.stage = "discord.response.parse";
+  diagnostic.responseState = "initial-prepared";
   let payload;
   try {
     payload = await response.clone().json();
@@ -1231,6 +1323,7 @@ async function handleDiscordInteraction(request, env, ctx) {
     return response;
   }
 
+  diagnostic.stage = "discord.response.split";
   const chunks = splitDiscordContent(payload.data.content);
   let interaction;
   try {
@@ -1240,18 +1333,19 @@ async function handleDiscordInteraction(request, env, ctx) {
   }
   if (!/^\d+$/.test(interaction?.application_id || "") ||
       typeof interaction?.token !== "string" || !interaction.token) {
-    console.error("Discord long response has no interaction follow-up credentials.");
+    logRuntimeError(new Error("Missing follow-up credentials."), diagnostic, "discord.followup.credentials");
     return discordMessage(
       "Your action completed, but its full result could not be delivered. Please contact the game maintainer.",
       Boolean(payload.data.flags & 64),
     );
   }
 
+  diagnostic.responseState = "initial-prepared-followups-scheduled";
   const followups = sendDiscordFollowups(
     interaction.application_id, interaction.token, chunks.slice(1),
     payload.data.flags,
   ).catch((error) => {
-    console.error("Discord follow-up delivery failed:", error);
+    logRuntimeError(error, diagnostic, "discord.followup.delivery");
   });
   if (ctx?.waitUntil) ctx.waitUntil(followups);
   else await followups;
@@ -1263,6 +1357,8 @@ async function handleDiscordInteraction(request, env, ctx) {
 }
 
 async function handleDiscordInteractionCore(request, env) {
+  const diagnostic = env[RUNTIME_DIAGNOSTICS] || createRuntimeDiagnostics(env);
+  diagnostic.stage = "discord.verify";
   if (request.method !== "POST") {
     return textResponse("Method not allowed.", 405);
   }
@@ -1312,6 +1408,13 @@ async function handleDiscordInteractionCore(request, env) {
   }
 
   const commandName = String(interaction.data?.name || "").toLowerCase();
+  diagnostic.command = DISCORD_COMMANDS.some(command => command.name === commandName)
+    ? commandName : "unknown";
+  diagnostic.secrets.push(interaction.token, interaction.user?.id,
+    interaction.member?.user?.id, interaction.user?.username,
+    interaction.member?.user?.username, interaction.user?.global_name,
+    interaction.member?.user?.global_name, interaction.member?.nick);
+  diagnostic.stage = "discord.command.prepare";
 
   if (commandName === "adventure") {
     const adventureOptions = Array.isArray(interaction.data?.options)
@@ -1353,15 +1456,17 @@ async function handleDiscordInteractionCore(request, env) {
     }
     try {
       const backpackKey = `backpack:discord:${userId}`;
-      const progress = await getPlayerProgress(env, backpackKey);
-      const xp = totalXpForLevel(50);
-      await savePlayerProgress(env, backpackKey, { ...progress, xp });
-      return discordMessage(
-        `Development override applied. Your character is now Level 50 (${xp} XP).`,
-        true,
-      );
+      return await withCommandPersistence(env, backpackKey, async (env) => {
+        const progress = await getPlayerProgress(env, backpackKey);
+        const xp = totalXpForLevel(50);
+        await savePlayerProgress(env, backpackKey, { ...progress, xp });
+        return discordMessage(
+          `Development override applied. Your character is now Level 50 (${xp} XP).`,
+          true,
+        );
+      });
     } catch (error) {
-      console.error("Discord /devlevel error:", error);
+      logRuntimeError(error, diagnostic, "discord.command.devlevel");
       return discordMessage("The development override could not be applied. Please try again later.", true);
     }
   }
@@ -1377,11 +1482,12 @@ async function handleDiscordInteractionCore(request, env) {
   const displayName = getDiscordDisplayName(interaction);
   const sharedIdentity = getDiscordRestIdentity(interaction);
 
-  if (commandName !== "shop" && commandName !== "buy") {
-    await closeShopSession(env, sharedIdentity);
-  }
-
+  diagnostic.stage = "discord.command.execute";
   try {
+    return await withCommandPersistence(env, backpackKey, async (env) => {
+      if (commandName !== "shop" && commandName !== "buy") {
+        await closeShopSession(env, sharedIdentity);
+      }
     switch (commandName) {
       case "adventure": {
         const adventureNumber = getDiscordIntegerOption(
@@ -1636,8 +1742,9 @@ async function handleDiscordInteractionCore(request, env) {
       default:
         return discordMessage("Unknown command.", true);
     }
+    });
   } catch (error) {
-    console.error(`Discord /${commandName} error:`, error);
+    logRuntimeError(error, diagnostic, diagnostic.stage);
 
     return discordMessage(
       "The Astral Sea is unusually turbulent. Please try again shortly.",
@@ -3107,6 +3214,7 @@ async function resolvePlayerCombatAction(
   action,
   platform,
 ) {
+  if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.player-action";
   combatState.enemy.hp = Math.max(
     0,
     combatState.enemy.hp - action.damage,
@@ -3449,6 +3557,7 @@ async function resolveEnemyCombatResponse(
   env, backpackKey, combatState, action, platform, progress,
   activeMasteries, activePerks, shizukisPresenceMastery, messageParts,
 ) {
+  if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.enemy-turn";
   const enemyRoll = randomInteger(1, 20);
   const enemyAttack = getCombatRollResult(enemyRoll);
   const rawEnemyDamage = enemyAttack.damage === 0
@@ -3884,6 +3993,7 @@ async function performCastUnlocked(
   spellInput,
   platform,
 ) {
+  if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.cast";
   const spellInputValue = String(spellInput || "").trim().toLowerCase();
   const jellyCommand =
     platform === "discord" ? "/cast spell:Jelly" : "!cast jelly";
@@ -4898,6 +5008,7 @@ async function performCastUnlocked(
 
 // Help! never enters the offensive action/modifier pipeline.
 async function castHelp(env, backpackKey, combatState, progress, spell, platform) {
+  if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.help";
   if (!combatState) return { message: "Help! can only be cast during a fight." };
   if (combatState.helpUsed) {
     return { message: "You have already cast Help! this battle." };
@@ -5030,6 +5141,7 @@ async function castLeviathansWake(
 async function advanceLeviathansWake(
   env, backpackKey, combatState, progress, platform, advanceCooldown = true,
 ) {
+  if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.wake";
   // Only validated Attack, Stim, and turn-consuming casts reach this hook. Persist
   // before Wake can end the encounter. Evocation skips its own casting turn.
   if (advanceCooldown && progress.evocationCooldownTurns > 0) {
@@ -5904,6 +6016,7 @@ async function resolveCombatVictory(
   platform = "twitch",
   playerActionMessage = null,
 ) {
+  if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.victory";
   let [currentTotal, progress] = await Promise.all([
     getBackpackTotal(env, backpackKey),
     getPlayerProgress(env, backpackKey),
@@ -7545,6 +7658,65 @@ function getAdventureKey(backpackKey) {
   return `adventure:${backpackKey}`;
 }
 
+// A command-local read-your-writes view. No intermediate game state reaches KV.
+// The outer command lock includes the flush; existing inner action locks remain.
+async function withCommandPersistence(env, backpackKey, execute) {
+  return withPlayerMutationLock("command:" + backpackKey, async () => {
+    const initial = new Map();
+    const pending = new Map();
+    const loading = new Map();
+    let readFailure;
+    let readFailed = false;
+    const read = async (key) => {
+      if (pending.has(key)) return pending.get(key).value;
+      if (!initial.has(key)) {
+        try {
+          if (!loading.has(key)) loading.set(key, Promise.resolve().then(() => env.Backpack.get(key)));
+          initial.set(key, await loading.get(key));
+        } catch (error) { readFailure = error; readFailed = true; throw error; }
+      }
+      return initial.get(key);
+    };
+    const staged = new Proxy(env.Backpack, {
+      get(target, property) {
+        if (property === "get") return read;
+        if (property === "put") return async (key, value, options) => {
+          await read(key);
+          pending.set(key, { value, options });
+        };
+        if (property === "delete") return async (key) => {
+          await read(key);
+          pending.set(key, { value: null });
+        };
+        return target[property];
+      },
+    });
+    const commandEnv = new Proxy(env, {
+      get(target, property) { return property === "Backpack" ? staged : target[property]; },
+    });
+    // Throws discard the entire staged view. Old gameplay rollback writes are
+    // also staged, so they never generate compensating writes to rate-limited KV.
+    const result = await execute(commandEnv);
+    if (readFailed) throw readFailure;
+    let committed = 0;
+    try {
+      for (const [key, change] of pending) {
+        if (change.value === initial.get(key)) continue;
+        if (change.value === null) await env.Backpack.delete(key);
+        else await env.Backpack.put(key, change.value, change.options);
+        committed++;
+      }
+    } catch (error) {
+      // KV has no multi-key transaction. Never retry/roll back a failed flush:
+      // the successful prefix may already be durable. Preserve that fact in logs.
+      const diagnostic = env[RUNTIME_DIAGNOSTICS];
+      if (diagnostic) diagnostic.committedKeyCount = committed;
+      throw tagRuntimeError(error, "kv.command.commit");
+    }
+    return result;
+  });
+}
+
 async function withPlayerMutationLock(backpackKey, operation) {
   const previous = PLAYER_MUTATION_CHAINS.get(backpackKey) ||
     Promise.resolve();
@@ -7591,7 +7763,8 @@ async function getCombatState(env, backpackKey) {
       await saveCombatState(env, backpackKey, parsed);
     }
     return parsed;
-  } catch {
+  } catch (error) {
+    logRuntimeError(error, env[RUNTIME_DIAGNOSTICS], "state.combat.normalize");
     return null;
   }
 }
@@ -9758,43 +9931,31 @@ async function unlockNextEncounterAfterVictory(
   };
 }
 
-async function fetchCachedJson(cacheKey, url) {
-  const cached = DATA_CACHE.get(cacheKey);
-
-  if (cached && cached.expiresAt > Date.now()) {
-    return cached.value;
+function freezeStaticDefinition(value) {
+  if (value && typeof value === "object" && !Object.isFrozen(value)) {
+    for (const child of Object.values(value)) freezeStaticDefinition(child);
+    Object.freeze(value);
   }
-
-  let response;
-
-  try {
-    response = await fetch(url, {
-      headers: {
-        "User-Agent": "Astral-Sea-Adventure-Worker",
-      },
-    });
-  } catch (error) {
-    throw new Error(`Could not fetch ${cacheKey}: ${error.message}`);
-  }
-
-  if (!response.ok) {
-    throw new Error(`Could not fetch ${cacheKey}: HTTP ${response.status}`);
-  }
-
-  let value;
-
-  try {
-    value = await response.json();
-  } catch {
-    throw new Error(`Could not parse ${cacheKey}.`);
-  }
-
-  DATA_CACHE.set(cacheKey, {
-    value,
-    expiresAt: Date.now() + DATA_CACHE_TTL_MS,
-  });
-
   return value;
+}
+
+async function fetchCachedJson(cacheKey, url) {
+  // Keep loader call sites and validation unchanged; URLs are now lookup keys only.
+  const relative = String(url).startsWith(GITHUB_DATA_BASE + "/")
+    ? String(url).slice(GITHUB_DATA_BASE.length + 1) : null;
+  if (!relative || typeof STATIC_GAME_JSON === "undefined" ||
+      !Object.prototype.hasOwnProperty.call(STATIC_GAME_JSON, relative)) {
+    throw tagRuntimeError(new Error("Missing bundled game content: " +
+      (relative || cacheKey) + ". Rebuild dist/worker.js."), "content.bundle");
+  }
+  if (!DATA_CACHE.has(relative)) {
+    try {
+      DATA_CACHE.set(relative, freezeStaticDefinition(JSON.parse(STATIC_GAME_JSON[relative])));
+    } catch (error) {
+      throw tagRuntimeError(error, "content.json");
+    }
+  }
+  return DATA_CACHE.get(relative);
 }
 
 function validateSpellDefinition(spell, expectedId) {
@@ -10606,7 +10767,11 @@ async function getSpellDefinition(spellId) {
     `spell:${spellId}`,
     `${GITHUB_DATA_BASE}/spells/${file}`,
   );
-  return validateSpellDefinition(spell, spellId);
+  try {
+    return validateSpellDefinition(spell, spellId);
+  } catch (error) {
+    throw tagRuntimeError(error, "content.spell.validate");
+  }
 }
 
 async function getSpellDefinitions() {
@@ -10623,7 +10788,11 @@ async function getMasteryDefinition(masteryId) {
     `mastery:${masteryId}`,
     `${GITHUB_DATA_BASE}/masteries/${file}`,
   );
-  return validateMasteryDefinition(mastery, masteryId);
+  try {
+    return validateMasteryDefinition(mastery, masteryId);
+  } catch (error) {
+    throw tagRuntimeError(error, "content.mastery.validate");
+  }
 }
 
 async function getMasteryDefinitions() {
@@ -10684,7 +10853,11 @@ async function getPerkDefinition(perkId) {
     `perk:${perkId}`,
     `${GITHUB_DATA_BASE}/perks/${file}`,
   );
-  return validatePerkDefinition(perk, perkId);
+  try {
+    return validatePerkDefinition(perk, perkId);
+  } catch (error) {
+    throw tagRuntimeError(error, "content.perk.validate");
+  }
 }
 
 async function getPerkDefinitions() {
@@ -10792,65 +10965,12 @@ async function findRegionNote(regionId, noteId) {
 }
 
 async function loadRegionLogs(region) {
-  const regionUrl =
-    `${GITHUB_EXPLORE_BASE}/${region.file}`;
-
-  let response = await fetch(
-    regionUrl,
-    {
-      headers: {
-        "User-Agent":
-          "Astral-Sea-Adventure-Worker",
-      },
-    },
+  const logs = await fetchCachedJson(
+    "explore:" + region.id, `${GITHUB_EXPLORE_BASE}/${region.file}`,
   );
-
-  /*
-   * Temporary protection:
-   *
-   * Until a future region's JSON file exists,
-   * the Worker uses Moonlit Reef instead of
-   * breaking the explore command.
-   */
-  if (
-    !response.ok &&
-    region.level > 1
-  ) {
-    console.warn(
-      `Could not load ${region.name}. ` +
-      "Falling back to Moonlit Reef.",
-    );
-
-    response = await fetch(
-      `${GITHUB_EXPLORE_BASE}/moonlit-reef.json`,
-      {
-        headers: {
-          "User-Agent":
-            "Astral-Sea-Adventure-Worker",
-        },
-      },
-    );
+  if (!Array.isArray(logs) || logs.length === 0) {
+    throw new Error("The exploration data contains no entries.");
   }
-
-  if (!response.ok) {
-    throw new Error(
-      "Could not load exploration data: " +
-      response.status,
-    );
-  }
-
-  const logs =
-    await response.json();
-
-  if (
-    !Array.isArray(logs) ||
-    logs.length === 0
-  ) {
-    throw new Error(
-      "The exploration data contains no entries.",
-    );
-  }
-
   return logs;
 }
 
@@ -11456,7 +11576,8 @@ async function getPlayerProgress(
     }
 
     return normalizedProgress;
-  } catch {
+  } catch (error) {
+    logRuntimeError(error, env[RUNTIME_DIAGNOSTICS], "state.progress.normalize");
     return createEmptyProgress();
   }
 }
@@ -11900,4 +12021,3 @@ function getRegionForLevel(level) {
     REGIONS[0],
   );
 }
-

@@ -67,7 +67,8 @@ async function main() {
     if (!dm) {
       assert.deepEqual(saved, { ...JSON.parse(before.get(progressKey)), xp: saved.xp });
     }
-    assert.deepEqual(f.writes, [['put', progressKey]]);
+    // Repeating the override after normalization changes no state and needs no KV write.
+    assert.deepEqual(f.writes, dm ? [] : [['put', progressKey]]);
     for (const [k, v] of before) if (k !== progressKey) assert.equal(f.values.get(k), v);
     const loaded = await f.c.getPlayerProgress(f.env, key);
     assert.equal(loaded.unspentStatPoints, 47); // Normal loader grants 45 newly earned points.
