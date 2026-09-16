@@ -18,7 +18,7 @@ async function cast(f, dice = [1, 1, 1], alias = 'tidal') {
   assert.deepEqual([...locked.values], before);
   const spell = await locked.c.getSpellDefinition('tidal-wave');
   assert.equal(spell.levelUpLine, unlock);
-  assert.equal((await locked.c.formatLevelUpUnlocks(39, 40)).join('\n'), unlock);
+  assert.equal((await locked.c.formatLevelUpUnlocks(39, 40)).join('\n'), "lvl 40 Spell 🌊 Tidal Wave: Cast Tidal Wave for 30 Mana and roll 3d12. Add the dice together and apply offensive roll bonuses to determine the strength of the wave. Rolls 3-14 deal 40 damage, 15-19 deal 50 damage, 20-24 deal 55 damage, and 25+ is a critical hit for 65 damage.");
   assert.equal(spell.manaCost, 30);
   assert.equal(spell.damage.dice, 3);
   assert.equal(spell.damage.sides, 12);

@@ -18,7 +18,7 @@ async function main() {
   const unlocked = await ready();
   const definition = await unlocked.c.getSpellDefinition('help');
   assert.equal(definition.type, 'ultimate');
-  assert.deepEqual(Array.from(await unlocked.c.formatLevelUpUnlocks(49, 50)), [definition.levelUpLine]);
+  assert.deepEqual(Array.from(await unlocked.c.formatLevelUpUnlocks(49, 50)), ["lvl 50 Ultimate Spell Help!: Call for some very questionable assistance. Requires at least 150 current Mana and can only be cast once per battle. Shizuki takes 50% of your current Mana to answer your call. Roll 1d20: 1–10 fails, while 11–20 succeeds and removes 50% of the enemy's current HP. Win or lose, Shizuki still takes her payment."]);
   assert.equal(definition.opening.length, 18);
   assert.equal(definition.successLines.length, 7);
   assert.equal(definition.failureLines.length, 16);

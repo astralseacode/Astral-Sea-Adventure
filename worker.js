@@ -10808,40 +10808,72 @@ async function getActiveMasteries(playerLevel) {
   return masteries.filter((mastery) => level >= mastery.requiredLevel);
 }
 
+// Approved player-facing unlock entries. Category emojis belong only in unlock output.
+const CANONICAL_LEVEL_UNLOCKS = Object.freeze([
+  "lvl 1 Spell 🧚 Elf Blessing: Cast Elf Blessing for 30 mana and gain +2 to offensive rolls for 30 minutes",
+  "lvl 1 Command 💉 Stim: Fully restores your HP at the cost of your turn. You can use one Stim per battle.",
+  "lvl 2 Spell ✨ Star Spark: Cast Star Spark for 10 Mana. Roll 1d12, critical happens at 12+ and deals 18 damage. Critical casts leave behind a Charge that empowers your next offensive spell with a 50% Mana reduction and +15% damage.",
+  "lvl 3 Spell 🪼 Jellyfish: Cast Jellyfish for 10 Mana. Roll 3d8, critical happens at 24+ and deals 35 damage. Rolls determine the mood of the Jellyfish: 3-4 Sad, 5-8 Sleepy, 9-13 Curious, 14-17 Confident, 18-24 Dedicated.",
+  "lvl 4 Spell 🌿 Mend: Cast Mend for 20 Mana. Fae light restores HP after the next three surviving enemy attacks. Roll 1d12 with different outcomes. 1-3 Weak Mend gives 5 HP per trigger, 4-7 Gentle Mend gives 8 HP per trigger, 8-11 Strong Mend gives 10 HP per trigger, and 12 Perfect Mend gives 15 HP per trigger. Mend is a healing support spell, so it's not affected by roll bonuses.",
+  "lvl 5 Spell 🌙 Moonbeam: Cast Moonbeam for 20 Mana. Roll 2d20 and keep the highest roll. Critical happens at 20+ and deals 40 damage. In addition, after damage is calculated for the main roll, there is a bonus d6 of damage.",
+  "lvl 5 Spell ✨ Evocation: Fully restores your Mana at the cost of your turn. Evocation can be used again after 7 combat turns.",
+  "lvl 6 Mastery ⭐ Star Spark Mastery I: Charge now empowers two offensive spell casts. The first receives 50% Mana reduction and +15% damage. The second receives +15% damage.",
+  "lvl 7 Passive Perk ✨ Resilience: Surviving an enemy attack while below 25% HP restores 10 Mana. Once per battle.",
+  "lvl 8 Spell 🫧 Bubble: Cast Bubble for 15 Mana to prepare protection against damaging enemy attacks without ending your normal action. Roll 1d12 to determine its protection: 1-3 gives 5 protection, 4-7 gives 10 protection, 8-11 gives 15 protection, and 12 gives 25 protection.",
+  "lvl 9 Passive Perk ✨ Momentum: Rolling a natural 20 on a qualifying offensive d20 restores 10 Mana. Activates once per battle.",
+  "lvl 10 Mastery 🪼 Jellyfish Mastery I: Jellyfish moods now grant an additional effect. Sad restores Mana, Sleepy restores HP, Curious awards Star Candies, Confident deals bonus damage, and Dedicated deals even more bonus damage.",
+  "lvl 11 Passive Perk ✨ Harvest: You gain 15 HP + 20 Mana after defeating an enemy.",
+  "lvl 12 Spell 🌟 Echo: Cast Echo for 25 Mana. Your next offensive spell repeats part of its damage as an echo. Roll 1d4 to determine the echo bonus. 1 - Faint Echo 30% damage, 2 - Resonant Echo 35% damage, 3 - Powerful Echo 40% damage, 4 - Perfect Echo 50% damage.",
+  "lvl 13 Mastery 🧚 Elf Blessing Mastery I: Elf Blessing now grants +3 to offensive rolls for 60 minutes.",
+  "lvl 14 Passive Perk ⭐ Aftershock: When an offensive spell crits, deal +5 bonus damage.",
+  "lvl 15 Spell ☄️ Falling Star: Cast Falling Star for 30 Mana. Roll 3d10 to determine the Power of the star and 1d20 for Accuracy. Natural 1 Accuracy misses, 2-9 is a Glancing Hit and deals Power -5 damage, 10-19 is a Direct Hit and deals full Power damage, and 20+ is a Critical Hit and deals Power +27 damage. Strength is added to successful hits. Elf Blessing and Fae increase the Accuracy roll but do not increase the Power roll.",
+  "lvl 16 Mastery 🫧 Bubble Mastery I: When Bubble absorbs damage and pops, restore up to 10 Mana and gain +2 to your next offensive roll.",
+  "lvl 17 Passive 🌿 Fae Aid: Once per battle, when you fall below 15% HP after surviving an enemy attack, restore 5 HP.",
+  "lvl 18 Mastery 🌿 Mend Mastery I: Mend now rolls 2d12 and keeps the highest roll. Weak Mend restores 7 HP per trigger, Gentle restores 10 HP, Strong restores 12 HP, and Perfect restores 18 HP per trigger.",
+  "lvl 19 Passive Perk ⭐ Curiosity: Matching natural rolls can cause an Oddity. Doubles trigger one random effect once per battle: restore 10 HP, restore 10 Mana, gain 100 Star Candies, gain +1 to your next offensive roll, or something strange happens. Triples grant all four beneficial effects and can activate multiple times per battle.",
+  "lvl 20 Spell 🌊 Leviathan's Wake: Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll.",
+  "lvl 21 Mastery 🪼 Jellyfish Mastery II: Jellyfish moods become stronger. Sad restores 20 Mana and grants +1 to your next offensive roll, Sleepy restores 20 HP and reduces the next enemy hit by 5, Curious finds 50 Star Candies and a Berry, Confident gains +8 damage and restores 5 Mana, and Dedicated gains +12 damage.",
+  "lvl 22 Passive ✨ Patience: Whenever you end a combat turn without attacking or damaging the enemy, gain +2 to your next offensive roll. Patience does not stack.",
+  "lvl 23 Mastery 🫧 Bubble Mastery II: When an enemy breaks your Bubble, the remaining magic retaliates for 15 damage.",
+  "lvl 24 Spell 🍓 Berries: Cast Berries for 20 Mana without ending your normal action. Roll 1d20 to receive a random Berry effect, with each roll having a 5% chance: 1 Sour deals 10 damage, 2 Sleepy reduces the next enemy hit by 5, 3 Blue restores 30 Mana, 4 Sweet restores 15 HP, 5 Bouncy grants +2 to your next offensive roll, 6 Fae restores 20 Mana and grants +1 to your next offensive spell roll, 7 Bubble grants 10 protection, 8 Spark adds +8 damage to your next successful offensive spell, 9 Healing restores 25 HP, 10 Mana restores 50 Mana, 11 Twilight restores 15 HP + 20 Mana, 12 Giggling grants +3 to your next offensive roll, 13 Lucky gives 75 Star Candies, 14 Moon restores 15 HP + 30 Mana, 15 Shimmer restores 20 Mana and makes your next offensive spell cost 50% less Mana, 16 Guardian grants 20 protection, 17 Comet deals 25 damage, 18 Astral restores 60 Mana and grants +2 to your next offensive roll, 19 Golden restores 30 HP + 60 Mana, and 20 Shizuki's Favorite restores 40 HP + 80 Mana and grants +4 to your next offensive roll. Berries can only be used once per turn.",
+  "lvl 25 Passive ✨ Awakening: After surviving 5 enemy attacks in the same battle, memories of your journey awaken the magic within you, restoring 25 HP + 25 Mana and granting +2 to your next offensive roll. Activates once per battle.",
+  "lvl 26 Mastery ⭐ Star Spark Mastery II: When the second Charge empowerment is consumed, the remaining Charge detonates for 20 damage.",
+  "lvl 27 Mastery 🌙 Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits.",
+  "lvl 28 Passive ✨ Harmony: When a successful offensive roll receives bonuses from 3 or more different sources, restore 15 Mana. Activates once per battle.",
+  "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll causes Fae Second Opinion to activate, granting +3 to your next offensive roll. Activates once per battle.",
+  "lvl 30 Spell 🌌 Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create 1 of 11 different Familiars. Your Familiar assists you during your next 5 attacks or damaging spell casts before leaving to begin an adventure of its own.",
+  "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana.",
+  "lvl 32 Passive ✨ Rhythm: Successfully use two different damaging spells in a row to apply Rhythm, dealing +5 damage on the second spell. Activates once per battle.",
+  "lvl 33 Passive ⭐ Astral Expedition: 33 successful offensive rolls in an adventure grants 33 Star Candies and +3 to your next offensive roll. The count persists across battles and continues toward the next 33-roll milestone.",
+  "lvl 34 Mastery 🌟 Echo Mastery I: Echo now costs 20 Mana. After the Echo resolves, Faint Echo restores 5 Mana, Resonant Echo restores 10 Mana, Powerful Echo grants +1 to your next offensive roll, and Perfect Echo grants +2 to your next offensive roll.",
+  "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak.",
+  "lvl 36 Passive ⭐ Defiance: Defeating an enemy while at or below 25% HP restores 20 HP and 20 Mana.",
+  "lvl 37 Mastery 🌊 Leviathan's Wake Mastery I: The creatures summoned by Leviathan's Wake now leave an additional effect when they arrive. Wakefin restores 5 Mana, Manta grants 5 protection, Serpent deals +5 damage, Leviathan deals +10 damage and restores 5 Mana, and Ancient Leviathan deals +20 damage and restores 10 Mana.",
+  "lvl 38 Passive ✨ Reprieve: Defeating an enemy without using Stim during the battle restores 30 Mana.",
+  "lvl 39 Passive 🌙 Lunar Patience: When Moonbeam fails to critically hit, your next Moonbeam in the same battle gains +1 to its main offensive roll. Lunar Patience does not stack and resets when Moonbeam critically hits or the battle ends.",
+  "lvl 40 Spell 🌊 Tidal Wave: Cast Tidal Wave for 30 Mana and roll 3d12. Add the dice together and apply offensive roll bonuses to determine the strength of the wave. Rolls 3-14 deal 40 damage, 15-19 deal 50 damage, 20-24 deal 55 damage, and 25+ is a critical hit for 65 damage.",
+  "lvl 41 Mastery ☄️ Meteor Alignment: Falling Star's Power dice can form a Meteor Alignment. If two Power dice match, add +10 Power. If all three Power dice match, add +20 Power instead. If the three Power dice total exactly 7, add +15 Power.",
+  "lvl 42 Passive 🌊 Rising Power: Successfully damaging an enemy with a different offensive spell than your previous damaging spell builds Rising Power. Each step in the chain grants +2 damage to the next different offensive spell, up to +6 damage. Repeating the same offensive spell resets Rising Power.",
+  "lvl 43 Passive 🌿 Fae Intervention: Once per battle, when an enemy attack would reduce you to 0 HP, the Fae intervene and keep you alive at 1 HP.",
+  "lvl 44 Mastery 🌌 Bond: While a Familiar is active, reaching maximum Rising Power empowers the Familiar's next assistance, doubling its effects. Activates once per Familiar.",
+  "lvl 45 Spell 🔫 Conjure Gun: Cast Conjure Gun for 35 Mana. Conjure an Astral gun and rapidly fire 140 shots. Each shot rolls either 0 or 1. A 1 hits and deals 1 damage, while a 0 misses. Add all successful hits together, then add Strength to determine the final damage.",
+  "lvl 46 Passive ⭐ Legacy: The spells that began your journey have grown alongside you. Star Spark critical hits restore 10 Mana when creating a Charge, making the cast free. Matching all three natural Jellyfish dice summons a Perfect mood Jellyfish, dealing +20 bonus damage and restoring 20 HP + 20 Mana. If both of Moonbeam's natural main dice roll 20, a Full Moon forms and deals +75 bonus damage.",
+  "lvl 47 Passive 🌿 Fae Mischief: Once per battle, when a natural spell roll is one die away from completing a powerful dice pattern, the Fae may change that die after it lands to complete the pattern.",
+  "lvl 48 Mastery 🌿 Shizuki's Presence: When two different Fae abilities activate during the same battle, Shizuki's Presence awakens once per battle, restoring 30 HP and 40 Mana and empowering your next offensive spell with +3 to its offensive roll and +15 damage. Casting Evocation below 25% Mana causes it to overflow your Mana to 150% of its maximum.",
+  "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storyteller progresses through three Chapters. Below 75% HP, THE FIRST PAGE reduces Mana costs by 20%. Below 50% HP, THE TURNING POINT replaces it with +2 to offensive rolls. Below 25% HP, THE FINAL CHAPTER replaces it with +10 final damage and +12% critical damage. Chapters only progress forward and reset when the battle ends.",
+  "lvl 50 Ultimate Spell Help!: Call for some very questionable assistance. Requires at least 150 current Mana and can only be cast once per battle. Shizuki takes 50% of your current Mana to answer your call. Roll 1d20: 1–10 fails, while 11–20 succeeds and removes 50% of the enemy's current HP. Win or lose, Shizuki still takes her payment."
+]);
+
 async function formatLevelUpUnlocks(startingLevel, endingLevel) {
-  const [spells, masteries, perks] = await Promise.all([
-    getSpellDefinitions(), getMasteryDefinitions(), getPerkDefinitions(),
-  ]);
-  const unlocks = [
-    ...spells.filter((spell) => spell.levelUpLine).map((spell) => ({
-      level: spell.requiredLevel, line: spell.levelUpLine,
-    })),
-    ...masteries.map((mastery) => ({
-      level: mastery.requiredLevel,
-      line: mastery.levelUpLine ||
-        `Mastery Unlocked: ${mastery.name} — ${mastery.description}`,
-    })),
-    ...perks.map((perk) => ({
-      level: perk.requiredLevel,
-      line: formatPerkUnlockLine(perk),
-    })),
-  ];
-  return unlocks
-    .filter((unlock) => unlock.level > startingLevel &&
-      unlock.level <= endingLevel)
-    .sort((left, right) => left.level - right.level)
-    .map((unlock) => unlock.line);
+  return CANONICAL_LEVEL_UNLOCKS.filter((line) => {
+    const level = Number(line.match(/^lvl (\d+) /)[1]);
+    return level > startingLevel && level <= endingLevel;
+  });
 }
 
 async function formatMasteryUnlocks(startingLevel, endingLevel) {
-  const masteries = await getMasteryDefinitions();
-  return masteries
-    .filter((mastery) =>
-      mastery.requiredLevel > startingLevel &&
-      mastery.requiredLevel <= endingLevel)
-    .map((mastery) =>
-      mastery.levelUpLine ||
-      `Mastery Unlocked: ${mastery.name} — ${mastery.description}`);
+  return (await formatLevelUpUnlocks(startingLevel, endingLevel))
+    .filter((line) => /^lvl \d+ Mastery /.test(line));
 }
 
 async function getPerkDefinition(perkId) {
@@ -10871,20 +10903,9 @@ async function getActivePerks(playerLevel) {
   return perks.filter((perk) => level >= perk.requiredLevel);
 }
 
-function formatPerkUnlockLine(perk) {
-  const line = perk.levelUpLine ||
-    `Perk Unlocked: ${perk.name} — ${perk.description}`;
-  // Keep category markers in metadata, not Rising Power player-facing text.
-  return perk.id === "rising-power" ? line.replace("🌊 Rising Power", "Rising Power") : line;
-}
-
 async function formatPerkUnlocks(startingLevel, endingLevel) {
-  const perks = await getPerkDefinitions();
-  return perks
-    .filter((perk) =>
-      perk.requiredLevel > startingLevel &&
-      perk.requiredLevel <= endingLevel)
-    .map(formatPerkUnlockLine);
+  return (await formatLevelUpUnlocks(startingLevel, endingLevel))
+    .filter((line) => /^lvl \d+ Passive /.test(line));
 }
 
 async function getRegionMetadata(regionId) {

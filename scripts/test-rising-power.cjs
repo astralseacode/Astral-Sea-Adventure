@@ -22,8 +22,8 @@ const spark = f => cast(f, 'star', [10]);
 (async () => {
   const low = await fixture(41);
   assert.equal((await low.c.getPerkDefinition('rising-power')).levelUpLine, unlock);
-  assert.equal((await low.c.formatLevelUpUnlocks(41, 42)).join('\n'), unlock.replace('🌊 ', ''));
-  assert.equal((await low.c.formatPerkUnlocks(41, 42)).join('\n'), unlock.replace('🌊 ', ''));
+  assert.equal((await low.c.formatLevelUpUnlocks(41, 42)).join('\n'), unlock);
+  assert.equal((await low.c.formatPerkUnlocks(41, 42)).join('\n'), unlock);
   assert(!(await low.c.getActivePerks(41)).some(p => p.id === 'rising-power'));
   await moonbeam(low);
   assert.equal((await low.state()).risingPower, undefined);
@@ -108,7 +108,7 @@ const spark = f => cast(f, 'star', [10]);
     assert(!content.includes('🌊'));
     assert.equal((await artifact.state()).risingPower.steps, 1);
     assert((await artifact.c.getPerkDefinition('rising-power')).levelUpLine.includes('🌊'));
-    assert(!(await artifact.c.formatLevelUpUnlocks(41,42)).join('').includes('🌊'));
+    assert((await artifact.c.formatLevelUpUnlocks(41,42)).join('').includes('🌊 Rising Power'));
   }
   console.log('Rising Power regressions passed.');
 })().catch(error => { console.error(error); process.exitCode = 1; });

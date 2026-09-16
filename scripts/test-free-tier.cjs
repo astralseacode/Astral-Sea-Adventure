@@ -75,6 +75,7 @@ async function runtime(source, { budget = 50, seed = 0x51ea, initialize = true, 
       await Promise.all(pending);armed=false;
       const text=await response.text();let payload;try{payload=JSON.parse(text);}catch{}
       return {content:(payload?.data?.content||text)+deliveries.map(d=>d.content).join(''),
+        messages: [payload?.data, ...deliveries].filter(Boolean),
         status:response.status,counts:structuredClone(counts),initialMs};
     },
   };

@@ -2,7 +2,7 @@
 const assert = require('node:assert/strict');
 const { fixture } = require('./test-leviathans-wake.cjs');
 
-const unlock = "lvl 46 Passive ⭐ Legacy: The spells that began your journey have grown alongside you. Star Spark critical Charges restore 10 Mana. Matching all three natural Jellyfish dice summons a Perfect Jellyfish, dealing +20 bonus damage and restoring 20 HP + 20 Mana. If both of Moonbeam's natural main dice roll 20, a Full Moon forms and deals +75 bonus damage.";
+const unlock = "lvl 46 Passive ⭐ Legacy: The spells that began your journey have grown alongside you. Star Spark critical hits restore 10 Mana when creating a Charge, making the cast free. Matching all three natural Jellyfish dice summons a Perfect mood Jellyfish, dealing +20 bonus damage and restoring 20 HP + 20 Mana. If both of Moonbeam's natural main dice roll 20, a Full Moon forms and deals +75 bonus damage.";
 
 (async () => {
   const low = await fixture(45);
