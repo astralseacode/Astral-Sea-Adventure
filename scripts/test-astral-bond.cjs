@@ -37,14 +37,14 @@ async function attack(f) {
     });
     const armedMessage = await tidal(f);
     assert.match(armedMessage.message,
-      /🌌 Bond: Your Familiar's next assistance is empowered!/);
+      /Bond: Your Familiar's next assistance is empowered!/);
     assert(!armedMessage.message.includes('Bond empowers your Familiar!'));
     assert.equal((await f.state()).familiar.astralBond, 'armed');
     assert.equal((await f.state()).familiar.actions, 1);
     const before = await f.state();
     const beforeProgress = await f.progress();
     const empowered = await attack(f);
-    assert.match(empowered.message, /🌌 Bond empowers your Familiar!/);
+    assert.match(empowered.message, /Bond empowers your Familiar!/);
     const after = await f.state();
     const afterProgress = await f.progress();
     assert.equal(after.familiar.astralBond, 'spent');

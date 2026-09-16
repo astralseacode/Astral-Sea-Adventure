@@ -3051,7 +3051,7 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
   return {
     progress: updatedProgress,
     faeSource: creature.id === "fae-snail" ? "fae-snail" : null,
-    message: (astralBond ? "🌌 Bond empowers your Familiar!\n\n" : "") +
+    message: (astralBond ? "Bond empowers your Familiar!\n\n" : "") +
       `${creature.name} ${clauses.join(" + ")}.` +
       (milestone ? `\n\n${milestone}` : "") +
       (kinship ? `\n\n${kinship.activationLine}` : ""),
@@ -3344,7 +3344,7 @@ async function resolvePlayerCombatAction(
       activeMasteries.some((mastery) => mastery.effect.id === "astral-bond")) {
     combatState.familiar.astralBond = "armed";
     astralBondArmedMessage =
-      "🌌 Bond: Your Familiar's next assistance is empowered!";
+      "Bond: Your Familiar's next assistance is empowered!";
   }
 
   let momentumMessage = "";

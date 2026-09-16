@@ -9,7 +9,7 @@ const source = fs.readFileSync(path.join(root, 'worker.js'), 'utf8');
 const plain = value => JSON.parse(JSON.stringify(value));
 let passed = 0;
 
-async function fixture(level = 20, platform = 'discord') {
+async function fixture(level = 20, platform = 'discord', artifactSource = null) {
   const values = new Map();
   const writes = [];
   const rolls = [];
@@ -18,8 +18,8 @@ async function fixture(level = 20, platform = 'discord') {
   math.random = () => 0.99;
   const c = vm.createContext({ console, structuredClone, Math: math,
     fetch: () => { throw new Error('Network is forbidden in this test'); } });
-  vm.runInContext(source.replace('export default {', 'const workerExport = {'), c);
-  c.fetchCachedJson = async (key, url) => {
+  vm.runInContext((artifactSource || source).replace('export default {', 'const workerExport = {'), c);
+  if (!artifactSource) c.fetchCachedJson = async (key, url) => {
     const relative = url.split('/main/data/')[1];
     assert(relative, `Unexpected content URL: ${url}`);
     return JSON.parse(fs.readFileSync(path.join(root, 'data', relative), 'utf8'));
