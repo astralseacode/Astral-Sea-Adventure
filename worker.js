@@ -2967,6 +2967,7 @@ async function performAttackUnlocked(
         message: turnStart.message ? `${turnStart.message}\n\n${actionMessage}` : actionMessage,
         victoryMessage: actionMessage,
         momentumAction: "attack",
+        regionalAction: "attack",
         momentumNaturalRoll: playerRoll,
         expeditionQualifies: playerRoll !== 1 && playerAttack.damage > 0,
         familiarQualifies: true,
@@ -3007,12 +3008,12 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
   const manaBefore = progress.mana;
   combatState.playerHp = Math.min(caps.hp, combatState.playerHp + (effect.hp || 0) * multiplier);
   const restoredMana = restoreManaToNormalCap(
-    progress.mana, (effect.mana || 0) * multiplier, caps.mana,
+    progress.mana, (effect.mana || 0) * multiplier, caps.mana, combatState,
   );
   const clauses = [];
   if (effect.damage) {
     const damage = effect.damage * multiplier;
-    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - damage);
+    damageCombatEnemy(combatState, damage);
     clauses.push(`deals ${damage} damage`);
   }
   if (effect.hp) clauses.push(`restores ${combatState.playerHp - hpBefore} HP`);
@@ -3046,6 +3047,7 @@ async function applyFamiliarAction(env, backpackKey, combatState, progress) {
       ? Math.min(caps.mana, restoredMana + kinship.effect.manaRestore)
       : restoredMana,
   };
+  recordRegionalManaRecovery(combatState, updatedProgress.mana - restoredMana);
   await savePlayerProgress(env, backpackKey, updatedProgress);
   if (active.actions === 5) delete combatState.familiar;
   return {
@@ -3100,6 +3102,7 @@ function activateShizukisPresence(combatState, progress, mastery, sourceId,
   const manaAfter = manaBefore >= caps.mana
     ? manaBefore
     : Math.min(caps.mana, manaBefore + mastery.effect.recovery.mana);
+  recordRegionalManaRecovery(combatState, manaAfter - manaBefore);
   const updatedProgress = {
     ...progress,
     hp: combatState.playerHp,
@@ -3193,7 +3196,7 @@ async function applyAstralEchoMastery(
   if (outcome.manaRestore) {
     const maximumMana = getPlayerResourceCaps(progress).mana;
     const mana = restoreManaToNormalCap(
-      progress.mana, outcome.manaRestore, maximumMana,
+      progress.mana, outcome.manaRestore, maximumMana, combatState,
     );
     if (mana !== progress.mana) {
       progress.mana = mana;
@@ -3207,6 +3210,249 @@ async function applyAstralEchoMastery(
   return { progress, message: outcome.activationLine };
 }
 
+// Shared by normal enemies and bosses. No per-enemy content or player progression.
+const REGIONAL_ENEMY_PERKS = Object.freeze({
+  "moonlit-reef": { gentleCurrent: true },
+  "starfall-trench": { starfallPressure: true },
+  "whispering-kelp-forest": { tanglingKelp: true, kelpRecovery: true },
+  "leviathans-wake": { crushingWake: true, deepwaterHunger: true },
+  "sunken-kings-throne": { royalGuard: true, kingsTax: true, throneResolve: true },
+  "astral-nexus": { realityEcho: true, manaFracture: true, nexusAdaptation: true },
+});
+const regionalEnemyReceipts = new WeakMap();
+
+function regionalEnemyReceipt(combatState, message) {
+  const messages = regionalEnemyReceipts.get(combatState) || [];
+  messages.push(`Perk: ${message}`);
+  regionalEnemyReceipts.set(combatState, messages);
+}
+
+function takeRegionalEnemyReceipts(combatState) {
+  const messages = regionalEnemyReceipts.get(combatState) || [];
+  regionalEnemyReceipts.delete(combatState);
+  return messages;
+}
+
+function getRegionalEnemyState(combatState) {
+  let state = combatState.regionalEnemy;
+  if (!state || state.enemyId !== combatState.enemy.id ||
+      state.regionId !== combatState.regionId) {
+    state = combatState.regionalEnemy = {
+      enemyId: combatState.enemy.id, regionId: combatState.regionId,
+      actions: 0, spells: 0, streak: 0, responses: 0,
+      gentle: false, pressure: false, hunger: false, guard: false,
+      resolveUsed: false, fracture: 0, adaptation: 0, lastSpell: null,
+      repetition: false,
+    };
+  }
+  return state;
+}
+
+function isValidRegionalEnemyState(state) {
+  if (state === undefined) return true; // Existing active battles migrate lazily.
+  return Boolean(state && typeof state.enemyId === "string" &&
+    REGIONAL_ENEMY_PERKS[state.regionId] &&
+    ["actions", "spells", "streak", "responses", "fracture", "adaptation"]
+      .every(key => Number.isSafeInteger(state[key]) && state[key] >= 0) &&
+    state.actions <= 6 && state.spells <= 4 && state.streak <= 1 &&
+    state.responses <= 3 && [0, 5, 10].includes(state.adaptation) &&
+    ["gentle", "pressure", "hunger", "guard", "resolveUsed", "repetition"]
+      .every(key => typeof state[key] === "boolean") &&
+    (state.lastSpell === null || (typeof state.lastSpell === "string" &&
+      /^[a-z-]+$/.test(state.lastSpell))));
+}
+
+// All incoming enemy damage (including independent follow-ups) shares this shield.
+// Returns actual HP damage; shield absorption is reported separately.
+function damageCombatEnemy(combatState, damage) {
+  const enemy = combatState.enemy;
+  const amount = Math.max(0, damage || 0);
+  const absorbed = Math.min(enemy.protection || 0, amount);
+  if (absorbed > 0) {
+    enemy.protection -= absorbed;
+    regionalEnemyReceipt(combatState,
+      `Throne's Resolve — Protection absorbed ${absorbed}; ${enemy.protection} remains.`);
+  }
+  const dealt = Math.min(enemy.hp, amount - absorbed);
+  enemy.hp -= dealt;
+  return dealt;
+}
+
+function finishRegionalEnemyDamage(combatState, hpBefore) {
+  if (!REGIONAL_ENEMY_PERKS[combatState.regionId]?.throneResolve) return;
+  const enemy = combatState.enemy;
+  const state = getRegionalEnemyState(combatState);
+  if (!state.resolveUsed && enemy.hp > 0 &&
+      hpBefore * 4 >= enemy.maxHp && enemy.hp * 4 < enemy.maxHp) {
+    state.resolveUsed = true;
+    enemy.protection = (enemy.protection || 0) + 20;
+    regionalEnemyReceipt(combatState, "Throne's Resolve — Gained 20 Protection.");
+  }
+}
+
+function getRegionalSpellTax(combatState) {
+  return REGIONAL_ENEMY_PERKS[combatState.regionId]?.kingsTax &&
+    getRegionalEnemyState(combatState).spells === 2 ? 5 : 0;
+}
+
+function getRegionalTaxPayment(combatState, damage, tax) {
+  // Reserve affordability before rolling, then charge only a successful primary
+  // hit. This preview does not consume Guard or Protection and needs no refund.
+  const guard = REGIONAL_ENEMY_PERKS[combatState.regionId]?.royalGuard &&
+    getRegionalEnemyState(combatState).guard ? 15 : 0;
+  return damage > guard + (combatState.enemy.protection || 0) ? tax : 0;
+}
+
+function applyRegionalRoyalGuard(combatState, damage, deferred = false) {
+  if (damage <= 0 || !REGIONAL_ENEMY_PERKS[combatState.regionId]?.royalGuard) {
+    return damage;
+  }
+  const state = getRegionalEnemyState(combatState);
+  if (!state.guard) return damage;
+  state.guard = false;
+  const reduction = Math.min(15, damage);
+  regionalEnemyReceipt(combatState, deferred
+    ? "Royal Guard — Reserved up to 15 damage reduction for Wake arrival."
+    : `Royal Guard — Spell damage reduced by ${reduction}.`);
+  return damage - reduction;
+}
+
+function recordRegionalPlayerAction(combatState, kind, spellId, successful) {
+  if (!successful || combatState.enemy.hp <= 0) return;
+  const perks = REGIONAL_ENEMY_PERKS[combatState.regionId] || {};
+  const state = getRegionalEnemyState(combatState);
+  if (kind !== "attack" && kind !== "spell") return;
+  if (perks.gentleCurrent) {
+    state.actions = (state.actions + 1) % 3;
+    if (state.actions === 0 && !state.gentle) {
+      state.gentle = true;
+      regionalEnemyReceipt(combatState, "Gentle Current — Next damaging attack +5.");
+    }
+  }
+  if (perks.nexusAdaptation) {
+    state.actions = Math.min(6, state.actions + 1);
+    const adaptation = state.actions >= 6 ? 10 : state.actions >= 3 ? 5 : 0;
+    if (adaptation > state.adaptation) {
+      state.adaptation = adaptation;
+      regionalEnemyReceipt(combatState, `Nexus Adaptation — Increased to +${adaptation} damage.`);
+    }
+  }
+  if (kind === "attack") {
+    state.streak = 0;
+    state.lastSpell = null;
+    return;
+  }
+  if (perks.starfallPressure && !state.pressure) {
+    state.spells += 1;
+    if (state.spells === 4) {
+      state.pressure = true;
+      regionalEnemyReceipt(combatState, "Starfall Pressure — Next damaging attack drains 10 Mana.");
+    }
+  }
+  if (perks.kingsTax) state.spells = (state.spells + 1) % 3;
+  if (perks.royalGuard) {
+    state.streak += 1;
+    if (state.streak === 2) {
+      state.guard = true;
+      state.streak = 0;
+      regionalEnemyReceipt(combatState, "Royal Guard — Activated for the next damaging spell.");
+    }
+  }
+  if (perks.realityEcho) {
+    if (state.lastSpell === spellId) state.repetition = true;
+    state.lastSpell = spellId;
+  }
+}
+
+// Called at each individual recovery source, never on a net command-wide delta.
+function recordRegionalManaRecovery(combatState, actualAmount) {
+  if (!combatState || combatState.enemy.hp <= 0 || actualAmount <= 0) return;
+  const perks = REGIONAL_ENEMY_PERKS[combatState.regionId] || {};
+  if (!perks.deepwaterHunger && !perks.manaFracture) return;
+  const state = getRegionalEnemyState(combatState);
+  if (perks.deepwaterHunger && actualAmount >= 20 && !state.hunger) {
+    state.hunger = true;
+    regionalEnemyReceipt(combatState, "Deepwater Hunger — Next damaging attack drains 10 Mana.");
+  }
+  if (perks.manaFracture && actualAmount >= 25) {
+    const amount = Math.round(actualAmount * 0.25);
+    if (amount > state.fracture) {
+      state.fracture = amount;
+      regionalEnemyReceipt(combatState, `Mana Fracture — ${amount} Mana fractured.`);
+    }
+  }
+}
+
+function getCombatProtection(combatState) {
+  return (combatState.bubble?.protection || 0) +
+    (combatState.berryEffects?.protection || 0) +
+    (combatState.wakeMantaProtection || 0) +
+    (combatState.familiarProtection || []).reduce((sum, pool) => sum + pool.amount, 0);
+}
+
+function beginRegionalEnemyResponse(combatState, naturalRoll) {
+  const perks = REGIONAL_ENEMY_PERKS[combatState.regionId] || {};
+  const state = getRegionalEnemyState(combatState);
+  const response = { bonus: 0, repetitionDamage: 0, gentle: state.gentle,
+    pressure: state.pressure, hunger: state.hunger, fracture: state.fracture };
+  if (perks.crushingWake || perks.kelpRecovery) {
+    const period = perks.crushingWake ? 3 : 4;
+    state.responses = (state.responses + 1) % period;
+  }
+  if (perks.crushingWake && state.responses === 0) {
+    regionalEnemyReceipt(combatState, "Crushing Wake — Incoming (+15 on hit).");
+    if (naturalRoll !== 1) response.bonus += 15;
+  }
+  // Repetition belongs only to this response, including a miss or full block.
+  const repetition = state.repetition;
+  state.repetition = false;
+  if (naturalRoll === 1) return response;
+  if (perks.gentleCurrent && state.gentle) {
+    response.bonus += 5;
+    regionalEnemyReceipt(combatState, "Gentle Current — +5 attack damage.");
+  }
+  if (perks.tanglingKelp && getCombatProtection(combatState) === 0) {
+    response.bonus += 5;
+    regionalEnemyReceipt(combatState, "Tangling Kelp — No Protection; +5 attack damage.");
+  }
+  if (perks.nexusAdaptation && state.adaptation > 0) {
+    response.bonus += state.adaptation;
+    regionalEnemyReceipt(combatState, `Nexus Adaptation — +${state.adaptation} attack damage.`);
+  }
+  if (perks.realityEcho && repetition) {
+    response.repetitionDamage = 50;
+    regionalEnemyReceipt(combatState, "Reality Echo — Repeated spell! +50 damage before defenses.");
+  }
+  return response;
+}
+
+function resolveRegionalEnemyHit(combatState, response, damage, progress) {
+  if (damage <= 0) return;
+  const state = getRegionalEnemyState(combatState);
+  if (response.gentle) state.gentle = false;
+  for (const [key, label, amount] of [
+    ["pressure", "Starfall Pressure", response.pressure ? 10 : 0],
+    ["hunger", "Deepwater Hunger", response.hunger ? 10 : 0],
+    ["fracture", "Mana Fracture", response.fracture],
+  ]) {
+    if (!amount) continue;
+    const drained = Math.min(progress.mana, amount);
+    progress.mana -= drained;
+    state[key] = key === "fracture" ? 0 : false;
+    if (key === "pressure") state.spells = 0;
+    regionalEnemyReceipt(combatState, `${label} — Drained ${drained} Mana.`);
+  }
+}
+
+function finishRegionalEnemyResponse(combatState) {
+  if (!REGIONAL_ENEMY_PERKS[combatState.regionId]?.kelpRecovery ||
+      combatState.enemy.hp <= 0 || combatState.playerHp <= 0) return;
+  if (getRegionalEnemyState(combatState).responses !== 0) return;
+  const restored = Math.min(10, combatState.enemy.maxHp - combatState.enemy.hp);
+  combatState.enemy.hp += restored;
+  if (restored > 0) regionalEnemyReceipt(combatState, `Kelp Recovery — Restored ${restored} enemy HP.`);
+}
+
 async function resolvePlayerCombatAction(
   env,
   backpackKey,
@@ -3215,22 +3461,16 @@ async function resolvePlayerCombatAction(
   platform,
 ) {
   if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.player-action";
-  combatState.enemy.hp = Math.max(
-    0,
-    combatState.enemy.hp - action.damage,
-  );
+  const regionalHpBefore = combatState.enemy.hp;
+  const primaryDamage = action.regionalSpell
+    ? applyRegionalRoyalGuard(combatState, action.damage) : action.damage;
+  const regionalDamage = damageCombatEnemy(combatState, primaryDamage);
   if (action.consumeAstralEcho) {
-    combatState.enemy.hp = Math.max(
-      0,
-      combatState.enemy.hp - action.echoDamage,
-    );
+    damageCombatEnemy(combatState, action.echoDamage);
     delete combatState.astralEcho;
   }
   if (action.aftershockDamage > 0) {
-    combatState.enemy.hp = Math.max(
-      0,
-      combatState.enemy.hp - action.aftershockDamage,
-    );
+    damageCombatEnemy(combatState, action.aftershockDamage);
   }
 
   let progress = await getPlayerProgress(env, backpackKey);
@@ -3251,6 +3491,7 @@ async function resolvePlayerCombatAction(
       manaRestore, Math.max(0, caps.mana - progress.mana),
     );
     combatState.playerHp += restoredHp;
+    recordRegionalManaRecovery(combatState, restoredMana);
     if (restoredMana > 0) {
       progress = { ...progress, mana: progress.mana + restoredMana };
       await savePlayerProgress(env, backpackKey, progress);
@@ -3292,9 +3533,7 @@ async function resolvePlayerCombatAction(
         (mastery) => mastery.effect.id === "astral-charge-detonation",
       );
       if (currentCharge && detonation && combatState.enemy.hp > 0) {
-        combatState.enemy.hp = Math.max(
-          0, combatState.enemy.hp - detonation.effect.damage,
-        );
+        damageCombatEnemy(combatState, detonation.effect.damage);
         chargeDetonationMessage = randomChoice(detonation.flavor) + "\n\n" +
           `Charge detonates → ${detonation.effect.damage} dmg`;
       }
@@ -3316,6 +3555,7 @@ async function resolvePlayerCombatAction(
       progress = { ...progress, mana: progress.mana + restoredMana };
       await savePlayerProgress(env, backpackKey, progress);
       legacyMessage = `Legacy: Charge restored ${restoredMana} Mana.`;
+      recordRegionalManaRecovery(combatState, restoredMana);
     }
   }
 
@@ -3394,7 +3634,7 @@ async function resolvePlayerCombatAction(
     progress = {
       ...progress,
       mana: restoreManaToNormalCap(
-        progress.mana, harmony.effect.manaRestore, maximumMana,
+        progress.mana, harmony.effect.manaRestore, maximumMana, combatState,
       ),
     };
     await savePlayerProgress(env, backpackKey, progress);
@@ -3432,6 +3672,7 @@ async function resolvePlayerCombatAction(
         "10 Mana",
         `${restoredMana} Mana`,
       );
+      recordRegionalManaRecovery(combatState, restoredMana);
     } else {
       momentumMessage = astralMomentum.fullManaLine;
     }
@@ -3450,6 +3691,7 @@ async function resolvePlayerCombatAction(
       );
       if (restoredMana > 0) {
         progress = { ...progress, mana: progress.mana + restoredMana };
+        recordRegionalManaRecovery(combatState, restoredMana);
         await savePlayerProgress(env, backpackKey, progress);
         jellyfishMasteryMessage = jellyfishEffect.activationLine.replace(
           `${manaRestore} Mana`,
@@ -3508,7 +3750,11 @@ async function resolvePlayerCombatAction(
     combatState, activePerks, platform,
   );
 
-  const messageParts = [action.message];
+  finishRegionalEnemyDamage(combatState, regionalHpBefore);
+  recordRegionalPlayerAction(combatState,
+    action.regionalSpell ? "spell" : action.regionalAction,
+    action.regionalSpell, regionalDamage > 0 || action.regionalCommittedWake === true);
+  const messageParts = [action.message, ...takeRegionalEnemyReceipts(combatState)];
   if (legacyMessage) messageParts.push(legacyMessage);
   if (echoMasteryMessage) messageParts.push(echoMasteryMessage);
   if (expeditionMessage) messageParts.push(expeditionMessage);
@@ -3558,11 +3804,15 @@ async function resolveEnemyCombatResponse(
   activeMasteries, activePerks, shizukisPresenceMastery, messageParts,
 ) {
   if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.enemy-turn";
+  const regionalHpBefore = combatState.enemy.hp;
   const enemyRoll = randomInteger(1, 20);
+  const regionalResponse = beginRegionalEnemyResponse(combatState, enemyRoll);
+  messageParts.push(...takeRegionalEnemyReceipts(combatState));
   const enemyAttack = getCombatRollResult(enemyRoll);
   const rawEnemyDamage = enemyAttack.damage === 0
     ? 0
-    : enemyAttack.damage + (combatState.enemy.damageBonus || 0);
+    : enemyAttack.damage + (combatState.enemy.damageBonus || 0) +
+      regionalResponse.bonus + regionalResponse.repetitionDamage;
   const armorReduction = rawEnemyDamage > 0
     ? Math.min(getArmorReduction(progress), Math.max(0, rawEnemyDamage - 1))
     : 0;
@@ -3612,6 +3862,7 @@ async function resolveEnemyCombatResponse(
           ...progress,
           mana: progress.mana + restoredMana,
         };
+        recordRegionalManaRecovery(combatState, restoredMana);
         combatState.astralRebound = {
           offensiveRollModifier:
             bubbleMastery.effect.offensiveRollModifier,
@@ -3625,7 +3876,7 @@ async function resolveEnemyCombatResponse(
         await savePlayerProgress(env, backpackKey, progress);
       }
       if (bubbleMasteryII && absorbedDamage > 0) {
-        combatState.enemy.hp = Math.max(0, combatState.enemy.hp - bubbleMasteryII.effect.damage);
+        damageCombatEnemy(combatState, bubbleMasteryII.effect.damage);
         bubbleMasteryIIMessage = randomChoice(bubbleMasteryII.flavor) +
           `\n\nBubble retaliates → ${bubbleMasteryII.effect.damage} dmg`;
       } else {
@@ -3696,6 +3947,12 @@ async function resolveEnemyCombatResponse(
       familiarProtectionMessage = `Familiar protection absorbs ${absorbed} damage.`;
     }
   }
+  const manaBeforeRegionalHit = progress.mana;
+  resolveRegionalEnemyHit(combatState, regionalResponse, enemyDamage, progress);
+  if (progress.mana !== manaBeforeRegionalHit) {
+    await savePlayerProgress(env, backpackKey, progress);
+  }
+  messageParts.push(...takeRegionalEnemyReceipts(combatState));
   combatState.playerHp = Math.max(
     0,
     combatState.playerHp - enemyDamage,
@@ -3810,11 +4067,11 @@ async function resolveEnemyCombatResponse(
       combatState.playerMaxHp *
         (astralResilience.effect.hpThresholdPercent / 100)
   ) {
-    const maximumMana = getPlayerResourceCaps(progress).mana;
+    const maximumMana = getPlayerResourceCaps(updatedProgress).mana;
     updatedProgress = {
-      ...progress,
+      ...updatedProgress,
       mana: restoreManaToNormalCap(
-        progress.mana, astralResilience.effect.manaRestore, maximumMana,
+        updatedProgress.mana, astralResilience.effect.manaRestore, maximumMana, combatState,
       ),
     };
     combatState.perkUses = {
@@ -3845,7 +4102,7 @@ async function resolveEnemyCombatResponse(
       updatedProgress = {
         ...updatedProgress,
         mana: restoreManaToNormalCap(
-          updatedProgress.mana, astralAwakening.effect.manaRestore, caps.mana,
+          updatedProgress.mana, astralAwakening.effect.manaRestore, caps.mana, combatState,
         ),
       };
       combatState.astralAwakening = {
@@ -3889,6 +4146,9 @@ async function resolveEnemyCombatResponse(
     messageParts.push(astralPatience.activationLine);
   }
 
+  finishRegionalEnemyDamage(combatState, regionalHpBefore);
+  finishRegionalEnemyResponse(combatState);
+  messageParts.push(...takeRegionalEnemyReceipts(combatState));
   combatState.round += 1;
   combatState.updatedAt = Math.floor(Date.now() / 1000);
   await savePlayerProgress(env, backpackKey, {
@@ -3960,7 +4220,8 @@ function formatDiscordCombatHud(combatState, progress) {
 }
 
 function appendDiscordCombatHud(message, combatState, progress) {
-  return `${message}\n\n${formatDiscordCombatHud(combatState, progress)}`;
+  return [message, ...takeRegionalEnemyReceipts(combatState),
+    formatDiscordCombatHud(combatState, progress)].join("\n\n");
 }
 
 function formatCombatMessageParts(parts, platform) {
@@ -4189,7 +4450,7 @@ async function performCastUnlocked(
     };
     const restoreMana = amount => {
       updatedProgress.mana = restoreManaToNormalCap(
-        updatedProgress.mana, amount, resourceCaps.mana,
+        updatedProgress.mana, amount, resourceCaps.mana, currentCombatState,
       );
     };
     const grantRollBonus = (name, value) => {
@@ -4229,7 +4490,9 @@ async function performCastUnlocked(
       shizukiMessage = shizuki.message;
     }
     currentCombatState.berriesCastRound = currentCombatState.round;
-    currentCombatState.enemy.hp = Math.max(0, currentCombatState.enemy.hp - fixedDamage);
+    const regionalHpBefore = currentCombatState.enemy.hp;
+    damageCombatEnemy(currentCombatState, fixedDamage);
+    finishRegionalEnemyDamage(currentCombatState, regionalHpBefore);
     const storytellerMessage = advanceStoryteller(
       currentCombatState, activePerks, platform,
     );
@@ -4259,6 +4522,7 @@ async function performCastUnlocked(
     const separator = platform === "discord" ? "\n\n" : " | ";
     return {
       message: [outcome.text, shizukiMessage, storytellerMessage,
+        ...takeRegionalEnemyReceipts(currentCombatState),
         formatDiscordCombatHud(currentCombatState, updatedProgress)]
         .filter(Boolean).join(separator),
     };
@@ -4598,6 +4862,11 @@ async function performCastUnlocked(
         ? `${message}\n\n${shizukiMessage}`
         : `${message} | ${shizukiMessage}`;
     }
+    if (currentCombatState) {
+      const regionalMessages = takeRegionalEnemyReceipts(currentCombatState);
+      if (regionalMessages.length) message +=
+        (platform === "discord" ? "\n\n" : " | ") + regionalMessages.join(" | ");
+    }
     return {
       message: currentCombatState && platform === "discord"
         ? appendDiscordCombatHud(message, currentCombatState, updatedProgress)
@@ -4639,6 +4908,7 @@ async function performCastUnlocked(
     const updatedProgress = {
       ...progress, mana: targetMana, evocationCooldownTurns: spell.cooldownTurns,
     };
+    recordRegionalManaRecovery(combatState, targetMana - progress.mana);
     const separator = platform === "discord" ? "\n\n" : " | ";
     const castMessage = overflow
       ? [
@@ -4685,11 +4955,14 @@ async function performCastUnlocked(
     astralCharge?.manaDiscountAvailable ? astralCharge.manaReduction : 0,
     shimmerDiscount ? 0.5 : 0,
   );
-  const manaCost = Math.round(storytellerManaCost * (1 - manaReduction));
+  const regionalTax = getRegionalSpellTax(combatState);
+  const normalManaCost = Math.round(storytellerManaCost * (1 - manaReduction));
+  const manaCost = normalManaCost + regionalTax;
   const isAllOrNothing = spell.id === "all-or-nothing";
 
-  if (progress.mana < (isAllOrNothing ? storytellerManaCost : manaCost)) {
-    const message = `You don't have enough Mana to cast ${spell.name}.`;
+  if (progress.mana < (isAllOrNothing ? storytellerManaCost + regionalTax : manaCost)) {
+    const message = `You don't have enough Mana to cast ${spell.name}.` +
+      (regionalTax ? " King's Tax requires an additional 5 Mana." : "");
     return {
       message: platform === "discord"
         ? appendDiscordCombatHud(message, combatState, progress)
@@ -4707,6 +4980,7 @@ async function performCastUnlocked(
   if (shimmerDiscount && !isAllOrNothing) delete combatState.berryEffects.shimmerDiscount;
 
   if (spell.id === "leviathans-wake") {
+    if (regionalTax) regionalEnemyReceipt(combatState, "King's Tax — Additional 5 Mana paid.");
     return castLeviathansWake(
       env, backpackKey, combatState, progress, spell, activePerks,
       astralCharge, manaCost, platform,
@@ -4925,10 +5199,12 @@ async function performCastUnlocked(
       delete combatState.berryEffects.shimmerDiscount;
     }
   }
+  const regionalTaxPaid = getRegionalTaxPayment(combatState, resolvedSpellRoll.damage, regionalTax);
+  if (regionalTaxPaid) regionalEnemyReceipt(combatState, "King's Tax — Additional 5 Mana paid.");
   let updatedProgress = {
     ...progress,
     mana: progress.mana - (isAllOrNothing && spellRoll.total === 1
-      ? storytellerManaCost : manaCost),
+      ? storytellerManaCost : normalManaCost) - regionalTaxPaid,
     statusEffects: triggeredRoll.statusEffects,
   };
   if (faeMischief) {
@@ -4954,6 +5230,7 @@ async function performCastUnlocked(
       {
         roll: triggeredRoll.finalTotal,
         damage: resolvedSpellRoll.damage,
+        regionalSpell: spell.id,
         echoDamage,
         aftershockDamage,
         message: turnStart.message ? `${turnStart.message}\n\n${castMessage}` : castMessage,
@@ -5027,8 +5304,10 @@ async function castHelp(env, backpackKey, combatState, progress, spell, platform
   const naturalRoll = randomInteger(1, 20);
   const success = naturalRoll >= 11;
   // Floor removal deliberately leaves ceil(current HP / 2), including at 1 HP.
-  const hpRemoved = success ? Math.floor(combatState.enemy.hp / 2) : 0;
-  combatState.enemy.hp -= hpRemoved;
+  const regionalHpBefore = combatState.enemy.hp;
+  const hpRemoved = damageCombatEnemy(combatState,
+    success ? Math.floor(combatState.enemy.hp / 2) : 0);
+  finishRegionalEnemyDamage(combatState, regionalHpBefore);
   combatState.helpUsed = true;
   const paidProgress = { ...progress, mana: progress.mana - manaTaken };
   await savePlayerProgress(env, backpackKey, paidProgress);
@@ -5079,7 +5358,11 @@ async function castLeviathansWake(
   const aftershock = activePerks.find(
     (perk) => perk.effect.trigger === "critical-offensive-spell",
   );
+  // Wake is already a committed successful offensive action in the shared
+  // pipeline (it cannot miss). Count the summon once, never its delayed payload.
+  const regionalGuardReduction = 15 - applyRegionalRoyalGuard(combatState, 15, true);
   combatState.leviathansWake = {
+    regionalGuardReduction,
     naturalRoll,
     finalRoll: triggeredRoll.finalTotal,
     creatureId: creature.id,
@@ -5120,6 +5403,8 @@ async function castLeviathansWake(
       roll: triggeredRoll.finalTotal,
       damage: 0,
       echoDamage: 0,
+      regionalSpell: spell.id,
+      regionalCommittedWake: true,
       message,
       consumeAstralCharge: Boolean(astralCharge),
       consumeAstralEcho: Boolean(astralEcho),
@@ -5203,9 +5488,15 @@ async function advanceLeviathansWake(
   } else if (wake.storytellerFinalChapter) {
     parts.push("THE FINAL CHAPTER: +10 Final Damage");
   }
-  combatState.enemy.hp = Math.max(0, combatState.enemy.hp - primaryDamage);
+  const regionalHpBefore = combatState.enemy.hp;
+  if (wake.regionalGuardReduction) {
+    const reduced = Math.min(primaryDamage, wake.regionalGuardReduction);
+    primaryDamage -= reduced;
+    parts.push(`Perk: Royal Guard — Wake damage reduced by ${reduced}.`);
+  }
+  damageCombatEnemy(combatState, primaryDamage);
   if (wake.astralEchoSnapshot) {
-    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - echoDamage);
+    damageCombatEnemy(combatState, echoDamage);
     parts.push(spell.echoActivationLine.replace("{echoDamage}", String(echoDamage)));
     if (echoDamage > 0 && wake.astralEchoSnapshot.naturalRoll) {
       const activeMasteries = await getActiveMasteries(levelFromXp(progress.xp));
@@ -5217,7 +5508,7 @@ async function advanceLeviathansWake(
     }
   }
   if (aftershock) {
-    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - wake.aftershockDamage);
+    damageCombatEnemy(combatState, wake.aftershockDamage);
     parts.push(aftershock.activationLine);
   }
   let masteryDamage = 0;
@@ -5229,7 +5520,7 @@ async function advanceLeviathansWake(
   );
   if (arrivalEffect) {
     masteryDamage = arrivalEffect.fixedDamage;
-    combatState.enemy.hp = Math.max(0, combatState.enemy.hp - masteryDamage);
+    damageCombatEnemy(combatState, masteryDamage);
     if (arrivalEffect.protection > 0) {
       combatState.wakeMantaProtection =
         (combatState.wakeMantaProtection || 0) + arrivalEffect.protection;
@@ -5239,6 +5530,7 @@ async function advanceLeviathansWake(
       const restoredMana = Math.min(arrivalEffect.manaRestore,
         Math.max(0, getPlayerResourceCaps(latestProgress).mana - latestProgress.mana));
       progress.mana = latestProgress.mana + restoredMana;
+      recordRegionalManaRecovery(combatState, restoredMana);
       await savePlayerProgress(env, backpackKey, {
         ...latestProgress, mana: progress.mana,
       });
@@ -5251,6 +5543,8 @@ async function advanceLeviathansWake(
     platform,
   );
   if (storytellerMessage) parts.push(storytellerMessage);
+  finishRegionalEnemyDamage(combatState, regionalHpBefore);
+  parts.push(...takeRegionalEnemyReceipts(combatState));
   delete combatState.leviathansWake;
   const message = parts.join("\n\n");
   if (combatState.enemy.hp === 0) {
@@ -5938,6 +6232,7 @@ async function performEatUnlocked(
   if (combatState) {
     combatState.playerHp = updatedHp;
     combatState.playerMaxHp = resourceCaps.hp;
+    recordRegionalManaRecovery(combatState, restoredMana);
   }
 
   if (activeAdventure) {
@@ -6003,7 +6298,8 @@ async function performEatUnlocked(
         `HP: ${updatedHp}/${hpLimit} | ` +
         `Mana: ${updatedMana}/${manaLimit} | ` +
         `Berries: ${remainingBerries.toLocaleString("en-US")}`) +
-      (adventureRun ? ` | Adventure Berry Uses: ${adventureRun.berriesEaten}/4` : ""),
+      (adventureRun ? ` | Adventure Berry Uses: ${adventureRun.berriesEaten}/4` : "") +
+      (combatState ? takeRegionalEnemyReceipts(combatState).map(line => ` | ${line}`).join("") : ""),
   };
 }
 
@@ -8624,6 +8920,8 @@ function isValidLeviathansWake(wake) {
     Number.isSafeInteger(wake.finalRoll) && wake.finalRoll >= wake.naturalRoll &&
     ["wakefin", "astral-manta", "deepwake-serpent", "leviathan", "ancient-one"].includes(wake.creatureId) &&
     [1, 2].includes(wake.stage) &&
+    (wake.regionalGuardReduction === undefined ||
+      [0, 15].includes(wake.regionalGuardReduction)) &&
     Number.isSafeInteger(wake.baseDamage) && wake.baseDamage > 0 &&
     wake.critical === (wake.naturalRoll === 20) &&
     (wake.astralChargeSnapshot === null || validFraction(wake.astralChargeSnapshot?.damageIncrease)) &&
@@ -8647,6 +8945,7 @@ function isValidCombatState(combatState) {
   return Boolean(
     combatState &&
     combatState.version === 1 &&
+    isValidRegionalEnemyState(combatState.regionalEnemy) &&
     getRegionById(combatState.regionId) &&
     (
       combatState.encounterNumber === undefined ||
@@ -8754,6 +9053,8 @@ function isValidCombatState(combatState) {
     enemy.hp > 0 &&
     enemy.hp <= enemy.maxHp &&
     enemy.maxHp > 0 &&
+    (enemy.protection === undefined ||
+      (Number.isSafeInteger(enemy.protection) && enemy.protection >= 0)) &&
     (
       enemy.astralCharge === undefined ||
       getAstralCharge(enemy) !== null
@@ -9191,10 +9492,12 @@ function getPlayerResourceCaps(progress) {
   };
 }
 
-function restoreManaToNormalCap(currentMana, amount, maximumMana) {
-  return currentMana >= maximumMana
+function restoreManaToNormalCap(currentMana, amount, maximumMana, combatState = null) {
+  const restored = currentMana >= maximumMana
     ? currentMana
     : Math.min(maximumMana, currentMana + amount);
+  recordRegionalManaRecovery(combatState, restored - currentMana);
+  return restored;
 }
 
 function getStorytellerManaCost(baseCost, combatState) {
@@ -9372,6 +9675,7 @@ async function resolveAstralCuriosity(
 
   combatState.playerHp += hpRestored;
   if (manaRestored > 0) {
+    recordRegionalManaRecovery(combatState, manaRestored);
     updatedProgress = {
       ...updatedProgress,
       mana: updatedProgress.mana + manaRestored,

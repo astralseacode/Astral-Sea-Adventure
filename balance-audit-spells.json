@@ -1,0 +1,1449 @@
+{
+  "spells": [
+    {
+      "id": "all-or-nothing",
+      "name": "All or Nothing",
+      "aliases": [
+        "all or nothing",
+        "allornothing"
+      ],
+      "requiredLevel": 35,
+      "manaCost": 20,
+      "type": "offensive",
+      "description": "Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 deals no damage and resets the streak. Roll 2 deals 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25.",
+      "levelUpLine": "lvl 35 Spell 🎲 All or Nothing: Cast All or Nothing for 20 Mana and roll 1d2. Roll 1 to deal no damage. Roll 2 to deal 25 damage + Strength. Each consecutive 2 increases the next All or Nothing's damage by 25. Rolling 1 resets the streak.",
+      "damage": {
+        "dice": 1,
+        "sides": 2
+      },
+      "criticalThreshold": 3,
+      "criticalDamage": 0,
+      "baseDamagePerWin": 25,
+      "opener": "You leave it to chance.",
+      "flavor": {
+        "failure": [
+          "Nothing answers.",
+          "The magic fizzles. Unfortunate.",
+          "You chose Nothing. Nothing chose you back.",
+          "The stars decline.",
+          "For a moment, something almost happens.",
+          "Nothing. Absolutely nothing.",
+          "The magic considered it.",
+          "You feel like that could have gone better.",
+          "A tiny spark appears, thinks better of it, and disappears.",
+          "The universe says no."
+        ],
+        "firstSuccess": [
+          "The stars choose All.",
+          "Chance favors you.",
+          "The gamble pays off.",
+          "Something answers.",
+          "The magic surges forward.",
+          "The stars accept your wager.",
+          "All."
+        ],
+        "secondSuccess": [
+          "The stars choose All. Again.",
+          "Chance favors you twice.",
+          "The wager continues.",
+          "The magic returns stronger than before."
+        ],
+        "thirdSuccess": [
+          "The stars are beginning to encourage this.",
+          "Against reasonable expectations, All wins again.",
+          "The wager is getting concerning.",
+          "The magic returns. Considerably less politely."
+        ],
+        "fourthSuccess": [
+          "Perhaps someone should stop you.",
+          "The stars choose All. This is getting ridiculous.",
+          "The universe appears unusually invested in your gambling problem.",
+          "Somewhere, the supervising leaf rustles disapprovingly."
+        ],
+        "fifthPlusSuccess": [
+          "All. Again.",
+          "This should have stopped working by now.",
+          "The stars refuse to teach you a lesson.",
+          "At this point, even the magic seems confused.",
+          "The wager continues against all sensible advice.",
+          "Somehow, All keeps winning."
+        ],
+        "highStreakFailure": [
+          "And there it is.",
+          "The stars finally learned how probability works.",
+          "Nothing. That was bound to happen eventually.",
+          "Your winning streak ends with remarkable efficiency.",
+          "The universe has corrected its mistake.",
+          "All that confidence. Gone.",
+          "You knew this would happen eventually."
+        ]
+      },
+      "source": "data/spells/all-or-nothing.json"
+    },
+    {
+      "id": "astral-echo",
+      "name": "Echo",
+      "aliases": [
+        "astral echo",
+        "echo"
+      ],
+      "requiredLevel": 12,
+      "manaCost": 25,
+      "type": "pre-action-support",
+      "description": "Store an Echo that makes your next offensive spell strike again for a percentage of its final damage without ending your normal action.",
+      "damage": {
+        "dice": 1,
+        "sides": 4
+      },
+      "echoTiers": [
+        {
+          "id": "faint",
+          "displayName": "Faint Echo",
+          "naturalRoll": 1,
+          "damagePercent": 0.3,
+          "narration": "Astral light gathers around you in a faint, wavering rhythm. A Faint Echo has been stored at 30% power."
+        },
+        {
+          "id": "resonant",
+          "displayName": "Resonant Echo",
+          "naturalRoll": 2,
+          "damagePercent": 0.35,
+          "narration": "Astral energy circles around you, settling into a steady rhythm. A Resonant Echo has been stored at 35% power."
+        },
+        {
+          "id": "powerful",
+          "displayName": "Powerful Echo",
+          "naturalRoll": 3,
+          "damagePercent": 0.4,
+          "narration": "Astral light surges around you as the surrounding sea begins to hum. A Powerful Echo has been stored at 40% power."
+        },
+        {
+          "id": "perfect",
+          "displayName": "Perfect Echo",
+          "naturalRoll": 4,
+          "damagePercent": 0.5,
+          "narration": "The Astral Sea suddenly resonates around you as brilliant starlight gathers into a perfect rhythm. A Perfect Echo has been stored at 50% power."
+        }
+      ],
+      "activationLine": "Echo activates! Your spell echoes through the Astral Sea and strikes again for {echoDamage} damage.",
+      "source": "data/spells/astral-echo.json"
+    },
+    {
+      "id": "berries",
+      "name": "Berries",
+      "aliases": [
+        "berry",
+        "berries"
+      ],
+      "requiredLevel": 24,
+      "manaCost": 20,
+      "type": "pre-action-utility",
+      "description": "Conjure a mysterious Berry infused with unpredictable magic. Different Berries produce different effects.",
+      "damage": {
+        "dice": 1,
+        "sides": 20
+      },
+      "outcomes": [
+        {
+          "roll": 1,
+          "text": "Roll 1 → Sour Berry | You pull out a tiny, suspiciously angry-looking berry, taste it, immediately regret every decision that led to this moment, and throw it at your foe instead; the berry deals 10 damage, and nobody enjoyed this."
+        },
+        {
+          "roll": 2,
+          "text": "Roll 2 → Sleepy Berry | You pull out a berry that appears to already be asleep, and after a tiny yawn it nestles into your pocket and promises absolutely nothing except reducing the next enemy hit by 5 damage."
+        },
+        {
+          "roll": 3,
+          "text": "Roll 3 → Blue Berry | You pull out a perfectly blue berry, briefly wonder whether calling it a blueberry would cause some kind of magical copyright dispute, and feel 30 Mana rush back into you before anyone can investigate."
+        },
+        {
+          "roll": 4,
+          "text": "Roll 4 → Sweet Berry | You take one bite of the suspiciously perfect berry and immediately understand why Shizuki keeps snacks around, restoring 15 HP and perhaps developing a problem."
+        },
+        {
+          "roll": 5,
+          "text": "Roll 5 → Bouncy Berry | The berry immediately escapes your hand, bounces off the floor, your shoulder, and somehow your foe before returning to you looking extremely proud of itself, granting +2 to your next offensive roll."
+        },
+        {
+          "roll": 6,
+          "text": "Roll 6 → Fae Berry | Several tiny Fae emerge carrying a berry much larger than they are, deposit it into your hands, restore 20 Mana, grant +1 to your next offensive spell roll, and hurriedly leave before you can ask where they got it."
+        },
+        {
+          "roll": 7,
+          "text": "Roll 7 → Bubble Berry | You squeeze the berry slightly and it responds with an offended *boing* before expanding into 10 protection around you, which raises several questions about whether Bubble has relatives."
+        },
+        {
+          "roll": 8,
+          "text": "Roll 8 → Spark Berry | The berry begins sparkling with increasingly concerning enthusiasm, zaps your fingertips, and leaves enough magic behind to add 8 damage to your next successful offensive spell."
+        },
+        {
+          "roll": 9,
+          "text": "Roll 9 → Healing Berry | You eat the berry and immediately restore 25 HP while several tiny Fae appear in the distance, nod approvingly as if they personally supervised your recovery, and disappear before doing any actual paperwork."
+        },
+        {
+          "roll": 10,
+          "text": "Roll 10 → Mana Berry | The berry dissolves into blue light the moment you touch it, restoring 50 Mana and leaving behind the strange feeling that somewhere Shizuki just whispered, \"See? Berries fix everything.\""
+        },
+        {
+          "roll": 11,
+          "text": "Roll 11 → Twilight Berry | The berry glows in the soft colors of an Astral Sea sunset and tastes weirdly nostalgic, restoring 15 HP and 20 Mana while leaving you unable to remember exactly what you're nostalgic about."
+        },
+        {
+          "roll": 12,
+          "text": "Roll 12 → Giggling Berry | You pull out an otherwise completely normal berry that quietly giggles at you in a very familiar way, refuses to explain itself, and grants +3 to your next offensive roll."
+        },
+        {
+          "roll": 13,
+          "text": "Roll 13 → Lucky Berry | The berry rattles when you shake it, so naturally you shake it harder until 75 Star Candies spill out, and somewhere in the Astral Sea you get the distinct feeling Shizuki would be proud of this financial strategy."
+        },
+        {
+          "roll": 14,
+          "text": "Roll 14 → Moon Berry | Pale moonlight swirls across the berry before it melts into shimmering magic, restoring 15 HP and 30 Mana while a tiny crescent briefly appears above your head because apparently the berry enjoys presentation."
+        },
+        {
+          "roll": 15,
+          "text": "Roll 15 → Shimmer Berry | The berry flickers between several colors before exploding into glitter directly in your face, restoring 20 Mana while you are busy questioning why Shizuki's magic is like this, and your next offensive spell quietly becomes 50% cheaper."
+        },
+        {
+          "roll": 16,
+          "text": "Roll 16 → Guardian Berry | The berry sprouts a tiny pair of magical leaves, positions itself heroically between you and your foe, and generates 20 protection despite being approximately the least intimidating guardian you have ever seen."
+        },
+        {
+          "roll": 17,
+          "text": "Roll 17 → Comet Berry | You pull out a berry that immediately begins vibrating, wisely point it away from yourself, and watch it launch like a tiny comet directly into your foe for 25 damage while a distant giggle suggests somebody knew that would happen."
+        },
+        {
+          "roll": 18,
+          "text": "Roll 18 → Astral Berry | Tiny constellations flicker beneath the berry's skin before bursting into your hands, restoring 60 Mana and granting +2 to your next offensive roll as the Astral Sea briefly seems very pleased with itself."
+        },
+        {
+          "roll": 19,
+          "text": "Roll 19 → Golden Berry | A brilliant golden berry appears with enough sparkles to announce that you almost rolled something even better, restoring 30 HP and 60 Mana while being just slightly smug about second place."
+        },
+        {
+          "roll": 20,
+          "text": "Roll 20 → Shizuki's Favorite | A familiar little berry appears in your hand, and for some reason you already know this one is special as a faint giggle drifts through the Astral Sea and the berry bursts into warm starlight, restoring 40 HP and 80 Mana and granting +4 to your next offensive roll."
+        }
+      ],
+      "source": "data/spells/berries.json"
+    },
+    {
+      "id": "bubble",
+      "name": "Bubble",
+      "aliases": [
+        "bubble"
+      ],
+      "requiredLevel": 8,
+      "manaCost": 15,
+      "type": "defensive",
+      "description": "Cast Bubble at Level 8 for 15 Mana to prepare protection against the next damaging enemy attack without ending your normal action.",
+      "damage": {
+        "dice": 1,
+        "sides": 12
+      },
+      "protectionTiers": [
+        {
+          "id": "suspicious",
+          "displayName": "Suspicious Bubble",
+          "naturalMaximum": 3,
+          "protection": 5,
+          "narration": "You summon a protective bubble around yourself. It wobbles concerningly. You're pretty sure protective bubbles aren't supposed to do that."
+        },
+        {
+          "id": "decent",
+          "displayName": "Decent Bubble",
+          "naturalMaximum": 7,
+          "protection": 10,
+          "narration": "A shimmering bubble pops into existence around you. You poke the inside wall. It makes a surprisingly reassuring *boing*."
+        },
+        {
+          "id": "sturdy",
+          "displayName": "Sturdy Bubble",
+          "naturalMaximum": 11,
+          "protection": 15,
+          "narration": "Astral light swirls around you and forms a remarkably sturdy bubble. It gives an encouraging little *boing*, apparently very confident in its new job."
+        },
+        {
+          "id": "magnificent",
+          "displayName": "Magnificent Bubble",
+          "naturalMaximum": 12,
+          "protection": 25,
+          "narration": "An enormous shimmering bubble snaps into place around you with majestic Astral brilliance. It is flawless. It is radiant. You have never felt safer inside something so incredibly poppable."
+        }
+      ],
+      "activationLines": [
+        "Bubble activates! Your foe strikes the bubble. It responds with a deeply offended *boing*, absorbs {absorbedDamage} damage, and pops.",
+        "Bubble activates! The bubble bravely absorbs {absorbedDamage} damage before giving one final determined *boing*. It did its job.",
+        "Bubble activates! Your foe hits the bubble for absolutely no good reason. It absorbs {absorbedDamage} damage before popping in protest.",
+        "Bubble activates! The bubble absorbs {absorbedDamage} damage, gives your foe one last accusatory *boing*, and pops. It clearly expected an apology.",
+        "Bubble activates! Your foe strikes the bubble. It absorbs {absorbedDamage} damage, wobbles dramatically, and pops. Somehow, you get the impression it took that personally."
+      ],
+      "survivalLines": [
+        "The attack slams into your Bubble. It wobbles violently, gives an offended *boing*, and somehow holds together.",
+        "Your Bubble squishes inward from the impact, pauses for a moment, then stubbornly pops back into shape.",
+        "The attack crashes into your Bubble. It trembles indignantly but refuses to pop.",
+        "Your Bubble absorbs the hit and gives your foe a deeply offended *boing*. Apparently that was rude.",
+        "The Bubble wobbles dangerously.\n\nIt survives.\n\nIt seems almost disappointed that it didn't get to be dramatic about this.",
+        "Your Bubble takes the hit, stretches to a concerning degree, and snaps back into place.\n\nNobody should tell it how close that was."
+      ],
+      "criticalFlavorChance": 0.25,
+      "criticalFlavor": [
+        "The bubble gives you a confident little *boing*. It has trained its entire life for this moment. Approximately three seconds.",
+        "The bubble shimmers proudly. You suspect compliments would only make this worse.",
+        "A tiny sparkle circles the bubble like a medal. The bubble seems to accept this honor.",
+        "The bubble wobbles majestically. Somehow, it has already developed an ego.",
+        "For one glorious moment, you and the bubble feel unstoppable. Mostly the bubble."
+      ],
+      "source": "data/spells/bubble.json"
+    },
+    {
+      "id": "conjure-gun",
+      "name": "Conjure Gun",
+      "aliases": [
+        "conjure gun",
+        "gun"
+      ],
+      "requiredLevel": 45,
+      "manaCost": 35,
+      "type": "offensive",
+      "description": "Conjure an Astral gun and fire 140 binary shots. Each 1 hits for 1 damage; each 0 misses. Add Strength once.",
+      "levelUpLine": "lvl 45 Spell 🔫 Conjure Gun: Cast Conjure Gun for 35 Mana. Conjure an Astral gun and rapidly fire 140 shots. Each shot rolls either 0 or 1. A 1 hits and deals 1 damage, while a 0 misses. Add all successful hits together, then add Strength to determine the final damage.",
+      "damage": {
+        "dice": 140,
+        "min": 0,
+        "max": 1
+      },
+      "flavor": [
+        "You conjure an Astral gun and inspect it proudly. Behold, magic! You fire the first shot. Magic with bullets!",
+        "Astral light twists together in your hands and somehow becomes a gun. There is absolutely no reason to question this. You start running and open fire.",
+        "You weave an Astral gun into existence and immediately take off around the enemy. Aiming is important, but apparently firing one hundred and forty times is importanter.",
+        "An Astral gun flashes into your hands. You could carefully line up your shot, but you have one hundred and forty of them. Spray and pray!",
+        "You conjure an Astral gun and begin circling the enemy at full speed. Running? Check. Gun? Check. Sensible plan? Completely optional.",
+        "Starlight gathers into the suspiciously familiar shape of a gun. You admire your mastery of the Astral arts before immediately using it to fire one hundred and forty times.",
+        "You weave together an Astral gun and take aim. One shot would probably be reasonable. Fortunately, you didn't conjure this thing to be reasonable.",
+        "An Astral gun materializes in your hands. Somewhere, centuries of magical tradition suddenly feel deeply concerned. You start firing.",
+        "You summon an Astral gun and dash around the enemy, filling the air with magical shots. The strategy is simple: keep running until the problem has significantly more holes in it.",
+        "Astral energy gathers between your hands. Moonbeam? Falling Star? Some ancient elven technique? Nope. Gun.",
+        "You conjure an Astral gun and immediately start running. The enemy gets approximately half a second to process this development before the barrage begins.",
+        "You weave an Astral gun from shimmering light and inspect your creation. Thousands of possibilities exist within the Astral arts. You have chosen bullets.",
+        "An Astral gun snaps into existence. You take off around the enemy and begin firing with the confidence of someone who definitely did not just invent this strategy five seconds ago.",
+        "You conjure an Astral gun and start running circles around the enemy. One hundred and forty magical shots should be more than enough to prove that this was an excellent and completely responsible use of Mana.",
+        "Starlight forms into an Astral gun in your hands. After everything you've learned about magic on your journey, you have finally reached the natural conclusion: give the magic a gun."
+      ],
+      "source": "data/spells/conjure-gun.json"
+    },
+    {
+      "id": "elf_blessing",
+      "name": "Elf Blessing",
+      "aliases": [
+        "elf blessing",
+        "elf_blessing",
+        "blessing"
+      ],
+      "requiredLevel": 1,
+      "manaCost": 30,
+      "type": "timed-support",
+      "description": "+2 to offensive rolls for 30 minutes",
+      "effectId": "elf_blessing",
+      "durationMs": 1800000,
+      "modifier": 2,
+      "successScenes": [
+        "A nearby bush rustles suspiciously. You spot Shizuki peeking through the leaves and giving you an enthusiastic thumbs-up. The instant she realizes you noticed her, she vanishes deeper into the shrubbery.\n\nWarm Fae magic gathers around you.",
+        "A tiny paper note flutters down from somewhere above. It reads:\n\n\"You're doing great.\"\n\nThere is no signature, but the handwriting is unmistakably Shizuki's. Silver light settles around your weapon.",
+        "A gentle breeze carries glowing moon petals around you. From somewhere in the distance, a voice calls:\n\n\"YOU GOT THIS!\"\n\nAfter a startled pause, the same voice loudly whispers:\n\n\"...Nobody heard that.\"",
+        "You spot Shizuki hiding behind a nearby tree. When she realizes you can see her, she freezes, raises both arms like branches, and attempts to pass herself off as an ordinary forest shrub.\n\nSomehow, this fills you with determination.",
+        "A fake mustache tumbles from behind a nearby rock. A hand immediately reaches out, snatches it, and disappears.\n\nA warm magical blessing settles around you moments later.\n\nThese events are completely unrelated."
+      ],
+      "recastScenes": [
+        "A familiar voice whispers from somewhere nearby:\n\n\"I already blessed you. I'm good—but not that good.\"",
+        "A note lands at your feet:\n\n\"ONE blessing at a time. Please use responsibly.\"\n\nThe handwriting is unmistakably Shizuki's.",
+        "A nearby bush shakes its leaves disapprovingly.\n\nYou are already under the effects of Elf Blessing."
+      ],
+      "source": "data/spells/elf-blessing.json"
+    },
+    {
+      "id": "evocation",
+      "name": "Evocation",
+      "aliases": [
+        "evo",
+        "evocate"
+      ],
+      "requiredLevel": 5,
+      "manaCost": 0,
+      "type": "mana-recovery",
+      "description": "Completely restores Mana at the cost of your turn; 7 combat turn cooldown.",
+      "cooldownTurns": 7,
+      "fullManaLine": "You reach for the feelings and memories of Shizuki. The Astral light answers, takes one look at your completely full Mana, and quietly fades away.",
+      "successLines": [
+        "For a moment, you remember a place you've never been. Shizuki was probably there.",
+        "A distant giggle echoes through the Astral Sea. Your Mana returns. Your questions do not get answered.",
+        "For just a moment, the Astral Sea feels strangely familiar.",
+        "You remember Shizuki saying something encouraging. Unfortunately, you cannot remember what it was.",
+        "A faint memory of white hair drifts through your thoughts before disappearing into starlight.",
+        "A familiar warmth fills your chest. So does an unreasonable amount of Mana.",
+        "For a heartbeat, you hear the distant sound of someone saying, \"You'll probably need this.\"",
+        "Somewhere far away, you could swear you hear Shizuki humming. The sound disappears as quickly as it came.",
+        "You remember the first time the Astral Sea stretched out before you. Somehow, it feels even larger in your memory.",
+        "A memory of shimmering currents passes through your mind. You follow them for a moment and return feeling strangely refreshed.",
+        "You remember a Jellyfish looking at you with absolute determination. You're still not entirely sure how something without a face managed that.",
+        "You remember the soft glow of Moonlit Reef. For a moment, the same light seems to shimmer around you.",
+        "You remember the first creature you ever fought in the Astral Sea. You'd like to think you've gotten better since then.",
+        "You remember finding a Berry when you desperately needed one. This is somehow almost as comforting.",
+        "You remember watching starlight ripple across the water. The memory ripples through you now.",
+        "You remember one of your journeys through the Astral Sea. Not the important parts, apparently. Mostly the part where you got lost.",
+        "A memory of distant bells drifts through your thoughts. You don't remember where you heard them, but the Astral Sea seems to.",
+        "You remember standing somewhere quiet between adventures, listening to the currents pass by. For a moment, you're there again.",
+        "You remember the supervising leaf staring at you over its clipboard. Somehow, this inspires you to keep going.",
+        "You remember the tiny Fae rushing to patch you up after a particularly questionable decision. There were a lot of leaves involved.",
+        "You remember a Charge stubbornly attached to someone's forehead. Some memories are more useful than others.",
+        "You remember the rush of discovering somewhere new. That same excitement flickers through you again.",
+        "You remember collecting a Travel Note and wondering who had been there before you. The thought still follows you.",
+        "You remember a moment when the journey felt impossible. Then you remember that you kept going anyway.",
+        "A dozen little memories of the Astral Sea surface all at once: glowing reefs, strange creatures, distant stars, and at least one extremely bad decision.",
+        "You let your journey through the Astral Sea wash over you. Every strange encounter, every discovery, and every memory becomes Astral light."
+      ],
+      "source": "data/spells/evocation.json"
+    },
+    {
+      "id": "falling-star",
+      "name": "Falling Star",
+      "aliases": [
+        "falling star",
+        "falling",
+        "star"
+      ],
+      "requiredLevel": 15,
+      "manaCost": 30,
+      "type": "offensive",
+      "description": "Summon a volatile Falling Star with a natural 3d10 Power roll and a modified 1d20 Accuracy roll.",
+      "power": {
+        "dice": 3,
+        "sides": 10
+      },
+      "accuracy": {
+        "dice": 1,
+        "sides": 20
+      },
+      "glancingPenalty": 5,
+      "criticalBonus": 27,
+      "powerTiers": [
+        {
+          "id": "low",
+          "naturalMaximum": 10
+        },
+        {
+          "id": "medium",
+          "naturalMaximum": 18
+        },
+        {
+          "id": "high",
+          "naturalMaximum": 30
+        }
+      ],
+      "narrationPools": [
+        {
+          "powerTier": "low",
+          "outcome": "miss",
+          "lines": [
+            "You summon a Falling Star. A tiny speck of light appears overhead, completely misses your foe, and disappears into the distance. Nobody says anything.",
+            "A very small star descends from above and misses spectacularly. Somehow, the lack of damage feels secondary to the embarrassment."
+          ]
+        },
+        {
+          "powerTier": "medium",
+          "outcome": "miss",
+          "lines": [
+            "A respectable Falling Star streaks through the sea with impressive confidence and terrible aim. It explodes harmlessly nearby, as if hoping nobody noticed.",
+            "You summon a perfectly decent star and send it sailing past your foe. The star did its part. Your aim has declined to comment."
+          ]
+        },
+        {
+          "powerTier": "high",
+          "outcome": "miss",
+          "lines": [
+            "A colossal star tears through the Astral Sea with terrifying force... several feet to your foe's left. The resulting explosion is incredible. Your aim was not.",
+            "The sea erupts as an enormous star crashes down with enough power to annihilate almost anything. Unfortunately, your foe wasn't standing over there.",
+            "You summon what may genuinely be the most terrifying star you've ever created. It misses. You would prefer if nobody discussed this."
+          ]
+        },
+        {
+          "powerTier": "low",
+          "outcome": "glancing",
+          "lines": [
+            "A tiny star wobbles toward your foe and barely clips them on the way past. Technically, that counts.",
+            "A suspiciously unimpressive star grazes your foe before drifting away. You briefly consider pretending that was intentional."
+          ]
+        },
+        {
+          "powerTier": "medium",
+          "outcome": "glancing",
+          "lines": [
+            "A decently powerful star descends at a deeply mediocre angle, clipping your foe before crashing nearby. It worked, which feels generous.",
+            "Your Falling Star carries respectable force and only a passing interest in Accuracy. It grazes your foe, then exits dramatically."
+          ]
+        },
+        {
+          "powerTier": "high",
+          "outcome": "glancing",
+          "lines": [
+            "An enormous star screams toward your foe with terrifying force... and clips them on the edge before exploding somewhere behind them. Close enough?",
+            "A devastating star tears through the battlefield and barely grazes your foe. Somewhere, astronomy itself seems disappointed."
+          ]
+        },
+        {
+          "powerTier": "low",
+          "outcome": "direct",
+          "lines": [
+            "A tiny star descends directly onto your foe's head with impeccable accuracy. It wasn't very powerful, but the aim was honestly incredible.",
+            "You summon an absolutely pathetic little star and land it perfectly. You're not sure whether to be proud."
+          ]
+        },
+        {
+          "powerTier": "medium",
+          "outcome": "direct",
+          "lines": [
+            "A solid Falling Star drops cleanly onto your foe and bursts in a bright flash. That worked. No cosmic embarrassment required.",
+            "Your star arrives with respectable power, respectable aim, and absolutely no complications. A suspiciously competent performance."
+          ]
+        },
+        {
+          "powerTier": "high",
+          "outcome": "direct",
+          "lines": [
+            "A massive star crashes directly into your foe and erupts in a violent burst of Astral light. No tricks. No complications. You simply hit them with a star.",
+            "A huge Falling Star descends exactly where intended and detonates with frightening force. Operating heavy Astral objects appears to be going alarmingly well."
+          ]
+        },
+        {
+          "powerTier": "low",
+          "outcome": "critical",
+          "lines": [
+            "You perfectly aimed... a really crappy star.",
+            "Your aim was flawless. Your star was not. Somehow, this still counts as a critical.",
+            "A tiny star strikes the exact perfect spot with incredible precision. If only you had remembered to summon a better star."
+          ]
+        },
+        {
+          "powerTier": "medium",
+          "outcome": "critical",
+          "lines": [
+            "Your Falling Star strikes with perfect precision, bursting against your foe in a brilliant explosion of Astral light. Okay. That one was actually pretty good.",
+            "The star crashes directly into its target and erupts in a shower of brilliant light. For once, everything went according to plan."
+          ]
+        },
+        {
+          "powerTier": "high",
+          "outcome": "critical",
+          "lines": [
+            "The Astral Sea erupts with light as a colossal star tears through the water and crashes directly into your foe. The explosion sends starlight across the battlefield. You briefly wonder if that was excessive. It was.",
+            "An enormous star appears overhead. Your foe looks at the star. Then at you. Then back at the star. There is just enough time for regret.",
+            "You summon an absolutely enormous Falling Star and, against all reasonable expectations, aim it perfectly. The resulting explosion suggests you should probably not be trusted with astronomy."
+          ]
+        }
+      ],
+      "naturalTwentyFlavorChance": 0.25,
+      "naturalTwentyFlavor": [
+        "The star lands with impossible precision. Somewhere in the Astral Sea, a Jellyfish gives you an approving wobble.",
+        "For once, the universe, the star, and your aim are all cooperating. This feels suspicious."
+      ],
+      "highPowerNaturalOneFlavorChance": 0.25,
+      "highPowerNaturalOneFlavor": "You rolled enough Power to ruin someone's entire afternoon. Unfortunately, it was not your foe's afternoon.",
+      "source": "data/spells/falling-star.json"
+    },
+    {
+      "id": "familiar",
+      "name": "Familiar",
+      "aliases": [
+        "familiar"
+      ],
+      "requiredLevel": 30,
+      "manaCost": 30,
+      "type": "pre-action-utility",
+      "description": "Create a living Familiar that assists on the next five qualifying offensive actions.",
+      "damage": {
+        "dice": 2,
+        "sides": 6
+      },
+      "familiars": [
+        {
+          "total": 2,
+          "id": "astral-dragonling",
+          "name": "Astral Dragonling",
+          "effect": {
+            "damage": 10
+          },
+          "intros": [
+            "A tiny dragon tumbles out of a burst of starlight.\n\nIt looks around at the Astral Sea for the very first time.\n\nThen it notices your enemy.\n\nApparently violence is instinctive.",
+            "Astral light gathers into tiny wings, tiny claws, and a surprisingly confident little dragon.\n\nThe Astral Dragonling takes its first breath.\n\nIt immediately chooses violence.",
+            "Something small emerges from the Astral magic.\n\nAn Astral Dragonling stretches its new wings and stares curiously at the world around it.\n\nYour enemy becomes its first point of interest.\n\nUnfortunate."
+          ],
+          "action2": "The Astral Dragonling enthusiastically continues its first adventure.",
+          "action3": "The Astral Dragonling swoops around you, becoming increasingly confident with its new wings.",
+          "action4": "The Astral Dragonling charges forward again. It seems to be getting the hang of this whole existing thing.",
+          "outro": "The Astral Dragonling attacks one last time before looking toward the distant Astral Sea.\n\nIt spreads its tiny wings and flies away to begin an adventure of its own."
+        },
+        {
+          "total": 3,
+          "id": "star-crab",
+          "name": "Star Crab",
+          "effect": {
+            "protection": 5,
+            "damage": 5
+          },
+          "intros": [
+            "A tiny Star Crab emerges from the Astral Sea.\n\nIt raises both claws toward your enemy.\n\nNegotiations appear to have failed immediately.",
+            "Starlight gathers near your feet.\n\nA Star Crab scuttles out, takes one look at the situation, and raises its claws.\n\nIt has chosen a side.",
+            "A newly formed Star Crab clicks its claws experimentally.\n\nIt notices your enemy.\n\nMore clicking follows.\n\nThis appears to be a threat."
+          ],
+          "action2": "The Star Crab continues aggressively clicking its claws at the opposition.",
+          "action3": "The Star Crab scuttles forward and continues making its opinion known with its claws.",
+          "action4": "The Star Crab raises both claws again. Its position on the matter remains unchanged.",
+          "outro": "The Star Crab gives your enemy one final pinch.\n\nSatisfied with its contribution, it scuttles away into the Astral Sea."
+        },
+        {
+          "total": 4,
+          "id": "fae-snail",
+          "name": "Fae Snail",
+          "effect": {
+            "hp": 8
+          },
+          "intros": [
+            "A tiny Fae Snail appears in a shimmer of green light.\n\nIt begins making its way toward you.\n\nVery slowly.\n\nIt is doing its best.",
+            "Fae magic gathers into the shape of a very small snail.\n\nThe Fae Snail looks around at its new existence.\n\nThere appears to be no particular hurry.",
+            "A Fae Snail emerges into the Astral Sea.\n\nIt immediately begins helping you.\n\nAt its own pace."
+          ],
+          "action2": "The Fae Snail continues helping at a perfectly reasonable snail speed.",
+          "action3": "The Fae Snail continues its important work. Progress is being made.",
+          "action4": "The Fae Snail inches onward with quiet determination. There is still no need to rush.",
+          "outro": "The Fae Snail helps you one last time.\n\nIt then begins its journey into the Astral Sea.\n\nThis may take a while."
+        },
+        {
+          "total": 5,
+          "id": "moonlit-bird",
+          "name": "Moonlit Bird",
+          "effect": {
+            "mana": 8
+          },
+          "intros": [
+            "A tiny bird emerges from a shimmer of moonlight.\n\nIt spreads its glowing wings and sings a single clear note.\n\nThe Moonlit Bird has arrived.",
+            "Moonlight gathers above you before taking the shape of a small glowing bird.\n\nIt circles you once and settles comfortably into its new existence.",
+            "A soft chirp comes from the Astral light.\n\nA newly formed Moonlit Bird flutters into view and looks around curiously.\n\nIt seems pleased with the place."
+          ],
+          "action2": "The Moonlit Bird continues fluttering nearby, softly humming with magic.",
+          "action3": "The Moonlit Bird circles nearby, leaving a faint trail of moonlight behind its wings.",
+          "action4": "The Moonlit Bird gives a cheerful chirp and continues sharing its magic with you.",
+          "outro": "The Moonlit Bird sings one final note.\n\nSomething in the distance catches its attention.\n\nIt spreads its wings and flies toward the moonlit horizon."
+        },
+        {
+          "total": 6,
+          "id": "puffer-fish",
+          "name": "Puffer Fish",
+          "effect": {
+            "protection": 8
+          },
+          "intros": [
+            "A tiny Puffer Fish pops into existence.\n\nIt looks at your enemy.\n\nIt immediately puffs up.\n\nApparently it has already taken this personally.",
+            "A small Puffer Fish emerges from the Astral Sea.\n\nUpon discovering that a battle is happening, it becomes approximately twice as round.",
+            "Astral bubbles gather together and form a tiny Puffer Fish.\n\nIt stares at your enemy.\n\n*Puff.*\n\nIntimidation successful."
+          ],
+          "action2": "The Puffer Fish remains extremely round and extremely committed to the situation.",
+          "action3": "The Puffer Fish somehow manages to look even rounder than before.",
+          "action4": "The Puffer Fish maintains maximum puff. It refuses to elaborate.",
+          "outro": "The Puffer Fish provides one final bit of protection.\n\nThen it slowly floats away, still puffed up.\n\nNobody tells it the battle is over."
+        },
+        {
+          "total": 7,
+          "id": "moon-sprite",
+          "name": "Moon Sprite",
+          "effect": {
+            "mana": 5,
+            "hp": 5
+          },
+          "intros": [
+            "Moonlight gathers into a tiny floating shape.\n\nA newly formed Moon Sprite looks around at the Astral Sea for the first time.\n\nAfter a moment, it happily begins following you.",
+            "A small light drifts out of the Astral Sea.\n\nIt twirls around you curiously before settling nearby.\n\nYour Moon Sprite has chosen to stay with you for a while.",
+            "A tiny Moon Sprite emerges from a pool of pale light.\n\nIt bobs excitedly through the air as it discovers the world around it.\n\nFor now, it seems interested in discovering it with you."
+          ],
+          "action2": "The Moon Sprite happily continues floating alongside you.",
+          "action3": "The Moon Sprite twirls happily around you, scattering tiny specks of moonlight.",
+          "action4": "The Moon Sprite bobs excitedly beside you, still perfectly content with its new adventure.",
+          "outro": "The Moon Sprite helps you one last time.\n\nThen something far across the Astral Sea catches its attention.\n\nIt circles you once before floating away to see what it finds."
+        },
+        {
+          "total": 8,
+          "id": "jelly-fish",
+          "name": "Jelly Fish",
+          "effect": {
+            "mana": 5,
+            "damage": 5
+          },
+          "intros": [
+            "A Jelly Fish wobbles into existence.\n\nIt takes several moments to understand its surroundings.\n\nThen it notices your enemy.\n\nGood enough.",
+            "Astral water ripples as a new Jelly Fish emerges.\n\nIt floats beside you with absolutely no idea what is happening.\n\nIt is willing to help anyway.",
+            "A small Jelly Fish appears with a gentle wobble.\n\nIt looks ready for its first adventure.\n\nOr possibly a nap.\n\nIt's difficult to tell."
+          ],
+          "action2": "The Jelly Fish continues wobbling helpfully through the battle.",
+          "action3": "The Jelly Fish drifts around you with surprising enthusiasm for something so wobbly.",
+          "action4": "The Jelly Fish gives another determined wobble. It appears to believe this is helping.",
+          "outro": "The Jelly Fish gives one final enthusiastic wobble.\n\nThen it drifts away into the Astral Sea.\n\nWherever it is going, it seems confident about it."
+        },
+        {
+          "total": 9,
+          "id": "wishshell",
+          "name": "Wishshell",
+          "effect": {
+            "protection": 5,
+            "hp": 5
+          },
+          "intros": [
+            "A tiny shell appears in a ripple of Astral light.\n\nSomething inside it softly glows.\n\nThe Wishshell has decided to help.",
+            "A Wishshell gently settles beside you.\n\nYou hear something quietly moving inside.\n\nPerhaps it's better not to investigate.",
+            "Starlight gathers into a small shimmering shell.\n\nA faint glow peeks out from inside.\n\nWhatever lives in there seems friendly."
+          ],
+          "action2": "The Wishshell continues glowing quietly beside you.",
+          "action3": "A soft light pulses from inside the Wishshell. Whatever is in there remains hard at work.",
+          "action4": "The Wishshell shimmers quietly. You are no closer to understanding it.",
+          "outro": "The Wishshell gives one final gentle glow.\n\nIt begins sliding toward the distant Astral Sea.\n\nYou still have no idea what was inside."
+        },
+        {
+          "total": 10,
+          "id": "comet-fish",
+          "name": "Comet Fish",
+          "effect": {
+            "damage": 8
+          },
+          "intros": [
+            "A streak of light shoots across the battlefield.\n\nIt circles back.\n\nApparently that was a fish.",
+            "A Comet Fish bursts into existence already moving at an unreasonable speed.\n\nIt appears extremely excited about being alive.",
+            "Astral light forms into a tiny fish.\n\nBefore you can properly look at it, the Comet Fish launches itself directly toward your enemy.\n\nIntroductions can wait."
+          ],
+          "action2": "The Comet Fish continues zooming through the battlefield at irresponsible speeds.",
+          "action3": "The Comet Fish rockets past again. Slowing down has apparently never occurred to it.",
+          "action4": "The Comet Fish makes another high-speed pass. It seems delighted with this arrangement.",
+          "outro": "The Comet Fish makes one final pass through the battle.\n\nIt spots the open Astral Sea ahead.\n\nThere is absolutely no hesitation.\n\nIt zooms away."
+        },
+        {
+          "total": 11,
+          "id": "fae-leaf",
+          "name": "Fae Leaf",
+          "effect": {
+            "damage": 5,
+            "hp": 10
+          },
+          "intros": [
+            "Fae magic gathers into a tiny glowing leaf.\n\nIt floats around you before sharply turning toward your enemy.\n\nThis particular leaf appears considerably more proactive.",
+            "A small Fae Leaf drifts into existence.\n\nIt gently restores some of your strength.\n\nThen it smacks your enemy.\n\nBalanced priorities.",
+            "A glowing Fae Leaf appears beside you.\n\nFor a moment, it floats peacefully through the air.\n\nThen it launches itself at your enemy.\n\nApparently not every leaf is management."
+          ],
+          "action2": "The Fae Leaf continues alternating between helping you and harassing your enemy.",
+          "action3": "The Fae Leaf circles back to you before immediately returning to bother your enemy.",
+          "action4": "The Fae Leaf continues its unusual combination of healthcare and violence.",
+          "outro": "The Fae Leaf helps you one final time and gives your enemy one last smack.\n\nIts work complete, it catches an Astral current and drifts away."
+        },
+        {
+          "total": 12,
+          "id": "astral-wyrmling",
+          "name": "Astral Wyrmling",
+          "effect": {
+            "damage": 10,
+            "mana": 10,
+            "hp": 10
+          },
+          "intros": [
+            "The Astral Sea suddenly grows still.\n\nStarlight gathers before you, slowly taking the shape of a tiny Wyrmling.\n\nIt opens its eyes for the first time.\n\nSomething rare has entered the Astral Sea.",
+            "A brilliant cluster of Astral light begins twisting into a small creature.\n\nTiny wings unfold.\n\nA tail flicks through the air.\n\nAn Astral Wyrmling looks upon its new world for the first time.",
+            "The stars around you shimmer strangely.\n\nFrom their light emerges a tiny Astral Wyrmling.\n\nIt looks at you.\n\nThen at your enemy.\n\nApparently its first decision has already been made."
+          ],
+          "action2": "The Astral Wyrmling continues fighting proudly beside you.",
+          "action3": "The Astral Wyrmling circles overhead before diving eagerly back into the battle.",
+          "action4": "The Astral Wyrmling fights on with growing confidence in its newly discovered strength.",
+          "outro": "The Astral Wyrmling helps you one final time.\n\nIt looks toward the endless Astral Sea stretching ahead.\n\nWith its first adventure behind it, the Wyrmling spreads its wings and flies toward whatever comes next."
+        }
+      ],
+      "source": "data/spells/familiar.json"
+    },
+    {
+      "id": "help",
+      "name": "Help!",
+      "aliases": [
+        "help",
+        "help!"
+      ],
+      "requiredLevel": 50,
+      "manaCost": 0,
+      "type": "ultimate",
+      "description": "Call for some very questionable assistance.",
+      "levelUpLine": "lvl 50 Ultimate Spell Help!: Call for some very questionable assistance. Requires at least 150 current Mana. Costs 50% of your current Mana and can only be cast once per battle. Roll 1d20: 1–10 fails, 11–20 succeeds. On success, the enemy loses 50% of its current HP.",
+      "opening": [
+        "You cast the spell, expecting something to happen like it always does.",
+        "Nothing happens.",
+        "It's supposed to summon the almighty spell, yet... there's nothing.",
+        "You wave your hand through the air.",
+        "Still nothing.",
+        "The enemy stares at you, seemingly just as confused about what's supposed to happen next.",
+        "A random gust of wind blows across the battlefield.",
+        "A tumbleweed rolls past you.",
+        "Then you hear something rustling in the bushes.",
+        "There's nobody there.",
+        "At least... you don't think there is.",
+        "Suddenly, you feel a strangely familiar presence.",
+        "Far in the distance, a figure appears.",
+        "It's Shizuki.",
+        "And she has a sniper rifle.",
+        "She takes a deep breath.",
+        "She aims.",
+        "She fires."
+      ],
+      "successLines": [
+        "\"For democracyyyyyyyyy...\" she shouts from the distance, somehow quietly enough that you can still hear every word.",
+        "The shot lands.",
+        "In an instant, half of the enemy's remaining HP is gone.",
+        "\"You're welcome, by the way! Oh, and gimme half your Mana too. Don't you know how much energy it takes for me to be summoned here? I was relaxing with my four kitties!\"",
+        "Before you can object, Shizuki yoinks half of your Mana.",
+        "And then she's gone.",
+        "You're left standing there with half your Mana and a very confused enemy."
+      ],
+      "failureLines": [
+        "The shot lands—",
+        "—and bounces harmlessly off the enemy.",
+        "Apparently, it was a plastic magical bullet.",
+        "\"Oh... shucks. Lemme do that again...\"",
+        "Shizuki reloads while the enemy slowly turns to stare at her.",
+        "She fires again.",
+        "The bullet flies RIGHT past the enemy.",
+        "Silence.",
+        "\"...I'm going home. Gimme that Mana.\"",
+        "You immediately try to stop Shizuki from taking it.",
+        "Somehow, she gets it anyway.",
+        "Half your Mana disappears.",
+        "So does Shizuki.",
+        "The enemy is completely unharmed.",
+        "You are considerably poorer in Mana.",
+        "And absolutely nothing has been accomplished."
+      ],
+      "source": "data/spells/help.json"
+    },
+    {
+      "id": "jelly",
+      "name": "Jellyfish",
+      "aliases": [
+        "jelly"
+      ],
+      "requiredLevel": 3,
+      "manaCost": 10,
+      "type": "offensive",
+      "description": "Cast Jellyfish for 10 Mana.",
+      "damage": {
+        "dice": 3,
+        "sides": 8
+      },
+      "criticalThreshold": 24,
+      "criticalDamage": 35,
+      "personalities": [
+        {
+          "maximumRoll": 4,
+          "adjective": "sad",
+          "followUp": "It drifts lazily into the enemy..."
+        },
+        {
+          "maximumRoll": 8,
+          "adjective": "sleepy",
+          "followUp": "It slowly floats toward its target..."
+        },
+        {
+          "maximumRoll": 13,
+          "adjective": "curious",
+          "followUp": "It circles once before bumping the enemy..."
+        },
+        {
+          "maximumRoll": 17,
+          "adjective": "confident",
+          "followUp": "It glides gracefully through the current..."
+        },
+        {
+          "maximumRoll": 24,
+          "adjective": "dedicated",
+          "followUp": "It surges forward with surprising determination..."
+        }
+      ],
+      "criticalText": "It erupts in brilliant Astral light! Critical Hit!",
+      "legacy": {
+        "perfectJellyfishScenes": [
+          "The Jellyfish has achieved a level of focus previously thought impossible for a Jellyfish. Nobody knows what it's thinking. Whatever it is, it's working.",
+          "The Jellyfish becomes perfectly still. For once, not sleepy. Not sad. Not confused. It simply understands. A brilliant light pulses through its body before crashing into the enemy!"
+        ]
+      },
+      "source": "data/spells/jellyfish.json"
+    },
+    {
+      "id": "leviathans-wake",
+      "name": "Leviathan's Wake",
+      "aliases": [
+        "leviathan's wake",
+        "leviathans wake",
+        "leviathan",
+        "wake"
+      ],
+      "requiredLevel": 20,
+      "manaCost": 30,
+      "type": "offensive",
+      "mechanic": "delayed-wake",
+      "description": "Summon the distant wake of a Leviathan. The wake arrives after your next action, crashing into the enemy with power based on a 1d20 roll.",
+      "damage": {
+        "dice": 1,
+        "sides": 20
+      },
+      "criticalThreshold": 20,
+      "criticalDamage": 55,
+      "creatureTiers": [
+        {
+          "id": "wakefin",
+          "displayName": "Wakefin",
+          "naturalMaximum": 1,
+          "baseDamage": 12,
+          "cast": "You reach into the depths and call upon Leviathan's Wake. Something answers almost immediately.\n\nUnfortunately, it sounds very small.",
+          "warning": "A tiny shadow darts beneath the battlefield at alarming speed. The water begins rippling.\n\nYou are increasingly concerned that this may not, in fact, be a Leviathan.",
+          "arrival": "A determined little Wakefin rockets past your foe with all the confidence of something several thousand times larger. Its wake splashes directly into them.\n\nIt looks extremely proud of itself."
+        },
+        {
+          "id": "astral-manta",
+          "displayName": "Astral Manta",
+          "naturalMaximum": 7,
+          "baseDamage": 22,
+          "cast": "You call into the distant depths. A broad shadow slowly begins circling beneath the battlefield.",
+          "warning": "The shadow glides closer. Shimmering fins briefly break through the Astral light before vanishing below again.\n\nWhatever is coming appears to be taking the scenic route.",
+          "arrival": "An enormous Astral Manta sweeps beneath your foe. Its wings push a rolling wall of water upward, crashing into them in a burst of starlight."
+        },
+        {
+          "id": "deepwake-serpent",
+          "displayName": "Deepwake Serpent",
+          "naturalMaximum": 13,
+          "baseDamage": 30,
+          "cast": "Your call sinks into the depths.\n\nSomething long begins moving far below.",
+          "warning": "The water twists around the battlefield as a massive shape coils somewhere underneath you.\n\nYou briefly reconsider whether summoning unknown sea monsters was a responsible magical discipline.",
+          "arrival": "A colossal Deepwake Serpent tears through the water beneath your foe. Its passing sends a violent surge crashing across the battlefield."
+        },
+        {
+          "id": "leviathan",
+          "displayName": "Leviathan",
+          "naturalMaximum": 19,
+          "baseDamage": 40,
+          "cast": "Your magic reaches into the depths. For several seconds, nothing answers.\n\nThen the entire sea shifts.",
+          "warning": "The water grows strangely still. Far beneath the battlefield, an enormous silhouette passes through the darkness.\n\nYou cannot see where it begins. You cannot see where it ends.",
+          "arrival": "The Leviathan passes beneath you. It never even looks upward.\n\nThe wake left behind crashes into your foe with enough force to shake the entire battlefield."
+        },
+        {
+          "id": "ancient-one",
+          "displayName": "The Ancient One",
+          "naturalMaximum": 20,
+          "baseDamage": 55,
+          "cast": "You call upon Leviathan's Wake.\n\nThe spell answers.\n\nThen something else answers too.",
+          "warning": "The Astral Sea falls completely silent.\n\nSomewhere impossibly far below, a single enormous eye opens.\n\nYou suddenly get the feeling that this spell may have reached much farther than intended.",
+          "arrival": "Something vast moves beneath the battlefield.\n\nYou never see its full shape. You only see the wake.\n\nThe resulting wall of water crashes into your foe with terrifying force.\n\nFar below, the eye slowly closes."
+        }
+      ],
+      "duplicateCastLine": "The depths are already answering your call. Maybe don't summon a second enormous sea creature until the first one gets here.",
+      "echoActivationLine": "Echo activates! The wake echoes through the Astral Sea and strikes again for {echoDamage} damage.",
+      "ancientFlavorChance": 0.25,
+      "ancientFlavor": "You decide not to do that again.\n\nYou will absolutely do that again.",
+      "easterEggChance": 0.25,
+      "easterEggs": {
+        "bubble": "The wake crashes across the battlefield. Your Bubble is swept backward, spins three full times, and gives a deeply alarmed *boing*.\n\nSomehow, it remains intact.",
+        "mend": "The wake tears across the battlefield. Several Fae leaves go flying.\n\nThe supervising leaf does not move an inch.\n\nYou have no idea how.",
+        "combined": "Your Bubble spins violently through the wake as several Fae leaves cling to the outside.\n\nThe supervising leaf remains perfectly composed.\n\nApparently somebody here has done this before."
+      },
+      "source": "data/spells/leviathans-wake.json"
+    },
+    {
+      "id": "mend",
+      "name": "Mend",
+      "aliases": [
+        "mend"
+      ],
+      "requiredLevel": 4,
+      "manaCost": 20,
+      "type": "healing-support",
+      "description": "Cast Mend at Level 4 for 20 Mana. Fae light restores HP after the next three surviving enemy responses.",
+      "damage": {
+        "dice": 1,
+        "sides": 12
+      },
+      "triggerCount": 3,
+      "healingTiers": [
+        {
+          "id": "weak",
+          "displayName": "Weak Mend",
+          "naturalMaximum": 3,
+          "healingPerTrigger": 5,
+          "narration": "A few tiny wisps of Fae light gather around your wounds and begin patching you up. There aren't many of them, but they seem very determined."
+        },
+        {
+          "id": "gentle",
+          "displayName": "Gentle Mend",
+          "naturalMaximum": 7,
+          "healingPerTrigger": 8,
+          "narration": "Soft Fae light wraps around you as tiny glowing leaves settle over your wounds. They seem comfortable there. Apparently they're staying awhile."
+        },
+        {
+          "id": "strong",
+          "displayName": "Strong Mend",
+          "naturalMaximum": 11,
+          "healingPerTrigger": 10,
+          "narration": "A swirl of Fae light rushes around you as glowing leaves begin carefully mending your wounds. One gives you a reassuring little pat. You're not sure how a leaf did that."
+        },
+        {
+          "id": "perfect",
+          "displayName": "Perfect Mend",
+          "naturalMaximum": 12,
+          "healingPerTrigger": 15,
+          "narration": "Fae light bursts around you as a tiny garden of glowing leaves springs to life, immediately getting to work on your wounds. One leaf appears to be supervising the others. It is taking this responsibility extremely seriously."
+        }
+      ],
+      "criticalFlavorChance": 0.25,
+      "criticalFlavor": [
+        "The supervising leaf silently judges your injuries. Somehow, you feel responsible for them.",
+        "Two of the leaves begin arguing over the same wound. Healing continues despite workplace tensions.",
+        "One leaf finishes early and starts following you around. Apparently you've been assigned emotional support foliage.",
+        "A tiny leaf gives you another reassuring pat. Okay. They can definitely do that.",
+        "The supervising leaf turns toward the enemy. You have never seen a leaf look this disappointed."
+      ],
+      "source": "data/spells/mend.json"
+    },
+    {
+      "id": "moonbeam",
+      "name": "Moonbeam",
+      "aliases": [
+        "moonbeam"
+      ],
+      "requiredLevel": 5,
+      "manaCost": 20,
+      "type": "offensive",
+      "description": "Cast Moonbeam at Level 5 for 20 Mana.",
+      "damage": {
+        "dice": 2,
+        "sides": 20,
+        "keepHighest": true,
+        "bonusDieSides": 6
+      },
+      "criticalThreshold": 20,
+      "criticalDamage": 40,
+      "narrationTiers": [
+        {
+          "id": "weak",
+          "displayName": "Weak Cast",
+          "naturalMaximum": 7,
+          "narration": "A faint moonbeam slips through the water, but it flickers before reaching its full brilliance. Even so, it grazes your foe with a pale shimmer."
+        },
+        {
+          "id": "steady",
+          "displayName": "Steady Cast",
+          "naturalMaximum": 12,
+          "narration": "A gentle moonbeam descends from above, washing over your foe before bursting into a shower of shimmering light."
+        },
+        {
+          "id": "strong",
+          "displayName": "Strong Cast",
+          "naturalMaximum": 17,
+          "narration": "The sea briefly falls silent as a focused moonbeam crashes into your foe, scattering brilliant fragments of light in every direction."
+        },
+        {
+          "id": "excellent",
+          "displayName": "Excellent Cast",
+          "naturalMaximum": 19,
+          "narration": "The moon itself seems to answer your call. A brilliant beam tears through the water, exploding against your foe in a dazzling flash that leaves the battlefield glowing."
+        },
+        {
+          "id": "critical",
+          "displayName": "Critical Cast",
+          "narration": "For a heartbeat, the entire Astral Sea glows as though night itself has awakened. A blinding pillar of moonlight crashes down with impossible force, leaving only drifting stardust in its wake."
+        }
+      ],
+      "criticalFlavorChance": 0.25,
+      "criticalFlavor": [
+        "...You could swear you hear Shizuki quietly whisper, “Not bad.”",
+        "Somewhere nearby, a single approving clap echoes through the reef.",
+        "A fake mustache briefly floats through the moonlight... then vanishes."
+      ],
+      "legacy": {
+        "fullMoonScenes": [
+          "Both Moonbeams align perfectly. The night above you falls silent as a brilliant full moon takes shape overhead. For a single moment, the battlefield is drowned in silver light—then the moon answers. A colossal pillar of moonlight crashes down upon the enemy!",
+          "Two perfect beams cross in the sky. The light spreads outward until an enormous full moon burns above the battlefield. Its glow intensifies... brighter... brighter... until the entire sky erupts in moonlight!",
+          "This isn't the Moonbeam you first learned. Twin perfect rays pierce the heavens, and something far greater answers. The full moon blazes overhead before unleashing its light upon the enemy!"
+        ]
+      },
+      "source": "data/spells/moonbeam.json"
+    },
+    {
+      "id": "star-spark",
+      "name": "Star Spark",
+      "aliases": [
+        "star"
+      ],
+      "requiredLevel": 2,
+      "manaCost": 10,
+      "type": "offensive",
+      "description": "Cast Star Spark at Level 2 for 10 Mana. Critical casts leave behind a Charge that empowers your next offensive spell.",
+      "damage": {
+        "dice": 1,
+        "sides": 12
+      },
+      "criticalThreshold": 12,
+      "criticalDamage": 18,
+      "astralCharge": {
+        "manaReduction": 0.5,
+        "damageIncrease": 0.15,
+        "stackable": false
+      },
+      "narrationTiers": [
+        {
+          "id": "weak",
+          "displayName": "Weak Cast",
+          "naturalMaximum": 3,
+          "narration": "A tiny spark of starlight sputters from your fingertips and reluctantly bumps into your foe. It tried its best."
+        },
+        {
+          "id": "steady",
+          "displayName": "Steady Cast",
+          "naturalMaximum": 7,
+          "narration": "A bright little star zips through the water, circles your foe once for seemingly no reason, then bonks them directly on the head."
+        },
+        {
+          "id": "strong",
+          "displayName": "Strong Cast",
+          "naturalMaximum": 10,
+          "narration": "A sparkling star shoots forward with surprising confidence, zigzags dramatically through the water, and smacks your foe in a burst of Astral glitter."
+        },
+        {
+          "id": "excellent",
+          "displayName": "Excellent Cast",
+          "naturalMaximum": 11,
+          "narration": "The spark launches like a tiny comet, streaking across the battlefield before bursting against your foe in a shower of stars. That seemed significantly more powerful than something that small had any right to be."
+        },
+        {
+          "id": "critical",
+          "displayName": "Critical Cast",
+          "narration": "The little star suddenly erupts with Astral energy and slams into your foe. When the light clears, a glowing Charge is stuck directly to the enemy's forehead. They do not look pleased about this."
+        }
+      ],
+      "criticalFlavorChance": 0.25,
+      "criticalFlavor": [
+        "The Charge makes a tiny *ding!* as it attaches itself. Nobody knows why.",
+        "Your foe tries to shake the Charge off. It stubbornly remains attached.",
+        "The Charge has chosen the forehead. Negotiations have failed.",
+        "Your foe stares at the glowing star attached to their forehead. You stare back. This is awkward.",
+        "The Charge sparkles triumphantly. Your foe appears personally offended."
+      ],
+      "source": "data/spells/starspark.json"
+    },
+    {
+      "id": "tidal-wave",
+      "name": "Tidal Wave",
+      "aliases": [
+        "tidal wave",
+        "tidal",
+        "wave"
+      ],
+      "requiredLevel": 40,
+      "manaCost": 30,
+      "type": "offensive",
+      "description": "Roll 3d12 and apply offensive roll bonuses to determine Tidal Wave damage.",
+      "levelUpLine": "lvl 40 Spell 🌊 Tidal Wave: Cast Tidal Wave for 30 Mana and roll 3d12. Add the dice together and apply offensive roll bonuses to determine the strength of the wave. Rolls 3-14 deal 40 damage, 15-19 deal 50 damage, 20-24 deal 55 damage, and 25+ critically hits for 65 damage.",
+      "damage": {
+        "dice": 3,
+        "sides": 12
+      },
+      "criticalThreshold": 25,
+      "criticalDamage": 65,
+      "damageTiers": [
+        {
+          "id": "rising",
+          "displayName": "Rising Tide",
+          "finalMaximum": 14,
+          "baseDamage": 40,
+          "scenes": [
+            [
+              "You call upon Shizuki and the sea answers.",
+              "A small silhouette flickers through the rising water before disappearing.",
+              "The Rising Tide crashes forward."
+            ],
+            [
+              "You call upon Shizuki and the water begins to rise.",
+              "A familiar pair of pointed ears briefly takes shape within the wave.",
+              "The Rising Tide crashes forward."
+            ],
+            [
+              "You call upon Shizuki and the sea answers.",
+              "A familiar elf like silhouette appears within the water wearing a suspicious mustache.",
+              "They are definitely not Shizuki.",
+              "The Rising Tide crashes forward."
+            ],
+            [
+              "You call upon Shizuki and the tide begins to rise.",
+              "A familiar silhouette flickers beneath the surface as something small and star shaped tumbles through the water beside her.",
+              "The Rising Tide crashes into the enemy."
+            ],
+            [
+              "You call upon Shizuki and the sea begins to stir.",
+              "A familiar silhouette peeks out from within the rising water before quickly disappearing.",
+              "The Rising Tide crashes forward."
+            ]
+          ]
+        },
+        {
+          "id": "surging",
+          "displayName": "Surging Tide",
+          "finalMaximum": 19,
+          "baseDamage": 50,
+          "scenes": [
+            [
+              "You call upon the lingering presence of Shizuki and the sea surges forward.",
+              "A familiar elf like silhouette races within the rushing water beside you.",
+              "The Surging Tide crashes into the enemy."
+            ],
+            [
+              "You call upon Shizuki and the sea rises to answer.",
+              "White hair and pointed ears briefly take shape within the rushing water.",
+              "The figure disappears as the Surging Tide crashes forward."
+            ]
+          ]
+        },
+        {
+          "id": "astral",
+          "displayName": "Astral Tide",
+          "finalMaximum": 24,
+          "baseDamage": 55,
+          "scenes": [
+            [
+              "You call upon Shizuki and Astral light spreads across the sea.",
+              "A familiar silhouette forms within the towering water, surrounded by tiny star like lights.",
+              "For a moment, the Astral Sea seems to remember her.",
+              "The Astral Tide crashes down."
+            ],
+            [
+              "You call upon the lingering presence of Shizuki.",
+              "The water glows with Astral light as a familiar elf like silhouette takes shape within it.",
+              "Something star shaped glimmers in her hand before the Astral Tide crashes down."
+            ],
+            [
+              "You call upon Shizuki and the sea begins to glow.",
+              "A familiar silhouette walks calmly within the towering wave as though the rushing water were nothing at all.",
+              "The Astral Tide crashes into the enemy."
+            ]
+          ]
+        },
+        {
+          "id": "critical",
+          "displayName": "Critical Tidal Wave",
+          "finalMaximum": null,
+          "baseDamage": 65,
+          "scenes": [
+            [
+              "The sea rises impossibly high.",
+              "For a moment, a silhouette resembling Shizuki can be seen within the wave.",
+              "The Tidal Wave crashes down."
+            ],
+            [
+              "You call upon Shizuki and the Astral Sea answers.",
+              "The sea rises impossibly high. Within the towering wave, Shizuki's silhouette becomes unmistakable.",
+              "For just a moment, you hear her laugh.",
+              "The Tidal Wave crashes down."
+            ],
+            [
+              "The Astral Sea begins to rise.",
+              "A familiar silhouette stands within the impossible wall of water. White hair drifts around pointed ears as Astral light gathers behind her.",
+              "You have seen traces of her throughout your journey. This time, there is no mistaking who the sea remembers.",
+              "The Tidal Wave crashes down."
+            ],
+            [
+              "You call upon Shizuki and the water begins to rise.",
+              "A familiar silhouette appears within the wave. Something small and star shaped floats past you.",
+              "You reach for it.",
+              "The Tidal Wave crashes down before you can grab it."
+            ]
+          ]
+        }
+      ],
+      "source": "data/spells/tidal-wave.json"
+    }
+  ],
+  "outcomes": {
+    "all-or-nothing": {
+      "unlockLevel": 35,
+      "manaCost": 20,
+      "baseExpected": 12.5,
+      "baseRange": [
+        0,
+        25
+      ],
+      "baseExpectedPerMana": 0.625,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "astral-echo": {
+      "unlockLevel": 12,
+      "manaCost": 25,
+      "baseExpected": null,
+      "baseRange": null,
+      "baseExpectedPerMana": null,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "berries": {
+      "unlockLevel": 24,
+      "manaCost": 20,
+      "baseExpected": null,
+      "baseRange": null,
+      "baseExpectedPerMana": null,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "bubble": {
+      "unlockLevel": 8,
+      "manaCost": 15,
+      "baseExpected": null,
+      "baseRange": null,
+      "baseExpectedPerMana": null,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "conjure-gun": {
+      "unlockLevel": 45,
+      "manaCost": 35,
+      "baseExpected": 70,
+      "baseRange": [
+        0,
+        140
+      ],
+      "baseExpectedPerMana": 2,
+      "interpretation": "binomial mean; actual range 0–140"
+    },
+    "elf_blessing": {
+      "unlockLevel": 1,
+      "manaCost": 30,
+      "baseExpected": null,
+      "baseRange": null,
+      "baseExpectedPerMana": null,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "evocation": {
+      "unlockLevel": 5,
+      "manaCost": 0,
+      "baseExpected": null,
+      "baseRange": null,
+      "baseExpectedPerMana": null,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "falling-star": {
+      "unlockLevel": 15,
+      "manaCost": 30,
+      "baseExpected": 15.031,
+      "baseRange": [
+        0,
+        57
+      ],
+      "baseExpectedPerMana": 0.501,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "familiar": {
+      "unlockLevel": 30,
+      "manaCost": 30,
+      "baseExpected": null,
+      "baseRange": null,
+      "baseExpectedPerMana": null,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "help": {
+      "unlockLevel": 50,
+      "manaCost": 0,
+      "baseExpected": 0.25,
+      "baseRange": [
+        0,
+        0.5
+      ],
+      "baseExpectedPerMana": null,
+      "interpretation": "fraction of current target HP"
+    },
+    "jelly": {
+      "unlockLevel": 3,
+      "manaCost": 10,
+      "baseExpected": 13.5215,
+      "baseRange": [
+        3,
+        35
+      ],
+      "baseExpectedPerMana": 1.3521,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "leviathans-wake": {
+      "unlockLevel": 20,
+      "manaCost": 30,
+      "baseExpected": 30.95,
+      "baseRange": [
+        12,
+        55
+      ],
+      "baseExpectedPerMana": 1.0317,
+      "interpretation": "delayed damage on second subsequent valid turn-consuming action"
+    },
+    "mend": {
+      "unlockLevel": 4,
+      "manaCost": 20,
+      "baseExpected": null,
+      "baseRange": null,
+      "baseExpectedPerMana": null,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "moonbeam": {
+      "unlockLevel": 5,
+      "manaCost": 20,
+      "baseExpected": 21.0625,
+      "baseRange": [
+        1,
+        46
+      ],
+      "baseExpectedPerMana": 1.0531,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "star-spark": {
+      "unlockLevel": 2,
+      "manaCost": 10,
+      "baseExpected": 7,
+      "baseRange": [
+        1,
+        18
+      ],
+      "baseExpectedPerMana": 0.7,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    },
+    "tidal-wave": {
+      "unlockLevel": 40,
+      "manaCost": 30,
+      "baseExpected": 52.5,
+      "baseRange": [
+        40,
+        65
+      ],
+      "baseExpectedPerMana": 1.75,
+      "interpretation": "before Strength, passives, and conditional mastery effects"
+    }
+  },
+  "extra": {
+    "fallingStar": {
+      "meteorAlignmentExpectedDamage": 17.99375
+    },
+    "jelly": {
+      "masteryIIMoodProbabilities": [
+        0.0078125,
+        0.1015625,
+        0.390625,
+        0.3359375,
+        0.1640625
+      ],
+      "masteryIIExpectedDamage": 18.177734375,
+      "perfectProbability": 0.015625
+    },
+    "moonbeam": {
+      "level27Expected": 26.7167,
+      "level46Expected": 26.9042,
+      "baseCriticalProbability": 0.0975,
+      "alignmentProbability": 0.3333333333333333,
+      "fullMoonProbability": 0.0025
+    }
+  }
+}
