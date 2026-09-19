@@ -69,7 +69,7 @@
         "id":  "whispering-kelp-forest-note-12",
         "number":  12,
         "title":  "The Briar Treaty",
-        "text":  "Found an ancient tablet listing things you\u0027re forbidden from doing to this grove: no axes, no fire, no stealing living blooms, and—very specifically—no rude singing. I would like to know what happened for THAT rule to become necessary. I would also like everyone to know I did not test it."
+        "text":  "Found an ancient tablet listing things you\u0027re forbidden from doing to this grove: no axes, no fire, no stealing living blooms, and, very specifically, no rude singing. I would like to know what happened for THAT rule to become necessary. I would also like everyone to know I did not test it."
     },
     {
         "id":  "whispering-kelp-forest-note-13",
@@ -87,7 +87,7 @@
         "id":  "whispering-kelp-forest-note-15",
         "number":  15,
         "title":  "Definitely a Normal Bush",
-        "text":  "I found the PERFECT hiding bush today. Huge leaves. Hollow center. Completely impossible to see through. I made a little sign that says: \u0027No escaped elf behind this shrub. Please direct search teams elsewhere. —Not Shizuki.\u0027 Glimmer thinks this makes the hiding place less effective. Glimmer lacks vision."
+        "text":  "I found the PERFECT hiding bush today. Huge leaves. Hollow center. Completely impossible to see through. I made a little sign that says: \u0027No escaped elf behind this shrub. Please direct search teams elsewhere. Signed, Not Shizuki.\u0027 Glimmer thinks this makes the hiding place less effective. Glimmer lacks vision."
     },
     {
         "id":  "whispering-kelp-forest-note-16",
@@ -141,7 +141,7 @@
         "id":  "whispering-kelp-forest-note-24",
         "number":  24,
         "title":  "The Forest Did Not Move",
-        "text":  "I marked our campsite with three stones last night. This morning the stones were twenty paces away. The trees insist—very loudly—that THEY did not move. I asked who did. Every whisper in the forest went silent. Suspicious."
+        "text":  "I marked our campsite with three stones last night. This morning the stones were twenty paces away. The trees insist, very loudly, that THEY did not move. I asked who did. Every whisper in the forest went silent. Suspicious."
     },
     {
         "id":  "whispering-kelp-forest-note-25",
@@ -177,6 +177,6 @@
         "id":  "whispering-kelp-forest-note-30",
         "number":  30,
         "title":  "The Forest Keeps Secrets",
-        "text":  "At the deepest part of the forest, the roots have grown around an old archive. There are names inside connected to escapes, missing researchers, hidden routes... maybe even the rebellion. But whenever I try to read farther, the roots close over the pages. I could force them open. I won\u0027t. This forest kept my trail hidden long after everyone searching should have found it. If it wants to keep someone else\u0027s secrets too, that\u0027s fair.\\n\\nBefore we left, the currents whispered something new—one word I hadn\u0027t taught them: \u0027Leviathan.\u0027 Then the roots opened toward a path where every current bends in the same direction.\\n\\nGlimmer went first.\\n\\nOf course Glimmer went first.\\n\\nLeviathan\u0027s Wake it is~"
+        "text":  "At the deepest part of the forest, the roots have grown around an old archive. There are names inside connected to escapes, missing researchers, hidden routes... maybe even the rebellion. But whenever I try to read farther, the roots close over the pages. I could force them open. I won\u0027t. This forest kept my trail hidden long after everyone searching should have found it. If it wants to keep someone else\u0027s secrets too, that\u0027s fair.\\n\\nBefore we left, the currents whispered something new. One word I hadn\u0027t taught them: \u0027Leviathan.\u0027 Then the roots opened toward a path where every current bends in the same direction.\\n\\nGlimmer went first.\\n\\nOf course Glimmer went first.\\n\\nLeviathan\u0027s Wake it is~"
     }
 ]

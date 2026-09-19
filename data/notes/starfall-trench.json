@@ -51,7 +51,7 @@
         "id":  "starfall-trench-note-09",
         "number":  9,
         "title":  "Stars From Somewhere Else",
-        "text":  "The fallen fragments down here form constellations I can\u0027t find anywhere in the sky. I checked twice. Then three times. Either my astronomy is terrible—which is completely possible—or some of these stars fell from somewhere we can\u0027t see."
+        "text":  "The fallen fragments down here form constellations I can\u0027t find anywhere in the sky. I checked twice. Then three times. Either my astronomy is terrible (which is completely possible), or some of these stars fell from somewhere we can\u0027t see."
     },
     {
         "id":  "starfall-trench-note-10",
@@ -93,7 +93,7 @@
         "id":  "starfall-trench-note-16",
         "number":  16,
         "title":  "A Hundred Years Ago",
-        "text":  "I uncovered a cracked observation lens that doesn\u0027t magnify distance—it shows places as they looked long ago. I pointed it toward the ruins and, for a moment, everything was standing again. Lights. Doors. People moving inside. Then the lens cracked a little more and the image vanished. I think I\u0027m keeping my hands off this one."
+        "text":  "I uncovered a cracked observation lens that doesn\u0027t magnify distance. It shows places as they looked long ago. I pointed it toward the ruins and, for a moment, everything was standing again. Lights. Doors. People moving inside. Then the lens cracked a little more and the image vanished. I think I\u0027m keeping my hands off this one."
     },
     {
         "id":  "starfall-trench-note-17",
@@ -111,7 +111,7 @@
         "id":  "starfall-trench-note-19",
         "number":  19,
         "title":  "Aurora From Below",
-        "text":  "An aurora rose out of the seafloor tonight. Not from the sky—the ground. It turned the whole trench blue and violet, then reversed the current and sent half my supplies floating past my head. Beautiful! Majestic! I would like my other boot back."
+        "text":  "An aurora rose out of the seafloor tonight. Not from the sky. The ground. It turned the whole trench blue and violet, then reversed the current and sent half my supplies floating past my head. Beautiful! Majestic! I would like my other boot back."
     },
     {
         "id":  "starfall-trench-note-20",
@@ -135,7 +135,7 @@
         "id":  "starfall-trench-note-23",
         "number":  23,
         "title":  "They Kept Searching",
-        "text":  "The deeper Annex records keep mentioning upgraded pursuit systems—revision after revision, long after the Moonlit Lab should have been abandoned. They were still looking for something. Or someone. I have a very uncomfortable guess about who."
+        "text":  "The deeper Annex records keep mentioning upgraded pursuit systems. Revision after revision, long after the Moonlit Lab should have been abandoned. They were still looking for something. Or someone. I have a very uncomfortable guess about who."
     },
     {
         "id":  "starfall-trench-note-24",
@@ -159,7 +159,7 @@
         "id":  "starfall-trench-note-27",
         "number":  27,
         "title":  "The Corekeeper",
-        "text":  "A maintenance record describes an artificial guardian built to keep functioning long after the people who made it were gone. That\u0027s unsettling enough on its own. Then I found fresh-looking scratches near the old chamber door. I have decided this is a problem for Future Shizuki."
+        "text":  "A maintenance record describes an artificial guardian built to keep functioning long after the people who made it were gone. That\u0027s unsettling enough on its own. Then I found fresh looking scratches near the old chamber door. I have decided this is a problem for Future Shizuki."
     },
     {
         "id":  "starfall-trench-note-28",
@@ -177,6 +177,6 @@
         "id":  "starfall-trench-note-30",
         "number":  30,
         "title":  "The Trench Wasn\u0027t the End",
-        "text":  "The last intact Annex ledger confirms it: Moonlit Lab and Starfall Annex answered to the same organization, and neither one was operating alone. There are more marks on the old maps—more places, more paths, more questions. One route disappears into a forest where travelers wrote that the currents themselves whisper back. Glimmer is already heading that way. I suppose that\u0027s my answer, then~"
+        "text":  "The last intact Annex ledger confirms it: Moonlit Lab and Starfall Annex answered to the same organization, and neither one was operating alone. There are more marks on the old maps. More places, more paths, more questions. One route disappears into a forest where travelers wrote that the currents themselves whisper back. Glimmer is already heading that way. I suppose that\u0027s my answer, then~"
     }
 ]
