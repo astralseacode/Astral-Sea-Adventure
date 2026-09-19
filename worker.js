@@ -421,7 +421,7 @@ const REGIONS = [
   },
   {
     id: "astral-nexus",
-    level: 50,
+    level: 40,
     name: "Astral Nexus",
     file: "astral-nexus.json",
   },

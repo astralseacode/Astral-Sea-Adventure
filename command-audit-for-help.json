@@ -1,0 +1,1530 @@
+{
+  "source": "worker.js DISCORD_COMMANDS, Discord interaction switch, Twitch action switch",
+  "counts": {
+    "discord_registered": 37,
+    "discord_player": 36,
+    "twitch_player": 34,
+    "command_aliases": 0,
+    "spell_alias_entries": 31
+  },
+  "discrepancies": {
+    "registered_but_unhandled": [],
+    "handled_but_unregistered": [],
+    "twitch_only": [],
+    "discord_only": [
+      "read",
+      "equip"
+    ]
+  },
+  "shadowed_spell_aliases": [
+    {
+      "alias": "star",
+      "resolves_to": "star-spark",
+      "shadowed_for": [
+        "falling-star"
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "name": "devlevel",
+      "surface": [
+        "Discord"
+      ],
+      "reason": "Registered development-only command; signed user ID allowlist. Exclude from player help."
+    },
+    {
+      "name": "help",
+      "surface": [],
+      "reason": "No /help or !help command is registered or dispatched. Help! is a /cast spell choice."
+    }
+  ],
+  "commands": [
+    {
+      "name": "adventure",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Adventure",
+      "syntax": {
+        "discord": "/adventure [number:<1–30>] [page:<1–5>]",
+        "twitch": "!adventure [number | list <page>]"
+      },
+      "purpose": "List, start, or resume an Adventure in the saved travel region.",
+      "required_options": [],
+      "optional_options": [
+        {
+          "name": "number",
+          "type": 4,
+          "choices": [],
+          "min_value": 1,
+          "max_value": 30
+        },
+        {
+          "name": "page",
+          "type": 4,
+          "choices": [],
+          "min_value": 1,
+          "max_value": 5
+        }
+      ],
+      "prerequisites": [
+        "An unlocked Adventure number is required to start; another active Adventure blocks a new start."
+      ],
+      "costs": [
+        "Starts an Adventure or reads its objective; no combat turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "left",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Adventure",
+      "syntax": {
+        "discord": "/left",
+        "twitch": "!left"
+      },
+      "purpose": "Choose the left path in an active Adventure.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Active Adventure, available left choice, and no ongoing fight or boss confirmation."
+      ],
+      "costs": [
+        "May grant a room reward or begin combat; no ordinary attack turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "right",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Adventure",
+      "syntax": {
+        "discord": "/right",
+        "twitch": "!right"
+      },
+      "purpose": "Choose the right path in an active Adventure.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Active Adventure, available right choice, and no ongoing fight or boss confirmation."
+      ],
+      "costs": [
+        "May grant a room reward or begin combat; no ordinary attack turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "forward",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Adventure",
+      "syntax": {
+        "discord": "/forward",
+        "twitch": "!forward"
+      },
+      "purpose": "Choose the forward path in an active Adventure.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Active Adventure, available forward choice, and no ongoing fight or boss confirmation."
+      ],
+      "costs": [
+        "May grant a room reward or begin combat; no ordinary attack turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "yes",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Adventure",
+      "syntax": {
+        "discord": "/yes",
+        "twitch": "!yes"
+      },
+      "purpose": "Accept a pending challenge or Adventure boss.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Pending combat confirmation."
+      ],
+      "costs": [
+        "Starts the pending fight; no attack turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "no",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Adventure",
+      "syntax": {
+        "discord": "/no",
+        "twitch": "!no"
+      },
+      "purpose": "Decline a pending challenge or Adventure boss.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Pending combat confirmation."
+      ],
+      "costs": [
+        "Cancels the pending fight; no attack turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "attack",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Combat",
+      "syntax": {
+        "discord": "/attack",
+        "twitch": "!attack"
+      },
+      "purpose": "Make one basic attack; an equipped weapon and matching class modify it.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Active enemy. Unarmed/default attack works without a weapon."
+      ],
+      "costs": [
+        "Consumes one combat turn; no Mana or Candy cost."
+      ],
+      "consumes_turn": true,
+      "read_only": false,
+      "available_in_combat": true,
+      "available_outside_combat": false,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "stim",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Combat",
+      "syntax": {
+        "discord": "/stim",
+        "twitch": "!stim"
+      },
+      "purpose": "Fully restore HP with the once-per-battle Stim.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Active battle, Stim unused, HP below maximum; no arguments."
+      ],
+      "costs": [
+        "Consumes one combat turn; no item or Mana cost."
+      ],
+      "consumes_turn": true,
+      "read_only": false,
+      "available_in_combat": true,
+      "available_outside_combat": false,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "cast",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Spells",
+      "syntax": {
+        "discord": "/cast spell:<choice>",
+        "twitch": "!cast <spell name or spell alias>"
+      },
+      "purpose": "Cast one selected spell, including the Help! combat spell.",
+      "required_options": [
+        {
+          "name": "spell",
+          "type": 3,
+          "choices": [
+            {
+              "name": "Elf Blessing",
+              "value": "elf_blessing"
+            },
+            {
+              "name": "Star Spark",
+              "value": "star"
+            },
+            {
+              "name": "Jelly",
+              "value": "jelly"
+            },
+            {
+              "name": "Mend",
+              "value": "mend"
+            },
+            {
+              "name": "Moonbeam",
+              "value": "moonbeam"
+            },
+            {
+              "name": "Evocation",
+              "value": "evocation"
+            },
+            {
+              "name": "Bubble",
+              "value": "bubble"
+            },
+            {
+              "name": "Echo",
+              "value": "astral-echo"
+            },
+            {
+              "name": "Falling Star",
+              "value": "falling-star"
+            },
+            {
+              "name": "Leviathan's Wake",
+              "value": "leviathans-wake"
+            },
+            {
+              "name": "Berry",
+              "value": "berry"
+            },
+            {
+              "name": "Familiar",
+              "value": "familiar"
+            },
+            {
+              "name": "All or Nothing",
+              "value": "all-or-nothing"
+            },
+            {
+              "name": "Tidal Wave",
+              "value": "tidal-wave"
+            },
+            {
+              "name": "Conjure Gun",
+              "value": "conjure-gun"
+            },
+            {
+              "name": "Help!",
+              "value": "help"
+            }
+          ]
+        }
+      ],
+      "optional_options": [],
+      "prerequisites": [
+        "Spell must be unlocked and valid for its context; combat/support restrictions vary by spell."
+      ],
+      "costs": [
+        "May cost Mana and consume a combat turn; spell-specific effects vary."
+      ],
+      "consumes_turn": true,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": "Spell choices and aliases are arguments, not separate commands.",
+      "argument_aliases": [
+        {
+          "id": "elf_blessing",
+          "name": "Elf Blessing",
+          "aliases": [
+            "elf blessing",
+            "elf_blessing",
+            "blessing"
+          ]
+        },
+        {
+          "id": "star-spark",
+          "name": "Star Spark",
+          "aliases": [
+            "star"
+          ]
+        },
+        {
+          "id": "jelly",
+          "name": "Jellyfish",
+          "aliases": [
+            "jelly"
+          ]
+        },
+        {
+          "id": "mend",
+          "name": "Mend",
+          "aliases": [
+            "mend"
+          ]
+        },
+        {
+          "id": "moonbeam",
+          "name": "Moonbeam",
+          "aliases": [
+            "moonbeam"
+          ]
+        },
+        {
+          "id": "evocation",
+          "name": "Evocation",
+          "aliases": [
+            "evo",
+            "evocate"
+          ]
+        },
+        {
+          "id": "bubble",
+          "name": "Bubble",
+          "aliases": [
+            "bubble"
+          ]
+        },
+        {
+          "id": "astral-echo",
+          "name": "Echo",
+          "aliases": [
+            "astral echo",
+            "echo"
+          ]
+        },
+        {
+          "id": "falling-star",
+          "name": "Falling Star",
+          "aliases": [
+            "falling star",
+            "falling",
+            "star"
+          ]
+        },
+        {
+          "id": "leviathans-wake",
+          "name": "Leviathan's Wake",
+          "aliases": [
+            "leviathan's wake",
+            "leviathans wake",
+            "leviathan",
+            "wake"
+          ]
+        },
+        {
+          "id": "berries",
+          "name": "Berries",
+          "aliases": [
+            "berry",
+            "berries"
+          ]
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "aliases": [
+            "familiar"
+          ]
+        },
+        {
+          "id": "all-or-nothing",
+          "name": "All or Nothing",
+          "aliases": [
+            "all or nothing",
+            "allornothing"
+          ]
+        },
+        {
+          "id": "tidal-wave",
+          "name": "Tidal Wave",
+          "aliases": [
+            "tidal wave",
+            "tidal",
+            "wave"
+          ]
+        },
+        {
+          "id": "conjure-gun",
+          "name": "Conjure Gun",
+          "aliases": [
+            "conjure gun",
+            "gun"
+          ]
+        },
+        {
+          "id": "help",
+          "name": "Help!",
+          "aliases": [
+            "help",
+            "help!"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "eat",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Items",
+      "syntax": {
+        "discord": "/eat berry",
+        "twitch": "!eat [berry]"
+      },
+      "purpose": "Eat one Berry for up to 25 HP and 25 Mana.",
+      "required_options": [],
+      "optional_options": [
+        {
+          "name": "berry",
+          "type": 1,
+          "choices": []
+        }
+      ],
+      "prerequisites": [
+        "Own a Berry, have missing HP or Mana; at most four Berries per Adventure."
+      ],
+      "costs": [
+        "Consumes one Berry; does not advance the combat turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "rest",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Recovery",
+      "syntax": {
+        "discord": "/rest short | /rest long",
+        "twitch": "!rest [short | long]"
+      },
+      "purpose": "Take a Short or Long Rest and restore resources with a temporary buffer.",
+      "required_options": [],
+      "optional_options": [
+        {
+          "name": "short",
+          "type": 1,
+          "choices": []
+        },
+        {
+          "name": "long",
+          "type": 1,
+          "choices": []
+        }
+      ],
+      "prerequisites": [
+        "No combat; cooldown must expire. Long Rest also requires no active Adventure."
+      ],
+      "costs": [
+        "No Candy/Mana cost or combat turn; Short Rest has a 20-minute cooldown and Long Rest a 60-minute cooldown."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": false,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "explore",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Exploration",
+      "syntax": {
+        "discord": "/explore",
+        "twitch": "!explore"
+      },
+      "purpose": "Resolve a travel exploration scene in the saved region.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Region must be available; exploration handler checks current activity."
+      ],
+      "costs": [
+        "Grants XP/Candies and may find a Berry or Travel Note; can level up."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": false,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "read",
+      "surface": [
+        "Discord"
+      ],
+      "aliases": [],
+      "category": "Travel Notes",
+      "syntax": {
+        "discord": "/read"
+      },
+      "purpose": "Read the current-region Travel Journal with collected note text.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Valid saved travel region, or an active Adventure region."
+      ],
+      "costs": [
+        "Read-only; ephemeral Discord response."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled",
+      "notes": "Discord-only current-region full journal view."
+    },
+    {
+      "name": "daily",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Rewards",
+      "syntax": {
+        "discord": "/daily",
+        "twitch": "!daily"
+      },
+      "purpose": "Claim a daily blessing of Star Candies.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Discord cooldown is checked locally; Twitch cooldown is delegated to StreamElements."
+      ],
+      "costs": [
+        "Adds Candies; no turn or item cost."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "gamble",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Rewards",
+      "syntax": {
+        "discord": "/gamble amount:<whole number>",
+        "twitch": "!gamble <amount>"
+      },
+      "purpose": "Stake Star Candies in a 50/50 roulette.",
+      "required_options": [
+        {
+          "name": "amount",
+          "type": 4,
+          "choices": [],
+          "min_value": 1
+        }
+      ],
+      "optional_options": [],
+      "prerequisites": [
+        "Positive whole-number stake no greater than current balance."
+      ],
+      "costs": [
+        "Wins or loses the stake; no combat turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "backpack",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Player Info",
+      "syntax": {
+        "discord": "/backpack",
+        "twitch": "!backpack"
+      },
+      "purpose": "View Star Candies and backpack/resource information.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Read-only; Discord response is ephemeral."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "stats",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Player Info",
+      "syntax": {
+        "discord": "/stats",
+        "twitch": "!stats"
+      },
+      "purpose": "View stats, resources, points, and active effects.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Read-only; Discord response is ephemeral."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "vitality",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Progression",
+      "syntax": {
+        "discord": "/vitality",
+        "twitch": "!vitality"
+      },
+      "purpose": "Spend one Stat Point for +10 permanent maximum HP.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "One unspent point; below Vitality rank cap."
+      ],
+      "costs": [
+        "Consumes one Stat Point; adjusts HP, including active combat/adventure state."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "focus",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Progression",
+      "syntax": {
+        "discord": "/focus",
+        "twitch": "!focus"
+      },
+      "purpose": "Spend one Stat Point for +10 permanent maximum Mana.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "One unspent point; below Focus rank cap."
+      ],
+      "costs": [
+        "Consumes one Stat Point; adjusts Mana."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "strength",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Progression",
+      "syntax": {
+        "discord": "/strength",
+        "twitch": "!strength"
+      },
+      "purpose": "Spend one Stat Point for +1 player damage.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "One unspent point; below Strength rank cap."
+      ],
+      "costs": [
+        "Consumes one Stat Point."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "luck",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Progression",
+      "syntax": {
+        "discord": "/luck",
+        "twitch": "!luck"
+      },
+      "purpose": "Spend one Stat Point for reward and Berry-drop bonuses.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "One unspent point; below Luck rank cap."
+      ],
+      "costs": [
+        "Consumes one Stat Point."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "armor",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Progression",
+      "syntax": {
+        "discord": "/armor",
+        "twitch": "!armor"
+      },
+      "purpose": "Spend one Stat Point for incoming damage reduction.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "One unspent point; below Armor rank cap."
+      ],
+      "costs": [
+        "Consumes one Stat Point."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "fae",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Progression",
+      "syntax": {
+        "discord": "/fae",
+        "twitch": "!fae"
+      },
+      "purpose": "Spend one Stat Point for an offensive spell-roll bonus.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "One unspent point; below Fae rank cap."
+      ],
+      "costs": [
+        "Consumes one Stat Point."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "shop",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Shop",
+      "syntax": {
+        "discord": "/shop",
+        "twitch": "!shop"
+      },
+      "purpose": "View merchant inventory, ownership labels, and unlocked services.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Opens/refreshes a 10-minute shop session; no cost."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "buy",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Shop",
+      "syntax": {
+        "discord": "/buy item:<choice> [quantity:<1–99>] [class:<choice>]",
+        "twitch": "!buy berry [quantity] | !buy <weapon-id>"
+      },
+      "purpose": "Buy Berries or permanent weapons; Class Change is a shop service.",
+      "required_options": [
+        {
+          "name": "item",
+          "type": 3,
+          "choices": [
+            {
+              "name": "Berry",
+              "value": "berry"
+            },
+            {
+              "name": "Sword and Shield",
+              "value": "sword-and-shield"
+            },
+            {
+              "name": "Daggers",
+              "value": "daggers"
+            },
+            {
+              "name": "Axe",
+              "value": "axe"
+            },
+            {
+              "name": "Spear",
+              "value": "spear"
+            },
+            {
+              "name": "Hammer",
+              "value": "hammer"
+            },
+            {
+              "name": "Bow",
+              "value": "bow"
+            },
+            {
+              "name": "Class Change",
+              "value": "class-change"
+            }
+          ]
+        }
+      ],
+      "optional_options": [
+        {
+          "name": "quantity",
+          "type": 4,
+          "choices": [],
+          "min_value": 1,
+          "max_value": 99
+        },
+        {
+          "name": "class",
+          "type": 3,
+          "choices": [
+            {
+              "name": "Knight",
+              "value": "sword-and-shield"
+            },
+            {
+              "name": "Rogue",
+              "value": "daggers"
+            },
+            {
+              "name": "Berserker",
+              "value": "axe"
+            },
+            {
+              "name": "Lancer",
+              "value": "spear"
+            },
+            {
+              "name": "Vanguard",
+              "value": "hammer"
+            },
+            {
+              "name": "Ranger",
+              "value": "bow"
+            }
+          ]
+        }
+      ],
+      "prerequisites": [
+        "Active 10-minute shop session; sufficient Candies. Weapon duplicates, quantities, and in-combat purchase are rejected. Class Change requires unlocked/owned target and no combat."
+      ],
+      "costs": [
+        "Berry: 200 Candies each, quantity 1–99. Weapon: 20,000 once, first purchase unlocks class. Class Change: 50,000; equips target."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": "Class Change uses the optional class choice; Twitch has no target-class argument, so Class Change is Discord-managed."
+    },
+    {
+      "name": "equip",
+      "surface": [
+        "Discord"
+      ],
+      "aliases": [],
+      "category": "Weapons",
+      "syntax": {
+        "discord": "/equip weapon:<choice>"
+      },
+      "purpose": "Equip an owned permanent weapon.",
+      "required_options": [
+        {
+          "name": "weapon",
+          "type": 3,
+          "choices": [
+            {
+              "name": "Sword and Shield",
+              "value": "sword-and-shield"
+            },
+            {
+              "name": "Daggers",
+              "value": "daggers"
+            },
+            {
+              "name": "Axe",
+              "value": "axe"
+            },
+            {
+              "name": "Spear",
+              "value": "spear"
+            },
+            {
+              "name": "Hammer",
+              "value": "hammer"
+            },
+            {
+              "name": "Bow",
+              "value": "bow"
+            }
+          ]
+        }
+      ],
+      "optional_options": [],
+      "prerequisites": [
+        "Must own selected weapon and be outside combat."
+      ],
+      "costs": [
+        "Free; changes equipped weapon, not active class."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": false,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled",
+      "notes": "Discord-only management; equipped weapon still affects Twitch !attack."
+    },
+    {
+      "name": "travel",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Exploration",
+      "syntax": {
+        "discord": "/travel region:<choice>",
+        "twitch": "!travel <region>"
+      },
+      "purpose": "Set the saved region for future exploration and Adventure selection.",
+      "required_options": [
+        {
+          "name": "region",
+          "type": 3,
+          "choices": [
+            {
+              "name": "Moonlit",
+              "value": "moonlit"
+            },
+            {
+              "name": "Starfall",
+              "value": "starfall"
+            },
+            {
+              "name": "Whispering",
+              "value": "whispering"
+            },
+            {
+              "name": "Leviathans",
+              "value": "leviathans"
+            },
+            {
+              "name": "Sunken",
+              "value": "sunken"
+            },
+            {
+              "name": "Astral",
+              "value": "astral"
+            }
+          ]
+        }
+      ],
+      "optional_options": [],
+      "prerequisites": [
+        "Player level must unlock target region; no active combat."
+      ],
+      "costs": [
+        "Changes currentRegion; no Candy cost or combat turn."
+      ],
+      "consumes_turn": false,
+      "read_only": false,
+      "available_in_combat": false,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "moonlit",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Completion",
+      "syntax": {
+        "discord": "/moonlit",
+        "twitch": "!moonlit"
+      },
+      "purpose": "View Moonlit Reef Adventure and Travel Note completion.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "starfall",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Completion",
+      "syntax": {
+        "discord": "/starfall",
+        "twitch": "!starfall"
+      },
+      "purpose": "View Starfall Trench completion.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "whispering",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Completion",
+      "syntax": {
+        "discord": "/whispering",
+        "twitch": "!whispering"
+      },
+      "purpose": "View Whispering Kelp Forest completion.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "leviathan",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Completion",
+      "syntax": {
+        "discord": "/leviathan",
+        "twitch": "!leviathan"
+      },
+      "purpose": "View Leviathan's Wake completion.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "sunken",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Completion",
+      "syntax": {
+        "discord": "/sunken",
+        "twitch": "!sunken"
+      },
+      "purpose": "View Sunken King's Throne completion.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "astral",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Completion",
+      "syntax": {
+        "discord": "/astral",
+        "twitch": "!astral"
+      },
+      "purpose": "View Astral Nexus completion.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "journal",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Travel Notes",
+      "syntax": {
+        "discord": "/journal",
+        "twitch": "!journal"
+      },
+      "purpose": "View collected Travel Note totals across all regions.",
+      "required_options": [],
+      "optional_options": [],
+      "prerequisites": [
+        "Identified player; locked regions are marked locked."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "notes",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Travel Notes",
+      "syntax": {
+        "discord": "/notes region:<choice>",
+        "twitch": "!notes [region]"
+      },
+      "purpose": "List collected and missing note numbers for a region.",
+      "required_options": [
+        {
+          "name": "region",
+          "type": 3,
+          "choices": [
+            {
+              "name": "Moonlit Reef",
+              "value": "moonlit-reef"
+            },
+            {
+              "name": "Starfall Trench",
+              "value": "starfall-trench"
+            },
+            {
+              "name": "Whispering Kelp Forest",
+              "value": "whispering-kelp-forest"
+            },
+            {
+              "name": "Leviathan's Wake",
+              "value": "leviathans-wake"
+            },
+            {
+              "name": "Sunken King's Throne",
+              "value": "sunken-kings-throne"
+            },
+            {
+              "name": "Astral Nexus",
+              "value": "astral-nexus"
+            }
+          ]
+        }
+      ],
+      "optional_options": [],
+      "prerequisites": [
+        "Region chapter must be level-unlocked."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    },
+    {
+      "name": "note",
+      "surface": [
+        "Discord",
+        "Twitch"
+      ],
+      "aliases": [],
+      "category": "Travel Notes",
+      "syntax": {
+        "discord": "/note region:<choice> number:<number>",
+        "twitch": "!note [region] <number>"
+      },
+      "purpose": "Read one previously discovered note by region and number.",
+      "required_options": [
+        {
+          "name": "region",
+          "type": 3,
+          "choices": [
+            {
+              "name": "Moonlit Reef",
+              "value": "moonlit-reef"
+            },
+            {
+              "name": "Starfall Trench",
+              "value": "starfall-trench"
+            },
+            {
+              "name": "Whispering Kelp Forest",
+              "value": "whispering-kelp-forest"
+            },
+            {
+              "name": "Leviathan's Wake",
+              "value": "leviathans-wake"
+            },
+            {
+              "name": "Sunken King's Throne",
+              "value": "sunken-kings-throne"
+            },
+            {
+              "name": "Astral Nexus",
+              "value": "astral-nexus"
+            }
+          ]
+        },
+        {
+          "name": "number",
+          "type": 4,
+          "choices": [],
+          "min_value": 1
+        }
+      ],
+      "optional_options": [],
+      "prerequisites": [
+        "Region chapter unlocked; specified note already discovered."
+      ],
+      "costs": [
+        "Read-only."
+      ],
+      "consumes_turn": false,
+      "read_only": true,
+      "available_in_combat": null,
+      "available_outside_combat": true,
+      "registration_status": "Discord registered",
+      "handler_status": "Discord handled; Twitch action handled",
+      "notes": ""
+    }
+  ]
+}
