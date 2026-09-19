@@ -724,6 +724,11 @@ const DISCORD_COMMANDS = [
     type: 1,
   },
   {
+    name: "read",
+    description: "Read the Travel Notes in your current region.",
+    type: 1,
+  },
+  {
     name: "daily",
     description: "Receive your daily Astral Sea blessing.",
     type: 1,
@@ -1593,6 +1598,9 @@ async function handleDiscordInteractionCore(request, env) {
         return discordMessage(
           (await performExplore(env, backpackKey, "discord")).message,
         );
+
+      case "read":
+        return discordMessage((await performReadJournal(env, backpackKey)).message, true);
 
       case "daily": {
         const result = await performDiscordDaily(
@@ -6761,8 +6769,7 @@ async function performExploreUnlocked(
 
   const messageLines = [
     adventure,
-    `+${earnedXp} XP | ` +
-      `Level ${endingLevel} | ` +
+    `+${earnedXp} XP · Level ${endingLevel} · ` +
       `${levelProgress.current}/${levelProgress.required} XP`,
     `Backpack: ${newTotal} Star Candies`,
   ];
@@ -6794,6 +6801,12 @@ async function performExploreUnlocked(
     );
   }
 
+  if (foundBerry) {
+    messageLines.push(
+      `Found 1 Berry! Berries: ${updatedBerryCount.toLocaleString("en-US")}`,
+    );
+  }
+
   if (noteDrop && noteWasDuplicate) {
     messageLines.push(
       `Duplicate Travel Note: +${DUPLICATE_NOTE_CANDY_BONUS} bonus Star Candies.`,
@@ -6802,22 +6815,9 @@ async function performExploreUnlocked(
     const noteRegionId = getNoteRegionId(noteDrop);
     const noteRegion = getRegionById(noteRegionId);
     const noteNumber = getNoteNumber(noteDrop);
-    const title = discoveredNote
-      ? ` — ${discoveredNote.title}`
-      : "";
-    const readCommand = platform === "discord"
-      ? ` Use /note region:${noteRegionId} number:${noteNumber} to read it.`
-      : ` Use !note ${noteRegionId} ${noteNumber} to read it.`;
-
-    messageLines.push(
-      `Travel Note discovered: ${noteRegion?.name || noteRegionId} #${noteNumber}${title}!${discoveredNote ? readCommand : ""}`,
-    );
-  }
-
-  if (foundBerry) {
-    messageLines.push(
-      `Found 1 Berry! Berries: ${updatedBerryCount.toLocaleString("en-US")}`,
-    );
+    messageLines.push(discoveredNote
+      ? `Travel Note Discovered — ${noteRegion?.name || noteRegionId} #${noteNumber}: ${discoveredNote.title}\n\n${discoveredNote.text}`
+      : `Travel Note discovered: ${noteRegion?.name || noteRegionId} #${noteNumber}.`);
   }
 
   return {
@@ -6831,7 +6831,7 @@ async function performExploreUnlocked(
     berry: foundBerry,
     berries: updatedBerryCount,
     total: newTotal,
-    message: messageLines.join(" | "),
+    message: messageLines.join(platform === "discord" ? "\n\n" : " | "),
   };
 }
 
@@ -7845,6 +7845,54 @@ async function performReadNote(
       ? `${metadata.name} — Travel Note #${number}\n${note.title}\n\n${note.text}`
       : `${metadata.name} — Note #${number}: ${note.title} | "${note.text}"`,
   };
+}
+
+// Read-only journal view. An active adventure pins its region; otherwise the
+// saved travel region is authoritative, including after the final region.
+async function performReadJournal(env, backpackKey) {
+  const [rawProgress, rawAdventure] = await Promise.all([
+    env.Backpack.get(getProgressKey(backpackKey)),
+    env.Backpack.get(getAdventureKey(backpackKey)),
+  ]);
+  let saved;
+  try { saved = rawProgress ? JSON.parse(rawProgress) : null; }
+  catch { saved = null; }
+  let region = null;
+  if (rawAdventure) {
+    try {
+      const adventure = JSON.parse(rawAdventure);
+      if (isValidAdventureState(adventure)) region = getRegionById(adventure.regionId);
+    } catch { /* Stale adventure state does not replace saved travel state. */ }
+  }
+  if (!region) {
+    try {
+      region = saved && Object.prototype.hasOwnProperty.call(saved, "currentRegion")
+        ? getRegionById(saved.currentRegion)
+        : null;
+    } catch { /* Malformed progress has no trustworthy current region. */ }
+  }
+  if (!region) return { message: "Your current region is unavailable. Travel to a region and try again." };
+
+  let metadata;
+  let notes;
+  try {
+    [metadata, notes] = await Promise.all([
+      getRegionMetadata(region.id), getRegionNotes(region.id),
+    ]);
+  } catch (error) {
+    console.error("Travel Note journal lookup failed:", error);
+    return { message: `${region.name}'s journal chapter could not currently be loaded. Please try again later.` };
+  }
+  const byNumber = new Map(notes.map((note) => [note.number, note]));
+  const entries = [];
+  for (let number = 1; number <= metadata.noteCount; number += 1) {
+    const note = byNumber.get(number);
+    const noteId = `${region.id}-note-${String(number).padStart(2, "0")}`;
+    entries.push(saved?.notes?.[noteId] === true && note
+      ? `${number}. ${note.title}\n${note.text}`
+      : `${number}. Continue exploring to find this note.`);
+  }
+  return { message: `${region.name} — Travel Notes\n\n${entries.join("\n\n")}` };
 }
 
 /* ============================================================
