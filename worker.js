@@ -69,6 +69,44 @@ const SHOP_ITEMS = {
   bow: { id: "bow", displayName: "Bow", description: "Roll twice and keep the better attack roll.", price: 20000, currency: "Star Candies", permanent: true, reaction: '"Excellent! Now you can miss things from farther away."', equipFlavor: "Distance has been added to your list of excuses." },
 };
 const WEAPON_IDS = Object.keys(SHOP_ITEMS).filter(id => SHOP_ITEMS[id].permanent);
+const CLASS_CHANGE_PRICE = 50000;
+const CLASS_DATA = {
+  "sword-and-shield": { name: "Knight", titles: ["Wayward Knight", "Shieldbearer", "Warden", "Bulwark", "Crown Guardian", "Nexus Paladin"], damage: [2,3,4,4,5,5], protection: [2,3,3,4,4,5] },
+  daggers: { name: "Rogue", titles: ["Cutpurse", "Twinblade", "Shadowblade", "Nightstalker", "Kingsbane", "Nexus Phantom"], damage: [2,3,3,4,4,4] },
+  axe: { name: "Berserker", titles: ["Raider", "Marauder", "Reaver", "Ravager", "Warbringer", "Worldbreaker"], damage: [3,4,5,5,5,5] },
+  spear: { name: "Lancer", titles: ["Spearhand", "Lancer", "Dragoon", "Wavepiercer", "Crownlance", "Horizon Dragoon"], damage: [2,3,3,4,4,4], pierce: [10,10,12,12,15,15] },
+  hammer: { name: "Vanguard", titles: ["Bruiser", "Breaker", "Mauler", "Juggernaut", "Siegebreaker", "Titan Vanguard"], damage: [2,3,3,4,4,4], stagger: [[5,10],[5,10],[6,11],[6,11],[7,12],[7,12]] },
+  bow: { name: "Ranger", titles: ["Scout", "Marksman", "Sharpshooter", "Deadeye", "Royal Huntsman", "Horizon Hunter"], damage: [2,3,4,4,5,5] },
+};
+function classTier(progress) {
+  return Math.max(0, REGIONS.findIndex(region => region.id === getRegionForLevel(levelFromXp(progress.xp)).id));
+}
+function classTitle(progress) {
+  return CLASS_DATA[progress.activeClass]?.titles[classTier(progress)] || null;
+}
+function classBonusDescription(weaponId, tier) {
+  const data = CLASS_DATA[weaponId];
+  if (!data) return "";
+  let description = `${SHOP_ITEMS[weaponId].displayName} attacks gain +${data.damage[tier]} damage`;
+  if (data.protection) description += ` and +${data.protection[tier]} Protection`;
+  if (data.pierce) description += `; Piercing ignores up to ${data.pierce[tier]} Protection`;
+  if (data.stagger) description += `; Stagger reduces damage by ${data.stagger[tier].join(" / ")}`;
+  if (weaponId === "sword-and-shield" && tier === 5) description += "; successful attacks restore up to 3 HP";
+  if (weaponId === "daggers" && tier >= 2) description += `; both blades add +${tier >= 4 ? 4 : 2} damage`;
+  if (weaponId === "daggers" && tier === 5) description += "; both natural rolls 15+ add another +6 damage";
+  if (weaponId === "axe" && tier >= 3) description += `; natural 20 adds +${tier === 5 ? 15 : 8} damage`;
+  if (weaponId === "axe" && tier >= 4) description += "; a miss arms +5 damage on the next successful Axe attack";
+  if (weaponId === "spear" && tier === 5) description += "; enemy Protection at attack start adds +5 damage";
+  if (weaponId === "hammer" && tier === 5) description += "; consumed Stagger grants 5 Protection after the enemy attack";
+  if (weaponId === "bow" && tier >= 3) description += `; both natural rolls 15+ add +${tier === 5 ? 8 : 4} damage`;
+  if (weaponId === "bow" && tier === 5) description += "; double natural 20 adds +15 instead";
+  return description + ".";
+}
+function classAdvancement(progress) {
+  if (!progress.activeClass) return null;
+  const data = CLASS_DATA[progress.activeClass];
+  return `Class Advancement — ${classTitle(progress)}\nYour ${data.name} specialization has grown stronger.\n${classBonusDescription(progress.activeClass, classTier(progress))}`;
+}
 function normalizeOwnedWeapons(value) {
   return Array.isArray(value) ? WEAPON_IDS.filter(id => value.includes(id)) : [];
 }
@@ -812,7 +850,8 @@ const DISCORD_COMMANDS = [
         name: "item",
         description: "The item to purchase.",
         required: true,
-        choices: Object.values(SHOP_ITEMS).map(item => ({ name: item.displayName, value: item.id })),
+        choices: [...Object.values(SHOP_ITEMS).map(item => ({ name: item.displayName, value: item.id })),
+          { name: "Class Change", value: "class-change" }],
       },
       {
         type: 4,
@@ -822,6 +861,8 @@ const DISCORD_COMMANDS = [
         min_value: 1,
         max_value: 99,
       },
+      { type: 3, name: "class", description: "Class to change to (Class Change only).", required: false,
+        choices: WEAPON_IDS.map(id => ({ name: CLASS_DATA[id].name, value: id })) },
     ],
   },
   {
@@ -1681,6 +1722,7 @@ async function handleDiscordInteractionCore(request, env) {
               backpackKey,
               sharedIdentity,
               "discord",
+              getDiscordOption(interaction, "class"),
             )
           ).message,
         );
@@ -1695,6 +1737,7 @@ async function handleDiscordInteractionCore(request, env) {
               getDiscordIntegerOption(interaction, "quantity"),
               sharedIdentity,
               "discord",
+              getDiscordOption(interaction, "class"),
             )
           ).message,
         );
@@ -2244,6 +2287,8 @@ async function performAdventureDirectionUnlocked(
   }
   if (endingRegion.id !== startingRegion.id) {
     messageParts.push(`Region Unlocked: ${endingRegion.name}`);
+    const advancement = classAdvancement(xpProgression.progress);
+    if (advancement) messageParts.push(advancement);
   }
 
   messageParts.push(
@@ -2891,7 +2936,7 @@ async function performStimUnlocked(env, backpackKey, platform, input) {
   }
 }
 
-function resolveWeaponAttack(id, rolls, strength, enemyProtection, platform) {
+function resolveWeaponAttack(id, rolls, strength, enemyProtection, platform, classTierIndex = null, fury = false) {
   const natural = Math.max(...rolls);
   let hits = [];
   let protection = 0;
@@ -2916,13 +2961,42 @@ function resolveWeaponAttack(id, rolls, strength, enemyProtection, platform) {
     hits = [base];
   }
   const baseTotal = hits.reduce((sum, hit) => sum + hit, 0);
-  const damage = baseTotal > 0 ? baseTotal + strength : 0;
+  let classDamage = 0;
+  const classParts = [];
+  const specialization = classTierIndex === null ? null : CLASS_DATA[id];
+  if (baseTotal > 0 && specialization) {
+    classDamage = specialization.damage[classTierIndex];
+    classParts.push(`+${classDamage} ${specialization.name}`);
+    if (id === "daggers" && hits.every(hit => hit > 0) && classTierIndex >= 2) {
+      const bonus = classTierIndex >= 4 ? 4 : 2;
+      classDamage += bonus; classParts.push(`+${bonus} Both Blades`);
+      if (classTierIndex === 5 && rolls.every(roll => roll >= 15)) {
+        classDamage += 6; classParts.push("+6 Nexus Phantom");
+      }
+    }
+    if (id === "axe") {
+      const bonus = natural === 20 && classTierIndex >= 3 ? classTierIndex === 5 ? 15 : 8 : 0;
+      if (bonus) { classDamage += bonus; classParts.push(`+${bonus} ${specialization.titles[classTierIndex]}`); }
+      if (fury && classTierIndex >= 4) { classDamage += 5; classParts.push("+5 Warbringer Fury"); }
+    }
+    if (id === "spear" && classTierIndex === 5 && enemyProtection > 0) {
+      classDamage += 5; classParts.push("+5 Horizon Dragoon");
+    }
+    if (id === "bow" && classTierIndex >= 3 && rolls.every(roll => roll >= 15)) {
+      const bonus = classTierIndex === 5 ? rolls.every(roll => roll === 20) ? 15 : 8 : 4;
+      classDamage += bonus; classParts.push(`+${bonus} ${specialization.titles[classTierIndex]}`);
+    }
+    if (id === "sword-and-shield") protection += specialization.protection[classTierIndex];
+    if (id === "hammer") stagger = natural === 20 ? specialization.stagger[classTierIndex][1]
+      : natural >= 15 ? specialization.stagger[classTierIndex][0] : 0;
+  }
+  const damage = baseTotal > 0 ? baseTotal + strength + classDamage : 0;
   const pierceProtection = id === "spear" && damage > 0
-    ? Math.min(10, enemyProtection) : 0;
+    ? Math.min(specialization ? specialization.pierce[classTierIndex] : 10, enemyProtection) : 0;
   const details = [SHOP_ITEMS[id].displayName,
     rolls.length === 2 ? `Rolls: ${rolls.join(" / ")}` : `Roll: ${natural}`];
   if (id === "bow") details.push(`Kept: ${natural}`);
-  details.push(damage ? `${hits.join(" + ")} +${strength} Strength → ${damage} dmg` : "Miss!");
+  details.push(damage ? `${hits.join(" + ")} +${strength} Strength${classParts.length ? " " + classParts.join(" ") : ""} → ${damage} dmg` : "Miss!");
   if (protection) details.push(`Protection +${protection}`);
   if (pierceProtection) details.push(`Pierced ${pierceProtection} Protection`);
   if (stagger) details.push(`Stagger: next successful enemy attack -${stagger} damage`);
@@ -3009,10 +3083,21 @@ async function performAttackUnlocked(
     damage: basePlayerAttack.damage + strengthBonus,
   };
   const weaponAttack = weaponId
-    ? resolveWeaponAttack(weaponId, rolls, getStrengthDamageBonus(progress), combatState.enemy.protection || 0, platform)
+    ? resolveWeaponAttack(weaponId, rolls, getStrengthDamageBonus(progress), combatState.enemy.protection || 0,
+      platform, progress.activeClass === weaponId ? classTier(progress) : null, combatState.warbringerFury === true)
     : null;
+  if (weaponId === "axe" && progress.activeClass === "axe" && classTier(progress) >= 4) {
+    if (weaponAttack.damage === 0) combatState.warbringerFury = true;
+    else delete combatState.warbringerFury;
+  }
+  let paladinHeal = 0;
+  if (weaponId === "sword-and-shield" && progress.activeClass === weaponId &&
+      classTier(progress) === 5 && weaponAttack.damage > 0) {
+    paladinHeal = Math.min(3, Math.max(0, getPlayerResourceCaps(progress).hp - combatState.playerHp));
+    combatState.playerHp += paladinHeal;
+  }
   const actionMessage = weaponAttack
-    ? weaponAttack.message
+    ? weaponAttack.message + (paladinHeal ? `\nNexus Paladin — Restored ${paladinHeal} HP` : "")
     : formatPlayerAttackResolution(playerRoll, playerAttack, triggeredRoll, platform);
   let updatedProgress = {
     ...progress,
@@ -3033,6 +3118,7 @@ async function performAttackUnlocked(
     }
     if (weaponAttack?.stagger) {
       combatState.stagger = Math.max(combatState.stagger || 0, weaponAttack.stagger);
+      combatState.titanStagger = weaponId === "hammer" && progress.activeClass === "hammer" && classTier(progress) === 5;
     }
     const attackDamage = weaponAttack ? weaponAttack.damage : playerAttack.damage;
     return await resolvePlayerCombatAction(
@@ -3893,11 +3979,14 @@ async function resolveEnemyCombatResponse(
     ? 0
     : enemyAttack.damage + (combatState.enemy.damageBonus || 0) +
       regionalResponse.bonus + regionalResponse.repetitionDamage;
+  let titanProtectionAfterAttack = false;
   if (rawEnemyDamage > 0 && combatState.stagger > 0) {
     const reduction = Math.min(rawEnemyDamage, combatState.stagger);
     rawEnemyDamage -= reduction;
     messageParts.push(`Stagger reduces enemy damage by ${reduction}.`);
     delete combatState.stagger;
+    titanProtectionAfterAttack = combatState.titanStagger === true;
+    delete combatState.titanStagger;
   }
   const armorReduction = rawEnemyDamage > 0
     ? Math.min(getArmorReduction(progress), Math.max(0, rawEnemyDamage - 1))
@@ -4043,6 +4132,11 @@ async function resolveEnemyCombatResponse(
     0,
     combatState.playerHp - enemyDamage,
   );
+  if (titanProtectionAfterAttack) {
+    const effects = combatState.berryEffects ||= {};
+    effects.protection = (effects.protection || 0) + 5;
+    messageParts.push("Titan Vanguard gains 5 Protection.");
+  }
 
   messageParts.push(
     formatCombatRollMessage(
@@ -6590,6 +6684,8 @@ async function resolveCombatVictory(
 
   if (endingRegion.id !== startingRegion.id) {
     messageParts.push(`Region Unlocked: ${endingRegion.name}`);
+    const advancement = classAdvancement(xpProgression.progress);
+    if (advancement) messageParts.push(advancement);
   }
 
   if (unlockResult?.unlockedEncounter) {
@@ -6888,6 +6984,8 @@ async function performExploreUnlocked(
     messageLines.push(
       `Region Unlocked: ${endingUnlockedRegion.name}`,
     );
+    const advancement = classAdvancement(xpProgression.progress);
+    if (advancement) messageLines.push(advancement);
   }
 
   if (foundBerry) {
@@ -7055,10 +7153,12 @@ async function performShop(
     message: platform === "discord"
       ? `${introduction.scene}\n\n${introduction.quote}\n\n` +
         `Items for Sale\n\n${discordItemLines.join("\n\n")}\n\n` +
+        (progress.classSystemUnlocked ? "Shop Service\n\nClass Change\nChange your specialization to another owned weapon's class.\n50,000 Star Candies\n\n" : "") +
         `Your Star Candies: ${currentTotal.toLocaleString("en-US")}\n\n` +
         "Use /buy to purchase an item. Berry quantity: 1–99. Use /equip to swap owned weapons."
       : `${introduction.scene} ${introduction.quote} | ` +
         `${twitchItemLines.join(" | ")} | ` +
+        (progress.classSystemUnlocked ? "Class Change — 50,000 Star Candies (Discord /buy) | " : "") +
         `Balance: ${currentTotal.toLocaleString("en-US")} | ` +
         "Buy: !buy berry [quantity]",
   };
@@ -7082,6 +7182,7 @@ async function performBuy(
   quantityInput,
   sharedIdentity,
   platform = "twitch",
+  classInput = null,
 ) {
   return withPlayerMutationLock(
     backpackKey,
@@ -7092,6 +7193,7 @@ async function performBuy(
       quantityInput,
       sharedIdentity,
       platform,
+      classInput,
     ),
   );
 }
@@ -7103,6 +7205,7 @@ async function performBuyUnlocked(
   quantityInput,
   sharedIdentity,
   platform,
+  classInput,
 ) {
   const shopCommand = platform === "discord" ? "/shop" : "!shop";
 
@@ -7150,6 +7253,13 @@ async function performBuyUnlocked(
 
   const item = SHOP_ITEMS[itemId];
 
+  if (itemId === "class-change") {
+    if (quantityInput !== null && quantityInput !== undefined && quantityInput !== "") {
+      return { message: "Class Change is a single service. Leave quantity empty." };
+    }
+    return performClassChangeUnlocked(env, backpackKey, classInput);
+  }
+
   if (!item) {
     return {
       message:
@@ -7184,11 +7294,12 @@ async function performBuyUnlocked(
     }
     const newTotal = currentTotal - item.price;
     const equippedWeapon = progress.equippedWeapon || item.id;
+    const firstClass = !progress.activeClass && progress.ownedWeapons.length === 0;
+    const updatedProgress = { ...progress, ownedWeapons: [...progress.ownedWeapons, item.id], equippedWeapon,
+      classSystemUnlocked: true, activeClass: firstClass ? item.id : progress.activeClass };
     await saveBackpackTotal(env, backpackKey, newTotal);
     try {
-      await savePlayerProgress(env, backpackKey, {
-        ...progress, ownedWeapons: [...progress.ownedWeapons, item.id], equippedWeapon,
-      });
+      await savePlayerProgress(env, backpackKey, updatedProgress);
     } catch (error) {
       try { await saveBackpackTotal(env, backpackKey, currentTotal); }
       catch (rollbackError) { console.error("Weapon purchase rollback failed:", rollbackError); }
@@ -7197,7 +7308,8 @@ async function performBuyUnlocked(
     return { itemId: item.id, totalPrice: item.price, total: newTotal,
       message: `${item.reaction}\n\nPurchased ${item.displayName} for 20,000 Star Candies. ` +
         `You now own it.${equippedWeapon === item.id ? " Equipped automatically." : " Use /equip to wield it."} ` +
-        `Star Candies remaining: ${newTotal.toLocaleString("en-US")}.` };
+        `Star Candies remaining: ${newTotal.toLocaleString("en-US")}.` +
+        (firstClass ? `\n\nClass Unlocked — ${classTitle(updatedProgress)}\nYour ${CLASS_DATA[item.id].name} specialization has begun.\n${classBonusDescription(item.id, classTier(updatedProgress))}\n\nNew Shop Service Unlocked — Class Change\nYou may change your specialization for 50,000 Star Candies.` : "") };
   }
 
   const totalPrice = item.price * quantity;
@@ -7290,6 +7402,40 @@ async function performBuyUnlocked(
         `${item.inventoryLabel}: ` +
         `${newItemTotal.toLocaleString("en-US")}`,
   };
+}
+
+async function performClassChangeUnlocked(env, backpackKey, classInput) {
+  if (await getCombatState(env, backpackKey)) {
+    return { message: "Finish the current fight before changing classes." };
+  }
+  const progress = await getPlayerProgress(env, backpackKey);
+  if (!progress.classSystemUnlocked) return { message: "Purchase a weapon to unlock Class Change." };
+  const target = WEAPON_IDS.find(id => id === String(classInput || "").trim().toLowerCase() ||
+    CLASS_DATA[id].name.toLowerCase() === String(classInput || "").trim().toLowerCase());
+  if (!target) return { message: "Choose a class you have unlocked using the class option." };
+  if (!progress.ownedWeapons.includes(target)) return { message: `You do not own the ${SHOP_ITEMS[target].displayName} needed for ${CLASS_DATA[target].name}.` };
+  if (!progress.activeClass) {
+    const initialized = { ...progress, activeClass: target, equippedWeapon: target, classSystemUnlocked: true };
+    await savePlayerProgress(env, backpackKey, initialized);
+    return { totalPrice: 0, message: `Class Unlocked — ${classTitle(initialized)}\nYour ${CLASS_DATA[target].name} specialization has begun.\n${SHOP_ITEMS[target].displayName} equipped.\n${classBonusDescription(target, classTier(initialized))}` };
+  }
+  if (progress.activeClass === target) return { message: `You are already a ${CLASS_DATA[target].name}. No Star Candies were spent.` };
+  const currentTotal = await getBackpackTotal(env, backpackKey);
+  if (currentTotal < CLASS_CHANGE_PRICE) {
+    const shortfall = CLASS_CHANGE_PRICE - currentTotal;
+    return { message: `${randomChoice(SHOP_INSUFFICIENT_MESSAGES.slice(0, 3))(shortfall.toLocaleString("en-US"))} Price: 50,000 Star Candies. Your Star Candies: ${currentTotal.toLocaleString("en-US")}.` };
+  }
+  const newTotal = currentTotal - CLASS_CHANGE_PRICE;
+  const updatedProgress = { ...progress, activeClass: target, equippedWeapon: target };
+  await saveBackpackTotal(env, backpackKey, newTotal);
+  try { await savePlayerProgress(env, backpackKey, updatedProgress); }
+  catch (error) {
+    try { await saveBackpackTotal(env, backpackKey, currentTotal); }
+    catch (rollbackError) { console.error("Class Change rollback failed:", rollbackError); }
+    throw error;
+  }
+  return { totalPrice: CLASS_CHANGE_PRICE, total: newTotal,
+    message: `"The hooded merchant nods as though she expected this."\n\nClass Changed — ${classTitle(updatedProgress)}\nYou've changed your specialization to ${CLASS_DATA[target].name}.\n${SHOP_ITEMS[target].displayName} equipped.\nYour specialization is synchronized to ${getRegionForLevel(levelFromXp(progress.xp)).name}.\n${classBonusDescription(target, classTier(updatedProgress))}` };
 }
 
 async function performEquip(env, backpackKey, weaponInput) {
@@ -9162,7 +9308,9 @@ function isValidCombatState(combatState) {
     ) &&
     (combatState.berryEffects === undefined ||
       isValidBerryEffects(combatState.berryEffects)) &&
-    (combatState.stagger === undefined || [5, 10].includes(combatState.stagger)) &&
+    (combatState.stagger === undefined || [5, 6, 7, 10, 11, 12].includes(combatState.stagger)) &&
+    (combatState.warbringerFury === undefined || combatState.warbringerFury === true) &&
+    (combatState.titanStagger === undefined || typeof combatState.titanStagger === "boolean") &&
     (combatState.astralAwakeningSurvived === undefined ||
       (Number.isSafeInteger(combatState.astralAwakeningSurvived) &&
         combatState.astralAwakeningSurvived >= 1 &&
@@ -11855,6 +12003,8 @@ function createEmptyProgress() {
     notes: {},
     ownedWeapons: [],
     equippedWeapon: null,
+    classSystemUnlocked: false,
+    activeClass: null,
     combatProgress: {},
     completedAdventures: {},
     currentRegion: "moonlit-reef",
@@ -12082,6 +12232,13 @@ async function getPlayerProgress(
       ownedWeapons: normalizeOwnedWeapons(parsed.ownedWeapons),
       equippedWeapon: normalizeOwnedWeapons(parsed.ownedWeapons).includes(parsed.equippedWeapon)
         ? parsed.equippedWeapon : null,
+      classSystemUnlocked: Boolean(parsed.classSystemUnlocked || normalizeOwnedWeapons(parsed.ownedWeapons).length),
+      activeClass: normalizeOwnedWeapons(parsed.ownedWeapons).includes(parsed.activeClass)
+        ? parsed.activeClass
+        : normalizeOwnedWeapons(parsed.ownedWeapons).includes(parsed.equippedWeapon)
+          ? parsed.equippedWeapon
+          : normalizeOwnedWeapons(parsed.ownedWeapons).length === 1
+            ? normalizeOwnedWeapons(parsed.ownedWeapons)[0] : null,
       combatProgress,
       completedAdventures,
       currentRegion,
@@ -12282,6 +12439,9 @@ async function savePlayerProgress(
     ownedWeapons: normalizeOwnedWeapons(progress.ownedWeapons),
     equippedWeapon: normalizeOwnedWeapons(progress.ownedWeapons).includes(progress.equippedWeapon)
       ? progress.equippedWeapon : null,
+    classSystemUnlocked: Boolean(progress.classSystemUnlocked || normalizeOwnedWeapons(progress.ownedWeapons).length),
+    activeClass: normalizeOwnedWeapons(progress.ownedWeapons).includes(progress.activeClass)
+      ? progress.activeClass : null,
     combatProgress: safeCombatProgress,
     completedAdventures: safeCompletedAdventures,
     currentRegion:

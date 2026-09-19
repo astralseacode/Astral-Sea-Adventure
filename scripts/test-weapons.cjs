@@ -113,7 +113,7 @@ async function main() {
   assert.equal((await poor.progress()).equippedWeapon, null);
 
   const spear = await fixture(30);
-  await spear.editProgress(p => { p.ownedWeapons = ['spear']; p.equippedWeapon = 'spear'; p.stats.strength = 9; });
+  await spear.editProgress(p => { p.ownedWeapons = ['spear','bow']; p.equippedWeapon = 'spear'; p.activeClass = 'bow'; p.stats.strength = 9; });
   await spear.editState(s => { s.regionId = 'sunken-kings-throne'; s.enemy.protection = 20; });
   spear.rolls.push(18,1);
   const pierced = await spear.c.performAttack(spear.env, spear.key, 'discord');
@@ -128,14 +128,14 @@ async function main() {
   assert.equal((await unarmed.progress()).equippedWeapon, null);
 
   const twitch = await fixture(50);
-  await twitch.editProgress(p => { p.ownedWeapons = ['bow']; p.equippedWeapon = 'bow'; });
+  await twitch.editProgress(p => { p.ownedWeapons = ['bow','axe']; p.equippedWeapon = 'bow'; p.activeClass = 'axe'; });
   twitch.rolls.push(11,18,1);
   const twitchAttack = await twitch.c.performAttack(twitch.env, twitch.key, 'twitch');
   assert(twitchAttack.message.includes('Rolls: 11 / 18'));
   assert.equal((await twitch.state()).enemy.hp, 970);
 
   const hammer = await fixture(20);
-  await hammer.editProgress(p => { p.ownedWeapons = ['hammer']; p.equippedWeapon = 'hammer'; });
+  await hammer.editProgress(p => { p.ownedWeapons = ['hammer','bow']; p.equippedWeapon = 'hammer'; p.activeClass = 'bow'; });
   hammer.rolls.push(20,1);
   const miss = await hammer.c.performAttack(hammer.env, hammer.key, 'discord');
   assert(miss.message.includes('Stagger: next successful enemy attack -10 damage'));
@@ -146,7 +146,7 @@ async function main() {
   assert.equal((await hammer.state()).stagger, undefined);
 
   const shield = await fixture(20);
-  await shield.editProgress(p => { p.ownedWeapons = ['sword-and-shield']; p.equippedWeapon = 'sword-and-shield'; });
+  await shield.editProgress(p => { p.ownedWeapons = ['sword-and-shield','bow']; p.equippedWeapon = 'sword-and-shield'; p.activeClass = 'bow'; });
   shield.rolls.push(17,1);
   await shield.c.performAttack(shield.env, shield.key, 'discord');
   assert.equal((await shield.state()).berryEffects.protection, 10);
@@ -156,7 +156,7 @@ async function main() {
   assert.equal((await shield.state()).playerHp, 100);
 
   const nexus = await fixture(50);
-  await nexus.editProgress(p => { p.ownedWeapons = ['daggers']; p.equippedWeapon = 'daggers'; });
+  await nexus.editProgress(p => { p.ownedWeapons = ['daggers','bow']; p.equippedWeapon = 'daggers'; p.activeClass = 'bow'; });
   await nexus.editState(s => { s.regionId = 'astral-nexus';
     const regional = nexus.c.getRegionalEnemyState(s);
     regional.lastSpell = 'moonbeam'; regional.actions = 2; regional.streak = 1; });
@@ -171,7 +171,7 @@ async function main() {
   assert.equal(regional.adaptation, 5);
 
   const familiarDaggers = await fixture(30);
-  await familiarDaggers.editProgress(p => { p.ownedWeapons = ['daggers']; p.equippedWeapon = 'daggers'; });
+  await familiarDaggers.editProgress(p => { p.ownedWeapons = ['daggers','bow']; p.equippedWeapon = 'daggers'; p.activeClass = 'bow'; });
   familiarDaggers.rolls.push(1,1,0);
   await familiarDaggers.cast('familiar');
   familiarDaggers.rolls.push(14,19,1);
