@@ -326,7 +326,17 @@ async function main() {
       const before = [...f.values];
       assert.match(await invoke('stim', true), /without any arguments/);
       assert.deepEqual([...f.values], before);
-      assert.match(await invoke('help'), /Level 1 — Stim/);
+      if (platform === 'discord') {
+        const helpRequest = new Request('https://offline.invalid/discord/interactions', {
+          method: 'POST', headers: { 'X-Signature-Ed25519': 'mock', 'X-Signature-Timestamp': 'mock' },
+          body: JSON.stringify({ type: 2, user: { id: '123456789', username: 'stimtest' }, data: { name: 'help' } }),
+        });
+        const help = await (await f.c.handleDiscordInteractionCore(helpRequest,
+          { ...f.env, DISCORD_PUBLIC_KEY: 'mock' })).json();
+        assert.match(help.data.content, /\/stim — Fully restore your HP once per battle/);
+      } else {
+        assert.equal(await invoke('help'), 'Unknown command.');
+      }
       assert.match(await invoke('stim'), /HP fully restored: 100\/100/);
       assert.equal((await f.c.getCombatState(f.env, key)).stimUses, 1);
       const commands = plain(vm.runInContext('DISCORD_COMMANDS', f.c));
