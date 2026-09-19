@@ -946,85 +946,85 @@ const DISCORD_COMMANDS = [
   },
 ];
 
-const DISCORD_HELP_TEXT = `Astral Sea Adventure — Help
+const DISCORD_HELP_TEXT = `Astral Sea Adventure: Help
 
 Every command currently available to you is listed below.
 
 Adventure
 
-/adventure — List, start, or resume an Adventure in your current travel region.
-/left — Choose the left path.
-/right — Choose the right path.
-/forward — Continue forward.
-/yes — Accept a pending challenge.
-/no — Decline a pending challenge.
+/adventure: List, start, or resume an Adventure in your current travel region.
+/left: Choose the left path.
+/right: Choose the right path.
+/forward: Continue forward.
+/yes: Accept a pending challenge.
+/no: Decline a pending challenge.
 
 Combat & Spells
 
-/attack — Attack the current enemy. Uses your equipped weapon or your basic attack if no weapon is equipped.
-/stim — Fully restore your HP once per battle. Using Stim consumes your combat turn.
-/cast — Cast one of your unlocked spells. Mana cost and turn behavior depend on the spell.
+/attack: Attack the current enemy. Uses your equipped weapon or your basic attack if no weapon is equipped.
+/stim: Fully restore your HP once per battle. Using Stim consumes your combat turn.
+/cast: Cast one of your unlocked spells. Mana cost and turn behavior depend on the spell.
 
 Items & Recovery
 
-/eat — Eat one Berry to restore up to 25 HP and 25 Mana. Berries do not consume your combat turn, and you can eat up to 4 during one Adventure.
-/rest — Take a Short or Long Rest outside combat to recover resources. Short Rest has a 20-minute cooldown. Long Rest has a 60-minute cooldown and requires no active Adventure.
+/eat: Eat one Berry to restore up to 25 HP and 25 Mana. Berries do not consume your combat turn, and you can eat up to 4 during one Adventure.
+/rest: Take a Short or Long Rest outside combat to recover resources. Short Rest has a 20 minute cooldown. Long Rest has a 60 minute cooldown and requires no active Adventure.
 
 Exploration & Travel
 
-/explore — Explore your current saved region for XP, Star Candies, Berries, Travel Notes, and other discoveries.
-/travel — Travel to a new region used for future exploration and Adventure selection. The destination must already be unlocked.
+/explore: Explore your current saved region for XP, Star Candies, Berries, Travel Notes, and other discoveries.
+/travel: Travel to a new region used for future exploration and Adventure selection. The destination must already be unlocked.
 
 Region unlocks:
-Moonlit Reef — Starting region
-Starfall Trench — Level 5
-Whispering Kelp Forest — Level 10
-Leviathan's Wake — Level 20
-Sunken King's Throne — Level 30
-Astral Nexus — Level 40
+Moonlit Reef: Starting region
+Starfall Trench: Level 5
+Whispering Kelp Forest: Level 10
+Leviathan's Wake: Level 20
+Sunken King's Throne: Level 30
+Astral Nexus: Level 40
 
 Rewards
 
-/daily — Claim your daily Star Candy reward.
-/gamble — Gamble Star Candies in a 50/50 roulette.
+/daily: Claim your daily Star Candy reward.
+/gamble: Gamble Star Candies in a 50/50 roulette.
 
 Player Info
 
-/backpack — View your Star Candies and backpack resources.
-/stats — View your stats, resources, available Stat Points, and active effects.
+/backpack: View your Star Candies and backpack resources.
+/stats: View your stats, resources, available Stat Points, and active effects.
 
 Stat Progression
 
-/vitality — Spend 1 Stat Point to gain +10 permanent maximum HP.
-/focus — Spend 1 Stat Point to gain +10 permanent maximum Mana.
-/strength — Spend 1 Stat Point to gain +1 player damage.
-/luck — Spend 1 Stat Point to improve reward and Berry-drop bonuses.
-/armor — Spend 1 Stat Point to reduce incoming damage.
-/fae — Spend 1 Stat Point to improve offensive spell rolls.
+/vitality: Spend 1 Stat Point to gain +10 permanent maximum HP.
+/focus: Spend 1 Stat Point to gain +10 permanent maximum Mana.
+/strength: Spend 1 Stat Point to gain +1 player damage.
+/luck: Spend 1 Stat Point to improve reward and Berry drop bonuses.
+/armor: Spend 1 Stat Point to reduce incoming damage.
+/fae: Spend 1 Stat Point to improve offensive spell rolls.
 
 Shop & Weapons
 
-/shop — Visit the merchant, view items and weapons, see ownership and equipment status, and access unlocked shop services. Opening the shop starts a 10-minute shop session.
-/buy — Buy Berries, weapons, and secrets.
-/equip — Equip a permanent weapon you own. Equipping is free and cannot be done during combat.
+/shop: Visit the merchant, view items and weapons, see ownership and equipment status, and access unlocked shop services. Opening the shop starts a 10 minute shop session.
+/buy: Buy Berries, weapons, and secrets.
+/equip: Equip a permanent weapon you own. Equipping is free and cannot be done during combat.
 
 Some shop services are unlocked as you progress.
 
 Region Completion
 
-/moonlit — View your Moonlit Reef Adventure and Travel Note completion.
-/starfall — View your Starfall Trench completion.
-/whispering — View your Whispering Kelp Forest completion.
-/leviathan — View your Leviathan's Wake completion.
-/sunken — View your Sunken King's Throne completion.
-/astral — View your Astral Nexus completion.
+/moonlit: View your Moonlit Reef Adventure and Travel Note completion.
+/starfall: View your Starfall Trench completion.
+/whispering: View your Whispering Kelp Forest completion.
+/leviathan: View your Leviathan's Wake completion.
+/sunken: View your Sunken King's Throne completion.
+/astral: View your Astral Nexus completion.
 
 Journal & Travel Notes
 
-/journal — View your collected Travel Note totals across all regions.
-/notes — View collected and missing Travel Note numbers for a selected unlocked region.
-/note — Read one specific Travel Note you have already discovered.
-/read — Read all Travel Notes in your current region at once. Undiscovered pages tell you to keep exploring.
+/journal: View your collected Travel Note totals across all regions.
+/notes: View collected and missing Travel Note numbers for a selected unlocked region.
+/note: Read one specific Travel Note you have already discovered.
+/read: Read all Travel Notes in your current region at once. Undiscovered pages tell you to keep exploring.
 
 New here? Start with /explore.`;
 

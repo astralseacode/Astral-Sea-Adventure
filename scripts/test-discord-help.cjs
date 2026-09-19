@@ -25,27 +25,30 @@ async function main() {
   assert.equal(commands.find(command=>command.name==='help').options,undefined);
   const source=vm.runInContext('DISCORD_HELP_TEXT',f.c);
   assert(source.length>1900);
-  assert(source.startsWith('Astral Sea Adventure — Help\n\nEvery command currently available to you is listed below.'));
+  assert(source.startsWith('Astral Sea Adventure: Help\n\nEvery command currently available to you is listed below.'));
   assert(source.endsWith('New here? Start with /explore.'));
+  assert(!source.includes('—'));
+  assert(!source.includes('-'));
   for(const {name} of audit.commands) {
-    const lines=source.split('\n').filter(line=>line.startsWith(`/${name} — `));
+    const lines=source.split('\n').filter(line=>line.startsWith(`/${name}: `));
     assert.equal(lines.length,1,`/${name}`);
   }
   for(const heading of ['Adventure','Combat & Spells','Items & Recovery','Exploration & Travel','Rewards','Player Info','Stat Progression','Shop & Weapons','Region Completion','Journal & Travel Notes']) {
     assert(source.includes(`\n\n${heading}\n\n`),heading);
   }
   for(const exact of [
-    '/buy — Buy Berries, weapons, and secrets.',
-    '/read — Read all Travel Notes in your current region at once. Undiscovered pages tell you to keep exploring.',
-    '/stim — Fully restore your HP once per battle. Using Stim consumes your combat turn.',
-    '/equip — Equip a permanent weapon you own. Equipping is free and cannot be done during combat.',
-    'Moonlit Reef — Starting region','Starfall Trench — Level 5','Whispering Kelp Forest — Level 10',
-    "Leviathan's Wake — Level 20","Sunken King's Throne — Level 30",'Astral Nexus — Level 40',
+    '/buy: Buy Berries, weapons, and secrets.',
+    '/read: Read all Travel Notes in your current region at once. Undiscovered pages tell you to keep exploring.',
+    '/stim: Fully restore your HP once per battle. Using Stim consumes your combat turn.',
+    '/equip: Equip a permanent weapon you own. Equipping is free and cannot be done during combat.',
+    'Moonlit Reef: Starting region','Starfall Trench: Level 5','Whispering Kelp Forest: Level 10',
+    "Leviathan's Wake: Level 20","Sunken King's Throne: Level 30",'Astral Nexus: Level 40',
+    '20 minute cooldown','60 minute cooldown','10 minute shop session',
   ]) assert(source.includes(exact),exact);
-  for(const forbidden of ['/devlevel','/discord/register','/discord/schema','/health','/class ','/classchange','/weapons','Astral Nexus — Level 50']) {
+  for(const forbidden of ['/devlevel','/discord/register','/discord/schema','/health','/class ','/classchange','/weapons','Astral Nexus: Level 50']) {
     assert(!source.includes(forbidden),forbidden);
   }
-  assert(!source.includes('/help — Cast'));
+  assert(!source.includes('/help: Cast'));
   const chunks=plain(f.c.splitDiscordContent(source));
   assert(chunks.length>1);
   assert(chunks.every(chunk=>chunk.length<=1900));

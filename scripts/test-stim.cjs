@@ -333,7 +333,7 @@ async function main() {
         });
         const help = await (await f.c.handleDiscordInteractionCore(helpRequest,
           { ...f.env, DISCORD_PUBLIC_KEY: 'mock' })).json();
-        assert.match(help.data.content, /\/stim — Fully restore your HP once per battle/);
+        assert.match(help.data.content, /\/stim: Fully restore your HP once per battle/);
       } else {
         assert.equal(await invoke('help'), 'Unknown command.');
       }
