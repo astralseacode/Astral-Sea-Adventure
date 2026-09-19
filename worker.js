@@ -3053,25 +3053,25 @@ function resolveWeaponAttack(id, rolls, strength, enemyProtection, platform, cla
   const specialization = classTierIndex === null ? null : CLASS_DATA[id];
   if (baseTotal > 0 && specialization) {
     classDamage = specialization.damage[classTierIndex];
-    classParts.push(`+${classDamage} ${specialization.name}`);
+    classParts.push(`+${classDamage} ${specialization.titles[classTierIndex]}`);
     if (id === "daggers" && hits.every(hit => hit > 0) && classTierIndex >= 2) {
       const bonus = classTierIndex >= 4 ? 4 : 2;
       classDamage += bonus; classParts.push(`+${bonus} Both Blades`);
       if (classTierIndex === 5 && rolls.every(roll => roll >= 15)) {
-        classDamage += 6; classParts.push("+6 Nexus Phantom");
+        classDamage += 6; classParts.push("+6 High Pair");
       }
     }
     if (id === "axe") {
       const bonus = natural === 20 && classTierIndex >= 3 ? classTierIndex === 5 ? 15 : 8 : 0;
-      if (bonus) { classDamage += bonus; classParts.push(`+${bonus} ${specialization.titles[classTierIndex]}`); }
-      if (fury && classTierIndex >= 4) { classDamage += 5; classParts.push("+5 Warbringer Fury"); }
+      if (bonus) { classDamage += bonus; classParts.push(`+${bonus} Natural 20`); }
+      if (fury && classTierIndex >= 4) { classDamage += 5; classParts.push("+5 Fury"); }
     }
     if (id === "spear" && classTierIndex === 5 && enemyProtection > 0) {
-      classDamage += 5; classParts.push("+5 Horizon Dragoon");
+      classDamage += 5; classParts.push("+5 Protection Bonus");
     }
     if (id === "bow" && classTierIndex >= 3 && rolls.every(roll => roll >= 15)) {
       const bonus = classTierIndex === 5 ? rolls.every(roll => roll === 20) ? 15 : 8 : 4;
-      classDamage += bonus; classParts.push(`+${bonus} ${specialization.titles[classTierIndex]}`);
+      classDamage += bonus; classParts.push(`+${bonus} ${rolls.every(roll => roll === 20) && classTierIndex === 5 ? "Double 20" : "High Pair"}`);
     }
     if (id === "sword-and-shield") protection += specialization.protection[classTierIndex];
     if (id === "hammer") stagger = natural === 20 ? specialization.stagger[classTierIndex][1]
@@ -3184,7 +3184,7 @@ async function performAttackUnlocked(
     combatState.playerHp += paladinHeal;
   }
   const actionMessage = weaponAttack
-    ? weaponAttack.message + (paladinHeal ? `\nNexus Paladin — Restored ${paladinHeal} HP` : "")
+    ? weaponAttack.message + (paladinHeal ? `\nRestored ${paladinHeal} HP` : "")
     : formatPlayerAttackResolution(playerRoll, playerAttack, triggeredRoll, platform);
   let updatedProgress = {
     ...progress,

@@ -28,7 +28,8 @@ async function main() {
       const normal = f.c.resolveWeaponAttack(id, rolls, 9, 20, 'discord');
       const specialized = f.c.resolveWeaponAttack(id, rolls, 9, 20, 'discord', tier);
       assert(specialized.damage > normal.damage, `${id} tier ${tier}`);
-      assert(specialized.message.includes(classData[id].name));
+      assert(specialized.message.includes(`+${classData[id].damage[tier]} ${titles[index][tier]}`));
+      assert.equal(specialized.message.split(titles[index][tier]).length-1,1);
       if (id === 'sword-and-shield') assert.equal(specialized.protection - normal.protection, [2,3,3,4,4,5][tier]);
       if (id === 'spear') assert.equal(specialized.pierceProtection, [10,10,12,12,15,15][tier]);
       if (id === 'hammer') assert.equal(specialized.stagger, [10,10,11,11,12,12][tier]);
@@ -94,7 +95,7 @@ async function main() {
   await fury.attack();
   assert.equal((await fury.state()).warbringerFury,true);
   fury.rolls.push(6,1);
-  assert((await fury.attack()).message.includes('+5 Warbringer Fury'));
+  assert((await fury.attack()).message.includes('+5 Fury'));
   assert.equal((await fury.state()).warbringerFury,undefined);
   const paladin = await fixture(50);
   await paladin.editProgress(p => { p.ownedWeapons=['sword-and-shield']; p.equippedWeapon='sword-and-shield'; p.activeClass='sword-and-shield'; });
