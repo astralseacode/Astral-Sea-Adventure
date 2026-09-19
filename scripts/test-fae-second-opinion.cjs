@@ -12,6 +12,32 @@ async function main() {
   const perk = await f.c.getPerkDefinition('fae-second-opinion');
   assert((await f.c.getActivePerks(29)).some(p => p.id === perk.id));
   assert.equal(perk.flavor.length, 15);
+  assert.equal(perk.effect.trigger, 'qualifying-offensive-miss');
+  assert.match(perk.description, /qualifying offensive miss/);
+  assert.doesNotMatch([perk.description, perk.activationLine, ...perk.flavor].join(' '),
+    /rolled a 1|natural 1|one on the die/i);
+  assert.match(perk.activationLine, /You missed\. Sad\./);
+
+  for (const [weapon, rolls, misses] of [
+    [null, [1], true], [null, [2], false],
+    ['axe', [1], true], ['axe', [2], true], ['axe', [5], true], ['axe', [6], false],
+    ['hammer', [2], true], ['hammer', [3], true], ['hammer', [4], false],
+    ['bow', [1, 1], true], ['bow', [1, 2], false],
+    ['daggers', [1, 1], true], ['daggers', [1, 2], false],
+    ['spear', [1], true], ['sword-and-shield', [1], true],
+  ]) {
+    const scene = await fixture(29);
+    if (weapon) await scene.editProgress(p => {
+      p.ownedWeapons = [weapon]; p.equippedWeapon = weapon;
+    });
+    scene.rolls.push(...rolls, ...(misses ? [0] : []), 1);
+    const result = await scene.attack();
+    assert.equal(result.message.includes(perk.activationLine), misses,
+      `${weapon || 'default'} ${rolls.join('/')}`);
+    assert.equal((await scene.state()).perkUses?.['fae-second-opinion'],
+      misses ? 1 : undefined);
+    if (misses) assert.equal(result.message.split(perk.activationLine).length - 1, 1);
+  }
   f.rolls.push(1, 0, 1); // Failed Attack, first scene, enemy miss.
   const failed = await f.attack();
   assert.match(failed.message, /Critical Miss/);

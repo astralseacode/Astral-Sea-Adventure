@@ -15,7 +15,8 @@ async function main() {
   assert.equal(canonical.length,52);
   // Digest of the 52 verbatim approved paragraphs, joined by LF; not computed from implementation.
   assert.equal(crypto.createHash('sha256').update(canonical.join('\n')).digest('hex'),
-    '4febd4cb030cc10729f414f5b3632726a6683a1e9f3f4ee7e49ceab5d5fccf6e');
+    '540da3723a6c85fd5e985fec3fce32a4c7b2d25186c359f01c86f22db341a0c1');
+  assert(canonical.includes('lvl 29 Passive 🌿 Fae Second Opinion: Missing with a qualifying offensive roll causes Fae Second Opinion to activate, granting +3 to your next offensive roll. Activates once per battle.'));
   for(const f of [root,artifact]) {
     for(let level=1;level<=50;level++) {
       const expected=canonical.filter(line=>line.startsWith(`lvl ${level} `));

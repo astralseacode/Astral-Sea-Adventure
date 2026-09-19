@@ -3,13 +3,13 @@
     "name":  "Fae Second Opinion",
     "requiredLevel":  29,
     "type":  "passive",
-    "description":  "Once per battle, a natural 1 on a qualifying forced-failure offensive roll grants +3 to the next offensive roll.",
+    "description":  "Once per battle, a qualifying offensive miss grants +3 to the next offensive roll.",
     "effect":  {
-                   "trigger":  "natural-one-forced-offensive-failure",
+                   "trigger":  "qualifying-offensive-miss",
                    "offensiveRollModifier":  3,
                    "usesPerBattle":  1
                },
-    "activationLine":  "Fae Second Opinion Activates! You rolled a 1. Sad.",
+    "activationLine":  "Fae Second Opinion Activates! You missed. Sad.",
     "flavor":  [
                    "The supervising leaf has reviewed your roll.\n\nIt remains completely silent.\n\nSomehow, this feels worse.",
                    "The suspicious mustached shopkeeper who\u0027s definitely not Shizuki appears from absolutely nowhere.\n\nShe looks at your roll.\n\nShe looks at you.\n\nShe slowly adjusts the mustache.\n\nDisappointing.",

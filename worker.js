@@ -3854,7 +3854,7 @@ async function resolvePlayerCombatAction(
   }
   let faeSecondOpinionMessage = "";
   const faeSecondOpinion = activePerks.find(
-    (perk) => perk.effect.trigger === "natural-one-forced-offensive-failure",
+    (perk) => perk.effect.trigger === "qualifying-offensive-miss",
   );
   if (faeSecondOpinion && action.faeSecondOpinionFailure &&
       !combatState.perkUses?.[faeSecondOpinion.id]) {
@@ -5546,7 +5546,7 @@ async function performCastUnlocked(
         familiarQualifies: true,
         armAstralBond: Boolean(risingPower?.reachedMaximum),
         faeSecondOpinionFailure: (spell.id === "falling-star" &&
-          spellRoll.accuracyRoll === 1) || (isAllOrNothing && spellRoll.total === 1),
+          resolvedSpellRoll.outcome === "miss") || (isAllOrNothing && spellRoll.total === 1),
       },
       platform,
     );
@@ -11414,9 +11414,9 @@ function validatePerkDefinition(perk, expectedId) {
     hasSingleActivationLine && !hasActivationLines;
   const validFaeSecondOpinion = expectedId === "fae-second-opinion" &&
     perk.requiredLevel === 29 &&
-    effect?.trigger === "natural-one-forced-offensive-failure" &&
+    effect?.trigger === "qualifying-offensive-miss" &&
     effect.offensiveRollModifier === 3 && effect.usesPerBattle === 1 &&
-    perk.activationLine === "Fae Second Opinion Activates! You rolled a 1. Sad." &&
+    perk.activationLine === "Fae Second Opinion Activates! You missed. Sad." &&
     perk.endingLine === "Next offensive roll +3" &&
     Array.isArray(perk.flavor) && perk.flavor.length === 15 &&
     perk.flavor.every((scene) => typeof scene === "string" && scene.trim());
@@ -11582,7 +11582,7 @@ const CANONICAL_LEVEL_UNLOCKS = Object.freeze([
   "lvl 26 Mastery ⭐ Star Spark Mastery II: When the second Charge empowerment is consumed, the remaining Charge detonates for 20 damage.",
   "lvl 27 Mastery 🌙 Moonbeam Mastery I: Moonbeam's bonus Moonlight damage now rolls 2d6 instead of 1d6. If the Moonlight dice match or their combined roll equals 7, Lunar Alignment deals +5 damage, or +20 damage if Moonbeam critically hits.",
   "lvl 28 Passive ✨ Harmony: When a successful offensive roll receives bonuses from 3 or more different sources, restore 15 Mana. Activates once per battle.",
-  "lvl 29 Passive 🌿 Fae Second Opinion: Rolling a natural 1 on a qualifying offensive roll causes Fae Second Opinion to activate, granting +3 to your next offensive roll. Activates once per battle.",
+  "lvl 29 Passive 🌿 Fae Second Opinion: Missing with a qualifying offensive roll causes Fae Second Opinion to activate, granting +3 to your next offensive roll. Activates once per battle.",
   "lvl 30 Spell 🌌 Familiar: Cast Familiar for 30 Mana without ending your turn. Roll 2d6 and add them together to create 1 of 11 different Familiars. Your Familiar assists you during your next 5 attacks or damaging spell casts before leaving to begin an adventure of its own.",
   "lvl 31 Passive 🌌 Kinship: When your Familiar leaves after completing all 5 of its actions, restore 15 Mana.",
   "lvl 32 Passive ✨ Rhythm: Successfully use two different damaging spells in a row to apply Rhythm, dealing +5 damage on the second spell. Activates once per battle.",
