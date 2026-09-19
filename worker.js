@@ -61,7 +61,17 @@ const SHOP_ITEMS = {
     inventoryLabel: "Berries",
     purchaseQuantity: 1,
   },
+  "sword-and-shield": { id: "sword-and-shield", displayName: "Sword and Shield", description: "Balanced attacks that also grant Protection.", price: 20000, currency: "Star Candies", permanent: true, reaction: '"Excellent choice. Very responsible. Disturbingly responsible, actually."', equipFlavor: "A little safer. Probably." },
+  daggers: { id: "daggers", displayName: "Daggers", description: "Two quick strikes with every attack.", price: 20000, currency: "Star Candies", permanent: true, reaction: '"Two blades! Twice the pointy. That\'s how it works."', equipFlavor: "Two blades means twice as many chances to make a bad decision." },
+  axe: { id: "axe", displayName: "Axe", description: "Wildly inaccurate. Wildly painful when it connects.", price: 20000, currency: "Star Candies", permanent: true, reaction: '"I\'m legally required to tell you not to swing this near the shop."', equipFlavor: "Subtlety has officially left the adventure." },
+  spear: { id: "spear", displayName: "Spear", description: "Precise attacks that pierce enemy Protection.", price: 20000, currency: "Star Candies", permanent: true, reaction: '"Long, pointy, and conveniently keeps problems far away."', equipFlavor: "Problems are much nicer when they stay at spear length." },
+  hammer: { id: "hammer", displayName: "Hammer", description: "Heavy blows that stagger the enemy's next attack.", price: 20000, currency: "Star Candies", permanent: true, reaction: '"If something survives the first hit, hit it again. My advice."', equipFlavor: "Some problems require careful thinking. This is not one of those problems." },
+  bow: { id: "bow", displayName: "Bow", description: "Roll twice and keep the better attack roll.", price: 20000, currency: "Star Candies", permanent: true, reaction: '"Excellent! Now you can miss things from farther away."', equipFlavor: "Distance has been added to your list of excuses." },
 };
+const WEAPON_IDS = Object.keys(SHOP_ITEMS).filter(id => SHOP_ITEMS[id].permanent);
+function normalizeOwnedWeapons(value) {
+  return Array.isArray(value) ? WEAPON_IDS.filter(id => value.includes(id)) : [];
+}
 const SHOP_INTRODUCTIONS = [
   {
     scene:
@@ -802,9 +812,7 @@ const DISCORD_COMMANDS = [
         name: "item",
         description: "The item to purchase.",
         required: true,
-        choices: [
-          { name: "Berry", value: "berry" },
-        ],
+        choices: Object.values(SHOP_ITEMS).map(item => ({ name: item.displayName, value: item.id })),
       },
       {
         type: 4,
@@ -815,6 +823,11 @@ const DISCORD_COMMANDS = [
         max_value: 99,
       },
     ],
+  },
+  {
+    name: "equip", description: "Equip a permanent weapon you own.", type: 1,
+    options: [{ type: 3, name: "weapon", description: "Weapon to equip.", required: true,
+      choices: WEAPON_IDS.map(id => ({ name: SHOP_ITEMS[id].displayName, value: id })) }],
   },
   {
     name: "travel",
@@ -1685,6 +1698,10 @@ async function handleDiscordInteractionCore(request, env) {
             )
           ).message,
         );
+
+      case "equip":
+        return discordMessage((await performEquip(env, backpackKey,
+          getDiscordOption(interaction, "weapon"))).message);
 
       case "travel":
         return discordMessage(
@@ -2874,6 +2891,45 @@ async function performStimUnlocked(env, backpackKey, platform, input) {
   }
 }
 
+function resolveWeaponAttack(id, rolls, strength, enemyProtection, platform) {
+  const natural = Math.max(...rolls);
+  let hits = [];
+  let protection = 0;
+  let stagger = 0;
+  if (id === "daggers") {
+    hits = rolls.map(roll => roll === 1 ? 0 : roll <= 9 ? 10 : roll <= 15 ? 14 : roll <= 19 ? 18 : 25);
+  } else {
+    let base = 0;
+    if (id === "sword-and-shield") {
+      base = natural === 1 ? 0 : natural <= 5 ? 15 : natural <= 10 ? 20 : natural <= 15 ? 25 : natural <= 19 ? 30 : 40;
+      protection = natural === 1 ? 0 : natural <= 10 ? 5 : natural <= 19 ? 10 : 15;
+    } else if (id === "axe") {
+      base = natural <= 5 ? 0 : natural <= 10 ? 30 : natural <= 15 ? 40 : natural <= 19 ? 50 : 70;
+    } else if (id === "spear") {
+      base = natural === 1 ? 0 : natural <= 6 ? 20 : natural <= 12 ? 25 : natural <= 17 ? 30 : natural <= 19 ? 35 : 45;
+    } else if (id === "hammer") {
+      base = natural <= 3 ? 0 : natural <= 8 ? 25 : natural <= 14 ? 35 : natural <= 19 ? 45 : 60;
+      stagger = natural >= 15 ? natural === 20 ? 10 : 5 : 0;
+    } else if (id === "bow") {
+      base = natural === 1 ? 0 : natural <= 9 ? 20 : natural <= 14 ? 25 : natural <= 19 ? 30 : 40;
+    }
+    hits = [base];
+  }
+  const baseTotal = hits.reduce((sum, hit) => sum + hit, 0);
+  const damage = baseTotal > 0 ? baseTotal + strength : 0;
+  const pierceProtection = id === "spear" && damage > 0
+    ? Math.min(10, enemyProtection) : 0;
+  const details = [SHOP_ITEMS[id].displayName,
+    rolls.length === 2 ? `Rolls: ${rolls.join(" / ")}` : `Roll: ${natural}`];
+  if (id === "bow") details.push(`Kept: ${natural}`);
+  details.push(damage ? `${hits.join(" + ")} +${strength} Strength → ${damage} dmg` : "Miss!");
+  if (protection) details.push(`Protection +${protection}`);
+  if (pierceProtection) details.push(`Pierced ${pierceProtection} Protection`);
+  if (stagger) details.push(`Stagger: next successful enemy attack -${stagger} damage`);
+  return { damage, protection, pierceProtection, stagger,
+    message: details.join(platform === "discord" ? "\n" : " | ") };
+}
+
 async function performAttack(
   env,
   backpackKey,
@@ -2923,11 +2979,17 @@ async function performAttackUnlocked(
   }
 
   const progress = await getPlayerProgress(env, backpackKey);
+  const weaponId = WEAPON_IDS.includes(progress.equippedWeapon) &&
+    progress.ownedWeapons.includes(progress.equippedWeapon)
+    ? progress.equippedWeapon : null;
   const turnStart = await advanceLeviathansWake(
     env, backpackKey, combatState, progress, platform,
   );
   if (turnStart.victory) return turnStart.victory;
-  const playerRoll = randomInteger(1, 20);
+  const rolls = weaponId === "daggers" || weaponId === "bow"
+    ? [randomInteger(1, 20), randomInteger(1, 20)]
+    : [randomInteger(1, 20)];
+  const playerRoll = Math.max(...rolls);
   const triggeredRoll = consumeTriggeredStatusEffects(
     progress,
     OFFENSIVE_ROLL_TRIGGER,
@@ -2946,12 +3008,12 @@ async function performAttackUnlocked(
     strengthBonus,
     damage: basePlayerAttack.damage + strengthBonus,
   };
-  const actionMessage = formatPlayerAttackResolution(
-    playerRoll,
-    playerAttack,
-    triggeredRoll,
-    platform,
-  );
+  const weaponAttack = weaponId
+    ? resolveWeaponAttack(weaponId, rolls, getStrengthDamageBonus(progress), combatState.enemy.protection || 0, platform)
+    : null;
+  const actionMessage = weaponAttack
+    ? weaponAttack.message
+    : formatPlayerAttackResolution(playerRoll, playerAttack, triggeredRoll, platform);
   let updatedProgress = {
     ...progress,
     statusEffects: triggeredRoll.statusEffects,
@@ -2965,23 +3027,32 @@ async function performAttackUnlocked(
   }
 
   try {
+    if (weaponAttack?.protection) {
+      const effects = combatState.berryEffects ||= {};
+      effects.protection = (effects.protection || 0) + weaponAttack.protection;
+    }
+    if (weaponAttack?.stagger) {
+      combatState.stagger = Math.max(combatState.stagger || 0, weaponAttack.stagger);
+    }
+    const attackDamage = weaponAttack ? weaponAttack.damage : playerAttack.damage;
     return await resolvePlayerCombatAction(
       env,
       backpackKey,
       combatState,
       {
         roll: triggeredRoll.finalTotal,
-        damage: playerAttack.damage,
+        damage: attackDamage,
+        pierceProtection: weaponAttack?.pierceProtection || 0,
         message: turnStart.message ? `${turnStart.message}\n\n${actionMessage}` : actionMessage,
         victoryMessage: actionMessage,
         momentumAction: "attack",
         regionalAction: "attack",
         momentumNaturalRoll: playerRoll,
-        expeditionQualifies: playerRoll !== 1 && playerAttack.damage > 0,
+        expeditionQualifies: attackDamage > 0,
         familiarQualifies: true,
         harmonySources: countOffensiveRollBonusSources(triggeredRoll),
-        harmonySuccess: playerRoll !== 1 && playerAttack.damage > 0,
-        faeSecondOpinionFailure: playerRoll === 1,
+        harmonySuccess: attackDamage > 0,
+        faeSecondOpinionFailure: attackDamage === 0,
       },
       platform,
     );
@@ -3272,9 +3343,11 @@ function isValidRegionalEnemyState(state) {
 
 // All incoming enemy damage (including independent follow-ups) shares this shield.
 // Returns actual HP damage; shield absorption is reported separately.
-function damageCombatEnemy(combatState, damage) {
+function damageCombatEnemy(combatState, damage, pierceProtection = 0) {
   const enemy = combatState.enemy;
   const amount = Math.max(0, damage || 0);
+  const pierced = Math.min(enemy.protection || 0, pierceProtection, amount);
+  if (pierced > 0) enemy.protection -= pierced;
   const absorbed = Math.min(enemy.protection || 0, amount);
   if (absorbed > 0) {
     enemy.protection -= absorbed;
@@ -3470,7 +3543,7 @@ async function resolvePlayerCombatAction(
   const regionalHpBefore = combatState.enemy.hp;
   const primaryDamage = action.regionalSpell
     ? applyRegionalRoyalGuard(combatState, action.damage) : action.damage;
-  const regionalDamage = damageCombatEnemy(combatState, primaryDamage);
+  const regionalDamage = damageCombatEnemy(combatState, primaryDamage, action.pierceProtection || 0);
   if (action.consumeAstralEcho) {
     damageCombatEnemy(combatState, action.echoDamage);
     delete combatState.astralEcho;
@@ -3816,10 +3889,16 @@ async function resolveEnemyCombatResponse(
   const regionalResponse = beginRegionalEnemyResponse(combatState, enemyRoll);
   messageParts.push(...takeRegionalEnemyReceipts(combatState));
   const enemyAttack = getCombatRollResult(enemyRoll);
-  const rawEnemyDamage = enemyAttack.damage === 0
+  let rawEnemyDamage = enemyAttack.damage === 0
     ? 0
     : enemyAttack.damage + (combatState.enemy.damageBonus || 0) +
       regionalResponse.bonus + regionalResponse.repetitionDamage;
+  if (rawEnemyDamage > 0 && combatState.stagger > 0) {
+    const reduction = Math.min(rawEnemyDamage, combatState.stagger);
+    rawEnemyDamage -= reduction;
+    messageParts.push(`Stagger reduces enemy damage by ${reduction}.`);
+    delete combatState.stagger;
+  }
   const armorReduction = rawEnemyDamage > 0
     ? Math.min(getArmorReduction(progress), Math.max(0, rawEnemyDamage - 1))
     : 0;
@@ -3912,7 +3991,7 @@ async function resolveEnemyCombatResponse(
     enemyDamage -= absorbed;
     berryEffects.protection -= absorbed;
     if (berryEffects.protection === 0) delete berryEffects.protection;
-    berryProtectionMessage = `Berry protection absorbs ${absorbed} damage` +
+    berryProtectionMessage = `${progress.equippedWeapon === "sword-and-shield" ? "Protection" : "Berry protection"} absorbs ${absorbed} damage` +
       (berryEffects.protection ? ` | ${berryEffects.protection} remains` : " | depleted");
   }
   let wakeMantaProtectionMessage = "";
@@ -6953,21 +7032,22 @@ async function performShop(
   sharedIdentity,
   platform = "twitch",
 ) {
-  const [currentTotal] = await Promise.all([
+  const [currentTotal, progress] = await Promise.all([
     getBackpackTotal(env, backpackKey),
+    getPlayerProgress(env, backpackKey),
     touchShopSession(env, sharedIdentity),
   ]);
   const introduction = randomChoice(SHOP_INTRODUCTIONS);
   const discordItemLines = Object.values(SHOP_ITEMS).map(
     (item) =>
       `${item.displayName}\n${item.description}\n` +
-      `Price: ${item.price.toLocaleString("en-US")} ` +
-      `${item.currency} each`,
+      `${item.price.toLocaleString("en-US")} ${item.currency}` +
+      (item.permanent ? ` · ${progress.equippedWeapon === item.id ? "Equipped" : progress.ownedWeapons.includes(item.id) ? "Owned" : "Permanent"}` : " · Consumable"),
   );
   const twitchItemLines = Object.values(SHOP_ITEMS).map(
     (item) =>
       `${item.displayName} — ${item.price.toLocaleString("en-US")} ` +
-      `${item.currency} each`,
+      `${item.currency}${item.permanent ? ` (${progress.equippedWeapon === item.id ? "Equipped" : progress.ownedWeapons.includes(item.id) ? "Owned" : "Permanent"})` : " each"}`,
   );
 
   return {
@@ -6976,8 +7056,7 @@ async function performShop(
       ? `${introduction.scene}\n\n${introduction.quote}\n\n` +
         `Items for Sale\n\n${discordItemLines.join("\n\n")}\n\n` +
         `Your Star Candies: ${currentTotal.toLocaleString("en-US")}\n\n` +
-        "Purchase:\n/buy item:Berry quantity:1\n\n" +
-        "You may choose any quantity from 1 to 99."
+        "Use /buy to purchase an item. Berry quantity: 1–99. Use /equip to swap owned weapons."
       : `${introduction.scene} ${introduction.quote} | ` +
         `${twitchItemLines.join(" | ")} | ` +
         `Balance: ${currentTotal.toLocaleString("en-US")} | ` +
@@ -7035,7 +7114,7 @@ async function performBuyUnlocked(
 
   await touchShopSession(env, sharedIdentity);
 
-  const itemId = String(itemInput || "").trim().toLowerCase();
+  const itemId = String(itemInput || "").trim().toLowerCase().replace(/\s+/g, "-");
   const availableItems = Object.values(SHOP_ITEMS);
   const availableSummary = availableItems.map(
     (item) =>
@@ -7046,8 +7125,7 @@ async function performBuyUnlocked(
   if (!itemId) {
     return {
       message:
-        "What are you buying? Currently available: " +
-        "!buy berry — 200 Star Candies.",
+        `What are you buying? Currently available: ${availableSummary}`,
     };
   }
 
@@ -7086,6 +7164,41 @@ async function performBuyUnlocked(
     getBackpackTotal(env, backpackKey),
     getPlayerProgress(env, backpackKey),
   ]);
+
+  if (item.permanent) {
+    if (quantityInput !== null && quantityInput !== undefined && quantityInput !== "") {
+      return { message: "Weapons are permanent single purchases. Leave quantity empty." };
+    }
+    if (await getCombatState(env, backpackKey)) {
+      return { message: "Finish the current fight before buying a weapon." };
+    }
+    if (progress.ownedWeapons.includes(item.id)) {
+      return { message: `You already own ${item.displayName}. Use /equip to wield it.` };
+    }
+    if (currentTotal < item.price) {
+      const shortfall = item.price - currentTotal;
+      return { total: currentTotal, shortfall,
+        message: `${randomChoice(SHOP_INSUFFICIENT_MESSAGES.slice(0, 3))(shortfall.toLocaleString("en-US"))} ` +
+          `Price: ${item.price.toLocaleString("en-US")} Star Candies. ` +
+          `Your Star Candies: ${currentTotal.toLocaleString("en-US")}.` };
+    }
+    const newTotal = currentTotal - item.price;
+    const equippedWeapon = progress.equippedWeapon || item.id;
+    await saveBackpackTotal(env, backpackKey, newTotal);
+    try {
+      await savePlayerProgress(env, backpackKey, {
+        ...progress, ownedWeapons: [...progress.ownedWeapons, item.id], equippedWeapon,
+      });
+    } catch (error) {
+      try { await saveBackpackTotal(env, backpackKey, currentTotal); }
+      catch (rollbackError) { console.error("Weapon purchase rollback failed:", rollbackError); }
+      throw error;
+    }
+    return { itemId: item.id, totalPrice: item.price, total: newTotal,
+      message: `${item.reaction}\n\nPurchased ${item.displayName} for 20,000 Star Candies. ` +
+        `You now own it.${equippedWeapon === item.id ? " Equipped automatically." : " Use /equip to wield it."} ` +
+        `Star Candies remaining: ${newTotal.toLocaleString("en-US")}.` };
+  }
 
   const totalPrice = item.price * quantity;
 
@@ -7177,6 +7290,25 @@ async function performBuyUnlocked(
         `${item.inventoryLabel}: ` +
         `${newItemTotal.toLocaleString("en-US")}`,
   };
+}
+
+async function performEquip(env, backpackKey, weaponInput) {
+  return withPlayerMutationLock(backpackKey, async () => {
+    const weaponId = String(weaponInput || "").trim().toLowerCase();
+    const item = SHOP_ITEMS[weaponId];
+    if (!item?.permanent) return { message: "Choose a weapon from /equip." };
+    if (await getCombatState(env, backpackKey)) {
+      return { message: "Finish the current fight before changing weapons." };
+    }
+    const progress = await getPlayerProgress(env, backpackKey);
+    if (!progress.ownedWeapons.includes(weaponId)) {
+      return { message: `You do not own ${item.displayName}. Visit /shop to buy it.` };
+    }
+    if (progress.equippedWeapon !== weaponId) {
+      await savePlayerProgress(env, backpackKey, { ...progress, equippedWeapon: weaponId });
+    }
+    return { message: `You've equipped your ${item.displayName}.\n\n${item.equipFlavor}` };
+  });
 }
 
 async function performRest(
@@ -9030,6 +9162,7 @@ function isValidCombatState(combatState) {
     ) &&
     (combatState.berryEffects === undefined ||
       isValidBerryEffects(combatState.berryEffects)) &&
+    (combatState.stagger === undefined || [5, 10].includes(combatState.stagger)) &&
     (combatState.astralAwakeningSurvived === undefined ||
       (Number.isSafeInteger(combatState.astralAwakeningSurvived) &&
         combatState.astralAwakeningSurvived >= 1 &&
@@ -11720,6 +11853,8 @@ function createEmptyProgress() {
     statusEffects: {},
     discoveries: {},
     notes: {},
+    ownedWeapons: [],
+    equippedWeapon: null,
     combatProgress: {},
     completedAdventures: {},
     currentRegion: "moonlit-reef",
@@ -11944,6 +12079,9 @@ async function getPlayerProgress(
       statusEffects,
       discoveries,
       notes,
+      ownedWeapons: normalizeOwnedWeapons(parsed.ownedWeapons),
+      equippedWeapon: normalizeOwnedWeapons(parsed.ownedWeapons).includes(parsed.equippedWeapon)
+        ? parsed.equippedWeapon : null,
       combatProgress,
       completedAdventures,
       currentRegion,
@@ -12141,6 +12279,9 @@ async function savePlayerProgress(
     ),
     discoveries: safeDiscoveries,
     notes: safeNotes,
+    ownedWeapons: normalizeOwnedWeapons(progress.ownedWeapons),
+    equippedWeapon: normalizeOwnedWeapons(progress.ownedWeapons).includes(progress.equippedWeapon)
+      ? progress.equippedWeapon : null,
     combatProgress: safeCombatProgress,
     completedAdventures: safeCompletedAdventures,
     currentRegion:
