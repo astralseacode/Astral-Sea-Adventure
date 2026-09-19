@@ -169,7 +169,7 @@ async function main() {
     const result = await perfect.cast('jelly');
     const state = await perfect.state();
     assert(result.message.includes('Perfect Jellyfish!'));
-    assert(result.message.includes('+20 damage | Restored 20 HP + 20 Mana'));
+    assert(result.message.includes('+20 damage\nRestored 20 HP + 20 Mana'));
     assert.equal(perfect.actions[0].damage, 26);
     assert.equal(state.playerHp, 100); // 20 Legacy + 20 Sleepy + 10 Curiosity, capped.
     assert.equal((await perfect.progress()).mana, 70); // 50 - 10 + 20 Legacy + 10 Curiosity.

@@ -37,7 +37,7 @@ const unlock = "lvl 46 Passive ⭐ Legacy: The spells that began your journey ha
     jelly.rolls.push(natural, natural, natural, 0, 0, 1);
     const result = await jelly.cast('jelly');
     assert.match(result.message, /Perfect Jellyfish!/);
-    assert.match(result.message, /\+20 damage \| Restored 20 HP \+ 20 Mana/);
+    assert.match(result.message, /\+20 damage\nRestored 20 HP \+ 20 Mana/);
     assert.equal((await jelly.state()).enemy.hp,
       1000 - (natural === 8 ? 72 : natural * 3 + 20));
     assert.equal((await jelly.state()).playerHp, 80); // Legacy + Curiosity triple.

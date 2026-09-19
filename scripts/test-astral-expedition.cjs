@@ -62,7 +62,8 @@ async function count(f) {
     const milestone = await attack(player, 10);
     assert.equal(await count(player), 33);
     assert.equal((await player.c.getBackpackTotal(player.env, player.key)) - before, 33);
-    assert.equal(milestone.message.split(line).length - 1, 1);
+    assert.equal(milestone.message.split(platform === 'discord'
+      ? line.replaceAll(' | ', '\n') : line).length - 1, 1);
     assert.doesNotMatch(line, /successful|\p{Extended_Pictographic}/u);
     assert.doesNotMatch(milestone.message, /\+3 Astral Expedition/);
     assert.equal((await player.progress()).statusEffects.astral_expedition.remainingCharges, 1);

@@ -37,7 +37,7 @@ async function main() {
     f.rolls.push(11, 1);
     const result = await f.cast('help!');
     assert.equal((await f.progress()).mana, mana - cost);
-    assert.match(result.message, new RegExp(`Mana taken: ${cost} \\| Mana remaining: ${mana-cost}`));
+    assert.match(result.message, new RegExp(`Mana taken: ${cost}\\nMana remaining: ${mana-cost}`));
   }
 
   // Every face, both platforms: one Ultimate die plus the normal enemy die.
@@ -54,7 +54,10 @@ async function main() {
       assert.equal((await f.progress()).mana, 100);
       assert.deepEqual(f.randomCalls, [[1,20],[1,20]]);
       assert(message.includes(success ? 'WIN 50/50' : 'LOST 50/50'));
-      assert(message.includes(`Help! | Natural d20: ${natural} | ${success ? 'SUCCESS' : 'FAILURE'} | Enemy HP removed: ${success ? 500 : 0} | Enemy HP remaining: ${success ? 500 : 1000} | Mana taken: 100 | Mana remaining: 100`));
+      const separator = platform === 'discord' ? '\n' : ' | ';
+      assert(message.includes([`Help!`, `Natural d20: ${natural}`, success ? 'SUCCESS' : 'FAILURE',
+        `Enemy HP removed: ${success ? 500 : 0}`, `Enemy HP remaining: ${success ? 500 : 1000}`,
+        'Mana taken: 100', 'Mana remaining: 100'].join(separator)));
       for (const line of [...definition.opening, ...(success ? definition.successLines : definition.failureLines)]) assert(message.includes(line));
       assert(!/[\p{Extended_Pictographic}\u2600-\u27BF]/u.test(message));
       for (const term of ['Momentum', 'Fae Second Opinion', 'Fae Mischief', 'Oddity', 'Aftershock', 'Curiosity activates', 'FULL MOON', 'Perfect Jellyfish']) assert(!message.includes(term));
@@ -81,7 +84,7 @@ async function main() {
     f.rolls.push(20, 1);
     const result = await f.cast('help');
     assert.equal((await f.state()).enemy.hp, hp - removed);
-    assert(result.message.includes(`Enemy HP removed: ${removed} | Enemy HP remaining: ${hp-removed}`));
+    assert(result.message.includes(`Enemy HP removed: ${removed}\nEnemy HP remaining: ${hp-removed}`));
   }
 
   // Loaded modifiers must be preserved, not merely ignored for this result.

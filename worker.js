@@ -3231,7 +3231,7 @@ const regionalEnemyReceipts = new WeakMap();
 
 function regionalEnemyReceipt(combatState, message) {
   const messages = regionalEnemyReceipts.get(combatState) || [];
-  messages.push(`Perk: ${message}`);
+  messages.push(message);
   regionalEnemyReceipts.set(combatState, messages);
 }
 
@@ -3386,7 +3386,6 @@ function recordRegionalManaRecovery(combatState, actualAmount) {
     const amount = Math.round(actualAmount * 0.25);
     if (amount > state.fracture) {
       state.fracture = amount;
-      regionalEnemyReceipt(combatState, `Mana Fracture — ${amount} Mana fractured.`);
     }
   }
 }
@@ -3425,7 +3424,6 @@ function beginRegionalEnemyResponse(combatState, naturalRoll) {
   }
   if (perks.nexusAdaptation && state.adaptation > 0) {
     response.bonus += state.adaptation;
-    regionalEnemyReceipt(combatState, `Nexus Adaptation — +${state.adaptation} attack damage.`);
   }
   if (perks.realityEcho && repetition) {
     response.repetitionDamage = 50;
@@ -3812,6 +3810,7 @@ async function resolveEnemyCombatResponse(
   activeMasteries, activePerks, shizukisPresenceMastery, messageParts,
 ) {
   if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.enemy-turn";
+  if (platform === "discord") messageParts.push("Enemy Turn");
   const regionalHpBefore = combatState.enemy.hp;
   const enemyRoll = randomInteger(1, 20);
   const regionalResponse = beginRegionalEnemyResponse(combatState, enemyRoll);
@@ -3979,7 +3978,7 @@ async function resolveEnemyCombatResponse(
     ),
   );
   if (armorReduction > 0) {
-    messageParts.push(`Armor -${armorReduction} | You take ${enemyDamage} dmg`);
+    messageParts.push(`Armor -${armorReduction}`);
   }
   if (bubbleMessage) {
     messageParts.push(bubbleMessage);
@@ -3997,6 +3996,9 @@ async function resolveEnemyCombatResponse(
   if (wakeMantaProtectionMessage) messageParts.push(wakeMantaProtectionMessage);
   if (berrySleepyMessage) messageParts.push(berrySleepyMessage);
   if (familiarProtectionMessage) messageParts.push(familiarProtectionMessage);
+  if (platform === "discord" || armorReduction > 0) {
+    messageParts.push(`You take ${enemyDamage} dmg`);
+  }
 
   let updatedProgress = progress;
   const faeIntervention = activePerks.find(
@@ -4222,8 +4224,8 @@ function formatCombatStatus(
 function formatDiscordCombatHud(combatState, progress) {
   const resourceCaps = getPlayerResourceCaps(progress);
 
-  return `HP ${combatState.playerHp}/${combatState.playerMaxHp} | ` +
-    `MP ${progress.mana}/${resourceCaps.mana} | ` +
+  return `HP ${combatState.playerHp}/${combatState.playerMaxHp} · ` +
+    `MP ${progress.mana}/${resourceCaps.mana} · ` +
     `Enemy ${combatState.enemy.hp}/${combatState.enemy.maxHp}`;
 }
 
@@ -4235,8 +4237,16 @@ function appendDiscordCombatHud(message, combatState, progress) {
 function formatCombatMessageParts(parts, platform) {
   if (platform !== "discord") return parts.join(" | ");
 
-  const hud = parts.at(-1);
-  return `${parts.slice(0, -1).join(" | ")}\n\n${hud}`;
+  const hasHud = /^HP \d+\//.test(parts.at(-1) || "");
+  const hud = hasHud ? parts.at(-1) : "";
+  const events = (hasHud ? parts.slice(0, -1) : parts)
+    .map(part => part.replaceAll(" | ", "\n"));
+  const enemyIndex = events.indexOf("Enemy Turn");
+  const body = enemyIndex < 0
+    ? events.join("\n\n")
+    : `${events.slice(0, enemyIndex).join("\n\n")}\n\n` +
+      `Enemy Turn\n${events.slice(enemyIndex + 1).join("\n")}`;
+  return hud ? `${body}\n\n${hud}` : body;
 }
 
 async function performCast(
@@ -5194,8 +5204,8 @@ async function performCastUnlocked(
   }
   if (storytellerFinalDamage) {
     const storytellerMessage = storytellerCriticalBonus
-      ? `THE FINAL CHAPTER: +10 Final Damage | +12% Critical Damage (+${storytellerCriticalBonus})`
-      : "THE FINAL CHAPTER: +10 Final Damage";
+      ? `The Final Chapter: +10 Final Damage | +12% Critical Damage (+${storytellerCriticalBonus})`
+      : "The Final Chapter: +10 Final Damage";
     castMessage = platform === "discord"
       ? `${castMessage}\n\n${storytellerMessage}`
       : `${castMessage} | ${storytellerMessage}`;
@@ -5489,12 +5499,12 @@ async function advanceLeviathansWake(
     `${wake.astralChargeSnapshot ? " + Charge" : ""}` +
     `${wake.rhythmBonus ? " + Rhythm" : ""}` +
     `${wake.shizukisPresenceBonus ? " + Shizuki's Presence" : ""}` +
-    `${wake.storytellerFinalChapter ? " + THE FINAL CHAPTER" : ""}` +
+    `${wake.storytellerFinalChapter ? " + The Final Chapter" : ""}` +
     `${sparkBerry ? " + Spark Berry" : ""} → ${primaryDamage} dmg`);
   if (storytellerCriticalBonus) {
-    parts.push(`THE FINAL CHAPTER: +10 Final Damage | +12% Critical Damage (+${storytellerCriticalBonus})`);
+    parts.push(`The Final Chapter: +10 Final Damage | +12% Critical Damage (+${storytellerCriticalBonus})`);
   } else if (wake.storytellerFinalChapter) {
-    parts.push("THE FINAL CHAPTER: +10 Final Damage");
+    parts.push("The Final Chapter: +10 Final Damage");
   }
   const regionalHpBefore = combatState.enemy.hp;
   if (wake.regionalGuardReduction) {
@@ -6552,7 +6562,7 @@ async function resolveCombatVictory(
     xp: newXp,
     message: platform === "discord"
       ? appendDiscordCombatHud(
-          messageParts.join(" | "),
+          messageParts.map(part => part.replaceAll(" | ", "\n")).join("\n\n"),
           combatState,
           progress,
         )
@@ -9579,9 +9589,21 @@ function advanceStoryteller(combatState, activePerks, platform = "discord") {
   const separator = platform === "discord" ? "\n\n" : " | ";
   return [
     ...(firstActivation ? ["Storyteller Activated!"] : []),
-    chapter.heading,
-    ...chapter.effects,
+    formatStorytellerCombatLine(chapter.heading),
+    ...chapter.effects.map(formatStorytellerCombatLine),
   ].join(separator);
+}
+
+function formatStorytellerCombatLine(line) {
+  return line
+    .replace("Enemy Below", "Enemy below")
+    .replace("THE FIRST PAGE", "The First Page")
+    .replace("THE TURNING POINT", "The Turning Point")
+    .replace("THE FINAL CHAPTER", "The Final Chapter")
+    .replace("Mana Costs Reduced", "Mana costs reduced")
+    .replace("Offensive Rolls", "offensive rolls")
+    .replace("Final Damage", "final damage")
+    .replace("Critical Damage", "critical damage");
 }
 
 function getStrengthDamageBonus(progress) {

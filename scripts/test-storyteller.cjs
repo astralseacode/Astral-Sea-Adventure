@@ -21,17 +21,17 @@ const unlock = "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storytel
     const message = f.c.advanceStoryteller(state, perks, 'discord');
     if (message) chapterReceipts.push(message);
     assert.equal(state.storytellerChapter || 0, expected);
-    if (expected && message) assert.match(message, /Storyteller|Enemy Below/);
+    if (expected && message) assert.match(message, /Storyteller|Enemy below/);
   }
   assert.equal(chapterReceipts[0],
     'Storyteller Activated!\n\n' +
-    'Enemy Below 75% HP — THE FIRST PAGE\n\n' +
-    'Mana Costs Reduced by 20%');
+    'Enemy below 75% HP — The First Page\n\n' +
+    'Mana costs reduced by 20%');
   assert.equal(chapterReceipts[1],
-    'Enemy Below 50% HP — THE TURNING POINT\n\n+2 Offensive Rolls');
+    'Enemy below 50% HP — The Turning Point\n\n+2 offensive rolls');
   assert.equal(chapterReceipts[2],
-    'Enemy Below 25% HP — THE FINAL CHAPTER\n\n' +
-    '+10 Final Damage\n\n+12% Critical Damage');
+    'Enemy below 25% HP — The Final Chapter\n\n' +
+    '+10 final damage\n\n+12% critical damage');
   assert(chapterReceipts.every(receipt =>
     !/[\p{Extended_Pictographic}\u2600-\u27BF]/u.test(receipt)));
   state.enemy.maxHp = 101;
@@ -50,12 +50,12 @@ const unlock = "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storytel
   let message = skip.c.advanceStoryteller(skipState, await skip.c.getActivePerks(49));
   assert.match(message, /^Storyteller Activated!/);
   assert(!message.includes('⭐'));
-  assert.match(message, /THE TURNING POINT/);
-  assert(!message.includes('THE FIRST PAGE'));
+  assert.match(message, /The Turning Point/);
+  assert(!message.includes('The First Page'));
   skipState.enemy.hp = 200;
   message = skip.c.advanceStoryteller(skipState, await skip.c.getActivePerks(49));
   assert(!message.includes('Storyteller Activated!'));
-  assert.match(message, /THE FINAL CHAPTER/);
+  assert.match(message, /The Final Chapter/);
   skipState.enemy.hp = 700;
   assert.equal(skip.c.advanceStoryteller(skipState,
     await skip.c.getActivePerks(49)), '');
@@ -111,7 +111,7 @@ const unlock = "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storytel
   finalGun.rolls.push(...Array(140).fill(1), 1);
   const gun = await finalGun.cast('conjure gun');
   assert.match(gun.message, /Total Damage: 150/);
-  assert.match(gun.message, /THE FINAL CHAPTER: \+10 Final Damage/);
+  assert.match(gun.message, /The Final Chapter: \+10 Final Damage/);
   assert(!gun.message.includes('Critical Damage'));
 
   const critical = await fixture(49);
@@ -125,7 +125,7 @@ const unlock = "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storytel
   await noncritical.editState(s => { s.storytellerChapter = 3; s.storytellerActivated = true; });
   noncritical.rolls.push(5, 1);
   const normal = await noncritical.cast('star');
-  assert.match(normal.message, /THE FINAL CHAPTER: \+10 Final Damage/);
+  assert.match(normal.message, /The Final Chapter: \+10 Final Damage/);
   assert(!normal.message.includes('Critical Damage'));
   assert.equal((await noncritical.state()).enemy.hp, 985);
 
@@ -143,7 +143,7 @@ const unlock = "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storytel
     });
     criticalSpell.rolls.push(...rolls, 1);
     assert.match((await criticalSpell.cast(spell)).message,
-      /THE FINAL CHAPTER: \+10 Final Damage \| \+12% Critical Damage/,
+      /The Final Chapter: \+10 Final Damage\n\+12% Critical Damage/,
       spell);
   }
 
@@ -153,7 +153,7 @@ const unlock = "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storytel
   });
   allOrNothing.rolls.push(2, 1);
   const wager = await allOrNothing.cast('all or nothing');
-  assert.match(wager.message, /THE FINAL CHAPTER: \+10 Final Damage/);
+  assert.match(wager.message, /The Final Chapter: \+10 Final Damage/);
   assert(!wager.message.includes('Critical Damage'));
 
   const wake = await fixture(49);
@@ -166,7 +166,7 @@ const unlock = "lvl 49 Passive ⭐ Storyteller: As an enemy's HP falls, Storytel
   wake.rolls.push(1, 1);
   const arrival = await wake.attack();
   assert.match(arrival.message,
-    /THE FINAL CHAPTER: \+10 Final Damage \| \+12% Critical Damage/);
+    /The Final Chapter: \+10 Final Damage\n\+12% Critical Damage/);
 
   const lethal = await fixture(49);
   await lethal.editState(s => { s.enemy.hp = 20; });

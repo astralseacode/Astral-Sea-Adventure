@@ -58,8 +58,8 @@ async function screenshot() {
     await f.editState(s => { s.enemy.hp = 443; s.enemy.maxHp = 443; s.enemy.damageBonus = 15; });
     f.rolls.push(17,13);
     const cast = await f.command('cast','Help!');
-    assert(cast.content.includes('Enemy HP removed: 221 | Enemy HP remaining: 222 | Mana taken: 125 | Mana remaining: 125'));
-    assert(cast.content.includes('HP 170/200 | MP 125/250 | Enemy 222/443'));
+    assert(cast.content.includes('Enemy HP removed: 221\nEnemy HP remaining: 222\nMana taken: 125\nMana remaining: 125'));
+    assert(cast.content.includes('HP 170/200 \u00b7 MP 125/250 \u00b7 Enemy 222/443'));
     const next = await f.command('cast',name);
     assert(!next.content.includes(turbulence), name);
     assert.equal(f.errors.length, 0, name);

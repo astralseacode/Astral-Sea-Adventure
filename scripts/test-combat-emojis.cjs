@@ -100,7 +100,7 @@ async function main() {
     const text=receipts.filter(r=>r.variant===variant).map(r=>r.text).join('\n');
     for(const marker of ['Bond: Your Familiar','Bond empowers your Familiar',
       'Rising Power resets.','Rising Power: +6','Storyteller Activated!',
-      'THE FIRST PAGE','THE TURNING POINT','THE FINAL CHAPTER',
+      'The First Page','The Turning Point','The Final Chapter',
       'Meteor Alignment','Lunar Alignment','Perfect','Full Moon','Mischief',
       "Shizuki's Presence",'Harmony','Rhythm','Curiosity activates!','Fae Aid','Fae Second Opinion',
       'Fae Intervention','Charge','Tidal Wave','Help!'])assert(text.includes(marker),`${variant}: missing forced path ${marker}`);

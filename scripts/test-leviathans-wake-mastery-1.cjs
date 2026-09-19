@@ -58,7 +58,7 @@ async function run(level, natural, platform = 'discord') {
     assert.doesNotMatch(high.cast.message + high.warning.message,
       /Leviathan's Wake Mastery I:/);
     assert.doesNotMatch(low.arrival.message, /Leviathan's Wake Mastery I:/);
-    assert(high.arrival.message.includes(line));
+    assert(high.arrival.message.includes(line.replaceAll(' | ', '\n')));
     assert.equal(low.state.enemy.hp - high.state.enemy.hp, bonus);
     assert.equal(high.progress.mana - low.progress.mana, mana);
     assert.equal(high.state.wakeMantaProtection || 0, protection);

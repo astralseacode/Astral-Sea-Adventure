@@ -26,7 +26,7 @@ async function main() {
     assert.equal((await f.state()).bubble.maxProtection, 15);
     assert.equal((await f.state()).enemy.hp, 1000);
     assert.doesNotMatch(first.message, /Bubble retaliates/);
-    assert.match(first.message, /Bubble absorbs 10 damage \| Protection 5\/15/);
+    assert.match(first.message, /Bubble absorbs 10 damage(?:\n| \| )Protection 5\/15/);
     const second = await hit(f, 6);
     assert.equal((await f.state()).bubble, undefined);
     assert.equal((await f.state()).enemy.hp, 985);
@@ -98,7 +98,7 @@ async function main() {
       assert(result.message.includes(survivalLines[index]));
       assert.equal(survivalLines.filter(line => result.message.includes(line)).length, 1);
       assert(!lines.some(line => result.message.includes(line)));
-      assert.match(result.message, /Bubble absorbs 5 damage \| Protection 5\/10/);
+      assert.match(result.message, /Bubble absorbs 5 damage(?:\n| \| )Protection 5\/10/);
       assert.equal((await f.state()).bubble.maxProtection, 10);
       assert.equal((await f.state()).bubble.protection, 5);
     }
@@ -109,7 +109,7 @@ async function main() {
   assert.equal((await rolled.state()).bubble.maxProtection, 25);
   rolled.rolls.push(1, 6, 0);
   const held = await rolled.attack();
-  assert.match(held.message, /Bubble absorbs 10 damage \| Protection 15\/25/);
+  assert.match(held.message, /Bubble absorbs 10 damage(?:\n| \| )Protection 15\/25/);
   assert.equal((await rolled.state()).bubble.maxProtection, 25);
   console.log('Bubble Mastery II regressions passed.');
 }

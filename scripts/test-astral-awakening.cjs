@@ -38,7 +38,7 @@ async function main() {
   assert.equal((await f.progress()).mana, 75);
   assert.equal((await f.state()).astralAwakening.offensiveRollModifier, 2);
   assert.equal((await f.state()).perkUses['astral-awakening'], 1);
-  assert.equal(fifth.message.split(activation).length - 1, 1);
+  assert.equal(fifth.message.split(activation.replaceAll(' | ', '\n')).length - 1, 1);
   await hit(f, 1);
   assert.equal((await f.state()).astralAwakeningSurvived, 5);
   assert.equal((await f.progress()).mana, 75);
@@ -105,7 +105,8 @@ async function main() {
     player.math.random = () => { flavorSelections++; return 0.99; };
     player.rolls.push(1, 1);
     const result = await player.attack();
-    assert.equal(result.message.split(activation).length - 1, 1);
+    assert.equal(result.message.split(platform === 'discord'
+      ? activation.replaceAll(' | ', '\n') : activation).length - 1, 1);
     assert.equal(flavorSelections, 0, 'Awakening must not select a random memory');
     assert.doesNotMatch(result.message, /supervising leaf|mustache|memories of your journey|Shizuki/i);
     assert.doesNotMatch(activation, /\p{Extended_Pictographic}/u);

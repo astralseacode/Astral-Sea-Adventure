@@ -60,8 +60,8 @@ async function star(f, dice, accuracy) {
   const active = await fixture(41);
   await active.editProgress(p => { p.stats.strength = 4; });
   const cast = await star(active, [2, 2, 3], 10);
-  assert.match(cast.message, /Meteor Alignment: Matching pair \+10 Power \| Total of 7 \+15 Power \| Adjusted Power 32/);
-  assert.match(cast.message, /Power 7 \(2\+2\+3\) \| Accuracy 10/);
+  assert.match(cast.message, /Meteor Alignment: Matching pair \+10 Power\nTotal of 7 \+15 Power\nAdjusted Power 32/);
+  assert.match(cast.message, /Power 7 \(2\+2\+3\)\nAccuracy 10/);
   assert.match(cast.message, /36 dmg/);
   assert.equal((await active.state()).enemy.hp, 964);
 

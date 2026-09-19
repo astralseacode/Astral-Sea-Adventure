@@ -43,7 +43,9 @@ async function main() {
         assert(result.message.includes(f.pool[index]));
         assert.equal(f.pool.filter(line => result.message.includes(line)).length, 1);
         assert.equal(result.message.split(f.pool[index]).length - 1, 1);
-        messages.push(result.message.replace(/\s+/g, ' ').replace(/\s*\|\s*/g, ' ').trim());
+        messages.push(result.message.replace(/Enemy Turn/g, '')
+          .replace(/You take 0 dmg/g, '').replace(/\u00b7/g, ' ')
+          .replace(/\s+/g, ' ').replace(/\s*\|\s*/g, ' ').trim());
       }
       assert.equal(messages[0], messages[1]);
     }
@@ -73,7 +75,8 @@ async function main() {
         assert.equal(await f.c.getBackpackTotal(f.env, f.key), 0);
         assert.deepEqual(f.randomCalls, [[0, 20], [1, 20]], 'Only flavor index and enemy die');
         assert(message.includes(`HP fully restored: ${cap}/${cap}`));
-        assert(message.includes(`HP ${cap}/${cap} | MP 0/`));
+        assert(message.includes(platform === 'discord'
+          ? `HP ${cap}/${cap} \u00b7 MP 0/` : `HP ${cap}/${cap} | MP 0/`));
         assert.match(message, /Enemy 1 → 0 dmg/);
       }
     }
