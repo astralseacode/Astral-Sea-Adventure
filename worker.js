@@ -8,6 +8,125 @@ const PENDING_COMBAT_TTL_MS = 5 * 60 * 1000;
 const DUPLICATE_DIRECTION_WINDOW_MS = 2 * 1000;
 const PLAYER_COMBAT_MAX_HP = 100;
 const PLAYER_MAX_MANA = 100;
+const BATTLE_UNCOMMON_CHANCE = 0.50;
+const BATTLE_WISHPOCKET_CHANCE = 0.05;
+const WISHPOCKET_ESCAPE_ACTIONS = 4;
+const WISHPOCKET_JACKPOT_CHANCE = 0.50;
+const WISHPOCKET_BY_REGION = Object.freeze({
+  "moonlit-reef": { hp: 30, xp: [40, 70], candies: [300, 500] },
+  "starfall-trench": { hp: 50, xp: [300, 450], candies: [850, 1300] },
+  "whispering-kelp-forest": { hp: 70, xp: [420, 600], candies: [1200, 1800] },
+  "leviathans-wake": { hp: 90, xp: [560, 800], candies: [1650, 2400] },
+  "sunken-kings-throne": { hp: 110, xp: [730, 1000], candies: [2200, 3200] },
+  "astral-nexus": { hp: 130, xp: [950, 1300], candies: [3000, 4400] },
+});
+const BATTLE_BERRY_LIMIT = 2;
+const TIP_JAR_STATE_KEY = "tip-jar:state";
+const TIP_JAR_COOLDOWN_MS = 5000;
+const TIP_JAR_FLAVOR = Object.freeze([
+  "A completely reasonable contribution to a completely legitimate business.",
+  "Shizuki? Never heard of her.",
+  "Please stop staring at my mustache.",
+  "No refunds. The jar has already accepted your offering.",
+  "Your contribution will be used for important things. Do not ask what those things are.",
+  "This money absolutely does not fund an elf's irresponsible spending habits.",
+  "I have been informed that Shizuki is much prettier than me.",
+  "The mustache is natural.",
+  "For legal reasons, this jar belongs to nobody.",
+  "Another successful transaction. Capitalism is incredible.",
+  "I assure you, removing my mustache would prove nothing.",
+  "The jar appreciates your generosity. I am merely its accountant.",
+  "These Star Candies are going somewhere extremely responsible.",
+  "Do not worry. I have a system. The system is the jar.",
+  "The jar and I have an understanding. I put money in it and ask no questions.",
+  "I am a licensed shopkeeper. Please do not ask to see the license.",
+  "That sounded expensive. Do it again.",
+  "Your financial judgment is between you and the Astral Sea.",
+  "I would never waste these Star Candies on something unnecessary. Define unnecessary.",
+  "I see you have chosen the ancient financial strategy of putting money in a jar.",
+  "The mustache stays on during business hours.",
+  "Thank you for supporting small mysterious businesses.",
+  "Every Star Candy helps. Helps what? Next question.",
+  "The jar grows stronger.",
+  "Please ignore the sound of me counting.",
+  "I can stop accepting Star Candies whenever I want.",
+  "Excellent. The completely unspecified project is almost funded.",
+  "Your receipt is the knowledge that the number became bigger.",
+  "The jar has reviewed your contribution and found it delicious.",
+  "I do not make the rules. Actually, I might.",
+  "There are no hidden fees. The entire payment is the fee.",
+  "You have made a sound financial decision according to me.",
+  "The Star Candies will be kept somewhere safe. Probably.",
+  "I was told people like watching numbers go up. You people are very easy to entertain.",
+  "The number went up. Incredible work.",
+  "Please do not shake the jar. It gets nervous.",
+  "Please do not ask why the jar is heavier on the inside.",
+  "This is not a scam. Scams have paperwork.",
+  "The mustache indicates financial expertise.",
+  "I studied economics for several minutes.",
+  "Your contribution has been professionally jarred.",
+  "The jar accepts your tribute. I mean tip.",
+  "I have absolutely no plans to run away with this. Why would you even think that?",
+  "The Astral Sea has many mysteries. My accounting is unfortunately one of them.",
+  "Your Star Candies are being used responsibly by remaining exactly where I put them.",
+  "Look at that number. Beautiful.",
+  "If anyone asks, you donated voluntarily. Very voluntarily.",
+  "If Shizuki were here, she would probably approve. Hypothetically.",
+  "I have never met Shizuki in my life. We merely have identical taste.",
+  "Lots of elves have hair like this. Stop making this weird.",
+  "Lots of elves have this exact voice. Probably.",
+  "Any resemblance to a certain elf is purely financially convenient.",
+  "The mustache makes us completely different people.",
+  "This is not a disguise. This is professional shopkeeper attire.",
+  "I wore this mustache before mustaches were fashionable.",
+  "You are asking an uncomfortable number of questions for someone standing near my Tip Jar.",
+  "The less you investigate me, the better your shopping experience becomes.",
+  "The jar is now slightly more powerful than before.",
+  "One day this number will become unreasonable. I believe in you.",
+  "I have seen your contribution and decided greed is actually quite beautiful.",
+  "I could explain where the Star Candies go, but that would require me to know.",
+  "The Star Candies go into the jar. Anything beyond that is outside my jurisdiction.",
+  "The jar has expenses. You would not understand.",
+  "You would be shocked how expensive it is to maintain an unemployed glass jar.",
+  "Accounting becomes difficult when everyone keeps accusing the accountant of being Shizuki.",
+  "There is no suspicious elf here. There is only a completely ordinary woman with an excellent mustache.",
+  "I don't know why everyone keeps mentioning Shizuki. Does she also run a highly successful jar?",
+  "This transaction has been witnessed and approved by the mustache.",
+  "The mustache approves of your financial decisions. I remain undecided.",
+  "The mustache has reviewed your contribution and requests more.",
+  "I am beginning to think you enjoy giving these away.",
+  "You know weapons cost Star Candies too, right? Actually, forget I mentioned that.",
+  "I would remind you to save your Star Candies, but that seems bad for business.",
+  "Excellent contribution. Terrible budgeting. I respect it.",
+  "Your wallet is lighter. The jar is happier. Balance has been restored.",
+  "I see no downside to this arrangement. Please do not provide me with one.",
+  "The shop's financial department consists of me, this jar, and absolutely no oversight.",
+  "The jar handles most of our difficult financial decisions. It has never complained.",
+  "Our quarterly financial report contains one word: more.",
+  "Our annual financial forecast predicts that I will continue asking you for Star Candies.",
+  "Growth. Beautiful, unnecessary growth.",
+  "This is what economists call sustainable growth. I think.",
+  "The jar's business model is remarkably simple: you lose money and it gains money.",
+  "Please continue donating until someone qualified tells me to stop.",
+  "Several reliable sources confirm that the number has increased. I am all of the sources.",
+  "I personally verified this transaction, which is convenient because I also approve the transactions.",
+  "I counted your Star Candies twice. Both times I liked the amount.",
+  "I would never manipulate the accounting. The jar knows where I sleep.",
+  "The accounting is completely legitimate. Please ignore how defensive that sounded.",
+  "The mustache demands accurate bookkeeping and occasional snacks.",
+  "Somewhere, an accountant just felt a disturbance and does not know why.",
+  "You have contributed to history. Very specific, completely useless history.",
+  "Future generations may ask why this jar contains so many Star Candies. I recommend lying to them.",
+  "If anyone asks why the jar has this much money, I was never here.",
+  "At this point, stopping would make the number lonely. You wouldn't do that, would you?",
+  "Imagine how impressive one more digit would look. This is not financial advice.",
+  "I am not encouraging irresponsible spending. I am simply standing beside a jar with expectations.",
+  "Another tip safely deposited into the world's most suspicious savings account.",
+  "Thank you. Shizuki would probably say the same thing. Whoever that is.",
+  "The jar thanks you. The mustache thanks you. I remain completely uninvolved.",
+]);
+const BATTLE_VARIANTS = ["Armored", "Frenzied", "Fae Touched"];
+const FAE_TOUCHED_BLESSINGS = ["Damage", "Protection", "Health"];
 const REST_BONUS_AMOUNT = 25;
 const LONG_REST_BONUS_AMOUNT = 50;
 const MAX_PLAYER_RESOURCE_CAP = 250;
@@ -704,7 +823,12 @@ const DISCORD_COMMANDS = [
   },
   {
     name: "attack",
-    description: "Attack the enemy in your current Adventure.",
+    description: "Attack the enemy in your current fight.",
+    type: 1,
+  },
+  {
+    name: "battle",
+    description: "Encounter a random enemy from your current region.",
     type: 1,
   },
   {
@@ -714,7 +838,7 @@ const DISCORD_COMMANDS = [
   },
   {
     name: "cast",
-    description: "Cast a learned spell during an Adventure fight.",
+    description: "Cast a learned spell during combat.",
     type: 1,
     options: [
       {
@@ -857,7 +981,8 @@ const DISCORD_COMMANDS = [
         description: "The item to purchase.",
         required: true,
         choices: [...Object.values(SHOP_ITEMS).map(item => ({ name: item.displayName, value: item.id })),
-          { name: "Class Change", value: "class-change" }],
+          { name: "Class Change", value: "class-change" },
+          { name: "Tip Jar", value: "tip-jar" }],
       },
       {
         type: 4,
@@ -867,6 +992,7 @@ const DISCORD_COMMANDS = [
         min_value: 1,
         max_value: 99,
       },
+      { type: 4, name: "amount", description: "Star Candies to tip (Tip Jar only).", required: false, min_value: 1 },
       { type: 3, name: "class", description: "Class to change to (Class Change only).", required: false,
         choices: WEAPON_IDS.map(id => ({ name: CLASS_DATA[id].name, value: id })) },
     ],
@@ -967,12 +1093,13 @@ Adventure
 Combat & Spells
 
 /attack: Attack the current enemy. Uses your equipped weapon or your basic attack if no weapon is equipped.
+/battle: Battle a random enemy from your current region. That enemy may come with modifiers. You might even encounter something special
 /stim: Fully restore your HP once per battle. Using Stim consumes your combat turn.
 /cast: Cast one of your unlocked spells. Mana cost and turn behavior depend on the spell.
 
 Items & Recovery
 
-/eat: Eat one Berry to restore up to 25 HP and 25 Mana. Berries do not consume your combat turn, and you can eat up to 4 during one Adventure.
+/eat: Eat one Berry to restore up to 25 HP and 25 Mana. Berries do not consume your combat turn. You can eat up to 4 during one Adventure or 2 during one standalone battle.
 /rest: Take a Short or Long Rest outside combat to recover resources. Short Rest has a 20 minute cooldown. Long Rest has a 60 minute cooldown and requires no active Adventure.
 
 Exploration & Travel
@@ -1011,6 +1138,7 @@ Shop & Weapons
 
 /shop: Visit the merchant, view items and weapons, see ownership and equipment status, and access unlocked shop services. Opening the shop starts a 10 minute shop session.
 /buy: Buy Berries, weapons, and secrets.
+/buy item:Tip Jar amount:[amount]: Donate Star Candies to the shared Tip Jar. Avoid tipping at the exact same time as other players; simultaneous tips may not count correctly.
 /equip: Equip a permanent weapon you own. Equipping is free and cannot be done during combat.
 
 Some shop services are unlocked as you progress.
@@ -1735,6 +1863,11 @@ async function handleDiscordInteractionCore(request, env) {
           (await performAttack(env, backpackKey, "discord")).message,
         );
 
+      case "battle":
+        return discordMessage(
+          (await performBattle(env, backpackKey)).message,
+        );
+
       case "stim":
         return discordMessage(
           (await performStim(
@@ -1857,7 +1990,6 @@ async function handleDiscordInteractionCore(request, env) {
               backpackKey,
               sharedIdentity,
               "discord",
-              getDiscordOption(interaction, "class"),
             )
           ).message,
         );
@@ -1873,6 +2005,7 @@ async function handleDiscordInteractionCore(request, env) {
               sharedIdentity,
               "discord",
               getDiscordOption(interaction, "class"),
+              getDiscordOption(interaction, "amount"),
             )
           ).message,
         );
@@ -2890,6 +3023,7 @@ async function startCombatEncounter(
   enemy,
   platform,
   source = "adventure",
+  wanderingBattle = null,
 ) {
   const now = Math.floor(Date.now() / 1000);
   const progress = await getPlayerProgress(env, backpackKey);
@@ -2907,6 +3041,7 @@ async function startCombatEncounter(
     },
     round: 1,
     stimUses: 0,
+    ...(wanderingBattle ? { wanderingBattle } : {}),
     startedAt: now,
     updatedAt: now,
   };
@@ -2927,7 +3062,9 @@ async function startCombatEncounter(
   return {
     message: platform === "discord"
       ? appendDiscordCombatHud(
-          source === "long-rest"
+          source === "battle"
+            ? formatWanderingBattleIntroduction(enemy, region, wanderingBattle)
+            : source === "long-rest"
             ? `**An enemy has appeared!**\n\n${enemy.name}\n\n` +
               "Use /attack or /cast spell to strike."
             : `Adventure ${encounterNumber} begins!\n\n` +
@@ -2936,8 +3073,119 @@ async function startCombatEncounter(
           combatState,
           progress,
         )
-      : message,
+      : source === "battle"
+        ? formatWanderingBattleIntroduction(enemy, region, wanderingBattle)
+        : message,
   };
+}
+
+function formatWanderingBattleIntroduction(enemy, region, battle) {
+  if (battle.variant === "Wishpocket") {
+    return "Rare Encounter!\n\n" +
+      "Something jingles along the path ahead. A Wishpocket scurries into view, dragging an overstuffed sack of Star Candies behind it.\n\n" +
+      "It spots you and immediately starts looking for an escape.\n\n" +
+      "Wishpocket appeared! Defeat it before it gets away! Use /attack or /cast to strike.";
+  }
+  const location = `${enemy.name} drifts into your path as you travel through ${region.name}.`;
+  if (battle.variant === "Common") {
+    return `Enemy fight begins! A ${location} Use /attack or /cast to strike.`;
+  }
+  const detail = battle.variant === "Armored"
+    ? "It begins with 20 Protection."
+    : battle.variant === "Frenzied"
+      ? "Its attacks strike harder."
+      : battle.blessing === "Damage"
+        ? "Fae magic strengthens its attacks."
+        : battle.blessing === "Protection"
+          ? "Fae magic shields it with 10 Protection."
+          : "Fae magic swells its vitality.";
+  const article = battle.variant === "Armored" ? "An" : "A";
+  return `Uncommon Encounter! ${article} ${battle.variant} ${location} ${detail} ` +
+    "Use /attack or /cast to strike.";
+}
+
+async function performBattle(env, backpackKey) {
+  return withPlayerMutationLock(backpackKey, async () => {
+    if (await getCombatState(env, backpackKey)) {
+      return { message: "Finish the current fight before seeking another battle." };
+    }
+    if (await getActiveAdventure(env, backpackKey)) {
+      return { message: "Finish your current Adventure before seeking another battle." };
+    }
+    if ((await getPendingCombat(env, backpackKey)).pending) {
+      return { message: "Resolve your pending challenge before seeking another battle." };
+    }
+    const savedProgress = await env.Backpack.get(getProgressKey(backpackKey));
+    if (savedProgress !== null) {
+      let parsed;
+      try { parsed = JSON.parse(savedProgress); } catch { parsed = null; }
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        return { message: "Your player state is unavailable for battle right now." };
+      }
+      if (Object.hasOwn(parsed, "currentRegion") &&
+          !getRegionById(parsed.currentRegion)) {
+        return { message: "Your current region is unavailable for battle." };
+      }
+    }
+    const progress = await getPlayerProgress(env, backpackKey);
+    const region = getRegionById(progress.currentRegion);
+    if (!region) return { message: "Your current region is unavailable for battle." };
+    if (progress.hp <= 0) return { message: "Rest before seeking another battle." };
+    const rarityRoll = Math.random();
+    if (rarityRoll < BATTLE_WISHPOCKET_CHANCE) {
+      const design = WISHPOCKET_BY_REGION[region.id];
+      if (!design) return { message: "Your current region is unavailable for battle." };
+      const enemy = {
+        id: "wishpocket", name: "Wishpocket", level: region.level,
+        hp: design.hp, damageBonus: 0, isBoss: false,
+        reward: {
+          xp: { min: design.xp[0], max: design.xp[1] },
+          candies: { min: design.candies[0], max: design.candies[1] },
+        },
+        defeatCandyLoss: 0,
+      };
+      return startCombatEncounter(env, backpackKey, region, undefined,
+        enemy, "discord", "battle",
+        { variant: "Wishpocket", blessing: null, berryUses: 0, actions: 0 });
+    }
+    let entries;
+    try {
+      entries = await getRegionCombatEntries(region.id);
+    } catch {
+      return { message: `Battles are unavailable in ${region.name} right now.` };
+    }
+    const manifest = await getAdventureManifest(region.id);
+    const regionalEnemyIds = new Set(manifest.map(entry => entry.enemyId));
+    const candidates = (await Promise.all(entries.map(async (entry) => {
+      try {
+        if (!regionalEnemyIds.has(entry.enemy)) return null;
+        const enemy = await getEnemyDefinition(entry.enemy);
+        return enemy.isBoss === true
+          ? null : { enemy, encounterNumber: entry.encounter };
+      } catch { return null; }
+    }))).filter(Boolean);
+    if (!candidates.length) {
+      return { message: `No wandering enemies are available in ${region.name} right now.` };
+    }
+    const chosen = randomChoice(candidates);
+    const enemy = { ...chosen.enemy };
+    const variant = rarityRoll < BATTLE_WISHPOCKET_CHANCE +
+      (1 - BATTLE_WISHPOCKET_CHANCE - BATTLE_UNCOMMON_CHANCE)
+      ? "Common" : randomChoice(BATTLE_VARIANTS);
+    const blessing = variant === "Fae Touched"
+      ? randomChoice(FAE_TOUCHED_BLESSINGS) : null;
+    if (variant === "Armored") enemy.protection = 20;
+    if (variant === "Frenzied") enemy.damageBonus = (enemy.damageBonus || 0) + 3;
+    if (variant === "Fae Touched") {
+      enemy.hp += Math.floor(chosen.enemy.hp * 0.10) *
+        (blessing === "Health" ? 2 : 1);
+      if (blessing === "Damage") enemy.damageBonus = (enemy.damageBonus || 0) + 2;
+      if (blessing === "Protection") enemy.protection = 10;
+    }
+    return startCombatEncounter(env, backpackKey, region,
+      chosen.encounterNumber, enemy, "discord", "battle",
+      { variant, blessing, berryUses: 0 });
+  });
 }
 
 async function startLongRestEncounter(
@@ -3634,7 +3882,7 @@ function damageCombatEnemy(combatState, damage, pierceProtection = 0) {
   if (absorbed > 0) {
     enemy.protection -= absorbed;
     regionalEnemyReceipt(combatState,
-      `Throne's Resolve — Protection absorbed ${absorbed}; ${enemy.protection} remains.`);
+      `${combatState.wanderingBattle ? "Protection" : "Throne's Resolve — Protection"} absorbed ${absorbed}; ${enemy.protection} remains.`);
   }
   const dealt = Math.min(enemy.hp, amount - absorbed);
   enemy.hp -= dealt;
@@ -3642,6 +3890,7 @@ function damageCombatEnemy(combatState, damage, pierceProtection = 0) {
 }
 
 function finishRegionalEnemyDamage(combatState, hpBefore, deferPhase = false) {
+  if (isWishpocketCombat(combatState)) return;
   const enemy = combatState.enemy;
   if (REGIONAL_ENEMY_PERKS[combatState.regionId]?.throneResolve) {
     const state = getRegionalEnemyState(combatState);
@@ -3658,11 +3907,13 @@ function finishRegionalEnemyDamage(combatState, hpBefore, deferPhase = false) {
 }
 
 function getRegionalSpellTax(combatState) {
+  if (isWishpocketCombat(combatState)) return 0;
   return REGIONAL_ENEMY_PERKS[combatState.regionId]?.kingsTax &&
     getRegionalEnemyState(combatState).spells === 2 ? bossPhase(combatState)?.tax || 5 : 0;
 }
 
 function getRegionalTaxPayment(combatState, damage, tax) {
+  if (isWishpocketCombat(combatState)) return 0;
   // Reserve affordability before rolling, then charge only a successful primary
   // hit. This preview does not consume Guard or Protection and needs no refund.
   const guard = REGIONAL_ENEMY_PERKS[combatState.regionId]?.royalGuard &&
@@ -3671,6 +3922,7 @@ function getRegionalTaxPayment(combatState, damage, tax) {
 }
 
 function applyRegionalRoyalGuard(combatState, damage, deferred = false) {
+  if (isWishpocketCombat(combatState)) return damage;
   if (damage <= 0 || !REGIONAL_ENEMY_PERKS[combatState.regionId]?.royalGuard) {
     return damage;
   }
@@ -3686,6 +3938,7 @@ function applyRegionalRoyalGuard(combatState, damage, deferred = false) {
 }
 
 function recordRegionalPlayerAction(combatState, kind, spellId, successful) {
+  if (isWishpocketCombat(combatState)) return;
   if (!successful || combatState.enemy.hp <= 0) return;
   const perks = REGIONAL_ENEMY_PERKS[combatState.regionId] || {};
   const state = getRegionalEnemyState(combatState);
@@ -3743,6 +3996,7 @@ function recordRegionalPlayerAction(combatState, kind, spellId, successful) {
 
 // Called at each individual recovery source, never on a net command-wide delta.
 function recordRegionalManaRecovery(combatState, actualAmount) {
+  if (isWishpocketCombat(combatState)) return;
   if (!combatState || combatState.enemy.hp <= 0 || actualAmount <= 0) return;
   const perks = REGIONAL_ENEMY_PERKS[combatState.regionId] || {};
   if (!perks.deepwaterHunger && !perks.manaFracture) return;
@@ -3766,7 +4020,53 @@ function getCombatProtection(combatState) {
     (combatState.familiarProtection || []).reduce((sum, pool) => sum + pool.amount, 0);
 }
 
+function isWishpocketCombat(combatState) {
+  return combatState?.wanderingBattle?.variant === "Wishpocket";
+}
+
+async function advanceWishpocketEscape(env, backpackKey, combatState,
+  progress, platform, messageParts) {
+  const actions = ++combatState.wanderingBattle.actions;
+  await savePlayerProgress(env, backpackKey, { ...progress, hp: combatState.playerHp });
+  if (actions >= WISHPOCKET_ESCAPE_ACTIONS) {
+    await deleteCombatState(env, backpackKey);
+    return {
+      escaped: true,
+      message: formatCombatMessageParts([
+        ...messageParts,
+        "Wishpocket escaped!",
+        "The little creature slips out of reach, its overstuffed sack jingling as it disappears into the Astral Sea.",
+      ], platform),
+    };
+  }
+  const scenes = [
+    "Wishpocket scrambles away, clutching its sack tightly.",
+    "Wishpocket is getting away!",
+    "Wishpocket is almost out of reach!",
+  ];
+  combatState.round += 1;
+  combatState.updatedAt = Math.floor(Date.now() / 1000);
+  await saveCombatState(env, backpackKey, combatState);
+  return {
+    message: formatCombatMessageParts([
+      ...messageParts, scenes[actions - 1],
+      `Escape: ${WISHPOCKET_ESCAPE_ACTIONS - actions} actions remaining`,
+      ...formatCombatStatus(combatState, progress, platform),
+    ], platform),
+  };
+}
+
+async function finishWishpocketSupportAction(env, backpackKey, combatState,
+  progress, platform, parts) {
+  return advanceWishpocketEscape(env, backpackKey, combatState,
+    progress, platform, parts);
+}
+
 function beginRegionalEnemyResponse(combatState, naturalRoll) {
+  if (isWishpocketCombat(combatState)) {
+    return { bonus: 0, repetitionDamage: 0, gentle: false,
+      pressure: false, hunger: false, fracture: 0 };
+  }
   const perks = REGIONAL_ENEMY_PERKS[combatState.regionId] || {};
   const state = getRegionalEnemyState(combatState);
   const response = { bonus: 0, repetitionDamage: 0, gentle: state.gentle,
@@ -3804,6 +4104,7 @@ function beginRegionalEnemyResponse(combatState, naturalRoll) {
 }
 
 function resolveRegionalEnemyHit(combatState, response, damage, progress) {
+  if (isWishpocketCombat(combatState)) return;
   if (damage <= 0) return;
   const state = getRegionalEnemyState(combatState);
   if (response.gentle) state.gentle = false;
@@ -3822,6 +4123,7 @@ function resolveRegionalEnemyHit(combatState, response, damage, progress) {
 }
 
 function finishRegionalEnemyResponse(combatState) {
+  if (isWishpocketCombat(combatState)) return;
   if (!REGIONAL_ENEMY_PERKS[combatState.regionId]?.kelpRecovery ||
       combatState.enemy.hp <= 0 || combatState.playerHp <= 0) return;
   if (getRegionalEnemyState(combatState).responses !== 0) return;
@@ -4183,6 +4485,10 @@ async function resolveEnemyCombatResponse(
   activeMasteries, activePerks, shizukisPresenceMastery, messageParts,
 ) {
   if (env[RUNTIME_DIAGNOSTICS]) env[RUNTIME_DIAGNOSTICS].stage = "combat.enemy-turn";
+  if (isWishpocketCombat(combatState)) {
+    return advanceWishpocketEscape(env, backpackKey, combatState,
+      progress, platform, messageParts);
+  }
   if (platform === "discord") messageParts.push("Enemy Turn");
   const regionalHpBefore = combatState.enemy.hp;
   const enemyRoll = randomInteger(1, 20);
@@ -4817,6 +5123,13 @@ async function performCastUnlocked(
     });
     await saveCombatState(env, backpackKey, currentCombatState);
     const separator = platform === "discord" ? "\n\n" : " | ";
+    if (isWishpocketCombat(currentCombatState)) {
+      return finishWishpocketSupportAction(env, backpackKey, currentCombatState,
+        paidProgress, platform, [
+          `Familiar Roll: ${firstDie} + ${secondDie} = ${total}`,
+          randomChoice(creature.intros),
+        ]);
+    }
     return {
       message: `Familiar Roll: ${firstDie} + ${secondDie} = ${total}` + separator +
         randomChoice(creature.intros) + separator +
@@ -4925,6 +5238,12 @@ async function performCastUnlocked(
       throw error;
     }
     const separator = platform === "discord" ? "\n\n" : " | ";
+    if (isWishpocketCombat(currentCombatState)) {
+      return finishWishpocketSupportAction(env, backpackKey, currentCombatState,
+        updatedProgress, platform, [outcome.text, shizukiMessage,
+          storytellerMessage, ...takeRegionalEnemyReceipts(currentCombatState)]
+          .filter(Boolean));
+    }
     return {
       message: [outcome.text, shizukiMessage, storytellerMessage,
         ...takeRegionalEnemyReceipts(currentCombatState),
@@ -5002,6 +5321,10 @@ async function performCastUnlocked(
       "Your Echo is stored. Your turn continues.",
     ];
     const hud = formatDiscordCombatHud(currentCombatState, updatedProgress);
+    if (isWishpocketCombat(currentCombatState)) {
+      return finishWishpocketSupportAction(env, backpackKey, currentCombatState,
+        updatedProgress, platform, castParts);
+    }
     return {
       message: platform === "discord"
         ? `${castParts.join("\n\n")}\n\n${hud}`
@@ -5082,6 +5405,10 @@ async function performCastUnlocked(
       "Your Bubble is ready. Your turn continues.",
     ];
     const hud = formatDiscordCombatHud(currentCombatState, updatedProgress);
+    if (isWishpocketCombat(currentCombatState)) {
+      return finishWishpocketSupportAction(env, backpackKey, currentCombatState,
+        updatedProgress, platform, castParts);
+    }
     return {
       message: platform === "discord"
         ? `${castParts.join("\n\n")}\n\n${hud}`
@@ -5183,6 +5510,10 @@ async function performCastUnlocked(
       `${healingPerTrigger} HP × ${spell.triggerCount} triggers`,
     ];
     const hud = formatDiscordCombatHud(currentCombatState, updatedProgress);
+    if (isWishpocketCombat(currentCombatState)) {
+      return finishWishpocketSupportAction(env, backpackKey, currentCombatState,
+        updatedProgress, platform, castParts);
+    }
 
     return {
       message: platform === "discord"
@@ -5271,6 +5602,10 @@ async function performCastUnlocked(
       const regionalMessages = takeRegionalEnemyReceipts(currentCombatState);
       if (regionalMessages.length) message +=
         (platform === "discord" ? "\n\n" : " | ") + regionalMessages.join(" | ");
+    }
+    if (currentCombatState && isWishpocketCombat(currentCombatState)) {
+      return finishWishpocketSupportAction(env, backpackKey, currentCombatState,
+        updatedProgress, platform, [message]);
     }
     return {
       message: currentCombatState && platform === "discord"
@@ -6585,6 +6920,9 @@ async function performEatUnlocked(
   if (adventureRun && berriesEaten >= 4) {
     return { message: "You've already eaten 4 berries during this adventure. You'll have to save the rest for later." };
   }
+  if (combatState?.wanderingBattle?.berryUses >= BATTLE_BERRY_LIMIT) {
+    return { message: "You've already eaten 2 berries during this battle. You'll have to save the rest for later." };
+  }
 
   if (latestProgress.berries < 1) {
     const message = `${displayName}, you do not have any Berries to eat.`;
@@ -6648,6 +6986,7 @@ async function performEatUnlocked(
   }
 
   if (adventureRun) adventureRun.berriesEaten = berriesEaten + 1;
+  if (combatState?.wanderingBattle) combatState.wanderingBattle.berryUses++;
 
   try {
     if (combatState) {
@@ -6681,6 +7020,15 @@ async function performEatUnlocked(
     throw error;
   }
 
+  if (isWishpocketCombat(combatState)) {
+    const berryMessage = `${displayName} ate 1 Berry and restored ${healedAmount} HP and ` +
+      `${restoredMana} Mana! Berries: ${remainingBerries.toLocaleString("en-US")}` +
+      ` | Battle Berry Uses: ${combatState.wanderingBattle.berryUses}/${BATTLE_BERRY_LIMIT}`;
+    return advanceWishpocketEscape(env, backpackKey, combatState,
+      { ...latestProgress, berries: remainingBerries, hp: updatedHp, mana: updatedMana },
+      platform, [berryMessage]);
+  }
+
   return {
     healedAmount,
     restoredMana,
@@ -6705,6 +7053,8 @@ async function performEatUnlocked(
         `Mana: ${updatedMana}/${manaLimit} | ` +
         `Berries: ${remainingBerries.toLocaleString("en-US")}`) +
       (adventureRun ? ` | Adventure Berry Uses: ${adventureRun.berriesEaten}/4` : "") +
+      (combatState?.wanderingBattle
+        ? ` | Battle Berry Uses: ${combatState.wanderingBattle.berryUses}/${BATTLE_BERRY_LIMIT}` : "") +
       (combatState ? takeRegionalEnemyReceipts(combatState).map(line => ` | ${line}`).join("") : ""),
   };
 }
@@ -6791,16 +7141,26 @@ async function resolveCombatVictory(
     };
     astralReprieveMessage = astralReprieve.activationLine;
   }
+  const wishpocket = isWishpocketCombat(combatState);
+  const variant = combatState.wanderingBattle?.variant;
+  const candyMultiplier = variant === "Frenzied" || variant === "Fae Touched"
+    ? 1.10 : 1;
+  const xpMultiplier = BATTLE_VARIANTS.includes(variant) ? 1.10 : 1;
+  const wishXpRoll = wishpocket ? randomInteger(
+    combatState.enemy.reward.xp.min, combatState.enemy.reward.xp.max) : null;
   const baseCandyReward = randomInteger(
     combatState.enemy.reward.candies.min,
     combatState.enemy.reward.candies.max,
   );
-  const luckReward = applyLuckToCandyReward(baseCandyReward, progress);
+  const jackpot = wishpocket && Math.random() < WISHPOCKET_JACKPOT_CHANCE;
+  const luckReward = applyLuckToCandyReward(
+    wishpocket ? baseCandyReward * (jackpot ? 3 : 1)
+      : Math.floor(baseCandyReward * candyMultiplier), progress);
   const candyReward = luckReward.total;
-  const xpReward = randomInteger(
+  const xpReward = wishpocket ? wishXpRoll : Math.floor(randomInteger(
     combatState.enemy.reward.xp.min,
     combatState.enemy.reward.xp.max,
-  );
+  ) * xpMultiplier);
   const xpProgression = applyXpAndStatPointProgression(progress, xpReward);
   const startingLevel = xpProgression.startingLevel;
   const startingTitle = getTitleForLevel(startingLevel);
@@ -6812,7 +7172,7 @@ async function resolveCombatVictory(
   const endingRegion = getRegionForLevel(endingLevel);
   const adventureContext = combatState.adventureContext;
   const unlockResult =
-    !adventureContext || adventureContext.isBoss
+    (!adventureContext && !combatState.wanderingBattle) || adventureContext?.isBoss
       ? await unlockNextEncounterAfterVictory(
           combatState,
           progress,
@@ -6829,7 +7189,8 @@ async function resolveCombatVictory(
     1,
     baseBerryChance + getLuckBerryChanceBonus(progress),
   );
-  const foundCombatBerry = combatBerryChance > 0 && Math.random() < combatBerryChance;
+  const foundCombatBerry = !wishpocket && combatBerryChance > 0 &&
+    Math.random() < combatBerryChance;
   const updatedProgress = {
     ...xpProgression.progress,
     hp: combatState.playerHp,
@@ -6863,17 +7224,25 @@ async function resolveCombatVictory(
   await deleteCombatState(env, backpackKey);
 
   const messageParts = [
-    `${combatState.enemy.name} defeated!`,
-    playerActionMessage ||
-      `You rolled ${playerRoll} for ${playerDamage} dmg`,
+    ...(wishpocket ? [
+      "The Wishpocket bursts open!",
+      jackpot
+        ? "Its sack was absolutely stuffed! Star Candies scatter everywhere."
+        : "Its overstuffed sack tears apart, scattering Star Candies across the path.",
+      `XP: +${xpReward}`,
+      `Star Candies: +${candyReward}`,
+      ...(jackpot ? ["Jackpot! 3x Star Candies"] : []),
+    ] : [
+      `${combatState.enemy.name} defeated!`,
+      playerActionMessage || `You rolled ${playerRoll} for ${playerDamage} dmg`,
+    ]),
     ...(astralHarvestMessage ? [astralHarvestMessage] : []),
     ...(astralDefianceMessage ? [astralDefianceMessage] : []),
     ...(astralReprieveMessage ? [astralReprieveMessage] : []),
     ...(platform === "discord"
       ? []
       : [`Mana: ${progress.mana}/${getPlayerResourceCaps(progress).mana}`]),
-    `+${xpReward} XP`,
-    `+${candyReward} Star Candies`,
+    ...(wishpocket ? [] : [`+${xpReward} XP`, `+${candyReward} Star Candies`]),
     ...(luckReward.bonus > 0
       ? [`Luck Bonus: +${luckReward.bonus} Star Candies`]
       : []),
@@ -6979,7 +7348,7 @@ async function resolveCombatDefeat(
     saveBackpackTotal(env, backpackKey, newTotal),
     savePlayerProgress(env, backpackKey, {
       ...progress,
-      hp: getPlayerMaxHp(progress),
+      hp: combatState.wanderingBattle ? 0 : getPlayerMaxHp(progress),
     }),
   ]);
   await deleteCombatState(env, backpackKey);
@@ -7339,6 +7708,63 @@ async function performGamble(
   };
 }
 
+async function getTipJarState(env) {
+  const stored = await env.Backpack.get(TIP_JAR_STATE_KEY);
+  if (stored === null) return { total: 0, cooldownUntil: 0 };
+  let state;
+  try { state = JSON.parse(stored); } catch { throw new Error("Tip Jar state is unavailable."); }
+  if (!state || !Number.isSafeInteger(state.total) || state.total < 0 ||
+      !Number.isSafeInteger(state.cooldownUntil) || state.cooldownUntil < 0) {
+    throw new Error("Tip Jar state is unavailable.");
+  }
+  return state;
+}
+
+async function performTipJar(env, backpackKey, amountInput) {
+  const raw = amountInput === null || amountInput === undefined
+    ? "" : String(amountInput).trim();
+  if (/^-\d+$/.test(raw) || raw === "0") {
+    return { message: "Enter a whole number of at least 1 Star Candy." };
+  }
+  if (!/^\d+$/.test(raw) || !Number.isSafeInteger(Number(raw))) {
+    return { message: "Enter a valid whole number of Star Candies." };
+  }
+  const amount = Number(raw);
+  if (amount < 1) return { message: "Enter a whole number of at least 1 Star Candy." };
+  const playerTotal = await getBackpackTotal(env, backpackKey);
+  if (!Number.isSafeInteger(playerTotal) || playerTotal < 0) {
+    return { message: "Your Star Candy balance is unavailable right now." };
+  }
+  if (amount > playerTotal) {
+    return { message: "You do not have enough Star Candies to tip that amount." };
+  }
+  const jar = await getTipJarState(env);
+  const now = Date.now();
+  if (jar.cooldownUntil > now) {
+    return { message: "The mustached shopkeeper puts a hand over the jar.\n\n" +
+      '"One customer at a time. This is a highly professional establishment."\n\n' +
+      "The Tip Jar is busy. Try again in a few seconds." };
+  }
+  const newTotal = jar.total + amount;
+  if (!Number.isSafeInteger(newTotal)) {
+    return { message: "The Tip Jar cannot accept that amount right now." };
+  }
+  // Player deduction is staged first. KV cannot atomically commit this and the
+  // shared jar key, so a partial physical flush remains possible.
+  await saveBackpackTotal(env, backpackKey, playerTotal - amount);
+  await env.Backpack.put(TIP_JAR_STATE_KEY, JSON.stringify({
+    total: newTotal, cooldownUntil: now + TIP_JAR_COOLDOWN_MS,
+  }));
+  const flavor = randomChoice(TIP_JAR_FLAVOR);
+  const formattedAmount = amount.toLocaleString("en-US");
+  return { total: newTotal, message:
+    `You drop ${formattedAmount} Star Candies into the Tip Jar.\n\n` +
+    "The mustached shopkeeper carefully counts them.\n\n" +
+    `"${flavor}"\n\n` +
+    `You tipped ${formattedAmount} Star Candies.\n` +
+    `Tip Jar: ${newTotal.toLocaleString("en-US")} Star Candies` };
+}
+
 async function performShop(
   env,
   backpackKey,
@@ -7350,6 +7776,13 @@ async function performShop(
     getPlayerProgress(env, backpackKey),
     touchShopSession(env, sharedIdentity),
   ]);
+  let tipJarLine;
+  try {
+    const jar = await getTipJarState(env);
+    tipJarLine = `Tip Jar: ${jar.total.toLocaleString("en-US")} Star Candies`;
+  } catch {
+    tipJarLine = "Tip Jar: temporarily unavailable";
+  }
   const introduction = randomChoice(SHOP_INTRODUCTIONS);
   const discordItemLines = Object.values(SHOP_ITEMS).map(
     (item) =>
@@ -7369,12 +7802,14 @@ async function performShop(
       ? `${introduction.scene}\n\n${introduction.quote}\n\n` +
         `Items for Sale\n\n${discordItemLines.join("\n\n")}\n\n` +
         (progress.classSystemUnlocked ? "Shop Service\n\nClass Change\nChange your specialization to another owned weapon's class.\n50,000 Star Candies\n\n" : "") +
+        `Tip Jar\n\nA definitely ordinary shopkeeper with a suspicious mustache guards a glass jar.\n${tipJarLine}\n` +
+        "Use /buy item:Tip Jar amount:[amount] to leave a tip. Avoid tipping at the exact same time as another player.\n\n" +
         `Your Star Candies: ${currentTotal.toLocaleString("en-US")}\n\n` +
         "Use /buy to purchase an item. Berry quantity: 1–99. Use /equip to swap owned weapons."
       : `${introduction.scene} ${introduction.quote} | ` +
         `${twitchItemLines.join(" | ")} | ` +
         (progress.classSystemUnlocked ? "Class Change — 50,000 Star Candies (Discord /buy) | " : "") +
-        `Balance: ${currentTotal.toLocaleString("en-US")} | ` +
+        `${tipJarLine} | Balance: ${currentTotal.toLocaleString("en-US")} | ` +
         "Buy: !buy berry [quantity]",
   };
 }
@@ -7398,6 +7833,7 @@ async function performBuy(
   sharedIdentity,
   platform = "twitch",
   classInput = null,
+  amountInput = null,
 ) {
   return withPlayerMutationLock(
     backpackKey,
@@ -7409,6 +7845,7 @@ async function performBuy(
       sharedIdentity,
       platform,
       classInput,
+      amountInput,
     ),
   );
 }
@@ -7421,6 +7858,7 @@ async function performBuyUnlocked(
   sharedIdentity,
   platform,
   classInput,
+  amountInput,
 ) {
   const shopCommand = platform === "discord" ? "/shop" : "!shop";
 
@@ -7439,6 +7877,15 @@ async function performBuyUnlocked(
       `${item.displayName} — ` +
       `${item.price.toLocaleString("en-US")} ${item.currency}`,
   ).join(" | ");
+
+  if (itemId === "tip-jar") {
+    if (platform === "discord" && quantityInput !== null &&
+        quantityInput !== undefined && quantityInput !== "") {
+      return { message: "Use amount, not quantity, for the Tip Jar." };
+    }
+    return performTipJar(env, backpackKey,
+      platform === "discord" ? amountInput : quantityInput);
+  }
 
   if (!itemId) {
     return {
@@ -9518,6 +9965,24 @@ function isValidCombatState(combatState) {
     combatState.playerMaxHp >= PLAYER_COMBAT_MAX_HP &&
     combatState.playerHp > 0 &&
     combatState.playerHp <= MAX_PLAYER_RESOURCE_CAP &&
+    (combatState.wanderingBattle === undefined ||
+      (combatState.wanderingBattle &&
+        ["Common", ...BATTLE_VARIANTS, "Wishpocket"].includes(combatState.wanderingBattle.variant) &&
+        Number.isSafeInteger(combatState.wanderingBattle.berryUses) &&
+        combatState.wanderingBattle.berryUses >= 0 &&
+        combatState.wanderingBattle.berryUses <= BATTLE_BERRY_LIMIT &&
+        (combatState.wanderingBattle.variant === "Fae Touched"
+          ? FAE_TOUCHED_BLESSINGS.includes(combatState.wanderingBattle.blessing)
+          : combatState.wanderingBattle.blessing === null) &&
+        (combatState.wanderingBattle.variant === "Wishpocket"
+          ? (Number.isSafeInteger(combatState.wanderingBattle.actions) &&
+            combatState.wanderingBattle.actions >= 0 &&
+            combatState.wanderingBattle.actions < WISHPOCKET_ESCAPE_ACTIONS &&
+            enemy?.id === "wishpocket" &&
+            enemy?.maxHp === WISHPOCKET_BY_REGION[combatState.regionId]?.hp)
+          : (combatState.wanderingBattle.actions === undefined &&
+            enemy?.id !== "wishpocket")) &&
+        combatState.adventureContext === undefined && enemy?.isBoss !== true)) &&
     (
       combatState.stimUses === undefined ||
       (Number.isSafeInteger(combatState.stimUses) &&

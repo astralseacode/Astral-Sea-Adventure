@@ -31,6 +31,29 @@ async function castWith(f, spell, rolls) {
     assert.equal((await f.state()).perkUses['fae-mischief'], 1);
   }
 
+  const jellyLegacy = await fixture(47);
+  await jellyLegacy.editProgress(p => { p.hp = 50; p.mana = 50; });
+  await jellyLegacy.editState(s => { s.playerHp = 50; });
+  let jellyAction;
+  const resolveJellyAction = jellyLegacy.c.resolvePlayerCombatAction;
+  jellyLegacy.c.resolvePlayerCombatAction = async (...args) => {
+    jellyAction = args[3];
+    return resolveJellyAction(...args);
+  };
+  jellyLegacy.rolls.push(1, 1, 2, 0, 0, 1);
+  const jellyLegacyResult = await jellyLegacy.cast('jelly');
+  assert.match(jellyLegacyResult.message, /Original Perfect Jellyfish: 1 \+ 1 \+ 2/);
+  assert.match(jellyLegacyResult.message, /Resolved Perfect Jellyfish: 1 \+ 1 \+ 1/);
+  assert.deepEqual(Array.from(jellyAction.curiosityDice), [1, 1, 1]);
+  assert.equal(jellyAction.legacyEffect.type, 'perfect-jellyfish');
+  assert.equal(jellyAction.damage - jellyAction.legacyEffect.damage, 3);
+  assert.equal(jellyAction.legacyEffect.damage, 20);
+  assert.equal(jellyAction.damage, 23);
+  assert.match(jellyLegacyResult.message, /\+20 damage\nRestored 20 HP \+ 20 Mana/);
+  assert.equal((await jellyLegacy.state()).playerHp, 80);
+  assert.equal((await jellyLegacy.progress()).mana, 90);
+  assert.equal(await jellyLegacy.c.getBackpackTotal(jellyLegacy.env, jellyLegacy.key), 100);
+
   for (const dice of [[20, 14], [14, 20]]) {
     const f = await fixture(47);
     const result = await castWith(f, 'moonbeam', [...dice, 1, 2]);

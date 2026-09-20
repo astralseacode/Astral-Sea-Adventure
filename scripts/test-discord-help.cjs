@@ -20,8 +20,8 @@ async function main() {
   f.c.verifyDiscordRequest=async()=>true;
   const commands=plain(vm.runInContext('DISCORD_COMMANDS',f.c));
   assert.equal(commands.filter(command=>command.name==='help').length,1);
-  assert.equal(commands.length,39);
-  assert.equal(commands.filter(command=>!['devlevel','devlevel2'].includes(command.name)).length,37);
+  assert.equal(commands.length,40);
+  assert.equal(commands.filter(command=>!['devlevel','devlevel2'].includes(command.name)).length,38);
   assert.equal(commands.find(command=>command.name==='help').options,undefined);
   const source=vm.runInContext('DISCORD_HELP_TEXT',f.c);
   assert(source.length>1900);
@@ -37,6 +37,7 @@ async function main() {
     assert(source.includes(`\n\n${heading}\n\n`),heading);
   }
   for(const exact of [
+    '/battle: Battle a random enemy from your current region. That enemy may come with modifiers. You might even encounter something special',
     '/buy: Buy Berries, weapons, and secrets.',
     '/read: Read all Travel Notes in your current region at once. Undiscovered pages tell you to keep exploring.',
     '/stim: Fully restore your HP once per battle. Using Stim consumes your combat turn.',
@@ -45,6 +46,10 @@ async function main() {
     "Leviathan's Wake: Level 20","Sunken King's Throne: Level 30",'Astral Nexus: Level 40',
     '20 minute cooldown','60 minute cooldown','10 minute shop session',
   ]) assert(source.includes(exact),exact);
+  assert.equal(source.split('\n').find(line=>line.startsWith('/battle: ')),
+    '/battle: Battle a random enemy from your current region. That enemy may come with modifiers. You might even encounter something special');
+  assert(source.includes('simultaneous tips may not count correctly.'));
+  assert(!source.split('\n').find(line=>line.startsWith('/battle: ')).includes('Wishpocket'));
   for(const forbidden of ['/devlevel','/devlevel2','/discord/register','/discord/schema','/health','/class ','/classchange','/weapons','Astral Nexus: Level 50']) {
     assert(!source.includes(forbidden),forbidden);
   }

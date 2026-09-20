@@ -10,8 +10,9 @@ async function setup(level = 21, platform = 'discord') {
   await f.editProgress(p => { p.mana = 50; p.hp = 50; });
   await f.editState(s => {
     s.playerHp = 50;
-    // Isolate mood rewards from double rewards; Triple checks explicitly enable them.
-    s.perkUses = { 'astral-curiosity': 1 };
+    // Isolate Mastery moods from Curiosity doubles and Fae Mischief pattern completion.
+    // Dedicated interaction tests cover the resulting Legacy triple separately.
+    s.perkUses = { 'astral-curiosity': 1, 'fae-mischief': 1 };
   });
   const resolve = f.c.resolvePlayerCombatAction;
   f.actions = [];
