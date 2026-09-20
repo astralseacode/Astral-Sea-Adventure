@@ -7802,10 +7802,9 @@ async function performShop(
       ? `${introduction.scene}\n\n${introduction.quote}\n\n` +
         `Items for Sale\n\n${discordItemLines.join("\n\n")}\n\n` +
         (progress.classSystemUnlocked ? "Shop Service\n\nClass Change\nChange your specialization to another owned weapon's class.\n50,000 Star Candies\n\n" : "") +
-        `Tip Jar\n\nA definitely ordinary shopkeeper with a suspicious mustache guards a glass jar.\n${tipJarLine}\n` +
-        "Use /buy item:Tip Jar amount:[amount] to leave a tip. Avoid tipping at the exact same time as another player.\n\n" +
+        `Tip Jar\n\nA definitely ordinary shopkeeper with a suspicious mustache guards a glass jar.\n${tipJarLine}\n\n` +
         `Your Star Candies: ${currentTotal.toLocaleString("en-US")}\n\n` +
-        "Use /buy to purchase an item. Berry quantity: 1–99. Use /equip to swap owned weapons."
+        "Use /buy to purchase a tip or item."
       : `${introduction.scene} ${introduction.quote} | ` +
         `${twitchItemLines.join(" | ")} | ` +
         (progress.classSystemUnlocked ? "Class Change — 50,000 Star Candies (Discord /buy) | " : "") +

@@ -17,8 +17,14 @@ async function main() {
   assert.equal(flavors[13], 'Do not worry. I have a system. The system is the jar.');
   assert.equal(flavors[92], 'Future generations may ask why this jar contains so many Star Candies. I recommend lying to them.');
   assert.equal(flavors[99], 'The jar thanks you. The mustache thanks you. I remain completely uninvolved.');
-  assert.match((await f.c.performShop(f.env, f.key, identity, 'discord')).message,
-    /Tip Jar: 0 Star Candies/);
+  const shop = (await f.c.performShop(f.env, f.key, identity, 'discord')).message;
+  assert.match(shop, /Tip Jar\n\nA definitely ordinary shopkeeper with a suspicious mustache guards a glass jar\.\nTip Jar: 0 Star Candies\n\nYour Star Candies: 0\n\nUse \/buy to purchase a tip or item\.$/);
+  for (const removed of ['Berry quantity:', 'Use /equip to swap owned weapons.',
+    'Use /buy item:Tip Jar amount:[amount] to leave a tip.', 'Avoid tipping at the exact same time as another player.']) {
+    assert(!shop.includes(removed), removed);
+  }
+  assert(shop.includes('Items for Sale'));
+  assert(shop.includes('Berry'));
   assert.equal(await f.c.getBackpackTotal(f.env, f.key), 0);
   await f.c.saveBackpackTotal(f.env, f.key, 50000);
   const originalProgress = plain(await f.c.getPlayerProgress(f.env, f.key));
