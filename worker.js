@@ -7793,10 +7793,17 @@ async function performStats(
       : progress.restBufferType === "short"
         ? "Rested"
         : "Not Rested";
+    const specialization = progress.classSystemUnlocked && progress.activeClass
+      ? classTitle(progress) || "None"
+      : "None";
+    const equippedWeapon = SHOP_ITEMS[progress.equippedWeapon]?.permanent
+      ? SHOP_ITEMS[progress.equippedWeapon].displayName
+      : "None";
 
     if (platform !== "discord") {
       return {
         message: `Level ${level} | XP ${progress.xp} | Title: ${getTitleForLevel(level)} | ` +
+          `Specialization: ${specialization} | Equipped Weapon: ${equippedWeapon} | ` +
           `Next: ${nextLevelXp - progress.xp} XP | Points: ${progress.unspentStatPoints} | ` +
           `HP ${currentHp}/${getPlayerMaxHp(progress)} | Mana ${progress.mana}/${getPlayerMaxMana(progress)} | ` +
           `Vitality ${stats.vitality} | Focus ${stats.focus} | Strength ${stats.strength} | ` +
@@ -7811,6 +7818,7 @@ async function performStats(
       message: `**Astral Sea Stats**\n\n` +
         `Level: ${level}\nTitle: ${getTitleForLevel(level)}\nXP: ${progress.xp}\n` +
         `Next Level: ${nextLevelXp - progress.xp} XP\nUnspent Stat Points: ${progress.unspentStatPoints}\n\n` +
+        `Specialization: ${specialization}\nEquipped Weapon: ${equippedWeapon}\n\n` +
         `**Resources**\n\nHP: ${currentHp}/${getPlayerMaxHp(progress)}\n` +
         `Mana: ${progress.mana}/${getPlayerMaxMana(progress)}\n\n` +
         `**Permanent Stats**\n\n` +
