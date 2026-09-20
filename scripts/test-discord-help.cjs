@@ -27,6 +27,12 @@ async function main() {
   assert(source.length>1900);
   assert(source.startsWith('Astral Sea Adventure: Help\n\nEvery command currently available to you is listed below.'));
   assert(source.endsWith('New here? Start with /explore.'));
+  assert(!/\/[^\n]+\n\/[^\n]+/.test(source), 'command entries need a blank line');
+  assert(!/\/[^\n]+\n{3,}\/[^\n]+/.test(source), 'command entries need exactly one blank line');
+  assert(source.includes('/attack: Attack the current enemy. Uses your equipped weapon or your basic attack if no weapon is equipped.\n\n/battle:'));
+  assert(!source.includes('/buy item:Tip Jar amount:[amount]'));
+  assert(!source.includes('Donate Star Candies to the shared Tip Jar.'));
+  assert(source.includes('Some shop services are unlocked as you progress. Simultaneous tips may not count correctly.'));
   assert(!source.includes('—'));
   assert(!source.includes('-'));
   for(const {name} of audit.commands) {
@@ -48,7 +54,7 @@ async function main() {
   ]) assert(source.includes(exact),exact);
   assert.equal(source.split('\n').find(line=>line.startsWith('/battle: ')),
     '/battle: Battle a random enemy from your current region. That enemy may come with modifiers. You might even encounter something special');
-  assert(source.includes('simultaneous tips may not count correctly.'));
+  assert.equal(source.split('Simultaneous tips may not count correctly.').length-1,1);
   assert(!source.split('\n').find(line=>line.startsWith('/battle: ')).includes('Wishpocket'));
   for(const forbidden of ['/devlevel','/devlevel2','/discord/register','/discord/schema','/health','/class ','/classchange','/weapons','Astral Nexus: Level 50']) {
     assert(!source.includes(forbidden),forbidden);

@@ -89,7 +89,7 @@ async function main() {
   assert.match(await twitchResponse.text(), /You tipped 67 Star Candies/);
   assert.equal(await f.c.getBackpackTotal(f.env, twitchKey), 0);
   assert.equal((await f.c.getTipJarState(f.env)).total, 50069);
-  assert.match(vm.runInContext('DISCORD_HELP_TEXT', f.c), /simultaneous tips may not count correctly/);
+  assert.match(vm.runInContext('DISCORD_HELP_TEXT', f.c), /Simultaneous tips may not count correctly\./);
   const buy = Array.from(vm.runInContext('DISCORD_COMMANDS', f.c)).find(c => c.name === 'buy');
   assert(buy.options.find(option => option.name === 'item').choices.some(c => c.value === 'tip-jar'));
   assert(buy.options.some(option => option.name === 'amount'));
