@@ -7,11 +7,11 @@ const { fixture } = require('./test-leviathans-wake.cjs');
 const root = path.resolve(__dirname,'..');
 const audit = JSON.parse(fs.readFileSync(path.join(root,'command-audit-for-help.json'),'utf8'));
 const plain = value => JSON.parse(JSON.stringify(value));
-function request(user='123456789') {
+function request(user='123456789', name='help') {
   return new Request('https://offline.invalid/discord/interactions',{
     method:'POST',headers:{'X-Signature-Ed25519':'mock','X-Signature-Timestamp':'mock'},
     body:JSON.stringify({type:2,application_id:'987654321',token:'offline-help-token',
-      user:{id:user,username:'helper'},data:{name:'help'}}),
+      user:{id:user,username:'helper'},data:{name}}),
   });
 }
 async function main() {
@@ -20,8 +20,10 @@ async function main() {
   f.c.verifyDiscordRequest=async()=>true;
   const commands=plain(vm.runInContext('DISCORD_COMMANDS',f.c));
   assert.equal(commands.filter(command=>command.name==='help').length,1);
-  assert.equal(commands.length,41);
-  assert.equal(commands.filter(command=>!['devlevel','devlevel2','devlevel3'].includes(command.name)).length,38);
+  assert.equal(commands.length,38);
+  for (const removed of ['devlevel','devlevel2','devlevel3']) {
+    assert(!commands.some(command=>command.name===removed),removed);
+  }
   assert.equal(commands.find(command=>command.name==='help').options,undefined);
   const source=vm.runInContext('DISCORD_HELP_TEXT',f.c);
   assert(source.length>1900);
@@ -71,6 +73,11 @@ async function main() {
   const direct=await (await f.c.handleDiscordInteractionCore(request(),{...f.env,DISCORD_PUBLIC_KEY:'mock'})).json();
   assert.equal(direct.data.content,source);
   assert.equal(direct.data.flags,64);
+  for (const removed of ['devlevel','devlevel2','devlevel3']) {
+    const reply=await (await f.c.handleDiscordInteractionCore(request('123456789',removed),
+      {...f.env,DISCORD_PUBLIC_KEY:'mock'})).json();
+    assert.equal(reply.data.content,'Unknown command.');
+  }
   assert.deepEqual([...f.values],beforeValues);
   assert.equal(f.writes.length,beforeWrites);
   assert.deepEqual(plain(await f.state()),beforeCombat);

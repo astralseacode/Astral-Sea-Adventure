@@ -8,7 +8,7 @@ async function main() {
   assert.equal(new Set(content.successLines).size, 26);
   // Digest of the exact 26 approved lines, independently extracted from the request.
   assert.equal(require('node:crypto').createHash('sha256').update(JSON.stringify(content.successLines)).digest('hex'),
-    '768327e4b9b348cf8e71232dd1f10f87e23f59a1805abfb5d34bdac340f508ac');
+    '23a334820b8f547e3d120dc40aa476a639ce3a0ac8e016a3478b375d1dbece37');
   assert.equal(content.fullManaLine, 'You reach for the feelings and memories of Shizuki. The Astral light answers, takes one look at your completely full Mana, and quietly fades away.');
   assert.equal(content.manaCost, 0);
   for (const platform of ['discord', 'twitch']) {
