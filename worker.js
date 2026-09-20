@@ -1271,6 +1271,10 @@ export default {
         return await handleDiscordRegistration(request, env);
       }
 
+      if (url.pathname === "/discord/clear-guild-commands") {
+        return await handleDiscordGuildCleanup(request, env);
+      }
+
       if (url.pathname === "/discord/schema") {
         if (request.method !== "GET") {
           return textResponse("Method not allowed.", 405);
@@ -2038,9 +2042,17 @@ async function handleDiscordInteractionCore(request, env) {
    ============================================================ */
 
 async function handleDiscordRegistration(request, env) {
+  return handleDiscordCommandSetup(request, env, false);
+}
+
+async function handleDiscordGuildCleanup(request, env) {
+  return handleDiscordCommandSetup(request, env, true);
+}
+
+async function handleDiscordCommandSetup(request, env, guildCleanup) {
   if (request.method !== "POST") {
     return textResponse(
-      "Send a POST request to this route to register the commands.",
+      "Send a POST request to this setup route.",
       405,
     );
   }
@@ -2057,8 +2069,8 @@ async function handleDiscordRegistration(request, env) {
 
   const requiredVariables = [
     "DISCORD_APPLICATION_ID",
-    "DISCORD_GUILD_ID",
     "DISCORD_BOT_TOKEN",
+    ...(guildCleanup ? ["DISCORD_GUILD_ID"] : []),
   ];
 
   const missing = requiredVariables.filter((name) => !env[name]);
@@ -2073,11 +2085,11 @@ async function handleDiscordRegistration(request, env) {
     );
   }
 
-  // Guild commands update immediately, which is best while developing.
   const endpoint =
     `${DISCORD_API_BASE}/applications/` +
-    `${env.DISCORD_APPLICATION_ID}/guilds/` +
-    `${env.DISCORD_GUILD_ID}/commands`;
+    `${env.DISCORD_APPLICATION_ID}` +
+    (guildCleanup ? `/guilds/${env.DISCORD_GUILD_ID}` : "") +
+    "/commands";
 
   const response = await fetch(endpoint, {
     method: "PUT",
@@ -2085,22 +2097,15 @@ async function handleDiscordRegistration(request, env) {
       Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(DISCORD_COMMANDS),
+    body: JSON.stringify(guildCleanup ? [] : DISCORD_COMMANDS),
   });
 
-  const responseBody = await response.text();
-
   if (!response.ok) {
-    console.error(
-      "Discord command registration failed:",
-      responseBody,
-    );
-
     return jsonResponse(
       {
         ok: false,
         status: response.status,
-        error: safeJsonParse(responseBody),
+        error: "Discord command setup failed.",
       },
       response.status,
     );
@@ -2108,8 +2113,9 @@ async function handleDiscordRegistration(request, env) {
 
   return jsonResponse({
     ok: true,
-    message: "Discord commands registered successfully.",
-    commands: safeJsonParse(responseBody),
+    message: guildCleanup
+      ? "Guild commands cleared successfully."
+      : "Global Discord commands registered successfully.",
   });
 }
 
