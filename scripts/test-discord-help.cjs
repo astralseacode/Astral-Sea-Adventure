@@ -20,8 +20,8 @@ async function main() {
   f.c.verifyDiscordRequest=async()=>true;
   const commands=plain(vm.runInContext('DISCORD_COMMANDS',f.c));
   assert.equal(commands.filter(command=>command.name==='help').length,1);
-  assert.equal(commands.length,38);
-  assert.equal(commands.filter(command=>command.name!=='devlevel').length,37);
+  assert.equal(commands.length,39);
+  assert.equal(commands.filter(command=>!['devlevel','devlevel2'].includes(command.name)).length,37);
   assert.equal(commands.find(command=>command.name==='help').options,undefined);
   const source=vm.runInContext('DISCORD_HELP_TEXT',f.c);
   assert(source.length>1900);
@@ -45,7 +45,7 @@ async function main() {
     "Leviathan's Wake: Level 20","Sunken King's Throne: Level 30",'Astral Nexus: Level 40',
     '20 minute cooldown','60 minute cooldown','10 minute shop session',
   ]) assert(source.includes(exact),exact);
-  for(const forbidden of ['/devlevel','/discord/register','/discord/schema','/health','/class ','/classchange','/weapons','Astral Nexus: Level 50']) {
+  for(const forbidden of ['/devlevel','/devlevel2','/discord/register','/discord/schema','/health','/class ','/classchange','/weapons','Astral Nexus: Level 50']) {
     assert(!source.includes(forbidden),forbidden);
   }
   assert(!source.includes('/help: Cast'));

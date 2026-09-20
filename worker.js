@@ -648,6 +648,11 @@ const DISCORD_COMMANDS = [
     description: "Temporary development-only Level 50 override.",
     type: 1,
   },
+  {
+    name: "devlevel2",
+    description: "Reset the development playtest account to Level 5.",
+    type: 1,
+  },
   { name: "help", description: "View the complete Astral Sea command reference.", type: 1 },
   {
     name: "adventure",
@@ -1610,6 +1615,49 @@ async function handleDiscordInteractionCore(request, env) {
     } catch (error) {
       logRuntimeError(error, diagnostic, "discord.command.devlevel");
       return discordMessage("The development override could not be applied. Please try again later.", true);
+    }
+  }
+
+  // TEMPORARY DEVELOPMENT COMMAND: REMOVE BEFORE FULL RELEASE
+  if (commandName === "devlevel2") {
+    if (userId !== "715083178834133043") {
+      return discordMessage("This command is only available in development.", true);
+    }
+    try {
+      const backpackKey = `backpack:discord:${userId}`;
+      const sharedIdentity = getDiscordRestIdentity(interaction);
+      const level = 5;
+      const xp = totalXpForLevel(level);
+      const progress = createEmptyProgress();
+      progress.xp = xp;
+      progress.unspentStatPoints = level - 1;
+      progress.statPointsGrantedThroughLevel = level;
+      if (levelFromXp(xp) !== level || Object.values(progress.stats).some(Boolean)) {
+        throw new Error("Invalid development playtest progress.");
+      }
+      return await withCommandPersistence(env, backpackKey, async (commandEnv) => {
+        await deleteCombatState(commandEnv, backpackKey);
+        await clearPendingCombat(commandEnv, backpackKey);
+        await clearActiveAdventure(commandEnv, backpackKey);
+        await commandEnv.Backpack.delete(`cooldown:discord:daily:${userId}`);
+        if (sharedIdentity) {
+          await commandEnv.Backpack.delete(getShopSessionKey(sharedIdentity));
+          await commandEnv.Backpack.delete(getSharedRestCooldownKey(sharedIdentity));
+          await commandEnv.Backpack.delete(getSharedRestCooldownKey(sharedIdentity, "long"));
+        }
+        await savePlayerProgress(commandEnv, backpackKey, progress);
+        await saveBackpackTotal(commandEnv, backpackKey, 100000);
+        return discordMessage(
+          "Development Playtest Reset\n\n" +
+          "Level: 5\nXP: 3,200\nUnspent Stat Points: 4\nStar Candies: 100,000\n\n" +
+          "Combat and Adventure state cleared. Weapons, class, inventory, discoveries, and completed Adventures reset.\n\n" +
+          "Ready for a fresh Level 5 playtest.",
+          true,
+        );
+      });
+    } catch (error) {
+      logRuntimeError(error, diagnostic, "discord.command.devlevel2");
+      return discordMessage("The development playtest reset could not be applied. Please try again later.", true);
     }
   }
 
@@ -3471,6 +3519,58 @@ const REGIONAL_ENEMY_PERKS = Object.freeze({
   "sunken-kings-throne": { royalGuard: true, kingsTax: true, throneResolve: true },
   "astral-nexus": { realityEcho: true, manaFracture: true, nexusAdaptation: true },
 });
+const REGIONAL_BOSS_PHASES = Object.freeze({
+  "moonlit-reef": [
+    { name: "First Ripple", notice: "Gentle Current: +7 damage", gentle: 7 },
+    { name: "Rising Current", notice: "Gentle Current: +9 damage", gentle: 9 },
+    { name: "Moonlit Surge", notice: "Gentle Current: +12 damage", gentle: 12 },
+  ],
+  "starfall-trench": [
+    { name: "Sinking Pressure", notice: "Starfall Pressure: 15 Mana every 3 successful damaging spells", cadence: 3, drain: 15 },
+    { name: "Crushing Depths", notice: "Starfall Pressure: 20 Mana every 2 successful damaging spells", cadence: 2, drain: 20 },
+    { name: "Blackwater Pressure", notice: "Starfall Pressure: 30 Mana every 2 successful damaging spells", cadence: 2, drain: 30 },
+  ],
+  "whispering-kelp-forest": [
+    { name: "Creeping Vines", notice: "Kelp Recovery: 12 HP every 4 enemy responses", recovery: 12, cadence: 4 },
+    { name: "Thickened Growth", notice: "Kelp Recovery: 15 HP every 4 enemy responses", recovery: 15, cadence: 4 },
+    { name: "Strangling Bloom", notice: "Kelp Recovery: 15 HP every 3 enemy responses", recovery: 15, cadence: 3 },
+  ],
+  "leviathans-wake": [
+    { name: "Distant Tremor", notice: "Crushing Wake: +18 damage every 3 enemy responses", crushing: 18 },
+    { name: "Rising Wake", notice: "Crushing Wake: +20 damage every 3 enemy responses", crushing: 20 },
+    { name: "Abyssal Breaker", notice: "Crushing Wake: +25 damage every 3 enemy responses", crushing: 25 },
+  ],
+  "sunken-kings-throne": [
+    { name: "Royal Vigil", notice: "Royal Guard: 18 damage reduction\nKing's Tax: +5 Mana\nThrone's Resolve: 20 Protection", guard: 18, tax: 5, resolve: 20 },
+    { name: "King's Decree", notice: "Royal Guard: 20 damage reduction\nKing's Tax: +7 Mana\nThrone's Resolve: 20 Protection", guard: 20, tax: 7, resolve: 20 },
+    { name: "Last Decree", notice: "Royal Guard: 20 damage reduction\nKing's Tax: +8 Mana\nThrone's Resolve: 30 Protection", guard: 20, tax: 8, resolve: 30 },
+  ],
+  "astral-nexus": [
+    { name: "Fractured Shell", notice: "Reality Shell: 10 Protection every 4 successful damaging actions", shell: 10, cadence: 4 },
+    { name: "Unstable Shell", notice: "Reality Shell: 12 Protection every 3 successful damaging actions", shell: 12, cadence: 3 },
+    { name: "Collapsing Shell", notice: "Reality Shell: 15 Protection every 2 successful damaging actions", shell: 15, cadence: 2 },
+  ],
+});
+function bossPhase(combatState) {
+  return combatState.enemy.isBoss === true && combatState.regionalEnemy?.phase > 0
+    ? REGIONAL_BOSS_PHASES[combatState.regionId]?.[combatState.regionalEnemy.phase - 1] : null;
+}
+function advanceBossPhase(combatState) {
+  if (combatState.enemy.isBoss !== true || combatState.enemy.hp <= 0) return;
+  const enemy = combatState.enemy;
+  const phase = enemy.hp * 4 < enemy.maxHp ? 3
+    : enemy.hp * 2 < enemy.maxHp ? 2
+      : enemy.hp * 4 < enemy.maxHp * 3 ? 1 : 0;
+  const state = getRegionalEnemyState(combatState);
+  if (phase <= state.phase) return;
+  state.phase = phase;
+  const next = REGIONAL_BOSS_PHASES[combatState.regionId][phase - 1];
+  if (next.recovery) state.responses = Math.min(state.responses, next.cadence - 1);
+  if (next.shell) state.shellActions = Math.min(state.shellActions, next.cadence - 1);
+  // Completed cycles stay consumed; partial progress is retained across cadences.
+  regionalEnemyReceipt(combatState,
+    `Boss Phase Activated: ${next.name}\n${next.notice}`);
+}
 const regionalEnemyReceipts = new WeakMap();
 
 function regionalEnemyReceipt(combatState, message) {
@@ -3495,8 +3595,14 @@ function getRegionalEnemyState(combatState) {
       gentle: false, pressure: false, hunger: false, guard: false,
       resolveUsed: false, fracture: 0, adaptation: 0, lastSpell: null,
       repetition: false,
+      phase: 0, shellActions: 0,
+      pressureAmount: 0,
     };
   }
+  // Older in-progress battles may have been saved before boss phases existed.
+  if (state.phase === undefined) state.phase = 0;
+  if (state.shellActions === undefined) state.shellActions = 0;
+  if (state.pressureAmount === undefined) state.pressureAmount = state.pressure ? 10 : 0;
   return state;
 }
 
@@ -3508,6 +3614,9 @@ function isValidRegionalEnemyState(state) {
       .every(key => Number.isSafeInteger(state[key]) && state[key] >= 0) &&
     state.actions <= 6 && state.spells <= 4 && state.streak <= 1 &&
     state.responses <= 3 && [0, 5, 10].includes(state.adaptation) &&
+    (state.phase === undefined || (Number.isSafeInteger(state.phase) && state.phase >= 0 && state.phase <= 3)) &&
+    (state.shellActions === undefined || (Number.isSafeInteger(state.shellActions) && state.shellActions >= 0 && state.shellActions <= 3)) &&
+    (state.pressureAmount === undefined || [0, 10, 15, 20, 30].includes(state.pressureAmount)) &&
     ["gentle", "pressure", "hunger", "guard", "resolveUsed", "repetition"]
       .every(key => typeof state[key] === "boolean") &&
     (state.lastSpell === null || (typeof state.lastSpell === "string" &&
@@ -3532,28 +3641,32 @@ function damageCombatEnemy(combatState, damage, pierceProtection = 0) {
   return dealt;
 }
 
-function finishRegionalEnemyDamage(combatState, hpBefore) {
-  if (!REGIONAL_ENEMY_PERKS[combatState.regionId]?.throneResolve) return;
+function finishRegionalEnemyDamage(combatState, hpBefore, deferPhase = false) {
   const enemy = combatState.enemy;
-  const state = getRegionalEnemyState(combatState);
-  if (!state.resolveUsed && enemy.hp > 0 &&
+  if (REGIONAL_ENEMY_PERKS[combatState.regionId]?.throneResolve) {
+    const state = getRegionalEnemyState(combatState);
+    if (!state.resolveUsed && enemy.hp > 0 &&
       hpBefore * 4 >= enemy.maxHp && enemy.hp * 4 < enemy.maxHp) {
-    state.resolveUsed = true;
-    enemy.protection = (enemy.protection || 0) + 20;
-    regionalEnemyReceipt(combatState, "Throne's Resolve — Gained 20 Protection.");
+      state.resolveUsed = true;
+      const protection = enemy.isBoss === true
+        ? REGIONAL_BOSS_PHASES[combatState.regionId][2].resolve : 20;
+      enemy.protection = (enemy.protection || 0) + protection;
+      regionalEnemyReceipt(combatState, `Throne's Resolve — Gained ${protection} Protection.`);
+    }
   }
+  if (!deferPhase) advanceBossPhase(combatState);
 }
 
 function getRegionalSpellTax(combatState) {
   return REGIONAL_ENEMY_PERKS[combatState.regionId]?.kingsTax &&
-    getRegionalEnemyState(combatState).spells === 2 ? 5 : 0;
+    getRegionalEnemyState(combatState).spells === 2 ? bossPhase(combatState)?.tax || 5 : 0;
 }
 
 function getRegionalTaxPayment(combatState, damage, tax) {
   // Reserve affordability before rolling, then charge only a successful primary
   // hit. This preview does not consume Guard or Protection and needs no refund.
   const guard = REGIONAL_ENEMY_PERKS[combatState.regionId]?.royalGuard &&
-    getRegionalEnemyState(combatState).guard ? 15 : 0;
+    getRegionalEnemyState(combatState).guard ? bossPhase(combatState)?.guard || 15 : 0;
   return damage > guard + (combatState.enemy.protection || 0) ? tax : 0;
 }
 
@@ -3564,9 +3677,10 @@ function applyRegionalRoyalGuard(combatState, damage, deferred = false) {
   const state = getRegionalEnemyState(combatState);
   if (!state.guard) return damage;
   state.guard = false;
-  const reduction = Math.min(15, damage);
+  const guard = bossPhase(combatState)?.guard || 15;
+  const reduction = Math.min(guard, damage);
   regionalEnemyReceipt(combatState, deferred
-    ? "Royal Guard — Reserved up to 15 damage reduction for Wake arrival."
+    ? `Royal Guard — Reserved up to ${guard} damage reduction for Wake arrival.`
     : `Royal Guard — Spell damage reduced by ${reduction}.`);
   return damage - reduction;
 }
@@ -3580,7 +3694,7 @@ function recordRegionalPlayerAction(combatState, kind, spellId, successful) {
     state.actions = (state.actions + 1) % 3;
     if (state.actions === 0 && !state.gentle) {
       state.gentle = true;
-      regionalEnemyReceipt(combatState, "Gentle Current — Next damaging attack +5.");
+      regionalEnemyReceipt(combatState, `Gentle Current — Next damaging attack +${bossPhase(combatState)?.gentle || 5}.`);
     }
   }
   if (perks.nexusAdaptation) {
@@ -3591,6 +3705,14 @@ function recordRegionalPlayerAction(combatState, kind, spellId, successful) {
       regionalEnemyReceipt(combatState, `Nexus Adaptation — Increased to +${adaptation} damage.`);
     }
   }
+  const shell = bossPhase(combatState)?.shell;
+  if (shell) {
+    state.shellActions = (state.shellActions + 1) % bossPhase(combatState).cadence;
+    if (state.shellActions === 0 && (combatState.enemy.protection || 0) === 0) {
+      combatState.enemy.protection = shell;
+      regionalEnemyReceipt(combatState, `Reality Shell: +${shell} Protection`);
+    }
+  }
   if (kind === "attack") {
     state.streak = 0;
     state.lastSpell = null;
@@ -3598,9 +3720,10 @@ function recordRegionalPlayerAction(combatState, kind, spellId, successful) {
   }
   if (perks.starfallPressure && !state.pressure) {
     state.spells += 1;
-    if (state.spells === 4) {
+    if (state.spells >= (bossPhase(combatState)?.cadence || 4)) {
       state.pressure = true;
-      regionalEnemyReceipt(combatState, "Starfall Pressure — Next damaging attack drains 10 Mana.");
+      state.pressureAmount = bossPhase(combatState)?.drain || 10;
+      regionalEnemyReceipt(combatState, `Starfall Pressure — Next damaging attack drains ${state.pressureAmount} Mana.`);
     }
   }
   if (perks.kingsTax) state.spells = (state.spells + 1) % 3;
@@ -3649,20 +3772,22 @@ function beginRegionalEnemyResponse(combatState, naturalRoll) {
   const response = { bonus: 0, repetitionDamage: 0, gentle: state.gentle,
     pressure: state.pressure, hunger: state.hunger, fracture: state.fracture };
   if (perks.crushingWake || perks.kelpRecovery) {
-    const period = perks.crushingWake ? 3 : 4;
+    const period = perks.crushingWake ? 3 : bossPhase(combatState)?.cadence || 4;
     state.responses = (state.responses + 1) % period;
   }
   if (perks.crushingWake && state.responses === 0) {
-    regionalEnemyReceipt(combatState, "Crushing Wake — Incoming (+15 on hit).");
-    if (naturalRoll !== 1) response.bonus += 15;
+    const crushing = bossPhase(combatState)?.crushing || 15;
+    regionalEnemyReceipt(combatState, `Crushing Wake — Incoming (+${crushing} on hit).`);
+    if (naturalRoll !== 1) response.bonus += crushing;
   }
   // Repetition belongs only to this response, including a miss or full block.
   const repetition = state.repetition;
   state.repetition = false;
   if (naturalRoll === 1) return response;
   if (perks.gentleCurrent && state.gentle) {
-    response.bonus += 5;
-    regionalEnemyReceipt(combatState, "Gentle Current — +5 attack damage.");
+    const gentle = bossPhase(combatState)?.gentle || 5;
+    response.bonus += gentle;
+    regionalEnemyReceipt(combatState, `Gentle Current — +${gentle} attack damage.`);
   }
   if (perks.tanglingKelp && getCombatProtection(combatState) === 0) {
     response.bonus += 5;
@@ -3683,7 +3808,7 @@ function resolveRegionalEnemyHit(combatState, response, damage, progress) {
   const state = getRegionalEnemyState(combatState);
   if (response.gentle) state.gentle = false;
   for (const [key, label, amount] of [
-    ["pressure", "Starfall Pressure", response.pressure ? 10 : 0],
+    ["pressure", "Starfall Pressure", response.pressure ? state.pressureAmount || 10 : 0],
     ["hunger", "Deepwater Hunger", response.hunger ? 10 : 0],
     ["fracture", "Mana Fracture", response.fracture],
   ]) {
@@ -3691,7 +3816,7 @@ function resolveRegionalEnemyHit(combatState, response, damage, progress) {
     const drained = Math.min(progress.mana, amount);
     progress.mana -= drained;
     state[key] = key === "fracture" ? 0 : false;
-    if (key === "pressure") state.spells = 0;
+    if (key === "pressure") { state.spells = 0; state.pressureAmount = 0; }
     regionalEnemyReceipt(combatState, `${label} — Drained ${drained} Mana.`);
   }
 }
@@ -3700,7 +3825,8 @@ function finishRegionalEnemyResponse(combatState) {
   if (!REGIONAL_ENEMY_PERKS[combatState.regionId]?.kelpRecovery ||
       combatState.enemy.hp <= 0 || combatState.playerHp <= 0) return;
   if (getRegionalEnemyState(combatState).responses !== 0) return;
-  const restored = Math.min(10, combatState.enemy.maxHp - combatState.enemy.hp);
+  const restored = Math.min(bossPhase(combatState)?.recovery || 10,
+    combatState.enemy.maxHp - combatState.enemy.hp);
   combatState.enemy.hp += restored;
   if (restored > 0) regionalEnemyReceipt(combatState, `Kelp Recovery — Restored ${restored} enemy HP.`);
 }
@@ -4002,10 +4128,11 @@ async function resolvePlayerCombatAction(
     combatState, activePerks, platform,
   );
 
-  finishRegionalEnemyDamage(combatState, regionalHpBefore);
+  finishRegionalEnemyDamage(combatState, regionalHpBefore, true);
   recordRegionalPlayerAction(combatState,
     action.regionalSpell ? "spell" : action.regionalAction,
     action.regionalSpell, regionalDamage > 0 || action.regionalCommittedWake === true);
+  advanceBossPhase(combatState);
   const messageParts = [action.message, ...takeRegionalEnemyReceipts(combatState)];
   if (legacyMessage) messageParts.push(legacyMessage);
   if (echoMasteryMessage) messageParts.push(echoMasteryMessage);
@@ -5240,7 +5367,7 @@ async function performCastUnlocked(
 
   if (progress.mana < (isAllOrNothing ? storytellerManaCost + regionalTax : manaCost)) {
     const message = `You don't have enough Mana to cast ${spell.name}.` +
-      (regionalTax ? " King's Tax requires an additional 5 Mana." : "");
+      (regionalTax ? ` King's Tax requires an additional ${regionalTax} Mana.` : "");
     return {
       message: platform === "discord"
         ? appendDiscordCombatHud(message, combatState, progress)
@@ -5258,7 +5385,7 @@ async function performCastUnlocked(
   if (shimmerDiscount && !isAllOrNothing) delete combatState.berryEffects.shimmerDiscount;
 
   if (spell.id === "leviathans-wake") {
-    if (regionalTax) regionalEnemyReceipt(combatState, "King's Tax — Additional 5 Mana paid.");
+    if (regionalTax) regionalEnemyReceipt(combatState, `King's Tax — Additional ${regionalTax} Mana paid.`);
     return castLeviathansWake(
       env, backpackKey, combatState, progress, spell, activePerks,
       astralCharge, manaCost, platform,
@@ -5478,7 +5605,7 @@ async function performCastUnlocked(
     }
   }
   const regionalTaxPaid = getRegionalTaxPayment(combatState, resolvedSpellRoll.damage, regionalTax);
-  if (regionalTaxPaid) regionalEnemyReceipt(combatState, "King's Tax — Additional 5 Mana paid.");
+  if (regionalTaxPaid) regionalEnemyReceipt(combatState, `King's Tax — Additional ${regionalTaxPaid} Mana paid.`);
   let updatedProgress = {
     ...progress,
     mana: progress.mana - (isAllOrNothing && spellRoll.total === 1
@@ -5638,7 +5765,8 @@ async function castLeviathansWake(
   );
   // Wake is already a committed successful offensive action in the shared
   // pipeline (it cannot miss). Count the summon once, never its delayed payload.
-  const regionalGuardReduction = 15 - applyRegionalRoyalGuard(combatState, 15, true);
+  const guardValue = bossPhase(combatState)?.guard || 15;
+  const regionalGuardReduction = guardValue - applyRegionalRoyalGuard(combatState, guardValue, true);
   combatState.leviathansWake = {
     regionalGuardReduction,
     naturalRoll,
@@ -9352,7 +9480,7 @@ function isValidLeviathansWake(wake) {
     ["wakefin", "astral-manta", "deepwake-serpent", "leviathan", "ancient-one"].includes(wake.creatureId) &&
     [1, 2].includes(wake.stage) &&
     (wake.regionalGuardReduction === undefined ||
-      [0, 15].includes(wake.regionalGuardReduction)) &&
+      [0, 15, 18, 20].includes(wake.regionalGuardReduction)) &&
     Number.isSafeInteger(wake.baseDamage) && wake.baseDamage > 0 &&
     wake.critical === (wake.naturalRoll === 20) &&
     (wake.astralChargeSnapshot === null || validFraction(wake.astralChargeSnapshot?.damageIncrease)) &&
