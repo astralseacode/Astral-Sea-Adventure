@@ -424,4 +424,9 @@ Entry-level attempts can choose paths with zero to three normal fights. HP, Mana
 
 ## Safety and validation
 
+
 Both new scripts passed `node --check`. The 103 sweep and 127 curve cells parsed as JSON; no action cap occurred. Two repeated smoke runs produced identical SHA-256 results. The telemetry repair replay asserted identical completed and boss-reached counts for every affected Kelp and Nexus cell. Adventure Berry, Stim, boss phase, regional perk, generated artifact, Free-tier, and generated Worker build checks passed. `git diff --check` passed; Git emitted only line-ending notices for the pre-existing modified Worker files. `worker.js` SHA-256 remained `015FE3B3494F227BA8F992984D5C353A20A238E7EEC54C7933024E57EC9CFA0D` and `dist/worker.js` remained `04A461BB603DC9411A1D376D21CEEC3D9E1B71220D663610F41DEADD7F71AFFE` from before this investigation. The simulation does not implement any candidate. No canonical enemy or Adventure JSON, gameplay code, player data, live KV, commands, or deployment state was changed. Nothing was deployed, committed, pushed, or remotely registered.
+
+## Human playtest follow-up (Level 5 Starfall Adventure 1)
+
+The tester defeated Meteor Lure Angler on the second attempt under current canonical balance. The first attempt was affected by forgetting Mend. The winning boss fight began at 50/100 Mana and used Charge, Moonbeam, Mend, Sword and Shield, Protection, Evocation, and Stim. Sinking Pressure, Crushing Depths, and Blackwater Pressure activated, and Starfall Pressure drained Mana. The reported final state was approximately 58/100 HP and 20/100 Mana. The tester described the fight as challenging but doable with attentive use of the available toolkit. This single human result supports further playtesting before considering any Angler nerf; the simulation target is an audit measure, not a required production win rate. No balance candidate was applied in this presentation cleanup.

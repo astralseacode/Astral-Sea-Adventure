@@ -5,8 +5,8 @@
   "regionId": "starfall-trench",
   "enemyId": "starstone-lanternfish",
   "recommendedLevel": 5,
-  "introDiscord": "\"Stars fall through the water like snow as glowing Starstone Lanternfish drift between shattered terraces. Some of the lights are stars. Some are fish. Telling the difference appears to be part of the adventure.\"\n\n---------------- ROOM 1 — APPROACH ----------------",
-  "introTwitch": "\"Stars fall through the water like snow as glowing Starstone Lanternfish drift between shattered terraces. Some of the lights are stars. Some are fish. Telling the difference appears to be part of the adventure.\"\n\n---------------- ROOM 1 — APPROACH ----------------",
+  "introDiscord": "\"Stars fall through the water like snow as glowing Starstone Lanternfish drift between shattered terraces. Some of the lights are stars. Some are fish. Telling the difference appears to be part of the adventure.\"",
+  "introTwitch": "\"Stars fall through the water like snow as glowing Starstone Lanternfish drift between shattered terraces. Some of the lights are stars. Some are fish. Telling the difference appears to be part of the adventure.\"",
   "startRoomId": "lanterns-below-the-falling-sky-approach",
   "rooms": {
     "lanterns-below-the-falling-sky-approach": {
@@ -32,7 +32,7 @@
           "nextRoomId": "lanterns-below-the-falling-sky-depths",
           "healAmount": 60,
           "message": "A sheltered pool glows beneath a dormant fragment. Shizuki left a bottle nearby labeled: \"Lanternfish tonic. Contains zero Lanternfish. The name was misleading so I am clarifying.\"",
-          "fullHpMessage": "\"Shizuki's Lanternfish tonic remains untouched. You're already healthy, which means you can continue wondering why she needed to clarify the ingredients.\"\n\n---------------- ROOM 2 — DEPTHS ----------------"
+          "fullHpMessage": "\"Shizuki's Lanternfish tonic remains untouched. You're already healthy, which means you can continue wondering why she needed to clarify the ingredients.\""
         }
       }
     },
@@ -57,7 +57,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "lanterns-below-the-falling-sky-threshold",
-          "message": "\"A Berry sits beneath Shizuki's abandoned star chart. Every Lanternfish shaped mark has been aggressively circled.\n\nA note reads: \"New navigation rule: if the constellation bites you, it is not a constellation.\"\"\n\n---------------- ROOM 3 — THRESHOLD ----------------",
+          "message": "\"A Berry sits beneath Shizuki's abandoned star chart. Every Lanternfish shaped mark has been aggressively circled.\n\nA note reads: \"New navigation rule: if the constellation bites you, it is not a constellation.\"\"",
           "berries": 1
         }
       }
@@ -85,7 +85,7 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "starstone-lanternfish",
-          "message": "\"The final constellation ahead rearranges itself.\n\nTwo stars become eyes.\n\nA third becomes teeth.\n\nYep. Fish again.\"\n\n---------------- BOSS — FALLEN LANTERN BASIN ----------------"
+          "message": "\"The final constellation ahead rearranges itself.\n\nTwo stars become eyes.\n\nA third becomes teeth.\n\nYep. Fish again.\""
         }
       }
     },
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The brilliant lure swings aside and an enormous jaw surges from the darkness.\n\nMeteor Lure Angler reveals itself!"
   },
-  "completionText": "\"The Meteor Lure Angler disappears into the dark.\n\nThe remaining Lanternfish return to the water above like tiny stars.\n\nYou still don't trust any of them.\"\n\n#################################################################"
+  "completionText": "\"The Meteor Lure Angler disappears into the dark.\n\nThe remaining Lanternfish return to the water above like tiny stars.\n\nYou still don't trust any of them.\""
 }

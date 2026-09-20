@@ -5,8 +5,8 @@
   "regionId": "starfall-trench",
   "enemyId": "starfall-annex-grunt",
   "recommendedLevel": 10,
-  "introDiscord": "\"Beyond the celestial engine, carved stone gives way to something disturbingly familiar: sealed doors, dead terminals, faded warning lights, and an old institutional insignia Shizuki has very clearly drawn a mustache on.\"\n\n---------------- ROOM 1 — APPROACH ----------------",
-  "introTwitch": "\"Beyond the celestial engine, carved stone gives way to something disturbingly familiar: sealed doors, dead terminals, faded warning lights, and an old institutional insignia Shizuki has very clearly drawn a mustache on.\"\n\n---------------- ROOM 1 — APPROACH ----------------",
+  "introDiscord": "\"Beyond the celestial engine, carved stone gives way to something disturbingly familiar: sealed doors, dead terminals, faded warning lights, and an old institutional insignia Shizuki has very clearly drawn a mustache on.\"",
+  "introTwitch": "\"Beyond the celestial engine, carved stone gives way to something disturbingly familiar: sealed doors, dead terminals, faded warning lights, and an old institutional insignia Shizuki has very clearly drawn a mustache on.\"",
   "startRoomId": "the-starfall-annex-approach",
   "rooms": {
     "the-starfall-annex-approach": {
@@ -31,7 +31,7 @@
           "type": "combat",
           "nextRoomId": "the-starfall-annex-depths",
           "enemyId": "starfall-annex-grunt",
-          "message": "\"A warning light flashes.\n\nA Starfall Annex Grunt emerges from the ruined corridor.\n\nAfter all this time, something here is still following orders.\"\n\n---------------- ROOM 2 — DEPTHS ----------------"
+          "message": "\"A warning light flashes.\n\nA Starfall Annex Grunt emerges from the ruined corridor.\n\nAfter all this time, something here is still following orders.\""
         }
       }
     },
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "the-starfall-annex-threshold",
-          "message": "\"A sealed archive compartment opens.\n\nInside are Star Candies, damaged records, and a faded transit seal matching markings found elsewhere in Starfall Trench.\n\nThis place was connected to something larger.\"\n\n---------------- ROOM 3 — THRESHOLD ----------------",
+          "message": "\"A sealed archive compartment opens.\n\nInside are Star Candies, damaged records, and a faded transit seal matching markings found elsewhere in Starfall Trench.\n\nThis place was connected to something larger.\"",
           "reward": {
             "min": 57,
             "max": 101
@@ -85,7 +85,7 @@
           "nextRoomId": "boss-antechamber",
           "healAmount": 5,
           "message": "A restorative bottle rests beneath Shizuki's final trail note:\n\n\"Came back because I wanted answers.\n\nStayed because Glimmer found a button.\n\nLeaving because Glimmer found another button.\n\nIf you're following us...\n\ngood luck~\"",
-          "fullHpMessage": "\"You leave Shizuki's final restorative untouched.\n\nWhatever waited for her beyond this point, she walked toward it by choice.\"\n\n---------------- BOSS — METEOR ARCHIVE COMMAND ----------------"
+          "fullHpMessage": "\"You leave Shizuki's final restorative untouched.\n\nWhatever waited for her beyond this point, she walked toward it by choice.\""
         }
       }
     },

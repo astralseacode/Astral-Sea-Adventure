@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The central mechanism locks into place.\n\nAphelion Sentinel awakens!"
   },
-  "completionText": "\"The Sentinel falls silent.\n\nThe machinery continues malfunctioning peacefully.\n\nRepair successful enough.\"\n\n#################################################################"
+  "completionText": "\"The Sentinel falls silent.\n\nThe machinery continues malfunctioning peacefully.\n\nRepair successful enough.\""
 }

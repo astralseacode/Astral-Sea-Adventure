@@ -5,8 +5,8 @@
   "regionId": "starfall-trench",
   "enemyId": "gravity-skipping-ray",
   "recommendedLevel": 6,
-  "introDiscord": "\"The trench abruptly forgets which direction is down. Rocks float upward, sand falls sideways, and Gravity Skipping Rays glide between broken chunks of starstone like this is completely normal.\"\n\n---------------- ROOM 1 ----------------",
-  "introTwitch": "\"The trench abruptly forgets which direction is down. Rocks float upward, sand falls sideways, and Gravity Skipping Rays glide between broken chunks of starstone like this is completely normal.\"\n\n---------------- ROOM 1 ----------------",
+  "introDiscord": "\"The trench abruptly forgets which direction is down. Rocks float upward, sand falls sideways, and Gravity Skipping Rays glide between broken chunks of starstone like this is completely normal.\"",
+  "introTwitch": "\"The trench abruptly forgets which direction is down. Rocks float upward, sand falls sideways, and Gravity Skipping Rays glide between broken chunks of starstone like this is completely normal.\"",
   "startRoomId": "the-weightless-ravine-approach",
   "rooms": {
     "the-weightless-ravine-approach": {
@@ -27,7 +27,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "the-weightless-ravine-depths",
-          "message": "\"A meteor iron reliquary circles a chunk of starstone in a perfect little orbit. Catching the treasure is apparently part of the treasure.\"\n\n---------------- ROOM 2 ----------------",
+          "message": "\"A meteor iron reliquary circles a chunk of starstone in a perfect little orbit. Catching the treasure is apparently part of the treasure.\"",
           "reward": {
             "min": 135,
             "max": 171
@@ -54,7 +54,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "the-weightless-ravine-threshold",
-          "message": "\"A cometglass seam hangs upside down beneath a floating terrace. Star Candies drift around it like tiny moons.\"\n\n---------------- ROOM 3 ----------------",
+          "message": "\"A cometglass seam hangs upside down beneath a floating terrace. Star Candies drift around it like tiny moons.\"",
           "reward": {
             "min": 147,
             "max": 183
@@ -85,7 +85,7 @@
           "type": "combat",
           "nextRoomId": "boss-antechamber",
           "enemyId": "gravity-skipping-ray",
-          "message": "\"A Gravity Skipping Ray crosses the route.\n\nThe entire corridor rotates ninety degrees.\n\nYou are officially done negotiating with physics.\"\n\n---------------- BOSS — ZERO TIDE VAULT ----------------"
+          "message": "\"A Gravity Skipping Ray crosses the route.\n\nThe entire corridor rotates ninety degrees.\n\nYou are officially done negotiating with physics.\""
         }
       }
     },
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The orbiting stones scatter as a colossal Ray twists through the chamber.\n\nOrbitbreaker Ray reveals itself!"
   },
-  "completionText": "\"The Orbitbreaker Ray vanishes into the ravine.\n\nGravity settles.\n\nA nearby pebble immediately falls upward.\n\nClose enough.\"\n\n#################################################################"
+  "completionText": "\"The Orbitbreaker Ray vanishes into the ravine.\n\nGravity settles.\n\nA nearby pebble immediately falls upward.\n\nClose enough.\""
 }

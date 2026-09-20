@@ -5,8 +5,8 @@
   "regionId": "starfall-trench",
   "enemyId": "emberstar-urchin",
   "recommendedLevel": 6,
-  "introDiscord": "\"Blue white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"\n\n---------------- ROOM 1 ----------------",
-  "introTwitch": "\"Blue white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"\n\n---------------- ROOM 1 ----------------",
+  "introDiscord": "\"Blue white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"",
+  "introTwitch": "\"Blue white vents glow across a field of scorched starstone. Emberstar Urchins cluster around the warmest openings like tiny spiked bathers who have claimed every good seat.\"",
   "startRoomId": "emberstar-ventfield-approach",
   "rooms": {
     "emberstar-ventfield-approach": {
@@ -32,7 +32,7 @@
           "nextRoomId": "emberstar-ventfield-depths",
           "healAmount": 52,
           "message": "Shizuki left a heatproof bottle beside a vent marked with three worried arrows. \"Emberroot tonic. Significantly safer than drinking directly from vent.\"",
-          "fullHpMessage": "\"You leave the tonic alone. Experimenting with Shizuki's definition of 'significantly safer' seems unnecessary.\"\n\n---------------- ROOM 2 ----------------"
+          "fullHpMessage": "\"You leave the tonic alone. Experimenting with Shizuki's definition of 'significantly safer' seems unnecessary.\""
         }
       }
     },
@@ -57,7 +57,7 @@
         "forward": {
           "type": "empty",
           "nextRoomId": "emberstar-ventfield-threshold",
-          "message": "\"One Berry rests inside Shizuki's scorched cooking pan.\n\n\"Attempted vent cooked berries.\n\nResults classified as charcoal.\n\nGlimmer now considers itself a culinary expert.\"\"\n\n---------------- ROOM 3 ----------------",
+          "message": "\"One Berry rests inside Shizuki's scorched cooking pan.\n\n\"Attempted vent cooked berries.\n\nResults classified as charcoal.\n\nGlimmer now considers itself a culinary expert.\"\"",
           "berries": 1
         }
       }
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "\"Several Urchins form a circle around a cooled meteor fragment.\n\nThey move aside.\n\nA Star Candy cache sits underneath.\n\nApparently you interrupted a meeting.\"\n\n---------------- BOSS — ASHEN CONSTELLATION ----------------",
+          "message": "\"Several Urchins form a circle around a cooled meteor fragment.\n\nThey move aside.\n\nA Star Candy cache sits underneath.\n\nApparently you interrupted a meeting.\"",
           "reward": {
             "min": 155,
             "max": 191
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "The central vent explodes in blue white fire.\n\nCinder Crown Urchin awakens!"
   },
-  "completionText": "\"The Cinder Crown Urchin retreats into the cooling ventfield.\n\nSeveral ordinary Urchins immediately reclaim the arena like bathers returning to reserved spa chairs.\n\nOne has already taken the warmest spot.\n\nOf course.\"\n\n#################################################################"
+  "completionText": "\"The Cinder Crown Urchin retreats into the cooling ventfield.\n\nSeveral ordinary Urchins immediately reclaim the arena like bathers returning to reserved spa chairs.\n\nOne has already taken the warmest spot.\n\nOf course.\""
 }

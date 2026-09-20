@@ -5,8 +5,8 @@
   "regionId": "starfall-trench",
   "enemyId": "cometglass-shrimp",
   "recommendedLevel": 5,
-  "introDiscord": "\"Forests of cometglass rise from the trench floor, scattering starlight into a thousand colors. Cometglass Shrimp dart between the shards and appear to have developed a thriving economy based entirely on stealing shiny things.\"\n\n---------------- ROOM 1 ----------------",
-  "introTwitch": "\"Forests of cometglass rise from the trench floor, scattering starlight into a thousand colors. Cometglass Shrimp dart between the shards and appear to have developed a thriving economy based entirely on stealing shiny things.\"\n\n---------------- ROOM 1 ----------------",
+  "introDiscord": "\"Forests of cometglass rise from the trench floor, scattering starlight into a thousand colors. Cometglass Shrimp dart between the shards and appear to have developed a thriving economy based entirely on stealing shiny things.\"",
+  "introTwitch": "\"Forests of cometglass rise from the trench floor, scattering starlight into a thousand colors. Cometglass Shrimp dart between the shards and appear to have developed a thriving economy based entirely on stealing shiny things.\"",
   "startRoomId": "cometglass-shardbeds-approach",
   "rooms": {
     "cometglass-shardbeds-approach": {
@@ -28,7 +28,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "cometglass-shardbeds-depths",
-          "message": "\"A star chart coffer glitters beneath overlapping cometglass. Several tiny shrimp footprints lead directly to it and then stop, presumably because none of them could open the latch.\"\n\n---------------- ROOM 2 ----------------",
+          "message": "\"A star chart coffer glitters beneath overlapping cometglass. Several tiny shrimp footprints lead directly to it and then stop, presumably because none of them could open the latch.\"",
           "reward": {
             "min": 138,
             "max": 173
@@ -58,7 +58,7 @@
           "type": "combat",
           "nextRoomId": "cometglass-shardbeds-threshold",
           "enemyId": "cometglass-shrimp",
-          "message": "\"A shrimp blocks the route wearing Shizuki's missing hair clip like a crown.\n\nThis has become personal.\"\n\n---------------- ROOM 3 ----------------"
+          "message": "\"A shrimp blocks the route wearing Shizuki's missing hair clip like a crown.\n\nThis has become personal.\""
         }
       }
     },
@@ -81,7 +81,7 @@
         "forward": {
           "type": "treasure",
           "nextRoomId": "boss-antechamber",
-          "message": "\"Behind a fractured prism, you uncover Star Candies glittering beneath the cometglass.\n\nAmazingly, the shrimp missed these.\n\nOr they're bait.\"\n\n---------------- BOSS — PRISMFALL SCAR ----------------",
+          "message": "\"Behind a fractured prism, you uncover Star Candies glittering beneath the cometglass.\n\nAmazingly, the shrimp missed these.\n\nOr they're bait.\"",
           "reward": {
             "min": 162,
             "max": 197
@@ -103,5 +103,5 @@
     "roomId": "boss",
     "revealText": "Cometglass explodes outward as an enormous armored shrimp rises from its hoard.\n\nShardclaw Colossus reveals itself!"
   },
-  "completionText": "\"The Colossus retreats among the shattered prisms.\n\nYou recover several stolen supplies.\n\nShizuki's hair clip is not among them.\n\nThe investigation remains open.\"\n\n#################################################################"
+  "completionText": "\"The Colossus retreats among the shattered prisms.\n\nYou recover several stolen supplies.\n\nShizuki's hair clip is not among them.\n\nThe investigation remains open.\""
 }
