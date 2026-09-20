@@ -20,8 +20,8 @@ async function main() {
   f.c.verifyDiscordRequest=async()=>true;
   const commands=plain(vm.runInContext('DISCORD_COMMANDS',f.c));
   assert.equal(commands.filter(command=>command.name==='help').length,1);
-  assert.equal(commands.length,40);
-  assert.equal(commands.filter(command=>!['devlevel','devlevel2'].includes(command.name)).length,38);
+  assert.equal(commands.length,41);
+  assert.equal(commands.filter(command=>!['devlevel','devlevel2','devlevel3'].includes(command.name)).length,38);
   assert.equal(commands.find(command=>command.name==='help').options,undefined);
   const source=vm.runInContext('DISCORD_HELP_TEXT',f.c);
   assert(source.length>1900);
@@ -56,7 +56,7 @@ async function main() {
     '/battle: Battle a random enemy from your current region. That enemy may come with modifiers. You might even encounter something special');
   assert.equal(source.split('Simultaneous tips may not count correctly.').length-1,1);
   assert(!source.split('\n').find(line=>line.startsWith('/battle: ')).includes('Wishpocket'));
-  for(const forbidden of ['/devlevel','/devlevel2','/discord/register','/discord/schema','/health','/class ','/classchange','/weapons','Astral Nexus: Level 50']) {
+  for(const forbidden of ['/devlevel','/devlevel2','/devlevel3','/discord/register','/discord/schema','/health','/class ','/classchange','/weapons','Astral Nexus: Level 50']) {
     assert(!source.includes(forbidden),forbidden);
   }
   assert(!source.includes('/help: Cast'));

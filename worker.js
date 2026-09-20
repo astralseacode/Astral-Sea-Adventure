@@ -587,6 +587,9 @@ const DISCORD_SAFE_CONTENT_LENGTH = 1900;
 // TEMPORARY DEVELOPMENT COMMAND
 // REMOVE /devlevel AND DEV_USER_IDS BEFORE FULL RELEASE
 const DEV_USER_IDS = new Set(["715083178834133043", "369312325397905418"]);
+const DEVLEVEL3_USER_IDS = new Set([
+  "715083178834133043", "1483714751208099912", "369312325397905418",
+]);
 const DISCORD_DAILY_COOLDOWN_SECONDS = 23 * 60 * 60;
 const DAILY_REWARD = 250;
 
@@ -770,6 +773,11 @@ const DISCORD_COMMANDS = [
   {
     name: "devlevel2",
     description: "Reset the development playtest account to Level 5.",
+    type: 1,
+  },
+  {
+    name: "devlevel3",
+    description: "Reset an authorized release preparation account to Level 20.",
     type: 1,
   },
   { name: "help", description: "View the complete Astral Sea command reference.", type: 1 },
@@ -1812,6 +1820,42 @@ async function handleDiscordInteractionCore(request, env) {
     } catch (error) {
       logRuntimeError(error, diagnostic, "discord.command.devlevel2");
       return discordMessage("The development playtest reset could not be applied. Please try again later.", true);
+    }
+  }
+
+  if (commandName === "devlevel3") {
+    if (!DEVLEVEL3_USER_IDS.has(userId)) {
+      return discordMessage("This command is only available in development.", true);
+    }
+    try {
+      const backpackKey = `backpack:discord:${userId}`;
+      const sharedIdentity = getDiscordRestIdentity(interaction);
+      const level = 20;
+      const xp = totalXpForLevel(level);
+      const progress = createEmptyProgress();
+      progress.xp = xp;
+      progress.unspentStatPoints = level - 1;
+      progress.statPointsGrantedThroughLevel = level;
+      if (levelFromXp(xp) !== level || Object.values(progress.stats).some(Boolean)) {
+        throw new Error("Invalid release preparation progress.");
+      }
+      return await withCommandPersistence(env, backpackKey, async (commandEnv) => {
+        await deleteCombatState(commandEnv, backpackKey);
+        await clearPendingCombat(commandEnv, backpackKey);
+        await clearActiveAdventure(commandEnv, backpackKey);
+        if (sharedIdentity) {
+          await commandEnv.Backpack.delete(getShopSessionKey(sharedIdentity));
+          await commandEnv.Backpack.delete(getSharedRestCooldownKey(sharedIdentity));
+          await commandEnv.Backpack.delete(getSharedRestCooldownKey(sharedIdentity, "long"));
+        }
+        // Keep the real-world Daily claim cooldown; resetting it could grant an extra reward.
+        await savePlayerProgress(commandEnv, backpackKey, progress);
+        await saveBackpackTotal(commandEnv, backpackKey, 100000);
+        return discordMessage("Developer reset complete.\nLevel: 20\nStar Candies: 100,000", true);
+      });
+    } catch (error) {
+      logRuntimeError(error, diagnostic, "discord.command.devlevel3");
+      return discordMessage("The development reset could not be applied. Please try again later.", true);
     }
   }
 
